@@ -1,0 +1,1 @@
+spikeremoved = 1

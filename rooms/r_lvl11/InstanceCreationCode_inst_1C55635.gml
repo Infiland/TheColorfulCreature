@@ -1,0 +1,1 @@
+text = "For example, that yellow item is intentionally made as bait, and it teaches you that collecting everything may not be a viable option"

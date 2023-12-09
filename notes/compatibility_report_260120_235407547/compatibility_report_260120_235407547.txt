@@ -1,0 +1,8 @@
+Converting GML script: ${project_dir}\objects\xot_cbs_oColorBlindnessSimulation\Create_0.gml
+Converted description /// @description  Setup Simulation Shaders 
+
+Converting GML script: ${project_dir}\objects\xot_cbs_oColorBlindnessSimulation\Draw_77.gml
+Converted description /// @description  Enable Simulation Shader
+
+Converting GML script: ${project_dir}\objects\xot_cbs_oColorBlindnessSimulation\Draw_75.gml
+Converted description /// @description  Reset Simulation Shader

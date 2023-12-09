@@ -1,0 +1,1 @@
+rousr_dissonance_set_details("Story Mode - Hat Merchant")

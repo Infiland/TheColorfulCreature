@@ -1,0 +1,1 @@
+text = "This level shows them why they have to be precise in this game, combining both lessons at once in the previous two levels"

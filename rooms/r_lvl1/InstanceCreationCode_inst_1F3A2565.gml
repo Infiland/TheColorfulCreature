@@ -1,0 +1,1 @@
+text = "Most people try to jump here to collect the coin"

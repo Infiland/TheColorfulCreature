@@ -1,0 +1,1 @@
+text = "World Seven Challenge"

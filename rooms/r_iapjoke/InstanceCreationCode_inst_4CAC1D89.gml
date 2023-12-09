@@ -1,0 +1,1 @@
+audio_sound_gain(m_mainmenu,0,100)

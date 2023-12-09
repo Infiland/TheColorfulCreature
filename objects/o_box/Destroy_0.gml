@@ -1,0 +1,1 @@
+if room != r_leveleditor { global.totaldestroyedboxes += 1}

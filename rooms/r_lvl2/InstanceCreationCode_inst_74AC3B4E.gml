@@ -1,0 +1,1 @@
+text = "Players learn to jump here, there is no need for a complicated tutorial"

@@ -1,0 +1,1 @@
+if global.deaths > 340 { instance_change(o_gravity15,1) }

@@ -1,0 +1,1 @@
+text = "During development, I was deciding if I should either make the player die when they touch the door with the wrong color or not. Since restricting things brings less choices, I decided to make it so you couldn't die. But it also teaches players that they are safe"

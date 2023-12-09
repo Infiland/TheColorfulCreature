@@ -1,0 +1,5 @@
+scr_custombutton()
+/*var level = "r_c2022lvl" + string(variable_global_get(("calendarday" + string(day))))
+draw_set_font(global.coolfont)
+draw_text(x,y-30,string(level))
+draw_text(x,y-50,string(day))

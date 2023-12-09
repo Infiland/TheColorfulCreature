@@ -1,0 +1,7 @@
+draw_set_color(c_black)
+draw_rectangle(x,y,x+308,y+116,false)
+draw_set_color(c_white)
+draw_line_width(x,y,x+308,y,3)
+draw_line_width(x,y+116,x+308,y+116,3)
+draw_line_width(x,y,x,y+116,3)
+draw_line_width(x+308,y,x+308,y+116,3)

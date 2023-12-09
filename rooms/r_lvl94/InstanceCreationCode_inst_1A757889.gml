@@ -1,0 +1,1 @@
+if global.deaths > 480 { instance_destroy() }

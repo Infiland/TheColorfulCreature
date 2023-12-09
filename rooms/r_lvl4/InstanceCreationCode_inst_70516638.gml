@@ -1,0 +1,1 @@
+text = "First vertical level teaches players to jump to the top"

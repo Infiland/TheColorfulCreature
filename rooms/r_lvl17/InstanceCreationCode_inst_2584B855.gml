@@ -1,0 +1,1 @@
+text = "Same thing with this level, players have to learn to wait and then move to the right, and not pressing two buttons at the same time"

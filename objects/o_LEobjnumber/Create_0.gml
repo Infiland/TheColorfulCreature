@@ -1,0 +1,1 @@
+if global.objcountersettings = 0 { instance_destroy() }

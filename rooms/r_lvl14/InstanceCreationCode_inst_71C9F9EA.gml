@@ -1,0 +1,1 @@
+text = "However, this path is slower than the other one, which is not a viable option for people who speedrun this game"

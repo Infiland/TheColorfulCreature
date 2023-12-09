@@ -1,0 +1,1 @@
+draw_text(x,y-30,part_particles_count(par))

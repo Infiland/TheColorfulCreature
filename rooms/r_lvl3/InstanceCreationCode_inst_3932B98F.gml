@@ -1,0 +1,1 @@
+text = "This level is the first one to show that backtracking will be a thing if players try to get all coins in the game."

@@ -1,0 +1,1 @@
+text = "Some people who don't play video games jump while holding a directional key"

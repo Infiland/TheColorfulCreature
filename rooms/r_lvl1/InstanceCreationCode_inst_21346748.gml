@@ -1,0 +1,1 @@
+text = "This is the first level of the game, I never actually changed it even when the development began"

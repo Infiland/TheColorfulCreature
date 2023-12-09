@@ -1,0 +1,1 @@
+text = "If the player wanted a coin, or couldn't go to the left, they will go down this path"

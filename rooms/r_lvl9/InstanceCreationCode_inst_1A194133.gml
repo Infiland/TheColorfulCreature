@@ -1,0 +1,1 @@
+text = "Repeating the same puzzles and rules will make the player realise the game mechanics"

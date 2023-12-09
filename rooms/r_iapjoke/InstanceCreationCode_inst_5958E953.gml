@@ -1,0 +1,1 @@
+getcredits = 1000

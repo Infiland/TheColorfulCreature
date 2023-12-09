@@ -1,0 +1,1 @@
+if global.hardmode = 1 { movespeed = 1.8 }

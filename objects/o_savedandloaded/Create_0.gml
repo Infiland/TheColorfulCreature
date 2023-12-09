@@ -1,0 +1,9 @@
+image_alpha = 0
+alpha = 1
+image_speed = 0
+timer = 20
+depth = -1000
+var camx = camera_get_view_x(view_camera[0])
+var camy = camera_get_view_y(view_camera[0])
+y = camy+1000
+x = camx+512

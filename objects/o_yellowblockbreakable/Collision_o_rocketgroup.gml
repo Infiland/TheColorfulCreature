@@ -1,0 +1,1 @@
+hpbreakable -= o_rocketgroup.speed * 20

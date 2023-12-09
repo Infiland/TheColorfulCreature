@@ -1,0 +1,1 @@
+text = "With a level with no yellow block support, this level teaches the player that you have to avoid yellow items"

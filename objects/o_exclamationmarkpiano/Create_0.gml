@@ -1,0 +1,1 @@
+alarm[0] = 20 * (global.maxfps/60)

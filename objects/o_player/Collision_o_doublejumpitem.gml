@@ -1,0 +1,1 @@
+doublejump = 1

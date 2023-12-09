@@ -1,0 +1,1 @@
+text = "Most players walk on yellow blocks because they think it's decoration, but when they realise the main point of the game, it clicks."

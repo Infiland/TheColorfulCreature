@@ -1,0 +1,5 @@
+scr_saveleveleditor()
+instance_destroy(o_publishlevelLE)
+instance_destroy(o_readworkshoprulesLE)
+instance_destroy(o_publishlevelbuttonLE)
+instance_create(x,y,o_publishinghappenshere)

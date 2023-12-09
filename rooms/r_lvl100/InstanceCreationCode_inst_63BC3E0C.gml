@@ -1,0 +1,1 @@
+global.level100trap = 0

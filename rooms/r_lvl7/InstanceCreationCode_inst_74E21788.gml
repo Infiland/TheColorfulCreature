@@ -1,0 +1,1 @@
+text = "This level teaches them how far they can jump and that 'Fall damage' isn't a thing in this game"

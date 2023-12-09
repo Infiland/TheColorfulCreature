@@ -1,0 +1,2 @@
+AdMob_Banner_Create(AdMob_Banner_SMART,true)
+AdMob_Banner_Show()

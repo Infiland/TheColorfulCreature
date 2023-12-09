@@ -1,0 +1,2 @@
+room_goto(r_fakeending)
+window_set_cursor(cr_default)

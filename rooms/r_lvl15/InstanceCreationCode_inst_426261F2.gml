@@ -1,0 +1,1 @@
+text = "We were reusing the same idea from the level that had yellow items, but instead we introduce green blocks at the same time"

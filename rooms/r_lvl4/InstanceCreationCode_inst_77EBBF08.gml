@@ -1,0 +1,1 @@
+text = "Upon collecting this coin, players will usually begin to find hidden walls that may be in future levels"

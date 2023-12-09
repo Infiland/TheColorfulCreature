@@ -1,0 +1,1 @@
+text = "This level teaches them that they have to stop moving since there's a yellow block in the way"

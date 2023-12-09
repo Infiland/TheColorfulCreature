@@ -1,0 +1,1 @@
+text = "This is the perfect example of showing that coins do hinder progress, but help you long term for skipping levels"

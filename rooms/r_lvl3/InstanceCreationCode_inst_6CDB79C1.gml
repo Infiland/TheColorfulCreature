@@ -1,0 +1,1 @@
+text = "Most casuals who don't play video games quit here, because they can't do precise jumps"

@@ -1,0 +1,1 @@
+if global.checkdeposit = true { instance_destroy() }

@@ -1,0 +1,13 @@
+Thanks for downloading The Colorful Creature!
+
+You'll need to install 2 dependencies if you want audio/network support:
+libcurl4
+libopenal1
+
+If you want controller support type the following commands:
+sudo apt-get install jstest-gtk
+sudo apt-get install joystick.
+
+If you already have these already you can continue to enjoy the game.
+
+- Infiland

@@ -1,0 +1,3 @@
+instance_destroy(o_LEBuild)
+instance_destroy(o_LEBackground)
+instance_destroy(o_LELiquid)

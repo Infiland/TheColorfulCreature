@@ -1,0 +1,1 @@
+if global.deaths > 205 { instance_change(o_yellowitem,1) }

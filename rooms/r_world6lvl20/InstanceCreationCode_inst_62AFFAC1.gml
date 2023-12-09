@@ -1,0 +1,1 @@
+originaltimer = 40

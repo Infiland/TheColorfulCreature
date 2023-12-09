@@ -1,0 +1,1 @@
+hpbreakable -= 1 * (60 / global.maxfps)

@@ -1,0 +1,2 @@
+originalx = x
+originaly = y

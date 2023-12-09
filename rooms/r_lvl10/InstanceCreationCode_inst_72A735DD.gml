@@ -1,0 +1,1 @@
+text = "When the player learns a mechanic, usually there's a slightly harder level that introduces the same ideas again, but all at once"

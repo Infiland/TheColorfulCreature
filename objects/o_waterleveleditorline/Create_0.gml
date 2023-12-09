@@ -1,0 +1,9 @@
+global.x1liquid = 0
+global.y1liquid = 0
+global.x2liquid = 0
+global.y2liquid = 0
+global.leveleditorversion = 2
+clicked = 0
+bad = 0
+createliquid = 0
+liquid = o_water

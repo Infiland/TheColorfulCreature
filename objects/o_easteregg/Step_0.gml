@@ -1,0 +1,1 @@
+image_angle += 1 * (60 / global.maxfps)

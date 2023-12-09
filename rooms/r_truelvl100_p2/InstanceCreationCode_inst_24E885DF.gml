@@ -1,0 +1,1 @@
+canspawn = 1

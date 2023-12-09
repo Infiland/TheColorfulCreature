@@ -1,0 +1,1 @@
+if global.deaths > 180 { instance_change(o_redblock,1) }

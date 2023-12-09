@@ -1,0 +1,1 @@
+if global.deaths > 340 { x += 32 }

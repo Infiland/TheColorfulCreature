@@ -1,0 +1,1 @@
+if global.deaths > 340 { instance_change(o_reditem,1) }

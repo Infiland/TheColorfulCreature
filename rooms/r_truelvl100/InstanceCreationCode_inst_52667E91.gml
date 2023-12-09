@@ -1,0 +1,1 @@
+if global.deaths > 500 { instance_change(o_greenitem,1) }

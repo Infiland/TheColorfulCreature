@@ -1,0 +1,2 @@
+instance_destroy(o_redblock)
+instance_destroy(o_coinconverter)

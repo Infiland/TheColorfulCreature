@@ -1,0 +1,1 @@
+originalcooldown = 100

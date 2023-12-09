@@ -1,0 +1,38 @@
+{
+  "resourceType": "GMExtensionConfigSet",
+  "configurables": {
+    "3069a5bf-6d7d-4073-a4f9-e5f8f3449075": null,
+    "fb7dfcc4-8a4f-480d-80a1-4353f93c9a2d": {
+      "Default": {
+        "value": "ca-app-pub-7108130195717311~2960588105"
+      }
+    },
+    "b9284c2f-2652-43e0-8857-83c4b381d452": {
+      "Default": {
+        "value": "ca-app-pub-7108130195717311/1705849205"
+      }
+    },
+    "4253cbf6-25ef-47ab-a865-b33f15272ba6": {
+      "Default": {
+        "value": "ca-app-pub-7108130195717311/1322705824"
+      }
+    },
+    "b19aeb11-226a-4d31-a7b2-1960aa422c5d": {
+      "Default": {
+        "value": "ca-app-pub-7108130195717311/8981703993"
+      }
+    },
+    "f018b3be-1c77-4cc0-bc4f-98f23755f2a5": {
+      "Default": {
+        "value": "ca-app-pub-7108130195717311/3182582404"
+      }
+    },
+    "dd7deddb-f012-47ed-9802-3003899c4691": null,
+    "538faebe-f399-430a-b961-576a73233bed": null,
+    "83b3436e-3ee8-432e-8fce-49754e27f5aa": null,
+    "dabd5195-9778-41db-848d-e124050792cc": null,
+    "f6d2fbcb-0a33-4b9b-9914-1e6afbc5b0f9": null,
+    "6ca59a1d-8267-4f89-a230-f3402bf7ab04": null
+  },
+  "resourceVersion": "1.0"
+}

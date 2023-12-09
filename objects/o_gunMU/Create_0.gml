@@ -1,0 +1,5 @@
+randomfallspeed = random_range(1,3)
+change = irandom_range(0,1)
+sinchange = random_range(0,0.25)
+singo = random_range(0,20)
+singolimit = random_range(30,45)

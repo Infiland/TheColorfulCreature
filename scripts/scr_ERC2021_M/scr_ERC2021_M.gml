@@ -1,0 +1,3 @@
+function scr_ERC2021_M(){
+ global.chosenlevelER = choose(r_c2022lvl2,r_c2022lvl3,r_c2022lvl7,r_c2022lvl8,r_c2022lvl11,r_c2022lvl12,r_c2022lvl15,r_c2022lvl16,r_c2022lvl18,r_c2022lvl19,r_c2022lvl20,r_c2022lvl21,r_c2022lvl25,r_c2022lvl27,r_c2022lvl28,r_c2022lvl30,r_c2022lvl31,r_c2022lvl32,r_c2022lvl33,r_c2022lvl34,r_c2022lvl35,r_c2022lvl36,r_c2022lvl39,r_c2022lvl41,r_c2022lvl43,r_c2022lvl44,r_c2022lvl46,r_c2022lvl47,r_c2022lvl49,r_c2022lvl51,r_c2022lvl55,r_c2022lvl59,r_c2022lvl61,r_c2022lvl62,r_c2022lvl63,r_c2022lvl64,r_c2022lvl66,r_c2022lvl69,r_c2022lvl72,r_c2022lvl73)
+}

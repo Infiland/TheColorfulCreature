@@ -1,0 +1,10 @@
+if global.color != 3 {
+if global.color != 0 {
+if place_meeting(x-1,y-1,o_redblock) or place_meeting(x+1,y+1,o_redblock) or place_meeting(x-10,y-10,o_redblockmove) or place_meeting(x+1,y+1,o_redblockmove) {
+death()
+}
+if passblockcooldown < 1 {
+if place_meeting(x,y,o_redpassblock) { death() }}
+}
+
+}

@@ -1,0 +1,1 @@
+global.LEDiamondMedalTime = global.LESavedWinTime

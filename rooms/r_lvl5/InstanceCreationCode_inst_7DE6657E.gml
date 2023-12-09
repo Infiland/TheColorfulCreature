@@ -1,0 +1,1 @@
+text = "Because when they fall, they lose progress and have to climb up again"

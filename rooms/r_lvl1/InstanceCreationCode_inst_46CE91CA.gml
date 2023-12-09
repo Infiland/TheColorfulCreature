@@ -1,0 +1,1 @@
+text = "But fail because there's a hidden wall, right at the beginning."

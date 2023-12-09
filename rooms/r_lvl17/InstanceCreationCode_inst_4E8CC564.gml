@@ -1,0 +1,1 @@
+if global.blockbackgroundsettings = 0 { instance_destroy() }

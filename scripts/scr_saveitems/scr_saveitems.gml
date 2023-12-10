@@ -1,6 +1,6 @@
 function scr_saveitems() {
 if global.cheats = 0 {
-	var directory = working_directory + "/Save Files/"
+	var directory = game_save_id + "/Save Files/"
 	if (file_exists(directory + "Items.sav")) file_delete(directory + "Items.sav");
 	ini_open(directory +"Items.sav");
 	//Hats

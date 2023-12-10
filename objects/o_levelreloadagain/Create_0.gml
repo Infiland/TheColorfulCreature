@@ -1,4 +1,4 @@
-var directory = working_directory + "/LevelEditor Files/" + "/" + global.levelname + "/"
+var directory = game_save_id + "/LevelEditor Files/" + "/" + global.levelname + "/"
 	if (file_exists(directory + "OtherLevelEditor.sav")) {
 	ini_open(directory + "OtherLevelEditor.sav");
 	global.LELevelWidthBlocks = ini_read_real("Other LE","Level Width Blocks",32);

@@ -1,7 +1,7 @@
 function scr_moddinghats(path){
 	hatxscale = 1
 	hatyscale = 1
-	var dir = working_directory + "//Custom//Player Hats//" + path
+	var dir = game_save_id + "//Custom//Player Hats//" + path
 	if file_exists(dir) {
 	//show_debug_message("LOL")
 	curhat = sprite_add(dir,1,false,false,12,24)

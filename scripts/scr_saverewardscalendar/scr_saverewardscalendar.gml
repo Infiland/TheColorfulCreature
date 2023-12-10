@@ -16,7 +16,7 @@ case(11): month = "/November//" break;
 case(12): month = "/December//" break;
 }
 
-var directory = working_directory + "/Save Files//Calendar//" + string(global.calendaryear) + "/" + month
+var directory = game_save_id + "/Save Files//Calendar//" + string(global.calendaryear) + "/" + month
 if (file_exists(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_" + string(global.calendarweek) + ".sav")) file_delete(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_" + string(global.calendarweek) + ".sav");
 ini_open(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_" + string(global.calendarweek) + ".sav");
 

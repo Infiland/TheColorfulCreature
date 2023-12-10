@@ -9,7 +9,7 @@ if global.levelname != "" {
 if !instance_exists(o_namelevelLE) {
 if !instance_exists(o_namelevelwhenloadingLE) {
 audio_play_sound(snd_hitboss,0,0)
-var directory = working_directory + "/LevelEditor Files/" + "/" + global.levelname + "/"
+var directory = game_save_id + "/LevelEditor Files/" + "/" + global.levelname + "/"
 screen_save(directory + "/thumb.jpg")
 }}
 

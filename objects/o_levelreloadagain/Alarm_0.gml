@@ -1,6 +1,6 @@
 show_debug_message("Level Reloading")
 
-var directory = working_directory + "/LevelEditor Files/" + "/" + global.levelname + "/"
+var directory = game_save_id + "/LevelEditor Files/" + "/" + global.levelname + "/"
 scr_loadleveleditor()
 global.LEBuild = 1
 global.LES = 0

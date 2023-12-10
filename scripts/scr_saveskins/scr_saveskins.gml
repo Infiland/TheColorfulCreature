@@ -1,6 +1,6 @@
 function scr_saveskins() {
 	if global.cheats = 0 {
-	var directory = working_directory + "/Save Files/"
+	var directory = game_save_id + "/Save Files/"
 	if (file_exists(directory + "Skins.sav")) file_delete(directory + "Skins.sav");
 	ini_open(directory + "Skins.sav");
 	//Skins

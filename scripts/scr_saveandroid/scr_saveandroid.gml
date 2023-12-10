@@ -1,5 +1,5 @@
 function scr_saveandroid() {
-	var directory = working_directory + "/Save Files/"
+	var directory = game_save_id + "/Save Files/"
 	if (file_exists(directory + "Android.sav")) file_delete(directory + "Android.sav");
 	ini_open(directory + "Android.sav");
 	//Android

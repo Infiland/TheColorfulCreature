@@ -36,6 +36,6 @@ global.isreversed = true
 }}}}
 
 audio_stop_sound(m_mainmenu);
-var directory = working_directory + "/Save Files/"
+var directory = game_save_id + "/Save Files/"
 if file_exists(directory + "SaveFile.sav") file_delete(directory +"SaveFile.sav")
 }

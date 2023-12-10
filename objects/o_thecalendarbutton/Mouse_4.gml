@@ -4,7 +4,7 @@ global.calendarmonth = 1
 
 if locked = 0 {
 room_goto(r_calendar)
-var directory = working_directory + "/Save Files//Calendar//" + string(global.calendaryear) + "/"
+var directory = game_save_id + "/Save Files//Calendar//" + string(global.calendaryear) + "/"
 if !directory_exists(directory) {
 directory_create(directory)
 scr_createrewardsavefiles()

@@ -1,6 +1,6 @@
 function scr_loadhats() {
 if global.cheats = 0 {
-	var directory = working_directory + "/Save Files/"
+	var directory = game_save_id + "/Save Files/"
 	if (file_exists(directory + "Hats.sav")) {
 	ini_open(directory + "Hats.sav");
 	global.hatselected = ini_read_real("Hats","Selected Hat",0)

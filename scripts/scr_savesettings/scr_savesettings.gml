@@ -1,5 +1,5 @@
 function scr_savesettings() {
-	var directory = working_directory + "/Save Files/"
+	var directory = game_save_id + "/Save Files/"
 	if (file_exists(directory + "Settings.sav")) file_delete(directory + "Settings.sav");
 	ini_open(directory + "Settings.sav");
 	//Settings

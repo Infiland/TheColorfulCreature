@@ -4,7 +4,7 @@ function scr_saveleveleditor() {
     instance_activate_object(o_anyitem)
 	instance_activate_object(o_anybackgroundblock)
 
-	var directory = working_directory + "/LevelEditor Files/" + "/" + global.levelname + "/"
+	var directory = game_save_id + "/LevelEditor Files/" + "/" + global.levelname + "/"
 	if !directory_exists(directory) {directory_create(directory)}
 
 	//Level Editor Version

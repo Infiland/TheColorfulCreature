@@ -41,7 +41,7 @@ font_enable_sdf(fnt_mainmenu,true)
 font_enable_sdf(fnt_deathcyrillic,true)*/
 
 //Move/Create Save Files
-var directory = working_directory + "/Save Files/"
+var directory = game_save_id + "/Save Files/"
 if !directory_exists(directory) {
 		directory_create(directory)
 		file_copy("Achievements.sav",directory + "Achievements.sav")
@@ -435,7 +435,7 @@ global.androidadtimer = 300
 
 
 //Folders
-	var directory = working_directory + "/Custom/"
+	var directory = game_save_id + "/Custom/"
 	if !directory_exists(directory) {
 		directory_create(directory)
 	}
@@ -451,28 +451,28 @@ global.androidadtimer = 300
 	directory_destroy(directory + "Hats")
 	directory_destroy(directory + "Skins")
 		
-		if file_exists(working_directory + "/Custom/README.txt") file_delete(working_directory + "/Custom/README.txt");
-		var _f = file_text_open_write(working_directory + "/Custom/README.txt");
+		if file_exists(game_save_id + "/Custom/README.txt") file_delete(game_save_id + "/Custom/README.txt");
+		var _f = file_text_open_write(game_save_id + "/Custom/README.txt");
 	    file_text_write_string(_f, string("You can customize hats! Add hats in the player hats folder, put .png images. Recommended resolution is 32x24 resolution! This is not finished and has limited functionality, hopefully the future versions will :)"));
 		file_text_close(_f);
-			if !file_exists(working_directory + "/Custom/Custom Splash Texts.txt") {
-		var _f = file_text_open_write(working_directory + "/Custom/Custom Splash Texts.txt");
+			if !file_exists(game_save_id + "/Custom/Custom Splash Texts.txt") {
+		var _f = file_text_open_write(game_save_id + "/Custom/Custom Splash Texts.txt");
 	    file_text_write_string(_f, string("Go to local files or %appdata% to change this text\n[rainbow][wave]You can use text like this:"));	
 		file_text_close(_f);
 		}
 	}
 	
-	var directory = working_directory + "/LevelEditor Files/"
+	var directory = game_save_id + "/LevelEditor Files/"
 	if !directory_exists(directory) {directory_create(directory)}
 	
-	var directory = working_directory + "/Save Files/Calendar/"
+	var directory = game_save_id + "/Save Files/Calendar/"
 		if !directory_exists(directory) {
 	directory_create(directory)
 	}
-	var directory = working_directory + "/Custom/Workshop/Medals/"
+	var directory = game_save_id + "/Custom/Workshop/Medals/"
 	if !directory_exists(directory) { directory_create(directory) }
 	
-	var directory = working_directory + "/Custom/Custom Languages/"
+	var directory = game_save_id + "/Custom/Custom Languages/"
 	if !directory_exists(directory) { directory_create(directory) }
 
 	

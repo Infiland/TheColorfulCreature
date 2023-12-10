@@ -1,6 +1,6 @@
 function scr_saveworkshopmedals() {
 if global.cheats = 0 {
-	var directory = working_directory + "/Custom/Workshop/Medals/" + string(global.Publish_ID) + "/"
+	var directory = game_save_id + "/Custom/Workshop/Medals/" + string(global.Publish_ID) + "/"
 	var previoustime = 9999999
 	
 	if (file_exists(directory + "MedalData.sav")) {

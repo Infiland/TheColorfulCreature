@@ -1,6 +1,6 @@
 function scr_savechallengedeaths() {
 	if global.cheats = 0 {
-	var directory = working_directory + "/Save Files/"
+	var directory = game_save_id + "/Save Files/"
 	if (file_exists(directory + "ChallengeDeaths.sav")) file_delete(directory + "ChallengeDeaths.sav");
 	ini_open(directory + "ChallengeDeaths.sav");
 	ini_write_real("Challenges","Tutorial Challenge",global.tutorialchallengedeaths);

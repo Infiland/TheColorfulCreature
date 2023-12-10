@@ -1,6 +1,6 @@
 files = [];
 
-var dir = working_directory + "\\Custom\\Player Hats\\*"
+var dir = game_save_id + "\\Custom\\Player Hats\\*"
 //var dir = working_directory + "\\LevelEditor Files\\*"
 
 var file_name = file_find_first(dir, fa_directory);

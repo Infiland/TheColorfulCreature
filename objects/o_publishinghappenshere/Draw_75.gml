@@ -56,7 +56,7 @@ draw_rectangle(0,740,timer,770,false)
 if timer < 0 { 
 	if result = 1 {
 	global.workshoplevelversion += 1
-	var directory = working_directory + "/LevelEditor Files/" + "/" + global.levelname + "/"
+	var directory = game_save_id + "/LevelEditor Files/" + "/" + global.levelname + "/"
 	if !directory_exists(directory) {directory_create(directory)}
 
 	//Level Editor Version

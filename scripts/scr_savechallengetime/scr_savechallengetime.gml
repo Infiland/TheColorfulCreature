@@ -1,6 +1,6 @@
 function scr_savechallengetime() {
 	if global.cheats = 0 {
-	var directory = working_directory + "/Save Files/"
+	var directory = game_save_id + "/Save Files/"
 	if (file_exists(directory + "ChallengeTime.sav")) file_delete(directory + "ChallengeTime.sav");
 	ini_open(directory + "ChallengeTime.sav");
 	ini_write_real("Challenges","Tutorial Challenge",global.tutorialchallengetime);

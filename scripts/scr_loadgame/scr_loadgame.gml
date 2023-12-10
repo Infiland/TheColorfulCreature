@@ -1,5 +1,5 @@
 function scr_loadgame() {
-	var directory = working_directory + "/Save Files/"
+	var directory = game_save_id + "/Save Files/"
 	if (file_exists(directory + "SaveFile.sav")) {
 	ini_open(directory + "SaveFile.sav");
 	var LoadedRoom = ini_read_string("SaveFile Information","Level","r_lvl1")

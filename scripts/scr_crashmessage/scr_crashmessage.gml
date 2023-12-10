@@ -26,7 +26,7 @@ exception_unhandled_handler(function(exception) {
 	show_message("=============================\n" + cutemessage + " The game has crashed, please report this crash in the support section of the game and fill out other details...\n" + "=============================\n" +  exception.message + "\n\n" + exception.longMessage + "\n\n" + exception.script + "\n\n" + "Crash.txt has been created in local files, inside the 'Other' folder, Sorry BTW!")
 	
 	
-	var directory = working_directory + "/Other/"
+	var directory = game_save_id + "/Other/"
 	if !directory_exists(directory) {directory_create(directory)}
 	
     if file_exists(directory + "crash.txt") file_delete(directory + "crash.txt");

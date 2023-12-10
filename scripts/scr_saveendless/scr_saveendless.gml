@@ -1,7 +1,7 @@
 function scr_saveendless() {
 	
 if global.cheats = 0 {
-	var directory = working_directory + "/Save Files/"
+	var directory = game_save_id + "/Save Files/"
 	if (file_exists(directory + "Endless.sav")) file_delete(directory + "Endless.sav");
 	ini_open(directory + "Endless.sav");
 	ini_write_real("Endless","Highscore",global.endlesslevelhighscore);

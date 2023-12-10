@@ -14,7 +14,7 @@ if global.time > 3 {
 global.creditscurrency += floor(1 * global.creditsmultiplier)
 }
 
-	var directory = working_directory + "/Custom/Workshop/Medals/" + string(global.Publish_ID) + "/"
+	var directory = game_save_id + "/Custom/Workshop/Medals/" + string(global.Publish_ID) + "/"
 	if !directory_exists(directory) {
 	directory_create(directory)
 	}

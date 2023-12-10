@@ -1,6 +1,6 @@
 function scr_loadnewcalendar() {
 if global.cheats = 0 {
-	var directory = working_directory + "/Save Files//Calendar/"
+	var directory = game_save_id + "/Save Files//Calendar/"
 	var diff = "Easy"
 	var week = 1
 	var month = 1

@@ -63,7 +63,7 @@ splash = irandom_range(1,550)
 if global.customsplashessettings = 1 {
 splashmax = 0
 var num = 0;
-var dircustomsplash = working_directory + "/Custom/Custom Splash Texts.txt"
+var dircustomsplash = game_save_id + "/Custom/Custom Splash Texts.txt"
 if file_exists(dircustomsplash) {
 var file = file_text_open_read(dircustomsplash);
 while (!file_text_eof(file))

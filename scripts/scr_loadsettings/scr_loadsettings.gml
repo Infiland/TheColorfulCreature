@@ -1,6 +1,6 @@
 function scr_loadsettings() {
 	if steam_get_app_id() != 1749610 {
-	var directory = working_directory + "/Save Files/"
+	var directory = game_save_id + "/Save Files/"
 	if (file_exists(directory + "Settings.sav")) {
 	ini_open(directory + "Settings.sav")
 	//Settings

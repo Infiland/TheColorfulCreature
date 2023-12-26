@@ -682,6 +682,7 @@
     {"name":"s_frozenplayergreen","order":3,"path":"sprites/s_frozenplayergreen/s_frozenplayergreen.yy",},
     {"name":"s_frozenplayerblue","order":4,"path":"sprites/s_frozenplayerblue/s_frozenplayerblue.yy",},
     {"name":"s_frozenplayerwhite","order":5,"path":"sprites/s_frozenplayerwhite/s_frozenplayerwhite.yy",},
+    {"name":"o_githubbutton","order":9,"path":"objects/o_githubbutton/o_githubbutton.yy",},
     {"name":"s_hdplayerred","order":1,"path":"sprites/s_hdplayerred/s_hdplayerred.yy",},
     {"name":"o_demoask","order":17,"path":"objects/o_demoask/o_demoask.yy",},
     {"name":"example_on_error","order":5,"path":"scripts/example_on_error/example_on_error.yy",},

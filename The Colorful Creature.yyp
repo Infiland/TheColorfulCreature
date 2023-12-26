@@ -385,7 +385,7 @@
   "isEcma": false,
   "LibraryEmitters": [],
   "MetaData": {
-    "IDEVersion": "2023.11.0.121",
+    "IDEVersion": "2023.11.1.129",
   },
   "resources": [
     {"id":{"name":"o_bosnianhatbutton","path":"objects/o_bosnianhatbutton/o_bosnianhatbutton.yy",},},
@@ -820,6 +820,7 @@
     {"id":{"name":"s_frozenplayerblue","path":"sprites/s_frozenplayerblue/s_frozenplayerblue.yy",},},
     {"id":{"name":"s_frozenplayerwhite","path":"sprites/s_frozenplayerwhite/s_frozenplayerwhite.yy",},},
     {"id":{"name":"s_hdskinbutton","path":"sprites/s_hdskinbutton/s_hdskinbutton.yy",},},
+    {"id":{"name":"o_githubbutton","path":"objects/o_githubbutton/o_githubbutton.yy",},},
     {"id":{"name":"s_hdplayerred","path":"sprites/s_hdplayerred/s_hdplayerred.yy",},},
     {"id":{"name":"o_demoask","path":"objects/o_demoask/o_demoask.yy",},},
     {"id":{"name":"example_on_error","path":"scripts/example_on_error/example_on_error.yy",},},

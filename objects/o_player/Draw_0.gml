@@ -118,6 +118,9 @@ draw_sprite_ext(s_clocksecond,0,x+16,y+16,1,1,-current_second * 6,c_white,1)
 break;
 case(35):
 //Invisible Skin
+if global.visiblethings = 1 {
+	draw_self()
+}
 break;
 case(39):
 draw_self()

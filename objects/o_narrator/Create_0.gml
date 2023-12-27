@@ -278,12 +278,21 @@ strings[258] = "W7-L17 I am basically running out things to say."
 strings[259] = "W7-L18 In general it's just: 'Level's hard LULW'"
 strings[260] = "W7-L19 But you are almost at the end, just a bit more precision jumps."
 strings[261] = "W7-L20 This is it..."
+if global.visiblethings = 0 {
 strings[263] = "INV-L1 Oh, wait is this? Invisible Blocks? Oh no."
 strings[264] = "INV-L2 Luckily this is a easy challenge so this shouldn't be a problem. Right?"
 strings[265] = "INV-L3 Invisible maze. Totally a peak of level design."
 strings[266] = "INV-L4 Down-Up, Down-Up."
 strings[267] = "INV-L5 Make slow choices."
-strings[268] = "INV-L6 Take any path."
+} else {
+strings[263] = "V-L1 Oh, wait is this? Well this looks pretty normal"
+strings[264] = "V-L2 Luckily this is now an easier challenge."
+strings[265] = "V-L3 It would totally be peak level design if this maze was invisible."
+strings[266] = "V-L4 I mean, there are people who complain about that kind of stuff, weird right?"
+strings[267] = "V-L5 So this is indeed why video games need accessibility options!"
+}
+strings[268] = "V-L6 Take any path."	
+
 strings[269] = "Year: " + string(global.calendaryear) + " | Month: " + string(global.calendarmonth) + " | Day: " + string(global.calendarday)
 strings[270] = "BREAK-L1 Introducing[shake][c_lime] breakable blocks![/] Scary ain't it?"
 strings[271] = "BREAK-L2 Moving platforms are affected by breakable blocks."

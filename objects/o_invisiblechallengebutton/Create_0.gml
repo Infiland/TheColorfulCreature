@@ -10,7 +10,6 @@ locked = 1
 if global.skin043 < 1 { wincol = c_white } else { wincol = c_lime }
 if global.world1 = 1 { locked = 0 }
 
-
 medalsprite = -1
 
 //Language

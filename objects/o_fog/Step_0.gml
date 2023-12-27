@@ -29,3 +29,5 @@ y = o_playerdead.y
 image_xscale = lerp(image_xscale,1.7,0.1)
 image_yscale = lerp(image_yscale,1.7,0.1)
 }}}}}}
+
+if global.visiblethings = 1 { image_alpha = 0 }

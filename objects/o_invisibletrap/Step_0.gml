@@ -11,3 +11,5 @@ instance_create(512,416,o_invisibleblock)
 instance_create(340,-416,o_enemyplayer)
 alarm[0] = 276 * (global.maxfps / 60)
 }}
+
+if global.visiblethings = 1 { image_alpha = 1 }

@@ -162,6 +162,8 @@ global.endless1upchange = 10
 global.endlessrunmode = 1
 global.noclip = 0
 global.berserk = 0
+global.visiblethings = 0
+global.managablejump = 0
 global.objcountersettings = 0
 global.autothumbnailsettings = 1
 global.antialiasingsettings = 0
@@ -190,6 +192,8 @@ global.checkpointCOLOR = -1
 global.checkpointAMMO = 0
 global.checkpointGUN = false
 global.casualmode = 0
+
+global.worldProgression = 1
 
 global.cheats = 0
 scr_loadendless()

@@ -14,7 +14,7 @@ draw_sprite_ext(s_clockminute,0,x+(16*image_xscale),y+(16*image_xscale),5,5,-cur
 draw_sprite_ext(s_clocksecond,0,x+(16*image_xscale),y+(16*image_xscale),5,5,-current_second * 6,c_white,1)
 break;
 case(35):
-
+if global.visiblethings = 1 { draw_self() }
 break;
 case(40):
 draw_sprite_ext(s_scifiskinbase,0,x+80,y+80,5,5,0,c_red,1)

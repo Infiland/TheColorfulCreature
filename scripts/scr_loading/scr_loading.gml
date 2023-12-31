@@ -356,6 +356,7 @@ global.multiplayerplayercontrols[0] = 0
 global.multiplayerplayercontrols[1] = -1
 global.multiplayerplayercontrols[2] = -2
 global.multiplayerplayercontrols[3] = -3
+global.multiplayerplayercontrols[4] = -4
 global.customizeselectMU = 1
 global.skinMUlocked = false
 global.hatMUlocked = false

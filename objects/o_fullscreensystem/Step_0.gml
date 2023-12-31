@@ -27,7 +27,7 @@ if  ingame = 0 {
 window_mouse_set(mConX,mConY)
 }
 
-if instance_exists(o_player) {
+if instance_exists(o_player) || instance_exists(o_playerMU) {
 if global.pause = 0 {
 	ingame = 1
 window_set_cursor(cr_none)	

@@ -30,6 +30,7 @@ global.oldERunlock = 0
 global.totaldjumppickups = 0
 global.totalblocksbroken = 0
 global.wheeltimeleft = 0
+
 //Deaths
 global.totalblockdeaths = 0
 global.totalrestartdeaths = 0

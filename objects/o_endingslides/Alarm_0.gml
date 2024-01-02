@@ -23,6 +23,7 @@ if image_alpha > 10 {
 instance_destroy()	
 if image_index = image_number - 1 {
 if !instance_exists(o_endingslides) {
+if !steam_get_achievement("THE_CROWN") { steam_set_achievement("THE_CROWN") }
 game_restart()
 }}
 }

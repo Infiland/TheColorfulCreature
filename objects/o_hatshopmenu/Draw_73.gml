@@ -130,6 +130,8 @@ drawhatshop(s_czechhaticon,56+dis,floor(75 * global.hatmerchantdiscount),global.
 drawhatshop(s_russianhaticon,57+dis,floor(75 * global.hatmerchantdiscount),global.hat060,500)
 //Devil
 drawhatshop(s_devilhaticon,58+dis,floor(75 * global.hatmerchantdiscount),global.hat061,500)
+//Turkey
+drawhatshop(s_turkishhaticon,59+dis,floor(75 * global.hatmerchantdiscount),global.hat062,500)
 
 //Arrow
 draw_sprite_ext(s_liquidarrow,0,490,620,1,arrowyscale,0,c_white,1)

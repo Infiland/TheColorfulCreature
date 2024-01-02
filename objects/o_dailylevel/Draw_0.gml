@@ -23,3 +23,7 @@ if global.dailylevelhighstreak > diff2 { global.cheats = 1
 if global.dailylevelstreak > diff2 { global.cheats = 1
 	steam_upload_score_ext("Current Daily Level Streak", 0,true);
 	}
+
+if global.dailylevelhighstreak >= 10 {
+if !steam_get_achievement("DAILIES") { steam_set_achievement("DAILIES") }		
+}

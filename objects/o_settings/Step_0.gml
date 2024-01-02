@@ -9,7 +9,12 @@ if image_angle > 0 {
 	if x < 950 {
 	steam_upload_score("Cog Distance",abs(x-950))
 	} else if x < -450 {
-	steam_upload_score_ext("Cog Distance",abs(x-950),true)	
+	steam_upload_score_ext("Cog Distance",abs(x-950),true)
+	
+	if abs(x-950) > 1000 {
+	if !steam_get_achievement("SPINNNNN") { steam_set_achievement("SPINNNNN") }	
+	}
+	
 	}
 	move = 0
 	x = 960 + vx

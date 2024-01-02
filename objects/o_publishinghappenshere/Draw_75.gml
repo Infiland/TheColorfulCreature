@@ -30,9 +30,10 @@ case(1):  if updated = 0 {
 draw_text(512,250,loc(559)) } else {  draw_text(room_width/2,250,loc(621)) }
 draw_text(512,310,"Publish ID: " + string(global.Publish_ID))
 draw_text(512,410,"The game is likely to crash after this point. Please stay in the game\nfor a minute, so no corruptions happen!")
+if !steam_get_achievement("PUBLISHER") { steam_set_achievement("PUBLISHER") }
 timer -= 1
 break;
-case(2): draw_text(512,250,"Failed cuz you didn't accept the\nLegal Agreement!")
+case(2): draw_text(512,250,"Failed because you didn't accept the\nLegal Agreement!")
 timer -= 1
 break;
 case(3): draw_text(512,250,loc(588))

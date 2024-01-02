@@ -1,7 +1,7 @@
 y = -600
 image_alpha = 0
 depth = -15001
-req = 5
+req = 6
 
 if req <= global.gamenews { instance_destroy() }
 
@@ -9,4 +9,5 @@ if req <= global.gamenews { instance_destroy() }
 //text = "Wow! We have released [rainbow][wave]SKINS[/] for the setting button! To gather them, participate in the [c_yellow]'Distance Cog'[/] event where you have to put your mouse on the setting button in order to rotate the settings cog enough to get it going! The more you spin it, the farther it goes. 1st place gets a golden cog, 2nd place silver, and 3rd bronze.\n\nHave Fun!"
 //text = "What's this? You can earn a random key while playing? But what kind of game will you get? Is the game even public or not? And most of all, is it even a steam key, or something else entirely... You will find out eventually, only select players will be chosen at random or by simply playing."
 //text = "Added donation DLCs. These are solely to support the developer. When you purchase the donation DLCs, you get a badge which is upgradable! Also, in future updates, donators will be able to play 'Special Levels' which are donator only levels. For base game players, the special levels will appear in Endless Run.\n\nHave fun!"
-text = "Full Release of the game has been released! It has been 5 years of development, thank you so much for playing. If you have any bugs to report, or any features you want me to add, let me know on discord. Thanks :)\n\n\n\nInfiland"
+//text = "Full Release of the game has been released! It has been 5 years of development, thank you so much for playing. If you have any bugs to report, or any features you want me to add, let me know on discord. Thanks :)\n\n\n\nInfiland"
+text = "Release 1.0.6 is here! [c_yellow]New Cheats have been added![/] Also check out the Level Select, added [c_yellow]very important text[/] over there! Removed the Wiki button and placed the development contribution in the Support Section.\n\nIf you have any bugs to report, or any features you want me to add, let me know on discord.\n[rainbow]Merry Christmas"

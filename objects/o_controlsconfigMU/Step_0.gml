@@ -8,15 +8,20 @@ case(1): image_index = global.multiplayerplayercontrols[0] break;
 case(2): image_index = global.multiplayerplayercontrols[1] break;
 case(3): image_index = global.multiplayerplayercontrols[2] break;
 case(4): image_index = global.multiplayerplayercontrols[3] break;
+case(5): image_index = global.multiplayerplayercontrols[4] break;
 }
 
 image_blend = c_white
 if global.multiplayerplayercontrols[0] = global.multiplayerplayercontrols[1] { image_blend = c_red }
 if global.multiplayerplayercontrols[0] = global.multiplayerplayercontrols[2] { image_blend = c_red }
 if global.multiplayerplayercontrols[0] = global.multiplayerplayercontrols[3] { image_blend = c_red }
+if global.multiplayerplayercontrols[0] = global.multiplayerplayercontrols[4] { image_blend = c_red }
 if global.multiplayerplayercontrols[1] = global.multiplayerplayercontrols[2] { image_blend = c_red }
 if global.multiplayerplayercontrols[1] = global.multiplayerplayercontrols[3] { image_blend = c_red }
+if global.multiplayerplayercontrols[1] = global.multiplayerplayercontrols[4] { image_blend = c_red }
 if global.multiplayerplayercontrols[3] = global.multiplayerplayercontrols[2] { image_blend = c_red }
+if global.multiplayerplayercontrols[3] = global.multiplayerplayercontrols[4] { image_blend = c_red }
+if global.multiplayerplayercontrols[3] = global.multiplayerplayercontrols[4] { image_blend = c_red }
 
 /*
 switch(global.multiplayerplayers) {

@@ -36,6 +36,7 @@ if global.cheats = 0 {
 	ini_write_real("Stats","Calendar Record",global.newcalendarrecord);
 	ini_write_real("Stats","Game News",global.gamenews);
 	ini_write_real("Stats","AFUN",global.asteroidfun);
+	ini_write_real("Stats","worldProgression",global.worldProgression);
 	//Deaths
 	ini_write_real("Stats","Block Deaths",global.totalblockdeaths);
 	ini_write_real("Stats","Restart Deaths",global.totalrestartdeaths);

@@ -65,6 +65,11 @@ if key_skip {
 if global.special >= reqcoin {
 global.totalskips += 1
 if !steam_get_achievement("BYE_BYE_LEVEL") { steam_set_achievement("BYE_BYE_LEVEL") }
+
+if room = asset_get_index("r_lvl" + string(global.worldProgression)) {
+global.worldProgression += 1
+}
+
 scr_savestats()
 scr_resetcheckpointdata()
 if global.endless = 0 { room_goto_next() }

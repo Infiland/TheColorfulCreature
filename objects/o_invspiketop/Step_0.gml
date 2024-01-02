@@ -41,3 +41,5 @@ if room = r_leveleditor {
 if global.LEMode = 1 {
 image_alpha = 0.5
 }}
+
+if global.visiblethings = 1 { image_alpha = 1 }

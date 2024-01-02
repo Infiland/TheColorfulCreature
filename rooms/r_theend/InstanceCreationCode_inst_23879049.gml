@@ -152,11 +152,10 @@ steam_set_achievement("GRAYSCALE") }
 
 if global.isinvisible = true { //Invisible
 if global.skinselected = 35 {
-if global.hatselected = 0 {
 global.invisibleachievement = true
 if !steam_get_achievement("INVISIBLE_SKIN") {
 steam_set_achievement("INVISIBLE_SKIN") }
-}}}
+}}
 
 if global.isreversed = true { //Reverse
 if global.controlsmoveleft = 39 {

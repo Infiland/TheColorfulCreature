@@ -8,16 +8,14 @@ function deathMU() {
 	if instance_exists(o_playerMU) {
 	switch(global.MinigameMU) {
 	case(1):
-	if o_playerMU.multiplayerplayer = 1 {global.shootemupscore[0] += 1}
-	if o_playerMU.multiplayerplayer = 2 {global.shootemupscore[1] += 1}
-	if o_playerMU.multiplayerplayer = 3 {global.shootemupscore[2] += 1}
-	if o_playerMU.multiplayerplayer = 4 {global.shootemupscore[3] += 1}
+	global.shootemupscore[o_playerMU.multiplayerplayer-1] += 1
+	if global.shootemupscore[o_playerMU.multiplayerplayer-1] >= 10 {
+	if !steam_get_achievement("BOOTLEG_BR") { steam_set_achievement("BOOTLEG_BR") }
+	}
 	break;
 	case(2):
-	if o_playerMU.multiplayerplayer = 1 {global.racescore[0] += 1}
-	if o_playerMU.multiplayerplayer = 2 {global.racescore[1] += 1}
-	if o_playerMU.multiplayerplayer = 3 {global.racescore[2] += 1}
-	if o_playerMU.multiplayerplayer = 4 {global.racescore[3] += 1}
+	global.racescore[o_playerMU.multiplayerplayer-1] += 1
+	if !steam_get_achievement("RACE_IST_FUN") { steam_set_achievement("RACE_IST_FUN") }
 	break;
 	}}}
 }

@@ -306,7 +306,7 @@ case(94): draw_text(5,5,"Lmao") break;
 case(95): draw_text(5,5,"^_^") break;
 case(96): draw_text(5,5,"PRO TIP: Look the level closely before you play.") break;
 case(97): draw_text(5,5,"Performance? Go to settings to make it better!") break;
-case(98): draw_text(5,5,"For Starters, play on Normal Mode.") break;
+case(98): draw_text(5,5,"For Starters, play the Campaign first") break;
 case(99): draw_text(5,5,"Actually, the game just runs too well.") break;
 case(100): draw_text(5,5,"In the code, this is the official 100th splash text.") break;
 case(101): draw_text(5,5,"12345 is a bad password.") break;
@@ -374,7 +374,7 @@ case(152): draw_text(5,5,"Thank you caoullion.") break;
 case(153): draw_text(5,5,"Oh boy cannot wait!") break;
 case(154): draw_text(5,5,"QWERTY!") break;
 case(155): draw_text(5,5,"Soundtrack mostly by Infiland!") break;
-case(156): draw_text(5,5,"Skin Tip: Unlock the mad skin by beating the hotdog!") break;
+case(156): draw_text(5,5,"Skin Tip: Can't unlock something normally? Try the Calendar! Every week there's a skin available!") break;
 case(157): draw_set_color(make_color_rgb(red,green,blue))
 draw_text(5,5,"This piece of text has a color of RAINBOW.") break;
 case(158): draw_text(5,5,"With the help of Sundalanian.") break;
@@ -448,7 +448,7 @@ case(222): draw_text(5,5,"Slaying the bugs.") break;
 case(223): draw_text(5,5,"E") break;
 case(224): draw_text(5,5,"Current version is " + string(version)) break;
 case(225): draw_text(5,5,"This game is now available on Steam.") break;
-case(226): draw_text(5,5,"I can happily say that TCC is available on Android.") break;
+case(226): draw_text(5,5,"TCC is now available on Android.") break;
 case(227): 	draw_text(5,5,"v i b e    c h e c k") 
 	draw_sprite(s_gun,-1,180,5) break;
 case(228): draw_text(5,5,"Runs even on 1 GHZ Computers.") break;
@@ -509,7 +509,7 @@ case(276): draw_set_font(global.classicfont)
 draw_text(5,5,"win world 6 under 25 deaths") break;
 case(277): draw_text(5,5,"PRO TIP: In some hard levels, if you have a ton of deaths, they get easier for newbies.") break;
 case(278): draw_text(5,5,"There are secrets scattered in the game, go ahead and find them!") break;
-case(279): draw_text(5,5,"It's your host...") break;
+case(279): draw_text(5,5,"Wanna contribute to the game? Go to the support section!") break;
 case(280): draw_text(5,5,"Keep it up, proud of you.") break;
 case(281): draw_text(5,5,"Du tu ruu.") break;
 case(282): draw_text(5,5,"Join the party.") break;
@@ -540,7 +540,7 @@ case(306): draw_text(5,5,"Want more levels? Go to Start > Fun Mode > Challenges!
 case(307): draw_text(5,5,"Protip: When you beat a challenge you get a reward! (eg. skin)") break;
 case(308): draw_text(5,5,"V\ne\nr\nt\ni\nc\na\nl") break;
 case(309): draw_text(5,5,"Ever saw a golden spike?") break;
-case(310): draw_text(5,5,"Protip: Every world in storymode has an unique boss.") break;
+case(310): draw_text(5,5,"Protip: Every world in the main game has a boss.") break;
 case(311): draw_text(5,5,"What are you looking at?") break;
 case(312): draw_text(5,5,"Do you like the game? Check the support section!") break;
 case(313): draw_text(5,5,"Join our discord server to hear about upcoming updates!") break;
@@ -626,9 +626,9 @@ case(385): draw_text(5,5,"All splashes here are unimportant. OR ARE THEY?") brea
 case(386): draw_text(5,5,"Splash!") break;
 case(387): draw_text(5,5,"Did you know you can type in the skin menu? Wait, nevermind...") break;
 case(388): draw_text(5,5,"This is ridonculous!") break;
-case(389): draw_text(5,5,"How many attempts you've wasted on kaizo challenge?") break;
+case(389): draw_text(5,5,"How many attempts you've wasted on the Kaizo Challenge?") break;
 case(390): draw_text(5,5,"Where are the other colors?") break;
-case(391): draw_text(5,5,"Don't read this!") break;
+case(391): draw_text(5,5,"Don't read this! Aaaah gosh, you've read it!") break;
 case(392): 
 somethingwillhappen -= (0.016666666666665 * global.delta) * (60 / global.maxfps)
 if somethingwillhappen > 0 {
@@ -638,9 +638,9 @@ draw_text(5,5,"Something will happen in: " + string(somethingwillhappen) + " sec
 	}
 break;
 case(393): draw_text(5,5,"Hi chat :)") break;
-case(394): draw_text(5,5,"Thank you guys.") break;
+case(394): draw_text(5,5,"What was your long-lasting wish? Oh I know! It's controller support!") break;
 case(395): draw_text(5,5,"Created by a single developer, Infiland.") break;
-case(396): draw_text(5,5,"Cheeseus.") break;
+case(396): draw_text(5,5,"Reddie's about to rizz in the Main Campaign") break;
 case(397): draw_text(5,5,"Zorch!") break;
 case(398): draw_text(5,5,"Speedrunner friendly!") break;
 case(399): draw_text(5,5,"Cookies: " + string(global.cookies)) break;
@@ -746,8 +746,8 @@ case(473): draw_text(5,5,"Failing W1-L1 since 2018!") break;
 case(474): draw_text(5,5,"Did you know that 1 + 1 is 2?") break;
 case(475): draw_text(5,5,"BREAKING NEWS: Chickens are invading space by laying eggs out!") break;
 case(476): draw_text(5,5,"Worth 3.49 Euros!") break;
-case(477): draw_text(5,5,"The entire game was made faster than Geometry Dash 2.2") break;
-case(478): draw_text(5,5,"RubRub") break;
+case(477): draw_text(5,5,"The entire game was made faster than Geometry Dash 2.2... Wait, it's out? Ooops") break;
+case(478): draw_text(5,5,"Thank you sadzake for contributing!") break;
 case(479): draw_text(5,5,"Infiland is " + string(diffyearinfi) + " years old!") break;
 case(480): draw_text(5,5,"Big levels in level editor when???") break;
 case(481): draw_text(5,5,"amogo") break;
@@ -758,14 +758,14 @@ case(485): draw_text(5,5,"Roasting myself: All levels are red.") break;
 case(486): draw_text(5,5,"We love Geometry Dash!") break;
 case(487): draw_text(5,5,"W5-L20 is the hardest level because it crashes.") break;
 case(488): draw_text(5,5,"DON'T PLAY TCC AT 3AM (CURSED)") break;
-case(489): draw_text(5,5,"This game's broken lo-") break;
+case(489): draw_text(5,5,"This game's broken lol") break;
 case(490): draw_text(5,5,"I wanna be the very best") break;
 case(491): draw_text(5,5,"Get deez diamond medalz") break;
 case(492): draw_text(5,5,"Did you know that Infiland loves Steam Achievements?") break;
 case(493): draw_text(5,5,"Probably can be played on the SteamDeck, maybe...") break;
 case(494): draw_text(5,5,"Now you can play custom levels! Sort of.") break;
 case(495): draw_text(5,5,"The Calendar is going to doom us all!") break;
-case(496): draw_text(5,5,"What if I added more colors?") break;
+case(496): draw_text(5,5,"What if there were more colors?") break;
 case(497): draw_text(5,5,"Super Difficult!") break;
 case(498): draw_text(5,5,"the end is never the end is never the end is never end is never the end is never the end is never the end") break;
 case(499): draw_text(5,5,"He entered in the door on his left.") break;
@@ -793,7 +793,7 @@ case(519): draw_text(5,5,"Pssst, there are hidden worlds that you can find!") br
 case(520): draw_text(5,5,"Nope, we aren't changing the Twitter logo.") break;
 case(521): draw_text(5,5,"What do you mean there's a 7th world?") break;
 case(522): draw_text(5,5,"Do you understand anything? If not, you can change languages!") break;
-case(523): draw_text(5,5,"TCC 2: Golden Disc, includes infinite colors, 16:9 aspect ratio, and more!") break;
+case(523): draw_text(5,5,"They say that the 7th World makes people leave a negative review.") break;
 case(524): draw_text(5,5,"The best purchase of your life!") break;
 case(525): draw_text(5,5,"y u do dis?") break;
 case(526): draw_text(5,5,"A small loan of a million dollars.") break;

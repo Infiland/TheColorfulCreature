@@ -60,6 +60,7 @@ case(53): draw_achievement(s_JumpAIcon9,global.totaljumps,60000,0,"Jumping Legen
 case(54): draw_achievement(s_JumpAIcon10,global.totaljumps,200000,0,"God at Jumping","Jump 200000 Times.",1,0) break;
 case(55): draw_achievement(s_JumpAIcon11,global.totaljumps,500000,0,"The Plumber","Jump a lot",1,0) break;
 
+//STEAM
 case(56): draw_achievement(s_ithappenedAIcon,"IT_HAPPENED",1,1,"It Happened","It Happened",1,1) break;
 case(57): draw_achievement(s_eastereggAIcon1,"EASTEREGG_1",1,1,"An... egg?","Find a secret path in W2-L3",1,1) break;
 case(58): draw_achievement(s_invisibleAIcon,"INVISIBLE_SKIN",1,0,"The Unseen","Beat the game while the player is fully invisible!",1,1) break;
@@ -80,9 +81,9 @@ case(72): draw_achievement(s_diamondAIcon,"DIAMOND_MEDAL",1,0,"Diamond Medal!","
 case(73): draw_achievement(s_diamond5AIcon,"DIAMOND_LOVER",1,0,"Diamond Lover!","Have 5 challenges that have a diamond medal.",1,1) break;
 case(74): draw_achievement(s_antideathAIcon,"THE_ANTI_DEATH",1,0,"The Anti Death","Have 5 challenges that have a 'Perfect' rating.",1,1) break;
 case(75): draw_achievement(s_makeLAIcon,"MAKE_LEVEL",1,0,"Make a level!","Make your first level and then save it!",1,1) break;
-case(76): draw_achievement(s_C1AIcon,"A_SMALL_LOAN",1,0,"A Small Loan!","Have 100 credits in your current balance!",1,1) break;
+case(76): draw_achievement(s_C1AIcon,"A_SMALL_LOAN",1,0,"A Small Loan!","Have 100 credits in your current balance!",1,1) break; //REMOVED
 case(77): draw_achievement(s_C2AIcon,"MONEY_SAVER",1,0,"Money Saver!","Have 1,000 credits in your current balance!",1,1) break;
-case(78): draw_achievement(s_C3AIcon,"THE_GLITTERING_RICH",1,0,"The Glittering Rich","Have 10,000 credits in your current balance!",0.92,1) break;
+case(78): draw_achievement(s_C3AIcon,"THE_GLITTERING_RICH",1,0,"The Glittering Rich","Have 10,000 credits in your current balance!",0.92,1) break; //REMOVED
 case(79): draw_achievement(s_reverseAIcon,"THE_REVERSE_PROBLEM",1,0,"The Reverse Problem","Beat the game with reversed controls! (Reversed Left/Right and Jump/Interact)",0.92,1) break;
 case(80): draw_achievement(s_byebyeAIcon,"BYE_BYE_LEVEL",1,0,"Bye Bye Level!","Skip a level using coins!",1,1) break;
 case(81): draw_achievement(s_byebye2AIcon,"UH_OH",1,1,"Uh Oh...","Realise that you can't skip a level and that you basically ran out of coins to spend.",1,1) break;
@@ -93,7 +94,7 @@ case(85): draw_achievement(s_endlessAIcon4,"ENDLESS_MASTER",1,0,"Endless Master"
 case(86): draw_achievement(s_CERAIcon,"YOUR_OWN_ENDLESS_RUN",1,0,"Your Own Endless Run","Play your own Custom Endless Run!",0.9,1) break;
 case(87): draw_achievement(s_poorAIcon,"POTATO_SETTINGS",1,0,"Potato Settings","Why is this an achievementnjssjsjswiwo",1,1) break;
 case(88): draw_achievement(s_highAIcon,"BENCHMARK",1,0,"Benchmark","UserBenchmarks is useless! Run MAX settings!",1,1) break;
-case(89): draw_achievement(s_trollAIcon,"TROLOLOLOL",1,1,"Trololololol","Press 'ALT-F4'",1,1) break;
+case(89): draw_achievement(s_trollAIcon,"TROLOLOLOL",1,1,"Trololololol","Press 'ALT-F4'",1,1) break; //REMOVED
 case(90): draw_achievement(s_hatmerchantAIcon,"HAT_MERCHANT",1,0,"Hat Merchant","Find and talk to the Hat Merchant",1,1) break;
 case(91): draw_achievement(s_youwinAIcon,"YOU_WIN",1,0,"You win!","Beat the main game! But, is it really over yet?",1,1) break;
 case(92): draw_achievement(s_ohnotheresmoreAIcon,"OH_NO_THERES_MORE",1,1,"Oh no, there's more!","Discover the Hardmode section of the game.",0.9,1) break;
@@ -103,13 +104,13 @@ case(95): draw_achievement(s_HMAIcon2,"HM_DIFFICULT",1,0,"Difficult Stuff Man!",
 case(96): draw_achievement(s_HMAIcon3,"HM_INSANE",1,0,"INSANITY!","Beat Hardmode on the Insane Difficulty",1,1) break;
 case(97): draw_achievement(s_HMAIcon4,"HM_RIDICULOUS",1,0,"Absurd Difficulty!","Beat Hardmode on the Ridiculous Difficulty",1,1) break;
 case(98): draw_achievement(s_HMAIcon5,"HM_IMPOSSIBLE",1,0,"Everything's Possible!","What could possibly go wrong now?",0.9,1) break;
-case(99): draw_achievement(s_HMAIcon6,"HM_YEAHGL",1,0,"Luck was given!","But now the suffering begins...",1,1) break;
-case(100): draw_achievement(s_HMAIcon7,"HM_ETERNALSUFFERING",1,0,"The Suffering is OVER!","Beat all hardmode difficulties!",0.9,1) break;
+case(99): draw_achievement(s_HMAIcon6,"HM_YEAHGL",1,0,"Luck was given!","But now the suffering begins...",1,1) break; //REMOVED
+case(100): draw_achievement(s_HMAIcon7,"HM_ETERNALSUFFERING",1,0,"The Suffering is OVER!","Beat all hardmode difficulties!",0.9,1) break; //REMOVED
 case(101): draw_achievement(s_makeLAIcon2,"SUPER_DETAILED_LEVEL",1,0,"Super Detailed Level!","Make and save a level that has 500 or more objects.",0.9,1) break;
 case(102): draw_achievement(s_eastereggAIcon2,"EASTEREGG_2",1,1,"Space Shooter Ultimate!","Wait, a SSU reference?!!",0.8,1) break;
 case(103): draw_achievement(s_cookieAIcon,"COOKIE_CLICKER",1,1,"Cookie Clicker!","Bake 1 Cookie!",1,1) break;
-case(104): draw_achievement(s_lowonCAIcon,"LOW_ON_CREDITS",1,1,"Low on Credits?","Need more? Then give us your house!",1,1) break;
-case(105): draw_achievement(s_lowonCAIcon2,"TOO_MUCH_CREDITS",1,1,"Too much credits!","Reach 1T Credits by giving your $ to Infiland Arts",1,1) break;
+case(104): draw_achievement(s_lowonCAIcon,"LOW_ON_CREDITS",1,1,"Low on Credits?","Need more? Then give us your house!",1,1) break; //REMOVED
+case(105): draw_achievement(s_lowonCAIcon2,"TOO_MUCH_CREDITS",1,1,"Too much credits!","Reach 1T Credits by giving your $ to Infiland Arts",1,1) break; //REMOVED
 case(106): draw_achievement(s_kaizoAIcon,"KAIZO_CHALLENGE",1,0,"KAAAAZOOOOO!","Beat the Kaizo Challenge!",1,1) break;
 case(107): draw_achievement(s_world1quickAIcon,"WORLD_1_QUICK",1,0,"Quick Hotdog Execution","Beat World 1 under 2 minutes.",0.8,1) break;
 case(108): draw_achievement(s_world2quickAIcon,"WORLD_2_QUICK",1,0,"Spikes Don't Run as Fast!","Beat World 2 under 3 minutes.",0.8,1) break;
@@ -122,7 +123,7 @@ case(114): draw_achievement(s_hat2AIcon,"A_FAN_OF_HATS",1,0,"A Fan of Hats!","Bu
 case(115): draw_achievement(s_skinallAIcon,"SKIN_COMPLETIONIST",1,0,"Skin Completionist!","Gather every skin in the game!",0.8,1) break;
 case(116): draw_achievement(s_hatallAIcon,"HAT_COMPLETIONIST",1,0,"Hat Completionist!","Gather every hat in the game!",0.82,1) break;
 case(117): draw_achievement(s_world6AIcon,"WORLD_6",1,1,"Wait, World 1 Again?","Beat World 6!",0.8,1) break;
-case(118): draw_achievement(s_world7AIcon,"WORLD_7",1,1,"Buffed Spikes!","Beat World 7!",1,1) break;
+case(118): draw_achievement(s_world7AIcon,"WORLD_7",1,1,"Buffed Spikes!","Beat World 7!",1,1) break; //REMOVED
 case(119): draw_achievement(s_oopsAIcon,"OOPS",1,0,"Oops...","Infiland Moment :3",1,1) break;
 
 default: instance_destroy() break;

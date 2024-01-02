@@ -1,4 +1,5 @@
 /// @description Variables
+level = 1
 roomselect = r_lvl1
 levelmusic = m_basics
 declarecustombutton()

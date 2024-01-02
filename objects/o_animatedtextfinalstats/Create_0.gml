@@ -42,6 +42,7 @@ global.kaizochallengedeaths = global.deaths
 }
 break;
 case(2): challenge = global.blindchallengetime
+if !steam_get_achievement("BLIND_CHALLENGE") { steam_set_achievement("BLIND_CHALLENGE") }
 if global.blindchallengetime > global.time {
 global.blindchallengetime = global.time
 steam_upload_score("Blind Challenge Time", global.blindchallengetime * 1000);
@@ -51,6 +52,7 @@ global.blindchallengedeaths = global.deaths
 }
 break;
 case(3): challenge = global.bigroomchallengetime
+if !steam_get_achievement("BIGROOM_CHALLENGE") { steam_set_achievement("BIGROOM_CHALLENGE") }
 if global.bigroomchallengetime > global.time {
 global.bigroomchallengetime = global.time
 steam_upload_score("Big Room Challenge Time", global.bigroomchallengetime * 1000);
@@ -60,6 +62,7 @@ global.bigroomchallengedeaths = global.deaths
 }
 break;
 case(4): challenge = global.troopchallengetime
+if !steam_get_achievement("TROOP_CHALLENGE") { steam_set_achievement("TROOP_CHALLENGE") }
 if global.troopchallengetime > global.time {
 global.troopchallengetime = global.time
 steam_upload_score("Troop Challenge Time", global.troopchallengetime * 1000);
@@ -69,6 +72,7 @@ global.troopchallengedeaths = global.deaths
 }
 break;
 case(5): challenge = global.slipperychallengetime 
+if !steam_get_achievement("SLIPPERY_CHALLENGE") { steam_set_achievement("SLIPPERY_CHALLENGE") }
 if global.slipperychallengetime > global.time {
 global.slipperychallengetime = global.time
 steam_upload_score("Slippery Challenge Time", global.slipperychallengetime * 1000);
@@ -78,6 +82,7 @@ global.slipperychallengedeaths = global.deaths
 }
 break;
 case(6): challenge = global.speedchallengetime
+if !steam_get_achievement("SPEED_CHALLENGE") { steam_set_achievement("SPEED_CHALLENGE") }
 if global.speedchallengetime > global.time {
 global.speedchallengetime = global.time
 steam_upload_score("Speed Challenge Time", global.speedchallengetime * 1000);
@@ -96,7 +101,8 @@ if global.world6challengedeaths > global.deaths {
 global.world6challengedeaths = global.deaths
 }
 break;
-case(8): challenge = global.ladderchallengetime 
+case(8): challenge = global.ladderchallengetime
+if !steam_get_achievement("LADDER_CHALLENGE") { steam_set_achievement("LADDER_CHALLENGE") }
 if global.ladderchallengetime > global.time {
 global.ladderchallengetime = global.time
 steam_upload_score("Ladder Challenge Time", global.ladderchallengetime * 1000);
@@ -107,6 +113,7 @@ global.ladderchallengedeaths = global.deaths
 break;
 case(9): 
 challenge = global.tutorialchallengetime 
+if !steam_get_achievement("TUTORIAL_CHALLENGE") { steam_set_achievement("TUTORIAL_CHALLENGE") }
 if global.tutorialchallengetime > global.time {
 global.tutorialchallengetime = global.time
 steam_upload_score("Tutorial Challenge Time", global.tutorialchallengetime * 1000);
@@ -116,6 +123,7 @@ global.tutorialchallengedeaths = global.deaths
 }
 break;
 case(10): challenge = global.spikechallengetime
+if !steam_get_achievement("SPIKE_CHALLENGE") { steam_set_achievement("SPIKE_CHALLENGE") }
 if global.spikechallengetime > global.time {
 global.spikechallengetime = global.time
 steam_upload_score("Spike Challenge Time", global.spikechallengetime * 1000);
@@ -125,6 +133,7 @@ global.spikechallengedeaths = global.deaths
 }
 break;
 case(11): challenge = global.waterchallengetime
+if !steam_get_achievement("WATER_CHALLENGE") { steam_set_achievement("WATER_CHALLENGE") }
 if global.waterchallengetime > global.time {
 global.waterchallengetime = global.time
 steam_upload_score("Water Challenge Time", global.waterchallengetime * 1000);
@@ -134,6 +143,7 @@ global.waterchallengedeaths = global.deaths
 }
 break;
 case(12): challenge = global.movingchallengetime
+if !steam_get_achievement("MOVING_CHALLENGE") { steam_set_achievement("MOVING_CHALLENGE") }
 if global.movingchallengetime > global.time {
 global.movingchallengetime = global.time
 steam_upload_score("Moving Challenge Time", global.movingchallengetime * 1000);
@@ -143,6 +153,7 @@ global.movingchallengedeaths = global.deaths
 }
 break;
 case(13): challenge = global.communitychallengetime
+if !steam_get_achievement("COMMUNITY_CHALLENGE") { steam_set_achievement("COMMUNITY_CHALLENGE") }
 if global.communitychallengetime > global.time {
 global.communitychallengetime = global.time
 steam_upload_score("Community Challenge Time", global.communitychallengetime * 1000);
@@ -152,6 +163,7 @@ global.communitychallengedeaths = global.deaths
 }
 break;
 case(14): challenge = global.djumpchallengetime
+if !steam_get_achievement("DOUBLEJUMP_CHALLENGE") { steam_set_achievement("DOUBLEJUMP_CHALLENGE") }
 if global.djumpchallengetime > global.time {
 global.djumpchallengetime = global.time
 steam_upload_score("DJ Challenge Time", global.djumpchallengetime * 1000);
@@ -161,6 +173,7 @@ global.djumpchallengedeaths = global.deaths
 }
 break;
 case(15): challenge = global.cspikechallengetime
+if !steam_get_achievement("CORRUPTED_SPIKE_CHALLENGE") { steam_set_achievement("CORRUPTED_SPIKE_CHALLENGE") }
 if global.cspikechallengetime > global.time {
 global.cspikechallengetime = global.time
 steam_upload_score("Corrupted Spike Challenge Time", global.cspikechallengetime * 1000);
@@ -180,6 +193,7 @@ global.world7challengedeaths = global.deaths
 }
 break;
 case(17): challenge = global.invisiblechallengetime
+if !steam_get_achievement("INVISIBLE_CHALLENGE") { steam_set_achievement("INVISIBLE_CHALLENGE") }
 if global.invisiblechallengetime > global.time {
 global.invisiblechallengetime = global.time
 steam_upload_score("Invisible Challenge Time", global.invisiblechallengetime * 1000);
@@ -189,6 +203,7 @@ global.invisiblechallengedeaths = global.deaths
 }
 break;
 case(18): challenge = global.breakablechallengetime
+if !steam_get_achievement("BREAKABLE_CHALLENGE") { steam_set_achievement("BREAKABLE_CHALLENGE") }
 if global.breakablechallengetime > global.time {
 global.breakablechallengetime = global.time
 steam_upload_score("Breakable Challenge Time", global.breakablechallengetime * 1000);

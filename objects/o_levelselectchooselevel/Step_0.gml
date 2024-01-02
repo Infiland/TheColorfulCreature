@@ -11,3 +11,11 @@ if mouse_wheel_down() {
 
 if yscroll < 0 { yscroll = 0 }
 if yscroll > 500 { yscroll = 500 }
+
+if text != "???" {
+level = real(text)
+}
+
+if global.worldProgression >= level {
+locked = 0
+} else { locked = 1 }

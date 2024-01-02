@@ -172,6 +172,12 @@ par_walktimer = 10
 
 }
 
+if global.managablejump = 1 {
+if (gamepad_button_check_released(0,gp_face1)) || keyboard_check_released(ord(global.controlsjump)) &&  vsp <= 0 {
+//vsp = lerp(vsp,0,0.15)
+vsp = 0
+}}
+
 if (place_meeting(x,y+1,o_anyblock)) and (key_jump) {jump()}
 if (place_meeting(x,y+2,o_redblockslope)) and (key_jump) {jump()}
 if (place_meeting(x,y+1,o_redblockmove)) and (key_jump) {jump()}
@@ -689,7 +695,13 @@ if global.endless = 0 {
 global.pickup = 0
 scr_loadsettings()
 global.totallevelcompleted += 1
+
+if room = asset_get_index("r_lvl" + string(global.worldProgression)) {
+global.worldProgression += 1
+}
+
 scr_savestats()
+
 room_goto_next()
 if global.challenges = 0 {
 global.wheeltimeleft -= 20

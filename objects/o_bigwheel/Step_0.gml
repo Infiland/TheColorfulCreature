@@ -14,6 +14,7 @@ global.wheeltimeleft = 3600
 if direction > 0 { //Reward 1
 if direction < 36 {
 global.creditscurrency += floor(250 * multi)
+if !steam_get_achievement("JACKPOT") { steam_set_achievement("JACKPOT") }
 }}
 if direction > 36 { //Reward 2
 if direction < 72 {

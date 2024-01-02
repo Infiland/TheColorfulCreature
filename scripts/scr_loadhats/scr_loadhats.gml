@@ -50,22 +50,41 @@ if global.cheats = 0 {
 	global.hat044 = ini_read_real("Hats","White Sus Hat",0)
 	global.hat045 = ini_read_real("Hats","Flower Hat",0)
 	global.hat046 = ini_read_real("Hats","Propeller Hat",0)
-	global.hat047 = ini_read_real("Hats","Serbian Hat",0)
+	global.hat047 = ini_read_real("Hats","Serbian Hat",0) //Flag
 	global.hat048 = ini_read_real("Hats","Rat Hat",0)
-	global.hat049 = ini_read_real("Hats","German Hat",0)
-	global.hat050 = ini_read_real("Hats","French Hat",0)
-	global.hat051 = ini_read_real("Hats","Italian Hat",0)
-	global.hat052 = ini_read_real("Hats","Spanish Hat",0)
-	global.hat053 = ini_read_real("Hats","Magyar Hat",0)
-	global.hat054 = ini_read_real("Hats","Bosnian Hat",0)
-	global.hat055 = ini_read_real("Hats","Chinese Hat",0)
-	global.hat056 = ini_read_real("Hats","Ukraine Hat",0)
-	global.hat057 = ini_read_real("Hats","Macedonian Hat",0)
+	global.hat049 = ini_read_real("Hats","German Hat",0) //Flag
+	global.hat050 = ini_read_real("Hats","French Hat",0) //Flag
+	global.hat051 = ini_read_real("Hats","Italian Hat",0) //Flag
+	global.hat052 = ini_read_real("Hats","Spanish Hat",0) //Flag
+	global.hat053 = ini_read_real("Hats","Magyar Hat",0) //Flag
+	global.hat054 = ini_read_real("Hats","Bosnian Hat",0) //Flag
+	global.hat055 = ini_read_real("Hats","Chinese Hat",0) //Flag
+	global.hat056 = ini_read_real("Hats","Ukraine Hat",0) //Flag
+	global.hat057 = ini_read_real("Hats","Macedonian Hat",0) //Flag
 	global.hat058 = ini_read_real("Hats","Chicken Hat",0)
-	global.hat059 = ini_read_real("Hats","Czech Hat",0)
-	global.hat060 = ini_read_real("Hats","Russian Hat",0)
+	global.hat059 = ini_read_real("Hats","Czech Hat",0) //Flag
+	global.hat060 = ini_read_real("Hats","Russian Hat",0) //Flag
 	global.hat061 = ini_read_real("Hats","Devil Hat",0)
-	global.hat062 = ini_read_real("Hats","Turkish Hat",0)
+	global.hat062 = ini_read_real("Hats","Turkish Hat",0) //Flag
+	
+	var totalflag = 0
+	if global.hat047 = 1 { totalflag += 1 }
+	if global.hat049 = 1 { totalflag += 1 }
+	if global.hat050 = 1 { totalflag += 1 }
+	if global.hat051 = 1 { totalflag += 1 }
+	if global.hat052 = 1 { totalflag += 1 }
+	if global.hat053 = 1 { totalflag += 1 }
+	if global.hat054 = 1 { totalflag += 1 }
+	if global.hat055 = 1 { totalflag += 1 }
+	if global.hat056 = 1 { totalflag += 1 }
+	if global.hat057 = 1 { totalflag += 1 }
+	if global.hat059 = 1 { totalflag += 1 }
+	if global.hat060 = 1 { totalflag += 1 }
+	if global.hat062 = 1 { totalflag += 1 }
+	
+	if totalflag >= 13 {
+	if !steam_get_achievement("FLAG_GUY") { steam_set_achievement("FLAG_GUY") }
+	}
 	
 	global.CUSTOMhat = ini_read_string("CustomHat","Custom Hat","")
 	}

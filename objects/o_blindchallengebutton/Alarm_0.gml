@@ -20,3 +20,5 @@ wincol = c_red
 if medalsprite = 5 {
 wincol = $534534
 }
+
+if global.visiblethings = 1 { text = "Wait, now I see things?" }

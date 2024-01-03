@@ -354,7 +354,6 @@
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"LevelEditor.sav","CopyToMask":-1,"filePath":"datafiles/Calendar/Levels/r_c2022lvl73",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"OtherLevelEditor.sav","CopyToMask":-1,"filePath":"datafiles/Calendar/Levels/r_c2022lvl73",},
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"contributors.txt","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"22.ttf","CopyToMask":-1,"filePath":"datafiles/Fonts",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"fnt_classic.ttf","CopyToMask":-1,"filePath":"datafiles/Fonts",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"fnt_cool.ttf","CopyToMask":-1,"filePath":"datafiles/Fonts",},

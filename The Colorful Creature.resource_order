@@ -57,6 +57,7 @@
     {"name":"Level Select","order":27,"path":"folders/Objects/Mainmenu/Level Select.yy",},
     {"name":"New Games","order":29,"path":"folders/Objects/Mainmenu/New Games.yy",},
     {"name":"Support","order":21,"path":"folders/Objects/Mainmenu/Support.yy",},
+    {"name":"Contributors","order":10,"path":"folders/Objects/Mainmenu/Support/Contributors.yy",},
     {"name":"Wheel","order":22,"path":"folders/Objects/Mainmenu/Wheel.yy",},
     {"name":"Multiplayer","order":13,"path":"folders/Objects/Multiplayer.yy",},
     {"name":"Minigames","order":16,"path":"folders/Objects/Multiplayer/Minigames.yy",},
@@ -298,7 +299,6 @@
     {"name":"Piano","order":2,"path":"folders/Sprites/Sprites/Danger/Bosses/Piano.yy",},
     {"name":"Tile Sets","order":3,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":10,"path":"folders/Timelines.yy",},
-    {"name":"Contributors","order":10,"path":"folders/Objects/Mainmenu/Support/Contributors.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"o_bosnianhatbutton","order":6,"path":"objects/o_bosnianhatbutton/o_bosnianhatbutton.yy",},
@@ -703,6 +703,7 @@
     {"name":"s_angryplayerred","order":1,"path":"sprites/s_angryplayerred/s_angryplayerred.yy",},
     {"name":"s_angryplayeryellow","order":2,"path":"sprites/s_angryplayeryellow/s_angryplayeryellow.yy",},
     {"name":"s_angryplayergreen","order":3,"path":"sprites/s_angryplayergreen/s_angryplayergreen.yy",},
+    {"name":"s_flagcustomizableicon","order":19,"path":"sprites/s_flagcustomizableicon/s_flagcustomizableicon.yy",},
     {"name":"m_hotdogtimephase2","order":1,"path":"sounds/m_hotdogtimephase2/m_hotdogtimephase2.yy",},
     {"name":"s_angryplayerblue","order":4,"path":"sprites/s_angryplayerblue/s_angryplayerblue.yy",},
     {"name":"s_spikeplayerskin","order":1,"path":"sprites/s_spikeplayerskin/s_spikeplayerskin.yy",},

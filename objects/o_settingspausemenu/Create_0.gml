@@ -65,6 +65,8 @@ instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_cam
 instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+288,o_infinitelivessettings)
 instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+352,o_noclipsettings)
 instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+416,o_berserksettings)
+instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+480,o_visiblethingssettings)
+instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+544,o_managablejumpsettings)
 
 //Controls
 var i = 0

@@ -73,6 +73,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Level Select","folderPath":"folders/Objects/Mainmenu/Level Select.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"New Games","folderPath":"folders/Objects/Mainmenu/New Games.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Support","folderPath":"folders/Objects/Mainmenu/Support.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Contributors","folderPath":"folders/Objects/Mainmenu/Support/Contributors.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Wheel","folderPath":"folders/Objects/Mainmenu/Wheel.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Multiplayer","folderPath":"folders/Objects/Multiplayer.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Minigames","folderPath":"folders/Objects/Multiplayer/Minigames.yy",},
@@ -349,7 +350,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Piano","folderPath":"folders/Sprites/Sprites/Danger/Bosses/Piano.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Contributors","folderPath":"folders/Objects/Mainmenu/Support/Contributors.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"LevelEditor.sav","CopyToMask":-1,"filePath":"datafiles/Calendar/Levels/r_c2022lvl73",},
@@ -844,6 +844,7 @@
     {"id":{"name":"s_angryplayerred","path":"sprites/s_angryplayerred/s_angryplayerred.yy",},},
     {"id":{"name":"s_angryplayeryellow","path":"sprites/s_angryplayeryellow/s_angryplayeryellow.yy",},},
     {"id":{"name":"s_angryplayergreen","path":"sprites/s_angryplayergreen/s_angryplayergreen.yy",},},
+    {"id":{"name":"s_flagcustomizableicon","path":"sprites/s_flagcustomizableicon/s_flagcustomizableicon.yy",},},
     {"id":{"name":"m_hotdogtimephase2","path":"sounds/m_hotdogtimephase2/m_hotdogtimephase2.yy",},},
     {"id":{"name":"s_angryplayerblue","path":"sprites/s_angryplayerblue/s_angryplayerblue.yy",},},
     {"id":{"name":"s_spikeplayerskin","path":"sprites/s_spikeplayerskin/s_spikeplayerskin.yy",},},

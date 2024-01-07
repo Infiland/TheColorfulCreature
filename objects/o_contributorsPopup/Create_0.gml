@@ -23,7 +23,7 @@ for(var i=0; i < namecnt;i++) {
 }
 
 } else {
-names = "Something went wrong!"	
+names = loc(561)
 }
 //name[0] = "[rainbow]Infiland[/]"
 //name[1] = "sadzake"

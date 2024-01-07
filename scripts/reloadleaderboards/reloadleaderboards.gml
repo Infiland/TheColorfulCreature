@@ -3,7 +3,7 @@ switch(global.leaderboardselect) {
 case(-4): lbname = "Cog Distance" break;
 case(-3): lbname = "Endless Run" break;
 case(-2): lbname = "Old School Endless Run" break;
-case(-1): lbname = "Monthly Endless Run" break;
+case(-1): lbname = "Seasonal Endless Run" break;
 case(0): lbname = "World 1 Time" break;
 case(1): lbname = "World 2 Time" break;
 case(2): lbname = "World 3 Time" break;

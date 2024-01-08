@@ -12,7 +12,7 @@ switch(global.customizeselect) {
 
 case(1):
 switch(global.skininfo) {
-case(0): draw_text(32,704,SETTING0) break;
+case(0): draw_text(32,704,SETTING[0]) break;
 case(1):
 if global.skin001 = 1 {draw_text_ext(32,704,SKIN1_1,20,820) }
 if global.skin001 = 0 {draw_text_ext(32,704,SKIN1_0,20,820) }

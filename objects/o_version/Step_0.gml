@@ -1,12 +1,12 @@
 //Endless Run Badges
 var userid = steam_get_user_steam_id();
 switch(userid) {
-case("76561198255534811"): e1 = 1 e2 = 2 e4 = 3 break; //INFILAND
+case("76561198255534811"): e1 = 1 e2 = 2 e4 = 4 break; //INFILAND
 case("76561199047890471"): e1 = 3 break; //YGAMINGDUDE
-case("76561198891908717"): e4 = 2 e3 = 1 e2 = 1 break; //BUMBLEBEEPRODUCTIONS
+case("76561198891908717"): e4 = 2 e3 = 1 e2 = 2 break; //BUMBLEBEEPRODUCTIONS
 case("76561198166125817"): e4 = 3 break; //VENOM
 case("76561198843067036"): e4 = 1 break; //GRANADINE MAPPING
-case("76561198218167355"): e4 = 2 e1 = 2 break; //DHA
+case("76561198218167355"): e4 = 3 e1 = 2 break; //DHA
 case("76561199025306908"): e4 = 7 break; //MOSTER
 case("76561198799071488"): e1 = 3 e2 = 2 e3 = 1 e4 = 2  break; //BOOFNY / SLEUTH MOUSE
 case("76561199006618686"): e4 = 1 break; //LOVAN7177
@@ -17,7 +17,7 @@ case("76561199094730346"): e4 = 3 break; //CANADIANBALTIC
 case("76561199099435685"): e4 = 2 break; //VRETTOSLEONIDAS2007
 case("76561198418152902"): e3 = 2 e1 = 2 break; //NOVEX
 case("76561198153021998"): e4 = 2 break; //MASTERX/bobinsky
-case("76561199224078990"): e1 = 1 e2 = 1 e3 = 3 e4 = 2 hats = 1 break; //DEVCEY
+case("76561199224078990"): e1 = 1 e2 = 1 e3 = 3 e4 = 3 hats = 1 break; //DEVCEY
 case("76561198972886714"): e2 = 1 break; //ODREE
 case("76561199193991586"): e4 = 1 break; //VADERBOYHALO
 case("76561199073816172"): e4 = 3 break; //johoshwe123
@@ -40,6 +40,11 @@ case("76561198981201000"): e3 = 1 break; //bradleypoeller
 case("76561199092392452"): e4 = 1 break; //sharkbus
 case("76561198323521525"): e1 = 1 break; //Dawunek
 case("76561198337175537"): e3 = 1 break; //Cheeseontoast
+case("76561198275853960"): e1 = 1 break; //Kebarvu
+case("76561198354700702"): e3 = 1 break; //A Bite of Bread
+case("76561199082363325"): e4 = 1 break; //Spoofered
+case("76561198824736019"): e4 = 1 break; //Julimera
+case("76561198820308200"): e4 = 1 break; //Jaysoy
 }
 /*e1 = 2
 e4 = 2

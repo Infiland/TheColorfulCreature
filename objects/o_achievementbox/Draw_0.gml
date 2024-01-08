@@ -2,7 +2,16 @@ y = ystart - global.achievementsscroll
 draw_set_font(global.deathfont)
 if y < -128 { exit }
 if y > room_height { exit }
+
+/*if instance_exists(o_achievementboxspawner) {
+with o_achievementboxspawner {
+totalunlocked = 0	
+}
+}*/
+
+
 switch(achievement) {
+//STAT ACHIEVEMENTS
 case(0): draw_achievement(s_levelcompleteAIcon1,global.totallevelcompleted,1,0,"Default","This is just a funny\ntest",1,0) break;
 case(1): draw_achievement(s_levelcompleteAIcon1,global.totallevelcompleted,1,0,"Your Adventure Begins","Complete the 1st Level",0.8,0) break;
 case(2): draw_achievement(s_levelcompleteAIcon2,global.totallevelcompleted,5,0,"Understanding The Basics","Complete 5 Levels!",0.75,0) break;
@@ -60,7 +69,7 @@ case(53): draw_achievement(s_JumpAIcon9,global.totaljumps,60000,0,"Jumping Legen
 case(54): draw_achievement(s_JumpAIcon10,global.totaljumps,200000,0,"God at Jumping","Jump 200000 Times.",1,0) break;
 case(55): draw_achievement(s_JumpAIcon11,global.totaljumps,500000,0,"The Plumber","Jump a lot",1,0) break;
 
-//STEAM
+//STEAM ACHIEVEMENTS
 case(56): draw_achievement(s_ithappenedAIcon,"IT_HAPPENED",1,1,"It Happened","It Happened",1,1) break;
 case(57): draw_achievement(s_eastereggAIcon1,"EASTEREGG_1",1,1,"An... egg?","Find a secret path in W2-L3",1,1) break;
 case(58): draw_achievement(s_invisibleAIcon,"INVISIBLE_SKIN",1,0,"The Unseen","Beat the game while the player is fully invisible!",1,1) break;
@@ -99,19 +108,19 @@ case(90): draw_achievement(s_hatmerchantAIcon,"HAT_MERCHANT",1,0,"Hat Merchant",
 case(91): draw_achievement(s_youwinAIcon,"YOU_WIN",1,0,"You win!","Beat the main game! But, is it really over yet?",1,1) break;
 case(92): draw_achievement(s_ohnotheresmoreAIcon,"OH_NO_THERES_MORE",1,1,"Oh no, there's more!","Discover the Hardmode section of the game.",0.9,1) break;
 case(93): draw_achievement(s_clickhotdogAIcon,"CLICK_THE_HOTDOG",1,1,"Click the Hotdog!","You clicked the hotdog! Are you proud of yourself?",1,1) break;
-case(94): draw_achievement(s_HMAIcon1,"HM_MEDIUM",1,0,"First Hardmode Win!","Beat the Hardmode for the first time!",0.95,1) break;
-case(95): draw_achievement(s_HMAIcon2,"HM_DIFFICULT",1,0,"Difficult Stuff Man!","Beat Hardmode on the Difficult Difficulty",1,1) break;
-case(96): draw_achievement(s_HMAIcon3,"HM_INSANE",1,0,"INSANITY!","Beat Hardmode on the Insane Difficulty",1,1) break;
-case(97): draw_achievement(s_HMAIcon4,"HM_RIDICULOUS",1,0,"Absurd Difficulty!","Beat Hardmode on the Ridiculous Difficulty",1,1) break;
-case(98): draw_achievement(s_HMAIcon5,"HM_IMPOSSIBLE",1,0,"Everything's Possible!","What could possibly go wrong now?",0.9,1) break;
-case(99): draw_achievement(s_HMAIcon6,"HM_YEAHGL",1,0,"Luck was given!","But now the suffering begins...",1,1) break; //REMOVED
-case(100): draw_achievement(s_HMAIcon7,"HM_ETERNALSUFFERING",1,0,"The Suffering is OVER!","Beat all hardmode difficulties!",0.9,1) break; //REMOVED
+case(94): draw_achievement(s_HMAIcon1,global.hardmodeunlock-1,1,0,"First Hardmode Win!","Beat the Hardmode for the first time!",0.95,0) break;
+case(95): draw_achievement(s_HMAIcon2,global.hardmodeunlock-1,2,0,"Difficult Stuff Man!","Beat Hardmode on the Difficult Difficulty",1,0) break;
+case(96): draw_achievement(s_HMAIcon3,global.hardmodeunlock-1,3,0,"INSANITY!","Beat Hardmode on the Insane Difficulty",1,0) break;
+case(97): draw_achievement(s_HMAIcon4,global.hardmodeunlock-1,4,0,"Absurd Difficulty!","Beat Hardmode on the Ridiculous Difficulty",1,0) break;
+case(98): draw_achievement(s_HMAIcon5,global.hardmodeunlock-1,5,0,"Everything's Possible!","What could possibly go wrong now?",0.9,0) break;
+case(99): draw_achievement(s_HMAIcon6,global.hardmodeunlock-1,6,0,"Luck was given!","But now the suffering begins...",1,0) break; //REMOVED
+case(100): draw_achievement(s_HMAIcon7,global.hardmodeunlock-1,7,0,"The Suffering is OVER!","Beat all hardmode difficulties!",0.9,0) break; //REMOVED
 case(101): draw_achievement(s_makeLAIcon2,"SUPER_DETAILED_LEVEL",1,0,"Super Detailed Level!","Make and save a level that has 500 or more objects.",0.9,1) break;
 case(102): draw_achievement(s_eastereggAIcon2,"EASTEREGG_2",1,1,"Space Shooter Ultimate!","Wait, a SSU reference?!!",0.8,1) break;
 case(103): draw_achievement(s_cookieAIcon,"COOKIE_CLICKER",1,1,"Cookie Clicker!","Bake 1 Cookie!",1,1) break;
 case(104): draw_achievement(s_lowonCAIcon,"LOW_ON_CREDITS",1,1,"Low on Credits?","Need more? Then give us your house!",1,1) break; //REMOVED
 case(105): draw_achievement(s_lowonCAIcon2,"TOO_MUCH_CREDITS",1,1,"Too much credits!","Reach 1T Credits by giving your $ to Infiland Arts",1,1) break; //REMOVED
-case(106): draw_achievement(s_kaizoAIcon,"KAIZO_CHALLENGE",1,0,"KAAAAZOOOOO!","Beat the Kaizo Challenge!",1,1) break;
+case(106): draw_achievement(s_kaizoAIcon,"KAIZO_CHALLENGE",1,0,"KAAAAZOOOOO!","Beat the Kaizo Challenge!",1,1) break; //REMOVED
 case(107): draw_achievement(s_world1quickAIcon,"WORLD_1_QUICK",1,0,"Quick Hotdog Execution","Beat World 1 under 2 minutes.",0.8,1) break;
 case(108): draw_achievement(s_world2quickAIcon,"WORLD_2_QUICK",1,0,"Spikes Don't Run as Fast!","Beat World 2 under 3 minutes.",0.8,1) break;
 case(109): draw_achievement(s_world3quickAIcon,"WORLD_3_QUICK",1,0,"Platforms are Slow!","Beat World 3 under 4 minutes.",0.9,1) break;
@@ -123,8 +132,15 @@ case(114): draw_achievement(s_hat2AIcon,"A_FAN_OF_HATS",1,0,"A Fan of Hats!","Bu
 case(115): draw_achievement(s_skinallAIcon,"SKIN_COMPLETIONIST",1,0,"Skin Completionist!","Gather every skin in the game!",0.8,1) break;
 case(116): draw_achievement(s_hatallAIcon,"HAT_COMPLETIONIST",1,0,"Hat Completionist!","Gather every hat in the game!",0.82,1) break;
 case(117): draw_achievement(s_world6AIcon,"WORLD_6",1,1,"Wait, World 1 Again?","Beat World 6!",0.8,1) break;
-case(118): draw_achievement(s_world7AIcon,"WORLD_7",1,1,"Buffed Spikes!","Beat World 7!",1,1) break; //REMOVED
+case(118): draw_achievement(s_world7AIcon,global.skin041,1,1,"Buffed Spikes!","Beat World 7!",1,0) break; //REMOVED
 case(119): draw_achievement(s_oopsAIcon,"OOPS",1,0,"Oops...","Infiland Moment :3",1,1) break;
+case(120): draw_achievement(s_tutorialAIcon,"TUTORIAL_CHALLENGE",1,0,"Tutorial Challenge","Beat the Tutorial Challenge!",1,1) break;
+case(121): draw_achievement(s_ladderAIcon,"LADDER_CHALLENGE",1,0,"Ladders!","Beat the Ladder Challenge!",1,1) break;
+case(122): draw_achievement(s_invisibleCHALLENGEAIcon,"INVISIBLE_CHALLENGE",1,0,"Fading Problem Resolved","Beat the Invisible Challenge!",0.75,1) break;
+case(123): draw_achievement(s_bigroomAIcon,"BIGROOM_CHALLENGE",1,0,"500m² Apartment","Beat the Big Room Challenge!",1,1) break;
+case(124): draw_achievement(s_slipperyAIcon,"SLIPPERY_CHALLENGE",1,0,"The Floor is Wet","Beat the Slippery Challenge!",1,1) break;
+case(125): draw_achievement(s_doublejumpAIcon,"DOUBLEJUMP_CHALLENGE",1,0,"Jumping Addict","Beat the Double Jump Challenge",1,1) break;
+case(126): draw_achievement(s_blindAIcon,"BLIND_CHALLENGE",1,0,"UMM, ACTUALLY","Beat the Blind Challenge!",1,1) break;
 
 default: instance_destroy() break;
 }

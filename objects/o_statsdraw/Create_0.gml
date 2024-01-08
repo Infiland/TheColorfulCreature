@@ -27,7 +27,7 @@ if global.hat003 = -1 {hatbugfix += 1}
 if global.hat008 = -1 {hatbugfix += 1}
 if global.hat009 = -1 {hatbugfix += 1}
 if global.hat010 = -1 {hatbugfix += 1}
-if global.hat034 = -1 {hatbugfix += 1}
+if global.hat035 = -1 {hatbugfix += 1}
 
 //Skins
 normalskins = global.skin001+global.skin002+global.skin003+global.skin004+global.skin005+global.skin006+global.skin007+global.skin008+global.skin009+global.skin010+global.skin012+global.skin014+global.skin015+global.skin016+global.skin017+global.skin019+global.skin020+global.skin021+global.skin023+global.skin024+global.skin026+global.skin027+global.skin028+global.skin029+global.skin030+global.skin031+global.skin032+global.skin033+global.skin034+global.skin036+global.skin037+global.skin038+global.skin039+global.skin040+global.skin042+global.skin043+global.skin044+global.skin045+global.skin046+global.skin047+global.skin048

@@ -80,10 +80,12 @@ if timer < 0 {
 	ini_close();
 	ini_close();
 	}
-	if !instance_exists(o_restartgameLE) {
+if !instance_exists(o_restartgameLE) {
 var restart = instance_create(416,512,o_restartgameLE)
 with restart {
-	x = 416
-	y = 512
+	x = 400
+	y = 500
+	image_xscale = 50
+	image_yscale = 20
 }}
 	}

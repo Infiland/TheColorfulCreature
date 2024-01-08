@@ -1,59 +1,10 @@
 draw_set_font(global.deathfont)
 draw_set_color(c_white)
 //Settings
-if room = r_settings or instance_exists(o_settingspausemenu) {
-switch(global.infosettings) {
-case(0): draw_text_ext(32,704,SETTING0,20,960) break;
-case(1): draw_text_ext(32,704,SETTING1,20,960) break;
-case(2): draw_text_ext(32,704,SETTING2,20,960) break;
-case(3): draw_text_ext(32,704,SETTING3,20,960) break;
-case(4): draw_text_ext(32,704,SETTING4,20,960) break;
-case(5): draw_text_ext(32,704,SETTING5,20,960) break;
-case(6): draw_text_ext(32,704,SETTING6,20,960) break;
-case(7): draw_text_ext(32,704,SETTING7,20,960) break;
-case(8): draw_text_ext(32,704,SETTING8,20,960) break;
-case(9): draw_text_ext(32,704,SETTING9,20,960) break;
-case(11): draw_text_ext(32,704,SETTING11,20,960) break;
-case(12): draw_text_ext(32,704,SETTING12,20,960) break;
-case(13): draw_text_ext(32,704,SETTING13,20,960) break;
-case(14): draw_text_ext(32,704,SETTING14,20,960) break;
-case(15): draw_text_ext(32,704,SETTING15,20,960) break;
-case(16): draw_text_ext(32,704,SETTING16,20,960) break;
-case(17): draw_text_ext(32,704,SETTING17,20,960) break;
-case(18): draw_text_ext(32,704,SETTING18,20,960) break;
-case(19): draw_text_ext(32,704,SETTING19,20,960) break;
-case(20): draw_text_ext(32,704,SETTING20,20,960) break;
-case(21): draw_text_ext(32,704,SETTING21,20,960) break;
-case(22): draw_text_ext(32,704,SETTING22,20,960) break;
-case(23): draw_text_ext(32,704,SETTING23,20,960) break;
-case(24): draw_text_ext(32,704,SETTING24,20,960) break;
-case(25): draw_text_ext(32,704,SETTING25,20,960) break;
-case(26): draw_text_ext(32,704,SETTING20,20,960) break;
-case(27): draw_text_ext(32,704,SETTING27,20,960) break;
-case(28): draw_text_ext(32,704,SETTING28,20,960) break;
-case(29): draw_text_ext(32,704,SETTING29,20,960) break;
-case(30): draw_text_ext(32,704,SETTING30,20,960) break;
-case(31): draw_text_ext(32,704,SETTING31,20,960) break;
-case(32): draw_text_ext(32,704,SETTING32,20,960) break;
-case(33): draw_text_ext(32,704,SETTING33,20,960) break;
-case(34): draw_text_ext(32,704,SETTING34,20,960) break;
-case(35): draw_text_ext(32,704,SETTING35,20,960) break;
-case(36): draw_text_ext(32,704,SETTING36,20,960) break;
-case(37): draw_text_ext(32,704,SETTING37,20,960) break;
-case(38): draw_text_ext(32,704,SETTING38,20,960) break;
-case(39): draw_text_ext(32,704,SETTING39,20,960) break;
-case(40): draw_text_ext(32,704,SETTING40,20,960) break;
-case(41): draw_text_ext(32,704,SETTING41,20,960) break;
-case(42): draw_text_ext(32,704,SETTING42,20,960) break;
-case(43): draw_text_ext(32,704,SETTING43,20,960) break;
-case(44): draw_text_ext(32,704,SETTING44,20,960) break;
-case(45): draw_text_ext(32,704,SETTING45,20,960) break;
-case(46): draw_text_ext(32,704,SETTING46,20,960) break;
-
-case(-1): draw_text_ext(32,704,SETTINGM1,20,960) break;
+if room = r_settings || instance_exists(o_settingspausemenu) {
+	draw_text_ext(32,704,SETTING[global.infosettings],20,960)
 }
 
-}
 //Skins
 if room = r_skinmenu {
 	

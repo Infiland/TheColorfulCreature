@@ -12,7 +12,7 @@ global.soundvolume += 0.01
 }
 }
 }
-if keyboard_check_released(vk_left) or gamepad_button_check_released(4,gp_padl) or keyboard_check_released(ord("A")) or keyboard_check_released(vk_right) or gamepad_button_check_released(4,gp_padr) or keyboard_check_released(ord("D")) { scr_savesettings() }
+if keyboard_check_released(vk_left) or gamepad_button_check_released(0,gp_padl) or keyboard_check_released(ord("A")) or keyboard_check_released(vk_right) or gamepad_button_check_released(0,gp_padr) or keyboard_check_released(ord("D")) { scr_savesettings() }
 
 if global.soundchange = 0 { image_index = 0 }
 if global.soundchange = 1 { image_index = 0 }

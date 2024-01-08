@@ -58,7 +58,7 @@ case(42): draw_achievement(s_TimeAIcon9,global.totaltime,86400,0,"One-Day Playti
 case(43): draw_achievement(s_TimeAIcon10,global.totaltime,115200,0,"Feels Unexplored","Play for 32 Hours.",1,0) break;
 case(44): draw_achievement(s_TimeAIcon11,global.totaltime,230400,0,"Am I aging from this?","Play for 64 Hours.",0.9,0) break;
 case(45): draw_achievement(s_JumpAIcon1,global.totaljumps,1,0,"First Jump!","Jump for the first time!",1,0) break;
-case(46): draw_achievement(s_JumpAIcon2,global.totaljumps,20,0,"The Jumpventure Begins!","Jump 20 Times.",0.9,0) break;
+case(46): draw_achievement(s_JumpAIcon2,global.totaljumps,20,0,"The Jumpventure Begins!","Jump 20 Times.",0.85,0) break;
 case(47): draw_achievement(s_JumpAIcon3,global.totaljumps,100,0,"Jumper!","Jump 100 Times.",1,0) break;
 case(48): draw_achievement(s_JumpAIcon4,global.totaljumps,250,0,"Decent Jumper!","Jump 250 Times.",1,0) break;
 case(49): draw_achievement(s_JumpAIcon5,global.totaljumps,1000,0,"Jumpster!","Jump 1000 Times.",1,0) break;
@@ -90,9 +90,9 @@ case(72): draw_achievement(s_diamondAIcon,"DIAMOND_MEDAL",1,0,"Diamond Medal!","
 case(73): draw_achievement(s_diamond5AIcon,"DIAMOND_LOVER",1,0,"Diamond Lover!","Have 5 challenges that have a diamond medal.",1,1) break;
 case(74): draw_achievement(s_antideathAIcon,"THE_ANTI_DEATH",1,0,"The Anti Death","Have 5 challenges that have a 'Perfect' rating.",1,1) break;
 case(75): draw_achievement(s_makeLAIcon,"MAKE_LEVEL",1,0,"Make a level!","Make your first level and then save it!",1,1) break;
-case(76): draw_achievement(s_C1AIcon,global.creditscurrency,100,0,"A Small Loan!","Have 100 credits in your current balance!",1,0) break; //REMOVED
-case(77): draw_achievement(s_C2AIcon,global.creditscurrency,1000,0,"Money Saver!","Have 1,000 credits in your current balance!",1,1) break;
-case(78): draw_achievement(s_C3AIcon,global.creditscurrency,10000,0,"The Glittering Rich","Have 10,000 credits in your current balance!",0.92,1) break; //REMOVED
+case(76): draw_achievement(s_C1AIcon,global.creditscurrency,100,0,"A Small Loan!","Have 100 credits in your current balance!",1,0) break;
+case(77): draw_achievement(s_C2AIcon,global.creditscurrency,1000,0,"Money Saver!","Have 1,000 credits in your current balance!",1,0) break;
+case(78): draw_achievement(s_C3AIcon,global.creditscurrency,10000,0,"The Glittering Rich","Have 10,000 credits in your current balance!",0.92,0) break;
 case(79): draw_achievement(s_reverseAIcon,"THE_REVERSE_PROBLEM",1,0,"The Reverse Problem","Beat the game with reversed controls! (Reversed Left/Right and Jump/Interact)",0.92,1) break;
 case(80): draw_achievement(s_byebyeAIcon,"BYE_BYE_LEVEL",1,0,"Bye Bye Level!","Skip a level using coins!",1,1) break;
 case(81): draw_achievement(s_byebye2AIcon,"UH_OH",1,1,"Uh Oh...","Realise that you can't skip a level and that you basically ran out of coins to spend.",1,1) break;
@@ -113,12 +113,12 @@ case(95): draw_achievement(s_HMAIcon2,global.hardmodeunlock-1,2,0,"Difficult Stu
 case(96): draw_achievement(s_HMAIcon3,global.hardmodeunlock-1,3,0,"INSANITY!","Beat Hardmode on the Insane Difficulty",1,0) break;
 case(97): draw_achievement(s_HMAIcon4,global.hardmodeunlock-1,4,0,"Absurd Difficulty!","Beat Hardmode on the Ridiculous Difficulty",1,0) break;
 case(98): draw_achievement(s_HMAIcon5,global.hardmodeunlock-1,5,0,"Everything's Possible!","What could possibly go wrong now?",0.9,0) break;
-case(99): draw_achievement(s_HMAIcon6,global.hardmodeunlock-1,6,0,"Luck was given!","But now the suffering begins...",1,0) break; //REMOVED
-case(100): draw_achievement(s_HMAIcon7,global.hardmodeunlock-1,7,0,"The Suffering is OVER!","Beat all hardmode difficulties!",0.9,0) break; //REMOVED
+case(99): draw_achievement(s_HMAIcon6,global.hardmodeunlock-1,6,0,"Luck was given!","But now the suffering begins...",1,0) break;
+case(100): draw_achievement(s_HMAIcon7,global.hardmodeunlock-1,7,0,"The Suffering is OVER!","Beat all hardmode difficulties!",0.9,0) break;
 case(101): draw_achievement(s_makeLAIcon2,"SUPER_DETAILED_LEVEL",1,0,"Super Detailed Level!","Make and save a level that has 500 or more objects.",0.9,1) break;
 case(102): draw_achievement(s_eastereggAIcon2,"EASTEREGG_2",1,1,"Space Shooter Ultimate!","Wait, a SSU reference?!!",0.8,1) break;
 case(103): draw_achievement(s_cookieAIcon,"COOKIE_CLICKER",1,1,"Cookie Clicker!","Bake 1 Cookie!",1,1) break;
-case(104): draw_achievement(s_kaizoAIcon,"KAIZO_CHALLENGE",1,0,"KAAAAZOOOOO!","Beat the Kaizo Challenge!",1,1) break; //REMOVED
+case(104): draw_achievement(s_kaizoAIcon,global.skin002,1,0,"KAAAAZOOOOO!","Beat the Kaizo Challenge!",1,0) break; //REMOVED
 case(105): draw_achievement(s_world1quickAIcon,"WORLD_1_QUICK",1,0,"Quick Hotdog Execution","Beat World 1 under 2 minutes.",0.8,1) break;
 case(106): draw_achievement(s_world2quickAIcon,"WORLD_2_QUICK",1,0,"Spikes Don't Run as Fast!","Beat World 2 under 3 minutes.",0.8,1) break;
 case(107): draw_achievement(s_world3quickAIcon,"WORLD_3_QUICK",1,0,"Platforms are Slow!","Beat World 3 under 4 minutes.",0.9,1) break;
@@ -130,7 +130,7 @@ case(112): draw_achievement(s_hat2AIcon,"A_FAN_OF_HATS",1,0,"A Fan of Hats!","Bu
 case(113): draw_achievement(s_skinallAIcon,"SKIN_COMPLETIONIST",1,0,"Skin Completionist!","Gather every skin in the game!",0.8,1) break;
 case(114): draw_achievement(s_hatallAIcon,"HAT_COMPLETIONIST",1,0,"Hat Completionist!","Gather every hat in the game!",0.82,1) break;
 case(115): draw_achievement(s_world6AIcon,"WORLD_6",1,1,"Wait, World 1 Again?","Beat World 6!",0.8,1) break;
-case(116): draw_achievement(s_world7AIcon,global.skin041,1,1,"Buffed Spikes!","Beat World 7!",1,0) break; //REMOVED
+case(116): draw_achievement(s_world7AIcon,global.skin041,1,1,"Buffed Spikes!","Beat World 7!",1,0) break;
 case(117): draw_achievement(s_oopsAIcon,"OOPS",1,0,"Oops...","Infiland Moment :3",1,1) break;
 case(118): draw_achievement(s_tutorialAIcon,"TUTORIAL_CHALLENGE",1,0,"Tutorial Challenge","Beat the Tutorial Challenge!",1,1) break;
 case(119): draw_achievement(s_ladderAIcon,"LADDER_CHALLENGE",1,0,"Ladders!","Beat the Ladder Challenge!",1,1) break;

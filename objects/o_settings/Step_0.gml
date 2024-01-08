@@ -28,3 +28,9 @@ if room != r_mainmenu {
 if keyboard_check_pressed(vk_escape) || gamepad_button_check_pressed(0,gp_start) {
 instance_destroy()
 }}
+
+//Controller
+if rotate = 1 {
+if gamepad_button_check_pressed(0,gp_face1) {
+event_perform(ev_mouse,ev_left_press)	
+}}

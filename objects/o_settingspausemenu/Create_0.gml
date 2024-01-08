@@ -77,6 +77,7 @@ controls = i
 }}
 
 instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+160,o_skiplevelholdsettings)
+instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+160,o_controllervibrationsettings)
 if os_type != os_android {
 instance_create(camera_get_view_x(view_camera[0])-128,camera_get_view_y(view_camera[0])+640,o_defaultkeysbuttonsetings)
 } else { instance_create(camera_get_view_x(view_camera[0])-128,camera_get_view_y(view_camera[0])+160,o_defaultkeysbuttonsetings) }

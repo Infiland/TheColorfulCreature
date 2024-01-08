@@ -2,7 +2,10 @@
 names = ""
 namecnt = 0
 
-var dir = working_directory + "contributors.txt"
+name[0] = "[rainbow]Infiland[/]"
+name[1] = "sadzake"
+
+var dir = "Other//contributors.txt" //Reading text files doesn't work for some reason
 var file = file_text_open_read(dir)
 var num = 0
 
@@ -21,9 +24,8 @@ for(var i=0; i < namecnt;i++) {
 		names += "and " + name[i] + "!!!"
 	}
 }
-
-} else {
-names = loc(561)
 }
-//name[0] = "[rainbow]Infiland[/]"
-//name[1] = "sadzake"
+
+if names == "" {
+	names = loc(561)
+}

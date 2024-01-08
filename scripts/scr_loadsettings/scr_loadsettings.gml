@@ -43,6 +43,7 @@ function scr_loadsettings() {
 	global.controlsjump = ini_read_string("Controls","Jump","Z")
 	global.controlsmoveleft = ini_read_string("Controls","Move Left","37")
 	global.controlsmoveright = ini_read_string("Controls","Move Right","39")
+	global.controllervibrationsettings = ini_read_real("Controls","Controller Vibration",1);
 	}
 	else {
 	}

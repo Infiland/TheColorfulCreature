@@ -173,6 +173,7 @@ global.leaderboardselect = 0
 global.hatmerchantdiscount = 1
 global.friendleaderboardsettings = 0
 global.customhatautoscale = 1
+global.controllervibrationsettings = 1
 
 //Workshop
 global.workshopfolder = ""

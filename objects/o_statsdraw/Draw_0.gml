@@ -2,7 +2,7 @@ draw_set_font(global.cool2font)
 draw_text_ext(740,440,"Scroll to look through stats",20,400)
 draw_set_font(global.deathfont)
 draw_set_color(c_white)
-everything = (global.totaldeaths / 4) + (global.endlesslevelhighscore * 10) + global.totalcoins + global.total1ups + (global.totaljumps / 5) + (global.totalskips * 5) + global.totalpickups + global.totalportal + (global.totaltime / 500) + (global.totallevelcompleted * 3) + (global.totalgunshots / 8) + global.totaldestroyedboxes + global.totalenemykills + (global.totalrocketkills / 2) + (global.totalgoldspikedeaths * 10) + (global.totalweirdspikedeaths * 100) + global.totalblockdeaths
+everything = (global.totaldeaths / 4) + (global.endlesslevelhighscore * 100) + global.totalcoins + global.total1ups + (global.totaljumps / 5) + (global.totalskips * 5) + global.totalpickups + global.totalportal + (global.totaltime / 10) + (global.totallevelcompleted * 3) + (global.totalgunshots / 8) + global.totaldestroyedboxes + global.totalenemykills + (global.totalrocketkills / 2) + (global.totalgoldspikedeaths * 100) + (global.totalweirdspikedeaths * 1000) + global.totalblockdeaths
 global.totalpickups = global.totalcoins + global.totalnormalpickups + global.totalgravitypickups + global.totalspeedpickups + global.totalusepickups + global.totalkeypickups + global.totaltorchpickups + global.totalammopickups + global.totalgunpickups + global.total1ups + global.totaloxygenpickups + global.totaldjumppickups
 
 draw_text_color(30,110 - yscroll,MAINSTATS,c_yellow,c_orange,c_yellow,c_orange,1)

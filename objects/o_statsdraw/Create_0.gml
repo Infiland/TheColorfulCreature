@@ -46,8 +46,8 @@ legskinspercentage = (legskins / reqlegskins) * 100
 allskins = normalskins + legskins
 
 //Hats
-allhats = global.hat001+global.hat002+global.hat003+global.hat004+global.hat005+global.hat006+global.hat007+global.hat008+global.hat009+global.hat010+global.hat011+global.hat012+global.hat013+global.hat014+global.hat015+global.hat016+global.hat017+global.hat018+global.hat019+global.hat020+global.hat021+global.hat022+global.hat023+global.hat024+global.hat025+global.hat026+global.hat027+global.hat028+global.hat029+global.hat030+global.hat031+global.hat032+global.hat033+global.hat034+global.hat035+global.hat036+global.hat037+global.hat038+global.hat039+global.hat040+global.hat041+global.hat042+global.hat043+global.hat044+global.hat045+global.hat046+global.hat047+global.hat048+global.hat049+global.hat050+global.hat051+global.hat052+global.hat053+global.hat054+global.hat055+global.hat056+global.hat057+global.hat058+hatbugfix
-reqallhats = 58
+allhats = global.hat001+global.hat002+global.hat003+global.hat004+global.hat005+global.hat006+global.hat007+global.hat008+global.hat009+global.hat010+global.hat011+global.hat012+global.hat013+global.hat014+global.hat015+global.hat016+global.hat017+global.hat018+global.hat019+global.hat020+global.hat021+global.hat022+global.hat023+global.hat024+global.hat025+global.hat026+global.hat027+global.hat028+global.hat029+global.hat030+global.hat031+global.hat032+global.hat033+global.hat034+global.hat035+global.hat036+global.hat037+global.hat038+global.hat039+global.hat040+global.hat041+global.hat042+global.hat043+global.hat044+global.hat045+global.hat046+global.hat047+global.hat048+global.hat049+global.hat050+global.hat051+global.hat052+global.hat053+global.hat054+global.hat055+global.hat056+global.hat057+global.hat058+global.hat059+global.hat060+global.hat061+global.hat062+hatbugfix
+reqallhats = 62
 hatspercentage = (allhats / reqallhats) * 100
 
 //Items

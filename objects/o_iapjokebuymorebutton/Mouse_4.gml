@@ -6,8 +6,7 @@ audio_sound_set_track_position(snd,11)
 audio_sound_gain(snd,global.musicvolume,1000)
 window_set_cursor(cr_default)
 
-if !steam_get_achievement("LOW_ON_CREDITS") { //Low on Credits
- steam_set_achievement("LOW_ON_CREDITS") }
-	
+global.lowoncreditsACH = 1
+global.toomuchcreditsACH = 1
 	
 }

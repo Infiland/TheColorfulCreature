@@ -3,7 +3,7 @@ scroll = global.achievementsscroll
 
 totalunlocked = 0
 var i = 0
-var a = 41 //a*3
+var a = 49 //(a-1)*3
 var unl = 0
 var row,b;
 for(row=0;row<=a;row++) {

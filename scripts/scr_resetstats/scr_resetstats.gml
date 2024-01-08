@@ -47,4 +47,8 @@ global.totalbulletdeaths = 0
 global.totalrocketdeaths = 0
 global.totaltroopdeaths = 0
 global.totalwaterdeaths = 0
+
+//Achievements
+global.lowoncreditsACH = 0
+global.toomuchcreditsACH = 0
 }

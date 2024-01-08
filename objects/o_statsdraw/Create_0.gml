@@ -76,6 +76,8 @@ challengepercenntage = (Cprogress / reqchallenge) * 100
 
 
 //PERFECT CHALLENGES
+
+//Most of this is terrible :(
 perfectchallenge = 0
 if global.kaizochallengedeaths = 0 { perfectchallenge += 1 }
 if global.blindchallengedeaths = 0 { perfectchallenge += 1 }
@@ -112,7 +114,7 @@ Wpercentage = (Wprogress / reqW) * 100
 //Achievements
 allach = 0
 scr_achievementstats()
-reqach = 118
+reqach = 148
 achpercentage = (allach / reqach) * 100
 
 //Game progress

@@ -26,7 +26,7 @@ global.newendlesslevelhighscore = global.endlesslevel
 steam_upload_score("Endless Run", global.newendlesslevelhighscore);
 e = 2
 }
-steam_upload_score("Monthly Endless Run", global.endlesslevel);
+steam_upload_score("Seasonal Endless Run", global.endlesslevel);
 
 }
 if global.endlessrunmode = 2 {
@@ -34,7 +34,7 @@ if global.endlesslevelhighscore < global.endlesslevel {
 global.endlesslevelhighscore = global.endlesslevel
 steam_upload_score("Old School Endless Run", global.endlesslevelhighscore);
 e = 2
-steam_upload_score("Monthly Endless Run", global.endlesslevel);
+steam_upload_score("Seasonal Endless Run", global.endlesslevel);
 }}
 
 if global.endlessrunmode != 3 {

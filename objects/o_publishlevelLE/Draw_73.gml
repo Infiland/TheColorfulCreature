@@ -34,7 +34,7 @@ image_yscale = 20.2
 }}
 } else { draw_text(camx+512,camy+200,loc(557)) }
 } else { draw_text(camx+512,camy+200,loc(563))  }
-} else { draw_text(camx+512,camy+200,"The level must have a name in order to be able to publish it on Steam Workshop!") }
+} else { draw_text(camx+512,camy+200,loc(556)) }
 } else { draw_text(camx+512,camy+200,"You must be logged on Steam to publish a level!") }
 } else { draw_text(camx+512,camy+200,"Steam API must be enabled!") }
 } else { draw_text(camx+512,camy+200,"Cheats must be disabled. Disable them by restarting the game.") }

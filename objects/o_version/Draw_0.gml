@@ -736,7 +736,7 @@ case(463): draw_text(5,5,"Player 3 deserves a break man :(") break;
 case(464): draw_text(5,5,"Sydew says hello from the top secret dev server!") break;
 case(465): draw_text(5,5,"dha too op") break;
 case(466): draw_text(5,5,"Speedrunning is fun.") break;
-case(467): draw_text(5,5,"Play Monthly Endless Run to get those badges in the menu!") break;
+case(467): draw_text(5,5,"Play Seasonal Endless Run to get those badges in the menu!") break;
 case(468): draw_text(5,5,"STOP POSTING ABOUT 4:3 I'M TIRED OF SEEING IT, MY FRIENDS ON TIKTOK SEND ME MEMES ON DISCORD IT'S") break;
 case(469): draw_text(5,5,"Steam Achievements is the best thing humanity invented.") break;
 case(470): draw_text(5,5,"According to all known laws of aviation, there is no way a bee should be able to fly.") break;

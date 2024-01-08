@@ -1,3 +1,4 @@
+/*
 if global.totaltime < 99000 + global.asteroidfun*150000 {
 chance = (100000 + global.asteroidfun*150000) - global.totaltime
 } else {

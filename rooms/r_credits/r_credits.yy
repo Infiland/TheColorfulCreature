@@ -14,6 +14,7 @@
     {"name":"inst_1AED0B90","path":"rooms/r_credits/r_credits.yy",},
     {"name":"inst_42D272B9","path":"rooms/r_credits/r_credits.yy",},
     {"name":"inst_16165FDE","path":"rooms/r_credits/r_credits.yy",},
+    {"name":"inst_1A2681AF","path":"rooms/r_credits/r_credits.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -23,6 +24,7 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_1AED0B90","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"o_animatedtext","path":"objects/o_animatedtext/o_animatedtext.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":16.0,"y":0.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_42D272B9","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"o_creditsbackgroundtext","path":"objects/o_creditsbackgroundtext/o_creditsbackgroundtext.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":32.0,"y":192.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_16165FDE","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"o_trueendingbutton","path":"objects/o_trueendingbutton/o_trueendingbutton.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":160.0,"y":704.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_1A2681AF","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"o_contributorsbutton","path":"objects/o_contributorsbutton/o_contributorsbutton.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":288.0,"y":704.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMREffectLayer","resourceVersion":"1.0","name":"Effect_1","depth":100,"effectEnabled":true,"effectType":"_effect_windblown_particles","gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[
         {"name":"param_sprite","type":2,"value":"s_playerred",},

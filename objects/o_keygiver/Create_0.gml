@@ -1,3 +1,5 @@
+instance_destroy()
+/*
 keylist = [
 "VF8JG-9NJN4-NX87P",
 "48VTD-9A2CY-EGKQD",

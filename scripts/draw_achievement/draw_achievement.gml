@@ -43,12 +43,12 @@ draw_set_halign(fa_right)
 if steam = 0 {
 if stat < req {
 draw_sprite_ext(s_xpbar,0,x+10,y+100,93*(stat/req),1.5,0,c_red,1)
-draw_text(x+290,y+95,string_format(stat,0,0))
+draw_text(x+290,y+95,string_format(stat,0,0) + " / " + string_format(req,0,0))
 } else {
-draw_sprite_ext(s_xpbar,0,x+10,y+100,93,1.5,0,c_lime,1)	
+draw_sprite_ext(s_xpbar,0,x+10,y+100,93,1.5,0,c_lime,1)
 }} else {
 if steam_get_achievement(stat) {
-draw_sprite_ext(s_xpbar,0,x+10,y+100,93,1.5,0,c_lime,1)	
+draw_sprite_ext(s_xpbar,0,x+10,y+100,93,1.5,0,c_lime,1)
 } else { draw_sprite_ext(s_xpbar,0,x+10,y+100,93,1.5,0,c_red,1) }
 }
 

@@ -15,7 +15,7 @@ function deathMU() {
 	break;
 	case(2):
 	global.racescore[o_playerMU.multiplayerplayer-1] += 1
-	if !steam_get_achievement("RACE_IST_FUN") { steam_set_achievement("RACE_IST_FUN") }
+	if !steam_get_achievement("RACES_MULTI") { steam_set_achievement("RACES_MULTI") }
 	break;
 	}}}
 }

@@ -8,7 +8,7 @@ if global.endlessrunmode = 1  {
 lbname = "Endless Run"
 } else { lbname = "Old School Endless Run" }
 } else {
-lbname = "Monthly Endless Run"	
+lbname = "Seasonal Endless Run"	
 } numerical = 1
 reloadleaderboardsmini()
 }

@@ -22,7 +22,7 @@ if global.special != 0 {
 if key_interact {
 if used = false {
 if global.checkdeposit = false {
-global.creditscurrency += floor(global.special * (2 + (global.special * 0.01)))
+global.creditscurrency += floor(global.special * (5 + (global.special * 0.01)))
 audio_play_sound(snd_cashsound,0,0)
 if global.skin020 = 0 {
 if global.special = 100 {

@@ -13,7 +13,13 @@ if global.soundchange = 0 {
 image_index = 0	
 image_speed = 0
 }
-if device_mouse_check_button_released(0,mb_left) {
+
+if global.infosettings = 6 {
+if gamepad_button_check_pressed(0,gp_face1) {
+event_perform(ev_mouse,ev_left_press)	
+}}
+
+if device_mouse_check_button_released(0,mb_left) || gamepad_button_check_released(0,gp_face1) {
 grab = false
 global.soundchange = 0
 }}

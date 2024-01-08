@@ -76,8 +76,6 @@ challengepercenntage = (Cprogress / reqchallenge) * 100
 
 
 //PERFECT CHALLENGES
-
-//Most of this is terrible :(
 perfectchallenge = 0
 if global.kaizochallengedeaths = 0 { perfectchallenge += 1 }
 if global.blindchallengedeaths = 0 { perfectchallenge += 1 }

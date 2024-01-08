@@ -1,3 +1,4 @@
+event_inherited()
 switch(global.antialiasingsettings) {
 case(0): image_index = 0 break;
 case(2): image_index = 1 break;

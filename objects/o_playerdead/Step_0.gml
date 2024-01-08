@@ -17,7 +17,9 @@ if room_width > 1024 {
 	vibx2 = 0.5
 }
 
-gamepad_set_vibration(0, vibx2 * image_alpha, vibx1 * image_alpha);
+var vb = global.controllervibrationsettings
+
+gamepad_set_vibration(0, (vibx2 * image_alpha)*vb, (vibx1 * image_alpha)*vb);
 if image_alpha < 0 {
 if room != r_hardmodedeathroom {
 	if global.androidadtimer < 0 {

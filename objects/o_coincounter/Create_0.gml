@@ -5,7 +5,7 @@ instance_destroy()
 }
 
 if os_type != os_android {
-key_skip = keyboard_check(ord(global.controlsskiplevel))
+key_skip = keyboard_check(ord(global.controlsskiplevel)) || (gamepad_button_check(0,gp_face4))
 } else { 
 	if instance_exists(o_buttonskipandroid) {
 	key_skip = o_buttonskipandroid.image_index = 1;

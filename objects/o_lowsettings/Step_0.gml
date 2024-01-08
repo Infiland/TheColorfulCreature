@@ -1,3 +1,4 @@
+event_inherited()
 if global.vignettesettings = 1 and global.backround = 1 and global.stars = 0 and global.itempar = 1 and global.playerpar = 0 and global.blockbackgroundsettings = 1 and global.whiteblock = 0 and global.visual3dsettings = 0 and global.watershadersettings = 1 {
 image_alpha = 0.5	
 } else { image_alpha = 1 }

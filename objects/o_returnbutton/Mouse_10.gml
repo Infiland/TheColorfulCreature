@@ -1,6 +1,6 @@
 mouseon = 1
 if room = r_settings {
-global.infosettings = -1
+global.infosettings = 10
 }
 window_set_cursor(cr_handpoint)
 

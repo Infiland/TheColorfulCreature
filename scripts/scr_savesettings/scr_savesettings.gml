@@ -43,6 +43,7 @@ function scr_savesettings() {
 	ini_write_string("Controls","Jump",global.controlsjump);
 	ini_write_string("Controls","Move Left",global.controlsmoveleft);
 	ini_write_string("Controls","Move Right",global.controlsmoveright);
+	ini_write_real("Controls","Controller Vibration",global.controllervibrationsettings)
 	ini_close();
 
 

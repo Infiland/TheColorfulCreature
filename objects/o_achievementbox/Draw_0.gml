@@ -156,8 +156,8 @@ case(138): draw_achievement(s_calendareasyAIcon,"CALENDAR_EASY",1,0,"Easier Days
 case(139): draw_achievement(s_calendarnormalAIcon,"CALENDAR_MEDIUM",1,0,"Done with Homework","Beat Calendar on Normal",0.9,1) break;
 case(140): draw_achievement(s_calendarhardAIcon,"CALENDAR_HARD",1,0,"Painful Week","Beat Calendar on Hard",1,1) break;
 case(141): draw_achievement(s_spinnnnnAIcon,"SPINNNNN",1,0,"Spinnnnnn","Get the settings button spin 1000 pixels away from it's position",1,1) break;
-case(142): draw_achievement(s_eastereggAIcon3,"EASTEREGG_3",1,1,"Platform that goes the wrong way","Find and beat the secret in World 4",0.6,1) break;
-case(143): draw_achievement(s_eastereggAIcon4,"EASTEREGG_4",1,1,"Round and Around","Find and beat the secret in World 5",0.9,1) break;
+case(142): draw_achievement(s_eastereggAIcon3,"EASTEREGG_3",1,1,"Platform that goes the wrong way","Find a secret path in World 4",0.6,1) break;
+case(143): draw_achievement(s_eastereggAIcon4,"EASTEREGG_4",1,1,"Round and Around","Find a secret path in World 5",0.9,1) break;
 case(144): draw_achievement(s_featuredlevelAIcon,"FEATURED_LEVEL",1,0,"Featured Level","Beat any workshop level that is featured. (Has a star)",1,1) break;
 case(145): draw_achievement(s_dailiesAIcon,"DAILIES",1,0,"Dailies","Have a streak of 10 in Daily Levels",1,1) break;
 case(146): draw_achievement(s_thecrownAIcon,"THE_CROWN",1,0,"The Crown","Get the True Ending of the game",1,1) break;

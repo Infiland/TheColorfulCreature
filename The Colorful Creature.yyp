@@ -353,6 +353,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Piano","folderPath":"folders/Sprites/Sprites/Danger/Bosses/Piano.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Controller","folderPath":"folders/Sprites/Main Menu/Controller.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"LevelEditor.sav","CopyToMask":-1,"filePath":"datafiles/Calendar/Levels/r_c2022lvl73",},
@@ -1291,6 +1292,7 @@
     {"id":{"name":"s_waterchallengebutton","path":"sprites/s_waterchallengebutton/s_waterchallengebutton.yy",},},
     {"id":{"name":"s_yellowparticle","path":"sprites/s_yellowparticle/s_yellowparticle.yy",},},
     {"id":{"name":"r_invisiblelvl1","path":"rooms/r_invisiblelvl1/r_invisiblelvl1.yy",},},
+    {"id":{"name":"s_xboxcontrollerscheme","path":"sprites/s_xboxcontrollerscheme/s_xboxcontrollerscheme.yy",},},
     {"id":{"name":"s_germanhat","path":"sprites/s_germanhat/s_germanhat.yy",},},
     {"id":{"name":"r_c2022lvl49","path":"rooms/r_c2022lvl49/r_c2022lvl49.yy",},},
     {"id":{"name":"s_greenparticle","path":"sprites/s_greenparticle/s_greenparticle.yy",},},
@@ -3529,5 +3531,6 @@
     {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"BlocksItemsGame","autocrop":true,"border":2,"compressFormat":"bz2","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"targets":-1,},
     {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"SkinsHats","autocrop":true,"border":2,"compressFormat":"bz2","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"targets":-1,},
     {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"AchievementIcons","autocrop":true,"border":2,"compressFormat":"bz2","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"targets":-1,},
+    {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"ControllerSchemes","autocrop":true,"border":2,"compressFormat":"bz2","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"targets":-1,},
   ],
 }

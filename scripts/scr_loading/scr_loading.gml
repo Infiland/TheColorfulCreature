@@ -41,7 +41,15 @@ font_enable_sdf(fnt_mainmenu,true)
 font_enable_sdf(fnt_deathcyrillic,true)*/
 
 //Move/Create Save Files
+
+//CHANGE THIS FOR MODS
+global.moddedGameDir = ""
+
 var directory = game_save_id + "/Save Files/"
+if global.moddedGameDir != "" {
+	var directory = game_save_id + "MODS//" + string(global.moddedGameDir) + "//Save Files/"
+}
+
 if !directory_exists(directory) {
 		directory_create(directory)
 		file_copy("Achievements.sav",directory + "Achievements.sav")

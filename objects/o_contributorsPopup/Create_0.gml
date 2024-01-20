@@ -6,7 +6,7 @@ name[0] = "[rainbow]Infiland[/]"
 name[1] = "sadzake"
 name[2] = "crimsonnnnn"
 
-var dir = "Other//contributors.txt" //Reading text files doesn't work for some reason
+var dir = "Other\\contributors.txt" //Reading text files doesn't work for some reason
 var file = file_text_open_read(dir)
 var num = 0
 

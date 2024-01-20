@@ -79,10 +79,17 @@ if global.total1ups > 249 {global.skin034 = 1}}
 if global.skin035 = 0 {
 if global.totaltime > 172800 {global.skin035 = 1}}
 
+if global.totaltime > 50000 {
+	if global.hat008 = -1 {
+		global.hat008 = 0
+	}
+}
+
 if global.hat008 = -1 {
 if global.calendarcurrentmonth = 12 {
 global.hat008 = 0
 }}
+if global.hat034 = -1 { global.hat034 = 0 }
 
 if gamebootup = 0 {
 alarm[0] = 15

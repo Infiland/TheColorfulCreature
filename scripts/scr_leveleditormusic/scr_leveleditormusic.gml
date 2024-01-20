@@ -12,7 +12,7 @@ directory = string_replace_all(directory,"\\","/")
 if file_exists(directory) {
 var mus = audio_create_stream(directory)
 audio_stop_all()
-audio_create_stream(mus)
+//audio_create_stream(mus)
 audio_play_sound(mus,0,1)
 audio_sound_gain(mus,global.musicvolume,1)
 exit;

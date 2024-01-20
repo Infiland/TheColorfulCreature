@@ -5,7 +5,7 @@ exit;
 
 if !instance_exists(o_progressask) {
 if !instance_exists(o_quitask) {
-var directory = game_save_id + "/Save Files/"
+var directory = directory_set("/Save Files/")
 if file_exists(directory + "SaveFile.sav") {
 window_set_cursor(cr_default)
 audio_sound_pitch(m_mainmenu,1)

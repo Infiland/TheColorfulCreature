@@ -2,7 +2,8 @@ function scr_loadleveleditor() {
 	
 	instance_destroy(o_savedandloaded)
 	box = instance_create(x,y,o_savedandloaded)
-	var directory = game_save_id + "/LevelEditor Files/" + "/" + global.levelname + "/"
+	
+	var directory = directory_set("//LevelEditor Files//" + global.levelname + "/")
 	if !directory_exists(directory) {
 		with box { 
 			//global.LEMode = 1

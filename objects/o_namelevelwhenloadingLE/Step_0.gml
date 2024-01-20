@@ -1,5 +1,5 @@
 /// @description Keys presses
-var directory = game_save_id + "/LevelEditor Files/" + "/" + text + "/"
+var directory = directory_set("/LevelEditor Files//" + text + "/")
 
 
 if global.naminglevel = true {

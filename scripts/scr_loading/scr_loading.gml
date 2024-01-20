@@ -45,10 +45,7 @@ font_enable_sdf(fnt_deathcyrillic,true)*/
 //CHANGE THIS FOR MODS
 global.moddedGameDir = ""
 
-var directory = game_save_id + "/Save Files/"
-if global.moddedGameDir != "" {
-	var directory = game_save_id + "MODS//" + string(global.moddedGameDir) + "//Save Files/"
-}
+var directory = directory_set("//Save Files/")
 
 if !directory_exists(directory) {
 		directory_create(directory)
@@ -449,7 +446,7 @@ global.androidadtimer = 300
 
 
 //Folders
-	var directory = game_save_id + "/Custom/"
+var directory = directory_set("/Custom/")
 	if !directory_exists(directory) {
 		directory_create(directory)
 	}
@@ -475,18 +472,17 @@ global.androidadtimer = 300
 		file_text_close(_f);
 		}
 	}
-	
-	var directory = game_save_id + "/LevelEditor Files/"
+	var directory = directory_set("/LevelEditor Files/")
 	if !directory_exists(directory) {directory_create(directory)}
 	
-	var directory = game_save_id + "/Save Files/Calendar/"
+	var directory = directory_set("/Save Files/Calendar/")
 		if !directory_exists(directory) {
 	directory_create(directory)
 	}
-	var directory = game_save_id + "/Custom/Workshop/Medals/"
+	var directory = directory_set("/Custom/Workshop/Medals/")
 	if !directory_exists(directory) { directory_create(directory) }
 	
-	var directory = game_save_id + "/Custom/Custom Languages/"
+	var directory = directory_set("/Custom/Custom Languages/")
 	if !directory_exists(directory) { directory_create(directory) }
 
 	

@@ -9,7 +9,7 @@ global.workshopfolder = mPath
 
 global.workshopfolder = string_replace_all(global.workshopfolder,"\\","/")
 
-var directory = global.workshopfolder + "/"
+var directory = directory_set(global.workshopfolder + "/",1)
 directory = string_replace_all(directory,"\\","/")
 
 	if (file_exists(directory + "OtherLevelEditor.sav")) {

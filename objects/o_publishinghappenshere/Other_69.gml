@@ -9,7 +9,7 @@ if timer2 < 0 { exit; }
 if steam_is_user_logged_on() = false {
 result = 3
 }
-var directory = game_save_id + "/LevelEditor Files/" + "/" + global.levelname + "//thumb.jpg"
+var directory = directory_set("/LevelEditor Files//" + global.levelname + "//thumb.jpg")
 if !directory_exists(directory) {
 result = 5
 }
@@ -100,7 +100,7 @@ steam_ugc_set_item_tags(updateHandle, tagArray);
 result = 0.5
 steam_ugc_set_item_preview(updateHandle, image);
 result = 0.6
-var directory = game_save_id + "/LevelEditor Files/" + "/" + global.levelname + "/"
+var directory = directory_set("/LevelEditor Files//" + global.levelname + "/")
 steam_ugc_set_item_content(updateHandle, directory);
 requestId = steam_ugc_submit_item_update(updateHandle, "Version 1." + string(global.workshoplevelversion));
 

@@ -5,7 +5,7 @@ image_index = 1
 if global.autothumbnailsettings = 1 {
 if global.levelname != "" {
 if timer = 60 {
-var directory = game_save_id + "/LevelEditor Files/" + "/" + global.levelname + "/"
+var directory = directory_set("/LevelEditor Files/" + "/" + global.levelname + "/")
 screen_save(directory + "/thumb.png")
 timer = 0
 } else {

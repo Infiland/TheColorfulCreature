@@ -15,7 +15,7 @@ case(11): month = "/November//" break;
 case(12): month = "/December//" break;
 }
 
-var directory = game_save_id + "/Save Files//Calendar//" + string(global.calendaryear) + "/" + month
+var directory = directory_set("/Save Files//Calendar//" + string(global.calendaryear) + "/" + month)
 
 if global.cheats = 0 {
 	

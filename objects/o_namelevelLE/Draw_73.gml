@@ -10,7 +10,7 @@ draw_set_font(global.gamemodefont)
 draw_set_alpha(1)
 draw_set_halign(fa_center)
 draw_text(camx+512,camy+100,loc(133))
-var directory = game_save_id + "/LevelEditor Files/" + "/" + text + "/"
+var directory = directory_set("/LevelEditor Files//" + text + "/")
 if !directory_exists(directory) {
 draw_set_color(c_lime)
 } else { draw_set_color(c_yellow) }

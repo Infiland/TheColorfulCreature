@@ -2,10 +2,12 @@ function scr_leveleditormusic() {
 	audio_stop_all()
 	
 	if room = r_leveleditor {
-var directory = game_save_id + "/LevelEditor Files/" + global.levelname + "/Music.ogg"
+	
+	var directory = directory_set("/LevelEditor Files/" + global.levelname + "/Music.ogg")
+	
 } else {
 //var directory = global.workshopfolder + "/Music.ogg/"
-var directory = global.workshopfolder + "/Music.ogg"
+var directory = directory_set(global.workshopfolder + "/Music.ogg")
 directory = string_replace_all(directory,"\\","/")
 }
 

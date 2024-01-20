@@ -1,5 +1,6 @@
-function directory_set(dir){
-var directory = game_save_id
+function directory_set(dir,save=0){
+var directory = ""
+if save = 0 { directory += game_save_id }
 if global.moddedGameDir != "" { directory += "MODS//" + string(global.moddedGameDir) }
 directory += dir
 return directory;

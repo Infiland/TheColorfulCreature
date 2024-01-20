@@ -17,8 +17,8 @@ if !steam_get_achievement("WORKSHOP_MASTER") { steam_set_achievement("WORKSHOP_M
 if global.time > 3 { 
 global.creditscurrency += floor(1 * global.creditsmultiplier)
 }
-
-	var directory = game_save_id + "/Custom/Workshop/Medals/" + string(global.Publish_ID) + "/"
+	
+	var directory = directory_set("/Custom/Workshop/Medals/" + string(global.Publish_ID) + "/")
 	if !directory_exists(directory) {
 	directory_create(directory)
 	}

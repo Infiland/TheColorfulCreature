@@ -1,6 +1,6 @@
 function scr_loadcustomlevelworkshop() {
 
-var directory = global.workshopfolder + "/"
+var directory = directory_set(global.workshopfolder + "/",1)
 
 directory = string_replace_all(directory,"\\","/")
 //var directory = "D:/Steam/steamapps/workshop/content/1651680" + string(global.Publish_ID) + "/"

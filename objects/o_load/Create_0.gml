@@ -9,7 +9,7 @@ global.deaths = 0
 global.special = 0
 global.pickup = 0
 image_speed = 0;
-var directory = game_save_id + "/Save Files/"
+var directory = directory_set("/Save Files/")
 if file_exists(directory + "SaveFile.sav") {
 image_alpha = 1	
 }

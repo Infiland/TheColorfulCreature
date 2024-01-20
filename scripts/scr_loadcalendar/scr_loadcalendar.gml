@@ -1,6 +1,6 @@
 function scr_loadcalendar() {
 if global.cheats = 0 {
-	var directory = game_save_id + "/Save Files//Calendar/"
+	var directory = directory_set("/Save Files//Calendar/")
 	if (file_exists(directory + "Calendar.sav")) {
 	ini_open(directory + "Calendar.sav");
 	global.calendar2022unlock = ini_read_real("Calendar","2022",0);

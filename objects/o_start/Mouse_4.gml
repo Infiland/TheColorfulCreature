@@ -9,7 +9,7 @@ hidehud()
 if !instance_exists(o_progressask) {
 if !instance_exists(o_quitask) {
 if room = r_gamemode {
-var directory = game_save_id + "/Save Files/"
+var directory = directory_set("/Save Files/")
 if file_exists(directory + "SaveFile.sav") {
 instance_create(-1000,0,o_progressask)
 } else {

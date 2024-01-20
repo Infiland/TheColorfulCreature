@@ -232,8 +232,7 @@ scr_savechallengedeaths()
 if !steam_get_achievement("FIRST_CHALLENGE") { steam_set_achievement("FIRST_CHALLENGE") }
 
 } else {
-	
-	var directory = game_save_id + "/Custom/Workshop/Medals/" + string(global.Publish_ID) + "/"
+	var directory = directory_set("/Custom/Workshop/Medals/" + string(global.Publish_ID) + "/")
 	var previoustime = 9999999
 	
 	if (file_exists(directory + "MedalData.sav")) {

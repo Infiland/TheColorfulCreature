@@ -1,8 +1,8 @@
 function scr_savehats() {
 if global.cheats = 0 {
-	var directory = game_save_id
-	if global.moddedGameDir != "" { directory += "MODS//" + string(global.moddedGameDir) }
-	directory += "//Save Files/"
+	
+	var directory = directory_set("//Save Files/")
+	
 	if (file_exists(directory + "Hats.sav")) file_delete(directory + "Hats.sav");
 	ini_open(directory + "Hats.sav");
 	//Hats

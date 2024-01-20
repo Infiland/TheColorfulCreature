@@ -1,8 +1,6 @@
 function scr_savechallengetime() {
 	if global.cheats = 0 {
-	var directory = game_save_id
-	if global.moddedGameDir != "" { directory += "MODS//" + string(global.moddedGameDir) }
-	directory += "//Save Files/"
+	var directory = directory_set("//Save Files/")
 	
 	if (file_exists(directory + "ChallengeTime.sav")) file_delete(directory + "ChallengeTime.sav");
 	ini_open(directory + "ChallengeTime.sav");

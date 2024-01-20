@@ -1,8 +1,6 @@
 function scr_loadgame() {
 	
-	var directory = game_save_id
-	if global.moddedGameDir != "" { directory += "MODS//" + string(global.moddedGameDir) }
-	directory += "//Save Files/"
+	var directory = directory_set("//Save Files/")
 	
 	if (file_exists(directory + "SaveFile.sav")) {
 	ini_open(directory + "SaveFile.sav");

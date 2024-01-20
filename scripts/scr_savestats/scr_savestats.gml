@@ -1,6 +1,7 @@
 function scr_savestats() {
 if global.cheats = 0 {
-	var directory = game_save_id + "/Save Files/"
+	var directory = directory_set("//Save Files/")
+
 	if (file_exists(directory + "Stats.sav")) file_delete(directory +"Stats.sav");
 	ini_open(directory + "Stats.sav");
 	ini_write_real("Stats","Total Deaths",global.totaldeaths);

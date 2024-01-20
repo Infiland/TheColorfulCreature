@@ -1,8 +1,6 @@
 function scr_savedaily() {
 	
-	var directory = game_save_id
-	if global.moddedGameDir != "" { directory += "MODS//" + string(global.moddedGameDir) }
-	directory += "//Save Files/"
+	var directory = directory_set("//Save Files/")
 	
 	if (file_exists(directory + "Daily.sav")) file_delete(directory + "Daily.sav");
 	ini_open(directory + "Daily.sav");

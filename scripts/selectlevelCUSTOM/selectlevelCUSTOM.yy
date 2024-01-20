@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "MODDING HATS",
-    "path": "folders/Scripts/MODDING HATS.yy",
+    "path": "folders/Scripts/MODDING/MODDING HATS.yy",
   },
 }

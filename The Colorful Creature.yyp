@@ -900,6 +900,7 @@
     {"id":{"name":"badwords","path":"scripts/badwords/badwords.yy",},},
     {"id":{"name":"s_rewardedskinbutton","path":"sprites/s_rewardedskinbutton/s_rewardedskinbutton.yy",},},
     {"id":{"name":"o_oldendlessbutton","path":"objects/o_oldendlessbutton/o_oldendlessbutton.yy",},},
+    {"id":{"name":"s_moddedbanner","path":"sprites/s_moddedbanner/s_moddedbanner.yy",},},
     {"id":{"name":"r_world7lvl2","path":"rooms/r_world7lvl2/r_world7lvl2.yy",},},
     {"id":{"name":"s_rewardedplayerred","path":"sprites/s_rewardedplayerred/s_rewardedplayerred.yy",},},
     {"id":{"name":"s_gravity01_o","path":"sprites/s_gravity01_o/s_gravity01_o.yy",},},

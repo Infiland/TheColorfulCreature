@@ -1,6 +1,10 @@
 function scr_loadchallengetime() {
 	if global.cheats = 0 {
-	var directory = game_save_id + "/Save Files/"
+		
+	var directory = game_save_id
+	if global.moddedGameDir != "" { directory += "MODS//" + string(global.moddedGameDir) }
+	directory += "//Save Files/"
+	
 	if (file_exists(directory + "ChallengeTime.sav")) {
 	ini_open(directory + "ChallengeTime.sav");
 	global.tutorialchallengetime = ini_read_real("Challenges","Tutorial Challenge",999999)

@@ -1,6 +1,10 @@
 function scr_loadskins() {
 	if global.cheats = 0 {
-	var directory = game_save_id + "/Save Files/"
+		
+	var directory = game_save_id
+	if global.moddedGameDir != "" { directory += "MODS//" + string(global.moddedGameDir) }
+	directory += "//Save Files/"
+	
 	if (file_exists(directory + "Skins.sav")) {
 	ini_open(directory + "Skins.sav");
 	global.world1 = ini_read_real("Skins","World 1",0)

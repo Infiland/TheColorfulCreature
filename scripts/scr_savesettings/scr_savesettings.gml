@@ -2,6 +2,7 @@ function scr_savesettings() {
 	var directory = game_save_id
 	if global.moddedGameDir != "" { directory += "MODS//" + string(global.moddedGameDir) }
 	directory += "//Save Files/"
+	
 	if (file_exists(directory + "Settings.sav")) file_delete(directory + "Settings.sav");
 	ini_open(directory + "Settings.sav");
 	//Settings

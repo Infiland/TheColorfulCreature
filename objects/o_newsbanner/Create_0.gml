@@ -1,7 +1,8 @@
 y = -600
 image_alpha = 0
 depth = -15001
-req = 7
+req = 8
+newsText = loc(618)
 
 if req <= global.gamenews { instance_destroy() }
 
@@ -11,4 +12,11 @@ if req <= global.gamenews { instance_destroy() }
 //text = "Added donation DLCs. These are solely to support the developer. When you purchase the donation DLCs, you get a badge which is upgradable! Also, in future updates, donators will be able to play 'Special Levels' which are donator only levels. For base game players, the special levels will appear in Endless Run.\n\nHave fun!"
 //text = "Full Release of the game has been released! It has been 5 years of development, thank you so much for playing. If you have any bugs to report, or any features you want me to add, let me know on discord. Thanks :)\n\n\n\nInfiland"
 //text = "Release 1.0.6 is here! [c_yellow]New Cheats have been added![/] Also check out the Level Select, added [c_yellow]very important text[/] over there! Removed the Wiki button and placed the development contribution in the Support Section.\n\nIf you have any bugs to report, or any features you want me to add, let me know on discord.\n[rainbow]Merry Christmas"
-text = "Release 1.1.0 is here! Added 30 NEW ACHIEVEMENTS, changed Steam Achievements, thus having a new progression system, some levels are improved, added further controller support like adding an ability to skip levels and scrolling through achievements and changing settings!\n\nI'm sure you'll find more interesting things. [rainbow]Have Fun and happy 2024!"
+//text = "Release 1.1.0 is here! Added 30 NEW ACHIEVEMENTS, changed Steam Achievements, thus having a new progression system, some levels are improved, added further controller support like adding an ability to skip levels and scrolling through achievements and changing settings!\n\nI'm sure you'll find more interesting things. [rainbow]Have Fun and happy 2024!"
+text = "Release 1.1.1 is here! Added better modding support and controller icons!\n\nHave Fun!"
+
+if global.moddedGameDir != "" {
+text = "You are running a modded client! Save files will not be confilcted with the modded game. Have fun!\n\n[c_yellow]Mod Name: " + string(global.moddedGameDir)	
+newsText = "MODDED CLIENT"
+sprite_index = s_moddedbanner
+}

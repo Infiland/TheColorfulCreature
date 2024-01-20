@@ -754,6 +754,7 @@
     {"name":"s_tutorialAIcon","order":11,"path":"sprites/s_tutorialAIcon/s_tutorialAIcon.yy",},
     {"name":"badwords","order":27,"path":"scripts/badwords/badwords.yy",},
     {"name":"o_oldendlessbutton","order":1,"path":"objects/o_oldendlessbutton/o_oldendlessbutton.yy",},
+    {"name":"s_moddedbanner","order":26,"path":"sprites/s_moddedbanner/s_moddedbanner.yy",},
     {"name":"r_world7lvl2","order":1,"path":"rooms/r_world7lvl2/r_world7lvl2.yy",},
     {"name":"s_rewardedplayerred","order":1,"path":"sprites/s_rewardedplayerred/s_rewardedplayerred.yy",},
     {"name":"s_rewardedplayeryellow","order":2,"path":"sprites/s_rewardedplayeryellow/s_rewardedplayeryellow.yy",},

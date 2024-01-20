@@ -43,7 +43,7 @@ font_enable_sdf(fnt_deathcyrillic,true)*/
 //Move/Create Save Files
 
 //CHANGE THIS FOR MODS
-global.moddedGameDir = "HAHAHA"
+global.moddedGameDir = "Test Mod 2"
 
 var directory = game_save_id + "/Save Files/"
 if global.moddedGameDir != "" {

@@ -10,7 +10,11 @@ function scr_savegame() {
 	if global.calendar = 0 {
 	if global.levelselect = 0 {
 	if global.dailylevel = 0 {
-	var directory = game_save_id + "/Save Files/"
+		
+	var directory = game_save_id
+	if global.moddedGameDir != "" { directory += "MODS//" + string(global.moddedGameDir) }
+	directory += "//Save Files/"
+	
 	var SavedRoom = room_get_name(room)
 	
 	if SavedRoom != r_lvl1 {

@@ -9,7 +9,7 @@ draw_rectangle(200,y-50,824,y+500,true)
 draw_set_font(global.gamemodefont)
 draw_sprite_ext(sprite_index,0,312,y,0.5,0.5,0,c_white,1)
 draw_set_halign(fa_center)
-draw_text_transformed(512,y-50,"NEWS!",1,1,0)
+draw_text_transformed(512,y-50,newsText,1,1,0)
 draw_set_font(global.deathfont)
 //draw_text_ext_transformed(512,y+250,text,30,600,1,1,0)
 

@@ -1,6 +1,10 @@
 function scr_loaddaily() {
 	if steam_get_app_id() != 1749610 {
-	var directory = game_save_id + "/Save Files/"
+		
+	var directory = game_save_id
+	if global.moddedGameDir != "" { directory += "MODS//" + string(global.moddedGameDir) }
+	directory += "//Save Files/"
+	
 	if (file_exists(directory + "Daily.sav")) {
 	ini_open(directory + "Daily.sav")
 	global.dailylevelstreak = ini_read_real("Daily","Streak",0);

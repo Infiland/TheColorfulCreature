@@ -1,5 +1,5 @@
 //CHANGE THIS FOR MODS
-global.moddedGameDir = "Test Mod 3"
+global.moddedGameDir = ""
 
 scr_loading()
 

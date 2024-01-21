@@ -2,7 +2,7 @@ switch(global.customizeselect) {
 case(1):
 
 if global.skinpage < skinpage {
-	if keyboard_check_pressed(vk_right) {global.skinpage += 1}
+	if keyboard_check_pressed(vk_right) || gamepad_button_check_pressed(0,gp_shoulderr) {global.skinpage += 1}
 	}
 
 if global.skinschange = 0 {
@@ -15,7 +15,7 @@ break;
 
 case(2):
 if global.hatpage < hatpage {
-	if keyboard_check_pressed(vk_right) {global.hatpage += 1}
+	if keyboard_check_pressed(vk_right) || gamepad_button_check_pressed(0,gp_shoulderr) {global.hatpage += 1}
 	}
 
 if global.hatpage = hatpage { x = lerp(x,1100,0.2) } else {
@@ -24,7 +24,7 @@ if global.hatpage = hatpage { x = lerp(x,1100,0.2) } else {
 break;
 case(3):
 if global.itempage < itempage {
-	if keyboard_check_pressed(vk_right) {global.itempage += 1}
+	if keyboard_check_pressed(vk_right) || gamepad_button_check_pressed(0,gp_shoulderr) {global.itempage += 1}
 	}
 
 if global.itempage = itempage { x = lerp(x,1100,0.2) } else {

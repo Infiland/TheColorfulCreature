@@ -66,7 +66,7 @@ draw_text(30,1190 - yscroll,ITEMSACQUIRED + string(allitems) + "/" + string(reqa
 if global.hardmodeunlock != 0 {
 draw_text(30,1210 - yscroll,HARDMODEDIFFICULTIESBEATEN + string(HMprogress) + "/" + string(reqHM) + " (" + string(HMpercentage) + "%)")
 } else { draw_text(30,1210 - yscroll,HARDMODEDIFFICULTIESBEATEN + " 0/7") }
-draw_text(30,1230 - yscroll,CHALLENGESBEATEN + string(Cprogress) + "/" + string(reqchallenge) + " (" + string(challengepercenntage) + "%)")
+draw_text(30,1230 - yscroll,CHALLENGESBEATEN + string(Cprogress) + "/" + string(reqchallenge) + " (" + string(challengepercentage) + "%)")
 draw_text(30,1250 - yscroll,PERFECTCHALLENGESBEATEN + string(perfectchallenge) + "/" + string(reqperfectchallenge) + " (" + string(perfectchallengepercentage) + "%)")
 draw_text(30,1270 - yscroll,WORLDSCOMPLETED + string(Wprogress) + "/" + string(reqW) + " (" + string(Wpercentage) + "%)")
 draw_text(30,1290 - yscroll,TOTALACHIEVEMENTS + string(allach) + "/" + string(reqach) + " (" + string(achpercentage) + "%)")

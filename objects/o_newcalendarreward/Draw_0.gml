@@ -1,4 +1,4 @@
-var hat = s_lockedskinbutton
+var hat = s_lockedskinicon
 
 global.newcalendarseed = string(global.calendarday1)+string(global.calendarday2)+string(global.calendarday3)+string(global.calendarday4)+string(global.calendarday5)+string(global.calendarday6)+string(global.calendarday7)
 random_set_seed(global.newcalendarseed)
@@ -8,7 +8,7 @@ var rwd = irandom_range(1,global.calendardifficulty)
 if rwd = 1 {
 global.newcalendarreward = irandom_range(1,58)
 switch(global.newcalendarreward) {
-default: hat = s_lockedskinbutton break;
+default: hat = s_lockedskinicon break;
 case(1): hat = s_graduationhaticon break;
 case(2): hat = s_conehaticon break;
 case(3): hat = s_partyhaticon break;
@@ -71,7 +71,7 @@ case(58): hat = s_chickenhaticon break;
 if rwd = 2 {
 global.newcalendarreward = irandom_range(1,48)
 switch(global.newcalendarreward) {
-default: hat = s_lockedskinbutton break;
+default: hat = s_lockedskinicon break;
 case(1): hat = s_normalskinbutton break;
 case(2): hat = s_kaizoskinbutton break;
 case(3): hat = s_madskinbutton break;
@@ -124,7 +124,7 @@ case(48): hat = s_burningskinbutton break;
 if rwd = 3 {
 global.newcalendarreward = irandom_range(1,3)
 switch(global.newcalendarreward) {
-default: hat = s_lockedskinbutton break;
+default: hat = s_lockedskinicon break;
 case(1): hat = s_paintbrushitembutton break;
 case(2): hat = s_floweritembutton break;
 case(3): hat = s_shielditembutton break;

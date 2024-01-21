@@ -26,7 +26,7 @@ key_right = (gamepad_axis_value(0,gp_axislh) > 0.2 || gamepad_button_check(0,gp_
 //Jump
 if doublejump = 0 {
 if jumpcontrols = 0 { key_jump = (gamepad_button_check(0,gp_face1)) || keyboard_check(ord(global.controlsjump)) }
-else { key_jump = keyboard_check(global.controlsjump) }
+else { key_jump = (gamepad_button_check(0,gp_face1)) || keyboard_check(global.controlsjump) }
 } else {
 if jumpcontrols = 0 { key_jump = (gamepad_button_check_pressed(0,gp_face1)) || keyboard_check_pressed(ord(global.controlsjump)) }
 else { key_jump = gamepad_button_check_pressed(0,gp_face1) || keyboard_check_pressed(global.controlsjump) }

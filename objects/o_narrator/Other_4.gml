@@ -49,4 +49,11 @@ strings[115] = "LIT-L6 But why are they there? It's like if you are supposed to 
 strings[116] = "LIT-L7 Welp, it doesn't matter, it's up to you to theorize. It is time for adventure!"
 }
 
+if gamepad_is_connected(0) {
+strings[48] = "W2-L16 Press [scale,0.5][s_xboxcontrollerscheme,7][scale,1] on this weird particle thingy."
+strings[56] = "W3-L2 If you are stuck, press [scale,0.5][s_xboxcontrollerscheme,50][scale,1] to restart."
+strings[130] = "SLIPPERY-L6 You can press [scale,0.5][s_xboxcontrollerscheme,56][scale,1] to shoot with your gun."
+strings[136] = "W5-L10 You got a gun! Press [scale,0.5][s_xboxcontrollerscheme,56][scale,1] to shoot, they can dodge bullets so beware."
+}
+
 strings[269] = "Year: " + string(global.calendaryear) + " | Month: " + string(global.calendarmonth) + " | Day: " + string(global.calendarday) //+ "     " + string(global.calendarday1required)+string(global.calendarday2required)+string(global.calendarday3required)+string(global.calendarday4required)+string(global.calendarday5required)+string(global.calendarday6required)+ string(global.calendarday7required)

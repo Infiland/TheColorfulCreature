@@ -11,7 +11,7 @@ case(3):
 drawrewardscalendar(s_burningskinbutton,s_creditshatbutton,s_shielditembutton,s_propellerhaticon)
 break;
 default:
-drawrewardscalendar(s_lockedskinbutton,s_lockedskinbutton,s_lockedskinbutton,s_lockedskinbutton)
+drawrewardscalendar(s_lockedskinicon,s_lockedskinicon,s_lockedskinicon,s_lockedskinicon)
 break;
 }
 break;

@@ -11,10 +11,10 @@ strings[56] = "W3-L2 If you are stuck, press the "+ string(keyd) +" button to re
 strings[130] = "SLIPPERY-L6 You can press the "+ string(keyd) +" key to shoot with your gun."
 strings[136] = "W5-L10 You got a gun! Press the "+ string(keyd) + " key to shoot, they can dodge bullets so beware."
 } else if gamepad_is_connected(0) {
-strings[48] = "W2-L16 Press the right trigger on this weird particle thingy."
-strings[56] = "W3-L2 If you are stuck, press left trigger to restart."
-strings[130] = "SLIPPERY-L6 You can press the right trigger to shoot with your gun."
-strings[136] = "W5-L10 You got a gun! Press the right trigger to shoot, they can dodge bullets so beware."
+strings[48] = "W2-L16 Press the [s_xboxcontrollerscheme,7] on this weird particle thingy."
+strings[56] = "W3-L2 If you are stuck, press [s_xboxcontrollerscheme,50] to restart."
+strings[130] = "SLIPPERY-L6 You can press the [s_xboxcontrollerscheme,56] to shoot with your gun."
+strings[136] = "W5-L10 You got a gun! Press the [s_xboxcontrollerscheme,56] to shoot, they can dodge bullets so beware."
 } else {
 strings[48] = "W2-L16 Press [I] on this weird particle thingy."
 strings[56] = "W3-L2 If you are stuck, press [R] to restart."

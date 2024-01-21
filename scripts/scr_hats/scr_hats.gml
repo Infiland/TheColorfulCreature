@@ -94,7 +94,8 @@ case(58): hatspr=s_chickenhat break;
 case(59): hatspr=s_czechhat break;
 case(60): hatspr=s_russianhat break;
 case(61): hatspr=s_devilhat break;
-//case(62): hatspr=s_turkishhat break;
+case(62): hatspr=s_turkishhat break;
+case(63): hatspr=s_palestinianhat break;
 }
 
 curhat = hatspr

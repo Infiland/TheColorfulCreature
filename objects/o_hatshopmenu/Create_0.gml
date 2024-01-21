@@ -10,4 +10,4 @@ dis = 0
 arrowyscale = 1
 change = 0
 
-limithat = 59
+limithat = 60

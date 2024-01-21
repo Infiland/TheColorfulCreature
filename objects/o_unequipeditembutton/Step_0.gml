@@ -1,3 +1,4 @@
+event_inherited()
 if global.itempage = 1 {
 x = lerp(x,originalx,0.2 * (60 / global.maxfps))
 y = lerp(y,originaly,0.2 * (60 / global.maxfps))

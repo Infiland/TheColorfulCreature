@@ -68,6 +68,7 @@ if global.cheats = 0 {
 	global.hat060 = ini_read_real("Hats","Russian Hat",0) //Flag
 	global.hat061 = ini_read_real("Hats","Devil Hat",0)
 	global.hat062 = ini_read_real("Hats","Turkish Hat",0) //Flag
+	global.hat063 = ini_read_real("Hats","Palestinian Hat",0) //Flag
 	
 	var totalflag = 0
 	if global.hat047 = 1 { totalflag += 1 }
@@ -83,8 +84,9 @@ if global.cheats = 0 {
 	if global.hat059 = 1 { totalflag += 1 }
 	if global.hat060 = 1 { totalflag += 1 }
 	if global.hat062 = 1 { totalflag += 1 }
+	if global.hat063 = 1 { totalflag += 1 }
 	
-	if totalflag >= 12 {
+	if totalflag >= 13 {
 	if !steam_get_achievement("FLAG_GUY") { steam_set_achievement("FLAG_GUY") }
 	}
 	

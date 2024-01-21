@@ -138,6 +138,8 @@ case(57): makehatshop(global.hat060,floor(75 * global.hatmerchantdiscount),60) b
 case(58): makehatshop(global.hat061,floor(75 * global.hatmerchantdiscount),61) break;
 //Turkish Hat
 case(59): makehatshop(global.hat062,floor(75 * global.hatmerchantdiscount),62) break;
+//Palestinian Hat
+case(60): makehatshop(global.hat063,floor(75 * global.hatmerchantdiscount),63) break;
 }
 }
 

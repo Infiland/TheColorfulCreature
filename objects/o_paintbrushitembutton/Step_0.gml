@@ -1,4 +1,4 @@
-global.itemselected = 0
+event_inherited()
 if global.item001 = 1 {
 sprite_index = s_paintbrushitembutton
 } else { sprite_index = s_lockeditemicon }

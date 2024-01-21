@@ -120,6 +120,8 @@ case(58): object = o_chickenhatbutton break; //Chicken
 case(59): object = o_czechhatbutton break; //Czech
 case(60): object = o_russianhatbutton break; //Russian
 case(61): object = o_devilhatbutton break; //Devil
+case(62): object = o_turkishhatbutton break; //Turkish
+case(63): object = o_palestinianhatbutton break; //Palestinian
 }
 break;
 case(3):

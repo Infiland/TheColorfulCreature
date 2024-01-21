@@ -84,8 +84,9 @@ if global.cheats = 0 {
 	if global.hat059 = 1 { totalflag += 1 }
 	if global.hat060 = 1 { totalflag += 1 }
 	if global.hat062 = 1 { totalflag += 1 }
+	if global.hat063 = 1 { totalflag += 1 }
 	
-	if totalflag >= 12 {
+	if totalflag >= 13 {
 	if !steam_get_achievement("FLAG_GUY") { steam_set_achievement("FLAG_GUY") }
 	}
 	

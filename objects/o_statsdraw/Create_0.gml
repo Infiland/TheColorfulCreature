@@ -21,18 +21,12 @@ color = make_color_rgb(red,green,blue)
 
 //Hats bugfix
 scr_savehats()
-hatbugfix = 0
-if global.hat001 = -1 {hatbugfix += 1}
-if global.hat003 = -1 {hatbugfix += 1}
-if global.hat008 = -1 {hatbugfix += 1}
-if global.hat009 = -1 {hatbugfix += 1}
-if global.hat010 = -1 {hatbugfix += 1}
-if global.hat035 = -1 {hatbugfix += 1}
 
 //Skins
 normalskins = global.skin001+global.skin002+global.skin003+global.skin004+global.skin005+global.skin006+global.skin007+global.skin008+global.skin009+global.skin010+global.skin012+global.skin014+global.skin015+global.skin016+global.skin017+global.skin019+global.skin020+global.skin021+global.skin023+global.skin024+global.skin026+global.skin027+global.skin028+global.skin029+global.skin030+global.skin031+global.skin032+global.skin033+global.skin034+global.skin036+global.skin037+global.skin038+global.skin039+global.skin040+global.skin042+global.skin043+global.skin044+global.skin045+global.skin046+global.skin047+global.skin048
 reqnormalskins = 41
 normalskinspercentage = (normalskins / reqnormalskins) * 100
+normalskinspercentage = clamp(normalskinspercentage,0,100)
 
 if normalskinspercentage = 100 {
 if !steam_get_achievement("SKIN_COMPLETIONIST") {
@@ -42,19 +36,43 @@ steam_set_achievement("SKIN_COMPLETIONIST")
 legskins = global.skin011+global.skin013+global.skin018+global.skin022+global.skin025+global.skin035+global.skin041
 reqlegskins = 7
 legskinspercentage = (legskins / reqlegskins) * 100
+legskinspercentage = clamp(legskinspercentage,0,100)
 
 allskins = normalskins + legskins
 
 //Hats
-allhats = global.hat001+global.hat002+global.hat003+global.hat004+global.hat005+global.hat006+global.hat007+global.hat008+global.hat009+global.hat010+global.hat011+global.hat012+global.hat013+global.hat014+global.hat015+global.hat016+global.hat017+global.hat018+global.hat019+global.hat020+global.hat021+global.hat022+global.hat023+global.hat024+global.hat025+global.hat026+global.hat027+global.hat028+global.hat029+global.hat030+global.hat031+global.hat032+global.hat033+global.hat034+global.hat035+global.hat036+global.hat037+global.hat038+global.hat039+global.hat040+global.hat041+global.hat042+global.hat043+global.hat044+global.hat045+global.hat046+global.hat047+global.hat048+global.hat049+global.hat050+global.hat051+global.hat052+global.hat053+global.hat054+global.hat055+global.hat056+global.hat057+global.hat058+global.hat059+global.hat060+global.hat061+global.hat062+hatbugfix
-reqallhats = 62
+var hN = 0
+allhats = 0
+reqallhats = 63
+for(hN=0;hN<=reqallhats;hN++) {
+if hN < 10 {
+		if variable_global_get("hat00" + string(hN)) = 1 {
+			allhats++
+		}} else {
+		if variable_global_get("hat0" + string(hN)) = 1 {
+			allhats++
+		}
+	}
+}
 hatspercentage = (allhats / reqallhats) * 100
-
+hatspercentage = clamp(hatspercentage,0,100)
 //Items
-allitems = global.item001+global.item002+global.item003
+var iN = 0
+allitems = 0
 reqallitems = 3
-itemspercentage = (allitems / reqallitems) * 100
+for(iN=0;iN<=reqallitems;iN++) {
+if iN < 10 {
+		if variable_global_get("item00" + string(iN)) = 1 {
+			allitems++
+		}} else {
+		if variable_global_get("item0" + string(iN)) = 1 {
+			allitems++
+		}
+	}
+}
 
+itemspercentage = (allitems / reqallitems) * 100
+itemspercentage = clamp(itemspercentage,0,100)
 if hatspercentage = 100 {
 if !steam_get_achievement("HAT_COMPLETIONIST") {
 steam_set_achievement("HAT_COMPLETIONIST")
@@ -72,8 +90,8 @@ if global.hat001 != -1 {challengebugfix = 1}
 Cprogress = challengebugfix+global.skin002+global.skin004+global.skin010+global.skin011+global.skin014+global.skin016+global.skin017+global.skin019+global.skin021+global.skin023+global.skin028+global.skin031+global.skin040+global.skin037+global.skin041+global.skin043+global.skin045
 reqchallenge = 18
 
-challengepercenntage = (Cprogress / reqchallenge) * 100
-
+challengepercentage = (Cprogress / reqchallenge) * 100
+challengepercentage = clamp(challengepercentage,0,100)
 
 //PERFECT CHALLENGES
 perfectchallenge = 0
@@ -98,16 +116,18 @@ if global.breakablechallengedeaths = 0 { perfectchallenge += 1 }
 
 reqperfectchallenge = 18
 perfectchallengepercentage = (perfectchallenge / reqperfectchallenge) * 100
+perfectchallengepercentage = clamp(perfectchallengepercentage,0,100)
 
 //Hardmode
 HMprogress = global.hardmodeunlock - 1
 reqHM = 7
 HMpercentage = (HMprogress / reqHM) * 100
-
+HMpercentage = clamp(HMpercentage,0,100)
 //Worlds
 Wprogress = global.world1 + global.world2 + global.world3 + global.world4 + global.world5 + global.skin017 + global.skin041
 reqW = 7
 Wpercentage = (Wprogress / reqW) * 100
+Wpercentage = clamp(Wpercentage,0,100)
 
 //Achievements
 allach = 0
@@ -116,7 +136,18 @@ reqach = 148
 achpercentage = (allach / reqach) * 100
 
 //Game progress
-gameprogress = (Wpercentage + HMpercentage + achpercentage + legskinspercentage + challengepercenntage + perfectchallengepercentage + hatspercentage + normalskinspercentage + itemspercentage) / 9
+/*Wpercentage = 100
+HMpercentage = 100
+achpercentage = 100
+legskinspercentage = 100
+challengepercentage = 100
+perfectchallengepercentage = 100
+hatspercentage = 100
+normalskinspercentage = 100
+itemspercentage = 100*/
+
+gameprogress = (Wpercentage + HMpercentage + achpercentage + legskinspercentage + challengepercentage + perfectchallengepercentage + hatspercentage + normalskinspercentage + itemspercentage) / 9
+gameprogress = clamp(gameprogress,0,100)
 
 //Languages
 MAINSTATS = loc(72)

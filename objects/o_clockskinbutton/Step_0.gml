@@ -1,3 +1,4 @@
+event_inherited()
 if global.skin035 = 0 {
 sprite_index = s_lockedskinbutton	
 } else { sprite_index = s_clockskinbutton }

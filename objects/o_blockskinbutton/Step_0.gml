@@ -1,7 +1,7 @@
+event_inherited()
 if global.skin006 = 0 {
 sprite_index = s_lockedskinbutton	
-}
-if global.skin006 = 1 {
+} else {
 sprite_index = s_blockskinbutton	
 }
 if global.skinschange = 0 and global.skinpage = 1 {

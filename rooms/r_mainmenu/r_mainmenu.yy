@@ -28,6 +28,7 @@
     {"name":"inst_6833CFF7","path":"rooms/r_mainmenu/r_mainmenu.yy",},
     {"name":"inst_42AC446A","path":"rooms/r_mainmenu/r_mainmenu.yy",},
     {"name":"inst_27094760","path":"rooms/r_mainmenu/r_mainmenu.yy",},
+    {"name":"inst_7B5BAE47","path":"rooms/r_mainmenu/r_mainmenu.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -53,6 +54,7 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_6833CFF7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"o_asteroidsplusplusad","path":"objects/o_asteroidsplusplusad/o_asteroidsplusplusad.yy",},"properties":[],"rotation":0.0,"scaleX":0.625731,"scaleY":0.5733333,"x":640.0,"y":672.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_42AC446A","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"o_newsbanner","path":"objects/o_newsbanner/o_newsbanner.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":112.0,"y":-534.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_27094760","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"o_monophobiaechoesad","path":"objects/o_monophobiaechoesad/o_monophobiaechoesad.yy",},"properties":[],"rotation":0.0,"scaleX":0.50999993,"scaleY":0.50999993,"x":560.0,"y":672.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_7B5BAE47","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"o_controllertutormenu","path":"objects/o_controllertutormenu/o_controllertutormenu.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":32.0,"y":256.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":true,"visible":true,},
     {"resourceType":"GMRBackgroundLayer","resourceVersion":"1.0","name":"Compatibility_Colour","animationFPS":30.0,"animationSpeedType":0,"colour":4278190080,"depth":2147483600,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.2,"htiled":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":true,"visible":true,"vspeed":0.2,"vtiled":true,"x":0,"y":0,},
   ],

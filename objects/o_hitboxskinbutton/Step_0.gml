@@ -1,7 +1,7 @@
+event_inherited()
 if global.skin027 = 0 {
 sprite_index = s_lockedskinbutton	
-}
-if global.skin027 = 1 {
+} else {
 sprite_index = s_hitboxskinbutton	
 }
 

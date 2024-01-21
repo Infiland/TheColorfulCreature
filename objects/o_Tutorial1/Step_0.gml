@@ -1,5 +1,19 @@
-key_left = keyboard_check(vk_left)
-key_right = keyboard_check(vk_right)
+scr_playercontrolsconfig()
+
+if leftcontrols = 0 {
+key_left = (gamepad_axis_value(0,gp_axislh) < -0.2 || gamepad_button_check(0,gp_padl)) || keyboard_check(ord(global.controlsmoveleft))
+}
+if leftcontrols = 1 {
+key_left = (gamepad_axis_value(0,gp_axislh) < -0.2 || gamepad_button_check(0,gp_padl)) || keyboard_check(global.controlsmoveleft)
+}
+//Right
+if rightcontrols = 0 {
+key_right = (gamepad_axis_value(0,gp_axislh) > 0.2 || gamepad_button_check(0,gp_padr)) || keyboard_check(ord(global.controlsmoveright));
+}
+if rightcontrols = 1 {
+key_right = (gamepad_axis_value(0,gp_axislh) > 0.2 || gamepad_button_check(0,gp_padr)) || keyboard_check(global.controlsmoveright);
+}
+
 if global.pause = 1{ exit }
 image_index = 0
 if key_right { image_index = 1 }

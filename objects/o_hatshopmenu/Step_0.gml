@@ -5,8 +5,8 @@ RLselectedhat = selectedhat * -1
 
 if os_type != os_android {
 if interactcontrols = 0 {
-key_interact = keyboard_check_pressed(ord(global.controlsinteract))
-} else { key_interact = keyboard_check_pressed(global.controlsinteract) }
+key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (gamepad_button_check_pressed(0,gp_shoulderrb))
+} else { key_interact = keyboard_check_pressed(global.controlsinteract) || (gamepad_button_check_pressed(0,gp_shoulderrb)) }
 
 }else {
 key_interact = o_buttoninteractandroid.image_index = 1;
@@ -144,8 +144,8 @@ case(59): makehatshop(global.hat062,floor(75 * global.hatmerchantdiscount),62) b
 //Pressing/Holding Left
 if os_type != os_android {
 if RLselectedhat != 0 {
-if !keyboard_check(vk_right) {
-if keyboard_check(vk_left) {
+if !keyboard_check(vk_right) || gamepad_button_check(0,gp_padr) {
+if keyboard_check(vk_left) || gamepad_button_check(0,gp_padl) {
 if press = 0 {
 selectedhat += 1
 press = 1
@@ -161,15 +161,15 @@ holdcooldown = 4
 }
 }
 
-if keyboard_check_released(vk_left) {
+if keyboard_check_released(vk_left) || gamepad_button_check_released(0,gp_padl) {
 press = 0
 holdcooldown = 40
 }
 
 //Pressing/Holding Right
 if RLselectedhat != limithat {
-if !keyboard_check(vk_left) {
-if keyboard_check(vk_right) {
+if !keyboard_check(vk_left) || !gamepad_button_check(0,gp_padl) {
+if keyboard_check(vk_right) || gamepad_button_check(0,gp_padr) {
 if press = 0 {
 selectedhat -= 1
 press = 1
@@ -185,7 +185,7 @@ holdcooldown = 4
 }
 }
 
-if keyboard_check_released(vk_right) {
+if keyboard_check_released(vk_right) || gamepad_button_check_released(0,gp_padr) {
 press = 0
 holdcooldown = 40
 }

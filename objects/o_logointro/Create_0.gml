@@ -1,9 +1,12 @@
+//CHANGE THIS FOR MODS
 global.soundvolume = 0.5
 global.maxfps = 60
+
 scr_loading()
 
 if global.skipintroscreensettings = 1 {
 room_goto(r_loading)
+audio_stop_sound(snd_difficultyupER)
 exit
 }
 
@@ -26,3 +29,4 @@ audio_sound_gain(snd_difficultyupER,global.soundvolume,1)
 audio_play_sound(snd_difficultyupER,0,0)
 
 timerlogo = 100
+//alarm[0] = 1

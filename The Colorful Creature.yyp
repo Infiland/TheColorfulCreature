@@ -190,6 +190,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Hats","folderPath":"folders/Scripts/Hats.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Leaderboard","folderPath":"folders/Scripts/Leaderboard.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Level Editor","folderPath":"folders/Scripts/Level Editor.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"MODDING","folderPath":"folders/Scripts/MODDING.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"MODDING HATS","folderPath":"folders/Scripts/MODDING/MODDING HATS.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Multiplayer","folderPath":"folders/Scripts/Multiplayer.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Music & Sound","folderPath":"folders/Scripts/Music & Sound.yy",},
@@ -354,7 +355,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Piano","folderPath":"folders/Sprites/Sprites/Danger/Bosses/Piano.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"MODDING","folderPath":"folders/Scripts/MODDING.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"LevelEditor.sav","CopyToMask":-1,"filePath":"datafiles/Calendar/Levels/r_c2022lvl73",},

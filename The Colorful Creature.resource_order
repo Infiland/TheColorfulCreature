@@ -161,6 +161,7 @@
     {"name":"Hats","order":8,"path":"folders/Scripts/Hats.yy",},
     {"name":"Leaderboard","order":21,"path":"folders/Scripts/Leaderboard.yy",},
     {"name":"Level Editor","order":2,"path":"folders/Scripts/Level Editor.yy",},
+    {"name":"MODDING","order":27,"path":"folders/Scripts/MODDING.yy",},
     {"name":"Multiplayer","order":7,"path":"folders/Scripts/Multiplayer.yy",},
     {"name":"Music & Sound","order":4,"path":"folders/Scripts/Music & Sound.yy",},
     {"name":"Other","order":6,"path":"folders/Scripts/Other.yy",},
@@ -302,7 +303,6 @@
     {"name":"Piano","order":2,"path":"folders/Sprites/Sprites/Danger/Bosses/Piano.yy",},
     {"name":"Tile Sets","order":3,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":10,"path":"folders/Timelines.yy",},
-    {"name":"MODDING","order":27,"path":"folders/Scripts/MODDING.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"o_bosnianhatbutton","order":6,"path":"objects/o_bosnianhatbutton/o_bosnianhatbutton.yy",},

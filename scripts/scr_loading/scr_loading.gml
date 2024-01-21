@@ -42,9 +42,6 @@ font_enable_sdf(fnt_deathcyrillic,true)*/
 
 //Move/Create Save Files
 
-//CHANGE THIS FOR MODS
-global.moddedGameDir = ""
-
 var directory = directory_set("//Save Files/")
 
 if !directory_exists(directory) {

@@ -836,6 +836,7 @@
     {"id":{"name":"s_frozenplayeryellow","path":"sprites/s_frozenplayeryellow/s_frozenplayeryellow.yy",},},
     {"id":{"name":"scr_saveitems","path":"scripts/scr_saveitems/scr_saveitems.yy",},},
     {"id":{"name":"s_frozenplayergreen","path":"sprites/s_frozenplayergreen/s_frozenplayergreen.yy",},},
+    {"id":{"name":"o_RealLoading","path":"objects/o_RealLoading/o_RealLoading.yy",},},
     {"id":{"name":"s_frozenplayerblue","path":"sprites/s_frozenplayerblue/s_frozenplayerblue.yy",},},
     {"id":{"name":"s_frozenplayerwhite","path":"sprites/s_frozenplayerwhite/s_frozenplayerwhite.yy",},},
     {"id":{"name":"s_hdskinbutton","path":"sprites/s_hdskinbutton/s_hdskinbutton.yy",},},

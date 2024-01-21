@@ -696,6 +696,7 @@
     {"name":"s_frozenplayeryellow","order":2,"path":"sprites/s_frozenplayeryellow/s_frozenplayeryellow.yy",},
     {"name":"scr_saveitems","order":10,"path":"scripts/scr_saveitems/scr_saveitems.yy",},
     {"name":"s_frozenplayergreen","order":3,"path":"sprites/s_frozenplayergreen/s_frozenplayergreen.yy",},
+    {"name":"o_RealLoading","order":9,"path":"objects/o_RealLoading/o_RealLoading.yy",},
     {"name":"s_frozenplayerblue","order":4,"path":"sprites/s_frozenplayerblue/s_frozenplayerblue.yy",},
     {"name":"s_frozenplayerwhite","order":5,"path":"sprites/s_frozenplayerwhite/s_frozenplayerwhite.yy",},
     {"name":"o_githubbutton","order":9,"path":"objects/o_githubbutton/o_githubbutton.yy",},

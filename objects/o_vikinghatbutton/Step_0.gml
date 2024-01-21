@@ -1,3 +1,4 @@
+event_inherited()
 if global.hat038 = 1 {
 sprite_index = s_vikinghaticon
 } else { sprite_index = s_lockedhaticon }

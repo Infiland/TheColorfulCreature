@@ -69,6 +69,7 @@ if global.cheats = 0 {
 	ini_write_real("Hats","Russian Hat",global.hat060);
 	ini_write_real("Hats","Devil Hat",global.hat061);
 	ini_write_real("Hats","Turkish Hat",global.hat062)
+	ini_write_real("Hats","Palestinian Hat",global.hat063)
 	
 	ini_write_string("CustomHat","Custom Hat",global.CUSTOMhat);
 	ini_close();

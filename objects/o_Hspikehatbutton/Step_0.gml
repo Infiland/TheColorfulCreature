@@ -1,3 +1,4 @@
+event_inherited()
 if global.hat023 = 1 {
 sprite_index = s_Hspikehaticon
 } else { sprite_index = s_lockedhaticon }

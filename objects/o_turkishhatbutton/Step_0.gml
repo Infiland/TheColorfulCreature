@@ -1,5 +1,6 @@
-if global.hat056 = 1 {
-sprite_index = s_ukrainianhaticon
+event_inherited()
+if global.hat062 = 1 {
+sprite_index = s_turkishhaticon
 } else { sprite_index = s_lockedhaticon }
 
 if global.hatpage = page {

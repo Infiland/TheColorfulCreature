@@ -2,7 +2,7 @@ y = -600
 image_alpha = 0
 depth = -15001
 req = 8
-newsText = loc(618)
+newsText = string_upper(loc(618))
 
 if req <= global.gamenews { instance_destroy() }
 
@@ -17,6 +17,6 @@ text = "Release 1.1.1 is here! Added better modding support and controller icons
 
 if global.moddedGameDir != "" {
 text = "You are running a modded client! Save files will not be confilcted with the modded game. Have fun!\n\n[c_yellow]Mod Name: " + string(global.moddedGameDir)	
-newsText = "MODDED CLIENT"
+newsText = string_upper(loc(677))
 sprite_index = s_moddedbanner
 }

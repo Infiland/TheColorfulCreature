@@ -1,6 +1,7 @@
 function scr_changecolorplayervx(){
 switch(global.skinselected) {
-default:
+default: sprite_index = s_playerwhite break;
+case 0:
 if global.color = 0 {sprite_index = s_playerred}
 if global.color = 1 {sprite_index = s_playeryellow}
 if global.color = 2 {sprite_index = s_playergreen}
@@ -126,19 +127,15 @@ case 23: sprite_index = s_forseneplayerskin break;
 case 24: sprite_index = s_redballplayerskin break;
 case 26: sprite_index = s_hitboxplayerskin break;
 case 27: sprite_index = s_metallicplayerskin break;
-case 28: sprite_index = s_playerwhite break;
 case 29: sprite_index = s_japaneseplayerskin break;
 case 31: sprite_index = s_upsidedownplayerskin break;
 case 36: sprite_index = s_arrowplayerskin break;
 case 37: sprite_index = s_spikeplayerskin break;
 case 38: sprite_index = s_splitplayerskin break;
-case 39: sprite_index = s_playerwhite break;
-case 41: sprite_index = s_playerwhite break;
-case 42: sprite_index = s_playerwhite break;
 case 43: sprite_index = s_steamplayerskin break;
 case 44: sprite_index = s_breakableplayerskin break;
 case 45: sprite_index = s_smileyplayerskin break;
-case 46: sprite_index = s_playerwhite break;
+case 48: sprite_index = s_skibidiplayerskin break;
 }
 if global.skinselected != 24 {
 if zerogrv = 0 { sprite_set_offset(sprite_index,0,0)} else { sprite_set_offset(sprite_index,16,16) }

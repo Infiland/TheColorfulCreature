@@ -162,6 +162,11 @@ if zerogrv = 0 {
 } else {
 draw_sprite_ext(s_fire,global.time * 30,x,y,1,1,image_angle,c_white,1) }
 break;
+case(48):
+if hsp = 0 { draw_sprite_ext(s_skibiditoiletoutfit,0,x+16-(zerogrv*16),y+16-(zerogrv*16),1,1,image_angle,c_white,1) }
+if hsp < 0 { draw_sprite_ext(s_skibiditoiletoutfit,1,x+16-(zerogrv*16),y+16-(zerogrv*16),1,1,image_angle,c_white,1) }
+if hsp > 0 { draw_sprite_ext(s_skibiditoiletoutfit,2,x+16-(zerogrv*16),y+16-(zerogrv*16),1,1,image_angle,c_white,1) }
+draw_self()
 }
 
 

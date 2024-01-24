@@ -461,6 +461,7 @@ case 43: scr_playerrbgnormal() break;
 case 44: scr_playerrbgnormal() break;
 case 45: scr_playerrbgnormal() break;
 case 46: scr_playerrbgnormal() break;
+case 48: scr_playerrbgnormal() break;
 }
 if global.color = 4 { 
 	if global.playerpar > 0 {

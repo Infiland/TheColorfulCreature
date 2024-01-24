@@ -69,7 +69,7 @@ case(57): hat = s_chinesehaticon break;
 case(58): hat = s_chickenhaticon break;
 }}
 if rwd = 2 {
-global.newcalendarreward = irandom_range(1,48)
+global.newcalendarreward = irandom_range(1,49)
 switch(global.newcalendarreward) {
 default: hat = s_lockedskinicon break;
 case(1): hat = s_normalskinbutton break;
@@ -120,6 +120,7 @@ case(45): hat = s_breakableskinbutton break;
 case(46): hat = s_smileyskinbutton break;
 case(47): hat = s_maidskinbutton break;
 case(48): hat = s_burningskinbutton break;
+case(49): hat = s_skibidiskinbutton break;
 }}
 if rwd = 3 {
 global.newcalendarreward = irandom_range(1,3)

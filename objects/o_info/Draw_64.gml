@@ -211,6 +211,10 @@ case(48):
 if global.skin048 = 0 {draw_text_ext(32,704,CALENDARSKINUNLOCK,20,820) }
 if global.skin048 = 1 {draw_text_ext(32,704,loc(630),20,820) }
 break;
+case(49):
+if global.skin049 = 0 {draw_text_ext(32,704,CALENDARSKINUNLOCK,20,820) }
+if global.skin049 = 1 {draw_text_ext(32,704,loc(679),20,820) }
+break;
 }
 break;
 

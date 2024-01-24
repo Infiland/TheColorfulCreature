@@ -1,4 +1,4 @@
-exit
+//exit
 if global.choosesettings != 0 { exit }
 
 if image_alpha != 0.5 {

@@ -59,6 +59,7 @@ function scr_loadskins() {
 	global.skin046 = ini_read_real("Skins","Smiley Skin",0);
 	global.skin047 = ini_read_real("Skins","Maid Skin",0);
 	global.skin048 = ini_read_real("Skins","Burning Skin",0);
+	global.skin049 = ini_read_real("Skins","Skibidi Skin",0);
 	}
 	else {
 	}

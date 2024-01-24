@@ -34,16 +34,6 @@ if room = r_localmultiplayermenu {
 		}
 	}
 	}
-if room = r_skinmenu { 
-draw_set_font(global.deathfont)
-if global.customizeselect = 1 {
-if global.skinschange = 0 {
-	draw_text(464,585,string(loc(46)) + " " + string(global.skinpage) + " / 3")
-}}
-if global.customizeselect = 2 {
-	draw_text(464,585,string(loc(46)) + " " + string(global.hatpage) + " / 4")
-}
-	}	
 
 if room = r_settings { 
 draw_set_font(global.cool2font)

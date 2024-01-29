@@ -3,7 +3,8 @@ function jump() {
 	if global.noclip = 0 {
 	if global.writingmode = 0 {
 	if inwater = 1 {
-	switch(global.maxfps) {
+	vsp = (-10 - (doublejump * 0.1)) 
+	/*switch(global.maxfps) {
 	case(60): vsp = -10 - (doublejump * 0.1) break;
 	case(75): vsp = -10.01 - (doublejump * 0.1) break;
 	case(100): vsp = -10.01 - (doublejump * 0.1) break;
@@ -19,7 +20,7 @@ function jump() {
 	case(0.83): vsp = -10.53 - (doublejump * 0.1) break;
 	} 	break;
 	
-	}
+	}*/
 	}
 	if inwater = 2 {
 	switch(global.maxfps) {

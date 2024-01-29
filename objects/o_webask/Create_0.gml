@@ -1,9 +1,9 @@
 y = -64
 x = 224
 url = ""
-text = "This will open your browser. Go to the page? (Y/N)"
+text = loc(678) + " (Y/N)"
 if gamepad_is_connected(0) {
-text = "This will open your browser. Go to the page?" +" [s_xboxcontrollerscheme,5] / [s_xboxcontrollerscheme,7]"	
+text = loc(678) +" [s_xboxcontrollerscheme,5] / [s_xboxcontrollerscheme,7]"	
 }
 
 delay = 1

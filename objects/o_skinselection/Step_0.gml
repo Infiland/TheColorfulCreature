@@ -58,5 +58,6 @@ case(44): image_blend = make_color_rgb(255,0,0)
 sprite_index = s_breakableplayerskin break;
 case(45): image_blend = make_color_rgb(255,0,0)
 sprite_index = s_smileyplayerskin break;
+case(49): sprite_index = s_kratosplayerskin break;
 break;
 }

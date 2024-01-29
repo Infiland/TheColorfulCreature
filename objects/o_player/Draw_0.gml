@@ -162,6 +162,17 @@ if zerogrv = 0 {
 } else {
 draw_sprite_ext(s_fire,global.time * 30,x,y,1,1,image_angle,c_white,1) }
 break;
+case(48):
+if hsp = 0 { draw_sprite_ext(s_skibiditoiletoutfit,0,x+16-(zerogrv*16),y+16-(zerogrv*16),1,1,image_angle,c_white,1) }
+if hsp < 0 { draw_sprite_ext(s_skibiditoiletoutfit,1,x+16-(zerogrv*16),y+16-(zerogrv*16),1,1,image_angle,c_white,1) }
+if hsp > 0 { draw_sprite_ext(s_skibiditoiletoutfit,2,x+16-(zerogrv*16),y+16-(zerogrv*16),1,1,image_angle,c_white,1) }
+draw_self()
+case(49):
+//draw_self()
+draw_sprite(s_kratosBase,0,x,y)
+draw_sprite_ext(s_kratosColor,0,x,y,1,1,0,image_blend,1)
+draw_sprite_ext(s_kratosEyes,0,x+eyesX-(zerogrv*16),y+eyesY-(zerogrv*16),1,1,0,c_white,1)
+break;
 }
 
 

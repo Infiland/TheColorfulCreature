@@ -5,9 +5,9 @@ function randomlevel() {
 	switch(global.difficultyER) {
 	case(1): global.chooserandomlevel = choose(1,1,1,2,2,14,14,13,20) break;
 	case(2): global.chooserandomlevel = choose(1,1,2,2,3,14,14,13,13,11,20,20,27) break;
-	case(3): global.chooserandomlevel = choose(1,2,2,3,3,14,11,13,13,19,20,20,25,26,27) break;
-	case(4): global.chooserandomlevel = choose(4,2,2,3,3,14,11,8,7,13,10,20,22,19,19,25,26,27) break;
-	case(5): global.chooserandomlevel = choose(4,2,3,16,11,7,13,10,10,8,19,22,22,25,26,27) break;
+	case(3): global.chooserandomlevel = choose(1,2,2,3,3,14,11,13,13,19,20,20,20,25,26,27) break;
+	case(4): global.chooserandomlevel = choose(4,2,2,3,3,14,11,8,7,13,10,20,20,22,19,19,25,26,27) break;
+	case(5): global.chooserandomlevel = choose(4,2,3,16,11,7,13,10,10,8,19,20,22,22,25,26,27) break;
 	case(6): global.chooserandomlevel = choose(4,5,7,16,10,9,15,17,15,8,26,21,22,22,18,27) break;
 	case(7): global.chooserandomlevel = choose(4,4,5,12,7,16,10,9,17,15,18,21,21,22,27) break;
 	case(8): global.chooserandomlevel = choose(4,5,5,12,7,15,15,18,9,17,21,23) break;

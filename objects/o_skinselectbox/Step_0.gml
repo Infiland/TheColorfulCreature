@@ -53,6 +53,8 @@ case(44): object = o_breakableskinbutton break; //Breakable
 case(45): object = o_smileyskinbutton break; //Smiley
 case(46): object = o_maidskinbutton break; //Maid
 case(47): object = o_burningskinbutton break; //Burning
+case(48): object = o_skibidiskinbutton break; //Skibidi
+case(49): object = o_kratosskinbutton break; //Kratos
 }
 break;
 case(2):

@@ -5,6 +5,11 @@ rewarded = 0
 image_xscale = 2
 image_yscale = 2
 
+image_speed = 0
+if global.totaltime >= global.wheelskincooldown {
+image_index = 1	
+} else { image_index = 0 }
+
 multi = global.creditsmultiplier * global.wheelmultiplier
 
 direction = random_range(0,360)

@@ -29,6 +29,10 @@ case(47):
 draw_self()
 draw_sprite_ext(s_fire,anim,x+80,y+80,5,5,0,c_white,1)
 break;
+case(48):
+draw_sprite_ext(s_skibiditoiletoutfit,0,x+80,y+80,5,5,0,c_white,1)
+draw_sprite_ext(s_skibidiplayerskin,0,x+80,y+80,5,5,0,c_red,1)
+break;
 }
 
 scr_items()

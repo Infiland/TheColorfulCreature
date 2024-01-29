@@ -33,8 +33,8 @@
   "nineSlice": null,
   "origin": 4,
   "parent": {
-    "name": "Skibidi Icon",
-    "path": "folders/Sprites/Player Skins/Page 4/Skibidi Icon.yy",
+    "name": "Skibidi",
+    "path": "folders/Sprites/Player Skins/Page 4/Skibidi.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

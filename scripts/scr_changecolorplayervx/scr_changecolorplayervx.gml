@@ -136,6 +136,7 @@ case 43: sprite_index = s_steamplayerskin break;
 case 44: sprite_index = s_breakableplayerskin break;
 case 45: sprite_index = s_smileyplayerskin break;
 case 48: sprite_index = s_skibidiplayerskin break;
+case 49: sprite_index = s_kratosplayerskin break;
 }
 if global.skinselected != 24 {
 if zerogrv = 0 { sprite_set_offset(sprite_index,0,0)} else { sprite_set_offset(sprite_index,16,16) }

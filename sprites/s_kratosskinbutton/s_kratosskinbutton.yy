@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "s_skibidiskinbutton",
+  "name": "s_kratosskinbutton",
   "bbox_bottom": 103,
   "bbox_left": 0,
   "bbox_right": 104,
@@ -13,26 +13,26 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"d2c59914-5e76-4101-8aca-4480b3eee7f4",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"82005f3a-9c39-4669-b93b-fc45749cb47c",},
   ],
   "gridX": 0,
   "gridY": 0,
   "height": 104,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"32bcd64a-71c9-49b7-82da-141ab0db1ff5","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"33794a97-d64b-47b5-bfdc-305fb9622aab","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 0,
   "parent": {
-    "name": "Skibidi",
-    "path": "folders/Sprites/Player Skins/Page 4/Skibidi.yy",
+    "name": "Kratos",
+    "path": "folders/Sprites/Player Skins/Page 4/Kratos.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "s_skibidiskinbutton",
+    "name": "s_kratosskinbutton",
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
@@ -54,7 +54,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"d2c59914-5e76-4101-8aca-4480b3eee7f4","path":"sprites/s_skibidiskinbutton/s_skibidiskinbutton.yy",},},},"Disabled":false,"id":"dfe9ccc4-0ca4-400d-ab20-a79542220dcb","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"82005f3a-9c39-4669-b93b-fc45749cb47c","path":"sprites/s_kratosskinbutton/s_kratosskinbutton.yy",},},},"Disabled":false,"id":"515ff7ba-e1d5-455a-968f-75d16b325045","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
@@ -65,8 +65,8 @@
   "swatchColours": null,
   "swfPrecision": 2.525,
   "textureGroupId": {
-    "name": "Buttons",
-    "path": "texturegroups/Buttons",
+    "name": "Default",
+    "path": "texturegroups/Default",
   },
   "type": 0,
   "VTile": false,

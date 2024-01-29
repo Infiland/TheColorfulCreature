@@ -58,6 +58,10 @@ var SKIN = irandom_range(2,maxS)
 getwheelskin(SKIN,maxS)
 global.wheelskincooldown += 10800
 
+if global.totaltime >= global.wheelskincooldown {
+image_index = 1	
+} else { image_index = 0 }
+
 } else {
 global.creditscurrency += floor(10 * multi)
 }

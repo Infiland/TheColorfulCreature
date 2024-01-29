@@ -30,6 +30,7 @@ if global.cheats = 0 {
 	ini_write_real("Stats","Cookies",global.cookies);
 	ini_write_real("Stats","Credits",global.creditscurrency);
 	ini_write_real("Stats","Wheel Cooldown",global.wheeltimeleft);
+	ini_write_real("Stats","Wheel Skin Cooldown",global.wheelskincooldown);
 	ini_write_real("Stats","Custom E.R Unlocked?",global.customERunlock);
 	ini_write_real("Stats","Old E.R Unlocked?",global.oldERunlock);
 	ini_write_real("Stats","Total D.Jump Pickups",global.totaldjumppickups);

@@ -47,9 +47,22 @@ if direction > 252 { //Reward 8
 if direction < 288 {
 global.creditscurrency += floor(100 * multi)
 }}
-if direction > 288 { //Reward 9
+if direction > 288 { //Reward 9 + SKIN
 if direction < 324 {
+
+if image_index = 1 {
+
+var maxS = 50
+var SKIN = irandom_range(2,maxS)
+
+getwheelskin(SKIN,maxS)
+global.wheelskincooldown += 10800
+
+} else {
 global.creditscurrency += floor(10 * multi)
+}
+
+
 }}
 if direction > 324 { //Reward 10
 if direction < 360 {

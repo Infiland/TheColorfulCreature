@@ -345,6 +345,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Split","folderPath":"folders/Sprites/Player Skins/Page 3/Split.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Steam","folderPath":"folders/Sprites/Player Skins/Page 3/Steam.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Page 4","folderPath":"folders/Sprites/Player Skins/Page 4.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Kratos","folderPath":"folders/Sprites/Player Skins/Page 4/Kratos.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Skibidi","folderPath":"folders/Sprites/Player Skins/Page 4/Skibidi.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Settings","folderPath":"folders/Sprites/Settings.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Special Effects","folderPath":"folders/Sprites/Special Effects.yy",},
@@ -358,7 +359,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Piano","folderPath":"folders/Sprites/Sprites/Danger/Bosses/Piano.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Kratos","folderPath":"folders/Sprites/Player Skins/Page 4/Kratos.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"LevelEditor.sav","CopyToMask":-1,"filePath":"datafiles/Calendar/Levels/r_c2022lvl73",},
@@ -1385,6 +1385,7 @@
     {"id":{"name":"s_levelcompleteAIcon9","path":"sprites/s_levelcompleteAIcon9/s_levelcompleteAIcon9.yy",},},
     {"id":{"name":"m_wearefinallyhere","path":"sounds/m_wearefinallyhere/m_wearefinallyhere.yy",},},
     {"id":{"name":"s_speed7_o","path":"sprites/s_speed7_o/s_speed7_o.yy",},},
+    {"id":{"name":"getrandomskin","path":"scripts/getrandomskin/getrandomskin.yy",},},
     {"id":{"name":"s_kratosplayerskin","path":"sprites/s_kratosplayerskin/s_kratosplayerskin.yy",},},
     {"id":{"name":"m_credits","path":"sounds/m_credits/m_credits.yy",},},
     {"id":{"name":"r_MUSurvival20","path":"rooms/r_MUSurvival20/r_MUSurvival20.yy",},},

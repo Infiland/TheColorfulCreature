@@ -30,6 +30,7 @@ if global.cheats = 0 {
 	global.cookies = ini_read_real("Stats","Cookies",0);
 	global.creditscurrency = ini_read_real("Stats","Credits",0);
 	global.wheeltimeleft = ini_read_real("Stats","Wheel Cooldown",0);
+	global.wheelskincooldown = ini_read_real("Stats","Wheel Skin Cooldown",0);
 	global.customERunlock = ini_read_real("Stats","Custom E.R Unlocked?",0);
 	global.oldERunlock = ini_read_real("Stats","Old E.R Unlocked?",0);
 	global.totaldjumppickups = ini_read_real("Stats","Total D.Jump Pickups",0);

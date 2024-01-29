@@ -1,7 +1,7 @@
 y = -600
 image_alpha = 0
 depth = -15001
-req = 9
+req = 10
 newsText = string_upper(loc(618))
 
 if req <= global.gamenews { instance_destroy() }
@@ -14,7 +14,8 @@ if req <= global.gamenews { instance_destroy() }
 //text = "Release 1.0.6 is here! [c_yellow]New Cheats have been added![/] Also check out the Level Select, added [c_yellow]very important text[/] over there! Removed the Wiki button and placed the development contribution in the Support Section.\n\nIf you have any bugs to report, or any features you want me to add, let me know on discord.\n[rainbow]Merry Christmas"
 //text = "Release 1.1.0 is here! Added 30 NEW ACHIEVEMENTS, changed Steam Achievements, thus having a new progression system, some levels are improved, added further controller support like adding an ability to skip levels and scrolling through achievements and changing settings!\n\nI'm sure you'll find more interesting things. [rainbow]Have Fun and happy 2024!"
 //text = "Release 1.1.1 is here! Added better modding support and controller icons! Also improved customization code much better so that later things can be added easily.\n\nHave Fun!"
-text = "Release 1.1.2 is here! A new skin has been added and improved customization code even more.\n\nHave fun!"
+//text = "Release 1.1.2 is here! A new skin has been added and improved customization code even more.\n\nHave fun!"
+text = "Release 1.1.3 is here! You can now get skins through the wheel! Just become an active player and you'll be able to get all of the skins in The Colorful Creature!\n\nHave Fun!"
 
 if global.moddedGameDir != "" {
 text = "You are running a modded client! Save files will not be confilcted with the modded game. Have fun!\n\n[c_yellow]Mod Name: " + string(global.moddedGameDir)	

@@ -296,6 +296,7 @@
     {"name":"Smiley","order":6,"path":"folders/Sprites/Player Skins/Page 3/Smiley.yy",},
     {"name":"Steam","order":4,"path":"folders/Sprites/Player Skins/Page 3/Steam.yy",},
     {"name":"Page 4","order":3,"path":"folders/Sprites/Player Skins/Page 4.yy",},
+    {"name":"Kratos","order":1,"path":"folders/Sprites/Player Skins/Page 4/Kratos.yy",},
     {"name":"Settings","order":12,"path":"folders/Sprites/Settings.yy",},
     {"name":"Special Effects","order":16,"path":"folders/Sprites/Special Effects.yy",},
     {"name":"Sprites","order":2,"path":"folders/Sprites/Sprites.yy",},
@@ -305,7 +306,6 @@
     {"name":"Piano","order":2,"path":"folders/Sprites/Sprites/Danger/Bosses/Piano.yy",},
     {"name":"Tile Sets","order":3,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":10,"path":"folders/Timelines.yy",},
-    {"name":"Kratos","order":1,"path":"folders/Sprites/Player Skins/Page 4/Kratos.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"o_bosnianhatbutton","order":6,"path":"objects/o_bosnianhatbutton/o_bosnianhatbutton.yy",},
@@ -1176,6 +1176,7 @@
     {"name":"s_levelcompleteAIcon9","order":8,"path":"sprites/s_levelcompleteAIcon9/s_levelcompleteAIcon9.yy",},
     {"name":"m_wearefinallyhere","order":27,"path":"sounds/m_wearefinallyhere/m_wearefinallyhere.yy",},
     {"name":"s_speed7_o","order":5,"path":"sprites/s_speed7_o/s_speed7_o.yy",},
+    {"name":"getrandomskin","order":22,"path":"scripts/getrandomskin/getrandomskin.yy",},
     {"name":"s_kratosplayerskin","order":1,"path":"sprites/s_kratosplayerskin/s_kratosplayerskin.yy",},
     {"name":"m_credits","order":28,"path":"sounds/m_credits/m_credits.yy",},
     {"name":"r_MUSurvival20","order":19,"path":"rooms/r_MUSurvival20/r_MUSurvival20.yy",},

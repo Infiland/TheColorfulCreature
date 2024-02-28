@@ -62,11 +62,6 @@ if keyboard_check(vk_down) || keyboard_check(ord("S")) { y += walksp * (60 / glo
 
 if instance_exists(o_hatshopmenu) { exit }
 
-//Restart Challenge
-if keyboard_check(vk_control) {
-	if key_restart {
-	restartchallenge()	
-}}
 
 if key_restart {
 if global.pause = 0 {
@@ -74,6 +69,12 @@ if room != r_theend || room != r_easteregg1 {
 if room != r_leveleditor {global.totalrestartdeaths += 1}
 death()
 }}}
+
+//Restart Challenge
+if keyboard_check(vk_control) {
+	if key_restart {
+	restartchallenge()	
+}}
 
 //Water
 if place_meeting(x,y,o_water) { inwater = 2 } else { inwater = 1 }

@@ -23,7 +23,7 @@ global.endless = 0
 	}}}
 	
 	if global.isinvisible = true {
-	if global.skinselected != 35 || global.hatselected != 0 {
+	if global.skinselected != 35 {
 	global.isinvisible = false
 	scr_saveachievements()
 	}}

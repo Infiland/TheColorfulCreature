@@ -59,7 +59,15 @@ if keyboard_check(vk_up) || keyboard_check(ord("W")) { y -= walksp * (60 / globa
 if keyboard_check(vk_down) || keyboard_check(ord("S")) { y += walksp * (60 / global.maxfps) }
 }
 
+
 if instance_exists(o_hatshopmenu) { exit }
+
+//Restart Challenge
+if keyboard_check(vk_control) {
+	if key_restart {
+	restartchallenge()	
+}}
+
 if key_restart {
 if global.pause = 0 {
 if room != r_theend || room != r_easteregg1 {

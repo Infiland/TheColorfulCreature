@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "loadstatschallenge",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Challenge",
-    "path": "folders/Scripts/Challenge.yy",
+  "$GMScript":"",
+  "%Name":"loadstatschallenge",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"loadstatschallenge",
+  "parent":{
+    "name":"Challenge",
+    "path":"folders/Scripts/Challenge.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

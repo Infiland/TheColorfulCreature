@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "music6bugfix",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Music & Sound",
-    "path": "folders/Scripts/Music & Sound.yy",
+  "$GMScript":"",
+  "%Name":"music6bugfix",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"music6bugfix",
+  "parent":{
+    "name":"Music & Sound",
+    "path":"folders/Scripts/Music & Sound.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

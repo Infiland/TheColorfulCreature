@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "_androidmacrosleaderboards",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Android",
-    "path": "folders/Scripts/Android.yy",
+  "$GMScript":"",
+  "%Name":"_androidmacrosleaderboards",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_androidmacrosleaderboards",
+  "parent":{
+    "name":"Android",
+    "path":"folders/Scripts/Android.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

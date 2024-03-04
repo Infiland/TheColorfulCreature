@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "drawinfoboxbadge",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Other",
-    "path": "folders/Scripts/Other.yy",
+  "$GMScript":"",
+  "%Name":"drawinfoboxbadge",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"drawinfoboxbadge",
+  "parent":{
+    "name":"Other",
+    "path":"folders/Scripts/Other.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

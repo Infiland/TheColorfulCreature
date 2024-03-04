@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "randomsong",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Endless Run",
-    "path": "folders/Scripts/Endless Run.yy",
+  "$GMScript":"",
+  "%Name":"randomsong",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"randomsong",
+  "parent":{
+    "name":"Endless Run",
+    "path":"folders/Scripts/Endless Run.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

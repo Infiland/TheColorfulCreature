@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "musicandsoundvolumefix",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Music & Sound",
-    "path": "folders/Scripts/Music & Sound.yy",
+  "$GMScript":"",
+  "%Name":"musicandsoundvolumefix",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"musicandsoundvolumefix",
+  "parent":{
+    "name":"Music & Sound",
+    "path":"folders/Scripts/Music & Sound.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

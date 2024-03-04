@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "draw_text_outline",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Other",
-    "path": "folders/Scripts/Other.yy",
+  "$GMScript":"",
+  "%Name":"draw_text_outline",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"draw_text_outline",
+  "parent":{
+    "name":"Other",
+    "path":"folders/Scripts/Other.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

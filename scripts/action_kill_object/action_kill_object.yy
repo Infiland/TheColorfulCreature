@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "action_kill_object",
-  "isCompatibility": true,
-  "isDnD": false,
-  "parent": {
-    "name": "Default",
-    "path": "folders/Scripts/Default.yy",
+  "$GMScript":"",
+  "%Name":"action_kill_object",
+  "isCompatibility":true,
+  "isDnD":false,
+  "name":"action_kill_object",
+  "parent":{
+    "name":"Default",
+    "path":"folders/Scripts/Default.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

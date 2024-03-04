@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_anticheat",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Stats",
-    "path": "folders/Scripts/Stats.yy",
+  "$GMScript":"",
+  "%Name":"scr_anticheat",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_anticheat",
+  "parent":{
+    "name":"Stats",
+    "path":"folders/Scripts/Stats.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

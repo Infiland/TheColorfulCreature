@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "selectlevelCUSTOM",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "MODDING HATS",
-    "path": "folders/Scripts/MODDING/MODDING HATS.yy",
+  "$GMScript":"",
+  "%Name":"selectlevelCUSTOM",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"selectlevelCUSTOM",
+  "parent":{
+    "name":"MODDING HATS",
+    "path":"folders/Scripts/MODDING/MODDING HATS.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

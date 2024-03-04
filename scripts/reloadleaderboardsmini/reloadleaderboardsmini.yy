@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "reloadleaderboardsmini",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Leaderboard",
-    "path": "folders/Scripts/Leaderboard.yy",
+  "$GMScript":"",
+  "%Name":"reloadleaderboardsmini",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"reloadleaderboardsmini",
+  "parent":{
+    "name":"Leaderboard",
+    "path":"folders/Scripts/Leaderboard.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

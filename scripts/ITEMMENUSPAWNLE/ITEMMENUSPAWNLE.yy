@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "ITEMMENUSPAWNLE",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Level Editor",
-    "path": "folders/Scripts/Level Editor.yy",
+  "$GMScript":"",
+  "%Name":"ITEMMENUSPAWNLE",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ITEMMENUSPAWNLE",
+  "parent":{
+    "name":"Level Editor",
+    "path":"folders/Scripts/Level Editor.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

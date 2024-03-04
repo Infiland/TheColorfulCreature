@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "action_move_point",
-  "isCompatibility": true,
-  "isDnD": false,
-  "parent": {
-    "name": "Default",
-    "path": "folders/Scripts/Default.yy",
+  "$GMScript":"",
+  "%Name":"action_move_point",
+  "isCompatibility":true,
+  "isDnD":false,
+  "name":"action_move_point",
+  "parent":{
+    "name":"Default",
+    "path":"folders/Scripts/Default.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

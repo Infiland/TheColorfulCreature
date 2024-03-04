@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_renderblocks",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Blocks",
-    "path": "folders/Scripts/Blocks.yy",
+  "$GMScript":"",
+  "%Name":"scr_renderblocks",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_renderblocks",
+  "parent":{
+    "name":"Blocks",
+    "path":"folders/Scripts/Blocks.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

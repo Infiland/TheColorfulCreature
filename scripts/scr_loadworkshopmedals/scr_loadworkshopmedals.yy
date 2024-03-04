@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_loadworkshopmedals",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Workshop",
-    "path": "folders/Scripts/Workshop.yy",
+  "$GMScript":"",
+  "%Name":"scr_loadworkshopmedals",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_loadworkshopmedals",
+  "parent":{
+    "name":"Workshop",
+    "path":"folders/Scripts/Workshop.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

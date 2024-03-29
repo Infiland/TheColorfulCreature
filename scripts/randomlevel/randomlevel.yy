@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "randomlevel",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Endless Run",
-    "path": "folders/Scripts/Endless Run.yy",
+  "$GMScript":"",
+  "%Name":"randomlevel",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"randomlevel",
+  "parent":{
+    "name":"Endless Run",
+    "path":"folders/Scripts/Endless Run.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

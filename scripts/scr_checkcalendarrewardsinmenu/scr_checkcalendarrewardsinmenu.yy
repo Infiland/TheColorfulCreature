@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_checkcalendarrewardsinmenu",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Rewards",
-    "path": "folders/Scripts/Calendar/Rewards.yy",
+  "$GMScript":"",
+  "%Name":"scr_checkcalendarrewardsinmenu",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_checkcalendarrewardsinmenu",
+  "parent":{
+    "name":"Rewards",
+    "path":"folders/Scripts/Calendar/Rewards.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

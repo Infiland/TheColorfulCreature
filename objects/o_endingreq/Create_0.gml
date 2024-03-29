@@ -7,3 +7,5 @@ audio_play_sound(snd_notenough,10,0)
 } else {
 instance_create(x,y,o_endingslides)	
 }
+
+alarm[0] = 300

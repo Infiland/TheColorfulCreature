@@ -176,6 +176,7 @@ global.hatmerchantdiscount = 1
 global.friendleaderboardsettings = 0
 global.customhatautoscale = 1
 global.controllervibrationsettings = 1
+global.fullscreen = 0
 
 //Workshop
 global.workshopfolder = ""
@@ -277,6 +278,14 @@ global.controlsmoveleft = "37"
 global.controlsrestart = "R"
 scr_loadsettings()
 game_set_speed(global.maxfps, gamespeed_fps);
+
+if global.fullscreen = 1 {
+	window_enable_borderless_fullscreen(true);
+	window_set_fullscreen(true);
+	} else { 
+		window_set_fullscreen(false);
+}
+
 if global.fpssettings > 0 {
 instance_create(x,y,o_fpscounter)
 }

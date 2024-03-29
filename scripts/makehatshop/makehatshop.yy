@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "makehatshop",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Hats",
-    "path": "folders/Scripts/Hats.yy",
+  "$GMScript":"",
+  "%Name":"makehatshop",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"makehatshop",
+  "parent":{
+    "name":"Hats",
+    "path":"folders/Scripts/Hats.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

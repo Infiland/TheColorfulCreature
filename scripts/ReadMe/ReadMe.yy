@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "ReadMe",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Rich Presence",
-    "path": "folders/Scripts/Rich Presence.yy",
+  "$GMScript":"",
+  "%Name":"ReadMe",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ReadMe",
+  "parent":{
+    "name":"Rich Presence",
+    "path":"folders/Scripts/Rich Presence.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

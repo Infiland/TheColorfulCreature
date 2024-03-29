@@ -9,7 +9,6 @@ totalunlocked = 0
 }
 }*/
 
-
 switch(achievement) {
 //STAT ACHIEVEMENTS
 case(0): draw_achievement(s_levelcompleteAIcon1,global.totallevelcompleted,1,0,"Default","This is just a funny\ntest",1,0) break;

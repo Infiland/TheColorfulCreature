@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "rousr_dissonance_dummy_function",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "internal",
-    "path": "folders/Scripts/Dissonance/internal.yy",
+  "$GMScript":"",
+  "%Name":"rousr_dissonance_dummy_function",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"rousr_dissonance_dummy_function",
+  "parent":{
+    "name":"internal",
+    "path":"folders/Scripts/Dissonance/internal.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

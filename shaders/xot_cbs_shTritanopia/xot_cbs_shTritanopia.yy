@@ -1,10 +1,12 @@
 {
-  "resourceType": "GMShader",
-  "resourceVersion": "1.0",
-  "name": "xot_cbs_shTritanopia",
-  "parent": {
-    "name": "Colorblindness",
-    "path": "folders/Shaders/Colorblindness.yy",
+  "$GMShader":"",
+  "%Name":"xot_cbs_shTritanopia",
+  "name":"xot_cbs_shTritanopia",
+  "parent":{
+    "name":"Colorblindness",
+    "path":"folders/Shaders/Colorblindness.yy",
   },
-  "type": 1,
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
 }

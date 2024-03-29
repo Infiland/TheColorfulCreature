@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_playerrbgnormalMU",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Multiplayer",
-    "path": "folders/Scripts/Multiplayer.yy",
+  "$GMScript":"",
+  "%Name":"scr_playerrbgnormalMU",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_playerrbgnormalMU",
+  "parent":{
+    "name":"Multiplayer",
+    "path":"folders/Scripts/Multiplayer.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

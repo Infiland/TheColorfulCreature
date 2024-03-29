@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_activateobjects",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Other",
-    "path": "folders/Scripts/Other.yy",
+  "$GMScript":"",
+  "%Name":"scr_activateobjects",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_activateobjects",
+  "parent":{
+    "name":"Other",
+    "path":"folders/Scripts/Other.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

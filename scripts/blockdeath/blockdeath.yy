@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "blockdeath",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Death",
-    "path": "folders/Scripts/Other/Death.yy",
+  "$GMScript":"",
+  "%Name":"blockdeath",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"blockdeath",
+  "parent":{
+    "name":"Death",
+    "path":"folders/Scripts/Other/Death.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

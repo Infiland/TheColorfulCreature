@@ -17,7 +17,11 @@ vy = camera_get_view_y(view_camera[0])
 }
 
 x = 960 + vx
-y = 704 + vy
+	if room = r_mainmenu {
+	y = 610 + vy
+	} else {
+	y = 704 + vy	
+	}
 
 audio_sound_pitch(m_mainmenu,pitch)
 

@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_TRadjustoptions",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Translation",
-    "path": "folders/Scripts/Translation.yy",
+  "$GMScript":"",
+  "%Name":"scr_TRadjustoptions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_TRadjustoptions",
+  "parent":{
+    "name":"Translation",
+    "path":"folders/Scripts/Translation.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

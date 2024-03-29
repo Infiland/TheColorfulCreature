@@ -18,7 +18,11 @@ if image_angle > 0 {
 	}
 	move = 0
 	x = 960 + vx
-	y = 704 + vy
+	if room = r_mainmenu {
+	y = 610 + vy
+	} else {
+	y = 704 + vy	
+	}
 	}
 	}}
 else 

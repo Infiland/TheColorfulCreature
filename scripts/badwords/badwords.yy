@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "badwords",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "USELESS SCRIPTS",
-    "path": "folders/Scripts/USELESS SCRIPTS.yy",
+  "$GMScript":"",
+  "%Name":"badwords",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"badwords",
+  "parent":{
+    "name":"USELESS SCRIPTS",
+    "path":"folders/Scripts/USELESS SCRIPTS.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

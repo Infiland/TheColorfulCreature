@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "drawrewardscalendar",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Calendar",
-    "path": "folders/Scripts/Calendar.yy",
+  "$GMScript":"",
+  "%Name":"drawrewardscalendar",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"drawrewardscalendar",
+  "parent":{
+    "name":"Calendar",
+    "path":"folders/Scripts/Calendar.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

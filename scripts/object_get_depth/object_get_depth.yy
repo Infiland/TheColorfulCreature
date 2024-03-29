@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "object_get_depth",
-  "isCompatibility": true,
-  "isDnD": false,
-  "parent": {
-    "name": "Default",
-    "path": "folders/Scripts/Default.yy",
+  "$GMScript":"",
+  "%Name":"object_get_depth",
+  "isCompatibility":true,
+  "isDnD":false,
+  "name":"object_get_depth",
+  "parent":{
+    "name":"Default",
+    "path":"folders/Scripts/Default.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

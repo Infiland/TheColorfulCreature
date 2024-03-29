@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_LEChangeBackground",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Level Editor",
-    "path": "folders/Scripts/Level Editor.yy",
+  "$GMScript":"",
+  "%Name":"scr_LEChangeBackground",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_LEChangeBackground",
+  "parent":{
+    "name":"Level Editor",
+    "path":"folders/Scripts/Level Editor.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

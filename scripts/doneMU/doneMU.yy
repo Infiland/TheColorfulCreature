@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "doneMU",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Multiplayer",
-    "path": "folders/Scripts/Multiplayer.yy",
+  "$GMScript":"",
+  "%Name":"doneMU",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"doneMU",
+  "parent":{
+    "name":"Multiplayer",
+    "path":"folders/Scripts/Multiplayer.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

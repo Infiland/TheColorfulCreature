@@ -1,7 +1,7 @@
 y = -600
 image_alpha = 0
 depth = -15001
-req = 10
+req = 12
 newsText = string_upper(loc(618))
 
 if req <= global.gamenews { instance_destroy() }
@@ -15,8 +15,9 @@ if req <= global.gamenews { instance_destroy() }
 //text = "Release 1.1.0 is here! Added 30 NEW ACHIEVEMENTS, changed Steam Achievements, thus having a new progression system, some levels are improved, added further controller support like adding an ability to skip levels and scrolling through achievements and changing settings!\n\nI'm sure you'll find more interesting things. [rainbow]Have Fun and happy 2024!"
 //text = "Release 1.1.1 is here! Added better modding support and controller icons! Also improved customization code much better so that later things can be added easily.\n\nHave Fun!"
 //text = "Release 1.1.2 is here! A new skin has been added and improved customization code even more.\n\nHave fun!"
-text = "Release 1.1.3 is here! You can now get skins through the wheel! Just become an active player and you'll be able to get all of the skins in The Colorful Creature!\n\nHave Fun!"
-
+//text = "Release 1.1.3 is here! You can now get skins through the wheel! Just become an active player and you'll be able to get all of the skins in The Colorful Creature!\n\nHave Fun!"
+//text = "Release 1.1.4 is here! You can now restart challenges with CTRL + Restart.\n\n Have Fun!"
+text = "Release 1.1.6 is here! Fixed few bugfixes and added tiny suprises! Also fullscreen finally saves and there's borderless fullscreen so yay!\n\nHave fun!"
 if global.moddedGameDir != "" {
 text = "You are running a modded client! Save files will not be confilcted with the modded game. Have fun!\n\n[c_yellow]Mod Name: " + string(global.moddedGameDir)	
 newsText = string_upper(loc(677))

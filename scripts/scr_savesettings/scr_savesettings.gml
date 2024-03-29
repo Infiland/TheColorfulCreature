@@ -36,7 +36,7 @@ function scr_savesettings() {
 	ini_write_real("Settings","Big Level Perf",global.biglevelperfsettings);
 	ini_write_real("Settings","Custom Splashes",global.customsplashessettings)
 	ini_write_real("Settings","Hats Autoscale",global.customhatautoscale)
-	//ini_write_real("Settings","Fullscreen",window_get_fullscreen());
+	ini_write_real("Settings","Fullscreen",global.fullscreen);
 	//Controls Config
 	ini_write_string("Controls","Restart",global.controlsrestart);
 	ini_write_string("Controls","Skip Level",global.controlsskiplevel);

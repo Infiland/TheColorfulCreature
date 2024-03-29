@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":1,
   "conversionMode":0,
-  "duration":4.662494,
+  "duration":5.041625,
   "name":"snd_youfellformytrap",
   "parent":{
     "name":"Troop Sounds",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_youfellformytrap.wav",
+  "soundFile":"snd_youfellformytrap.mp3",
   "type":0,
   "volume":1.0,
 }

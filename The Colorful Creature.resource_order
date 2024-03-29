@@ -2548,7 +2548,6 @@
     {"name":"s_breadhaticon","order":9,"path":"sprites/s_breadhaticon/s_breadhaticon.yy",},
     {"name":"r_world6lvl5","order":4,"path":"rooms/r_world6lvl5/r_world6lvl5.yy",},
     {"name":"r_world6lvl6","order":5,"path":"rooms/r_world6lvl6/r_world6lvl6.yy",},
-    {"name":"o_subredditbutton","order":4,"path":"objects/o_subredditbutton/o_subredditbutton.yy",},
     {"name":"__scribble_font_add_msdf_from_project","order":8,"path":"scripts/__scribble_font_add_msdf_from_project/__scribble_font_add_msdf_from_project.yy",},
     {"name":"s_HMAIcon4","order":5,"path":"sprites/s_HMAIcon4/s_HMAIcon4.yy",},
     {"name":"r_world6lvl7","order":6,"path":"rooms/r_world6lvl7/r_world6lvl7.yy",},

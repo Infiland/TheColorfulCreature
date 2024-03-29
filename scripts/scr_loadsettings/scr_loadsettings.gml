@@ -25,6 +25,7 @@ function scr_loadsettings() {
 	global.troopvoicelinesettings = ini_read_real("Settings","Troop Voiceline",1);
 	global.watershadersettings = ini_read_real("Settings","Water Shader",1);
 	global.gunvisibilitysettings = ini_read_real("Settings","Gun Visibility",1);
+	global.fullscreen = ini_read_real("Settings","Fullscreen",0);
 	//global.maxfps = ini_read_real("Settings","Max FPS",60);
 	global.skiplevelholdsettings = ini_read_real("Settings","Skip Level Hold",1);
 	global.oldGSsettings = ini_read_real("Settings","Old GS",0);

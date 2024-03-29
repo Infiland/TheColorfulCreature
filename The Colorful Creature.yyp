@@ -2919,7 +2919,6 @@
     {"id":{"name":"s_breadhaticon","path":"sprites/s_breadhaticon/s_breadhaticon.yy",},},
     {"id":{"name":"r_world6lvl5","path":"rooms/r_world6lvl5/r_world6lvl5.yy",},},
     {"id":{"name":"r_world6lvl6","path":"rooms/r_world6lvl6/r_world6lvl6.yy",},},
-    {"id":{"name":"o_subredditbutton","path":"objects/o_subredditbutton/o_subredditbutton.yy",},},
     {"id":{"name":"__scribble_font_add_msdf_from_project","path":"scripts/__scribble_font_add_msdf_from_project/__scribble_font_add_msdf_from_project.yy",},},
     {"id":{"name":"s_HMAIcon4","path":"sprites/s_HMAIcon4/s_HMAIcon4.yy",},},
     {"id":{"name":"r_world6lvl7","path":"rooms/r_world6lvl7/r_world6lvl7.yy",},},

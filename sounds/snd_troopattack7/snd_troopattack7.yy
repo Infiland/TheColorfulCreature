@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":1,
   "conversionMode":0,
-  "duration":1.22775,
+  "duration":1.358333,
   "name":"snd_troopattack7",
   "parent":{
     "name":"Attack",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_troopattack7",
+  "soundFile":"snd_troopattack7.mp3",
   "type":0,
   "volume":1.0,
 }

@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":1,
   "conversionMode":0,
-  "duration":2.194275,
+  "duration":2.2465,
   "name":"snd_troopdead",
   "parent":{
     "name":"Troop Sounds",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_troopdead",
+  "soundFile":"snd_troopdead.mp3",
   "type":0,
   "volume":1.0,
 }

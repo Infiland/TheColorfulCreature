@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":1,
   "conversionMode":0,
-  "duration":1.28,
+  "duration":1.410583,
   "name":"snd_troopidle5",
   "parent":{
     "name":"Idle",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_troopidle5",
+  "soundFile":"snd_troopidle5.mp3",
   "type":0,
   "volume":1.0,
 }

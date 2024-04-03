@@ -686,7 +686,7 @@ case(436): draw_text(5,5,"Do you want us to add something new? Please visit the 
 case(437): draw_text(5,5,"Introducing Custom Endless Run! Customize Endless Possibilities!") break;
 case(438): draw_text(5,5,"Want MAXIMUM DETAIL? Go to settings and click the 'high' quality preset :)") break;
 case(439): draw_text(5,5,"Missed old gravity sprites? (You know, the ones with numbers?) Go to settings to change them!") break;
-case(440): draw_text(5,5,"Fun Fact: The Tutorial in W1-L1 and W1-L2 doesn't appear in Endless Run") break;
+case(440): draw_text(5,5,"I'm making people hate my game :)") break;
 case(441): draw_text(5,5,"I know what you are doing, you are reading this text, aren't you.") break;
 case(442): draw_text(5,5,"This text will be ignored by many.") break;
 case(443): draw_text(5,5,"THIS TEXT WILL BE NOTICED BY MANY!") break;
@@ -742,7 +742,7 @@ case(469): draw_text(5,5,"Steam Achievements is the best thing humanity invented
 case(470): draw_text(5,5,"According to all known laws of aviation, there is no way a bee should be able to fly.") break;
 case(471): draw_text(5,5,"Is anyone reading these?") break;
 case(472): draw_text(5,5,"Did you know that Infiland loves drinking water?") break;
-case(473): draw_text(5,5,"Failing W1-L1 since 2018!") break;
+case(473): draw_text(5,5,"Playing W1-L1 since 2018!") break;
 case(474): draw_text(5,5,"Did you know that 1 + 1 is 2?") break;
 case(475): draw_text(5,5,"BREAKING NEWS: Chickens are invading space by laying eggs out!") break;
 case(476): draw_text(5,5,"Worth 3.49 Euros!") break;

@@ -124,5 +124,11 @@ time = global.breakablechallengetime
 deaths = global.breakablechallengedeaths
 medalcheck(global.breakablechallengetime,65,deaths)
 } break;
+case 18:
+if global.world4 = 1 {
+time = global.lunarbasechallengetime
+deaths = global.lunarbasechallengedeaths
+medalcheck(global.lunarbasechallengetime,500,deaths)
+} break;
 }
 }

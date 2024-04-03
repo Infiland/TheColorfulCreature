@@ -2,11 +2,11 @@
 names = ""
 namecnt = 0
 
-name[0] = "[rainbow]Infiland[/]"
-name[1] = "sadzake"
-name[2] = "crimsonnnnn"
 
-var dir = "Other\\contributors.txt" //Reading text files doesn't work for some reason
+name[0] = "[rainbow]If you see this, this doesn't work[/]"
+//var directory = program_directory + "//Challenges//Lunar Base Challenge//1/"
+
+var dir = program_directory + "\\Other\\contributors.txt" //Reading text files doesn't work for some reason
 var file = file_text_open_read(dir)
 var num = 0
 
@@ -19,7 +19,7 @@ if file_exists(file){
 file_text_close(file);
 
 } else {
-namecnt = 3
+namecnt = 1
 }
 
 for(var i=0; i < namecnt;i++) {

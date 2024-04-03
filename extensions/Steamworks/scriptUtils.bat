@@ -7,6 +7,8 @@ shift & goto :%~1
     set "LOG_LABEL=UNSET"
     set "LOG_LEVEL=-1"
 
+    call :assertPowerShellExecutionPolicy
+
     :: Get extension data
     call :pathExtractBase %SCRIPT_PATH% EXTENSION_NAME
     call :extensionGetVersion EXTENSION_VERSION
@@ -22,6 +24,19 @@ shift & goto :%~1
         call :log "INIT" "Script initialization failed (v%EXTENSION_VERSION% :: %LOG_LEVEL%)."
     ) else (
         call :log "INIT" "Script initialization succeeded (v%EXTENSION_VERSION% :: %LOG_LEVEL%)."
+    )
+exit /b 0
+
+:assertPowerShellExecutionPolicy
+    :: Check the execution policy of the powershell
+    for /f "delims=" %%i in ('powershell -Command "Get-ExecutionPolicy"') do set ExecutionPolicy=%%i
+
+    :: If the execution policy is set to 'Restricted' echo the appropriate message.
+    IF "!ExecutionPolicy!"=="Restricted" (
+        echo The execution of our extensions requires changing the PowerShell Execution Policy.
+        echo To do so, please run the following command in your PowerShell terminal:
+        echo     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+        exit 1
     )
 exit /b 0
 
@@ -115,27 +130,12 @@ exit /b 0
         exit /b 1
     )
 
-    :: Set environment variables for srcPath and destination
-    set "PS_SRCPATH=%~1"
-    set "PS_DESTINATION=%destination%"
-
-    for /f "delims=" %%a in ('dir /b /a:d "%~1" 2^>nul') do (
-        if "%%~a" == "%~nx1" (
-            powershell -NoLogo -NoProfile -Command "New-Item -ItemType Directory -Force -Path $env:PS_DESTINATION; Copy-Item -Path $env:PS_SRCPATH -Destination $env:PS_DESTINATION -Recurse"
-        )
+    if exist "%~1\" (
+        powershell -NoLogo -NoProfile -Command "Copy-Item -Path '%~1' -Destination '%destination%' -Recurse -Force"
+    ) else (
+        powershell -NoLogo -NoProfile -Command "Copy-Item -Path '%~1' -Destination '%destination%' -Force"
     )
 
-    for /f "delims=" %%a in ('dir /b /a:-d "%~1" 2^>nul') do (
-        if "%%~a" == "%~nx1" (
-            powershell -NoLogo -NoProfile -Command "New-Item -ItemType Directory -Force -Path (Split-Path -Parent $env:PS_DESTINATION); Copy-Item -Path $env:PS_SRCPATH -Destination $env:PS_DESTINATION -Force"
-        )
-    )
-
-    :: Clean up environment variables
-    set "PS_SRCPATH="
-    set "PS_DESTINATION="
-    
-    :: Check if the copy operation succeeded
     if %errorlevel% neq 0 (
         call :logError "Failed to copy '%~1' to '%destination%'."
         exit /b 1

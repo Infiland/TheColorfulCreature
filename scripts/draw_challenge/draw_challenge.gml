@@ -18,7 +18,7 @@ global.challengescroll -= 12
 if global.challengescroll < 0 {
 global.challengescroll = 0	
 }
-if global.challengescroll > 500 {
+if global.challengescroll > 600 {
 global.challengescroll = 500
 }
 

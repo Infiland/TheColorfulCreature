@@ -1,5 +1,4 @@
 var cost = floor((global.wheeltimeleft/30) * (0.5 + (multi / 2)))
-var cost = 0
 if global.creditscurrency > cost {
 	global.creditscurrency -= cost
 	global.wheeltimeleft = 0

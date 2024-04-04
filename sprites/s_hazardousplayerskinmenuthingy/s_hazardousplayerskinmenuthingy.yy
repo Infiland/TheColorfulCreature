@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Hazardous",
-    "path":"folders/Sprites/Player Skins/Legendary/Hazardous.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 2/Hazardous.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

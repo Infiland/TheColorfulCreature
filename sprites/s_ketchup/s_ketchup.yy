@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Hotdog",
-    "path":"folders/Sprites/Sprites/Danger/Bosses/Hotdog.yy",
+    "path":"folders/Sprites/Danger/Bosses/Hotdog.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -81,8 +81,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"BossRelated",
+    "path":"texturegroups/BossRelated",
   },
   "type":0,
   "VTile":false,

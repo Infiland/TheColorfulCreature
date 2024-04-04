@@ -28,7 +28,7 @@
   "origin":4,
   "parent":{
     "name":"Gordon",
-    "path":"folders/Sprites/Player Skins/Page 3/Gordon.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 3/Gordon.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

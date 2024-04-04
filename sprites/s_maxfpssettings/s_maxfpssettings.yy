@@ -101,8 +101,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"Buttons",
+    "path":"texturegroups/Buttons",
   },
   "type":0,
   "VTile":false,

@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Fancy",
-    "path":"folders/Sprites/Player Skins/Page 3/Fancy.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 3/Fancy.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

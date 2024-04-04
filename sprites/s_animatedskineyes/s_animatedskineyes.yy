@@ -35,7 +35,7 @@
   "origin":9,
   "parent":{
     "name":"Animated",
-    "path":"folders/Sprites/Player Skins/Legendary/Animated.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 2/Animated.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

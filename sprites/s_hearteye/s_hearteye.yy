@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Heart",
-    "path":"folders/Sprites/Player Skins/Page 2/Heart.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 3/Heart.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

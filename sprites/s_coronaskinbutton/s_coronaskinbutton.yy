@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Corona",
-    "path":"folders/Sprites/Player Skins/Page 1/Corona.yy",
+    "name":"Page 1",
+    "path":"folders/Sprites/Player Skins/Skins Icon/Page 1.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

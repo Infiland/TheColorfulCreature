@@ -34,7 +34,7 @@
   "origin":4,
   "parent":{
     "name":"Skibidi",
-    "path":"folders/Sprites/Player Skins/Page 4/Skibidi.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 4/Skibidi.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"Piano",
-    "path":"folders/Sprites/Sprites/Danger/Bosses/Piano.yy",
+    "path":"folders/Sprites/Danger/Bosses/Piano.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -73,10 +73,7 @@
               },"Disabled":false,"id":"e380cbda-d670-4ea7-85b3-0d34fb96e7b5","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
-    "visibleRange":{
-      "x":0.0,
-      "y":0.0,
-    },
+    "visibleRange":null,
     "volume":1.0,
     "xorigin":133,
     "yorigin":78,
@@ -84,8 +81,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"BossRelated",
+    "path":"texturegroups/BossRelated",
   },
   "type":0,
   "VTile":false,

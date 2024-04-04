@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Frozen",
-    "path":"folders/Sprites/Player Skins/Page 1/Frozen.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 1/Frozen.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

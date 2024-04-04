@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Japanese",
-    "path":"folders/Sprites/Player Skins/Page 2/Japanese.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 2/Japanese.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -192,8 +192,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"BlocksItemsGame",
+    "path":"texturegroups/BlocksItemsGame",
   },
   "type":0,
   "VTile":false,

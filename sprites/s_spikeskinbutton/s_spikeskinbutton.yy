@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Spike",
-    "path":"folders/Sprites/Player Skins/Page 2/Spike.yy",
+    "name":"Page 3",
+    "path":"folders/Sprites/Player Skins/Skins Icon/Page 3.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

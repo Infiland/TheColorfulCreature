@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Pirate",
-    "path":"folders/Sprites/Player Skins/Page 3/Pirate.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 3/Pirate.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

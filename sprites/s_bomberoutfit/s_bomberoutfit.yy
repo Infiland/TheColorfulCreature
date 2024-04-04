@@ -28,7 +28,7 @@
   "origin":0,
   "parent":{
     "name":"Bomber",
-    "path":"folders/Sprites/Player Skins/Page 2/Bomber.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 2/Bomber.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

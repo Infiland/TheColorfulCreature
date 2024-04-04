@@ -46,7 +46,7 @@
   "origin":0,
   "parent":{
     "name":"Sci-Fi",
-    "path":"folders/Sprites/Player Skins/Legendary/Sci-Fi.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 3/Sci-Fi.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

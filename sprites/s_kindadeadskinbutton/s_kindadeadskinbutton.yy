@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Kinda Dead",
-    "path":"folders/Sprites/Player Skins/Page 1/Kinda Dead.yy",
+    "name":"Page 1",
+    "path":"folders/Sprites/Player Skins/Skins Icon/Page 1.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

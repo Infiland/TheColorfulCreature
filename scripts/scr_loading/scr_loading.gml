@@ -179,6 +179,7 @@ global.controllervibrationsettings = 1
 global.fullscreen = 0
 
 //Workshop
+global.LEMode = 0
 global.workshopfolder = ""
 global.workshop = 0
 
@@ -313,6 +314,7 @@ global.cspikechallengetime = 9999
 global.world7challengetime = 9999
 global.invisiblechallengetime = 9999
 global.breakablechallengetime = 9999
+global.lunarbasechallengetime = 9999
 
 global.tutorialchallengedeaths = 999999
 global.ladderchallengedeaths = 999999
@@ -332,6 +334,7 @@ global.cspikechallengedeaths = 999999
 global.world7challengedeaths = 999999
 global.invisiblechallengedeaths = 999999
 global.breakablechallengedeaths = 999999
+global.lunarbasechallengedeaths = 999999
 
 global.currentchallenge = 0
 scr_loadchallengetime()

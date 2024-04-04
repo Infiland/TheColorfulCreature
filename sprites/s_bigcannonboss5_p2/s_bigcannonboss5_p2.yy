@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"King",
-    "path":"folders/Sprites/Sprites/Danger/Bosses/King.yy",
+    "path":"folders/Sprites/Danger/Bosses/King.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -81,8 +81,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"BossRelated",
+    "path":"texturegroups/BossRelated",
   },
   "type":0,
   "VTile":false,

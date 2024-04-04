@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Skibidi",
-    "path":"folders/Sprites/Player Skins/Page 4/Skibidi.yy",
+    "name":"Page 4",
+    "path":"folders/Sprites/Player Skins/Skins Icon/Page 4.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

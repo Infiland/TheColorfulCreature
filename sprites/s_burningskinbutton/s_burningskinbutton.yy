@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Burning Reddie",
-    "path":"folders/Sprites/Player Skins/Page 3/Burning Reddie.yy",
+    "name":"Page 3",
+    "path":"folders/Sprites/Player Skins/Skins Icon/Page 3.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Upside Down",
-    "path":"folders/Sprites/Player Skins/Page 2/Upside Down.yy",
+    "name":"Page 2",
+    "path":"folders/Sprites/Player Skins/Skins Icon/Page 2.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

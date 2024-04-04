@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Hexagon",
-    "path":"folders/Sprites/Player Skins/Page 2/Hexagon.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 2/Hexagon.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

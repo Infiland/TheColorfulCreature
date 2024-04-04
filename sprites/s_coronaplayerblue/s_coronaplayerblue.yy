@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Corona",
-    "path":"folders/Sprites/Player Skins/Page 1/Corona.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 1/Corona.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

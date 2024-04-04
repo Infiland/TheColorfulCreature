@@ -31,7 +31,7 @@
   "origin":9,
   "parent":{
     "name":"Hammer",
-    "path":"folders/Sprites/Sprites/Danger/Bosses/Hammer.yy",
+    "path":"folders/Sprites/Danger/Bosses/Hammer.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -104,8 +104,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"BossRelated",
+    "path":"texturegroups/BossRelated",
   },
   "type":0,
   "VTile":false,

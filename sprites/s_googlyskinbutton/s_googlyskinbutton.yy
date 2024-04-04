@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Googly Eyes",
-    "path":"folders/Sprites/Player Skins/Page 2/Googly Eyes.yy",
+    "name":"Page 2",
+    "path":"folders/Sprites/Player Skins/Skins Icon/Page 2.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

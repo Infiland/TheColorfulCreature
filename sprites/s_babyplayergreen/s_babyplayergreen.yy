@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Baby",
-    "path":"folders/Sprites/Player Skins/Page 1/Baby.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 2/Baby.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

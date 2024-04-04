@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Default",
-    "path":"folders/Sprites/Player Skins/Page 1/Default.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 1/Default.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

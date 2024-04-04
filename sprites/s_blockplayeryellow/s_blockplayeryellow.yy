@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Block",
-    "path":"folders/Sprites/Player Skins/Page 1/Block.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 1/Block.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

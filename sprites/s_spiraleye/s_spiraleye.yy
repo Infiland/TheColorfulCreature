@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Spiral",
-    "path":"folders/Sprites/Player Skins/Page 2/Spiral.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 3/Spiral.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

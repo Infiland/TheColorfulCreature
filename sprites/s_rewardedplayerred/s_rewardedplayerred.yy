@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Rewarded",
-    "path":"folders/Sprites/Player Skins/Page 1/Rewarded.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 1/Rewarded.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

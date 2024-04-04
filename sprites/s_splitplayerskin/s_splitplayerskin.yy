@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Split",
-    "path":"folders/Sprites/Player Skins/Page 3/Split.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 3/Split.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

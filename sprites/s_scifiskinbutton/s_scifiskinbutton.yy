@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Sci-Fi",
-    "path":"folders/Sprites/Player Skins/Legendary/Sci-Fi.yy",
+    "name":"Page 3",
+    "path":"folders/Sprites/Player Skins/Skins Icon/Page 3.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -81,8 +81,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"Buttons",
+    "path":"texturegroups/Buttons",
   },
   "type":0,
   "VTile":false,

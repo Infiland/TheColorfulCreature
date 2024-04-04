@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Upside Down",
-    "path":"folders/Sprites/Player Skins/Page 2/Upside Down.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 2/Upside Down.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

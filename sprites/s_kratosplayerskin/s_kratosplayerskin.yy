@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Kratos",
-    "path":"folders/Sprites/Player Skins/Page 4/Kratos.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 4/Kratos.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

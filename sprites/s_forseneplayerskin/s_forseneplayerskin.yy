@@ -27,7 +27,7 @@
   "origin":0,
   "parent":{
     "name":"forsenE",
-    "path":"folders/Sprites/Player Skins/Page 2/forsenE.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 2/forsenE.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

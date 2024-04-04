@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Angry",
-    "path":"folders/Sprites/Player Skins/Page 1/Angry.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 1/Angry.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

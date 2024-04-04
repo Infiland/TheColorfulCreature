@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Kratos",
-    "path":"folders/Sprites/Player Skins/Page 4/Kratos.yy",
+    "name":"Page 4",
+    "path":"folders/Sprites/Player Skins/Skins Icon/Page 4.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -81,8 +81,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"Buttons",
+    "path":"texturegroups/Buttons",
   },
   "type":0,
   "VTile":false,

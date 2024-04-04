@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Gold",
-    "path":"folders/Sprites/Player Skins/Legendary/Gold.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 1/Gold.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

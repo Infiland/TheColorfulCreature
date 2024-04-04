@@ -104,8 +104,8 @@
   "swatchColours":null,
   "swfPrecision":2.525,
   "textureGroupId":{
-    "name":"Default",
-    "path":"texturegroups/Default",
+    "name":"BossRelated",
+    "path":"texturegroups/BossRelated",
   },
   "type":0,
   "VTile":false,

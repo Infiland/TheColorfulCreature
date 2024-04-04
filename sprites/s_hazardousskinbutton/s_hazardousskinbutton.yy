@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Hazardous",
-    "path":"folders/Sprites/Player Skins/Legendary/Hazardous.yy",
+    "name":"Page 2",
+    "path":"folders/Sprites/Player Skins/Skins Icon/Page 2.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Steam",
-    "path":"folders/Sprites/Player Skins/Page 3/Steam.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 3/Steam.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

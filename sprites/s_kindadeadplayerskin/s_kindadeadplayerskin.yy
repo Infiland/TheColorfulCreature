@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Kinda Dead",
-    "path":"folders/Sprites/Player Skins/Page 1/Kinda Dead.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 1/Kinda Dead.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

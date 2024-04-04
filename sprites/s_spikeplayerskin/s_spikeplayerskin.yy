@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Spike",
-    "path":"folders/Sprites/Player Skins/Page 2/Spike.yy",
+    "path":"folders/Sprites/Player Skins/Skins/Page 3/Spike.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

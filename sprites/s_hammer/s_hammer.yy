@@ -31,7 +31,7 @@
   "origin":9,
   "parent":{
     "name":"Hammer",
-    "path":"folders/Sprites/Sprites/Danger/Bosses/Hammer.yy",
+    "path":"folders/Sprites/Danger/Bosses/Hammer.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

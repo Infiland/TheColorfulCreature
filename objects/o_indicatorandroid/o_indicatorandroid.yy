@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_playerredold",
-    "path":"sprites/s_playerredold/s_playerredold.yy",
+    "name":"s_playerred",
+    "path":"sprites/s_playerred/s_playerred.yy",
   },
   "spriteMaskId":null,
   "visible":true,

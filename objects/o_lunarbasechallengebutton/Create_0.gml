@@ -1,6 +1,7 @@
 depth = -10
 
-text = "Lunar Base Challenge"
+//text = "Lunar Base Challenge"
+text = "WORK IN PROGRESS!"
 difficulty = 4
 challenge = 18
 diamondtime = 500

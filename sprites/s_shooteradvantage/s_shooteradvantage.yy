@@ -31,7 +31,7 @@
   "origin":0,
   "parent":{
     "name":"Hotdog",
-    "path":"folders/Sprites/Sprites/Danger/Bosses/Hotdog.yy",
+    "path":"folders/Sprites/Danger/Bosses/Hotdog.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

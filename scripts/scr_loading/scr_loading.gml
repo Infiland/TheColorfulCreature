@@ -179,6 +179,7 @@ global.controllervibrationsettings = 1
 global.fullscreen = 0
 
 //Workshop
+global.LEMode = 0
 global.workshopfolder = ""
 global.workshop = 0
 

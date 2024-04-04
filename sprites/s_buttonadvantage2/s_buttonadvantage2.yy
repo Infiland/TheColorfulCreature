@@ -27,7 +27,7 @@
   "origin":0,
   "parent":{
     "name":"Piano",
-    "path":"folders/Sprites/Sprites/Danger/Bosses/Piano.yy",
+    "path":"folders/Sprites/Danger/Bosses/Piano.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

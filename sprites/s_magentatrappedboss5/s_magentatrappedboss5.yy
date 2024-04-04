@@ -26,7 +26,7 @@
   "origin":1,
   "parent":{
     "name":"King",
-    "path":"folders/Sprites/Sprites/Danger/Bosses/King.yy",
+    "path":"folders/Sprites/Danger/Bosses/King.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

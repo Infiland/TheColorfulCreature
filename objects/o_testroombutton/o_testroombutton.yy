@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_testroombutton",
-    "path":"sprites/s_testroombutton/s_testroombutton.yy",
+    "name":"s_challengetemplatebox",
+    "path":"sprites/s_challengetemplatebox/s_challengetemplatebox.yy",
   },
   "spriteMaskId":null,
   "visible":true,

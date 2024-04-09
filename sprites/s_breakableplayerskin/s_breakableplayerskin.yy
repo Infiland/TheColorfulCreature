@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Breakable",
-    "path":"folders/Sprites/Player Skins/Skins/Page 3/Breakable.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 3/Breakable.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

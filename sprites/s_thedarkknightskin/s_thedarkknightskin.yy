@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"The Dark Knight",
-    "path":"folders/Sprites/Player Skins/Skins/Page 1/The Dark Knight.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 1/The Dark Knight.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

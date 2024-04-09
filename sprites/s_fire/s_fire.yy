@@ -41,7 +41,7 @@
   "origin":4,
   "parent":{
     "name":"Burning Reddie",
-    "path":"folders/Sprites/Player Skins/Skins/Page 3/Burning Reddie.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 3/Burning Reddie.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

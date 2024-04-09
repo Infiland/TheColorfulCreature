@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Mad",
-    "path":"folders/Sprites/Player Skins/Skins/Page 1/Mad.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 1/Mad.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

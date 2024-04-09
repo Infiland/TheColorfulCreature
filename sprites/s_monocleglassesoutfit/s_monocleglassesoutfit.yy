@@ -34,7 +34,7 @@
   "origin":4,
   "parent":{
     "name":"Monocle",
-    "path":"folders/Sprites/Player Skins/Skins/Page 2/Monocle.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 2/Monocle.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

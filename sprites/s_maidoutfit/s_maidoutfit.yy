@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Maid",
-    "path":"folders/Sprites/Player Skins/Skins/Page 3/Maid.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 3/Maid.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

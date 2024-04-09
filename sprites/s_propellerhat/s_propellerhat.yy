@@ -27,7 +27,7 @@
   "origin":9,
   "parent":{
     "name":"Propeller Hat",
-    "path":"folders/Sprites/Player Hats/Hats/Page 3/Propeller Hat.yy",
+    "path":"folders/Sprites/Player Customization/Player Hats/Hats/Page 3/Propeller Hat.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

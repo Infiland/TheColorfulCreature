@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Arrow",
-    "path":"folders/Sprites/Player Skins/Skins/Page 3/Arrow.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 3/Arrow.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

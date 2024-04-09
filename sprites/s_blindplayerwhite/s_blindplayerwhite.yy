@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Blind",
-    "path":"folders/Sprites/Player Skins/Skins/Page 1/Blind.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 1/Blind.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

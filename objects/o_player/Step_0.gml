@@ -407,6 +407,7 @@ blinkinganimatioon = 0
 randomblinking = irandom_range(250,450)	
 }}
 break;
+case 22: scr_playerrbgnormal() break;
 case 23:
 if key_right { image_index = 0 }
 if key_left {image_index = 1 }
@@ -416,15 +417,9 @@ case 24:
 if key_right { rotation -= realwalk }
 if key_left {rotation += realwalk }
 scr_playerrbgnormal()
-case 26:
-scr_playerrbgnormal()
-break;
-case 27:
-scr_playerrbgnormal()
-break;
-case 28:
-scr_playerrbgnormal()
-break;
+case 26: scr_playerrbgnormal() break;
+case 27: scr_playerrbgnormal() break;
+case 28: scr_playerrbgnormal() break;
 case 29: scr_playerrbgnormal() break;
 case 30:
 scr_playerrbgnormal()

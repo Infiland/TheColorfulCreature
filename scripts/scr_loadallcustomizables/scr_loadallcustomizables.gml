@@ -4,6 +4,12 @@ var amount = 100
 global.skinselected = 0
 global.hatselected = 0
 global.itemselected = 0
+
+//Total Amount of items
+global.totalskinsAM = 50
+global.totalhatsAM = 66
+global.totalitemsAM = 3
+
 //Set all skins to "locked"
 for(var i=1;i<amount;i++) {
 	global.skin[i] = 0

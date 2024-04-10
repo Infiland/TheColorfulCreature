@@ -101,39 +101,45 @@ drawhatshop(s_bluesushaticon,42+dis,floor(75 * global.hatmerchantdiscount),globa
 //White Sus
 drawhatshop(s_whitesushaticon,43+dis,floor(112 * global.hatmerchantdiscount),global.hat[44],500)
 //Serbian
-drawhatshop(s_serbianhaticon,44+dis,floor(75 * global.hatmerchantdiscount),global.hat[47],500)
+drawhatshop(s_serbianhaticon,44+dis,floor(50 * global.hatmerchantdiscount),global.hat[47],500)
 //Rat Hat
 drawhatshop(s_rathaticon,45+dis,floor(75 * global.hatmerchantdiscount),global.hat[48],500)
 //German
-drawhatshop(s_germanhaticon,46+dis,floor(75 * global.hatmerchantdiscount),global.hat[49],500)
+drawhatshop(s_germanhaticon,46+dis,floor(50 * global.hatmerchantdiscount),global.hat[49],500)
 //French
-drawhatshop(s_frenchhaticon,47+dis,floor(75 * global.hatmerchantdiscount),global.hat[50],500)
+drawhatshop(s_frenchhaticon,47+dis,floor(50 * global.hatmerchantdiscount),global.hat[50],500)
 //Italian
-drawhatshop(s_italianhaticon,48+dis,floor(75 * global.hatmerchantdiscount),global.hat[51],500)
+drawhatshop(s_italianhaticon,48+dis,floor(50 * global.hatmerchantdiscount),global.hat[51],500)
 //Spanish
-drawhatshop(s_spanishhaticon,49+dis,floor(75 * global.hatmerchantdiscount),global.hat[52],500)
+drawhatshop(s_spanishhaticon,49+dis,floor(50 * global.hatmerchantdiscount),global.hat[52],500)
 //Magyar
-drawhatshop(s_magyarhaticon,50+dis,floor(75 * global.hatmerchantdiscount),global.hat[53],500)
+drawhatshop(s_magyarhaticon,50+dis,floor(50 * global.hatmerchantdiscount),global.hat[53],500)
 //Bosnian
-drawhatshop(s_bosnianhaticon,51+dis,floor(75 * global.hatmerchantdiscount),global.hat[54],500)
+drawhatshop(s_bosnianhaticon,51+dis,floor(50 * global.hatmerchantdiscount),global.hat[54],500)
 //Chinese
-drawhatshop(s_chinesehaticon,52+dis,floor(75 * global.hatmerchantdiscount),global.hat[55],500)
+drawhatshop(s_chinesehaticon,52+dis,floor(50 * global.hatmerchantdiscount),global.hat[55],500)
 //Ukraine
-drawhatshop(s_ukrainianhaticon,53+dis,floor(75 * global.hatmerchantdiscount),global.hat[56],500)
+drawhatshop(s_ukrainianhaticon,53+dis,floor(50 * global.hatmerchantdiscount),global.hat[56],500)
 //Macedonian
-drawhatshop(s_macedonianhaticon,54+dis,floor(75 * global.hatmerchantdiscount),global.hat[57],500)
+drawhatshop(s_macedonianhaticon,54+dis,floor(50 * global.hatmerchantdiscount),global.hat[57],500)
 //Chicken
 drawhatshop(s_chickenhaticon,55+dis,floor(100 * global.hatmerchantdiscount),global.hat[58],500)
 //Czech
-drawhatshop(s_czechhaticon,56+dis,floor(75 * global.hatmerchantdiscount),global.hat[59],500)
+drawhatshop(s_czechhaticon,56+dis,floor(50 * global.hatmerchantdiscount),global.hat[59],500)
 //Russian
-drawhatshop(s_russianhaticon,57+dis,floor(75 * global.hatmerchantdiscount),global.hat[60],500)
+drawhatshop(s_russianhaticon,57+dis,floor(50 * global.hatmerchantdiscount),global.hat[60],500)
 //Devil
 drawhatshop(s_devilhaticon,58+dis,floor(75 * global.hatmerchantdiscount),global.hat[61],500)
 //Turkey
-drawhatshop(s_turkishhaticon,59+dis,floor(75 * global.hatmerchantdiscount),global.hat[62],500)
+drawhatshop(s_turkishhaticon,59+dis,floor(50 * global.hatmerchantdiscount),global.hat[62],500)
 //Palestinian
-drawhatshop(s_palestinianhaticon,60+dis,floor(75 * global.hatmerchantdiscount),global.hat[63],500)
+drawhatshop(s_palestinianhaticon,60+dis,floor(50 * global.hatmerchantdiscount),global.hat[63],500)
+//Slovenian
+drawhatshop(s_slovenianhaticon,61+dis,floor(50 * global.hatmerchantdiscount),global.hat[64],500)
+//Japanese
+drawhatshop(s_japanesehaticon,62+dis,floor(50 * global.hatmerchantdiscount),global.hat[65],500)
+//Romanian
+drawhatshop(s_romanianhaticon,63+dis,floor(50 * global.hatmerchantdiscount),global.hat[66],500)
 
 //Arrow
 draw_sprite_ext(s_liquidarrow,0,490,620,1,arrowyscale,0,c_white,1)

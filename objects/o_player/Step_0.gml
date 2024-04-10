@@ -861,15 +861,15 @@ random_set_seed(global.newcalendarseed)
 var rwd = irandom_range(1,global.calendardifficulty)
 
 if rwd = 1 { //Hats
-var cust = irandom_range(1,63)
+var cust = irandom_range(1,global.totalhatsAM)
 if global.hat[cust] = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) } else { global.hat[cust] = 1 } 
 }
 if rwd = 2 { //Skins
-var cust = irandom_range(1,50)
+var cust = irandom_range(1,global.totalskinsAM)
 if global.skin[cust] = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) } else { global.skin[cust] = 1 } 
 }
 if rwd = 3 { //Items
-var cust = irandom_range(1,3)
+var cust = irandom_range(1,global.totalitemsAM)
 if global.item[cust] = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) } else { global.item[cust] = 1 } 
 }
 

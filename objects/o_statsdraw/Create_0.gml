@@ -43,7 +43,7 @@ allskins = normalskins + legskins
 //Hats
 var hN = 0
 allhats = 0
-reqallhats = 63
+reqallhats = global.totalhatsAM
 for(hN=0;hN<=reqallhats;hN++) {
 	if global.hat[hN] = 1 { allhats++ }
 }
@@ -52,7 +52,7 @@ hatspercentage = clamp(hatspercentage,0,100)
 //Items
 var iN = 0
 allitems = 0
-reqallitems = 3
+reqallitems = global.totalitemsAM
 for(iN=0;iN<=reqallitems;iN++) {
 	if global.item[iN] = 1 { allitems++ }
 }

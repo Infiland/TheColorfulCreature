@@ -124,6 +124,9 @@ case(60): object = o_russianhatbutton break; //Russian
 case(61): object = o_devilhatbutton break; //Devil
 case(62): object = o_turkishhatbutton break; //Turkish
 case(63): object = o_palestinianhatbutton break; //Palestinian
+case(64): object = o_slovenianhatbutton break; //Slovenian
+case(65): object = o_japanesehatbutton break; //Japanese
+case(66): object = o_romanianhatbutton break; //Romanian
 }
 break;
 case(3):

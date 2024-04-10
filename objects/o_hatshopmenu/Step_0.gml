@@ -106,48 +106,57 @@ case(41): makehatshop(global.hat[42],floor(112 * global.hatmerchantdiscount),42)
 case(42): makehatshop(global.hat[43],floor(75 * global.hatmerchantdiscount),43) break;
 //White Sus
 case(43): makehatshop(global.hat[44],floor(112 * global.hatmerchantdiscount),44) break;
-//Serbian
-case(44): makehatshop(global.hat[47],floor(75 * global.hatmerchantdiscount),47) break;
+//Serbian Hat
+case(44): makehatshop(global.hat[47],floor(50 * global.hatmerchantdiscount),47) break;
 //Rat Hat
 case(45): makehatshop(global.hat[48],floor(75 * global.hatmerchantdiscount),48) break;
 //German Hat
-case(46): makehatshop(global.hat[49],floor(75 * global.hatmerchantdiscount),49) break;
+case(46): makehatshop(global.hat[49],floor(50 * global.hatmerchantdiscount),49) break;
 //French Hat
-case(47): makehatshop(global.hat[50],floor(75 * global.hatmerchantdiscount),50) break;
+case(47): makehatshop(global.hat[50],floor(50 * global.hatmerchantdiscount),50) break;
 //Italian Hat
-case(48): makehatshop(global.hat[51],floor(75 * global.hatmerchantdiscount),51) break;
+case(48): makehatshop(global.hat[51],floor(50 * global.hatmerchantdiscount),51) break;
 //Spanish Hat
-case(49): makehatshop(global.hat[52],floor(75 * global.hatmerchantdiscount),52) break;
+case(49): makehatshop(global.hat[52],floor(50 * global.hatmerchantdiscount),52) break;
 //Magyar Hat
-case(50): makehatshop(global.hat[53],floor(75 * global.hatmerchantdiscount),53) break;
+case(50): makehatshop(global.hat[53],floor(50 * global.hatmerchantdiscount),53) break;
 //Bosnian Hat
-case(51): makehatshop(global.hat[54],floor(75 * global.hatmerchantdiscount),54) break;
+case(51): makehatshop(global.hat[54],floor(50 * global.hatmerchantdiscount),54) break;
 //Chinese Hat
-case(52): makehatshop(global.hat[55],floor(75 * global.hatmerchantdiscount),55) break;
+case(52): makehatshop(global.hat[55],floor(50 * global.hatmerchantdiscount),55) break;
 //Ukrainian Hat
-case(53): makehatshop(global.hat[56],floor(75 * global.hatmerchantdiscount),56) break;
+case(53): makehatshop(global.hat[56],floor(50 * global.hatmerchantdiscount),56) break;
 //Macedonian Hat
-case(54): makehatshop(global.hat[57],floor(75 * global.hatmerchantdiscount),57) break;
+case(54): makehatshop(global.hat[57],floor(50 * global.hatmerchantdiscount),57) break;
 //Chicken Hat
 case(55): makehatshop(global.hat[58],floor(100 * global.hatmerchantdiscount),58) break;
 //Czech Hat
-case(56): makehatshop(global.hat[59],floor(75 * global.hatmerchantdiscount),59) break;
+case(56): makehatshop(global.hat[59],floor(50 * global.hatmerchantdiscount),59) break;
 //Russia Hat
-case(57): makehatshop(global.hat[60],floor(75 * global.hatmerchantdiscount),60) break;
+case(57): makehatshop(global.hat[60],floor(50 * global.hatmerchantdiscount),60) break;
 //Devil Hat
 case(58): makehatshop(global.hat[61],floor(75 * global.hatmerchantdiscount),61) break;
 //Turkish Hat
-case(59): makehatshop(global.hat[62],floor(75 * global.hatmerchantdiscount),62) break;
+case(59): makehatshop(global.hat[62],floor(50 * global.hatmerchantdiscount),62) break;
 //Palestinian Hat
-case(60): makehatshop(global.hat[63],floor(75 * global.hatmerchantdiscount),63) break;
+case(60): makehatshop(global.hat[63],floor(50 * global.hatmerchantdiscount),63) break;
+//Slovenian Hat
+case(61): makehatshop(global.hat[64],floor(50 * global.hatmerchantdiscount),64) break;
+//Japanese Hat
+case(62): makehatshop(global.hat[65],floor(50 * global.hatmerchantdiscount),65) break;
+//Romanian Hat
+case(63): makehatshop(global.hat[66],floor(50 * global.hatmerchantdiscount),66) break;
 }
 }
 
 //Pressing/Holding Left
 if os_type != os_android {
 if RLselectedhat != 0 {
+	
+
 if !keyboard_check(vk_right) || gamepad_button_check(0,gp_padr) {
 if keyboard_check(vk_left) || gamepad_button_check(0,gp_padl) {
+	
 if press = 0 {
 selectedhat += 1
 press = 1
@@ -155,17 +164,24 @@ press = 1
 holdcooldown -= 1 * (60 / global.maxfps)
 if holdcooldown < 0 {
 selectedhat += 1
+if !keyboard_check(vk_shift) {
 holdcooldown = 4
+}
 }
 }
 
 }
 }
+
+
+
 }
 
 if keyboard_check_released(vk_left) || gamepad_button_check_released(0,gp_padl) {
 press = 0
+if !keyboard_check(vk_shift) {
 holdcooldown = 40
+}
 }
 
 //Pressing/Holding Right
@@ -179,7 +195,9 @@ press = 1
 holdcooldown -= 1 * (60 / global.maxfps)
 if holdcooldown < 0 {
 selectedhat -= 1
+if !keyboard_check(vk_shift) {
 holdcooldown = 4
+}
 }
 }
 
@@ -189,7 +207,9 @@ holdcooldown = 4
 
 if keyboard_check_released(vk_right) || gamepad_button_check_released(0,gp_padr) {
 press = 0
+if !keyboard_check(vk_shift) {
 holdcooldown = 40
+}
 }
 } else {
 	

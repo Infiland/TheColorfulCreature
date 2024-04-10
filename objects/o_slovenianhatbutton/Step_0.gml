@@ -1,0 +1,2 @@
+event_inherited()
+skincustomizelogic(s_slovenianhaticon,64)

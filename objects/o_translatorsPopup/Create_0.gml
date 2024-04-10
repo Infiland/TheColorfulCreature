@@ -11,7 +11,7 @@ var file = file_text_open_read(dir)
 var num = 0
 
 show_debug_message(string(file))
-if file_exists(file) {
+if !file_exists(file) {
 	while(!file_text_eof(file)) {
 		name[num++] = file_text_read_string(file);
 		//show_debug_message("test")

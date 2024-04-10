@@ -23,7 +23,7 @@ color = make_color_rgb(red,green,blue)
 scr_savehats()
 
 //Skins
-normalskins = global.skin001+global.skin002+global.skin003+global.skin004+global.skin005+global.skin006+global.skin007+global.skin008+global.skin009+global.skin010+global.skin012+global.skin014+global.skin015+global.skin016+global.skin017+global.skin019+global.skin020+global.skin021+global.skin023+global.skin024+global.skin026+global.skin027+global.skin028+global.skin029+global.skin030+global.skin031+global.skin032+global.skin033+global.skin034+global.skin036+global.skin037+global.skin038+global.skin039+global.skin040+global.skin042+global.skin043+global.skin044+global.skin045+global.skin046+global.skin047+global.skin048+global.skin049+global.skin050
+normalskins = global.skin[1]+global.skin[2]+global.skin[3]+global.skin[4]+global.skin[5]+global.skin[6]+global.skin[7]+global.skin[8]+global.skin[9]+global.skin[10]+global.skin[12]+global.skin[14]+global.skin[15]+global.skin[16]+global.skin[17]+global.skin[19]+global.skin[20]+global.skin[21]+global.skin[23]+global.skin[24]+global.skin[26]+global.skin[27]+global.skin[28]+global.skin[29]+global.skin[30]+global.skin[31]+global.skin[32]+global.skin[33]+global.skin[34]+global.skin[36]+global.skin[37]+global.skin[38]+global.skin[39]+global.skin[40]+global.skin[42]+global.skin[43]+global.skin[44]+global.skin[45]+global.skin[46]+global.skin[47]+global.skin[48]+global.skin[49]+global.skin[50]
 reqnormalskins = 43
 normalskinspercentage = (normalskins / reqnormalskins) * 100
 normalskinspercentage = clamp(normalskinspercentage,0,100)
@@ -33,7 +33,7 @@ if !steam_get_achievement("SKIN_COMPLETIONIST") {
 steam_set_achievement("SKIN_COMPLETIONIST")
 }}
 
-legskins = global.skin011+global.skin013+global.skin018+global.skin022+global.skin025+global.skin035+global.skin041
+legskins = global.skin[11]+global.skin[13]+global.skin[18]+global.skin[22]+global.skin[25]+global.skin[35]+global.skin[41]
 reqlegskins = 7
 legskinspercentage = (legskins / reqlegskins) * 100
 legskinspercentage = clamp(legskinspercentage,0,100)
@@ -86,8 +86,8 @@ steam_set_achievement("A_FAN_OF_HATS")
 
 //Challenges Bugfix
 challengebugfix = 0
-if global.hat001 != -1 {challengebugfix = 1}
-Cprogress = challengebugfix+global.skin002+global.skin004+global.skin010+global.skin011+global.skin014+global.skin016+global.skin017+global.skin019+global.skin021+global.skin023+global.skin028+global.skin031+global.skin040+global.skin037+global.skin041+global.skin043+global.skin045
+if global.hat[1] != -1 {challengebugfix = 1}
+Cprogress = challengebugfix+global.skin[2]+global.skin[4]+global.skin[10]+global.skin[11]+global.skin[14]+global.skin[16]+global.skin[17]+global.skin[19]+global.skin[21]+global.skin[23]+global.skin[28]+global.skin[31]+global.skin[40]+global.skin[37]+global.skin[41]+global.skin[43]+global.skin[45]
 reqchallenge = 18
 
 challengepercentage = (Cprogress / reqchallenge) * 100
@@ -124,7 +124,7 @@ reqHM = 7
 HMpercentage = (HMprogress / reqHM) * 100
 HMpercentage = clamp(HMpercentage,0,100)
 //Worlds
-Wprogress = global.world1 + global.world2 + global.world3 + global.world4 + global.world5 + global.skin017 + global.skin041
+Wprogress = global.world1 + global.world2 + global.world3 + global.world4 + global.world5 + global.skin[17] + global.skin[41]
 reqW = 7
 Wpercentage = (Wprogress / reqW) * 100
 Wpercentage = clamp(Wpercentage,0,100)

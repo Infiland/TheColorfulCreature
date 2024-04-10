@@ -30,8 +30,8 @@ if !steam_get_achievement("WEIRD_SPIKE_DEATH") { steam_set_achievement("WEIRD_SP
 		if global.boss2 = 0 {
 		global.boss2health = 6	
 		}}
-	if global.skin015 = 0 {
-	if global.totaldeaths > 999 {global.skin015 = 1}
+	if global.skin[15] = 0 {
+	if global.totaldeaths > 999 {global.skin[15] = 1}
 	}
 	
 if global.endless = 1 {

@@ -93,7 +93,7 @@ deaths = global.cspikechallengedeaths
 } break;
 //World 7
 case 15:
-if global.skin017 = 1 {
+if global.skin[17] = 1 {
 time = global.world7challengetime
 deaths = global.world7challengedeaths
 } break;

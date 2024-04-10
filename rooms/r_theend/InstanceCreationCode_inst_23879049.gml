@@ -27,16 +27,16 @@ if global.cheats = 0 {
 	
 if global.hardmode = 1 {
 if global.hardmodelives > 120 {
-if global.skin036 = 0 {
-global.skin036 = 1	
+if global.skin[36] = 0 {
+global.skin[36] = 1	
 }}}
 	
 if global.hardmodedifficulty >= 1 {
 global.creditscurrency += floor(25 * global.creditsmultiplier)
 if !steam_get_achievement("HM_MEDIUM") { //Medium
 steam_set_achievement("HM_MEDIUM") }
-if global.skin005 = 0 {
-global.skin005 = 1
+if global.skin[5] = 0 {
+global.skin[5] = 1
 }
 if global.hardmodeunlock = 1 { 
 	global.hardmodeunlock = 2 
@@ -47,8 +47,8 @@ if global.hardmodedifficulty >= 2 {
 if !steam_get_achievement("HM_DIFFICULT") { //Difficult
 steam_set_achievement("HM_DIFFICULT") }
 global.creditscurrency += floor(30 * global.creditsmultiplier)
-if global.skin009 = 0 {
-global.skin009 = 1
+if global.skin[9] = 0 {
+global.skin[9] = 1
 }
 if global.hardmodeunlock = 2 { 
 	global.hardmodeunlock = 3 
@@ -60,8 +60,8 @@ if global.hardmodedifficulty >= 3 {
 if !steam_get_achievement("HM_INSANE") { //Insane
 steam_set_achievement("HM_INSANE") }
 global.creditscurrency += floor(40 * global.creditsmultiplier)
-if global.skin025 = 0 {
-global.skin025 = 1
+if global.skin[25] = 0 {
+global.skin[25] = 1
 }
 if global.hardmodeunlock = 3 { 
 	global.hardmodeunlock = 4 
@@ -73,8 +73,8 @@ if global.hardmodedifficulty >= 4 {
 if !steam_get_achievement("HM_RIDICULOUS") { //Insane
 steam_set_achievement("HM_RIDICULOUS") }
 global.creditscurrency += floor(55 * global.creditsmultiplier)
-if global.skin026 = 0 {
-global.skin026 = 1
+if global.skin[26] = 0 {
+global.skin[26] = 1
 }
 if global.hardmodeunlock = 4 { 
 	global.hardmodeunlock = 5 
@@ -87,8 +87,8 @@ if global.hardmodedifficulty >= 5 {
 if !steam_get_achievement("HM_IMPOSSIBLE") { //Impossible
 steam_set_achievement("HM_IMPOSSIBLE") }
 global.creditscurrency += floor(70 * global.creditsmultiplier)
-if global.skin007 = 0 {
-global.skin007 = 1
+if global.skin[7] = 0 {
+global.skin[7] = 1
 }
 if global.hardmodeunlock = 5 { 
 	global.hardmodeunlock = 6 
@@ -100,8 +100,8 @@ if global.hardmodedifficulty >= 6 {
 if !steam_get_achievement("HM_YEAHGL") { //Yeah GL
 steam_set_achievement("HM_YEAHGL") }
 global.creditscurrency += floor(90 * global.creditsmultiplier)
-if global.skin027 = 0 {
-global.skin027 = 1
+if global.skin[27] = 0 {
+global.skin[27] = 1
 }
 if global.hardmodeunlock = 6 { 
 	global.hardmodeunlock = 7 
@@ -119,17 +119,17 @@ global.hardmodeunlock = 8
 if global.hardmodedifficulty = 0 {
 if !steam_get_achievement("YOU_WIN") { steam_set_achievement("YOU_WIN") }
 GooglePlayServices_Achievements_Unlock(YOUWIN)
-global.hat035 = 0
-if global.skin008 = 0 {
-global.skin008 = 1
+global.hat[35] = 0
+if global.skin[8] = 0 {
+global.skin[8] = 1
 if global.hardmodeunlock = 0 { 
 	global.hardmodeunlock = 1 
 	scr_savehardmode()
 	}
 }}
-if global.skin020 = 0 {
+if global.skin[20] = 0 {
 if global.special = 100 {
-global.skin020 = 1
+global.skin[20] = 1
 }}
 global.world1 = 1
 global.world2 = 1
@@ -143,7 +143,7 @@ scr_saveskins()
 if global.isgrayscale = true { //Grayscale
 if global.colorblindsettings = 4 {
 global.grayscaleachievement = true
-global.skin033 = 1
+global.skin[33] = 1
 scr_saveachievements()
 scr_checkachievements()
 if !steam_get_achievement("GRAYSCALE") {

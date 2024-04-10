@@ -1,4 +1,4 @@
-if global.skin047 = 1 {
+if global.skin[47] = 1 {
 global.skinselected = 46
 scr_saveskins()
 }

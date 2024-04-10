@@ -45,14 +45,7 @@ var hN = 0
 allhats = 0
 reqallhats = 63
 for(hN=0;hN<=reqallhats;hN++) {
-if hN < 10 {
-		if variable_global_get("hat00" + string(hN)) = 1 {
-			allhats++
-		}} else {
-		if variable_global_get("hat0" + string(hN)) = 1 {
-			allhats++
-		}
-	}
+	if global.hat[hN] = 1 { allhats++ }
 }
 hatspercentage = (allhats / reqallhats) * 100
 hatspercentage = clamp(hatspercentage,0,100)
@@ -61,14 +54,7 @@ var iN = 0
 allitems = 0
 reqallitems = 3
 for(iN=0;iN<=reqallitems;iN++) {
-if iN < 10 {
-		if variable_global_get("item00" + string(iN)) = 1 {
-			allitems++
-		}} else {
-		if variable_global_get("item0" + string(iN)) = 1 {
-			allitems++
-		}
-	}
+	if global.item[iN] = 1 { allitems++ }
 }
 
 itemspercentage = (allitems / reqallitems) * 100

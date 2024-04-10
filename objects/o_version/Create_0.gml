@@ -8,7 +8,7 @@ get = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentP
 getdemo = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1749610");
 
 if steam_get_app_id() = 1749610 { version = "Demo"	}
-if steam_get_app_id() != 1749610 { version = "Release 1.1.7" }
+if steam_get_app_id() != 1749610 { version = "Release 1.1.7.1" }
 if global.moddedGameDir != "" { version = loc(677) }
 if os_type = os_android { version = "Android Version" }
 rousr_dissonance_set_large_image("icon_bigger","Version - "+ string(version))

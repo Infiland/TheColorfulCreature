@@ -1,6 +1,6 @@
 {
   "$GMObject":"",
-  "%Name":"o_contributorsbutton",
+  "%Name":"o_translatorsbutton",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":7,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
@@ -9,7 +9,7 @@
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":73,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"o_contributorsbutton",
+  "name":"o_translatorsbutton",
   "overriddenProperties":[],
   "parent":{
     "name":"Contributors & Translators",

@@ -1,5 +1,5 @@
-if global.hat006 = 1 {
-global.skin029 = 1	
+if global.hat[6] = 1 {
+global.skin[29] = 1	
 }
 global.skinpage = 1
 global.hatpage = 1

@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Water",
-    "path":"folders/Sprites/Player Skins/Skins/Page 2/Water.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 2/Water.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -117,7 +117,7 @@ case(100): draw_achievement(s_HMAIcon7,global.hardmodeunlock-1,7,0,"The Sufferin
 case(101): draw_achievement(s_makeLAIcon2,"SUPER_DETAILED_LEVEL",1,0,"Super Detailed Level!","Make and save a level that has 500 or more objects.",0.9,1) break;
 case(102): draw_achievement(s_eastereggAIcon2,"EASTEREGG_2",1,1,"Space Shooter Ultimate!","Wait, a SSU reference?!!",0.8,1) break;
 case(103): draw_achievement(s_cookieAIcon,"COOKIE_CLICKER",1,1,"Cookie Clicker!","Bake 1 Cookie!",1,1) break;
-case(104): draw_achievement(s_kaizoAIcon,global.skin002,1,0,"KAAAAZOOOOO!","Beat the Kaizo Challenge!",1,0) break; //REMOVED
+case(104): draw_achievement(s_kaizoAIcon,global.skin[2],1,0,"KAAAAZOOOOO!","Beat the Kaizo Challenge!",1,0) break; //REMOVED
 case(105): draw_achievement(s_world1quickAIcon,"WORLD_1_QUICK",1,0,"Quick Hotdog Execution","Beat World 1 under 2 minutes.",0.8,1) break;
 case(106): draw_achievement(s_world2quickAIcon,"WORLD_2_QUICK",1,0,"Spikes Don't Run as Fast!","Beat World 2 under 3 minutes.",0.8,1) break;
 case(107): draw_achievement(s_world3quickAIcon,"WORLD_3_QUICK",1,0,"Platforms are Slow!","Beat World 3 under 4 minutes.",0.9,1) break;
@@ -129,7 +129,7 @@ case(112): draw_achievement(s_hat2AIcon,"A_FAN_OF_HATS",1,0,"A Fan of Hats!","Bu
 case(113): draw_achievement(s_skinallAIcon,"SKIN_COMPLETIONIST",1,0,"Skin Completionist!","Gather every skin in the game!",0.8,1) break;
 case(114): draw_achievement(s_hatallAIcon,"HAT_COMPLETIONIST",1,0,"Hat Completionist!","Gather every hat in the game!",0.82,1) break;
 case(115): draw_achievement(s_world6AIcon,"WORLD_6",1,1,"Wait, World 1 Again?","Beat World 6!",0.8,1) break;
-case(116): draw_achievement(s_world7AIcon,global.skin041,1,1,"Buffed Spikes!","Beat World 7!",1,0) break;
+case(116): draw_achievement(s_world7AIcon,global.skin[41],1,1,"Buffed Spikes!","Beat World 7!",1,0) break;
 case(117): draw_achievement(s_oopsAIcon,"OOPS",1,0,"Oops...","Infiland Moment :3",1,1) break;
 case(118): draw_achievement(s_tutorialAIcon,"TUTORIAL_CHALLENGE",1,0,"Tutorial Challenge","Beat the Tutorial Challenge!",1,1) break;
 case(119): draw_achievement(s_ladderAIcon,"LADDER_CHALLENGE",1,0,"Ladders!","Beat the Ladder Challenge!",1,1) break;

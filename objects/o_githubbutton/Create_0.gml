@@ -1,6 +1,6 @@
 /// @description Variables
 declarecustombutton()
-text = "Help Development"
+text = loc(680)
 
 image_speed = 0;
 depth = -10000

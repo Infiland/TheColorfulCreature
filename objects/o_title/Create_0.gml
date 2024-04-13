@@ -70,26 +70,26 @@ audio_play_sound(m_mainmenu,0,1);
 }
 audio_stop_sound(m_goodending)
 
-if global.skin012 = 0 {
-if global.totalcoins > 249 {global.skin012 = 1}}
-if global.skin015 = 0 {
-if global.totaldeaths > 999 {global.skin015 = 1}}
-if global.skin034 = 0 {
-if global.total1ups > 249 {global.skin034 = 1}}
-if global.skin035 = 0 {
-if global.totaltime > 172800 {global.skin035 = 1}}
+if global.skin[12] = 0 {
+if global.totalcoins > 249 {global.skin[12] = 1}}
+if global.skin[15] = 0 {
+if global.totaldeaths > 999 {global.skin[15] = 1}}
+if global.skin[34] = 0 {
+if global.total1ups > 249 {global.skin[34] = 1}}
+if global.skin[35] = 0 {
+if global.totaltime > 172800 {global.skin[35] = 1}}
 
 if global.totaltime > 50000 {
-	if global.hat008 = -1 {
-		global.hat008 = 0
+	if global.hat[8] = -1 {
+		global.hat[8] = 0
 	}
 }
 
-if global.hat008 = -1 {
+if global.hat[8] = -1 {
 if global.calendarcurrentmonth = 12 {
-global.hat008 = 0
+global.hat[8] = 0
 }}
-if global.hat034 = -1 { global.hat034 = 0 }
+if global.hat[34] = -1 { global.hat[34] = 0 }
 
 if gamebootup = 0 {
 alarm[0] = 15

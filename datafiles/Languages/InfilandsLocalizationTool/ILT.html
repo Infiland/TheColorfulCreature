@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang = "en" dir = "ltr">
+<style> 
+body {
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+  width: 80%;
+  border: 3px solid green;
+  padding: auto;
+  background-color: bisque;
+}
+
+p {
+  margin: auto;
+}
+
+a {
+  background-color: rgb(245, 243, 223);
+}
+
+#content {
+  margin: auto;
+  padding: auto;
+  background-color: rgb(255, 255, 255);
+}
+</style>
+
+<head>
+  <title id = "head-title"> Infiland's Localization Tool </title>
+  <meta charset = "utf-8" />
+  <meta http-equiv = "content-type" content = "text/html" />
+  <script type = "text/javascript" src = "convert.js"></script>
+</head>
+
+<body>
+
+  <div id = "content">
+    <br>
+    <p>Paste your text below in the textarea or import your .txt file. This will paste out text with all the IDs.<p>
+    <label>Made by Taipei Native, updated version made by Infiland and open sourced on github</label><br>
+    <a href="https://github.com/Infiland/InfilandLocalizationTool">Contribute here</a><hr>
+    <br><input id="myfile"  type="file"/>
+    <label>Start from id: </label><input type="number" id="fileNum" value="1" min="1"><br><br><hr>
+    <textarea  id="fileContent" cols="80" rows="10" placeholder="Paste text here"></textarea>
+    <hr>
+    <button type="button" onclick="convert()" >Convert</button><br>
+    <p id="memo"></p>
+    <p id="result"></p>
+
+  </div>
+
+</body>
+
+</html>

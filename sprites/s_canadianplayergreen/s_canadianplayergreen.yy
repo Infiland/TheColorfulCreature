@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Canadian",
-    "path":"folders/Sprites/Player Skins/Skins/Page 2/Canadian.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 2/Canadian.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

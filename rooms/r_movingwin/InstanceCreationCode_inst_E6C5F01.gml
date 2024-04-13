@@ -8,7 +8,7 @@ instance_destroy(o_musicdistortion)
 instance_destroy(o_ammocounter)
 global.challenges = 1
 if global.cheats = 0 {
-global.skin028 = 1
+global.skin[28] = 1
 global.creditscurrency += floor(30 * global.creditsmultiplier)
 }
 scr_saveskins()

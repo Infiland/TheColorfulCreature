@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Googly Eyes",
-    "path":"folders/Sprites/Player Skins/Skins/Page 2/Googly Eyes.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 2/Googly Eyes.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

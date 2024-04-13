@@ -27,7 +27,7 @@
   "origin":0,
   "parent":{
     "name":"Player Hats",
-    "path":"folders/Sprites/Player Hats.yy",
+    "path":"folders/Sprites/Player Customization/Player Hats.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

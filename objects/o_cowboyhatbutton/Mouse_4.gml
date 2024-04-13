@@ -1,4 +1,4 @@
-if global.hat039 = 1 {
+if global.hat[39] = 1 {
 global.hatselected = 39
 scr_savehats()
 }

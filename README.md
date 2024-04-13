@@ -2,12 +2,12 @@
 Note: While other IDE's are possible to use, developing TCC is preferable using the GameMaker IDE.
 Here are basic instructions on how to successfully run the game
 
-1. Download the latest version of GameMaker (2024.4)
+1. Download the latest version of GameMaker (2024.2)
 Official Site: https://gamemaker.io/en
 Steam: https://store.steampowered.com/app/1670460/GameMaker/
 3. Clone this repository https://github.com/Infiland/TheColorfulCreature
 4. Open the project in GameMaker from where you cloned it.
-5. Download the Steamworks v1.55 SDK and put it under the folder 'C:\Users\User\Desktop\sdk' (IT MUST BE IN THIS EXACT LOCATION OR THE GAME WILL NOT WORK), the SDK can be downloaded on https://partner.steamgames.com/ but requires a steam account
+5. Download the Steamworks v1.55 SDK and put it under the folder 'C:\Users\User\Desktop\sdk' (IT MUST BE IN THIS EXACT LOCATION OR THE GAME WILL NOT WORK), the SDK can be downloaded on https://partner.steamgames.com/ but requires a steam account. For Linux or other platforms, I don't know, find a way lmao  ( ͡° ͜ʖ ͡°)
 6. You have to modify the "Steamworks" extension so that it aligns with the sdk path
 7. Click 'Run' or press F5 in GameMaker to test the game
 
@@ -18,6 +18,15 @@ Note: Infiland can only update the game through steam on Steamworks, contributor
 1. Make your local branch so that no conflicts happen
 2. Make a change and commit
 3. Do a pull request and wait for Infiland to accept the change
+
+# How to credit yourself in TCC
+Note: This isn't required but if you'd like to credit yourself for helping the game, do the following:
+1. In GameMaker IDE, click the "Hamburger" icon (three line icon) and click "Included Files"
+2. Press "Open in Explorer"
+3. Go to folder "Other" and find "contributors.txt"
+4. Add yourself in at the bottom of the document!
+
+While debugging or testing in gamemaker, you won't see contributors, unless the steam version is ran.
 
 # How to make a mod for TCC
 1. Fork this reposetory

@@ -8,7 +8,7 @@ get = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentP
 getdemo = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1749610");
 
 if steam_get_app_id() = 1749610 { version = "Demo"	}
-if steam_get_app_id() != 1749610 { version = "Release 1.1.6.3" }
+if steam_get_app_id() != 1749610 { version = "Release 1.1.8" }
 if global.moddedGameDir != "" { version = loc(677) }
 if os_type = os_android { version = "Android Version" }
 rousr_dissonance_set_large_image("icon_bigger","Version - "+ string(version))
@@ -58,15 +58,27 @@ if steam_user_owns_dlc(2411812) && steam_user_owns_dlc(2411811) && steam_user_ow
 
 //Go to o_richpresence
 rng = 0
-somethingwillhappen = irandom_range(100,500)
-splash = irandom_range(1,550)
+//somethingwillhappen = irandom_range(100,500)
+//splash = irandom_range(1,550)
 
-if global.customsplashessettings = 1 {
+
 splashmax = 0
 var num = 0;
-var dircustomsplash = game_save_id + "/Custom/Custom Splash Texts.txt"
-if file_exists(dircustomsplash) {
-var file = file_text_open_read(dircustomsplash);
+if global.customsplashessettings = 1 {
+//Custom splash texts
+var dirsplash = game_save_id + "/Custom/Custom Splash Texts.txt"
+} else {
+//Default Splash Text lineup
+var dirsplash = program_directory + "/Other/splash.txt"
+//Christmas
+if current_day >= 25 && current_month = 12 || current_day <= 7 && current_month = 1 {
+	var dirsplash = program_directory + "/Other/splashchristmas.txt"
+}
+}
+
+//Loading the splashtext .txt file
+if file_exists(dirsplash) {
+var file = file_text_open_read(dirsplash);
 while (!file_text_eof(file))
 {
     str[num++] = file_text_readln(file);
@@ -74,16 +86,16 @@ while (!file_text_eof(file))
 }
 if splashmax != 0 { 
 splash = irandom(splashmax-1)
-chosentext = str[splash]
+splashtext = str[splash]
 } else {
-chosentext = "Trying to crash the game eh? Nice try!"
+splashtext = ""
 }
 file_text_close(file);
 } else {
-chosentext = "Trying to crash the game eh? Nice try!"
-}
+splashtext = ""
 }
 
+/*
 //TCC Anniversary
 if current_day = 3 {
 if current_month = 9 {
@@ -103,16 +115,7 @@ splash = -3
 if current_day = 31 {
 if current_month = 10 {
 splash = -4
-}}
-//Christmas
-if current_day >= 25 {
-if current_month = 12 {
-splash = irandom_range(-5,-18)
-}}
-if current_day <= 7 {
-if current_month = 1 {
-splash = irandom_range(-5,-18)
-}}
+}}*/
 
 //Special Rainbow colors!
 red = 255

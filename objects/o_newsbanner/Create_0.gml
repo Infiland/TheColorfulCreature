@@ -1,7 +1,7 @@
 y = -600
 image_alpha = 0
 depth = -15001
-req = 12
+req = 13
 newsText = string_upper(loc(618))
 
 if req <= global.gamenews { instance_destroy() }
@@ -17,7 +17,8 @@ if req <= global.gamenews { instance_destroy() }
 //text = "Release 1.1.2 is here! A new skin has been added and improved customization code even more.\n\nHave fun!"
 //text = "Release 1.1.3 is here! You can now get skins through the wheel! Just become an active player and you'll be able to get all of the skins in The Colorful Creature!\n\nHave Fun!"
 //text = "Release 1.1.4 is here! You can now restart challenges with CTRL + Restart.\n\n Have Fun!"
-text = "Release 1.1.6 is here! Fixed few bugfixes and added tiny suprises! Also fullscreen finally saves and there's borderless fullscreen so yay!\n\nHave fun!"
+//text = "Release 1.1.6 is here! Fixed few bugfixes and added tiny suprises! Also fullscreen finally saves and there's borderless fullscreen so yay!\n\nHave fun!"
+text = "Release 1.1.7 is here! Added partial Czech, Portuguese and Slovenian! Improvements to Calendar! Code Refactored all of the skins, hats and items in the game! Well, you might not even know what that means but whatever!\n\nHave fun!"
 if global.moddedGameDir != "" {
 text = "You are running a modded client! Save files will not be confilcted with the modded game. Have fun!\n\n[c_yellow]Mod Name: " + string(global.moddedGameDir)	
 newsText = string_upper(loc(677))

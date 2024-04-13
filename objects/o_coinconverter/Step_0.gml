@@ -24,9 +24,9 @@ if used = false {
 if global.checkdeposit = false {
 global.creditscurrency += floor(global.special * (5 + (global.special * 0.01)))
 audio_play_sound(snd_cashsound,0,0)
-if global.skin020 = 0 {
+if global.skin[20] = 0 {
 if global.special = 100 {
-global.skin020 = 1
+global.skin[20] = 1
 }}
 global.special = 0
 global.pickup = 0

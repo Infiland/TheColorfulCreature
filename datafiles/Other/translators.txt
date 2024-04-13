@@ -1,0 +1,15 @@
+[s_germanhat][c_yellow]German Translation:[/] BLaacK, devc, KD10, Reisch
+[s_frenchhat][c_yellow]French Translation:[/] Maghreb, Sanslesquellete
+[s_italianhat][c_yellow]Italian Translation:[/] dha, Thirsty
+[s_spanishhat][c_yellow]Spanish Translation:[/] SuperYoshi_13
+[s_magyarhat][c_yellow]Hungarian Translation:[/] Nightmareyoc
+[s_turkishhat][c_yellow]Turkish Translation:[/] Taukingur
+[s_serbianhat][s_croatianhat][s_bosnianhat][c_yellow]Serbian/Croatian/Bosnian Translation:[/] Infiland, sadzake
+[s_portuguesehat][c_yellow]Portuguese Translation:[/] Antoniokf5
+[s_czechhat][c_yellow]Czech Translation:[/] Frsik, DonBrom
+[s_chinesehat][c_yellow]Chinese Translation:[/] TaipeiNative
+[s_slovenianhat][c_yellow]Slovenian Translation:[/] maks
+[s_japanesehat][c_yellow]Japanese Translation:[/] ///
+[s_ukrainianhat][c_yellow]Ukrainian Translation:[/] Kamepin UA
+[s_macedonianhat][c_yellow]Macedonian Translation:[/] Hanz, Crimson
+[s_romanianhat][c_yellow]Romanian Translation:[/] Pelu Pelu

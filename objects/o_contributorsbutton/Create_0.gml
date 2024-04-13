@@ -6,4 +6,4 @@ xscale = 0.47
 yscale = 0.47
 width = 3
 
-text = "Contributors"
+text = loc(681)

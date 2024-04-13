@@ -108,8 +108,8 @@ var upload = async_load[? "result"];
 if upload == ugc_result_success {
 result = 1
 timer = 1000
-if global.skin042 = 0 {
-global.skin042 = 1
+if global.skin[42] = 0 {
+global.skin[42] = 1
 scr_saveskins()
 }
 

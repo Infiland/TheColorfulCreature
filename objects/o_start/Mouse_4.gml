@@ -1,5 +1,7 @@
 /// @description Click to start
 window_set_cursor(cr_default)
+
+if instance_exists(o_progressask) { exit }
 if room = r_mainmenu {
 audio_sound_pitch(m_mainmenu,1)	
 room_goto(r_gamemode);

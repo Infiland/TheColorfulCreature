@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Tuxedo",
-    "path":"folders/Sprites/Player Skins/Skins/Page 2/Tuxedo.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 2/Tuxedo.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

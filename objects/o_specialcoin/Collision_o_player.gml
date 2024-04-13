@@ -4,7 +4,7 @@ if global.hardmode = 0 {
 global.pickup = 1
 global.totalcoins += 1
 if global.totalcoins = 5000 {
-global.skin013 = 1
+global.skin[13] = 1
 scr_saveskins()
 }
 global.special += 1

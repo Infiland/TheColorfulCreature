@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Red Ball",
-    "path":"folders/Sprites/Player Skins/Skins/Page 2/Red Ball.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 2/Red Ball.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

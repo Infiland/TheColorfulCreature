@@ -53,3 +53,7 @@ global.totalwaterdeaths = 0
 global.lowoncreditsACH = 0
 global.toomuchcreditsACH = 0
 }
+
+function scr_reloadquests(){
+global.QUESTlevelcompleted = 0
+}

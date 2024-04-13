@@ -19,9 +19,9 @@ steam_upload_score("Old School Endless Run", global.endlesslevelhighscore);
 }}
 
 if global.endlessrunmode != 3 {
-if global.skin022 = 0 {
+if global.skin[22] = 0 {
 if global.endlesslevelhighscore > 49 || global.newendlesslevelhighscore > 49 {
-global.skin022 = 1
+global.skin[22] = 1
 }}}
 scr_saveendless()
 }

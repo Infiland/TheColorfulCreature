@@ -10,8 +10,8 @@
   "name":"o_contributorsPopup",
   "overriddenProperties":[],
   "parent":{
-    "name":"Contributors",
-    "path":"folders/Objects/Mainmenu/Support/Contributors.yy",
+    "name":"Contributors & Translators",
+    "path":"folders/Objects/Mainmenu/Support/Contributors & Translators.yy",
   },
   "parentObjectId":null,
   "persistent":false,

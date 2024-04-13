@@ -203,37 +203,37 @@ scr_loadallcustomizables()
 scr_loadskins()
 scr_loadhats()
 
-if global.hat003 = -1 {
+if global.hat[3] = -1 {
 if current_month = 9 {
 if current_day = 3 {
-global.hat003 = 0
+global.hat[3] = 0
 scr_savehats()	
 }}
 if current_month = 11 {
 if current_day = 18 {
-global.hat003 = 0
+global.hat[3] = 0
 scr_savehats()	
 }}
 }
 
-if global.hat008 = -1 {
+if global.hat[8] = -1 {
 if current_month = 1 {
 if current_day <= 7 {
-global.hat008 = 0
+global.hat[8] = 0
 scr_savehats()	
 }}
 if current_month = 12 {
 if current_day >= 20 {
-global.hat008 = 0
+global.hat[8] = 0
 scr_savehats()	
 }}
 }
 
-if global.hat009 = -1 || global.hat010 = -1 {
+if global.hat[9] = -1 || global.hat[10] = -1 {
 if current_month = 10 {
 if current_day >= 20 {
-global.hat009 = 0
-global.hat010 = 0
+global.hat[9] = 0
+global.hat[10] = 0
 scr_savehats()	
 }}
 }
@@ -242,7 +242,7 @@ scr_savehats()
 global.hardmodeunlock = 0
 scr_loadhardmode()
 if global.endlesslevelhighscore > 49 {
-global.skin022 = 1
+global.skin[22] = 1
 }
 audio_stop_sound(m_mainmenu)
 //Controls

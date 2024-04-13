@@ -11,7 +11,7 @@ if !steam_get_achievement("WORKSHOP_BEGINNER") { steam_set_achievement("WORKSHOP
 if !steam_get_achievement("FEATURED_LEVEL") { steam_set_achievement("FEATURED_LEVEL") }	
 if global.customlevelcompleted > 49 {
 if global.cheats = 0 {
-global.skin044 = 1
+global.skin[44] = 1
 if !steam_get_achievement("WORKSHOP_MASTER") { steam_set_achievement("WORKSHOP_MASTER") }
 }}
 if global.time > 3 { 

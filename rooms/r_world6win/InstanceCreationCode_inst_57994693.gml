@@ -9,9 +9,9 @@ instance_destroy(o_ammocounter)
 global.challenges = 1
 if global.cheats = 0 {
 global.creditscurrency += floor(50 * global.creditsmultiplier)
-global.skin017 = 1
+global.skin[17] = 1
 if global.deaths < 25 {
-global.skin018 = 1
+global.skin[18] = 1
 }
 }
 scr_saveskins()

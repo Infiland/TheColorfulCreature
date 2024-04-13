@@ -22,7 +22,7 @@ realspritedistance = lerp(realspritedistance,spritedistance,0.2 * (60 / global.m
 	}
 	if change = 0 { arrowyscale = lerp(arrowyscale,0.89,0.1 * (60 / global.maxfps)) } else { arrowyscale = lerp(arrowyscale,1.01,0.1 * (60 / global.maxfps)) }
 draw_sprite(s_nohaticon,0,455+realspritedistance,205)
-if global.item001 < 1 { draw_sprite(s_lockedhaticon,0,575+realspritedistance,205) } else {
+if global.item[1] < 1 { draw_sprite(s_lockedhaticon,0,575+realspritedistance,205) } else {
 draw_sprite(s_paintbrushitembutton,0,575+realspritedistance,205) }
 
 draw_rectangle_color(822,205,1024,310,c_black,c_black,c_black,c_black,false)

@@ -73,8 +73,8 @@ function randomlevel() {
 	if global.cheats = 0 {
 	if !steam_get_achievement("ABSOLUTE_ENDLESS_HELL") { steam_set_achievement("ABSOLUTE_ENDLESS_HELL") }
 	}
-	if global.skin032 = 0 {
-	global.skin032 = 1
+	if global.skin[32] = 0 {
+	global.skin[32] = 1
 	scr_saveskins()
 	}}}
 	

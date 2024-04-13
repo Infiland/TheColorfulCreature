@@ -34,7 +34,7 @@
   "origin":0,
   "parent":{
     "name":"Smiley",
-    "path":"folders/Sprites/Player Skins/Skins/Page 3/Smiley.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 3/Smiley.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

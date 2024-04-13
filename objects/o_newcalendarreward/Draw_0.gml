@@ -5,8 +5,9 @@ random_set_seed(global.newcalendarseed)
 
 var rwd = irandom_range(1,global.calendardifficulty)
 
+//This system chooses rewards, need to make it better
 if rwd = 1 {
-global.newcalendarreward = irandom_range(1,58)
+global.newcalendarreward = irandom_range(1,global.totalhatsAM)
 switch(global.newcalendarreward) {
 default: hat = s_lockedskinicon break;
 case(1): hat = s_graduationhaticon break;
@@ -67,9 +68,17 @@ case(55): hat = s_chinesehaticon break;
 case(56): hat = s_ukrainianhaticon break;
 case(57): hat = s_chinesehaticon break;
 case(58): hat = s_chickenhaticon break;
+case(59): hat = s_czechhaticon break;
+case(60): hat = s_russianhaticon break;
+case(61): hat = s_devilhaticon break;
+case(62): hat = s_turkishhaticon break;
+case(63): hat = s_palestinianhaticon break;
+case(64): hat = s_slovenianhaticon break;
+case(65): hat = s_japanesehaticon break;
+case(66): hat = s_romanianhaticon break;
 }}
 if rwd = 2 {
-global.newcalendarreward = irandom_range(1,50)
+global.newcalendarreward = irandom_range(1,global.totalskinsAM)
 switch(global.newcalendarreward) {
 default: hat = s_lockedskinicon break;
 case(1): hat = s_normalskinbutton break;
@@ -124,7 +133,7 @@ case(49): hat = s_skibidiskinbutton break;
 case(50): hat = s_kratosskinbutton break;
 }}
 if rwd = 3 {
-global.newcalendarreward = irandom_range(1,3)
+global.newcalendarreward = irandom_range(1,global.totalitemsAM)
 switch(global.newcalendarreward) {
 default: hat = s_lockedskinicon break;
 case(1): hat = s_paintbrushitembutton break;

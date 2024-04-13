@@ -26,7 +26,7 @@
   "origin":9,
   "parent":{
     "name":"Clock",
-    "path":"folders/Sprites/Player Skins/Skins/Page 3/Clock.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 3/Clock.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

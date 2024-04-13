@@ -1,3 +1,4 @@
+if instance_exists(o_progressask) { exit }
 if !instance_exists(o_quitask) {
 scr_loadachievements()
 if os_type != os_android {

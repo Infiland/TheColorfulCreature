@@ -12,6 +12,7 @@ var num = 0
 
 show_debug_message(string(file))
 
+if !file_exists(file) {
 	while(!file_text_eof(file)) {
 		name[num++] = file_text_read_string(file);
 		//show_debug_message("test")
@@ -19,6 +20,7 @@ show_debug_message(string(file))
 		file_text_readln(file);
 	}
 file_text_close(file);
+}
 
 for(var i=0; i < namecnt;i++) {
 	if namecnt-1 != i {	

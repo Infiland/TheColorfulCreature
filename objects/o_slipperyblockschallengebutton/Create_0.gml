@@ -7,7 +7,7 @@ diamondtime = 90
 deaths = 999999
 time = 9999
 locked = 1
-if global.skin014 < 1 { wincol = c_white } else { wincol = c_lime }
+if global.skin[14] < 1 { wincol = c_white } else { wincol = c_lime }
 if global.world2 = 1 { locked = 0 }
 
 

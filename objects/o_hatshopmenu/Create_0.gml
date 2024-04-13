@@ -10,4 +10,5 @@ dis = 0
 arrowyscale = 1
 change = 0
 
-limithat = 60
+//Hardcoded lol
+limithat = global.totalhatsAM-3

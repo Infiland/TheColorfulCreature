@@ -34,7 +34,7 @@
   "origin":9,
   "parent":{
     "name":"Hitbox",
-    "path":"folders/Sprites/Player Skins/Skins/Page 2/Hitbox.yy",
+    "path":"folders/Sprites/Player Customization/Player Skins/Skins/Page 2/Hitbox.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -407,6 +407,7 @@ blinkinganimatioon = 0
 randomblinking = irandom_range(250,450)	
 }}
 break;
+case 22: scr_playerrbgnormal() break;
 case 23:
 if key_right { image_index = 0 }
 if key_left {image_index = 1 }
@@ -416,15 +417,9 @@ case 24:
 if key_right { rotation -= realwalk }
 if key_left {rotation += realwalk }
 scr_playerrbgnormal()
-case 26:
-scr_playerrbgnormal()
-break;
-case 27:
-scr_playerrbgnormal()
-break;
-case 28:
-scr_playerrbgnormal()
-break;
+case 26: scr_playerrbgnormal() break;
+case 27: scr_playerrbgnormal() break;
+case 28: scr_playerrbgnormal() break;
 case 29: scr_playerrbgnormal() break;
 case 30:
 scr_playerrbgnormal()
@@ -852,6 +847,8 @@ if room = asset_get_index("r_c2022lvl" + string(global.calendarday7)) {
 kickoutofcalendar() global.newcalendarlevel7 = 1
 }
 
+//This code is terrible, this is supposed to give rewards to the player
+//when he completes the calendar week
 if global.newcalendarrewarded = 0 {
 if global.newcalendarlevel1 = 1 {
 if global.newcalendarlevel2 = 1 {
@@ -862,39 +859,19 @@ if global.newcalendarlevel6 = 1 {
 if global.newcalendarlevel7 = 1 {
 random_set_seed(global.newcalendarseed)
 var rwd = irandom_range(1,global.calendardifficulty)
-if rwd = 1 {
-var cust = irandom_range(1,58)
-if cust < 10 {
-var m = variable_global_get("hat00"+string(cust))
-if m = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) }
-variable_global_set("hat00"+string(cust),1)
-} else {
-var m = variable_global_get("hat0"+string(cust))
-if m = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) }
-variable_global_set("hat0"+string(cust),1)	
-}}
-if rwd = 2 {
-var cust = irandom_range(1,48)
-if cust < 10 {
-var m = variable_global_get("skin00"+string(cust))
-if m = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) }
-variable_global_set("skin00"+string(cust),1)
-} else {
-var m = variable_global_get("skin0"+string(cust))
-if m = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) }
-variable_global_set("skin0"+string(cust),1)	
-}}
-if rwd = 3 {
-var cust = irandom_range(1,3)
-if cust < 10 {
-var m = variable_global_get("item00"+string(cust))
-if m = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) }
-variable_global_set("item00"+string(cust),1)
-} else {
-var m = variable_global_get("item0"+string(cust))
-if m = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) }
-variable_global_set("item0"+string(cust),1)	
-}}
+
+if rwd = 1 { //Hats
+var cust = irandom_range(1,global.totalhatsAM)
+if global.hat[cust] = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) } else { global.hat[cust] = 1 } 
+}
+if rwd = 2 { //Skins
+var cust = irandom_range(1,global.totalskinsAM)
+if global.skin[cust] = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) } else { global.skin[cust] = 1 } 
+}
+if rwd = 3 { //Items
+var cust = irandom_range(1,global.totalitemsAM)
+if global.item[cust] = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) } else { global.item[cust] = 1 } 
+}
 
 if global.calendardifficulty = 2 { global.creditscurrency += floor(100 * global.creditsmultiplier) }
 if global.calendardifficulty = 3 { global.creditscurrency += floor(250 * global.creditsmultiplier) }

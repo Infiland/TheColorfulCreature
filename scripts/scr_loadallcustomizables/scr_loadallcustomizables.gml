@@ -4,34 +4,25 @@ var amount = 100
 global.skinselected = 0
 global.hatselected = 0
 global.itemselected = 0
+
+//Total Amount of items
+global.totalskinsAM = 50
+global.totalhatsAM = 66
+global.totalitemsAM = 3
+
+//Set all skins to "locked"
 for(var i=1;i<amount;i++) {
-	if i < 10 {
-		variable_global_set("skin00" + string(i),0)
-		variable_global_set("hat00" + string(i),0)
-		variable_global_set("item00" + string(i),0)
-	}
-
-	if i < 100 {
-		if i > 9 {	
-			variable_global_set("skin0" + string(i),0)
-			variable_global_set("hat0" + string(i),0)
-			variable_global_set("item0" + string(i),0)
-		}
-	}
-
-	if i > 99 {	
-		variable_global_set("skin" + string(i),0)
-		variable_global_set("hat" + string(i),0)
-		variable_global_set("item" + string(i),0)
-	}
+	global.skin[i] = 0
+	global.hat[i] = 0
+	global.item[i] = 0
 }
 
 //Exceptions
-global.skin001 = 1
-global.hat001 = -1
-global.hat003 = -1
-global.hat008 = -1
-global.hat009 = -1
-global.hat010 = -1
-global.hat035 = -1
+global.skin[1] = 1 //Default skin is unlocked
+global.hat[1] = -1 //Hats are locked because they have to be unlocked in order to purchase them
+global.hat[3] = -1
+global.hat[8] = -1
+global.hat[9] = -1
+global.hat[10] = -1
+global.hat[35] = -1
 }

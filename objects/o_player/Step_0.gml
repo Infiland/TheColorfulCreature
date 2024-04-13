@@ -748,13 +748,6 @@ scr_savegame()
 		audio_sound_pitch(snd_newhighscore,highscorepitch)
 	if global.endlesslevel > global.endlesslevelhighscore { audio_play_sound(snd_newhighscore,10,0) }}
 		
-	if global.infinitelivessettings = 0 {
-		switch(global.endlessrunmode) {
-		case(1): rousr_dissonance_set_details("Playing Endless Run [Score: " + string(global.endlesslevel) + "]") break;
-		case(2): rousr_dissonance_set_details("Playing O.S Endless Run [Score: " + string(global.endlesslevel) + "]") break;
-		case(3): rousr_dissonance_set_details("Playing Custom Endless Run [Score: " + string(global.endlesslevel) + "]") break;
-		}
-		}
 	}} else {
 		global.totallevelcompleted += 1
 		room_goto(r_dailylevelwin)
@@ -796,7 +789,6 @@ if global.calendar = 1 {
 	calendarcheckmusic()
 	}
 	
-	rousr_dissonance_set_details("Playing Calendar - Year: " + string(global.calendaryear) + " | Day: " + string(global.calendarday +  (28 * (global.calendarmonth-1))))
 	scr_loadrewardscalendar()
 	
 	if steam_get_app_id() = 1749610 {
@@ -893,7 +885,7 @@ if place_meeting(x,y+3,o_door) {
 if !instance_exists(o_key) {
 global.LEMode = 1
 global.LEVerified = 1
-rousr_dissonance_set_timestamps(undefined,undefined)
+
 instance_destroy(o_time)
 instance_destroy(o_timecounter)
 instance_destroy(o_deathcounter)

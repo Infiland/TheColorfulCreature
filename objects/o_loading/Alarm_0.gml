@@ -1,3 +1,4 @@
+//Play Main Menu song
 if room = r_loading {
 if !audio_is_playing(m_mainmenu) {
 audio_play_sound(m_mainmenu,0,1)
@@ -32,7 +33,7 @@ global.androidskipy = skipy
 global.androidrestartx = restartx
 global.androidrestarty = restarty
 
-if os_type = os_android {
+if os_type = os_android { //Load controls for android
 scr_loadandroid()
 }
 

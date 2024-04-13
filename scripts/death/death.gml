@@ -1,5 +1,4 @@
 function death() {
-	rousr_dissonance_set_small_image("dead","Just Died")
 	global.deaths += 1
 	global.totaldeaths += 1;
 	

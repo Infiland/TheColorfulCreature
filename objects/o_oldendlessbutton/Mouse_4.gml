@@ -16,8 +16,7 @@ global.hardmodelives = 5
 global.time = 0
 randomlevel()
 randomsong()
-rousr_dissonance_set_details("Playing O.S Endless Run")
-rousr_dissonance_set_timestamps(0,undefined)
+
 global.endlessmusicchange = 10
 global.endless1upchange = 10
 }

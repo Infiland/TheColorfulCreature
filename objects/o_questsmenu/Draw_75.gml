@@ -1,3 +1,4 @@
+//Logic for the quests menu to appear
 alphalerp = lerp(alphalerp,0.8,0.1)
 draw_set_alpha(alphalerp)
 draw_set_color(c_white)

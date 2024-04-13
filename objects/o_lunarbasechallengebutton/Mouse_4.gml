@@ -24,8 +24,7 @@ room_set_height(r_challengelevel,64+(global.LELevelHeightBlocks*32))
 room_goto(r_challengelevel)
 
 global.DiamondMedalTimeChallenge = diamondtime
-rousr_dissonance_set_timestamps(0,undefined)
-rousr_dissonance_set_details("Playing Lunar Base Challenge")
+
 global.challenges = 1
 loadhud()
 audio_stop_sound(m_mainmenu)

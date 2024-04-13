@@ -83,13 +83,6 @@ if global.checkpointGUN != false {
 instance_create(x,y,o_gunequipped)
 }
 
-switch(global.color) {
-case(0): rousr_dissonance_set_small_image("red","Currently Red Color") break;
-case(1): rousr_dissonance_set_small_image("yellow","Currently Yellow Color") break;
-case(2): rousr_dissonance_set_small_image("green","Currently Green Color") break;
-case(3): rousr_dissonance_set_small_image("blue","Currently Blue Color") break;
-case(4): rousr_dissonance_set_small_image("white","Currently White Color") break;
-}
 audio_stop_sound(snd_explosionboss)
 xchange = 0
 ychange = 0

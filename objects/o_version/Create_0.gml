@@ -7,12 +7,10 @@ r_str = "0"
 get = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1651680");
 getdemo = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1749610");
 
-if steam_get_app_id() = 1749610 { version = "Demo"	}
-if steam_get_app_id() != 1749610 { version = "Release 1.1.8" }
-if global.moddedGameDir != "" { version = loc(677) }
-if os_type = os_android { version = "Android Version" }
-rousr_dissonance_set_large_image("icon_bigger","Version - "+ string(version))
-rousr_dissonance_set_details("In Main Menu")
+if steam_get_app_id() = 1749610 { version = "Demo"	} // DEMO VERSION
+if steam_get_app_id() != 1749610 { version = "Release 1.1.8" } //CHANGE THIS FOR NEWER VERSIONS
+if global.moddedGameDir != "" { version = loc(677) } // MODDED VERSION
+if os_type = os_android { version = "Android Version" } // ANDROID VERSION
 window_set_caption("The Colorful Creature | " + version)
 diffmonth = date_month_span(date_create_datetime(2018, 9, 3, 15, 30, 27 ), date_current_datetime());
 diffyear = date_year_span(date_create_datetime(2018, 9, 3, 15, 30, 27 ), date_current_datetime());

@@ -23,5 +23,4 @@ global.endlessmusicchange = global.CERMusicChange
 global.endless1upchange = global.CER1upChange
 randomlevel()
 randomsong()
-rousr_dissonance_set_details("Playing Custom Endless Run")
 }

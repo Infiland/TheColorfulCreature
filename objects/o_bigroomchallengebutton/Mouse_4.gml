@@ -1,6 +1,5 @@
 if locked = 0 {
-rousr_dissonance_set_timestamps(0,undefined)
-rousr_dissonance_set_details("Playing Big Room Challenge")
+
 room_goto(r_bigroomlvl1)
 global.DiamondMedalTimeChallenge = diamondtime
 global.challenges = 1

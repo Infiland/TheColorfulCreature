@@ -50,7 +50,7 @@ global.creditscurrency += floor((global.endlesslevel * global.creditsmultiplier)
 } else { global.creditscurrency += floor((global.endlesslevel / 5) * global.creditsmultiplier) }
 scr_savestats()
 hidehud()
-rousr_dissonance_set_timestamps(undefined,undefined)
+
 
 hidehud()
 instance_destroy(o_levelcounter)

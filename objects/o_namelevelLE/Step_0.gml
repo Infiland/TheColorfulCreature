@@ -16,7 +16,6 @@ delete_timer += 1;
 
 if keyboard_check_pressed(vk_enter) {
 global.levelname = text
-rousr_dissonance_set_details("Making a Level - " + global.levelname)
 instance_destroy()
 global.naminglevel = false
 }

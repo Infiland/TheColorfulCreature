@@ -9,7 +9,6 @@ if key_interact {
 global.color = 2
 passblockcooldown = 10
 scr_changecolorplayervx()
-rousr_dissonance_set_small_image("green","Currently Green Color")
 if room != r_leveleditor { 
 	global.totalusepickups += 1
 	}

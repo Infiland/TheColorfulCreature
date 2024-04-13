@@ -42,8 +42,6 @@ directory = string_replace_all(directory,"\\","/")
 	}}
 	scr_LEChangeScenery()
 	
-	rousr_dissonance_set_details("Playing a Workshop Level - " + global.levelname)
-	
 	layer = layer_create(-100)
 	with(o_leveleditorloadplacement) instance_destroy();
 	if file_exists(directory + "LevelEditor.sav") {

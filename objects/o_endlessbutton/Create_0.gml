@@ -2,7 +2,7 @@
 declarecustombutton()
 text = loc(37)
 
-rousr_dissonance_set_timestamps(undefined,undefined)
+
 global.endlessrunmode = 0
 global.deaths = 0
 global.special = 0

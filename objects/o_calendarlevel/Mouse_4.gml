@@ -8,8 +8,6 @@ global.calendarweek = week
 global.calendarday = day
 scr_loadrewardscalendar()
 
-rousr_dissonance_set_details("Playing Calendar - Year: " + string(global.calendaryear) + " | Day: " + string(global.calendarday +  (28 * (global.calendarmonth-1))))
-
 loadhud()
 } else {
 //room_goto(r_templatelevelroom)

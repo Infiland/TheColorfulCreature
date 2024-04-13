@@ -1,8 +1,6 @@
 function startnewgame(){
 scr_loadskins()
 room_goto(r_lvl1); //Change if you want to change levels.
-rousr_dissonance_set_details("Story Mode - World 1")
-rousr_dissonance_set_timestamps(0,undefined)
 loadhud()
 global.time = 0
 global.hardmode = 0

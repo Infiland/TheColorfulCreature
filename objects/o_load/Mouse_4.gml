@@ -29,7 +29,6 @@ global.endless = 0
 	}}
 
 scr_loadgame()
-rousr_dissonance_set_timestamps(0,undefined)
 audio_stop_sound(m_mainmenu);
 scr_loadsettings()
 o_narrator.l = 0

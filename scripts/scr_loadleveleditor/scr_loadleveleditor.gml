@@ -7,12 +7,10 @@ function scr_loadleveleditor() {
 	if !directory_exists(directory) {
 		with box { 
 			//global.LEMode = 1
-rousr_dissonance_set_details("Making a Level - " + global.levelname)
 			image_index = 3 }
 		exit 
 		} else { with box { image_index = 1
 			//global.LEMode = 2
-rousr_dissonance_set_details("Playing a Level - " + global.levelname)
 			}}
 	
 	global.LELevelPreviousWidthBlocks = global.LELevelWidthBlocks

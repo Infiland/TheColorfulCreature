@@ -4,8 +4,7 @@ if !instance_exists(o_demoask) {instance_create(x,y,o_demoask)}
 exit
 }
 room_goto(r_blindlvl1)
-rousr_dissonance_set_timestamps(0,undefined)
-rousr_dissonance_set_details("Playing Blind Challenge")
+
 global.challenges = 1
 loadhud()
 global.DiamondMedalTimeChallenge = diamondtime

@@ -5,11 +5,11 @@ sprite_set_offset(s_playerred,0,0)
 
 gamepad_set_vibration(0,0,0)
 
-rousr_dissonance_set_small_image(undefined,undefined)
 hidehud()
 
 instance_destroy(o_smoothcamera)
 
+//Hide Android control on main menu
 if os_type = os_android {
 instance_destroy(o_buttoninteractandroid)
 instance_destroy(o_buttonjumpandroid)
@@ -17,7 +17,6 @@ instance_destroy(o_buttonpauseandroid)
 instance_destroy(o_buttonleftandroid)
 instance_destroy(o_buttonrightandroid)
 instance_destroy(o_buttonrestartandroid)
-
 }
 
 if steam_initialised()

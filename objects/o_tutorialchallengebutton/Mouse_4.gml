@@ -1,7 +1,6 @@
 if locked = 0 {
 room_goto(r_tutoriallvl1)
-rousr_dissonance_set_timestamps(0,undefined)
-rousr_dissonance_set_details("Playing Tutorial Challenge")
+
 global.challenges = 1
 global.DiamondMedalTimeChallenge = diamondtime
 loadhud()

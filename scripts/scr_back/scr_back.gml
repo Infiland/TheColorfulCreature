@@ -30,7 +30,6 @@ global.endlesslevel = 0
 
 }
 hidehud()
-rousr_dissonance_set_timestamps(undefined,undefined)
 global.endless = 0
 }}
 if room = r_support {room_goto(r_mainmenu)	}
@@ -267,7 +266,6 @@ instance_destroy(o_smoothcamera)
 if os_type = os_android {hideandroidbuttons()}
 
 audio_group_set_gain(Music,global.musicvolume,1000)
-rousr_dissonance_set_timestamps(undefined,undefined)
 if global.chooseminigameMU = false {
 if global.challenges = 0 {
 if global.endless = 0 {

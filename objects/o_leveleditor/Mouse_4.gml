@@ -29,8 +29,6 @@ room_set_height(r_leveleditor,3200)*/
 
 room_goto(r_leveleditor);
 instance_create(x,y,o_leveleditormenusetup)
-rousr_dissonance_set_timestamps(0,undefined)
-rousr_dissonance_set_details("Making a Level")
 
 AdMob_Banner_Hide()
 }

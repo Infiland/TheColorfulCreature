@@ -9,5 +9,4 @@ global.racescore[2] = 0
 global.racescore[3] = 0
 global.MinigameMU = 2
 randomlevelMU()
-rousr_dissonance_set_details("Multiplayer Minigame - Race")
 }

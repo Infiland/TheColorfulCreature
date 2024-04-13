@@ -1,3 +1,4 @@
+//Logic for the full game
 if os_is_network_connected() {
 if ds_map_find_value(async_load, "id") == get
     {
@@ -17,6 +18,7 @@ if ds_map_find_value(async_load, "id") == get
         r_str = "null";
         }
     }
+//Logic for the full demo
 if ds_map_find_value(async_load, "id") == getdemo
     {
     if ds_map_find_value(async_load, "status") == 0

@@ -32,7 +32,6 @@ scr_savestats()
 global.endlesslevel = 0
 global.time = 0
 hidehud()
-rousr_dissonance_set_timestamps(undefined,undefined)
 }} else { global.hardmodelives = "Infinite" }
 }
 }

@@ -3,6 +3,8 @@ audio_play_sound(m_mainmenu,0,1)
 }
 audio_sound_gain(m_mainmenu,global.musicvolume,1)
 
+//World progression is autoloaded here if someone ran the older version of the game
+//for Level Select
 if global.world1 = 1 && global.worldProgression < 20 {
 	global.worldProgression = 20
 }

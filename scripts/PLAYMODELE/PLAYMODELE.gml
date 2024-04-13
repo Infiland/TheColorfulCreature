@@ -15,7 +15,6 @@ if global.LEMode = 1 {
 	instance_create(x,y,o_time)
 	instance_create(x,y,o_timecounter)
 	instance_create(x,y,o_deathcounter)
-	rousr_dissonance_set_details("Playing a Level - " + global.levelname)
 	} else {
 		global.time = 0
 		global.LESavedWinTime = 0
@@ -34,7 +33,6 @@ if global.LEMode = 1 {
 		instance_destroy(o_bulletleft)
 		instance_destroy(o_playerbullet)
 		global.LEMode = 1
-		rousr_dissonance_set_details("Making a Level - " + global.levelname)
 		}
 image_index = global.LEMode - 1
 

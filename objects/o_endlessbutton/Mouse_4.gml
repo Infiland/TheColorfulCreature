@@ -16,8 +16,7 @@ global.difficultyincreaseER = irandom_range(4,7)
 global.time = 0
 randomlevel()
 randomsong()
-rousr_dissonance_set_details("Playing Endless Run")
-rousr_dissonance_set_timestamps(0,undefined)
+
 global.endlessmusicchange = 10
 global.endless1upchange = 10
 instance_create(x,y,o_difficultycounter)

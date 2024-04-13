@@ -9,5 +9,4 @@ global.shootemupscore[2] = 0
 global.shootemupscore[3] = 0
 global.MinigameMU = 1
 randomlevelMU()
-rousr_dissonance_set_details("Multiplayer Minigame - Survival")
 }

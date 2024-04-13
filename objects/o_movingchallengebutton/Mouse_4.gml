@@ -5,8 +5,7 @@ exit
 }
 global.DiamondMedalTimeChallenge = diamondtime
 room_goto(r_movinglvl1)
-rousr_dissonance_set_timestamps(0,undefined)
-rousr_dissonance_set_details("Playing Moving Challenge")
+
 global.challenges = 1
 loadhud()
 audio_stop_sound(m_mainmenu)

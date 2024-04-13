@@ -5,8 +5,7 @@ exit
 }
 room_goto(r_cslvl1)
 global.DiamondMedalTimeChallenge = diamondtime
-rousr_dissonance_set_timestamps(0,undefined)
-rousr_dissonance_set_details("Playing Corrupted Spike Challenge")
+
 global.challenges = 1
 loadhud()
 audio_stop_sound(m_mainmenu)

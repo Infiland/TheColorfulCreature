@@ -1,4 +1,3 @@
-rousr_dissonance_set_details("In Fun Mode")
 steam_set_rich_presence("Menu","In Fun Mode")
 
 if !audio_is_playing(m_mainmenu) {

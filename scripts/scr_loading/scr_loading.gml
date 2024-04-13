@@ -294,6 +294,8 @@ instance_create(x,y,o_ColorBlindnessSimulation)
 
 //Stats
 scr_reloadstats()
+scr_reloadquests()
+
 scr_loadstats()
 global.challengeinfo = 0
 global.tutorialchallengetime = 9999

@@ -1,0 +1,14 @@
+Level Beater|Beat 10 Levels|QUESTlevelcompleted|10|25|100
+Endless Beater|Beat 10 Endless Levels|QUESTendlesslevelcompleted|10|25|100
+Daily Guy|Beat a Daily Level|QUESTdailycompleted|1|25|100
+Calendar Guy|Beat a Calendar Week|QUESTcalendarcompleted|1|25|20
+Mom I beat a boss!|Beat a Boss|QUESTbossbeaten|1|25|100
+Beat an easy challenge|Beat an 1 difficulty challenge|QUESTchallengedifficulty|1|5|100
+Workshop Beater|Beat 5 Workshop Levels|QUESTworkshoplevelcompleted|5|25|100
+Wheel Spinner|Spin the wheel|QUESTwheelspinned|1|10|100
+Jumper|Jump 100 times|QUESTjumps|100|10|100
+Death Guy|Die 25 times|QUESTdeaths|100|25|100
+The Colorful Creature|Change color 25 times|QUESTcolorchanges|100|25|100
+Troop Killer|Kill 25 troops|QUESTtroopkills|100|25|100
+Time Killer|Play for 30 minutes|QUESTtime|1800|25|100
+Golden Spike|See a golden spike|QUESTgoldensaw|1|25|100

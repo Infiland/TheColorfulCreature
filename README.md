@@ -1,3 +1,8 @@
+# The Colorful Creature
+The Colorful Creature is difficult platformer with puzzle color mechanics. The game is made by Infiland, a passionate indie-dev who was working on TCC on and off for the past 5 years, releasing this game on Gamejolt and Itch.io, and eventually Steam in 2021. However in 2024. I decided to open source the game as a thanks, and I want to continue to further support the game by giving the community a chance to contribute and improve the game.
+
+Further info on how to improve and contribute to the game is available in my discord server: https://discord.com/invite/SSz5THd
+
 # How to Compile, Test and Develop TCC:
 Note: While other IDE's are possible to use, developing TCC is preferable using the GameMaker IDE.
 Here are basic instructions on how to successfully run the game

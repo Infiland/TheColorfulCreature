@@ -276,7 +276,6 @@ case(r_communitylvl4): str = strings[218] break;
 case(r_communitylvl5): str = strings[219] break;
 case(r_communitylvl6): str = strings[220] break;
 case(r_communitylvl7): str = strings[221] break;
-case(r_communitylvl8): str = strings[222] break;
 //D.JUMP
 case(r_djlvl1): str = strings[223] break;
 case(r_djlvl2): str = strings[224] break;

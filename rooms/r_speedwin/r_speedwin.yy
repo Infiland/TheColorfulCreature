@@ -35,8 +35,8 @@
   ],
   "name":"r_speedwin",
   "parent":{
-    "name":"Speed Is Key Challenge",
-    "path":"folders/Rooms/Challenges/Speed Is Key Challenge.yy",
+    "name":"Speed Challenge",
+    "path":"folders/Rooms/Challenges/Speed Challenge.yy",
   },
   "parentRoom":{
     "name":"r_redblocklayerroom",

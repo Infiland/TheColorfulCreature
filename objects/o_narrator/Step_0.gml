@@ -33,22 +33,10 @@ if global.special < 5 { str = strings[8] }
 if global.special = 5 { str = strings[9] }
 if global.special = 6 { str = strings[10] }
 break;
-case(r_lvl7):
-if global.special < 7 { str = strings[11] }
-if global.special = 7 { str = strings[12] }
-break;
-case(r_lvl8):
-if global.special < 8 { str = strings[13] }
-if global.special = 8 { str = strings[14] }
-break;
-case(r_lvl9):
-if global.special < 9 { str = strings[15] }
-if global.special = 9 { str = strings[16] }
-break;
-case(r_lvl10):
-if global.special < 10 { str = strings[17] }
-if global.special = 10 { str = strings[18] }
-break;
+case(r_lvl7): if global.special < 7 { str = strings[11] } else { str = strings[12] } break;
+case(r_lvl8): if global.special < 8 { str = strings[13] } else { str = strings[14] } break;
+case(r_lvl9): if global.special < 9 { str = strings[15] } else { str = strings[16] } break;
+case(r_lvl10): if global.special < 10 { str = strings[17] } else { str = strings[18] } break;
 case(r_lvl11): str = strings[19] break;
 case(r_lvl12): str = strings[20] break;
 case(r_lvl13): str = strings[21] break;

@@ -1335,7 +1335,7 @@
     {"id":{"name":"r_communitylvl5","path":"rooms/r_communitylvl5/r_communitylvl5.yy",},},
     {"id":{"name":"r_communitylvl6","path":"rooms/r_communitylvl6/r_communitylvl6.yy",},},
     {"id":{"name":"r_communitylvl7","path":"rooms/r_communitylvl7/r_communitylvl7.yy",},},
-    {"id":{"name":"r_communitylvl8","path":"rooms/r_communitylvl8/r_communitylvl8.yy",},},
+    {"id":{"name":"r_c2022lvl75","path":"rooms/r_c2022lvl75/r_c2022lvl75.yy",},},
     {"id":{"name":"r_communitywin","path":"rooms/r_communitywin/r_communitywin.yy",},},
     {"id":{"name":"r_credits","path":"rooms/r_credits/r_credits.yy",},},
     {"id":{"name":"r_cslvl1","path":"rooms/r_cslvl1/r_cslvl1.yy",},},
@@ -3230,7 +3230,6 @@
             {"roomId":{"name":"r_communitylvl5","path":"rooms/r_communitylvl5/r_communitylvl5.yy",},},
             {"roomId":{"name":"r_communitylvl6","path":"rooms/r_communitylvl6/r_communitylvl6.yy",},},
             {"roomId":{"name":"r_communitylvl7","path":"rooms/r_communitylvl7/r_communitylvl7.yy",},},
-            {"roomId":{"name":"r_communitylvl8","path":"rooms/r_communitylvl8/r_communitylvl8.yy",},},
             {"roomId":{"name":"r_communitywin","path":"rooms/r_communitywin/r_communitywin.yy",},},
           ],"groupName":"Community Challenge",},
         {"children":[
@@ -3450,6 +3449,7 @@
                     {"roomId":{"name":"r_c2022lvl72","path":"rooms/r_c2022lvl72/r_c2022lvl72.yy",},},
                     {"roomId":{"name":"r_c2022lvl73","path":"rooms/r_c2022lvl73/r_c2022lvl73.yy",},},
                     {"roomId":{"name":"r_c2022lvl74","path":"rooms/r_c2022lvl74/r_c2022lvl74.yy",},},
+                    {"roomId":{"name":"r_c2022lvl75","path":"rooms/r_c2022lvl75/r_c2022lvl75.yy",},},
                   ],"groupName":"Week 11",},
               ],"groupName":"March",},
             {"children":[

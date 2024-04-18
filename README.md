@@ -7,7 +7,7 @@ Further info on how to improve and contribute to the game is [available in my di
 
 You can find official links of the game here:
 [Discord](https://discord.gg/SSz5THd)
-[Twitter]https://twitter.com/TCC_Game)
+[Twitter](https://twitter.com/TCC_Game)
 [Reddit](https://www.reddit.com/r/TCC_Game/)
 
 # How to contribute

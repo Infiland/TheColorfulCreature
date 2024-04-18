@@ -9,7 +9,7 @@ if !instance_exists(o_progressask) {
 window_set_cursor(cr_default)
 
 random_set_seed(seed)
-var i = irandom(319)
+var i = irandom(330)
 global.dailylevel = 1
 scr_dailylevelload(i)
 audio_stop_all()

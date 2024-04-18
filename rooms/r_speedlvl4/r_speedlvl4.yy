@@ -473,8 +473,8 @@
   ],
   "name":"r_speedlvl4",
   "parent":{
-    "name":"Speed Is Key Challenge",
-    "path":"folders/Rooms/Challenges/Speed Is Key Challenge.yy",
+    "name":"Speed Challenge",
+    "path":"folders/Rooms/Challenges/Speed Challenge.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
@@ -493,6 +493,9 @@
     "Width":1024,
   },
   "sequenceId":null,
+  "tags":[
+    "Speed Challenge",
+  ],
   "views":[
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1024,"wview":1024,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1024,"wview":1024,"xport":0,"xview":0,"yport":0,"yview":0,},

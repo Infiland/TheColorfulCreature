@@ -1851,6 +1851,9 @@
     "Width":2048,
   },
   "sequenceId":null,
+  "tags":[
+    "Blind Challenge",
+  ],
   "views":[
     {"hborder":512,"hport":768,"hspeed":-2,"hview":768,"inherit":false,"objectId":{"name":"o_smoothcamera","path":"objects/o_smoothcamera/o_smoothcamera.yy",},"vborder":384,"visible":true,"vspeed":-2,"wport":1024,"wview":1024,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":512,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":{"name":"o_playerdead","path":"objects/o_playerdead/o_playerdead.yy",},"vborder":384,"visible":false,"vspeed":-1,"wport":1024,"wview":1024,"xport":0,"xview":0,"yport":0,"yview":0,},

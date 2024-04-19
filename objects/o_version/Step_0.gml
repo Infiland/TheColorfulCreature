@@ -59,6 +59,7 @@ e3rd -= 1
 }*/
 
 //RGB System
+/*
 if change = 0 {
 blue += 3
 if blue > 255 {
@@ -94,4 +95,4 @@ green -= 3
 if green < 0 {
 green = 0
 change = 0
-}}
+}}*/

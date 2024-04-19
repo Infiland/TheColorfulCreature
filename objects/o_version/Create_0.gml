@@ -8,7 +8,7 @@ get = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentP
 getdemo = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1749610");
 
 if steam_get_app_id() = 1749610 { version = "Demo"	} // DEMO VERSION
-if steam_get_app_id() != 1749610 { version = "Release 1.1.8" } //CHANGE THIS FOR NEWER VERSIONS
+if steam_get_app_id() != 1749610 { version = "Release 1.1.7.3" } //CHANGE THIS FOR NEWER VERSIONS
 if global.moddedGameDir != "" { version = loc(677) } // MODDED VERSION
 if os_type = os_android { version = "Android Version" } // ANDROID VERSION
 window_set_caption("The Colorful Creature | " + version)
@@ -18,48 +18,38 @@ diffsecond = date_second_span(date_create_datetime(2018, 9, 3, 15, 30, 27 ), dat
 diffyearinfi = date_year_span(date_create_datetime(2003, 11, 18, 01, 30, 30 ), date_current_datetime());
 clicked = false
 
-if steam_user_owns_dlc(1651680) { game1 = 1 } else { game1 = 0 }
-e1 = 0
-e2 = 0
-e3 = 0
-e4 = 0
-if steam_user_owns_dlc(1995510) { dlc1 = 1 } else { dlc1 = 0 }
-if steam_user_owns_dlc(1749590) { dlc2 = 1 } else { dlc2 = 0 }
-if steam_user_owns_dlc(2407300) { dlc3 = 1 } else { dlc3 = 0 }
+if steam_user_owns_dlc(1651680) { game1 = 1 } else { game1 = 0 } //If the player owns the game
+e1 = 0 //Seasonal Endless Gold
+e2 = 0 //Seasonal Endless Silver
+e3 = 0 //Seasonal Endless Bronze
+e4 = 0 //Seasonal Endless Top 10
+if steam_user_owns_dlc(1995510) { dlc1 = 1 } else { dlc1 = 0 } //TCC OST
+if steam_user_owns_dlc(1749590) { dlc2 = 1 } else { dlc2 = 0 } //Commentary DLC
+if steam_user_owns_dlc(2407300) { dlc3 = 1 } else { dlc3 = 0 } //Asteroids
 hats = 0
 
 moni = 0
 actualmoni = 0
 global.donatedmoney = 0
 
-if steam_user_owns_dlc(2411810) {
+if steam_user_owns_dlc(2411810) { //2 Euro donation
 	moni = 1
 	actualmoni += 2
 }
-if steam_user_owns_dlc(2411811) {
+if steam_user_owns_dlc(2411811) { //3 Euro donation
 	moni = 1
 	actualmoni += 3
 }
-if steam_user_owns_dlc(2411812) {
+if steam_user_owns_dlc(2411812) { //5 Euro donation
 	moni = 1
 	actualmoni += 5
 }
 
 global.donatedmoney = actualmoni
 
-//if steam_user_owns_dlc(2411810) {actualmoni = 2 moni = 1}
-/*if steam_user_owns_dlc(2411811) {actualmoni = 3 moni = 1}
-if steam_user_owns_dlc(2411812) {actualmoni = 5 moni = 1}
-if steam_user_owns_dlc(2411812) && steam_user_owns_dlc(2411810) {actualmoni = 7 moni = 1}
-if steam_user_owns_dlc(2411812) && steam_user_owns_dlc(2411811) {actualmoni = 8 moni = 1}
-if steam_user_owns_dlc(2411812) && steam_user_owns_dlc(2411811) && steam_user_owns_dlc(2411810) {actualmoni = 10 moni = 1}*/
-
-//Go to o_richpresence
 rng = 0
-//somethingwillhappen = irandom_range(100,500)
-//splash = irandom_range(1,550)
 
-
+//Splash Text
 splashmax = 0
 var num = 0;
 if global.customsplashessettings = 1 {

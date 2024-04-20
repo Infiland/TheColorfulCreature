@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"o_twitter",
+  "%Name":"o_github",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":10,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":11,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"o_twitter",
+  "name":"o_github",
   "overriddenProperties":[],
   "parent":{
     "name":"Support",
@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_twitter",
-    "path":"sprites/s_twitter/s_twitter.yy",
+    "name":"s_github",
+    "path":"sprites/s_github/s_github.yy",
   },
   "spriteMaskId":null,
   "visible":true,

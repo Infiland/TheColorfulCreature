@@ -73,17 +73,24 @@ if !directory_exists(directory) {
 global.CUSTOMhat = ""
 
 global.challengescroll = 0
-global.asteroidskeypoints = 0
 global.foundcog = 0
 global.asteroidfun = 0
 
 global.color = 0
+global.deaths = 0
+global.special = 0
+global.pickup = 0
+global.LES = 0;
+global.talelistened = 0
+
+global.xplayerLEpos = 0
+global.yplayerLEpos = 0
 
 global.playercount = 0
 global.creditsmultiplier = 1
 global.wheelmultiplier = 1
 
-global.portalfreeMU = 1
+//global.portalfreeMU = 1
 global.fileID = 0
 global.dailylevel = 0
 global.achievementsscroll = 0

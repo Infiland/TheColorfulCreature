@@ -1,6 +1,3 @@
-controlerx = mouse_x
-controlery = mouse_y
-
 sprite_set_offset(s_playerred,0,0)
 
 gamepad_set_vibration(0,0,0)
@@ -8,6 +5,8 @@ gamepad_set_vibration(0,0,0)
 hidehud()
 
 instance_destroy(o_smoothcamera)
+
+instance_create(930,352,o_profilepicture)
 
 //Hide Android control on main menu
 if os_type = os_android {
@@ -38,6 +37,9 @@ audio_master_gain(global.mastervolume)
 global.boss2health = 6
 global.hardmode = 0
 global.dailylevel = 0
+global.endless = 0
+global.workshop = 0
+global.challenges = 0
 global.pause = 0
 global.time = 0
 global.LEBuild = 1
@@ -57,18 +59,11 @@ scr_loadsettings()
 scr_loadskins()
 scr_savestats()
 
+//Set FPS to 60
 global.maxfps = 60
 game_set_speed(global.maxfps,gamespeed_fps)
 
-pitch = 1
-//Settings
-audio_stop_sound(m_goodending)
-
-if !audio_is_playing(m_mainmenu) {
-audio_play_sound(m_mainmenu,0,1);
-}
-audio_stop_sound(m_goodending)
-
+//Skin unlocks
 if global.skin[12] = 0 {
 if global.totalcoins > 249 {global.skin[12] = 1}}
 if global.skin[15] = 0 {
@@ -90,13 +85,34 @@ global.hat[8] = 0
 }}
 if global.hat[34] = -1 { global.hat[34] = 0 }
 
-if gamebootup = 0 {
-alarm[0] = 15
-}
+//Android banner hide
 AdMob_Banner_Hide()
-gamebootup = 1
-if instance_exists(o_deathcounter) {instance_destroy(o_deathcounter)}
-if instance_exists(o_ammocounter) {instance_destroy(o_ammocounter)}
-if instance_exists(o_levelcounter) {instance_destroy(o_levelcounter)}
+//Fix sound pitch
 audio_sound_gain(snd_reload,global.soundvolume,1)
 audio_sound_gain(snd_gunvoice,global.soundvolume,1)
+audio_stop_sound(m_goodending)
+audio_sound_gain(m_credits,0,1)
+audio_stop_sound(m_credits)
+
+//World progression is autoloaded here if someone ran the older version of the game for Level Select
+if global.world1 = 1 && global.worldProgression < 20 {
+	global.worldProgression = 20
+}
+if global.world2 = 1 && global.worldProgression < 40 {
+	global.worldProgression = 40
+}
+if global.world3 = 1 && global.worldProgression < 60 {
+	global.worldProgression = 60
+}
+if global.world4 = 1 && global.worldProgression < 80 {
+	global.worldProgression = 80
+}
+if global.world5 = 1 && global.worldProgression < 100 {
+	global.worldProgression = 100
+}
+
+audio_sound_pitch(m_mainmenu,1)
+audio_sound_gain(m_mainmenu,global.musicvolume,1)
+if !audio_is_playing(m_mainmenu) {
+audio_play_sound(m_mainmenu,0,1);
+}

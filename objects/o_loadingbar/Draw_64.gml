@@ -3,4 +3,4 @@ draw_set_alpha((timer*6.66)/100)
 draw_set_font(global.deathfont)
 draw_text(loadingtextxposition,645,loc(665))
 draw_set_alpha(1)
-//Formula: 100 podeljeno sa timer 100/15
+//Formula: 100 divided with timer 100/15

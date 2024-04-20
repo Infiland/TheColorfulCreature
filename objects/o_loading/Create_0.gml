@@ -1,9 +1,3 @@
-//CHANGE THIS FOR MODS
-global.moddedGameDir = ""
-
-//LOAD EVERYTHING
-scr_loading()
-
 //Create nessesary components
 instance_create(x,y,o_loadingbar)
 instance_create(x,y,o_musicvolumecreator)
@@ -23,6 +17,6 @@ if (!GooglePlayServices_IsSignedIn()) {
 GooglePlayServices_StartSignInIntent();
 }}
 
-//global.langfont = font_add("Fonts\\OpenSans.tff",48,true,true,1,11)
+
 //Actually load the game
 alarm[0] = 15

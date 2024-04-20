@@ -1,4 +1,7 @@
-if os_type = os_android { exit }
+if os_type = os_android { 
+	instance_destroy()
+	exit
+	}
 
 
 if !steam_init() { instance_destroy() }

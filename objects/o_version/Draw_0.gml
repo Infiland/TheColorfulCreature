@@ -28,20 +28,7 @@ draw_text(1000,416,string(name))
 
 draw_set_font(global.coolfont)
 
-/*moni = 0
-actualmoni = 0
-if steam_user_owns_dlc(2411810) {
-	moni = 1
-	actualmoni += 2
-}
-if steam_user_owns_dlc(2411811) {
-	moni = 1
-	actualmoni += 3
-}
-if steam_user_owns_dlc(2411812) {
-	moni = 1
-	actualmoni += 5
-}*/
+//Needs to be more resolved!
 var b=0,s=0,g=0,bl=0
 
 if mouse_x > 930 { //Profile Picture
@@ -165,16 +152,6 @@ drawinfoboxbadge("Made a community hat!",c_green,c_purple)
 draw_text(mouse_x,mouse_y+20,s)
 draw_text(mouse_x,mouse_y+40,b)
 draw_text(mouse_x,mouse_y+60,bl)*/
-/*
-global.asteroidskeypoints = 0
-global.asteroidskeypoints += game1
-global.asteroidskeypoints += e4
-global.asteroidskeypoints += e3*2
-global.asteroidskeypoints += e2*3
-global.asteroidskeypoints += e1*5
-global.asteroidskeypoints += dlc1*10
-global.asteroidskeypoints += dlc2*5
-global.asteroidskeypoints += actualmoni*5*/
 }
  
 //steam_get_user_avatar(userid,steam_user_avatar_size_medium);

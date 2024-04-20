@@ -27,6 +27,3 @@ If applicable, add screenshots to help explain your problem.
  - OS: [e.g. Windows 10]
  - PC Specs: [e.g. GTX 1650, i5-12600...]
  - Version [e.g. Release 1.1.8]
-
-**Additional context**
-Add any other context about the problem here.

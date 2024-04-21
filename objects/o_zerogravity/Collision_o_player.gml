@@ -9,4 +9,6 @@ if global.itempar = 1 {
 	}
 	}
 
-if room != r_leveleditor { global.totalgravitypickups += 1}
+if room != r_leveleditor { 
+	increase_stat("totalgravitypickups","QUESTgravitypickups",1)
+	}

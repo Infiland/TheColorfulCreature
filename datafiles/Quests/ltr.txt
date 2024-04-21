@@ -1,0 +1,7 @@
+Endless Beater|Beat 10 Endless Levels|QUESTendlesslevelcompleted|10|25|100
+Daily Guy|Beat a Daily Level|QUESTdailycompleted|1|25|100
+Calendar Guy|Beat a Calendar Week|QUESTcalendarcompleted|1|25|20
+Mom I beat a boss!|Beat a Boss|QUESTbossbeaten|1|25|100
+Beat an easy challenge|Beat an 1 difficulty challenge|QUESTchallengedifficulty|1|5|100
+Wheel Spinner|Spin the wheel|QUESTwheelspinned|1|10|100
+Golden Spike|See a golden spike|QUESTgoldensaw|1|25|100

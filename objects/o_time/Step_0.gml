@@ -14,7 +14,9 @@ global.androidadtimer -= global.delta
 if room = r_leveleditor {
 global.LESavedWinTime += global.delta
 }
-global.totaltime += global.delta
+
+increase_stat("totaltime","QUESTtime",global.delta)
+
 if global.wheeltimeleft >= 0 {
 global.wheeltimeleft -= global.delta
 }

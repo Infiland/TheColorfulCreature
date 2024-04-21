@@ -1,28 +1,40 @@
 function death() {
 	global.deaths += 1
-	global.totaldeaths += 1;
+	increase_stat("totaldeaths","QUESTdeaths",1)
 	
 	global.androidadtimer -= 20
 	
-	//Spikes
-	if instance_place(x,y,o_allspikes)  {global.totalspikedeaths += 1}
-	if instance_place(x,y,o_goldenspike)  {global.totalgoldspikedeaths += 1
+	if instance_place(x,y,o_allspikes)  { //Spike Deaths
+		increase_stat("totalspikedeaths","QUESTspikedeaths",1)
+		}
+	if instance_place(x,y,o_goldenspike)  { //Golden Spike Deaths
+		increase_stat("totalgoldspikedeaths","QUESTgoldspikedeaths",1)
 if !steam_get_achievement("GOLDEN_SPIKE_DEATH") { steam_set_achievement("GOLDEN_SPIKE_DEATH") } //GOLDEN SPIKE ACHIEVEMENT
 		}
-		if instance_place(x,y,o_weirdspike)  {global.totalweirdspikedeaths += 1
+		if instance_place(x,y,o_weirdspike)  { //Weird Spike Deaths
+			increase_stat("totalweirdspikedeaths","QUESTweirdspikedeaths",1)
 if !steam_get_achievement("WEIRD_SPIKE_DEATH") { steam_set_achievement("WEIRD_SPIKE_DEATH") } //WEIRD SPIKE ACHIEVEMENT
 		}
-	if instance_place(x,y,o_allinvspikes) {global.totalinvisiblespikedeaths += 1}
-	if instance_place(x,y,o_allvertspikes) {global.totalverticalspikedeaths += 1}
-	if instance_place(x,y,o_allhorispikes) {global.totalhorizontalspikedeaths += 1}
-	//Enemy Player
-	if instance_place(x,y,o_enemyplayer) {global.totaltroopdeaths += 1}
-	
-	if instance_place(x,y,o_bulletleft) || instance_place(x,y,o_bulletright) {
-	global.totalbulletdeaths += 1	
+	if instance_place(x,y,o_allinvspikes) { //Invisible Spike Deaths
+		increase_stat("totalinvisiblespikedeaths","QUESTinvisiblespikedeaths",1)
+		}
+	if instance_place(x,y,o_allvertspikes) { //Vertical Spike Deaths
+		increase_stat("totalverticalspikedeaths","QUESTverticalspikedeaths",1)
+		}
+	if instance_place(x,y,o_allhorispikes) { //Horizontal Spike Deaths
+		increase_stat("totalhorizontalspikedeaths","QUESThorizontalspikedeaths",1)
 	}
+	//Enemy Player
+	if instance_place(x,y,o_enemyplayer) {
+		increase_stat("totaltroopdeaths","QUESTtroopdeaths",1)
+		}
+	//Bullet Deaths
+	if instance_place(x,y,o_bulletleft) || instance_place(x,y,o_bulletright) {
+	increase_stat("totalbulletdeaths","QUESTbulletdeaths",1)
+	}
+	//Rocket Deaths
 	if instance_place(x,y,o_rocket) || instance_place(x,y,o_rocket2) {
-	global.totalrocketdeaths += 1	
+	increase_stat("totalrocketdeaths","QUESTrocketdeaths",1)
 	}
 	
 	if room = r_boss2 {

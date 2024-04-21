@@ -10,8 +10,15 @@ draw_rectangle_color(0,0,1024,768,c_black,c_black,c_black,c_black,false)
 draw_set_alpha(alphalerp*3)
 draw_text_transformed(room_width/2,70,"Quests",2,2,0)
 
-//QUEST 1
-draw_rectangle_color(100,150,924,300,c_black,c_black,c_black,c_black,false)
-draw_rectangle_color(100,150,924,300,c_white,c_white,c_white,c_white,true)
+var d = date_hour_span(date_create_datetime(global.calendarcurrentyear, global.calendarcurrentmonth, global.calendarcurrentday, 24, 0, 0), date_current_datetime())
 
-draw_set_halign(fa_left)
+draw_text(room_width/2,120,"Quests reset in: " + string_format(d,0,1) + "h")
+
+//RANDOMNESS
+seed = ((global.calendarcurrentyear * global.calendarcurrentmonth) / global.calendarcurrentday)
+random_set_seed(seed)
+
+//QUESTS
+drawquest(150,irandom_range(0,maxquests-1),0) //Quest 1
+drawquest(310,irandom_range(0,maxquests-1),1) //Quest 2
+drawquest(470,irandom_range(0,maxquests-1),2) //Quest 3

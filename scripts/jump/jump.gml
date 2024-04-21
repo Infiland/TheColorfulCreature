@@ -35,7 +35,7 @@ function jump() {
 	
 	doublejump = 0
 	if room != r_leveleditor {
-	global.totaljumps += 1;
+	increase_stat("totaljumps","QUESTjump",1)
 	}}}}
 	if object_index = o_enemyplayer {
 	if !place_meeting(x,y-32,o_anyblock) {
@@ -53,7 +53,7 @@ function jump() {
 		}}
 	}}
 if global.playerpar = 2 {
-if global.noclip = 0 {
+	if global.noclip = 0 {
 /*var pmin = 4
 var pmax = 7
 

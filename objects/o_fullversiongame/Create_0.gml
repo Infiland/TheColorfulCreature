@@ -7,5 +7,3 @@ declarecustombutton()
 text = loc(608)
 
 scr_loadsettings()
-image_speed = 0;
-image_index = 0

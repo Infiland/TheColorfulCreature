@@ -1,1 +1,3 @@
-if room != r_leveleditor { global.totaldestroyedboxes += 1}
+if room != r_leveleditor {
+	increase_stat("totaldestroyedboxes","QUESTdestroyedboxes",1)
+}

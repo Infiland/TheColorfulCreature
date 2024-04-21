@@ -22,6 +22,6 @@ holding = 1
 }
 
 if holding = 0 {
-if torchholdcooldown = 1 {
-global.totaltorchpickups += 1	
+	if torchholdcooldown = 1 {
+	increase_stat("totaltorchpickups","QUESTtorchpickups",1)
 }}

@@ -8,4 +8,6 @@ if global.itempar = 1 {
 	}
 
 instance_destroy();
-if room != r_leveleditor { global.totaldjumppickups += 1}
+if room != r_leveleditor {
+	increase_stat("totaldjumppickups","QUESTdjumppickups",1)
+	}

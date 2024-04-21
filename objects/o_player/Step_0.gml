@@ -66,7 +66,9 @@ if instance_exists(o_hatshopmenu) { exit }
 if key_restart {
 if global.pause = 0 {
 if room != r_theend || room != r_easteregg1 {
-if room != r_leveleditor {global.totalrestartdeaths += 1}
+if room != r_leveleditor {
+	increase_stat("totalrestartdeaths","QUESTrestartdeaths",1)
+	}
 death()
 }}}
 
@@ -85,7 +87,7 @@ if inwater = 2 {
 	}
 	breath -= 1 * (60 / global.maxfps)
 	if breath < 0 {
-		global.totalwaterdeaths += 1
+		increase_stat("totalwaterdeaths","QUESTwaterdeaths",1)
 		death() }
 	} else { breath += 3 * (60 / global.maxfps)
 	if breath > 500 { breath = 500 }
@@ -313,7 +315,7 @@ hspzerogrv = hspeed * (global.maxfps / 60)
 
 if y > room_height - 30 {
 	death()
-	global.totalvoiddeaths += 1
+	increase_stat("totalvoiddeaths","QUESTvoiddeaths",1)
 }
 
 //Jumps (Optimized Code)
@@ -510,7 +512,7 @@ audio_play_sound(snd_portal,10,0)
 x = o_portalpurpleclosed.x + (zerogrv * 16)
 y = o_portalpurpleclosed.y + (zerogrv * 16)
 if room != r_leveleditor {
-global.totalportal += 1
+increase_stat("totalportal","QUESTportal",1)
 }
 }}}
 if place_meeting(x,y,o_portalpurpleclosed) {
@@ -524,7 +526,7 @@ audio_play_sound(snd_portal,10,0)
 x = o_portalpurpleopen.x + (zerogrv * 16)
 y = o_portalpurpleopen.y + (zerogrv * 16)
 if room != r_leveleditor {
-global.totalportal += 1
+increase_stat("totalportal","QUESTportal",1)
 }
 }}}}
 
@@ -538,7 +540,9 @@ if inwater = 1 {
 if global.gunammo > 0 {
 instance_destroy(o_lastshotplayer)
 instance_create(x+16,y+16,o_lastshotplayer)
-if room != r_leveleditor { global.totalgunshots += 1 }
+if room != r_leveleditor {
+	increase_stat("totalgunshots","QUESTgunshots",1)
+	}
 if zerogrv = 0 {
 if global.playermove = -1 {
 instance_create(x,y+12,o_playerbullet)
@@ -701,7 +705,7 @@ if global.dailylevel = 0 {
 if global.endless = 0 {
 global.pickup = 0
 scr_loadsettings()
-global.totallevelcompleted += 1
+increase_stat("totallevelcompleted","QUESTlevelcompleted",1)
 
 if room = asset_get_index("r_lvl" + string(global.worldProgression)) {
 global.worldProgression += 1
@@ -728,7 +732,7 @@ scr_savegame()
 } else {
 	var highscorepitch = 1
 	randomlevel()
-	global.totallevelcompleted += 1
+	increase_stat("totallevelcompleted","QUESTlevelcompleted",1)
 	global.endlesslevel += 1
 	if global.cheats = 0 {
 	if global.endlessrunmode != 3 {
@@ -749,7 +753,7 @@ scr_savegame()
 	if global.endlesslevel > global.endlesslevelhighscore { audio_play_sound(snd_newhighscore,10,0) }}
 		
 	}} else {
-		global.totallevelcompleted += 1
+		increase_stat("totallevelcompleted","QUESTlevelcompleted",1)
 		room_goto(r_dailylevelwin)
 		window_set_cursor(cr_default)
 		global.dailylevel = 0

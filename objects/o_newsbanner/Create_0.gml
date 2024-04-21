@@ -1,7 +1,7 @@
 y = -600
 image_alpha = 0
 depth = -15001
-req = 15 //Change this so that news can appear
+req = 16 //Change this so that news can appear
 newsText = string_upper(loc(618))
 
 if req <= global.gamenews { instance_destroy() }
@@ -19,8 +19,8 @@ if req <= global.gamenews { instance_destroy() }
 //text = "Release 1.1.4 is here! You can now restart challenges with CTRL + Restart.\n\n Have Fun!"
 //text = "Release 1.1.6 is here! Fixed few bugfixes and added tiny suprises! Also fullscreen finally saves and there's borderless fullscreen so yay!\n\nHave fun!"
 //text = "Release 1.1.7 is here! Added partial Czech, Portuguese and Slovenian! Improvements to Calendar! Code Refactored all of the skins, hats and items in the game! Well, you might not even know what that means but whatever!\n\nHave fun!"
-text = "The FREEDOM UPDATE! The game is now open sourced! You can now help develop the game, ensuring a longlasting life of this game. I have many things to talk about, so please read the 'News' on this. If you want to contribute, click the 'Help Development' or 'Feedback' buttons to get started.\n\nThank you!"
-//text = "Release 1.1.8 is here! Added quests! You can now earn quests by completing quests, each day you have 3 random quests to beat. Along with the update come general improvements.\n\nHave fun!"
+//text = "The FREEDOM UPDATE! The game is now open sourced! You can now help develop the game, ensuring a longlasting life of this game. I have many things to talk about, so please read the 'News' on this. If you want to contribute, click the 'Help Development' or 'Feedback' buttons to get started.\n\nThank you!"
+text = "Release 1.1.8 is here! Added quests and 40 OF THEM!! You can now earn credits by completing quests, each day you have 3 random quests to beat. Along with the update come general improvements.\n\nHave fun!"
 if global.moddedGameDir != "" {
 text = "You are running a modded client! Save files will not be confilcted with the modded game. Have fun!\n\n[c_yellow]Mod Name: " + string(global.moddedGameDir)	
 newsText = string_upper(loc(677))

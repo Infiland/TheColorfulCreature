@@ -1,3 +1,8 @@
 depth = 20
-//Until fully implemented, this will remove the quests button 
-instance_destroy()
+
+num = 0
+if global.QUESTday = global.calendarcurrentday {
+	newquests = 0
+} else {
+	newquests = 1
+}

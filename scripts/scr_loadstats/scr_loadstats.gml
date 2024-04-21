@@ -4,6 +4,7 @@ if global.cheats = 0 {
 	
 	if (file_exists(directory + "Stats.sav")) {
 	ini_open(directory + "Stats.sav");
+	//STATS
 	global.totaldeaths = ini_read_real("Stats","Total Deaths",0)
 	global.totaltime = ini_read_real("Stats","Total Time",0);
 	global.totaljumps = ini_read_real("Stats","Total Jumps",0);
@@ -38,6 +39,7 @@ if global.cheats = 0 {
 	global.gamenews = ini_read_real("Stats","Game News",0);
 	global.asteroidfun = ini_read_real("Stats","AFUN",0);
 	global.worldProgression = ini_read_real("Stats","worldProgression",1);
+	global.totalquests = ini_read_real("Stats","Total Quests Beaten",1);
 	//Deaths
 	global.totalblockdeaths = ini_read_real("Stats","Block Deaths",0);
 	global.totalrestartdeaths = ini_read_real("Stats","Restart Deaths",0);
@@ -54,6 +56,53 @@ if global.cheats = 0 {
 	global.totalrocketdeaths = ini_read_real("Stats","Rocket Deaths",0);
 	global.totaltroopdeaths = ini_read_real("Stats","Troop Deaths",0);
 	global.totalwaterdeaths = ini_read_real("Stats","Water Deaths",0);
+	
+	//QUESTS
+	for(var i=0;i<5;i++) {
+		global.QUEST[i] = ini_read_real("Quests","QuestN"+string(i),0)
+	}
+	global.QUESTday = ini_read_real("Quests","Quest Day",global.calendarcurrentday)
+	
+	global.QUESTdeaths = ini_read_real("Quests","Total Deaths",0)
+	global.QUESTtime = ini_read_real("Quests","Total Time",0);
+	global.QUESTjump = ini_read_real("Quests","Total Jumps",0);
+	global.QUESTcoins = ini_read_real("Quests","Total Coins",0);
+    global.QUESTskip = ini_read_real("Quests","Total Skips",0);
+    global.QUESTnormalpickups = ini_read_real("Quests","Total Normal Pickups",0);
+    global.QUESTgravitypickups = ini_read_real("Quests","Total Gravity Pickups",0);
+    global.QUESTspeedpickups = ini_read_real("Quests","Total Speed Pickups",0);
+    global.QUESTusepickups = ini_read_real("Quests","Total Use Pickups",0);
+    global.QUESTkeypickups = ini_read_real("Quests","Total Key Pickups",0);
+    global.QUESTportal = ini_read_real("Quests","Total Portal",0);
+    global.QUESTtorchpickups = ini_read_real("Quests","Total Torch Pickups",0);
+    global.QUESTlevelcompleted = ini_read_real("Quests","Total Level Completed",0);
+    global.QUESTcustomlevel = ini_read_real("Quests","Custom Levels Completed",0);
+    global.QUESTgunshots = ini_read_real("Quests","Total Gun Shots",0);
+    global.QUESTgunpickups = ini_read_real("Quests","Total Gun Pickups",0);
+    global.QUESTammopickups = ini_read_real("Quests","Total Ammo Pickups",0);
+    global.QUESTdestroyedboxes = ini_read_real("Quests","Total Destroyed Boxes",0);
+    global.QUESTenemykills = ini_read_real("Quests","Total Enemy Kills",0);
+    global.QUEST1ups = ini_read_real("Quests","Total 1UPS",0);
+    global.QUESTrocketkills = ini_read_real("Quests","Total Rocket Kills",0);
+    global.QUESToxygenpickups = ini_read_real("Quests","Total Oxygen Pickups",0);
+    global.QUESTdjumppickups = ini_read_real("Quests","Total D.Jump Pickups",0);
+    global.QUESTblocksbroken = ini_read_real("Quests","Total Blocks Broken",0);
+
+    global.QUESTblockdeaths = ini_read_real("Quests","Block Deaths",0);
+    global.QUESTrestartdeaths = 0
+    global.QUESTspikedeaths = 0
+    global.QUESTinvisiblespikedeaths = 0
+    global.QUESTverticalspikedeaths = 0
+    global.QUESThorizontalspikedeaths = 0
+    global.QUESTgoldspikedeaths = 0
+    global.QUESTweirdspikedeaths = 0
+    global.QUESTvoiddeaths = 0
+    global.QUESTfiredeaths = 0
+    global.QUESTlavadeaths = 0
+    global.QUESTbulletdeaths = 0
+    global.QUESTrocketdeaths = 0
+    global.QUESTtroopdeaths = 0
+    global.QUESTwaterdeaths = 0
 	}
 	else {
 	}

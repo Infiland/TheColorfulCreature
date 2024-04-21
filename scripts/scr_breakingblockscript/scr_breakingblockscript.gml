@@ -11,16 +11,6 @@ if image_index != 1 {
 	scr_blockbreaksound()
 }}}
 
-if hpbreakable < 0 {
-if room != r_leveleditor {
-if instance_exists(o_player) {
-if place_meeting(x,(y-(o_player.vsp)-1),o_player) {
-increase_stat("totalblocksbroken","QUESTblocksbroken",1)
-o_player.vsp = 0
-}}}
-instance_destroy()
-}
-
 scr_breakableby(o_player)
 scr_breakableby(o_playerMU)
 scr_breakableby(o_enemyplayer)

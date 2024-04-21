@@ -1,15 +1,16 @@
 Unpleasant Quest|Die 25 times|QUESTdeaths|25|10|100
-TCC Attention Span|Play for 10 minutes|QUESTtime|600|10|100
+TCC Attention Span|Play for 10 minutes|QUESTtime|600|15|100
 Time Killer|Play for 30 minutes|QUESTtime|1800|50|100
 Jumper|Jump 100 times|QUESTjump|100|10|100
 Plumber|Collect 10 coins|QUESTcoins|10|10|100
+Hard Level|Skip a level|QUESTskip|1|15|100
 The Colorful Creature|Change color 50 times|QUESTnormalpickups|50|15|100
 Gravition|Change gravity 25 times|QUESTgravitypickups|25|15|100
 Usain|Change speed 25 times|QUESTspeedpickups|25|20|100
 You use colors|Interact with color items 50 times|QUESTusepickups|50|25|100
 Locksmith|Collect 20 keys|QUESTkeypickups|20|20|100
-Now you are thinking with portals|Enter through portals 20 times|20|20|100
-Coals and sticks|Collect 15 torches|15|15|100
+Now you are thinking with portals|Enter through portals 20 times|QUESTportal|20|20|100
+Coals and sticks|Collect 15 torches|QUESTtorchpickups|15|15|100
 Level Beater|Beat 10 Levels|QUESTlevelcompleted|10|25|100
 Workshop Beater|Beat 5 Workshop Levels|QUESTcustomlevel|5|25|100
 Compton|Shoot 50 times|QUESTgunshots|50|10|100

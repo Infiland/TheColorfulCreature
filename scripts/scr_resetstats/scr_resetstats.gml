@@ -54,10 +54,19 @@ global.totalwaterdeaths = 0
 function scr_reloadquests(){
 //Stats Related
 //QUEST VARIABLES ARE USED IN INCREASE_STAT
+global.QUEST[0] = 0
+global.QUEST[1] = 0
+global.QUEST[2] = 0
+global.QUEST[3] = 0
+global.QUEST[4] = 0
+
+global.QUESTday = global.calendarcurrentday
+
 global.QUESTdeaths = 0
 global.QUESTtime = 0
 global.QUESTjump = 0
 global.QUESTcoins = 0
+global.QUESTskip = 0
 global.QUESTnormalpickups = 0
 global.QUESTgravitypickups = 0
 global.QUESTspeedpickups = 0

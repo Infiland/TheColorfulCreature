@@ -12,7 +12,7 @@ function death() {
 if !steam_get_achievement("GOLDEN_SPIKE_DEATH") { steam_set_achievement("GOLDEN_SPIKE_DEATH") } //GOLDEN SPIKE ACHIEVEMENT
 		}
 		if instance_place(x,y,o_weirdspike)  { //Weird Spike Deaths
-			increase_stat("totalweirddeaths","QUESTweirddeaths",1)
+			increase_stat("totalweirdspikedeaths","QUESTweirdspikedeaths",1)
 if !steam_get_achievement("WEIRD_SPIKE_DEATH") { steam_set_achievement("WEIRD_SPIKE_DEATH") } //WEIRD SPIKE ACHIEVEMENT
 		}
 	if instance_place(x,y,o_allinvspikes) { //Invisible Spike Deaths

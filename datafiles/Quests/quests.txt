@@ -1,14 +1,39 @@
+Unpleasant Quest|Die 25 times|QUESTdeaths|25|10|100
+TCC Attention Span|Play for 10 minutes|QUESTtime|600|10|100
+Time Killer|Play for 30 minutes|QUESTtime|1800|50|100
+Jumper|Jump 100 times|QUESTjump|100|10|100
+Plumber|Collect 10 coins|QUESTcoins|10|10|100
+The Colorful Creature|Change color 50 times|QUESTnormalpickups|50|15|100
+Gravition|Change gravity 25 times|QUESTgravitypickups|25|15|100
+Usain|Change speed 25 times|QUESTspeedpickups|25|20|100
+You use colors|Interact with color items 50 times|QUESTusepickups|50|25|100
+Locksmith|Collect 20 keys|QUESTkeypickups|20|20|100
+Now you are thinking with portals|Enter through portals 20 times|20|20|100
+Coals and sticks|Collect 15 torches|15|15|100
 Level Beater|Beat 10 Levels|QUESTlevelcompleted|10|25|100
-Endless Beater|Beat 10 Endless Levels|QUESTendlesslevelcompleted|10|25|100
-Daily Guy|Beat a Daily Level|QUESTdailycompleted|1|25|100
-Calendar Guy|Beat a Calendar Week|QUESTcalendarcompleted|1|25|20
-Mom I beat a boss!|Beat a Boss|QUESTbossbeaten|1|25|100
-Beat an easy challenge|Beat an 1 difficulty challenge|QUESTchallengedifficulty|1|5|100
-Workshop Beater|Beat 5 Workshop Levels|QUESTworkshoplevelcompleted|5|25|100
-Wheel Spinner|Spin the wheel|QUESTwheelspinned|1|10|100
-Jumper|Jump 100 times|QUESTjumps|100|10|100
-Death Guy|Die 25 times|QUESTdeaths|100|25|100
-The Colorful Creature|Change color 25 times|QUESTcolorchanges|100|25|100
-Troop Killer|Kill 25 troops|QUESTtroopkills|100|25|100
-Time Killer|Play for 30 minutes|QUESTtime|1800|25|100
-Golden Spike|See a golden spike|QUESTgoldensaw|1|25|100
+Workshop Beater|Beat 5 Workshop Levels|QUESTcustomlevel|5|25|100
+Compton|Shoot 50 times|QUESTgunshots|50|10|100
+Glock Glock|Pick up 5 guns|QUESTgunpickups|5|15|100
+9mm|Collect 10 Ammo items|QUESTammopickups|10|15|100
+I HATE BOXES!|Destroy 20 Boxes|QUESTdestroyedboxes|20|25|100
+Troop Killer|Kill 25 Troops|QUESTenemykills|25|30|100
+I love you|Collect 10 1-UPS in Hardmode|QUEST1ups|10|25|100
+Quake 3 Hater|Destroy 10 rockets|QUESTrocketkills|10|30|100
+Blub Blub|Collect 10 Oxygen Items|QUESToxygenpickups|10|20|100
+Booooing|Collect 15 Double Jump Items|QUESTdjumppickups|15|20|100
+My Relationship Problems|Break 20 Breakable Blocks|QUESTblocksbroken|20|20|100
+Wrong Color|Die 10 times from blocks|QUESTblockdeaths|10|10|100
+Restart!|Restart 5 times|QUESTrestartdeaths|5|5|100
+Pointy|Die 5 times from spikes|QUESTspikedeaths|5|5|100
+Where was it|Die 5 times from invisible spikes|QUESTinvisiblespikedeaths|5|10|100
+Green Spikes|Die 5 times from green spikes|QUESTverticalspikedeaths|5|10|100
+Yellow Spikes|Die 5 times from yellow spikes|QUESThorizontalspikedeaths|5|10|100
+Gold Spike|Die to a golden spike|QUESTgoldspikedeaths|1|75|100
+MOST WANTED|Die to a weird spike|QUESTweirdspikedeaths|1|500|100
+Black Hole|Die to the void 5 times|QUESTvoiddeaths|5|5|100
+IT BURNS|Burn yourself 5 times|QUESTfiredeaths|5|10|100
+HOT HOT|Die to lava 5 times|QUESTlavadeaths|5|10|100
+Cannon-Shots|Die 5 times to bullet shots (that's what she said)|QUESTbulletdeaths|5|10|100
+A bit hardcore isn't it?|Die 5 times to rockets|QUESTrocketdeaths|5|10|100
+ENEMY ELIMINATED|Die 5 times to troops|QUESTtroopdeaths|5|10|100
+Aquaphobia|Drown 5 times|QUESTwaterdeaths|5|25|100

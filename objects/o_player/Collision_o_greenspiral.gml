@@ -10,7 +10,7 @@ global.color = 2
 passblockcooldown = 10
 scr_changecolorplayervx()
 if room != r_leveleditor { 
-	global.totalusepickups += 1
+	increase_stat("totalusepickups","QUESTusepickups",1)
 	}
 var item = instance_nearest(x+16,y+16,o_greenspiral)
 with item {

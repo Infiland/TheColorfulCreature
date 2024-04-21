@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"add_stats",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"add_stats",
+  "parent":{
+    "name":"Stats",
+    "path":"folders/Scripts/Stats.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

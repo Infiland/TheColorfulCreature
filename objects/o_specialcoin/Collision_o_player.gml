@@ -2,7 +2,9 @@ if global.challenges = 0 {
 if room != r_leveleditor {
 if global.hardmode = 0 {
 global.pickup = 1
-global.totalcoins += 1
+
+increase_stat("totalcoins","QUESTcoins",1)
+//Unlock Golden skin if player has 5000 total coins
 if global.totalcoins = 5000 {
 global.skin[13] = 1
 scr_saveskins()
@@ -11,7 +13,7 @@ global.special += 1
 }
 if global.hardmode = 1 {
 global.hardmodelives += 1
-global.total1ups += 1
+increase_stat("total1ups","QUEST1ups",1)
 }
 }}
 audio_play_sound(snd_coin,5,0)

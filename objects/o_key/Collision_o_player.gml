@@ -1,5 +1,5 @@
 if room != r_leveleditor { 
-	global.totalkeypickups += 1
+	increase_stat("totalkeypickups","QUESTkeypickups",1)
 	}
 
 instance_destroy()

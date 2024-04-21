@@ -14,6 +14,7 @@ global.totalkeypickups = 0
 global.totalportal = 0
 global.totaltorchpickups = 0
 global.totallevelcompleted = 0
+global.totalendlesslevelcompleted = 0 //Unused
 global.customlevelcompleted = 0
 global.totalgunshots = 0
 global.totalgunpickups = 0
@@ -23,7 +24,6 @@ global.totalenemykills = 0
 global.total1ups = 0
 global.totalrocketkills = 0
 global.totaloxygenpickups = 0
-global.cookies = 0
 global.creditscurrency = 0
 global.customERunlock = 0
 global.oldERunlock = 0
@@ -49,11 +49,16 @@ global.totalrocketdeaths = 0
 global.totaltroopdeaths = 0
 global.totalwaterdeaths = 0
 
-//Achievements
-global.lowoncreditsACH = 0
-global.toomuchcreditsACH = 0
 }
 
 function scr_reloadquests(){
+//Stats Related
 global.QUESTlevelcompleted = 0
+global.QUESTcoins = 0
+global.QUESTtime = 0
+global.QUESTjump = 0
+global.QUESTnormalpickups = 0
+global.QUESTdeaths = 0
+global.QUESTblockdeaths = 0
+//Boolean Related
 }

@@ -6,7 +6,9 @@ instance_destroy(o_fadecontroller)
 instance_destroy(o_deathcounter)
 instance_destroy(o_musicdistortion)
 instance_destroy(o_ammocounter)
-global.customlevelcompleted += 1
+
+increase_stat("customlevelcompleted","QUESTcustomlevel",1)
+
 if !steam_get_achievement("WORKSHOP_BEGINNER") { steam_set_achievement("WORKSHOP_BEGINNER") }
 if !steam_get_achievement("FEATURED_LEVEL") { steam_set_achievement("FEATURED_LEVEL") }	
 if global.customlevelcompleted > 49 {

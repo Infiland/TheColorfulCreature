@@ -27,7 +27,6 @@ if global.cheats = 0 {
 	ini_write_real("Stats","Total 1UPS",global.total1ups);
 	ini_write_real("Stats","Total Rocket Kills",global.totalrocketkills);
 	ini_write_real("Stats","Total Oxygen Pickups",global.totaloxygenpickups);
-	ini_write_real("Stats","Cookies",global.cookies);
 	ini_write_real("Stats","Credits",global.creditscurrency);
 	ini_write_real("Stats","Wheel Cooldown",global.wheeltimeleft);
 	ini_write_real("Stats","Wheel Skin Cooldown",global.wheelskincooldown);

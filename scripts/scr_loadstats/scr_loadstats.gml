@@ -27,7 +27,6 @@ if global.cheats = 0 {
 	global.total1ups = ini_read_real("Stats","Total 1UPS",0);
 	global.totalrocketkills = ini_read_real("Stats","Total Rocket Kills",0);
 	global.totaloxygenpickups = ini_read_real("Stats","Total Oxygen Pickups",0);
-	global.cookies = ini_read_real("Stats","Cookies",0);
 	global.creditscurrency = ini_read_real("Stats","Credits",0);
 	global.wheeltimeleft = ini_read_real("Stats","Wheel Cooldown",0);
 	global.wheelskincooldown = ini_read_real("Stats","Wheel Skin Cooldown",0);

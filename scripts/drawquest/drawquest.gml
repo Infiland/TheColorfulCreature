@@ -61,6 +61,7 @@ if current >= real(needed) {
 			if completed = true {
 			global.QUEST[qid] = 1
 			global.totalquests += 1
+			audio_play_sound(snd_newhighscore,10,0)
 			global.creditscurrency += floor(real(str[quest][4]) * global.creditsmultiplier)
 			scr_savestats()
 		}}

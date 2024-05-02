@@ -68,7 +68,7 @@ RED: The color of Danger and Courage.
 YELLOW: The color of Happiness, Glory, Harmony and Wisdom.
 GREEN: The color of Safety and Permission.
 BLUE: The color of Intelligence, Knowledge, Calm and Concentration.
-WHITE: The color of Perfection, The Good, Honesty, Cleanliness, The Beginning, The New,\nNeutrality
+WHITE: The color of Perfection, The Good, Honesty, Cleanliness, and beginning
 Colorblind option is here!
 Inspired from the game 'Color Master'
 Welcome to City 17. It's safer here...
@@ -202,7 +202,6 @@ Slaying the bugs.
 v i b e    c h e c k [s_gun]
 Runs even on 1 GHZ Computers.
 Wow!
-Protip: If you are stuck in story mode, try reseting progress to gain coins again,\ndon't worry you will get better in your second run.
 About 1GB of RAM Required.
 Level Editor has over a million possible combinations.
 Legendary Skins are harder to get in the game. Find a way to unlock them.
@@ -267,7 +266,6 @@ Welcome Back!
 How hard can this possibly be?
 Want more levels? Go to Start > Fun Mode > Challenges!
 Protip: When you beat a challenge you get a reward! (eg. skin)
-V\ne\nr\nt\ni\nc\na\nl
 Ever saw a golden spike?
 Protip: Every world in the main game has a boss.
 What are you looking at?
@@ -371,7 +369,7 @@ Penguins are glad to hear that a linux port is finally here!
 Wake up Reddie, we have troops to burn.
 No taxes included!
 It's time to kick ass and chew bubblegum.
-Protip: You can also get credits in challenges, hardmode, endless run and by converting coins into\ncredits.
+Protip: You can also get credits by completing quests!
 Not inspired by Bouncy Tales.
 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
 Wanna play with friends? Try local multiplayer.

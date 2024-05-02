@@ -1,3 +1,4 @@
+//Fullscreen shortcut
 game_set_speed(global.maxfps, gamespeed_fps);
 room_speed = global.maxfps
 

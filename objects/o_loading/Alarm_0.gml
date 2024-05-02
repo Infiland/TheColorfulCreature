@@ -33,14 +33,15 @@ global.androidskipy = skipy
 global.androidrestartx = restartx
 global.androidrestarty = restarty
 
-if os_type = os_android { //Load controls for android
+//Load controls for android
+if os_type = os_android { 
 scr_loadandroid()
 }
 
 room_goto(r_mainmenu)
 
 instance_create(x,-500,o_newsbanner)
-//Load Lang
+//Load Languages
 switchlang()
 //Load Anticheat
 scr_anticheat()

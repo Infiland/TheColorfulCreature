@@ -2,12 +2,16 @@ function drawquest(yy,quest=0,qid=0){
 	
 draw_set_halign(fa_center)
 	
+//Variables
+var title = str[quest][0]
+var description = str[quest][1]
 var current = variable_global_get(str[quest][2]) //Current Progress
 var needed = str[quest][3] //Required
-var completed = false
-var claimed = global.QUEST[qid]
+var reward = str[quest][4] //Credits Reward
+var completed = false //Is the quest completed
+var claimed = global.QUEST[qid] //Is the quest claimed
 //If quest is completed
-if current >= real(needed) {
+if current >= real(needed) { //If requirement is fulfilled, mark quest as complete
 	completed = true
 	current = real(needed)
 }
@@ -21,8 +25,8 @@ if current >= real(needed) {
 	}
 	draw_set_alpha(1)
 	draw_rectangle_color(100,yy,924,yy+150,c_white,c_white,c_white,c_white,true)
-	draw_text_color(512,yy+10,str[quest][0],c_yellow,c_orange,c_yellow,c_orange,1) //Quest Title
-	draw_text(512,yy+35,str[quest][1]) //Quest Description
+	draw_text_color(512,yy+10,title,c_yellow,c_orange,c_yellow,c_orange,1) //Quest Title
+	draw_text(512,yy+35,description) //Quest Description
 	
 	//Progress Bar
 	draw_rectangle_color(150,yy+65,874,yy+95,c_green,c_green,c_green,c_green,false)
@@ -49,7 +53,7 @@ if current >= real(needed) {
 	if claimed = false {
 		draw_sprite_ext(s_creditscurrency,0,120,yy+105,2,2,0,c_white,1)
 		if global.creditsmultiplier > 1 { draw_set_color(c_yellow) }
-		draw_text(195,yy+108,string(floor(real(str[quest][4]) * global.creditsmultiplier)))
+		draw_text(195,yy+108,string(floor(real(reward) * global.creditsmultiplier)))
 	} else {
 		draw_sprite_ext(s_levelhud,0,120,yy+105,0.5,0.5,0,c_white,1)	
 	}
@@ -62,7 +66,13 @@ if current >= real(needed) {
 			global.QUEST[qid] = 1
 			global.totalquests += 1
 			audio_play_sound(snd_newhighscore,10,0)
-			global.creditscurrency += floor(real(str[quest][4]) * global.creditsmultiplier)
+			
+			//Anticheat if reward is too high
+			if reward > 500+needed {
+				global.cheats = 1
+			}
+			
+			global.creditscurrency += floor(real(reward) * global.creditsmultiplier)
 			scr_savestats()
 		}}
 	}

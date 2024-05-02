@@ -8,7 +8,7 @@ get = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentP
 getdemo = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1749610");
 
 if steam_get_app_id() = 1749610 { version = "Demo"	} // DEMO VERSION
-if steam_get_app_id() != 1749610 { version = "Release 1.1.8" } //CHANGE THIS FOR NEWER VERSIONS
+if steam_get_app_id() != 1749610 { version = "Release " + GM_version } //CHANGE THIS FOR NEWER VERSIONS
 if global.moddedGameDir != "" { version = loc(677) } // MODDED VERSION
 if os_type = os_android { version = "Android Version" } // ANDROID VERSION
 window_set_caption("The Colorful Creature | " + version)

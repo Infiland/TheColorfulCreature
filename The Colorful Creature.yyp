@@ -439,7 +439,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.2.0.132",
+    "IDEVersion":"2024.4.0.137",
   },
   "name":"The Colorful Creature",
   "resources":[
@@ -1150,6 +1150,7 @@
     {"id":{"name":"o_test","path":"objects/o_test/o_test.yy",},},
     {"id":{"name":"o_testroombutton","path":"objects/o_testroombutton/o_testroombutton.yy",},},
     {"id":{"name":"o_text","path":"objects/o_text/o_text.yy",},},
+    {"id":{"name":"o_textbuildtime","path":"objects/o_textbuildtime/o_textbuildtime.yy",},},
     {"id":{"name":"o_thecalendarbutton","path":"objects/o_thecalendarbutton/o_thecalendarbutton.yy",},},
     {"id":{"name":"o_threeplayerMU","path":"objects/o_threeplayerMU/o_threeplayerMU.yy",},},
     {"id":{"name":"o_time","path":"objects/o_time/o_time.yy",},},

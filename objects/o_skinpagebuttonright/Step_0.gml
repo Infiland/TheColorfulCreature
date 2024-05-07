@@ -5,12 +5,9 @@ if global.skinpage < skinpage {
 	if keyboard_check_pressed(vk_right) || gamepad_button_check_pressed(0,gp_shoulderr) {global.skinpage += 1}
 	}
 
-if global.skinschange = 0 {
 if global.skinpage = skinpage { x = lerp(x,1100,0.2) } else {
 	x = lerp(x,1000,0.2)
 }
-}
-if global.skinschange = 1 {x = lerp(x,1100,0.2)}
 break;
 
 case(2):

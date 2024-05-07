@@ -1,4 +1,4 @@
 if global.hat[27] = 1 {
 global.hatselected = 27
-scr_savehats()
+event_inherited()
 }

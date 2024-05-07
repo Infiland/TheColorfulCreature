@@ -74,4 +74,5 @@ case(63): sprite_index = s_palestinianhat break;
 case(64): sprite_index = s_slovenianhat break;
 case(65): sprite_index = s_japanesehat break;
 case(66): sprite_index = s_romanianhat break;
+case(67): sprite_index = s_portuguesehat break;
 }

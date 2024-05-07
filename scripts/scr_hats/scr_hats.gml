@@ -71,6 +71,7 @@ case(43): hatspr=s_bluesushat  break;
 case(44): hatspr=s_whitesushat  break;
 case(45): hatspr=s_flowerhat  break;
 case(46): hatspr=s_propellerhat
+if object_index = o_player {
 if zerogrv = 0 {
 draw_sprite_ext(s_propellerhattop,current_time/30,x+xx,y+yy-18,sx,1,image_angle,colorhat,al)
 } else {
@@ -78,6 +79,7 @@ draw_sprite_ext(s_propellerhattop,current_time/30,x+xx,y+yy-18,sx,1,image_angle,
 	yy = lengthdir_y(30,image_angle+90)
 	draw_sprite_ext(s_propellerhattop,current_time/30,x+xx,y+yy,sx,1,image_angle,colorhat,al) 
 	}
+}
 break;
 case(47): hatspr=s_serbianhat break;
 case(48): hatspr=s_rathat break;
@@ -99,6 +101,7 @@ case(63): hatspr=s_palestinianhat break;
 case(64): hatspr=s_slovenianhat break;
 case(65): hatspr=s_japanesehat break;
 case(66): hatspr=s_romanianhat break;
+case(67): hatspr=s_portuguesehat break;
 }
 
 curhat = hatspr

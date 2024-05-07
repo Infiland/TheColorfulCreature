@@ -3,15 +3,19 @@
   "%Name":"o_allhatbuttons",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"o_allhatbuttons",
   "overriddenProperties":[],
   "parent":{
-    "name":"Hat Buttons",
-    "path":"folders/Objects/Player Hats/Hat Buttons.yy",
+    "name":"Player Hats",
+    "path":"folders/Objects/Player Customization/Player Hats.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"o_allcustomizations",
+    "path":"objects/o_allcustomizations/o_allcustomizations.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

@@ -6,6 +6,7 @@ if global.cheats = 0 {
 	if (file_exists(directory + "Hats.sav")) {
 	ini_open(directory + "Hats.sav");
 	global.hatselected = ini_read_real("Hats","Selected Hat",0)
+	global.hatnameobjectselected = ini_read_real("Hats","Hat Name Object Selected",o_unequipedhatbutton)
 	global.hat[1] = ini_read_real("Hats","Graduated Hat",-1)
 	global.hat[2] = ini_read_real("Hats","Cone Hat",0)
 	global.hat[3] = ini_read_real("Hats","Party Hat",-1)
@@ -72,6 +73,7 @@ if global.cheats = 0 {
 	global.hat[64] = ini_read_real("Hats","Slovenian Hat",0) //Flag
 	global.hat[65] = ini_read_real("Hats","Japanese Hat",0) //Flag
 	global.hat[66] = ini_read_real("Hats","Romanian Hat",0) //Flag
+	global.hat[67] = ini_read_real("Hats","Portuguese Hat",0) //Flag
 	
 	var totalflag = 0
 	if global.hat[47] = 1 { totalflag += 1 }
@@ -91,8 +93,9 @@ if global.cheats = 0 {
 	if global.hat[64] = 1 { totalflag += 1 }
 	if global.hat[65] = 1 { totalflag += 1 }
 	if global.hat[66] = 1 { totalflag += 1 }
+	if global.hat[67] = 1 { totalflag += 1 }
 	
-	if totalflag >= 16 {
+	if totalflag >= 17 {
 	if !steam_get_achievement("FLAG_GUY") { steam_set_achievement("FLAG_GUY") }
 	}
 	

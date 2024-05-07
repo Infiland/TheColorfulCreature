@@ -27,7 +27,6 @@ global.appid = steam_get_app_id();
 gamebootup = 0
 image_speed = 0
 image_index = 0
-global.skinschange = 0
 global.boss1 = 0
 global.boss2 = 0
 global.boss3 = 0

@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Player Hats",
-    "path":"folders/Objects/Player Hats.yy",
+    "path":"folders/Objects/Player Customization/Player Hats.yy",
   },
   "parentObjectId":null,
   "persistent":false,

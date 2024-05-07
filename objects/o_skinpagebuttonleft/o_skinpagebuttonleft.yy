@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Player Skins",
-    "path":"folders/Objects/Player Skins.yy",
+    "path":"folders/Objects/Player Customization/Player Skins.yy",
   },
   "parentObjectId":null,
   "persistent":false,

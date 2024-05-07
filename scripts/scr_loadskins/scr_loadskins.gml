@@ -11,6 +11,7 @@ function scr_loadskins() {
 	global.world4 = ini_read_real("Skins","World 4",0)
 	global.world5 = ini_read_real("Skins","World 5",0)
 	global.skinselected = ini_read_real("Skins","Selected Skin",0)
+	global.skinnameobjectselected = ini_read_real("Skins","Skin Name Object Selected",o_normalskinbutton)
 	global.skin[1] = ini_read_real("Skins","Normal Skin",1);
 	global.skin[2] = ini_read_real("Skins","Kaizo Skin",0);
 	global.skin[3] = ini_read_real("Skins","Mad Skin",0);

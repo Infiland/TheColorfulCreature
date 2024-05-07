@@ -14,7 +14,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Page 3",
-    "path":"folders/Objects/Player Hats/Hat Buttons/Page 3.yy",
+    "path":"folders/Objects/Player Customization/Player Hats/Hat Buttons/Page 3.yy",
   },
   "parentObjectId":{
     "name":"o_allhatbuttons",

@@ -7,6 +7,7 @@ if global.cheats = 0 {
 	ini_open(directory + "Hats.sav");
 	//Hats
 	ini_write_real("Hats","Selected Hat",global.hatselected);
+	ini_write_real("Hats","Hat Name Object Selected",global.hatnameobjectselected)
 	ini_write_real("Hats","Graduated Hat",global.hat[1]);
 	ini_write_real("Hats","Cone Hat",global.hat[2]);
 	ini_write_real("Hats","Party Hat",global.hat[3]);
@@ -73,6 +74,7 @@ if global.cheats = 0 {
 	ini_write_real("Hats","Slovenian Hat",global.hat[64])
 	ini_write_real("Hats","Japanese Hat",global.hat[65])
 	ini_write_real("Hats","Romanian Hat",global.hat[66])
+	ini_write_real("Hats","Portuguese Hat",global.hat[67])
 	
 	ini_write_string("CustomHat","Custom Hat",global.CUSTOMhat);
 	ini_close();

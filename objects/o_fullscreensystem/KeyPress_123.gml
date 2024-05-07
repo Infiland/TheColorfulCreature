@@ -1,3 +1,5 @@
+//Screenshots shortcut
+
 var second = date_get_second(date_current_datetime());
 var minute = date_get_minute(date_current_datetime());
 var hour = date_get_hour(date_current_datetime());

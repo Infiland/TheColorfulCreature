@@ -140,6 +140,8 @@ drawhatshop(s_slovenianhaticon,61+dis,floor(50 * global.hatmerchantdiscount),glo
 drawhatshop(s_japanesehaticon,62+dis,floor(50 * global.hatmerchantdiscount),global.hat[65],500)
 //Romanian
 drawhatshop(s_romanianhaticon,63+dis,floor(50 * global.hatmerchantdiscount),global.hat[66],500)
+//Portuguese
+drawhatshop(s_portuguesehaticon,64+dis,floor(50 * global.hatmerchantdiscount),global.hat[67],500)
 
 //Arrow
 draw_sprite_ext(s_liquidarrow,0,490,620,1,arrowyscale,0,c_white,1)

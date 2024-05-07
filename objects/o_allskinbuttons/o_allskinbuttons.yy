@@ -10,9 +10,12 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Skin Buttons",
-    "path":"folders/Objects/Player Skins/Skin Buttons.yy",
+    "path":"folders/Objects/Player Customization/Player Skins/Skin Buttons.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"o_allcustomizations",
+    "path":"objects/o_allcustomizations/o_allcustomizations.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

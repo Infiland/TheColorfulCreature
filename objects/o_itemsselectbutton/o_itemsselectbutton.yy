@@ -13,7 +13,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Player Items",
-    "path":"folders/Objects/Player Items.yy",
+    "path":"folders/Objects/Player Customization/Player Items.yy",
   },
   "parentObjectId":null,
   "persistent":false,

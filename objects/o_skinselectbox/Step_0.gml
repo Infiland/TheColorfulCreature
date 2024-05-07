@@ -1,8 +1,10 @@
-
-if global.skinschange = 1 {
-sprite_index = s_skinselectlegendary
-} else {sprite_index = s_skinselect }
 switch(global.customizeselect) {
+default: object = global.skinnameobjectselected break;
+case(2): object = global.hatnameobjectselected break;
+case(3): object = global.itemnameobjectselected break;
+}
+
+/*switch(global.customizeselect) {
 case(1):
 switch(global.skinselected) {
 default: object = o_normalskinbutton break; //Normal
@@ -137,6 +139,8 @@ case(2): object = o_floweritembutton break; //Flower
 case(3): object = o_shielditembutton break; //Shield
 }
 break;
+}*/
+if instance_exists(object) {
+	x = lerp(x,object.x,0.2  * (60 / global.maxfps))
+	y = lerp(y,object.y,0.2  * (60 / global.maxfps))
 }
-x = lerp(x,object.x,0.1  * (60 / global.maxfps))
-y = lerp(y,object.y,0.1  * (60 / global.maxfps))

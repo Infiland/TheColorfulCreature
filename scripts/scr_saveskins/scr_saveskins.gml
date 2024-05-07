@@ -1,4 +1,5 @@
 function scr_saveskins() {
+	
 	if global.cheats = 0 {
 	
 	var directory = directory_set("//Save Files/")
@@ -12,6 +13,7 @@ function scr_saveskins() {
 	ini_write_real("Skins","World 4",global.world4);
 	ini_write_real("Skins","World 5",global.world5);
 	ini_write_real("Skins","Selected Skin",global.skinselected);
+	ini_write_real("Skins","Skin Name Object Selected",global.skinnameobjectselected)
 	ini_write_real("Skins","Normal Skin",global.skin[1]);
 	ini_write_real("Skins","Kaizo Skin",global.skin[2]);
 	ini_write_real("Skins","Mad Skin",global.skin[3]);

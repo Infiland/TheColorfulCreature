@@ -14,7 +14,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Page 3",
-    "path":"folders/Objects/Player Skins/Skin Buttons/Page 3.yy",
+    "path":"folders/Objects/Player Customization/Player Skins/Skin Buttons/Page 3.yy",
   },
   "parentObjectId":{
     "name":"o_allskinbuttons",

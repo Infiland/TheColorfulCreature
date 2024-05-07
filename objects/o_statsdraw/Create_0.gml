@@ -163,6 +163,7 @@ ROCKETSDESTROYED = loc(95)+": "
 OXYGENPICKUPS = loc(96)+": "
 DOUBLEJUMPPICKUPS = loc(97)+": "
 BLOCKSBROKEN = loc(617)+": "
+QUESTSCOMPLETED = loc(683)+": "
 
 DEATHS = loc(98)+":"
 TOTALDEATHS = loc(99)+": "

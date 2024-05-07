@@ -9,8 +9,8 @@
   "name":"o_skinselectbox",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player Skins",
-    "path":"folders/Objects/Player Skins.yy",
+    "name":"Player Customization",
+    "path":"folders/Objects/Player Customization.yy",
   },
   "parentObjectId":null,
   "persistent":false,

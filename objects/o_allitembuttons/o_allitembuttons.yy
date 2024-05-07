@@ -3,15 +3,19 @@
   "%Name":"o_allitembuttons",
   "eventList":[
     {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"o_allitembuttons",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player Items",
-    "path":"folders/Objects/Player Items.yy",
+    "name":"Item Buttons",
+    "path":"folders/Objects/Player Customization/Player Items/Item Buttons.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"o_allcustomizations",
+    "path":"objects/o_allcustomizations/o_allcustomizations.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

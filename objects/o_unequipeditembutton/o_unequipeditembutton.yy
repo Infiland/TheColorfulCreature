@@ -12,8 +12,8 @@
   "name":"o_unequipeditembutton",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player Items",
-    "path":"folders/Objects/Player Items.yy",
+    "name":"Page 1",
+    "path":"folders/Objects/Player Customization/Player Items/Item Buttons/Page 1.yy",
   },
   "parentObjectId":{
     "name":"o_allitembuttons",

@@ -1,4 +1,10 @@
 function scr_loadallcustomizables(){
+	
+//Load for selectbox
+global.skinnameobjectselected = o_normalskinbutton
+global.hatnameobjectselected = o_unequipedhatbutton
+global.itemnameobjectselected = o_unequipeditembutton
+
 //Load all skins to be locked
 var amount = 100
 global.skinselected = 0
@@ -7,7 +13,7 @@ global.itemselected = 0
 
 //Total Amount of items
 global.totalskinsAM = 50
-global.totalhatsAM = 66
+global.totalhatsAM = 67
 global.totalitemsAM = 3
 
 //Set all skins to "locked"

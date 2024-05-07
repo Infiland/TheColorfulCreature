@@ -146,6 +146,8 @@ case(61): makehatshop(global.hat[64],floor(50 * global.hatmerchantdiscount),64) 
 case(62): makehatshop(global.hat[65],floor(50 * global.hatmerchantdiscount),65) break;
 //Romanian Hat
 case(63): makehatshop(global.hat[66],floor(50 * global.hatmerchantdiscount),66) break;
+//Portuguese Hat
+case(64): makehatshop(global.hat[67],floor(50 * global.hatmerchantdiscount),67) break;
 }
 }
 

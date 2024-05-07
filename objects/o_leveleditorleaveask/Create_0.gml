@@ -1,8 +1,6 @@
 y = -64
 x = 224
-switch(global.language) {
-default: text = "Are you sure you want to quit the Level Editor? (Y/N)" break;
-}
+text = loc(693) + " (Y/N)"
 
 if os_type = os_android {
 	instance_create(400,500,o_buttonandroidyes)

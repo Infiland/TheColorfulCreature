@@ -40,5 +40,6 @@ While debugging or testing in gamemaker, you won't see contributors, unless the 
 # How to make a mod for TCC
 NOTE: If you are trying to improve the core of the game, consider improving the base game instead.
 1. Fork this reposetory
-2. You can modify the mod to however you'd like.
-3. Contact Infiland if you want the mod to be available for the general public on steam
+2. In o_loading object in the "Game Start" Event, change the global.moddedGameDir variable to have your mod name, this is so that your mod doesn't conflict with the base game saves.
+3. You can modify the mod to however you'd like.
+4. Contact Infiland if you want the mod to be available for the general public on steam

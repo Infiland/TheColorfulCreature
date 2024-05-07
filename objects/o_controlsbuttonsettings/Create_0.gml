@@ -4,13 +4,15 @@ if os_type = os_android {
 instance_destroy()	
 }
 
+text = "Default Controls"
+/*
 switch(global.language) {
 default: text = "Standardtastenbelegung" break;
 case(2): text = "Contrôles par défaut"
 break; //French
 case(3): text = "Controlli Predefiniti" break; //Italian
 case(4): text = "Controles por defecto" break; //Spanish
-}
+}*/
 
 controls = 0
 globalvar editcontrols;

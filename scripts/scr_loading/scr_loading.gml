@@ -196,8 +196,10 @@ global.world3time = 0
 global.world4time = 0
 global.world5time = 0
 
+//Languages
+global.language = setLanguageDependingOnRegion()
+
 global.demo = 0
-global.language = 0
 global.checkpointX = 0
 global.checkpointY = 0
 global.checkpointCOLOR = -1

@@ -1982,6 +1982,7 @@
     {"id":{"name":"scribble","path":"scripts/scribble/scribble.yy",},},
     {"id":{"name":"selecthatCUSTOM","path":"scripts/selecthatCUSTOM/selecthatCUSTOM.yy",},},
     {"id":{"name":"selectlevelCUSTOM","path":"scripts/selectlevelCUSTOM/selectlevelCUSTOM.yy",},},
+    {"id":{"name":"setLanguageDependingOnRegion","path":"scripts/setLanguageDependingOnRegion/setLanguageDependingOnRegion.yy",},},
     {"id":{"name":"skincustomizelogic","path":"scripts/skincustomizelogic/skincustomizelogic.yy",},},
     {"id":{"name":"startnewgame","path":"scripts/startnewgame/startnewgame.yy",},},
     {"id":{"name":"string_height_scribble_ext","path":"scripts/string_height_scribble_ext/string_height_scribble_ext.yy",},},

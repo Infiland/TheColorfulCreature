@@ -28,13 +28,6 @@ directory = string_replace_all(directory,"\\","/")
 	
 	global.workshop = 1
 	
-	if global.LELevelHeightBlocks > 22 {
-	if !instance_exists(o_smoothcamera) { instance_create(x,y,o_smoothcamera) }	
-	}
-	if global.LELevelWidthBlocks > 32 {
-	if !instance_exists(o_smoothcamera) { instance_create(x,y,o_smoothcamera) }	
-	}
-	
 	if global.LEStarRotation != 0 {
 	var customstar = instance_create(x,y,o_customstarbackground)
 	with customstar {
@@ -61,6 +54,14 @@ directory = string_replace_all(directory,"\\","/")
 	}
 	}
 	ds_map_destroy(_wrapper)
+	}
+	
+	if global.LELevelHeightBlocks > 22 || global.LELevelWidthBlocks > 32 {
+		if !instance_exists(o_smoothcamera) {
+			if instance_exists(o_player) {
+				instance_create(o_player.x,o_player.y,o_smoothcamera) 
+			}
+		}	
 	}
 
 

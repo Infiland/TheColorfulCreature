@@ -1685,6 +1685,7 @@
     {"name":"scribble","order":10,"path":"scripts/scribble/scribble.yy",},
     {"name":"selecthatCUSTOM","order":1,"path":"scripts/selecthatCUSTOM/selecthatCUSTOM.yy",},
     {"name":"selectlevelCUSTOM","order":2,"path":"scripts/selectlevelCUSTOM/selectlevelCUSTOM.yy",},
+    {"name":"setLanguageDependingOnRegion","order":1,"path":"scripts/setLanguageDependingOnRegion/setLanguageDependingOnRegion.yy",},
     {"name":"skincustomizelogic","order":2,"path":"scripts/skincustomizelogic/skincustomizelogic.yy",},
     {"name":"string_height_scribble_ext","order":3,"path":"scripts/string_height_scribble_ext/string_height_scribble_ext.yy",},
     {"name":"string_height_scribble","order":2,"path":"scripts/string_height_scribble/string_height_scribble.yy",},

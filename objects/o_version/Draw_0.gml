@@ -47,7 +47,7 @@ if mouse_y < 462 {
 drawinfoboxbadge(loc(637),c_lime,c_green)
 }}}}
 //COMMENTARY
-if dlc1 = 1 {
+if dlc1 >= 1 {
 draw_sprite(s_badgesmenu,5,970-a*32-(game1*32),446)
 if mouse_x > (970-a*32-(game1*32)) {
 if mouse_x < (1002-a*32-(game1*32)) {	
@@ -57,12 +57,20 @@ drawinfoboxbadge(loc(638),c_yellow,c_orange)
 }}}}}
 //OST
 if dlc2 > 0 {
+if dlc1_1 = 0 {
 draw_sprite(s_badgesmenu,6,970-a*32-(dlc1*32)-(game1*32),446)
+} else {
+draw_sprite(s_badgesmenu,15,970-a*32-(dlc1*32)-(game1*32),446)	
+}
 if mouse_x > (970-a*32-(dlc1*32)-(game1*32)) {
 if mouse_x < (1002-a*32-(dlc1*32)-(game1*32)) {	
 if mouse_y > 446 {
 if mouse_y < 462 {
-drawinfoboxbadge(loc(639),c_blue,c_aqua)
+	if dlc1_1 = 0 {
+		drawinfoboxbadge(loc(639),c_blue,c_aqua)
+	} else {
+		drawinfoboxbadge(loc(694),c_blue,c_aqua)
+	}
 }}}}}
 //ASTEROIDS++
 if dlc3 > 0 {

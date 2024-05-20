@@ -1,5 +1,9 @@
 sprite_set_offset(s_playerred,0,0)
 
+//Drop random item
+steam_inventory_trigger_item_drop(99)
+steam_inventory_request_prices();
+
 gamepad_set_vibration(0,0,0)
 
 hidehud()

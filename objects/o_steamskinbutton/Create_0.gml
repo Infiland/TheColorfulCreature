@@ -1,8 +1,5 @@
-originalx = x
-originaly = y
-x = 1164
-y = 416
 page = 3
+event_inherited()
 
 if global.skin[44] = 0 {
 if global.customlevelcompleted > 49 {

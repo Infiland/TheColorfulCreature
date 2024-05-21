@@ -1,2 +1,2 @@
-originalx = x
-originaly = y
+page = 1
+event_inherited()

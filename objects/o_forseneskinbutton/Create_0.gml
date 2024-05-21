@@ -1,8 +1,5 @@
-originalx = x
-originaly = y
-x = 1164
-y = 416
+page = 2
+event_inherited()
 text = ""
 keyboard_string = ""
 image_speed = 0
-page = 2

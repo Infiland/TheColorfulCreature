@@ -1,5 +1,8 @@
 function scr_loadallcustomizables(){
-	
+
+//Load ItemDef
+global.itemdef = array_create(5000)
+
 //Load for selectbox
 global.skinnameobjectselected = o_normalskinbutton
 global.hatnameobjectselected = o_unequipedhatbutton

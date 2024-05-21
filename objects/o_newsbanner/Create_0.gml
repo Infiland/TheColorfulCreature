@@ -4,8 +4,6 @@ depth = -15001
 req = 17 //Change this so that news can appear
 newsText = string_upper(loc(618))
 
-if req <= global.gamenews { instance_destroy() }
-
 //text = "New Level Editor has been released! The UI was updated to make it easy for people to make levels. You can now make levels much more quickly, the UI makes more sense, and this was in development during February and March. This is still in 'Beta' so please give us feedback in the official discord server.\n\nHave fun!"
 //text = "Wow! We have released [rainbow][wave]SKINS[/] for the setting button! To gather them, participate in the [c_yellow]'Distance Cog'[/] event where you have to put your mouse on the setting button in order to rotate the settings cog enough to get it going! The more you spin it, the farther it goes. 1st place gets a golden cog, 2nd place silver, and 3rd bronze.\n\nHave Fun!"
 //text = "What's this? You can earn a random key while playing? But what kind of game will you get? Is the game even public or not? And most of all, is it even a steam key, or something else entirely... You will find out eventually, only select players will be chosen at random or by simply playing."
@@ -22,8 +20,11 @@ if req <= global.gamenews { instance_destroy() }
 //text = "The FREEDOM UPDATE! The game is now open sourced! You can now help develop the game, ensuring a longlasting life of this game. I have many things to talk about, so please read the 'News' on this. If you want to contribute, click the 'Help Development' or 'Feedback' buttons to get started.\n\nThank you!"
 //text = "Release 1.1.8 is here! Added quests and 40 OF THEM!! You can now earn credits by completing quests, each day you have 3 random quests to beat. Along with the update come general improvements.\n\nHave fun!"
 text = "What's better than a soundtrack? [rainbow][wave]A SUPER SOUNDTRACK![/]\n\nThe difference? It includes all .flp files so you can remix songs, it also has unused songs and sound effects!\n\nAnd finally, you get a [s_badgesmenu,15] Isn't that cute?"
+
 if global.moddedGameDir != "" {
 text = "You are running a modded client! Save files will not be confilcted with the modded game. Have fun!\n\n[c_yellow]Mod Name: " + string(global.moddedGameDir)	
 newsText = string_upper(loc(677))
 sprite_index = s_moddedbanner
+} else {
+if req <= global.gamenews { instance_destroy() }	
 }

@@ -1,8 +1,5 @@
-originalx = x
-originaly = y
-x = 1164
-y = 416
 page = 2
+event_inherited()
 
 if global.totaljumps >= 60000 {
 global.skin[30] = 1

@@ -11,7 +11,8 @@ var item = global.itemselected
 if instance_exists(o_playerMU) {
 	item = multiplayerplayeritem
 }
-
+rot1 = 0
+rot2 = -180
 //Items
 switch(item) {
 case(1): draw_sprite_ext(s_paintbrushitem,0,x-(zerogrv*16),y+((20- (zerogrv*16))*itemscale),itemscale,itemscale,itemrot,c_white,1)
@@ -24,5 +25,5 @@ draw_sprite_ext(s_shielditem,0,x-(zerogrv*16),y+((20- (zerogrv*16))*itemscale),i
 }
 }
 
-rot1 = -130
-rot2 = 130
+//rot1 = -130
+//rot2 = 130

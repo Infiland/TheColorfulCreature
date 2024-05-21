@@ -11,7 +11,6 @@ var lang = 0
 	case "ES": lang = 4 break; //Spanish
 	case "HU": lang = 5 break; //Hungary
 	case "TR": lang = 6 break; //Turkish
-	case "RS": lang = 7 break; //Serbian
 	case "BA": lang = 7 break; //Bosnian
 	case "HR": lang = 7 break; //Croatian
 	case "ME": lang = 7 break; //Montenegro
@@ -23,6 +22,7 @@ var lang = 0
 	case "SI": lang = 11 break; //Slovenia
 	case "UA": lang = 12 break; //Ukraine
 	case "MK": lang = 15 break; //Macedonia
+	case "RS": lang = 16 break; //Serbian
 }
 return lang;
 }

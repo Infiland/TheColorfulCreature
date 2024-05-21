@@ -20,6 +20,7 @@ if file_exists("Languages\\" + string(filename)){
 }
 ini_close();
 
+//Change font to cyrillic
 if lang == "macedonian" {
 global.deathfont = fnt_deathcyrillic
 }

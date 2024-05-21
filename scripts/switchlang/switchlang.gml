@@ -14,8 +14,8 @@ case(5): //HUNGARIAN
 with (o_localization) { lang = "hungarian" event_user(0); } break;
 case(6): //TURKISH
 with (o_localization) { lang = "turkish" event_user(0); } break;
-case(7): //SERB
-with (o_localization) { lang = "srb_cro_bos" event_user(0); } break;
+case(7): //CROATIAN/BOSNIAN
+with (o_localization) { lang = "cro_bos" event_user(0); } break;
 case(8): //PORTUGUESE
 with (o_localization) { lang = "portuguese" event_user(0); } break;
 case(9): //CZECH
@@ -28,6 +28,8 @@ case(12): //UKRAINIAN
 with (o_localization) { lang = "ukrainian" event_user(0); } break;
 case(15): //MACEDONIAN
 with (o_localization) { lang = "macedonian" event_user(0); } break;
+case(16): //SERBIAN
+with (o_localization) { lang = "serbian" event_user(0); } break;
 case(-1): //CUSTOM
 with (o_localization) { lang = "custom" event_user(0); } break;
 }

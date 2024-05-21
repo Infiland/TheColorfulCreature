@@ -4,7 +4,7 @@
 [s_spanishhat][c_yellow]Spanish Translation:[/] SuperYoshi_13
 [s_magyarhat][c_yellow]Hungarian Translation:[/] Nightmareyoc
 [s_turkishhat][c_yellow]Turkish Translation:[/] Taukingur
-[s_serbianhat][s_croatianhat][s_bosnianhat][c_yellow]Serbian/Croatian/Bosnian Translation:[/] Infiland, sadzake
+[s_serbianhat][s_croatianhat][s_bosnianhat][c_yellow]Serbian/Croatian/Bosnian Translation:[/] Infiland, sadzake, rammba
 [s_portuguesehat][c_yellow]Portuguese Translation:[/] Antoniokf5
 [s_czechhat][c_yellow]Czech Translation:[/] Frsik, DonBrom
 [s_chinesehat][c_yellow]Chinese Translation:[/] TaipeiNative

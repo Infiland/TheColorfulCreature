@@ -82,9 +82,9 @@ if os_type != os_android {
 instance_create(camera_get_view_x(view_camera[0])-128,camera_get_view_y(view_camera[0])+640,o_defaultkeysbuttonsetings)
 } else { instance_create(camera_get_view_x(view_camera[0])-128,camera_get_view_y(view_camera[0])+160,o_defaultkeysbuttonsetings) }
 
-//Languages
+//Languages - I'LL IMPROVE THIS LATER!
 var i2 = 0
-for (i2=0;i2<12;i2++) {
+for (i2=0;i2<16;i2++) {
 lang = instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+160+((64*i2)-(floor(i2/8)*512)),o_changelanguagesettings)
 with lang {
 depth = -101

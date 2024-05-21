@@ -446,7 +446,7 @@ if global.hat[53] = 1 {	draw_text_scribble(32,704,"Thank you for translating TCC
 break;
 case(55):
 if global.hat[54] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[54] = 1 {	draw_text_scribble(32,704,"Thank you for translating TCC in SRB/CRO/BOS!") }
+if global.hat[54] = 1 {	draw_text_scribble(32,704,"Thank you for translating TCC in CRO/BOS!") }
 break;
 case(56):
 if global.hat[55] = 0 {	draw_text(32,704,HATAVAILABLE)}

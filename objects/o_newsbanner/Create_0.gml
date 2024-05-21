@@ -20,6 +20,7 @@ newsText = string_upper(loc(618))
 //text = "The FREEDOM UPDATE! The game is now open sourced! You can now help develop the game, ensuring a longlasting life of this game. I have many things to talk about, so please read the 'News' on this. If you want to contribute, click the 'Help Development' or 'Feedback' buttons to get started.\n\nThank you!"
 //text = "Release 1.1.8 is here! Added quests and 40 OF THEM!! You can now earn credits by completing quests, each day you have 3 random quests to beat. Along with the update come general improvements.\n\nHave fun!"
 text = "What's better than a soundtrack? [rainbow][wave]A SUPER SOUNDTRACK![/]\n\nThe difference? It includes all .flp files so you can remix songs, it also has unused songs and sound effects!\n\nAnd finally, you get a [s_badgesmenu,15] Isn't that cute?"
+//text = "Welcome to the TCC Economy! You can now recieve drops by actively playing the game, then you can trade with other players and sell those items!\n\nAlso, added [rainbow][wave]SKIN MASTERIES[/] so you can truly show your bling!\n\nHave fun!"
 
 if global.moddedGameDir != "" {
 text = "You are running a modded client! Save files will not be confilcted with the modded game. Have fun!\n\n[c_yellow]Mod Name: " + string(global.moddedGameDir)	

@@ -15,7 +15,7 @@ case(3): text = "Italian" break;
 case(4): text = "Spanish" break;
 case(5): text = "Hungarian" break;
 case(6): text = "Turkish" break;
-case(7): text = "Serb/Cro/Bos" break;
+case(7): text = "Cro/Bos" break;
 case(8): text = "Portuguese" break;
 case(9): text = "Czech" break;
 case(10): text = "Chinese" break;
@@ -24,4 +24,5 @@ case(12): text = "Ukrainian" break;
 case(13): text = "Japanese" break;
 case(14): text = "Romanian" break;
 case(15): text = "Macedonian" break;
+case(16): text = "Serbian" break;
 }

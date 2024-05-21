@@ -7,8 +7,9 @@ Official Site: https://gamemaker.io/en/download
 Steam: https://store.steampowered.com/app/1670460/GameMaker/
 3. Clone this repository https://github.com/Infiland/TheColorfulCreature
 4. Open the project in GameMaker from where you cloned it.
-5. Download the [Steamworks v1.55 SDK](https://partner.steamgames.com/downloads/list) and put it under the folder 'C:\Users\User\Desktop\sdk' (IT MUST BE IN THIS EXACT LOCATION OR THE GAME WILL NOT WORK), the SDK can be downloaded on https://partner.steamgames.com/ but requires a steam account. For Linux or other platforms, I don't know, find a way lmao  ( ͡° ͜ʖ ͡°)
-6. You have to modify the "Steamworks" extension so that it aligns with the sdk path (IT MUST BE 'C:\Users\User\Desktop\sdk' TO AVOID CONFLICTS)
+5. The game requires [Steamworks SDK 1.55](https://partner.steamgames.com/downloads/list), put the sdk folder in to 'C:\Users\User\Documents\sdk' (IT MUST BE IN THIS EXACT LOCATION OR THE GAME WILL NOT WORK).
+If you use Mac, I don't know, find a way lmao  ( ͡° ͜ʖ ͡°)
+6. You have to see if the "Steamworks" extension aligns with the sdk path (IT MUST BE 'C:\Users\User\Documents\sdk' TO AVOID CONFLICTS)
 7. Click 'Run' or press F5 in GameMaker to test the game
 
 You can also do live debugging in GameMaker (F6), [read more here](https://gamemaker.io/en/tutorials/debugger)
@@ -30,12 +31,41 @@ If you have any things to add, report bugs, or suggest something, it's a good id
 
 # How to credit yourself in TCC
 Note: This isn't required but if you'd like to credit yourself for helping the game, do the following:
-1. In GameMaker IDE, click the "Hamburger" icon (three line icon) and click "Included Files"
-2. Press "Open in Explorer"
-3. Go to folder "Other" and find "contributors.txt"
-4. Add yourself in at the bottom of the document!
+1. In GameMaker IDE, click the "Hamburger" icon (three line icon) and click "Included Files" and press "Open in Explorer"
+2. Go to folder "Other" and find "contributors.txt"
+3. Add yourself in at the bottom of the document!
 
 While debugging or testing in gamemaker, you won't see contributors, unless the steam version is ran.
+
+# How to add new or edit translations
+All translations for the game are found in [this google sheet](https://docs.google.com/spreadsheets/d/1sO2gPX9AtXJVg1b7byPOB_xi-h8dwmZt5X0aZ08_LOo/edit#gid=0) , please update the docs if you are changing anything.
+Each cell is highlighted with a color:
+- Words that aren't highlighted mean that they are ready to be translated (WHITE color)
+- If you are unsure how to translate a certain word, highlight it in a YELLOW color. They can be highlighted by editors
+- Words highlighted in GREEN means they are translated in-game
+- Words highlighted in BLUE means the word was changed and needs to be re-translated again, return it to WHITE color once it has been translated
+- If the word is green and you think that a translation is wrong, highlight it in WHITE and translate it properly!
+
+As for importing translations from the google doc to the game, here's how you do it.
+
+## Editing
+1. In GameMaker IDE, click the "Hamburger" icon (three line icon) and click "Included Files" and press "Open in Explorer"
+2. Go to folder "Languages" and find the .lang file you would like to edit.
+3. Make sure the .lang file is correct like in the google sheets file, each word needs to have a number id.
+
+## Adding a new language
+1. In GameMaker IDE, click the "Hamburger" icon (three line icon) and click "Included Files" and press "Open in Explorer"
+2. Go to folder "Languages" and make a new .lang file
+3. Place translatons in the .lang file from the google sheets file, each word needs to have a number id and a language's ini at the top should be unique.
+4. Go to the script switchlang(), place a new case (which will be the new language id) to add the new language. (WILL IMPROVE THIS LATER)
+5. Go to the room r_settings and in the layer "Languages", add a new instance "o_changelanguages", then edit the creation code to include the new language id. (WILL IMPROVE THIS LATER SO YOU DON'T HAVE TO DO THIS)
+Also go to the object "o_changelanguages" and in the draw event add a new case for the new language
+6. In the object "o_settingspausemenu" in the Create Event under Languages, increment the for loop limit by 1 (WILL IMPROVE THIS LATER)
+
+### Additional / Optional
+7. Go to the script setLanguageDependingOnRegion() and add your language code for the game to auto-translate the game.
+
+Note: The loc(id) function checks for a translated word based on ID.
 
 # How to make a mod for TCC
 NOTE: If you are trying to improve the core of the game, consider improving the base game instead.

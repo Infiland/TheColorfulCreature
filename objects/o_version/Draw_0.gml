@@ -67,9 +67,9 @@ if mouse_x < (1002-a*32-(dlc1*32)-(game1*32)) {
 if mouse_y > 446 {
 if mouse_y < 462 {
 	if dlc1_1 = 0 {
-		drawinfoboxbadge(loc(639),c_blue,c_aqua)
+		drawinfoboxbadge(loc(639),c_blue,c_aqua) //OST
 	} else {
-		drawinfoboxbadge(loc(694),c_blue,c_aqua)
+		drawinfoboxbadge(loc(694),c_blue,c_aqua) //Super OST
 	}
 }}}}}
 //ASTEROIDS++

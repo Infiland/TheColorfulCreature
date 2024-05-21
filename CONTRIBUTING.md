@@ -7,8 +7,9 @@ Official Site: https://gamemaker.io/en/download
 Steam: https://store.steampowered.com/app/1670460/GameMaker/
 3. Clone this repository https://github.com/Infiland/TheColorfulCreature
 4. Open the project in GameMaker from where you cloned it.
-5. Download the [Steamworks v1.55 SDK](https://partner.steamgames.com/downloads/list) and put it under the folder 'C:\Users\User\Desktop\sdk' (IT MUST BE IN THIS EXACT LOCATION OR THE GAME WILL NOT WORK), the SDK can be downloaded on https://partner.steamgames.com/ but requires a steam account. For Linux or other platforms, I don't know, find a way lmao  ( ͡° ͜ʖ ͡°)
-6. You have to modify the "Steamworks" extension so that it aligns with the sdk path (IT MUST BE 'C:\Users\User\Desktop\sdk' TO AVOID CONFLICTS)
+5. The game requires [Steamworks SDK 1.55](https://partner.steamgames.com/downloads/list), put the sdk folder in to 'C:\Users\User\Documents\sdk' (IT MUST BE IN THIS EXACT LOCATION OR THE GAME WILL NOT WORK).
+If you use Mac, I don't know, find a way lmao  ( ͡° ͜ʖ ͡°)
+6. You have to see if the "Steamworks" extension aligns with the sdk path (IT MUST BE 'C:\Users\User\Documents\sdk' TO AVOID CONFLICTS)
 7. Click 'Run' or press F5 in GameMaker to test the game
 
 You can also do live debugging in GameMaker (F6), [read more here](https://gamemaker.io/en/tutorials/debugger)
@@ -37,7 +38,7 @@ Note: This isn't required but if you'd like to credit yourself for helping the g
 While debugging or testing in gamemaker, you won't see contributors, unless the steam version is ran.
 
 # How to add new or edit translations
-All translations for the game are found in https://docs.google.com/spreadsheets/d/1sO2gPX9AtXJVg1b7byPOB_xi-h8dwmZt5X0aZ08_LOo/edit#gid=0 , please update the docs if you are changing anything.
+All translations for the game are found in [this google sheet](https://docs.google.com/spreadsheets/d/1sO2gPX9AtXJVg1b7byPOB_xi-h8dwmZt5X0aZ08_LOo/edit#gid=0) , please update the docs if you are changing anything.
 Each cell is highlighted with a color:
 - Words that aren't highlighted mean that they are ready to be translated (WHITE color)
 - If you are unsure how to translate a certain word, highlight it in a YELLOW color. They can be highlighted by editors
@@ -63,6 +64,8 @@ Also go to the object "o_changelanguages" and in the draw event add a new case f
 
 ### Additional / Optional
 7. Go to the script setLanguageDependingOnRegion() and add your language code for the game to auto-translate the game.
+
+Note: The loc(id) function checks for a translated word based on ID.
 
 # How to make a mod for TCC
 NOTE: If you are trying to improve the core of the game, consider improving the base game instead.

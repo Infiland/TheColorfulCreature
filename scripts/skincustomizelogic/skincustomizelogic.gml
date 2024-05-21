@@ -32,8 +32,9 @@ if global.itemdef[item_def] = 1 {
 	if thething = 0 { global.hat[skin_id] = 1 }
 	}
 break;
+//ITEMS
 case("item"): var thething = global.item[skin_id]
-if item_def = 0 { item_def = skin_id + 4000 }
+if item_def = 0 { item_def = skin_id + 3999 }
 if global.itemdef[item_def] = 1 { 
 	mastery = 1 
 	if thething = 0 { global.item[skin_id] = 1 }

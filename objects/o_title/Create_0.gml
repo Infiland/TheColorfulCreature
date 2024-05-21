@@ -2,9 +2,9 @@ sprite_set_offset(s_playerred,0,0)
 
 //Drop random item
 steam_inventory_trigger_item_drop(99)
-steam_inventory_request_prices();
+steam_inventory_request_prices(); //Test
 
-//Rich presence
+//Rich presence - Test
 steam_set_rich_presence("steam_display", "In Main Menu")
 
 gamepad_set_vibration(0,0,0)

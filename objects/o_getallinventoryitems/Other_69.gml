@@ -16,7 +16,7 @@ if (async_load[? "success"])
 	//show_debug_message(_items)
 	
 	array_delete(global.itemdef,0,40000)
-	global.itemdef = array_create(5000)
+	global.itemdef = array_create(5000) //This is terrible but oh well
     for (var i = 0; i < array_length(_items); i++)
     {
         // It's also possible to get properties from each item using
@@ -24,8 +24,8 @@ if (async_load[? "success"])
         // prop2 = steam_inventory_result_get_item_property(handle, i, "property_name2");
 		var _struct = _items[i];
 		var _item_id = _struct.item_id;
-		array_insert(global.itemdef,_struct.item_def,1)
-		//show_debug_message(_struct)
+		array_set(global.itemdef,_struct.item_def,1)
+		//show_debug_message(_struct) // Show items
     }
 	//show_debug_message(global.itemdef)
 }

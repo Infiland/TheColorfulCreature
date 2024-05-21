@@ -418,6 +418,7 @@
     {"$GMIncludedFile":"","%Name":"macedonian.lang","CopyToMask":-1,"filePath":"datafiles/Languages","name":"macedonian.lang","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"portuguese.lang","CopyToMask":-1,"filePath":"datafiles/Languages","name":"portuguese.lang","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"README.txt","CopyToMask":-1,"filePath":"datafiles/Languages","name":"README.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+	{"$GMIncludedFile":"","%Name":"serbian.lang","CopyToMask":-1,"filePath":"datafiles/Languages","name":"serbian.lang","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"slovenian.lang","CopyToMask":-1,"filePath":"datafiles/Languages","name":"slovenian.lang","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"spanish.lang","CopyToMask":-1,"filePath":"datafiles/Languages","name":"spanish.lang","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"srb_cro_bos.lang","CopyToMask":-1,"filePath":"datafiles/Languages","name":"srb_cro_bos.lang","resourceType":"GMIncludedFile","resourceVersion":"2.0",},

@@ -13,10 +13,14 @@ if !instance_exists(o_LEMode) { instance_create(603,9,o_LEMode) }
 if !instance_exists(o_LEThumbnail) { instance_create(371,9,o_LEThumbnail) }
 if !instance_exists(o_LEPublish) { instance_create(424,9,o_LEPublish) }
 
-if !instance_exists(o_smoothcamera) {
-if global.LELevelHeightBlocks > 22 { instance_create(0,0,o_smoothcamera) }}
-if !instance_exists(o_smoothcamera) {
-if global.LELevelWidthBlocks > 32 { instance_create(0,0,o_smoothcamera) }}
+//Camera
+if global.LELevelHeightBlocks > 22 || global.LELevelWidthBlocks > 32 {
+	if !instance_exists(o_smoothcamera) {
+		if instance_exists(o_playerspawner) {
+			instance_create(o_playerspawner.x,o_playerspawner.y,o_smoothcamera) 
+		}
+	}	
+}
 
 if global.LEFog = 1 { 
 	if !instance_exists(o_fog) {

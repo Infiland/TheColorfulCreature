@@ -23,8 +23,9 @@ e1 = 0 //Seasonal Endless Gold
 e2 = 0 //Seasonal Endless Silver
 e3 = 0 //Seasonal Endless Bronze
 e4 = 0 //Seasonal Endless Top 10
-if steam_user_owns_dlc(1995510) { dlc1 = 1 } else { dlc1 = 0 } //TCC OST
-if steam_user_owns_dlc(1749590) { dlc2 = 1 } else { dlc2 = 0 } //Commentary DLC
+if steam_user_owns_dlc(1749590) { dlc1 = 1 } else { dlc1 = 0 } //TCC OST
+if steam_user_owns_dlc(1749600) { dlc1 = 1 dlc1_1 = 1 } else { dlc1 = 0 dlc1_1 = 0 } //TCC Super OST
+if steam_user_owns_dlc(1995510) { dlc2 = 1 } else { dlc2 = 0 } //Commentary DLC
 if steam_user_owns_dlc(2407300) { dlc3 = 1 } else { dlc3 = 0 } //Asteroids
 hats = 0
 

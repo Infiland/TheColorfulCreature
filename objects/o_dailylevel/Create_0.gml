@@ -6,9 +6,8 @@ declarecustombutton()
 	global.calendarcurrentday = current_day
 }*/
 
-switch(global.language) {
-default: text = loc(632) break;
-}
+text = loc(632)
+
 GooglePlayServices_Leaderboard_SubmitScore("CgkI36PRjvEQEAIQMQ",global.dailylevelhighstreak,"")
 xscale = 0.7
 yscale = 0.7

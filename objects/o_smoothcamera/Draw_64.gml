@@ -1,6 +1,6 @@
 if room = r_leveleditor {
 if global.LELevelWidthBlocks > 32 || global.LELevelHeightBlocks > 22 {
-if txtsize < 0.99 {
+if txtsize < 0.99 && global.LEMode = 1 {
 draw_set_color(c_yellow)
 draw_set_font(global.deathfont)
 draw_set_valign(fa_center);

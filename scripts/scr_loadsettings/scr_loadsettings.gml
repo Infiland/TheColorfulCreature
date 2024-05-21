@@ -30,7 +30,11 @@ function scr_loadsettings() {
 	global.skiplevelholdsettings = ini_read_real("Settings","Skip Level Hold",1);
 	global.oldGSsettings = ini_read_real("Settings","Old GS",0);
 	global.objcountersettings = ini_read_real("Settings","OBJ Counter",0);
-	global.language = ini_read_real("Settings","Language",0);
+	
+	//Language return on default
+	global.language = ini_read_real("Settings","Language",setLanguageDependingOnRegion());
+	
+	
 	global.casualmode = ini_read_real("Settings","Casual Mode",1);
 	global.autothumbnailsettings = ini_read_real("Settings","Auto-Thumbnail",1);
 	global.skipintroscreensettings = ini_read_real("Settings","Skip Intro Screen",1);

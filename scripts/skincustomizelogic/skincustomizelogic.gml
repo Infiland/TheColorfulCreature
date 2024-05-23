@@ -48,7 +48,7 @@ if global.itemdef[item_def] >= 4 { mastery = 3 }
 if global.itemdef[item_def] >= 8 { mastery = 4 }
 if global.itemdef[item_def] >= 16 { mastery = 5 }
 	if mastery > 0 {
-		if thething = 0 { global.hat[skin_id] = 1 }	
+		if thething = 0 { global.item[skin_id] = 1 }	
 	}
 break;	
 }

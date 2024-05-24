@@ -46,6 +46,9 @@ breath = 500
 
 color = c_white
 
+coyotetimeMAX = 0.2
+coyotetime = coyotetimeMAX
+
 //Items
 itemrot = 0
 itemtimer = 80

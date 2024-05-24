@@ -189,6 +189,7 @@ if (gamepad_button_check_released(0,gp_face1)) || keyboard_check_released(ord(gl
 vsp = 0
 }}
 
+if coyotetime > 0 and (key_jump) and vsp != 0 { jump() }
 if (place_meeting(x,y+1,o_anyblock)) and (key_jump) {jump()}
 if (place_meeting(x,y+2,o_redblockslope)) and (key_jump) {jump()}
 if (place_meeting(x,y+1,o_redblockmove)) and (key_jump) {jump()}
@@ -252,15 +253,27 @@ x = x + hsp
 
 //Vertical Collision
 
-	if (place_meeting(x,y+vsp,o_redblockslope)) {
+/*
+	if (place_meeting(x,y+vsp,o_redblockslope)) { //Test
 	    while (!place_meeting(x,y+sign(vsp),o_redblockslope)) 
 	    {
 	        y = y + sign(vsp);
 	    }
 	    vsp = 0;
-	}
+	}*/
+verticalcollision(o_redblockslope)
+verticalcollision(o_anyblock)
+verticalcollision(o_movingplatforms,1)
+verticalcollision(o_shooter)
+verticalcollision(o_shooterright)
+verticalcollision(o_rocketlauncher)
+verticalcollision(o_rocketlauncherright)
+verticalcollision(o_onewayupblock)
+verticalcollision(o_onewaydownblock)
+verticalcollision(o_playerMU)
 
-verticalcollision()
+coyotetime -= 0.03
+
 y = y + vsp
 
 //move_and_collide(hsp,0,o_redblockslope,20)

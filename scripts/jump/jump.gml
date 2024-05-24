@@ -3,6 +3,7 @@ function jump() {
 	if global.noclip = 0 {
 	if global.writingmode = 0 {
 	if inwater = 1 {
+	coyotetime = 0
 	vsp = (-10 - (doublejump * 0.1)) 
 	/*switch(global.maxfps) {
 	case(60): vsp = -10 - (doublejump * 0.1) break;

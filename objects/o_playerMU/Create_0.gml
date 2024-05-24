@@ -37,6 +37,9 @@ inwater = 1 //1 = not in water, 2 = in water
 breath = 500
 doublejump = 0
 
+coyotetimeMAX = 0.2
+coyotetime = coyotetimeMAX
+
 //Items
 itemrot = 0
 itemtimer = 80

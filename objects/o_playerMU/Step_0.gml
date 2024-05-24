@@ -135,7 +135,16 @@ horizontalcollision()
 x = x + hsp
 
 //Vertical Collision
-verticalcollision()
+verticalcollision(o_redblockslope)
+verticalcollision(o_anyblock)
+verticalcollision(o_movingplatforms,1)
+verticalcollision(o_shooter)
+verticalcollision(o_shooterright)
+verticalcollision(o_rocketlauncher)
+verticalcollision(o_rocketlauncherright)
+verticalcollision(o_onewayupblock)
+verticalcollision(o_onewaydownblock)
+verticalcollision(o_playerMU)
 y = y + vsp * (60 / global.maxfps)
 if vsp > 30 * (global.maxfps / 60) { vsp = 30 * (global.maxfps / 60) }
 

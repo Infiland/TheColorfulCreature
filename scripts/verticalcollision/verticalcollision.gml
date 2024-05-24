@@ -6,7 +6,7 @@ function verticalcollision(obj,type=0) {
 	        y = y + sign(vsp);
 			 }
 			vsp = 0;
-			coyotetime = coyotetimeMAX
+			if onGround & !onCelling { coyotetime = coyotetimeMAX }
 		}
 	} else {
 		if (place_meeting(x,y+hsp,obj)) {

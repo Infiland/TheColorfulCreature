@@ -46,6 +46,8 @@ breath = 500
 
 color = c_white
 
+onGround = false
+onCelling = false
 coyotetimeMAX = 0.2
 coyotetime = coyotetimeMAX
 

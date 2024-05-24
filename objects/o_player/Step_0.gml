@@ -148,18 +148,33 @@ if move = 0 {
 
 vsp = (vsp + ((grv * (60 / global.maxfps))/inwater))
 
-if place_meeting(x,y+1,o_anyblock) {onice = false}
-if place_meeting(x,y+1,o_iceblock) {onice = true}
-if place_meeting(x,y+1,o_redblockmove) {onice = false}
-if place_meeting(x,y+1,o_yellowblockmove) {onice = false}
-if place_meeting(x,y+1,o_greenblockmove) {onice = false}
-if place_meeting(x,y+1,o_blueblockmove) {onice = false}
-if place_meeting(x,y+1,o_whiteblockmove) {onice = false}
-if place_meeting(x,y+1,o_shooter) {onice = false}
-if place_meeting(x,y+1,o_shooterright) {onice = false}
-if place_meeting(x,y+1,o_rocketlauncher) {onice = false}
-if place_meeting(x,y+1,o_rocketlauncherright) {onice = false}
-if place_meeting(x,y+1,o_onewayupblock) {onice = false}
+onGround = false
+onCelling = false
+if place_meeting(x,y+1,o_anyblock) {onice = false onGround = true}
+if place_meeting(x,y+1,o_iceblock) {onice = true onGround = true}
+if place_meeting(x,y+1,o_redblockmove) {onice = false onGround = true}
+if place_meeting(x,y+1,o_yellowblockmove) {onice = false onGround = true}
+if place_meeting(x,y+1,o_greenblockmove) {onice = false onGround = true}
+if place_meeting(x,y+1,o_blueblockmove) {onice = false onGround = true}
+if place_meeting(x,y+1,o_whiteblockmove) {onice = false onGround = true}
+if place_meeting(x,y+1,o_shooter) {onice = false onGround = true}
+if place_meeting(x,y+1,o_shooterright) {onice = false onGround = true}
+if place_meeting(x,y+1,o_rocketlauncher) {onice = false onGround = true}
+if place_meeting(x,y+1,o_rocketlauncherright) {onice = false onGround = true}
+if place_meeting(x,y+1,o_onewayupblock) {onice = false onGround = true}
+
+if place_meeting(x,y-1,o_anyblock) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_iceblock) {onice = true onCelling = true}
+if place_meeting(x,y-1,o_redblockmove) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_yellowblockmove) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_greenblockmove) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_blueblockmove) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_whiteblockmove) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_shooter) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_shooterright) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_rocketlauncher) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_rocketlauncherright) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_onewayupblock) {onice = false onCelling = true}
 
 if onice = false {
 	hspzerogrv = 0
@@ -189,7 +204,8 @@ if (gamepad_button_check_released(0,gp_face1)) || keyboard_check_released(ord(gl
 vsp = 0
 }}
 
-if coyotetime > 0 and (key_jump) and vsp != 0 { jump() }
+//Jumps
+if coyotetime > 0 and (key_jump) and vsp > 0 and !onGround and !onCelling { jump() }
 if (place_meeting(x,y+1,o_anyblock)) and (key_jump) {jump()}
 if (place_meeting(x,y+2,o_redblockslope)) and (key_jump) {jump()}
 if (place_meeting(x,y+1,o_redblockmove)) and (key_jump) {jump()}
@@ -217,17 +233,8 @@ jumptest2 = jumptest
 jumptest = 0
 }}
 	
-//Sound Jumping
+//Collision
 if global.noclip = 0 {
-if global.writingmode = 0 {
-if (place_meeting(x,y+1,o_anyblock)) || (place_meeting(x,y+1,o_redblockmove)) || (place_meeting(x,y+1,o_yellowblockmove)) || (place_meeting(x,y+1,o_greenblockmove)) || (place_meeting(x,y+1,o_blueblockmove)) || (place_meeting(x,y+1,o_whiteblockmove))  || (place_meeting(x,y+1,o_shooter)) || (place_meeting(x,y+1,o_rocketlauncherright)) || (place_meeting(x,y+1,o_rocketlauncher)) || (place_meeting(x,y+1,o_shooterright)) || (place_meeting(x,y+1,o_onewayupblock)) {
-if (key_jump) {
-if !place_meeting(x,y,o_onewayupblock) {
-if !place_meeting(x,y,o_onewaydownblock) {
-audio_sound_pitch(snd_jump,random_range(0.9,1.1));
-audio_sound_gain(snd_jump,global.soundvolume,1)	
-audio_play_sound(snd_jump,10,0)
-}}}}}
 
 	if hsp < 0 {
 	if (place_meeting(x+hsp,y,o_onewayrightblock)) {

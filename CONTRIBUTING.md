@@ -45,18 +45,16 @@ Each cell is highlighted with a color:
 As for importing translations from the Google doc to the game, here's how you do it.
 
 ## Editing
-1. In GameMaker IDE, click the "Hamburger" icon (three line icon) and click "Included Files" and press "Open in Explorer"
-2. Go to folder "Languages" and find the .lang file you would like to edit.
-3. Make sure the .lang file is correct like in the google sheets file, each word needs to have a number id.
+1. Go to folder [Languages](https://github.com/Infiland/TheColorfulCreature/tree/main/datafiles/Languages) and find the .lang file you would like to edit.
+2. Make sure the .lang file is correct like in the google sheets file, each word needs to have a number id.
 
 ## Adding a new language
-1. In GameMaker IDE, click the "Hamburger" icon (three line icon) and click "Included Files" and press "Open in Explorer"
-2. Go to folder "Languages" and make a new .lang file
-3. Place translatons in the .lang file from the google sheets file, each word needs to have a number id and a language's ini at the top should be unique.
-4. Go to the script switchlang(), place a new case (which will be the new language id) to add the new language. (WILL IMPROVE THIS LATER)
-5. Go to the room r_settings and in the layer "Languages", add a new instance "o_changelanguages", then edit the creation code to include the new language id. (WILL IMPROVE THIS LATER SO YOU DON'T HAVE TO DO THIS)
-Also go to the object "o_changelanguages" and in the draw event add a new case for the new language
-6. In the object "o_settingspausemenu" in the Create Event under Languages, increment the for loop limit by 1 (WILL IMPROVE THIS LATER)
+1. Go to folder [Languages](https://github.com/Infiland/TheColorfulCreature/tree/main/datafiles/Languages) and make a new .lang file inside the folder.
+2. Place translatons in the .lang file from the google sheets file, each word needs to have a number id and a language's ini at the top should be unique.
+3. Go to the script [switchlang()](https://github.com/Infiland/TheColorfulCreature/blob/main/scripts/switchlang/switchlang.gml), place a new case (which will be the new language id) to add the new language. (WILL IMPROVE THIS LATER)
+4. Go to the room r_settings and in the layer "Languages", add a new instance "o_changelanguages", then edit the creation code to include the new language id. (WILL IMPROVE THIS LATER SO YOU DON'T HAVE TO DO THIS)
+Also go to the object [o_changelanguages in the Draw event](https://github.com/Infiland/TheColorfulCreature/blob/main/objects/o_changelanguagesettings/Draw_0.gml) add a new case for the new language
+5. In the object [o_settingspausemenu in the Create Event](https://github.com/Infiland/TheColorfulCreature/blob/main/objects/o_settingspausemenu/Create_0.gml) under the //Languages comment, increment the for loop limit by 1 (WILL IMPROVE THIS LATER)
 
 ### Additional / Optional
 7. Go to the script [setLanguageDependingOnRegion()](https://github.com/Infiland/TheColorfulCreature/blob/main/scripts/setLanguageDependingOnRegion/setLanguageDependingOnRegion.gml) and add your language code for the game to auto-translate the game.

@@ -1,5 +1,5 @@
 # How to Compile, Test and Develop TCC:
-Note: While other IDE's are possible to use, developing TCC is preferable using the GameMaker IDE.
+Note: While other IDE's are possible to use for coding, modifying things like rooms, sprites etc is difficult. Developing TCC is preferable using the GameMaker IDE.
 Here are basic instructions on how to successfully run the game
 
 1. Download the latest version of GameMaker on [the Official Site](https://gamemaker.io/en/download) or on [Steam](https://store.steampowered.com/app/1670460/GameMaker/) (2024.4.1)
@@ -54,7 +54,7 @@ As for importing translations from the Google doc to the game, here's how you do
 3. Go to the script [switchlang()](https://github.com/Infiland/TheColorfulCreature/blob/main/scripts/switchlang/switchlang.gml), place a new case (which will be the new language id) to add the new language. (WILL IMPROVE THIS LATER)
 4. Go to the room r_settings and in the layer "Languages", add a new instance "o_changelanguages", then edit the creation code to include the new language id. (WILL IMPROVE THIS LATER SO YOU DON'T HAVE TO DO THIS)
 Also go to the object [o_changelanguages in the Draw event](https://github.com/Infiland/TheColorfulCreature/blob/main/objects/o_changelanguagesettings/Draw_0.gml) add a new case for the new language
-5. In the object [o_settingspausemenu in the Create Event](https://github.com/Infiland/TheColorfulCreature/blob/main/objects/o_settingspausemenu/Create_0.gml) under the //Languages comment, increment the for loop limit by 1 (WILL IMPROVE THIS LATER)
+5. In the object [o_settingspausemenu in the Create event](https://github.com/Infiland/TheColorfulCreature/blob/main/objects/o_settingspausemenu/Create_0.gml) under the //Languages comment, increment the for loop limit by 1 (WILL IMPROVE THIS LATER)
 
 ### Additional / Optional
 7. Go to the script [setLanguageDependingOnRegion()](https://github.com/Infiland/TheColorfulCreature/blob/main/scripts/setLanguageDependingOnRegion/setLanguageDependingOnRegion.gml) and add your language code for the game to auto-translate the game.
@@ -67,6 +67,6 @@ You can translate all of my store pages on Steam by going to [this repository](h
 # How to make a mod for TCC
 NOTE: If you are trying to improve the core of the game, consider improving the base game instead.
 1. Fork this reposetory
-2. In o_loading object in the "Game Start" Event, change the global.moddedGameDir variable to have your mod name, this is so that your mod doesn't conflict with the base game saves.
+2. In [o_loading in the Game Start event](https://github.com/Infiland/TheColorfulCreature/blob/R1.2.0/objects/o_loading/Other_2.gml), change the global.moddedGameDir variable to have your mod name, this is so that your mod doesn't conflict with the base game saves.
 3. You can modify the mod to however you'd like.
 4. Contact Infiland if you want the mod to be available for the general public on steam! :+1:

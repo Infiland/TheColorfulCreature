@@ -24,7 +24,7 @@ if (async_load[? "success"])
         // prop2 = steam_inventory_result_get_item_property(handle, i, "property_name2");
 		var _struct = _items[i];
 		var _item_id = _struct.item_id;
-		array_set(global.itemdef,_struct.item_def,1)
+		array_set(global.itemdef,_struct.item_def,_struct.quantity)
 		//show_debug_message(_struct) // Show items
     }
 	//show_debug_message(global.itemdef)

@@ -1,4 +1,24 @@
-function verticalcollision() {
+function verticalcollision(obj,type=0) {
+	
+	if type = 0 {
+		if (place_meeting(x,y+vsp,obj)) {
+			while (!place_meeting(x,y+sign(vsp),obj)) {
+	        y = y + sign(vsp);
+			 }
+			vsp = 0;
+			if onGround & !onCelling { coyotetime = coyotetimeMAX }
+		}
+	} else {
+		if (place_meeting(x,y+hsp,obj)) {
+			while (!place_meeting(x,y+sign(hsp),obj)) {
+	        y = y + sign(hsp);
+			 }
+			hsp = 0;
+		}
+	}
+}
+
+/*
 	if (place_meeting(x,y+vsp,o_anyblock)) {
 	    while (!place_meeting(x,y+sign(vsp),o_anyblock)) 
 	    {

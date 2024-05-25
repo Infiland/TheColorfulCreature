@@ -3,7 +3,19 @@ function jump() {
 	if global.noclip = 0 {
 	if global.writingmode = 0 {
 	if inwater = 1 {
+	coyotetime = 0
 	vsp = (-10 - (doublejump * 0.1)) 
+	
+	var snd = snd_jump
+	//Sound Jumping
+	if !place_meeting(x,y,o_onewayupblock) {
+	if !place_meeting(x,y,o_onewaydownblock) {
+	if !onGround { snd = snd_shooter }
+		audio_sound_pitch(snd,random_range(0.9,1.1));
+		audio_sound_gain(snd,global.soundvolume,1)	
+		audio_play_sound(snd,10,0)
+	}}
+	
 	/*switch(global.maxfps) {
 	case(60): vsp = -10 - (doublejump * 0.1) break;
 	case(75): vsp = -10.01 - (doublejump * 0.1) break;

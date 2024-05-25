@@ -65,18 +65,33 @@ if move = 0 {
 	}}
 	
 vsp = (vsp + ((grv* (60 / global.maxfps))/inwater));
-if place_meeting(x,y+1,o_anyblock) {onice = false}
-if place_meeting(x,y+1,o_redblockmove) {onice = false}
-if place_meeting(x,y+1,o_yellowblockmove) {onice = false}
-if place_meeting(x,y+1,o_greenblockmove) {onice = false}
-if place_meeting(x,y+1,o_blueblockmove) {onice = false}
-if place_meeting(x,y+1,o_whiteblockmove) {onice = false}
-if place_meeting(x,y+1,o_shooter) {onice = false}
-if place_meeting(x,y+1,o_shooterright) {onice = false}
-if place_meeting(x,y+1,o_rocketlauncher) {onice = false}
-if place_meeting(x,y+1,o_rocketlauncherright) {onice = false}
-if place_meeting(x,y+1,o_onewayupblock) {onice = false}
-if place_meeting(x,y+1,o_iceblock) {onice = true}
+onGround = false
+onCelling = false
+if place_meeting(x,y+1,o_anyblock) {onice = false onGround = true}
+if place_meeting(x,y+1,o_iceblock) {onice = true onGround = true}
+if place_meeting(x,y+1,o_redblockmove) {onice = false onGround = true}
+if place_meeting(x,y+1,o_yellowblockmove) {onice = false onGround = true}
+if place_meeting(x,y+1,o_greenblockmove) {onice = false onGround = true}
+if place_meeting(x,y+1,o_blueblockmove) {onice = false onGround = true}
+if place_meeting(x,y+1,o_whiteblockmove) {onice = false onGround = true}
+if place_meeting(x,y+1,o_shooter) {onice = false onGround = true}
+if place_meeting(x,y+1,o_shooterright) {onice = false onGround = true}
+if place_meeting(x,y+1,o_rocketlauncher) {onice = false onGround = true}
+if place_meeting(x,y+1,o_rocketlauncherright) {onice = false onGround = true}
+if place_meeting(x,y+1,o_onewayupblock) {onice = false onGround = true}
+
+if place_meeting(x,y-1,o_anyblock) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_iceblock) {onice = true onCelling = true}
+if place_meeting(x,y-1,o_redblockmove) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_yellowblockmove) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_greenblockmove) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_blueblockmove) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_whiteblockmove) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_shooter) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_shooterright) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_rocketlauncher) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_rocketlauncherright) {onice = false onCelling = true}
+if place_meeting(x,y-1,o_onewayupblock) {onice = false onCelling = true}
 
 if y > room_height - 30 {
 	deathMU()
@@ -94,7 +109,8 @@ par_walktimer = 3
 
 }
 
-//Jumps (Optimized Code)
+//Jumps
+if coyotetime > 0 and (key_jump) and vsp > 0 and !onGround and !onCelling { jump() }
 if (place_meeting(x,y+1,o_anyblock)) and (key_jump) {jump()}
 if (place_meeting(x,y+1,o_redblockmove)) and (key_jump) {jump()}
 if (place_meeting(x,y+1,o_yellowblockmove)) and (key_jump) {jump()}
@@ -135,7 +151,16 @@ horizontalcollision()
 x = x + hsp
 
 //Vertical Collision
-verticalcollision()
+verticalcollision(o_redblockslope)
+verticalcollision(o_anyblock)
+verticalcollision(o_movingplatforms,1)
+verticalcollision(o_shooter)
+verticalcollision(o_shooterright)
+verticalcollision(o_rocketlauncher)
+verticalcollision(o_rocketlauncherright)
+verticalcollision(o_onewayupblock)
+verticalcollision(o_onewaydownblock)
+verticalcollision(o_playerMU)
 y = y + vsp * (60 / global.maxfps)
 if vsp > 30 * (global.maxfps / 60) { vsp = 30 * (global.maxfps / 60) }
 

@@ -2,7 +2,7 @@
 Note: While other IDE's are possible to use, developing TCC is preferable using the GameMaker IDE.
 Here are basic instructions on how to successfully run the game
 
-1. Download the [latest version of GameMaker](https://gamemaker.io/en/download) (2024.4)
+1. Download the [latest version of GameMaker](https://gamemaker.io/en/download) (2024.4.1)
 Official Site: https://gamemaker.io/en/download
 Steam: https://store.steampowered.com/app/1670460/GameMaker/
 3. Clone this repository https://github.com/Infiland/TheColorfulCreature

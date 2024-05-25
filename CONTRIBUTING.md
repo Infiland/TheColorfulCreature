@@ -67,6 +67,9 @@ Also go to the object "o_changelanguages" and in the draw event add a new case f
 
 Note: The loc(id) function checks for a translated word based on ID.
 
+## Store Page Translating
+You can translate all of my store pages on Steam by going to [this repository](https://github.com/Infiland/InfilandGamesStorePageTranslations)
+
 # How to make a mod for TCC
 NOTE: If you are trying to improve the core of the game, consider improving the base game instead.
 1. Fork this reposetory

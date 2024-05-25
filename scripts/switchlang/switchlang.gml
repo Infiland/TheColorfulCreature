@@ -28,8 +28,10 @@ case(12): //UKRAINIAN
 with (o_localization) { lang = "ukrainian" event_user(0); } break;
 case(15): //MACEDONIAN
 with (o_localization) { lang = "macedonian" event_user(0); } break;
-case(16): //SERBIAN
-with (o_localization) { lang = "serbian" event_user(0); } break;
+case(16): //SERBIAN LATIN
+with (o_localization) { lang = "serbian_latin" event_user(0); } break;
+case(17): //SERBIAN CYRILLIC
+with (o_localization) { lang = "serbian_cyrillic" event_user(0); } break;
 case(-1): //CUSTOM
 with (o_localization) { lang = "custom" event_user(0); } break;
 }

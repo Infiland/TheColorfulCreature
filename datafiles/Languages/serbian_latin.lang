@@ -1,4 +1,4 @@
-[serbian]
+[serbian_latin]
 1=Počni Igru
 2=Učitaj Igru
 3=Statistika
@@ -277,7 +277,7 @@
 276=Efekat Vinjete prikazuje senke na ivici ekrana kada je igrač živ.
 277=Blokovi će koristiti formulu da prikažu iluziju 3D blokova, pa će performanse biti smanjene.
 278=Uključi/Isključi pozadine blokova (Ne utiče na Level Editor)
-279=Daje efekat daltoniste. Stavi na "Normal" ako nemaš problem sa daltonizmom.
+279=Daje efekat daltoniste. Stavi na "Normalno" ako nemaš problem sa daltonizmom.
 280=Stavlja igru u režim celog ekrana.
 281=Uključi/Isključi filtriranje teksture (Linearna Interpolacija)
 282=Uključuje Shader Tečnosti (UPOZORENJE: Možda neće raditi na starim računarima!)
@@ -350,7 +350,7 @@
 349=Brale, on je in!
 350=Ovo nije Reddie, već Vitez Tame...
 351=Otključaj ovo kad sakupiš 250 novčića.
-352=Flex Paul može da preskoči mnogo nivoa.
+352=Reddie koji flex-uje može da preskoči mnogo nivoa.
 353=Ti si sad zlatan! Da li si?
 354=Pređi Klizavi Izazov da otključaš ovaj skin.
 355=Ovaj skin je "kul"!
@@ -561,7 +561,7 @@
 560=Proveri Steam Workshop da vidiš svoj nivo!
 561=Nešto je pošlo po zlu...
 562=Pokušaj ponovo kasnije!
-563=Vreme Dijamantne Medalje mora biti isto ili bolje od tvog vremena završetka nivoa.
+563=Vreme Dijamantske Medalje mora biti isto ili bolje od tvog vremena završetka nivoa.
 564=Drži "I" da vidiš statistike izazova.
 565=Tutorijal Izazov
 566=Izazov Merdevina
@@ -580,7 +580,7 @@
 579=Izazov Korumpiranih Bodlji
 580=Kaizo Izazov
 581=Šesti Svet
-582=Postavi Merač Vremena na Dijamanstko Vreme
+582=Postavi Merač Vremena na Dijamantsko Vreme
 583=Završeno
 584=Ažuriraj Workshop Predmete
 585=Prigodni Mod
@@ -607,7 +607,7 @@
 606=Dobar pokušaj beskonačne zarade.
 607=SRUŠIĆU IGRU MUAHAHAH. Šta?
 608=Kupi CELU verziju!
-609=Ova opcija nije dostupnau demo verziji. Kupi punu verziju igre da bi je mogao koristiti!
+609=Ova opcija nije dostupna u demo verziji. Kupi punu verziju igre da bi je mogao koristiti!
 610=Demo Gotov!
 611=Odaberi mod igre
 612=Ponovo Pokreni Izazov
@@ -640,7 +640,7 @@
 639=Imate zvučnu traku igre!
 640=Osvojili ste 1. mesto na Mesečnom Beskonačnom Nivou! Čestitam!
 641=Osvojili ste 2. mesto na Mesečnom Beskonačnom Nivou! Dobro Urađeno!
-642=Osvojili ste 3. mesto na Mesečnom Beskonačnom Nivouu! Nije Loše.
+642=Osvojili ste 3. mesto na Mesečnom Beskonačnom Nivou! Nije Loše.
 643=Osvojite Top 10 mesto kao učesnik Mesečnog Beskonačnog Nivoa
 644=Komentar Programera vam govori stvari o procesu izrade igre. Ovo možete omogućiti kupovinom DLC-a za Komentar Programera
 645=Ponovo Učitaj Listu Rekorda
@@ -682,3 +682,16 @@
 681=Saradnici
 682=Prevodioci
 683=Završene Pretrage
+684=Pretrage
+685=Pretrage se resetuju za
+686=Dođi za
+687=Nove Pretrage!
+688=Preostalo Pretraga!
+689=Ponovo Učitaj Nivoe
+690=Najnoviji Nivo
+691=Da li zeliš sačuvati nivo pre izlaska?
+692=Jesi li siguran da želiš da resetuješ nivo?
+693=Jesi li siguran da želiš napustiti Level Editor?
+694=Imate SUPER zvučnu traku igre! Zaista vam hvala!
+695=Otvori Market
+696=Dobij Majstorstvo

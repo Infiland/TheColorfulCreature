@@ -24,6 +24,6 @@ case(12): text = "Ukrainian" break;
 case(13): text = "Japanese" break;
 case(14): text = "Romanian" break;
 case(15): text = "Macedonian" break;
-case(16): text = "Serbian" break;
+case(16): text = "Serbian(L)" break;
 case(17): text = "Serbian(Ć)" break;
 }

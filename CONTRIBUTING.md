@@ -2,23 +2,19 @@
 Note: While other IDE's are possible to use, developing TCC is preferable using the GameMaker IDE.
 Here are basic instructions on how to successfully run the game
 
-1. Download the [latest version of GameMaker](https://gamemaker.io/en/download) (2024.4.1)
-Official Site: https://gamemaker.io/en/download
-Steam: https://store.steampowered.com/app/1670460/GameMaker/
-3. Clone this repository https://github.com/Infiland/TheColorfulCreature
-4. Open the project in GameMaker from where you cloned it.
-5. The game requires [Steamworks SDK 1.55](https://partner.steamgames.com/downloads/list), put the sdk folder in to 'C:\Users\User\Documents\sdk' (IT MUST BE IN THIS EXACT LOCATION OR THE GAME WILL NOT WORK).
-If you use Mac, I don't know, find a way lmao  ( ͡° ͜ʖ ͡°)
-6. You have to see if the "Steamworks" extension aligns with the sdk path (IT MUST BE 'C:\Users\User\Documents\sdk' TO AVOID CONFLICTS)
-7. Click 'Run' or press F5 in GameMaker to test the game
-
-You can also do live debugging in GameMaker (F6), [read more here](https://gamemaker.io/en/tutorials/debugger)
+1. Download the latest version of GameMaker on [the Official Site](https://gamemaker.io/en/download) or on [Steam](https://store.steampowered.com/app/1670460/GameMaker/) (2024.4.1)
+2. Clone this repository https://github.com/Infiland/TheColorfulCreature
+3. Open the project in GameMaker from where you cloned it.
+4. The game requires [Steamworks SDK 1.55](https://partner.steamgames.com/downloads/list), put the sdk folder in to 'C:\Users\User\Documents\sdk' (IT MUST BE IN THIS EXACT LOCATION OR THE GAME WILL NOT WORK).
+If you use Linux or Mac, I don't know, find a way lmao  ( ͡° ͜ʖ ͡°)
+5. You have to see if the "Steamworks" extension aligns with the sdk path (IT MUST BE 'C:\Users\User\Documents\sdk' TO AVOID CONFLICTS)
+6. Click 'Run' or press F5 in GameMaker to test the game :+1: (or F6 for debugging, [read more here](https://gamemaker.io/en/tutorials/debugger))
 
 # How to make changes in TCC
 Note: Infiland can only update the game through steam on Steamworks, contributors can help make changes to the game
-1. Make your local branch so that no conflicts happen
+1. Make your local branch / fork so that no conflicts happen
 2. Make a change and commit
-3. Do a pull request and wait for Infiland to accept the change
+3. Do a pull request and wait for Infiland to accept the change :+1:
 
 # How to make an issue
 If you have any things to add, report bugs, or suggest something, it's a good idea to make an issue.
@@ -27,26 +23,26 @@ If you have any things to add, report bugs, or suggest something, it's a good id
 2. While not required, you can write a title with "Feature: " / "Bug: " / "Suggestion: " / "Documentation: " or other and then specify the main point.
 3. Write the issue with detail, unless the change is small.
 4. Put respective labels, if your issue is an easy to fix/add, consider putting a "good first issue" label. Put "help wanted" if you don't know how to add/fix something.
-5. Click "submit new issue", Infiland will assign the particular issue to a milestone for a set release.
+5. Click "submit new issue", Infiland will assign the particular issue to a milestone for a set release. :+1:
 
 # How to credit yourself in TCC
 Note: This isn't required but if you'd like to credit yourself for helping the game, do the following:
-1. In GameMaker IDE, click the "Hamburger" icon (three line icon) and click "Included Files" and press "Open in Explorer"
-2. Go to folder "Other" and find "contributors.txt"
-3. Add yourself in at the bottom of the document!
+1. Go to folder "Other" and find ["contributors.txt"](https://github.com/Infiland/TheColorfulCreature/blob/main/datafiles/Other/contributors.txt)
+2. Add yourself in at the bottom of the document! :+1:
 
-While debugging or testing in gamemaker, you won't see contributors, unless the steam version is ran.
+NOTE: While debugging or testing in gamemaker, you won't see contributors, unless the compiled steam version is ran.
+If you really want to test out the feature, copy the contributors.txt to the runtime folder, the destination will be shown in the output console if the game crashes while failing to find the file.
 
 # How to add new or edit translations
 All translations for the game are found in [this google sheet](https://docs.google.com/spreadsheets/d/1sO2gPX9AtXJVg1b7byPOB_xi-h8dwmZt5X0aZ08_LOo/edit#gid=0) , please update the docs if you are changing anything.
 Each cell is highlighted with a color:
-- Words that aren't highlighted mean that they are ready to be translated (WHITE color)
-- If you are unsure how to translate a certain word, highlight it in a YELLOW color. They can be highlighted by editors
-- Words highlighted in GREEN means they are translated in-game
-- Words highlighted in BLUE means the word was changed and needs to be re-translated again, return it to WHITE color once it has been translated
-- If the word is green and you think that a translation is wrong, highlight it in WHITE and translate it properly!
+- Words that aren't highlighted mean that they are ready to be translated (WHITE color) :white_circle: 
+- If you are unsure how to translate a certain word, highlight it in a YELLOW :warning: color. They can be highlighted by editors
+- Words highlighted in GREEN :white_check_mark: means they are translated in-game
+- Words highlighted in BLUE :large_blue_circle: means the word was changed and needs to be re-translated again, return it to WHITE :white_circle: color once it has been translated
+- If the word is GREEN :white_check_mark: and you think that a translation is wrong, highlight it in WHITE :white_circle: and translate it properly!
 
-As for importing translations from the google doc to the game, here's how you do it.
+As for importing translations from the Google doc to the game, here's how you do it.
 
 ## Editing
 1. In GameMaker IDE, click the "Hamburger" icon (three line icon) and click "Included Files" and press "Open in Explorer"
@@ -63,9 +59,9 @@ Also go to the object "o_changelanguages" and in the draw event add a new case f
 6. In the object "o_settingspausemenu" in the Create Event under Languages, increment the for loop limit by 1 (WILL IMPROVE THIS LATER)
 
 ### Additional / Optional
-7. Go to the script setLanguageDependingOnRegion() and add your language code for the game to auto-translate the game.
+7. Go to the script [setLanguageDependingOnRegion()](https://github.com/Infiland/TheColorfulCreature/blob/main/scripts/setLanguageDependingOnRegion/setLanguageDependingOnRegion.gml) and add your language code for the game to auto-translate the game.
 
-Note: The loc(id) function checks for a translated word based on ID.
+Note: The [loc(id)](https://github.com/Infiland/TheColorfulCreature/blob/main/scripts/loc/loc.gml) function checks for a translated word based on ID.
 
 ## Store Page Translating
 You can translate all of my store pages on Steam by going to [this repository](https://github.com/Infiland/InfilandGamesStorePageTranslations)
@@ -75,4 +71,4 @@ NOTE: If you are trying to improve the core of the game, consider improving the 
 1. Fork this reposetory
 2. In o_loading object in the "Game Start" Event, change the global.moddedGameDir variable to have your mod name, this is so that your mod doesn't conflict with the base game saves.
 3. You can modify the mod to however you'd like.
-4. Contact Infiland if you want the mod to be available for the general public on steam
+4. Contact Infiland if you want the mod to be available for the general public on steam! :+1:

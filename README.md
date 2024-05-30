@@ -4,7 +4,7 @@
   <img src="https://github.com/Sabeer-Junaid/TheColorfulCreature/assets/59570904/19ce2bb9-2dc6-420e-81e4-955dcda06642"/>
   <br>
 
-<h4 align="center">The <a href="https://store.steampowered.com/app/1651680/The_Colorful_Creature/">Colorful Creature</a> is difficult platformer with puzzle color mechanics, with 350 built in handcrafted levels made by a single <a href="https://www.youtube.com/@Infiland" target="blank">indie-dev</a></h4>
+<h4 align="center"><a href="https://store.steampowered.com/app/1651680/The_Colorful_Creature/">The Colorful Creature</a> is difficult platformer with puzzle color mechanics, with 350 built in handcrafted levels made by a single <a href="https://www.youtube.com/@Infiland" target="blank">indie-dev</a></h4>
 
 <p align="center">
 
@@ -101,9 +101,11 @@ C:\Users\User\Documents\sdk
 ```
 
 > **Note**
-> IT MUST BE IN THIS EXACT LOCATION OR THE GAME WILL NOT WORK). If you use Linux or Mac, I don't know, find a way lmao ( ͡° ͜ʖ ͡°) 5. You have to see if the "Steamworks" extension aligns with the sdk path
+> IT MUST BE IN THIS EXACT LOCATION OR THE GAME WILL NOT WORK). If you use Linux or Mac, I don't know, find a way lmao ( ͡° ͜ʖ ͡°)
+5. You have to see if the "Steamworks" extension aligns with the sdk path
 > **Note**
-> IT MUST BE 'C:\Users\User\Documents\sdk' TO AVOID CONFLICTS 6. Click 'Run' or press F5 in GameMaker to test the game 👍 (or F6 for debugging, <a href="https://gamemaker.io/en/tutorials/debugger" blank="target">read more here</a>)
+> IT MUST BE 'C:\Users\User\Documents\sdk' TO AVOID CONFLICTS 
+6. Click 'Run' or press F5 in GameMaker to test the game 👍 (or F6 for debugging, <a href="https://gamemaker.io/en/tutorials/debugger" blank="target">read more here</a>)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -130,6 +132,10 @@ Don't forget to give the project a star! Thanks again!
 
 <!-- Game Socials -->
 ## Game Socials
+
+<a href="https://discord.com/invite/SSz5THd">
+<img src="https://img.shields.io/badge/Steam-011239?style=for-the-badge&logo=steam&logoColor=white"/>
+</a>
 
 <a href="https://discord.com/invite/SSz5THd">
 <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white"/>

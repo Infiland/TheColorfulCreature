@@ -28,6 +28,9 @@ instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_cam
 instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+480,o_antialiasingsettings)
 instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+544,o_vsyncsettings)
 instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+608,o_biglevelperfsettings)
+instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+160,o_devcommentarysettings)
+instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+224,o_customsplashessettings)
+instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+288,o_noadsinmenusettings)
 
 //Create Visual Settings
 instance_create(camera_get_view_x(view_camera[0])-256,camera_get_view_y(view_camera[0])+160,o_starsettings)

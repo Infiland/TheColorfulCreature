@@ -1,5 +1,9 @@
 y = -64
 x = 224
+
+//If there's more than 1 popup
+if instance_number(o_webask) > 1 { instance_destroy() }
+
 url = ""
 text = loc(678) + " (Y/N)"
 if gamepad_is_connected(0) {

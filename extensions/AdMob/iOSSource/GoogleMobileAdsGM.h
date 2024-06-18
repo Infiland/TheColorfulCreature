@@ -6,31 +6,43 @@
 #import <AppTrackingTransparency/AppTrackingTransparency.h>
 #import <AdSupport/AdSupport.h>
 
-@interface GoogleMobileAdsGM:NSObject <GADBannerViewDelegate,GADFullScreenContentDelegate>
-{
-    NSMutableDictionary *ListenerMap;
-    Boolean testingAds;
-	Boolean NPA;
-}
+@class ThreadSafeQueue;
 
+@interface GoogleMobileAdsGM : NSObject <GADBannerViewDelegate, GADFullScreenContentDelegate>
+
+@property(nonatomic, assign) Boolean isInitialized;
+@property(nonatomic, assign) Boolean isTestDevice;
+@property(nonatomic, assign) Boolean nonPersonalizedAds;
+
+@property(nonatomic, strong) NSString *interstitialAdUnitId;
+@property(nonatomic, assign) int interstitialMaxLoadedInstances;
+@property(nonatomic, strong) ThreadSafeQueue *loadedInterstitialQueue;
+@property(nonatomic, strong) GADInterstitialAd *interstitialKeepMe;
+
+@property(nonatomic, strong) NSString *rewardedVideoUnitId;
+@property(nonatomic, assign) int rewardedVideoMaxLoadedInstances;
+@property(nonatomic, strong) ThreadSafeQueue *loadedRewardedVideoQueue;
+@property(nonatomic, strong) GADRewardedAd *rewardVideoAdKeepMe;
+
+@property(nonatomic, strong) NSString *rewardedInterstitialAdUnitId;
+@property(nonatomic, assign) int rewardedInterstitialMaxLoadedInstances;
+@property(nonatomic, strong) ThreadSafeQueue *loadedRewardedInterstitialQueue;
+@property(nonatomic, strong) GADRewardedInterstitialAd *rewardedInterstitialAdKeepMe;
+
+@property(nonatomic, assign) bool triggerOnPaidEvent;
+
+@property(nonatomic, strong) NSString *bannerAdUnitId;
 @property(nonatomic, strong) GADBannerView *bannerView;
-@property(nonatomic, strong) GADInterstitialAd*interstitial;
-@property(nonatomic, strong) GADInterstitialAd*interstitial_keepMe;
-@property(nonatomic, strong) NSString *BannerAdID;
-@property(nonatomic, strong) NSString *rewardAdID;
-@property(nonatomic, strong) NSString *interstitialAdID;
-@property(nonatomic, strong) GADRewardedAd *rewardAd;
-@property(nonatomic, strong) GADRewardedAd *rewardAd_keepMe;
-@property(nonatomic, strong) NSString *rewardAd_ID;
-@property(nonatomic, strong) GADRewardedInterstitialAd *rewardedInterstitialAd;
-@property(nonatomic, strong) GADRewardedInterstitialAd *rewardedInterstitialAd_keepMe;
-@property(nonatomic, strong) NSString *rewardInterstitialAd_ID;
 
-@property(nonatomic, strong) UMPConsentForm *myForm;
 
-@property(nonatomic, strong) GADRequest *request_interstitial;
-@property(nonatomic, strong) GADRequest *request_rewarded;
+@property(nonatomic, strong) NSString *appOpenAdUnitId;
+@property(nonatomic, strong) GADAppOpenAd *appOpenAdInstance;
+@property(nonatomic, assign) UIInterfaceOrientation appOpenAdOrientation;
+@property(nonatomic, strong) NSDate *appOpenAdLoadTime;
+@property(nonatomic, assign) bool isAppOpenAdEnabled;
+@property(nonatomic, assign) bool isShowingAd;
 
+@property(nonatomic, strong) UMPConsentForm *consentForm;
 
 @end
 

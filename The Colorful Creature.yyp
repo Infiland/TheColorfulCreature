@@ -11,6 +11,8 @@
   },
   "defaultScriptType":1,
   "Folders":[
+    {"$GMFolder":"","%Name":"AdMob","folderPath":"folders/Extensions/AdMob.yy","name":"AdMob","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Mediations","folderPath":"folders/Extensions/AdMob/Mediations.yy","name":"Mediations","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Animation Curves","folderPath":"folders/Animation Curves.yy","name":"Animation Curves","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Extensions","folderPath":"folders/Extensions.yy","name":"Extensions","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Fonts","folderPath":"folders/Fonts.yy","name":"Fonts","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -448,6 +450,11 @@
   "name":"The Colorful Creature",
   "resources":[
     {"id":{"name":"AdMob","path":"extensions/AdMob/AdMob.yy",},},
+    {"id":{"name":"AdMobAppLovin","path":"extensions/AdMobAppLovin/AdMobAppLovin.yy",},},
+    {"id":{"name":"AdMobIronSource","path":"extensions/AdMobIronSource/AdMobIronSource.yy",},},
+    {"id":{"name":"AdMobMeta","path":"extensions/AdMobMeta/AdMobMeta.yy",},},
+    {"id":{"name":"AdMobPangle","path":"extensions/AdMobPangle/AdMobPangle.yy",},},
+    {"id":{"name":"AdMobUnityAds","path":"extensions/AdMobUnityAds/AdMobUnityAds.yy",},},
     {"id":{"name":"Basic_Fake_3D","path":"extensions/Basic_Fake_3D/Basic_Fake_3D.yy",},},
     {"id":{"name":"Color_Blindness_Simulation","path":"extensions/Color_Blindness_Simulation/Color_Blindness_Simulation.yy",},},
     {"id":{"name":"GooglePlayService","path":"extensions/GooglePlayService/GooglePlayService.yy",},},

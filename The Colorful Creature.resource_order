@@ -311,10 +311,10 @@
     {"name":"Timelines","order":10,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings":[
-    {"name":"AdMob","order":4,"path":"extensions/AdMob/AdMob.yy",},
+    {"name":"AdMob","order":3,"path":"extensions/AdMob/AdMob.yy",},
     {"name":"Color_Blindness_Simulation","order":1,"path":"extensions/Color_Blindness_Simulation/Color_Blindness_Simulation.yy",},
-    {"name":"GooglePlayService","order":3,"path":"extensions/GooglePlayService/GooglePlayService.yy",},
-    {"name":"GooglePlayServices","order":5,"path":"extensions/GooglePlayServices/GooglePlayServices.yy",},
+    {"name":"GooglePlayService","order":2,"path":"extensions/GooglePlayService/GooglePlayService.yy",},
+    {"name":"GooglePlayServices","order":4,"path":"extensions/GooglePlayServices/GooglePlayServices.yy",},
     {"name":"fnt_complete","order":8,"path":"fonts/fnt_complete/fnt_complete.yy",},
     {"name":"fnt_cool","order":1,"path":"fonts/fnt_cool/fnt_cool.yy",},
     {"name":"fnt_cool2","order":2,"path":"fonts/fnt_cool2/fnt_cool2.yy",},

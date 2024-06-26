@@ -3,8 +3,8 @@ function drawquest(yy,quest=0,qid=0){
 draw_set_halign(fa_center)
 	
 //Variables
-var title = str[quest][0]
-var description = str[quest][1]
+var title = str[quest][0] //Title
+var description = str[quest][1] //Quest Description
 var current = variable_global_get(str[quest][2]) //Current Progress
 var needed = str[quest][3] //Required
 var reward = str[quest][4] //Credits Reward

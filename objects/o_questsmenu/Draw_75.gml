@@ -22,3 +22,5 @@ random_set_seed(seed)
 drawquest(150,irandom_range(0,maxquests-1),0) //Quest 1
 drawquest(310,irandom_range(0,maxquests-1),1) //Quest 2
 drawquest(470,irandom_range(0,maxquests-1),2) //Quest 3
+draw_set_halign(fa_left)
+draw_sprite_ext(s_cannotplace,0,64,80,3,3,0,c_white,1)

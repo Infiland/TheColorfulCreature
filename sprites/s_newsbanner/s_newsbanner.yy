@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"8ae2cc1c-6a07-4db0-81b6-507e2810eaca","name":"8ae2cc1c-6a07-4db0-81b6-507e2810eaca","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"","%Name":"1f783dd4-df1a-42d9-8827-cd3e4463d249","name":"1f783dd4-df1a-42d9-8827-cd3e4463d249","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":450,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"30ea032a-9bc7-4c9e-903b-3d16d2772b08","blendMode":0,"displayName":"default","isLocked":false,"name":"30ea032a-9bc7-4c9e-903b-3d16d2772b08","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"23692a75-605b-4f4c-a751-47d023a863a5","blendMode":0,"displayName":"default","isLocked":false,"name":"23692a75-605b-4f4c-a751-47d023a863a5","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"s_newsbanner",
   "nineSlice":null,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8ae2cc1c-6a07-4db0-81b6-507e2810eaca","path":"sprites/s_newsbanner/s_newsbanner.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"b2f7f94e-f3a8-436a-a694-b9ed1a91dcf8","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1f783dd4-df1a-42d9-8827-cd3e4463d249","path":"sprites/s_newsbanner/s_newsbanner.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"ccc56441-eabf-411e-b353-8e9edfc27361","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

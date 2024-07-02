@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"hidehudMU",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"loadgradechallenge",
   "isCompatibility":false,
   "isDnD":false,

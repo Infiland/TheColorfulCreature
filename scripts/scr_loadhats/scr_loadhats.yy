@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_loadhats",
   "isCompatibility":false,
   "isDnD":false,

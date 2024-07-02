@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_ERC2021_M",
   "isCompatibility":false,
   "isDnD":false,

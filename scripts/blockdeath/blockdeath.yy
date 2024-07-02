@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"blockdeath",
   "isCompatibility":false,
   "isDnD":false,

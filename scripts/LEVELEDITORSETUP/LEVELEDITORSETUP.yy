@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"LEVELEDITORSETUP",
   "isCompatibility":false,
   "isDnD":false,

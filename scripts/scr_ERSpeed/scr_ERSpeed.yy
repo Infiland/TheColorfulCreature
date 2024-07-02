@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_ERSpeed",
   "isCompatibility":false,
   "isDnD":false,

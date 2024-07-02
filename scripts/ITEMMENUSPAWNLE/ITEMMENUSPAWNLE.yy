@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"ITEMMENUSPAWNLE",
   "isCompatibility":false,
   "isDnD":false,

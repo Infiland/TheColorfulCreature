@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"drawhatshop",
   "isCompatibility":false,
   "isDnD":false,

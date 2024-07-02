@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"hideandroidbuttons",
   "isCompatibility":false,
   "isDnD":false,

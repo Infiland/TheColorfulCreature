@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_animatedeyes",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_loadchallengelevel",
   "isCompatibility":false,
   "isDnD":false,

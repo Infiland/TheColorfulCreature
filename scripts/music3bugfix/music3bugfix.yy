@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"music3bugfix",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_ERDJump",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"restartchallenge",
   "isCompatibility":false,
   "isDnD":false,

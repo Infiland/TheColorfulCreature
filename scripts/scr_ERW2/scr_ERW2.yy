@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_ERW2",
   "isCompatibility":false,
   "isDnD":false,

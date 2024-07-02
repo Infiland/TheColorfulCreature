@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"draw_controller_scheme",
   "isCompatibility":false,
   "isDnD":false,

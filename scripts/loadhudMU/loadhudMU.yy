@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"loadhudMU",
   "isCompatibility":false,
   "isDnD":false,

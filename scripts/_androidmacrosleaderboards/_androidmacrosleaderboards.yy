@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"_androidmacrosleaderboards",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_savechallengetime",
   "isCompatibility":false,
   "isDnD":false,

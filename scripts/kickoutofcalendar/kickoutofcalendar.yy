@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"kickoutofcalendar",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"musicandsoundvolumefix",
   "isCompatibility":false,
   "isDnD":false,

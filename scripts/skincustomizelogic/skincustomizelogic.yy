@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"skincustomizelogic",
   "isCompatibility":false,
   "isDnD":false,

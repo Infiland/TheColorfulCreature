@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"draw_challenge",
   "isCompatibility":false,
   "isDnD":false,

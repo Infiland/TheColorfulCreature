@@ -104,6 +104,7 @@ global.nostalgia = 0
 global.easy = 0
 global.backround = 1
 global.challenges = 0
+global.noadsinmenusettings = 1
 
 global.gamenews = 0
 

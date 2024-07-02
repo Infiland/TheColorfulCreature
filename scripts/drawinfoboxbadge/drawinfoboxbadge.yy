@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"drawinfoboxbadge",
   "isCompatibility":false,
   "isDnD":false,

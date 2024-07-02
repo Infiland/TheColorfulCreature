@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_ERCSpike",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_leftdownplacementLE",
   "isCompatibility":false,
   "isDnD":false,

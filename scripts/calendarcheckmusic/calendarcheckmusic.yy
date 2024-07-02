@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"calendarcheckmusic",
   "isCompatibility":false,
   "isDnD":false,

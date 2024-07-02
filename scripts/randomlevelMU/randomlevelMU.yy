@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"randomlevelMU",
   "isCompatibility":false,
   "isDnD":false,

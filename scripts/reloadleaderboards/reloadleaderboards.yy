@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"reloadleaderboards",
   "isCompatibility":false,
   "isDnD":false,

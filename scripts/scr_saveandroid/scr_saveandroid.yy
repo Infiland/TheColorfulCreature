@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_saveandroid",
   "isCompatibility":false,
   "isDnD":false,

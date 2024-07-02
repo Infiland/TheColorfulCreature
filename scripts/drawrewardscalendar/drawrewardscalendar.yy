@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"drawrewardscalendar",
   "isCompatibility":false,
   "isDnD":false,

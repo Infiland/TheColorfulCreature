@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_renderblocks",
   "isCompatibility":false,
   "isDnD":false,

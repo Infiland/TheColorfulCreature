@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_saveworkshopmedals",
   "isCompatibility":false,
   "isDnD":false,

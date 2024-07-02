@@ -1,5 +1,5 @@
 {
-  "$GMRoom":"",
+  "$GMRoom":"v1",
   "%Name":"r_redblocklayerroom",
   "creationCodeFile":"",
   "inheritCode":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"PLAYMODELE",
   "isCompatibility":false,
   "isDnD":false,

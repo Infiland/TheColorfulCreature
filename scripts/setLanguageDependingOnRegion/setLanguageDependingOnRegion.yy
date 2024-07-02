@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"setLanguageDependingOnRegion",
   "isCompatibility":false,
   "isDnD":false,

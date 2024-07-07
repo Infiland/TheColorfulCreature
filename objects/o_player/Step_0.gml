@@ -276,7 +276,11 @@ verticalcollision(o_shooterright)
 verticalcollision(o_rocketlauncher)
 verticalcollision(o_rocketlauncherright)
 verticalcollision(o_onewayupblock)
+
+if vsp < 0 {
 verticalcollision(o_onewaydownblock)
+}
+
 verticalcollision(o_playerMU)
 
 coyotetime -= 0.03

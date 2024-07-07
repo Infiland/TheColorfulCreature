@@ -8,7 +8,7 @@
   "option_linux_display_name":"TheColorfulCreature",
   "option_linux_display_splash":false,
   "option_linux_enable_steam":true,
-  "option_linux_homepage":"http://www.The_Colorful_Creature.com",
+  "option_linux_homepage":"https://infiland.github.io",
   "option_linux_icon":"${options_dir}/linux/icons/64.png",
   "option_linux_interpolate_pixels":false,
   "option_linux_long_desc":"TheColorfulCreature",
@@ -20,7 +20,7 @@
   "option_linux_start_fullscreen":false,
   "option_linux_sync":true,
   "option_linux_texture_page":"2048x2048",
-  "option_linux_version":"1.1.8",
+  "option_linux_version":"1.1.9",
   "resourceType":"GMLinuxOptions",
   "resourceVersion":"2.0",
 }

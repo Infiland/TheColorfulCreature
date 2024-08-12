@@ -1,4 +1,7 @@
 function scr_loading(){
+	
+gml_pragma("UnityBuild", "true");
+
 randomize()
 
 //AUDIO EFFECTS

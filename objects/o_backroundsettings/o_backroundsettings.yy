@@ -37,8 +37,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_backroundsettings",
-    "path":"sprites/s_backroundsettings/s_backroundsettings.yy",
+    "name":"s_backgroundsettings",
+    "path":"sprites/s_backgroundsettings/s_backgroundsettings.yy",
   },
   "spriteMaskId":null,
   "visible":true,

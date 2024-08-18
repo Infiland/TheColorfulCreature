@@ -1,11 +1,11 @@
 {
   "$GMSprite":"",
   "%Name":"s_gun",
-  "bboxMode":0,
-  "bbox_bottom":29,
+  "bboxMode":2,
+  "bbox_bottom":25,
   "bbox_left":0,
   "bbox_right":31,
-  "bbox_top":4,
+  "bbox_top":-10,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
@@ -166,7 +166,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":32,
+  "height":26,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"0c787e01-d8aa-4a6e-8c48-79fddd8cf7bb","blendMode":0,"displayName":"default","isLocked":false,"name":"0c787e01-d8aa-4a6e-8c48-79fddd8cf7bb","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},

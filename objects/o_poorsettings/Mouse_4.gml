@@ -1,7 +1,7 @@
 if global.choosesettings != 1 { exit }
 
 global.vignettesettings = 0
-global.backround = 0
+global.background = 0
 global.stars = 0
 global.itempar = 0
 global.playerpar = 0

@@ -1,7 +1,7 @@
 if global.choosesettings != 1 { exit }
 
-if global.backround = 1 {
-global.backround = 0	
+if global.background = 1 {
+global.background = 0	
 }
-else { global.backround = 1 }
+else { global.background = 1 }
 scr_savesettings()

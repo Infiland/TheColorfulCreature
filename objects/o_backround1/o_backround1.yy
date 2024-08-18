@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_backround1",
-    "path":"sprites/s_backround1/s_backround1.yy",
+    "name":"s_background1",
+    "path":"sprites/s_background1/s_background1.yy",
   },
   "spriteMaskId":null,
   "visible":true,

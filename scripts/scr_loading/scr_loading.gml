@@ -105,7 +105,7 @@ global.itempar = 1
 global.playerpar = 1
 global.nostalgia = 0
 global.easy = 0
-global.backround = 1
+global.background = 1
 global.challenges = 0
 global.noadsinmenusettings = 1
 

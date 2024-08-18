@@ -18,11 +18,7 @@
 #macro __SCRIBBLE_VBUFF_WRITE_GLYPH  if (_glyph_texture != _last_glyph_texture)\
                                      {\
                                          _last_glyph_texture = _glyph_texture;\
-                                         _vbuff = _page_data.__get_vertex_buffer(_glyph_texture,\
-                                                                                 _glyph_grid[# _i, __SCRIBBLE_GEN_GLYPH.__SDF_PXRANGE],\
-                                                                                 _glyph_grid[# _i, __SCRIBBLE_GEN_GLYPH.__SDF_THICKNESS_OFFSET],\
-                                                                                 _glyph_grid[# _i, __SCRIBBLE_GEN_GLYPH.__BILINEAR],\
-                                                                                 self);\
+                                         _vbuff = _page_data.__get_vertex_buffer(_glyph_texture, _glyph_grid[# _i, __SCRIBBLE_GEN_GLYPH.__FONT_NAME]);\
                                      }\
                                      if (_bezier_do)\
                                      {\
@@ -301,16 +297,16 @@ function __scribble_gen_9_write_vbuffs()
                 }
                 
                 var _sprite_number = sprite_get_number(_sprite_index);
-                if (_sprite_number >= 64)
+                if (_sprite_number > 127)
                 {
-                    __scribble_trace("In-line sprites cannot have more than 64 frames (", sprite_get_name(_sprite_index), ")");
-                    _sprite_number = 64;
+                    __scribble_trace("In-line sprites cannot have more than 127 frames (", sprite_get_name(_sprite_index), ")");
+                    _sprite_number = 127;
                 }
                 
-                if (_image_speed >= 4)
+                if (_image_speed >= 2)
                 {
-                    __scribble_trace("Image speed cannot be more than 4.0 (" + string(_image_speed) + ")");
-                    _image_speed = 4;
+                    __scribble_trace("Image speed cannot be more than 2.0 (" + string(_image_speed) + ")");
+                    _image_speed = 2;
                 }
                 
                 if (_image_speed < 0)
@@ -319,7 +315,7 @@ function __scribble_gen_9_write_vbuffs()
                     _image_speed = 0;
                 }
                 
-                var _glyph_sprite_data = 4096*floor(1024*_image_speed) + 64*_sprite_number + _image_index;
+                var _glyph_sprite_data = 16384*floor(256*_image_speed) + 128*_sprite_number + _image_index;
                 
                 var _j = _image_index;
                 repeat((_image_speed > 0)? _sprite_number : 1) //Only draw one image if we have an image speed of 0 since we're not animating

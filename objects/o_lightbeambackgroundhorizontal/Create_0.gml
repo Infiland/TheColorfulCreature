@@ -1,5 +1,5 @@
 if room != r_leveleditor {
-if global.backround = 0 { instance_destroy() }
+if global.background = 0 { instance_destroy() }
 }
 image_xscale = room_width / 32
 depth = 8999

@@ -15,7 +15,9 @@ while (!file_text_eof(file))
 maxquests = num
 show_debug_message(maxquests)
 file_text_close(file);
-} 
+} else {
+	instance_destroy()	
+}
 
 
 /*

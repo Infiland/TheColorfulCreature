@@ -447,7 +447,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.6.2.162",
+    "IDEVersion":"2024.8.0.169",
   },
   "name":"The Colorful Creature",
   "resources":[
@@ -898,6 +898,7 @@
     {"id":{"name":"o_levelreloadagain","path":"objects/o_levelreloadagain/o_levelreloadagain.yy",},},
     {"id":{"name":"o_levelselectbutton","path":"objects/o_levelselectbutton/o_levelselectbutton.yy",},},
     {"id":{"name":"o_levelselectchooselevel","path":"objects/o_levelselectchooselevel/o_levelselectchooselevel.yy",},},
+    {"id":{"name":"o_levelselecthardmodeselect","path":"objects/o_levelselecthardmodeselect/o_levelselecthardmodeselect.yy",},},
     {"id":{"name":"o_lightbeambackgroundhorizontal","path":"objects/o_lightbeambackgroundhorizontal/o_lightbeambackgroundhorizontal.yy",},},
     {"id":{"name":"o_lightbeamspawner","path":"objects/o_lightbeamspawner/o_lightbeamspawner.yy",},},
     {"id":{"name":"o_listenost","path":"objects/o_listenost/o_listenost.yy",},},

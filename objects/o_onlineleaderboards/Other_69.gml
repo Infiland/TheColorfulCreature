@@ -23,3 +23,18 @@ if async_id == score_get
     }
     ds_map_destroy(map)
 }
+
+if (async_load[?"event_type"] != "avatar_image_loaded") exit;
+
+var _success = async_load[?"success"];
+if (_success == 1) {
+		if userID != noone {
+var av = steam_get_user_avatar(real(userID), steam_user_avatar_size_small);
+if (av != -1) 
+	avatar_sprite = steam_image_create_sprite(av);
+else 
+	avatar_sprite = -1;
+}
+} else {
+    show_debug_message("Failed to get user avatar");
+}

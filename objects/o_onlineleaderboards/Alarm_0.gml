@@ -1,9 +1,3 @@
-minselect = -4
-maxselect = 22
-scroll = 0
-userID = noone
-reloadleaderboards()
-
 function steam_image_create_sprite(l_img)
 {
 	var l_dims = steam_image_get_size(l_img);
@@ -30,11 +24,10 @@ function steam_image_create_sprite(l_img)
 	return l_sprite;
 }
 
-
-var av = steam_get_user_avatar(steam_get_user_steam_id(), steam_user_avatar_size_small);
+		if userID != noone {
+var av = steam_get_user_avatar(userID, steam_user_avatar_size_small);
 if (av != -1) 
 	avatar_sprite = steam_image_create_sprite(av);
 else 
 	avatar_sprite = -1;
-	
-alarm[0] = 1
+}

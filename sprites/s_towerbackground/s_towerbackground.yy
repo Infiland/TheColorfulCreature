@@ -3,8 +3,8 @@
   "%Name":"s_towerbackground",
   "bboxMode":0,
   "bbox_bottom":767,
-  "bbox_left":13,
-  "bbox_right":219,
+  "bbox_left":0,
+  "bbox_right":206,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -138,5 +138,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":230,
+  "width":207,
 }

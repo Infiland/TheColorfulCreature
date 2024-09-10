@@ -7,6 +7,13 @@ r_str = "0"
 get = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1651680");
 getdemo = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1749610");
 
+
+busy = false; // are we busy with the request?
+success = false; // did we obtain a number successfully?
+players = 0; // the actual number, can be 0
+if (steam_get_number_of_current_players())
+    busy = true; // waiting for the request
+
 if steam_get_app_id() = 1749610 { version = "Demo"	} // DEMO VERSION
 if steam_get_app_id() != 1749610 { version = "Release " + GM_version } //CHANGE THIS FOR NEWER VERSIONS
 if global.moddedGameDir != "" { version = loc(677) } // MODDED VERSION

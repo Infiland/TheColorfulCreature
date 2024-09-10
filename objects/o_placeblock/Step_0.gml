@@ -30,7 +30,8 @@ sprite_index = s_cannotplace
 
 //Checking
 global.canchange = false
-if global.LEBuild = 1 {
+switch(global.LEBuild) {
+case(1):
 if global.LES = 6 || global.LES = 7 || global.LES = 8 || global.LES = 9 || global.LES = 10{
 if place_meeting(x,y,o_playerspawner) || place_meeting(x,y,o_redblock) || place_meeting(x,y,o_yellowblock) || place_meeting(x,y,o_greenblock) || place_meeting(x,y,o_blueblock) || place_meeting(x,y,o_whiteblock){
 	global.canchange = true
@@ -51,11 +52,16 @@ if global.LES = 60 || global.LES = 57 {
 if place_meeting(x,y,o_boxwithinfiniteammo)	 {
 global.canchange = true
 }}
-}
-if global.LEBuild = 2 {
+break;
+case(2):
 if place_meeting(x,y,o_redblockbackgroundslope) || place_meeting(x,y,o_yellowblockbackgroundslope) || place_meeting(x,y,o_greenblockbackgroundslope) || place_meeting(x,y,o_blueblockbackgroundslope) || place_meeting(x,y,o_whiteblockbackgroundslope) || place_meeting(x,y,o_iceblockbackgroundslope) || place_meeting(x,y,o_deathblockbackgroundslope) || place_meeting(x,y,o_boxblockbackgroundslope) {
 global.canchange = true
-}}
+}
+break;
+case(3):
+if !instance_exists(o_waterleveleditorline) {instance_create(x,y,o_waterleveleditorline)}
+break;
+}
 
 //if global.LEMode = 2 { image_alpha = 0 }
 

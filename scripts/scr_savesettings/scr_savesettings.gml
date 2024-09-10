@@ -8,7 +8,7 @@ function scr_savesettings() {
 	ini_write_real("Settings","White Block Settings",global.whiteblock);
 	ini_write_real("Settings","Item Particles Settings",global.itempar);
 	ini_write_real("Settings","Player Settings",global.playerpar);
-	ini_write_real("Settings","Backround",global.backround);
+	ini_write_real("Settings","Background",global.background);
 	ini_write_real("Settings","FPS Show",global.fpssettings);
 	ini_write_real("Settings","Music Volume",global.musicvolume);
 	ini_write_real("Settings","Sound Volume",global.soundvolume);

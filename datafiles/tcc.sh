@@ -1,3 +1,4 @@
 #!/bin/bash
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 export LD_LIBRARY_PATH="./assets/:$LD_LIBRARY_PATH:/usr/lib"
-"/home/$USER/.steam/steam/steamapps/common/The Colorful Creature/TheColorfulCreature"
+"${SCRIPT_DIR}/../TheColorfulCreature"

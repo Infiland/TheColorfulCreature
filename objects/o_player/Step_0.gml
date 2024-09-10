@@ -62,7 +62,8 @@ if keyboard_check(vk_down) || keyboard_check(ord("S")) { y += walksp * (60 / glo
 
 if instance_exists(o_hatshopmenu) { exit }
 
-
+//Suicide
+if global.time > 0.5 { //Prevent suicide at beginning of time
 if key_restart {
 if global.pause = 0 {
 if room != r_theend || room != r_easteregg1 {
@@ -70,11 +71,11 @@ if room != r_leveleditor {
 	increase_stat("totalrestartdeaths","QUESTrestartdeaths",1)
 	}
 death()
-}}}
+}}}}
 
 //Restart Challenge
 if keyboard_check(vk_control) {
-	if key_restart {
+	if keyboard_check_pressed(ord(global.controlsrestart)) { //Not using key_restart
 	restartchallenge()	
 }}
 

@@ -50,7 +50,7 @@ room_goto(r_hardmodedeathroom)
 }} else { global.hardmodelives = "Infinite" }
 }}
 
-//Legendary Skin Color
+//Legendary Skin Color Indicator
 if instance_exists(o_player) {
 if global.skinselected = 10 or global.skinselected = 12 or global.skinselected = 17 {
 draw_set_color(c_white)

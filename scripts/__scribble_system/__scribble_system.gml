@@ -1,7 +1,5 @@
 // Feather disable all
-// @jujuadams
-#macro __SCRIBBLE_VERSION           "9.0.0"
-#macro __SCRIBBLE_DATE              "2024-03-10"
+
 #macro __SCRIBBLE_DEBUG             false
 #macro __SCRIBBLE_VERBOSE_GC        false
 #macro __SCRIBBLE_RUNNING_FROM_IDE  (GM_build_type == "run")
@@ -22,7 +20,7 @@ function __scribble_initialize()
     
     with(_system)
     {
-        __scribble_trace("Welcome to Scribble by Juju Adams! This is version " + __SCRIBBLE_VERSION + ", " + __SCRIBBLE_DATE);
+        __scribble_trace("Welcome to Scribble Deluxe by Juju Adams! This is version " + SCRIBBLE_VERSION + ", " + SCRIBBLE_DATE);
         
         if (SCRIBBLE_VERBOSE)
         {
@@ -62,6 +60,8 @@ function __scribble_initialize()
         __scribble_krutidev_matra_lookup_map_initialize();
         scribble_anim_reset();
         
+        __defaultPreprocessorFunc = SCRIBBLE_NO_PREPROCESS;
+        
         __useHandleParse = false;
         try
         {
@@ -85,7 +85,7 @@ function __scribble_initialize()
 
 function __scribble_trace()
 {
-    var _string = "Scribble Deluxe: ";
+    var _string = "ScribbleDX: ";
     
     var _i = 0
     repeat(argument_count)
@@ -139,8 +139,8 @@ function __scribble_error()
         ++_i;
     }
     
-    show_debug_message("Scribble Deluxe " + __SCRIBBLE_VERSION + ": " + string_replace_all(_string, "\n", "\n          "));
-    show_error("Scribble Deluxe:\n" + _string + "\n ", true);
+    show_debug_message("Scribble Deluxe " + SCRIBBLE_VERSION + ": " + string_replace_all(_string, "\n", "\n          "));
+    show_error("ScribbleDX:\n" + _string + "\n ", true);
 }
 
 function __scribble_get_font_data(_name)
@@ -437,55 +437,6 @@ function __scribble_matrix_inverse(_matrix)
 
 #region Enums
 
-enum SCRIBBLE_GLYPH
-{
-    CHARACTER,             // 0
-                   
-    UNICODE,               // 1 \
-    BIDI,                  // 2  |
-                           //    |
-    X_OFFSET,              // 3  |
-    Y_OFFSET,              // 4  |
-    WIDTH,                 // 5  |
-    HEIGHT,                // 6  |
-    FONT_HEIGHT,           // 7  |
-    SEPARATION,            // 8  |
-    LEFT_OFFSET,           // 9  | This group of enums must not change order or be split
-    FONT_SCALE,            //10  |
-                           //    |
-    TEXTURE,               //11  |
-    U0,                    //12  | Be careful of ordering!
-    U1,                    //13  | scribble_font_bake_shader() relies on this
-    V0,                    //14  |
-    V1,                    //15  |
-                           //    |
-    SDF_PXRANGE,          //16  |
-    SDF_THICKNESS_OFFSET, //17  |
-    BILINEAR,              //18 /
-    
-    __SIZE                 //19
-}
-
-enum SCRIBBLE_EASE
-{
-    NONE,     // 0
-    LINEAR,   // 1
-    QUAD,     // 2
-    CUBIC,    // 3
-    QUART,    // 4
-    QUINT,    // 5
-    SINE,     // 6
-    EXPO,     // 7
-    CIRC,     // 8
-    BACK,     // 9
-    ELASTIC,  //10
-    BOUNCE,   //11
-    CUSTOM_1, //12
-    CUSTOM_2, //13
-    CUSTOM_3, //14
-    __SIZE    //15
-}
-
 enum __SCRIBBLE_GLYPH_LAYOUT
 {
     __UNICODE, // 0
@@ -504,10 +455,17 @@ enum __SCRIBBLE_VERTEX_BUFFER
     __SDF_THICKNESS_OFFSET, //3
     __TEXEL_WIDTH,          //4
     __TEXEL_HEIGHT,         //5
-    __SDF,                  //6
+    __FONT_TYPE,            //6
     __BUFFER,               //7
     __BILINEAR,             //8
     __SIZE                  //9
+}
+
+enum __SCRIBBLE_FONT_TYPE
+{
+    __RASTER,
+    __RASTER_WITH_EFFECTS,
+    __SDF,
 }
 
 enum __SCRIBBLE_ANIM
@@ -562,18 +520,16 @@ enum __SCRIBBLE_GEN_GLYPH
     __QUAD_V0,               //13   |
     __QUAD_V1,               //14   |
                              //     |
-    __SDF_PXRANGE,          //15   |
-    __SDF_THICKNESS_OFFSET, //16   |
-    __BILINEAR,              //17  /
+    __FONT_NAME,             //15  /
     
-    __CONTROL_COUNT,         //18
-    __ANIMATION_INDEX,       //19
+    __CONTROL_COUNT,         //16
+    __ANIMATION_INDEX,       //17
                       
-    __SPRITE_INDEX,          //20  \
-    __IMAGE_INDEX,           //21   | Only used for sprites
-    __IMAGE_SPEED,           //22  /
+    __SPRITE_INDEX,          //18  \
+    __IMAGE_INDEX,           //19   | Only used for sprites
+    __IMAGE_SPEED,           //20  /
                       
-    __SIZE,                   //23
+    __SIZE,                  //21
 }
 
 enum __SCRIBBLE_GEN_VBUFF_POS
@@ -637,8 +593,9 @@ enum __SCRIBBLE_GEN_LINE
     __WIDTH,              //4
     __HEIGHT,             //5
     __HALIGN,             //6
-    __STARTS_MANUAL_PAGE, //7
-    __SIZE,               //8
+    __DISABLE_JUSTIFY,    //7
+    __STARTS_MANUAL_PAGE, //8
+    __SIZE,               //9
 }
 
 #endregion

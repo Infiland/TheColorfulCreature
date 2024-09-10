@@ -1,4 +1,7 @@
 function scr_loading(){
+	
+gml_pragma("UnityBuild", "true");
+
 randomize()
 
 //AUDIO EFFECTS
@@ -102,7 +105,7 @@ global.itempar = 1
 global.playerpar = 1
 global.nostalgia = 0
 global.easy = 0
-global.backround = 1
+global.background = 1
 global.challenges = 0
 global.noadsinmenusettings = 1
 
@@ -116,6 +119,7 @@ global.soundvolume = 0.5
 global.mastervolume = 0.5
 audio_master_gain(global.mastervolume)
 global.hardmode = 0
+global.hardmodelives = 100;
 global.levelselect = 0
 global.autopausesettings = 0
 global.hardmodedifficulty = 0

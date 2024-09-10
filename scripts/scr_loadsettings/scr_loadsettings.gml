@@ -10,7 +10,7 @@ function scr_loadsettings() {
 	global.whiteblock = ini_read_real("Settings","White Block Settings",1);
 	global.itempar = ini_read_real("Settings","Item Particles Settings",1);
 	global.playerpar = ini_read_real("Settings","Player Settings",1);
-	global.backround = ini_read_real("Settings","Backround",1);
+	global.background = ini_read_real("Settings","Background",1);
 	global.fpssettings = ini_read_real("Settings","FPS Show",0);
 	global.musicvolume = ini_read_real("Settings","Music Volume",0.5);
 	global.soundvolume = ini_read_real("Settings","Sound Volume",0.5);

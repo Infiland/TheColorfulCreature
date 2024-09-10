@@ -15,7 +15,7 @@
   "copyToTargets":194,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"1.6.9",
+  "extensionVersion":"1.7.0",
   "files":[
     {"$GMExtensionFile":"","%Name":"Steamworks.ext","constants":[
         {"$GMExtensionConstant":"","%Name":"ov_friends","hidden":false,"name":"ov_friends","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"0",},
@@ -505,6 +505,17 @@
         {"$GMExtensionFunction":"","%Name":"steam_file_get_list","argCount":0,"args":[],"documentation":"/// @returns {Struct}","externalName":"steam_file_get_list","help":"","hidden":false,"kind":4,"name":"steam_file_get_list","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
         {"$GMExtensionFunction":"","%Name":"steam_get_global_stat_int","argCount":0,"args":[1,1,],"documentation":"@param {string} statName\r\n@returns {int64}","externalName":"steam_get_global_stat_int","help":"","hidden":false,"kind":4,"name":"steam_get_global_stat_int","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
         {"$GMExtensionFunction":"","%Name":"steam_get_global_stat_history_int","argCount":0,"args":[],"documentation":"@param {string} statName\r\n@returns {array[int64]}","externalName":"steam_get_global_stat_history_int","help":"","hidden":false,"kind":4,"name":"steam_get_global_stat_history_int","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"steam_indicate_achievement_progress","argCount":0,"args":[],"documentation":"/// @param {string} ach_name The 'API Name' of the achievement.\r\n/// @param {real} cur_progress Current progress of the stat.\r\n/// @param {real} max_progress Maximum progress of the achievement.\r\n/// @returns {bool}","externalName":"steam_indicate_achievement_progress","help":"","hidden":false,"kind":4,"name":"steam_indicate_achievement_progress","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"steam_get_number_of_current_players","argCount":0,"args":[],"documentation":"/// @returns {bool}","externalName":"steam_get_number_of_current_players","help":"","hidden":false,"kind":4,"name":"steam_get_number_of_current_players","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"steam_request_friend_rich_presence","argCount":0,"args":[],"documentation":"/// @param {int64} userID The user Steam unique identifier\r\n/// @returns {bool}","externalName":"steam_request_friend_rich_presence","help":"","hidden":false,"kind":4,"name":"steam_request_friend_rich_presence","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"steam_get_friend_rich_presence","argCount":0,"args":[],"documentation":"/// @param {int64} userID The user Steam unique identifier\r\n/// @param {string} key Rich Presence string key, for example \"status\" or \"connect\"\r\n/// @returns {string}","externalName":"steam_get_friend_rich_presence","help":"","hidden":false,"kind":4,"name":"steam_get_friend_rich_presence","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"steam_get_friend_rich_presence_key_count","argCount":0,"args":[],"documentation":"/// @param {int64} userID The user Steam unique identifier\r\n/// @returns {real}","externalName":"steam_get_friend_rich_presence_key_count","help":"","hidden":false,"kind":4,"name":"steam_get_friend_rich_presence_key_count","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"steam_get_friend_rich_presence_key_by_index","argCount":0,"args":[],"documentation":"/// @param {int64} userID The user Steam unique identifier\r\n/// @param {real} index Index of the key\r\n/// @returns {string}","externalName":"steam_get_friend_rich_presence_key_by_index","help":"","hidden":false,"kind":4,"name":"steam_get_friend_rich_presence_key_by_index","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"steam_get_achievement_progress_limits_int","argCount":0,"args":[],"documentation":"/// @param {string} ach_name The 'API Name' of the achievement.\r\n/// @returns {struct}","externalName":"steam_get_achievement_progress_limits_int","help":"","hidden":false,"kind":4,"name":"steam_get_achievement_progress_limits_int","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"steam_get_achievement_progress_limits_float","argCount":0,"args":[],"documentation":"/// @param {string} ach_name The 'API Name' of the achievement.\r\n/// @returns {struct}","externalName":"steam_get_achievement_progress_limits_float","help":"","hidden":false,"kind":4,"name":"steam_get_achievement_progress_limits_float","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"steam_utils_get_server_real_time","argCount":0,"args":[],"documentation":"/// @returns {real}","externalName":"steam_utils_get_server_real_time","help":"","hidden":false,"kind":4,"name":"steam_utils_get_server_real_time","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"steam_file_read_buffer","argCount":0,"args":[],"documentation":"/// @param {string} filename The name of the file to read from.\r\n/// @param {Id.Buffer} [bufferId] OPTIONAL: ID of the buffer to read into, or -1 to create a new one. You are responsible for calling buffer_delete in both cases.\r\n/// @param {real} [offset] OPTIONAL: Offset at which to begin writing data into the buffer, if creating a new buffer this argument is ignored. \r\n/// @returns {Id.Buffer|undefined}","externalName":"","help":"","hidden":false,"kind":4,"name":"steam_file_read_buffer","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"steam_file_write_buffer","argCount":0,"args":[],"documentation":"/// @param {string} filename The name of the file to write or create.\r\n/// @param {Id.Buffer} bufferId ID of the buffer to read from, any seek positions are ignored and the buffer will be read in full.\r\n/// @returns {bool}","externalName":"","help":"","hidden":false,"kind":4,"name":"steam_file_write_buffer","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
       ],"init":"steam_init","kind":4,"name":"Steamworks.ext","order":[
         {"name":"steam_user_owns_dlc","path":"extensions/Steamworks/Steamworks.yy",},
         {"name":"steam_user_installed_dlc","path":"extensions/Steamworks/Steamworks.yy",},
@@ -730,8 +741,8 @@
   "optionsFile":"options.json",
   "packageId":"",
   "parent":{
-    "name":"Steamworks",
-    "path":"folders/Steamworks.yy",
+    "name":"Extensions",
+    "path":"folders/Extensions.yy",
   },
   "productId":"",
   "resourceType":"GMExtension",

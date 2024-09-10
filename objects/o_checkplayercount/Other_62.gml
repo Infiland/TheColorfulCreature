@@ -1,3 +1,4 @@
+/*
 //Logic for the full game
 if os_is_network_connected() {
 if ds_map_find_value(async_load, "id") == get

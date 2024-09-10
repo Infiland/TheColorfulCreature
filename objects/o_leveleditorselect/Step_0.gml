@@ -13,6 +13,16 @@ if mouse_wheel_up() || keyboard_check_pressed(vk_right) {
 global.LES += 1	
 image_speed = 1 * (60 / global.maxfps)
 }}}
+if keyboard_check_pressed(vk_up) {
+	if global.LEBuild != 3 {
+		global.LEBuild += 1
+	}
+}
+if keyboard_check_pressed(vk_down) {
+	if global.LEBuild != 1 {
+		global.LEBuild -= 1
+	}
+}
 if keyboard_check_pressed(vk_escape) {
 if !instance_exists(o_chooseleveleditorlevel) {
 if !instance_exists(o_leveleditorleaveask) {

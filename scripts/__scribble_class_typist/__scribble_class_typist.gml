@@ -16,6 +16,8 @@ function __scribble_class_typist(_per_line) constructor
     __skip_paused = false;
     __drawn_since_skip = false;
     
+    __sound_tag_gain = 1;
+    
     __sound_array                   = undefined;
     __sound_overlap                 = 0;
     __sound_pitch_min               = 1;
@@ -117,6 +119,7 @@ function __scribble_class_typist(_per_line) constructor
         __skip = _state;
         __skip_paused = true;
         __drawn_since_skip = false;
+        __delay_end = -infinity;
         
         return self;
     }
@@ -126,6 +129,7 @@ function __scribble_class_typist(_per_line) constructor
         __skip = _state;
         __skip_paused = false;
         __drawn_since_skip = false;
+        __delay_end = -infinity;
         
         return self;
     }
@@ -358,6 +362,11 @@ function __scribble_class_typist(_per_line) constructor
         }
     }
     
+    static get_delay_paused = function()
+    {
+        return __delay_paused;
+    }
+    
     static get_paused = function()
     {
         return __paused;
@@ -413,6 +422,23 @@ function __scribble_class_typist(_per_line) constructor
         __sync_instance  = undefined;
         __sync_paused    = false;
         __sync_pause_end = infinity;
+    }
+    
+    #endregion
+    
+    
+    
+    #region Gain
+    
+    static set_sound_tag_gain = function(_gain)
+    {
+        __sound_tag_gain = _gain;
+        return self;
+    }
+    
+    static get_sound_tag_gain = function()
+    {
+        return __sound_tag_gain;
     }
     
     #endregion
@@ -528,7 +554,7 @@ function __scribble_class_typist(_per_line) constructor
                     {
                         var _asset = _event_data[0];
                         if (is_string(_asset)) _asset = asset_get_index(_asset);
-                        audio_play_sound(_asset, 1, false);
+                        __scribble_play_sound(_asset, __sound_tag_gain, 1);
                     }
                 break;
                 
@@ -608,9 +634,7 @@ function __scribble_class_typist(_per_line) constructor
                 
                 if (_audio_asset != undefined)
                 {
-                    var _inst = audio_play_sound(_audio_asset, 0, false);
-                    audio_sound_pitch(_inst, lerp(__sound_pitch_min, __sound_pitch_max, __scribble_random()));
-                    audio_sound_gain(_inst, __sound_gain, 0);
+                    var _inst = __scribble_play_sound(_audio_asset, __sound_gain, lerp(__sound_pitch_min, __sound_pitch_max, __scribble_random()));
                     __sound_finish_time = current_time + 1000*audio_sound_length(_inst) - __sound_overlap;
                 }
             }

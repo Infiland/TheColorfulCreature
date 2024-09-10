@@ -216,7 +216,7 @@ const int ADMOB_ERROR_ILLEGAL_CALL = -6;
     dsMapAddString(dsMapIndex, (char*)"unit_id", (char*)[adUnitId UTF8String]);
     dsMapAddString(dsMapIndex, (char*)"ad_type", (char*)[adType UTF8String]);
     
-    dsMapAddDouble(dsMapIndex, (char*)"micros", value.value.doubleValue);
+    dsMapAddDouble(dsMapIndex, (char*)"micros", value.value.doubleValue* 1000000.0);
     dsMapAddString(dsMapIndex, (char*)"currency_code", (char*)[value.currencyCode UTF8String]);
     dsMapAddDouble(dsMapIndex, (char*)"precision", (double)value.precision);
     
@@ -277,7 +277,7 @@ const int ADMOB_ERROR_ILLEGAL_CALL = -6;
     }
     else if([presentingAd isMemberOfClass:[GADAppOpenAd class]])
     {
-        dsMapAddString(dsMapIndex, (char*)"type", (char*)"AdMob_AppOpen_OnShowFailed");
+        dsMapAddString(dsMapIndex, (char*)"type", (char*)"AdMob_AppOpenAd_OnShowFailed");
         dsMapAddString(dsMapIndex, (char*)"unit_id", (char*)[self.appOpenAdUnitId UTF8String]);
         [self loadAppOpenAd];
     }
@@ -313,7 +313,7 @@ const int ADMOB_ERROR_ILLEGAL_CALL = -6;
     else if([presentingAd isMemberOfClass:[GADAppOpenAd class]])
     {
         int dsMapIndex = dsMapCreate();
-        dsMapAddString(dsMapIndex, (char*)"type", (char*)"AdMob_AppOpen_OnFullyShown");
+        dsMapAddString(dsMapIndex, (char*)"type", (char*)"AdMob_AppOpenAd_OnFullyShown");
         dsMapAddString(dsMapIndex, (char*)"unit_id", (char*)[self.appOpenAdUnitId UTF8String]);
         createSocialAsyncEventWithDSMap(dsMapIndex);
         
@@ -349,7 +349,7 @@ const int ADMOB_ERROR_ILLEGAL_CALL = -6;
     else if([presentingAd isMemberOfClass:[GADAppOpenAd class]])
     {
         int dsMapIndex = dsMapCreate();
-        dsMapAddString(dsMapIndex, (char*)"type", (char*)"AdMob_AppOpen_OnDismissed");
+        dsMapAddString(dsMapIndex, (char*)"type", (char*)"AdMob_AppOpenAd_OnDismissed");
         dsMapAddString(dsMapIndex, (char*)"unit_id", (char*)[self.appOpenAdUnitId UTF8String]);
         createSocialAsyncEventWithDSMap(dsMapIndex);
         
@@ -773,7 +773,7 @@ static GADAdSize getBannerSize(double size)
 
 #pragma mark - Rewarded Interstitial Methods
 
--(void) AdMob_RewardedInterstitial_Set_UnitId:(NSString*) adUnitId
+-(void) AdMob_RewardedInterstitial_Set_AdUnit:(NSString*) adUnitId
 {
     self.rewardedInterstitialAdUnitId = adUnitId;
 }
@@ -876,7 +876,7 @@ static GADAdSize getBannerSize(double size)
 
 #pragma mark - App Open Methods
 
--(void) AdMob_AppOpenAd_Set_UnitId:(NSString*) adUnitId
+-(void) AdMob_AppOpenAd_Set_AdUnit:(NSString*) adUnitId
 {
     self.appOpenAdUnitId = adUnitId;
 }

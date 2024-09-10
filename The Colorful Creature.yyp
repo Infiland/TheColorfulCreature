@@ -393,7 +393,6 @@
     {"$GMFolder":"","%Name":"Skibidi","folderPath":"folders/Sprites/Player Customization/Player Skins/Skins/Page 4/Skibidi.yy","name":"Skibidi","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Settings","folderPath":"folders/Sprites/Settings.yy","name":"Settings","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Special Effects","folderPath":"folders/Sprites/Special Effects.yy","name":"Special Effects","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Steamworks","folderPath":"folders/Steamworks.yy","name":"Steamworks","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Tile Sets","folderPath":"folders/Tile Sets.yy","name":"Tile Sets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Timelines","folderPath":"folders/Timelines.yy","name":"Timelines","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
@@ -447,7 +446,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.8.0.169",
+    "IDEVersion":"2024.8.1.171",
   },
   "name":"The Colorful Creature",
   "resources":[
@@ -459,7 +458,6 @@
     {"id":{"name":"AdMobUnityAds","path":"extensions/AdMobUnityAds/AdMobUnityAds.yy",},},
     {"id":{"name":"Basic_Fake_3D","path":"extensions/Basic_Fake_3D/Basic_Fake_3D.yy",},},
     {"id":{"name":"Color_Blindness_Simulation","path":"extensions/Color_Blindness_Simulation/Color_Blindness_Simulation.yy",},},
-    {"id":{"name":"GooglePlayService","path":"extensions/GooglePlayService/GooglePlayService.yy",},},
     {"id":{"name":"GooglePlayServices","path":"extensions/GooglePlayServices/GooglePlayServices.yy",},},
     {"id":{"name":"Steamworks","path":"extensions/Steamworks/Steamworks.yy",},},
     {"id":{"name":"fnt_classic","path":"fonts/fnt_classic/fnt_classic.yy",},},

@@ -14,7 +14,10 @@
     "name":"Mainmenu",
     "path":"folders/Objects/Mainmenu.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"o_progressask",
+    "path":"objects/o_progressask/o_progressask.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

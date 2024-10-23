@@ -129,7 +129,7 @@ case(45): hat = s_breakableskinbutton break;
 case(46): hat = s_smileyskinbutton break;
 case(47): hat = s_maidskinbutton break;
 case(48): hat = s_burningskinbutton break;
-case(49): hat = s_skibidiskinbutton break;
+case(49): hat = s_toiletskinbutton break;
 case(50): hat = s_kratosskinbutton break;
 }}
 if rwd = 3 {

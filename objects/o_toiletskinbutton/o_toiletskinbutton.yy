@@ -1,6 +1,6 @@
 {
   "$GMObject":"",
-  "%Name":"o_skibidiskinbutton",
+  "%Name":"o_toiletskinbutton",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
@@ -10,7 +10,7 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"o_skibidiskinbutton",
+  "name":"o_toiletskinbutton",
   "overriddenProperties":[],
   "parent":{
     "name":"Page 4",
@@ -38,8 +38,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"s_skibidiskinbutton",
-    "path":"sprites/s_skibidiskinbutton/s_skibidiskinbutton.yy",
+    "name":"s_toiletskinbutton",
+    "path":"sprites/s_toiletskinbutton/s_toiletskinbutton.yy",
   },
   "spriteMaskId":null,
   "visible":true,

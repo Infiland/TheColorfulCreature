@@ -135,7 +135,7 @@ case 38: sprite_index = s_splitplayerskin break;
 case 43: sprite_index = s_steamplayerskin break;
 case 44: sprite_index = s_breakableplayerskin break;
 case 45: sprite_index = s_smileyplayerskin break;
-case 48: sprite_index = s_skibidiplayerskin break;
+case 48: sprite_index = s_toiletplayerskin break;
 case 49: sprite_index = s_kratosplayerskin break;
 }
 if global.skinselected != 24 {

@@ -133,7 +133,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- Game Socials -->
 ## Game Socials
 
-<a href="https://discord.com/invite/SSz5THd">
+<a href="https://store.steampowered.com/app/1651680/The_Colorful_Creature/">
 <img src="https://img.shields.io/badge/Steam-011239?style=for-the-badge&logo=steam&logoColor=white"/>
 </a>
 

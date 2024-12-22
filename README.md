@@ -94,7 +94,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## Game Socials
 
-[![Steam](https://img.shields.io/badge/Steam-011239?style=for-the-badge&logo=steam&logoColor=white)](https://discord.com/invite/SSz5THd)
+[![Steam](https://img.shields.io/badge/Steam-011239?style=for-the-badge&logo=steam&logoColor=white)](https://store.steampowered.com/app/1651680/The_Colorful_Creature/)
 [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/invite/SSz5THd)
 [![Reddit](https://img.shields.io/badge/Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white)](https://www.reddit.com/r/TCC_Game/)
 [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/TCC_Game)

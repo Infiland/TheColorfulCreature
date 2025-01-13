@@ -14,7 +14,7 @@
   "option_legacy_number_conversion":true,
   "option_legacy_other_behaviour":true,
   "option_mips_for_3d_textures":false,
-  "option_remove_unused_assets":true,
+  "option_remove_unused_assets":false,
   "option_sci_usesci":true,
   "option_spine_licence":true,
   "option_steam_app_id":"1651680",

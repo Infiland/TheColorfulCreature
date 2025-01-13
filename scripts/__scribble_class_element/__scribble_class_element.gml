@@ -4,10 +4,11 @@
 
 function __scribble_class_element(_string, _unique_id) constructor
 {
-    static __scribble_state    = __scribble_get_state();
-    static __ecache_array      = __scribble_get_cache_state().__ecache_array;
-    static __ecache_dict       = __scribble_get_cache_state().__ecache_dict;
-    static __ecache_name_array = __scribble_get_cache_state().__ecache_name_array;
+    static __scribble_state    = __scribble_initialize().__state;
+    static __ecache_array      = __scribble_initialize().__cache_state.__ecache_array;
+    static __ecache_dict       = __scribble_initialize().__cache_state.__ecache_dict;
+    static __ecache_weak_array = __scribble_initialize().__cache_state.__ecache_weak_array;
+    static __ecache_name_array = __scribble_initialize().__cache_state.__ecache_name_array;
     
     __text       = _string;
     __unique_id  = _unique_id;
@@ -26,6 +27,7 @@ function __scribble_class_element(_string, _unique_id) constructor
     //Add this text element to the global cache
     __ecache_dict[$ __cache_name] = weak_ref_create(self);
     array_push(__ecache_array, self);
+    array_push(__ecache_weak_array, weak_ref_create(self));
     array_push(__ecache_name_array, __cache_name);
     
     __flushed = false;
@@ -158,7 +160,7 @@ function __scribble_class_element(_string, _unique_id) constructor
     /// @param [typist]
     static draw = function(_x, _y, _typist = undefined)
     {
-        static _scribble_state = __scribble_get_state();
+        static _scribble_state = __scribble_initialize().__state;
         
         var _function_scope = other;
         
@@ -651,15 +653,15 @@ function __scribble_class_element(_string, _unique_id) constructor
         repeat(_i+1)
         {
             var _region = _region_array[_i];
-            var _bbox_array = _region.__bbox_array;
+            var _bbox_array = _region.bbox_array;
             
             var _j = 0;
             repeat(array_length(_bbox_array))
             {
                 var _bbox = _bbox_array[_j];
-                if ((_x >= _bbox.__x1) && (_y >= _bbox.__y1) && (_x <= _bbox.__x2) && (_y <= _bbox.__y2))
+                if ((_x >= _bbox.x1) && (_y >= _bbox.y1) && (_x <= _bbox.x2) && (_y <= _bbox.y2))
                 {
-                    _found = _region.__name;
+                    _found = _region.name;
                     break;
                 }
                 
@@ -695,11 +697,11 @@ function __scribble_class_element(_string, _unique_id) constructor
         repeat(array_length(_region_array))
         {
             var _region = _region_array[_i];
-            if (_region.__name == _name)
+            if (_region.name == _name)
             {
                 __region_active      = _name;
-                __region_glyph_start = _region.__start_glyph;
-                __region_glyph_end   = _region.__end_glyph;
+                __region_glyph_start = _region.start_glyph;
+                __region_glyph_end   = _region.end_glyph;
                 __region_colour      = _colour;
                 __region_blend       = _blend_amount;
                 return;
@@ -1310,6 +1312,12 @@ function __scribble_class_element(_string, _unique_id) constructor
         if (_model != undefined)
         {
             _model.__flush();
+            
+            __model_cache_name_dirty = true;
+            __matrix_dirty           = true;
+            __bbox_dirty             = true;
+            __scale_to_box_dirty     = true;
+            
             __get_model(true);
         }
         
@@ -1318,6 +1326,8 @@ function __scribble_class_element(_string, _unique_id) constructor
     
     static flush = function()
     {
+        //Don't forget to update scribble_flush_everything() if you change anything here!
+        
         if (__flushed) return undefined;
         if (__SCRIBBLE_DEBUG) __scribble_trace("Flushing element \"" + string(__cache_name) + "\"");
         
@@ -1352,6 +1362,11 @@ function __scribble_class_element(_string, _unique_id) constructor
     {
         if (_function != __preprocessorFunc)
         {
+            if ((_function != undefined) && (not script_exists(_function)))
+            {
+                __scribble_error("Preprocessor functions must be stored in scripts in global scope");
+            }
+            
             __model_cache_name_dirty = true;
             __preprocessorFunc = _function;
         }
@@ -1518,7 +1533,7 @@ function __scribble_class_element(_string, _unique_id) constructor
     
     static __get_model = function(_allow_create)
     {
-        static _mcache_dict = __scribble_get_cache_state().__mcache_dict;
+        static _mcache_dict = __scribble_initialize().__cache_state.__mcache_dict;
         
         if (__flushed || (__text == ""))
         {
@@ -1532,7 +1547,7 @@ function __scribble_class_element(_string, _unique_id) constructor
                 __bbox_dirty             = true;
                 __scale_to_box_dirty     = true; //The dimensions of the text element might change as a result of a model change
                 
-                static _buffer = __scribble_get_buffer_a();
+                static _buffer = __scribble_initialize().__buffer_a;
                 buffer_seek(_buffer, buffer_seek_start, 0);
                 buffer_write(_buffer, buffer_text, string(__text           ));     buffer_write(_buffer, buffer_u8,  0x3A); //colon
                 buffer_write(_buffer, buffer_text, string(__starting_font  ));     buffer_write(_buffer, buffer_u8,  0x3A);
@@ -1612,8 +1627,8 @@ function __scribble_class_element(_string, _unique_id) constructor
         static _u_vOutlineColour            = shader_get_uniform(__shd_scribble, "u_vOutlineColour"         );
         static _u_fOutlineThickness         = shader_get_uniform(__shd_scribble, "u_fOutlineThickness"      );
         
-        static _scribble_state        = __scribble_get_state();
-        static _anim_properties_array = __scribble_get_anim_properties();
+        static _scribble_state        = __scribble_initialize().__state;
+        static _anim_properties_array = __scribble_initialize().__anim_properties;
         
         static _shader_uniforms_dirty    = true;
         static _shader_set_to_use_bezier = false;

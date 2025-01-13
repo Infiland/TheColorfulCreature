@@ -3,7 +3,7 @@
 
 function __scribble_class_typist(_per_line) constructor
 {
-    static __scribble_state = __scribble_get_state();
+    static __scribble_state = __scribble_initialize().__state;
     
     __last_element = undefined;
     
@@ -480,7 +480,7 @@ function __scribble_class_typist(_per_line) constructor
     
     static __process_event_stack = function(_character_count, _target_element, _function_scope)
     {
-        static _typewriter_events_map = __scribble_get_typewriter_events_map();
+        static _typewriter_events_map = __scribble_initialize().__typewriter_events_map;
         
         //This method processes events on the stack (which is filled by copying data from the target element in .__tick())
         //We return <true> if there have been no pausing behaviours called i.e. [pause] and [delay]
@@ -559,14 +559,14 @@ function __scribble_class_typist(_per_line) constructor
                 break;
                 
                 case __SCRIBBLE_TYPIST_SOUND_COMMAND_TAG: //TODO - Add warning when adding a conflicting custom event
-                    sound(asset_get_index(_event_data[1]), real(_event_data[2]), real(_event_data[3]), real(_event_data[4]));
+                    sound(__scribble_parse_sound_array_string(_event_data[1]), real(_event_data[2]), real(_event_data[3]), real(_event_data[4]));
                 break;
                 
                 case __SCRIBBLE_TYPIST_SOUND_PER_CHAR_COMMAND_TAG: //TODO - Add warning when adding a conflicting custom event
                     switch(array_length(_event_data))
                     {
-                        case 4: sound_per_char(asset_get_index(_event_data[1]), real(_event_data[2]), real(_event_data[3])); break;
-                        case 5: sound_per_char(asset_get_index(_event_data[1]), real(_event_data[2]), real(_event_data[3]), _event_data[4]); break;
+                        case 4: sound_per_char(__scribble_parse_sound_array_string(_event_data[1]), real(_event_data[2]), real(_event_data[3])); break;
+                        case 5: sound_per_char(__scribble_parse_sound_array_string(_event_data[1]), real(_event_data[2]), real(_event_data[3]), _event_data[4]); break;
                     }
                 break;
                 
@@ -597,6 +597,8 @@ function __scribble_class_typist(_per_line) constructor
     
     static __play_sound = function(_head_pos, _character)
     {
+        static _external_sound_map = __scribble_initialize().__external_sound_map;
+        
         var _sound_array = __sound_array;
         if (is_array(_sound_array) && (array_length(_sound_array) > 0))
         {
@@ -628,7 +630,6 @@ function __scribble_class_typist(_per_line) constructor
                 var _audio_asset = _sound_array[floor(__scribble_random()*array_length(_sound_array))];
                 if (is_string(_audio_asset))
                 {
-                    var _external_sound_map = __scribble_get_external_sound_map();
                     _audio_asset = _external_sound_map[? _audio_asset];
                 }
                 

@@ -57,10 +57,11 @@ case(r_cslvl6): color = c_yellow break;
 }*/
 
 if room != r_leveleditor {
-if instance_exists(o_player) {
-draw_text_scribble(16,0,print)
-}}
-
-if room = r_customlevelworkshop {
-	draw_text_scribble(16,0,print)
+	if room != r_customlevelworkshop {	
+		if instance_exists(o_player) {
+			draw_text_scribble(16,0,print)
+		}
+	} else {
+		draw_text_scribble_ext(10,0,print,1000)
+	}
 }

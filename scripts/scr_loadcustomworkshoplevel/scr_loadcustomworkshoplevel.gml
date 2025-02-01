@@ -59,7 +59,9 @@ directory = string_replace_all(directory,"\\","/")
 	if global.LELevelHeightBlocks > 22 || global.LELevelWidthBlocks > 32 {
 		if !instance_exists(o_smoothcamera) {
 			if instance_exists(o_player) {
-				instance_create(o_player.x,o_player.y,o_smoothcamera) 
+				instance_create(o_player.x,o_player.y,o_smoothcamera)
+			} else {
+				instance_create(room_width/2,room_height/2,o_smoothcamera)	
 			}
 		}	
 	}

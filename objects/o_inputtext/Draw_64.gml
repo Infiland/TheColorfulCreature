@@ -1,5 +1,5 @@
 draw_set_alpha(1)
-draw_set_font(global.coolfont)
+draw_set_font(global.cool2font)
 if global.writingmode = 1 {
 draw_set_color(c_yellow)
 draw_text_ext(10,84,text,32,1000)

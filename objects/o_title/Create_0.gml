@@ -16,7 +16,7 @@ instance_destroy(o_smoothcamera)
 instance_create(930,352,o_profilepicture)
 
 //Hide Android control on main menu
-if os_type = os_android {
+if os_type = os_android || os_type = os_gxgames {
 instance_destroy(o_buttoninteractandroid)
 instance_destroy(o_buttonjumpandroid)
 instance_destroy(o_buttonpauseandroid)

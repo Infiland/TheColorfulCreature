@@ -1,4 +1,4 @@
-if os_type = os_android { instance_destroy() }
+if os_type = os_android || os_type = os_gxgames { instance_destroy() }
 if global.hardmode = 1 { instance_destroy() 
 exit;	
 }

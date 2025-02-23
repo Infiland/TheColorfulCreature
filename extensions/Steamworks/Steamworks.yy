@@ -12,7 +12,7 @@
   "author":"",
   "classname":"",
   "ConfigValues":{},
-  "copyToTargets":194,
+  "copyToTargets":17179869378,
   "description":"",
   "exportToGame":true,
   "extensionVersion":"2.1.2",

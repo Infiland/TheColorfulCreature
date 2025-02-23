@@ -10,7 +10,7 @@ draw_text_ext(512,y+13,text,20,1000)
 y = lerp(y,384,0.2 * (60 / global.maxfps))
 draw_set_halign(fa_left)
 
-if os_type = os_android {
+if os_type = os_android || os_type = os_gxgames {
 if instance_exists(o_buttonandroidyes) and instance_exists(o_buttonandroidno)
 	if o_buttonandroidyes.press = 1 {
 		audio_stop_all()

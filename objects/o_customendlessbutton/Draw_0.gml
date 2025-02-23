@@ -3,7 +3,7 @@ if global.customERunlock = 0 {
 draw_set_font(global.deathfont)
 draw_set_halign(fa_center)
 draw_set_color(c_white)
-if os_type = os_android {
+if os_type = os_android || os_type = os_gxgames {
 draw_text(x+118,y+122,"500              Required")
 } else {
 draw_text(x+118,y+122,"200              Required")

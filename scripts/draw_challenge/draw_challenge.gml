@@ -22,7 +22,7 @@ if global.challengescroll > 600 {
 global.challengescroll = 500
 }
 
-if os_type = os_android {
+if os_type = os_android || os_type = os_gxgames {
 if mouse_check_button(mb_left) {
 if mouse_y > 512 {global.challengescroll += 1} else { global.challengescroll -= 1 }
 }}

@@ -83,7 +83,7 @@ instance_destroy(o_buttoninteractandroid)
 instance_destroy(o_buttonjumpandroid)
 instance_destroy(o_buttonskipandroid)
 instance_destroy(o_buttonrestartandroid)
-if os_type = os_android { scr_saveandroid() }
+if os_type = os_android || os_type = os_gxgames { scr_saveandroid() }
 scr_TRadjustoptions()
 scr_savesettings()
 }
@@ -246,7 +246,7 @@ instance_destroy(o_buttoninteractandroid)
 instance_destroy(o_buttonjumpandroid)
 instance_destroy(o_buttonskipandroid)
 instance_destroy(o_buttonrestartandroid)
-if os_type = os_android { scr_saveandroid() }
+if os_type = os_android || os_type = os_gxgames { scr_saveandroid() }
 	global.choosesettings = 0 }
 } else {
 	if global.pause = 1 {
@@ -263,7 +263,7 @@ global.gunammo = 0
 hidehud()
 instance_destroy(o_smoothcamera)
 
-if os_type = os_android {hideandroidbuttons()}
+if os_type = os_android || os_type = os_gxgames {hideandroidbuttons()}
 
 audio_group_set_gain(Music,global.musicvolume,1000)
 if global.chooseminigameMU = false {

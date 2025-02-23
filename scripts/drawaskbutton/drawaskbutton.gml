@@ -25,7 +25,7 @@ event_perform(ev_keypress,ord("N"))
 delay -= 1	
 }
 
-if os_type = os_android {
+if os_type = os_android || os_type = os_gxgames {
 if instance_exists(o_buttonandroidyes) and instance_exists(o_buttonandroidno)
 	if o_buttonandroidyes.press = 1 {
 		url_open(url)

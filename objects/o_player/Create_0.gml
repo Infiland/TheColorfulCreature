@@ -3,7 +3,10 @@ gamepad_set_color(0,c_red)
 
 customhat = 0
 curhat = s_graduationhat
-scr_moddinghats(global.CUSTOMhat)
+
+if os_type != os_gxgames {
+	scr_moddinghats(global.CUSTOMhat)
+}
 
 if global.skinselected != 24 {
 sprite_set_offset(sprite_index,0,0)

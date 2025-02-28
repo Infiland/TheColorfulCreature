@@ -1,7 +1,7 @@
 if global.pause = 0 {
 if global.stars > 0 {instance_create(x,y,o_star)}
 }
-if os_type = os_android {
+if os_type = os_android || os_type = os_gxgames {
 global.windowsresizemain = application_get_position();
 xx = global.windowsresizemain[0];
 yy = global.windowsresizemain[1];

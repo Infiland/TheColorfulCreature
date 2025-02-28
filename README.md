@@ -46,7 +46,7 @@
 > **Note**
 > While other IDE's are possible to use for coding, modifying things like rooms, sprites etc is difficult. Developing TCC is preferable using the GameMaker IDE. Here are basic instructions on how to successfully run the game.
 
-1. Download the latest version of [GameMaker](https://gamemaker.io/en/download) on the Official Site or on [Steam](https://store.steampowered.com/app/1670460/GameMaker/) (2024.8.1)
+1. Download the latest version of [GameMaker](https://gamemaker.io/en/download) on the Official Site or on [Steam](https://store.steampowered.com/app/1670460/GameMaker/) (2024.11)
 2. Clone this repository
 
 ```sh
@@ -54,7 +54,7 @@ git clone https://github.com/Infiland/TheColorfulCreature.git
 ```
 
 3. Open the project in GameMaker from where you cloned it.
-4. The game requires [Steamworks SDK 1.60](https://partner.steamgames.com/?goto=%2Fdownloads%2Flist), put the sdk folder in to
+4. The game requires [Steamworks SDK 1.61](https://partner.steamgames.com/?goto=%2Fdownloads%2Flist), put the sdk folder in to
 
 ```bash
 C:\Users\User\Documents\sdk

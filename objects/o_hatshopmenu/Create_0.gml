@@ -1,6 +1,6 @@
 selectedhat = 0
 RLselectedhat = 0
-if os_type = os_android {
+if os_type = os_android || os_type = os_gxgames {
 selectedhat = -1
 RLselectedhat = -1
 }

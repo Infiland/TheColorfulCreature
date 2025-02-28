@@ -43,7 +43,7 @@ draw_rectangle(100,688,100+(timer*100),693,false)
 draw_rectangle(o_buttonskipandroid.x,o_buttonskipandroid.y-10,o_buttonskipandroid.x+(timer*256),o_buttonskipandroid.y-5,false)	
 }}}}
 } else { 
-	if os_type = os_android {
+	if os_type = os_android || os_type = os_gxgames {
 		if instance_exists(o_buttonskipandroid) {
 	draw_text(o_buttonskipandroid.x-64,o_buttonskipandroid.y-94,"Can't Skip")
 		}

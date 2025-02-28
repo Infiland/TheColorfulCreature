@@ -1,9 +1,14 @@
-//Get Player count from the game and demo
 busy = false; // are we busy with the request?
 success = false; // did we obtain a number successfully?
 players = 0; // the actual number, can be 0
-if (steam_get_number_of_current_players())
-    busy = true; // waiting for the request
+
+// Only try to get Steam player count if Steam is available
+if (variable_global_exists("steam_is_available") && global.steam_is_available) {
+    if (steam_get_number_of_current_players()) {
+        busy = true; // waiting for the request
+    }
+}
+
 //get = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1651680");
 //getdemo = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1749610");
 //Add credits multiplier if the internet is connected and data is received correctly

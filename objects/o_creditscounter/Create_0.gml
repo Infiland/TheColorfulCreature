@@ -20,7 +20,7 @@ colorB = make_color_rgb(255,255,255)
 redB = 0
 depth = -10001
 
-if os_type = os_android {
+if os_type = os_android || os_type = os_gxgames {
 if !instance_exists(o_watchad) {
 instance_create(864,78,o_watchad)	
 }}

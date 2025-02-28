@@ -4,38 +4,69 @@ global._ef_water.cutoff = 20000
 global._ef_gain.gain = 1
 r_str = "0"
 
-get = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1651680");
-getdemo = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1749610");
+// Initialize Steam-related variables
+global.steam_is_available = false
+if (variable_global_exists("steam_is_running")) {
+    global.steam_is_available = steam_is_running()
+}
 
+// Only make Steam API calls if Steam is available
+if (global.steam_is_available) {
+    get = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1651680");
+    getdemo = http_get("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=1749610");
 
-busy = false; // are we busy with the request?
-success = false; // did we obtain a number successfully?
-players = 0; // the actual number, can be 0
-if (steam_get_number_of_current_players())
-    busy = true; // waiting for the request
+    busy = false; // are we busy with the request?
+    success = false; // did we obtain a number successfully?
+    players = 0; // the actual number, can be 0
+    if (steam_get_number_of_current_players()) {
+        busy = true; // waiting for the request
+    }
 
-if steam_get_app_id() = 1749610 { version = "Demo"	} // DEMO VERSION
-if steam_get_app_id() != 1749610 { version = "Release " + GM_version } //CHANGE THIS FOR NEWER VERSIONS
-if global.moddedGameDir != "" { version = loc(677) } // MODDED VERSION
-if os_type = os_android { version = "Android Version" } // ANDROID VERSION
+    // Set version based on Steam app ID
+    if (steam_get_app_id() == 1749610) { 
+        version = "Demo"	
+    } else {
+        version = "Release " + GM_version 
+    }
+
+    // Check DLC ownership
+    if (steam_user_owns_dlc(1651680)) { game1 = 1 } else { game1 = 0 } //If the player owns the game
+    if (steam_user_owns_dlc(1749590)) { dlc1 = 1 } else { dlc1 = 0 } //TCC OST
+    if (steam_user_owns_dlc(1749600)) { dlc1 = 1 dlc1_1 = 1 } else { dlc1 = 0 dlc1_1 = 0 } //TCC Super OST
+    if (steam_user_owns_dlc(1995510)) { dlc2 = 1 } else { dlc2 = 0 } //Commentary DLC
+    if (steam_user_owns_dlc(2407300)) { dlc3 = 1 } else { dlc3 = 0 } //Asteroids
+} else {
+    // Default values when Steam is not available
+    version = "Release " + GM_version
+    game1 = 0
+    dlc1 = 0
+    dlc1_1 = 0
+    dlc2 = 0
+    dlc3 = 0
+    busy = false
+    success = false
+    players = 0
+}
+
+// Set version for special cases
+if (global.moddedGameDir != "") { version = loc(677) } // MODDED VERSION
+if (os_type == os_android) { version = "Android Version" } // ANDROID VERSION
+if (os_type == os_gxgames) { version = "Website Version" } // WEB VERSION
+
 window_set_caption("The Colorful Creature | " + version)
-diffmonth = date_month_span(date_create_datetime(2018, 9, 3, 15, 30, 27 ), date_current_datetime());
-diffyear = date_year_span(date_create_datetime(2018, 9, 3, 15, 30, 27 ), date_current_datetime());
-diffsecond = date_second_span(date_create_datetime(2018, 9, 3, 15, 30, 27 ), date_current_datetime());
-diffyearinfi = date_year_span(date_create_datetime(2003, 11, 18, 01, 30, 30 ), date_current_datetime());
-clicked = false
 
-if steam_user_owns_dlc(1651680) { game1 = 1 } else { game1 = 0 } //If the player owns the game
+// Calculate time differences
+diffmonth = date_month_span(date_create_datetime(2018, 9, 3, 15, 30, 27), date_current_datetime());
+diffyear = date_year_span(date_create_datetime(2018, 9, 3, 15, 30, 27), date_current_datetime());
+diffsecond = date_second_span(date_create_datetime(2018, 9, 3, 15, 30, 27), date_current_datetime());
+diffyearinfi = date_year_span(date_create_datetime(2003, 11, 18, 01, 30, 30), date_current_datetime());
+
+clicked = false
 e1 = 0 //Seasonal Endless Gold
 e2 = 0 //Seasonal Endless Silver
 e3 = 0 //Seasonal Endless Bronze
 e4 = 0 //Seasonal Endless Top 10
-if steam_user_owns_dlc(1749590) { dlc1 = 1 } else { dlc1 = 0 } //TCC OST
-if steam_user_owns_dlc(1749600) { dlc1 = 1 dlc1_1 = 1 } else { dlc1 = 0 dlc1_1 = 0 } //TCC Super OST
-if steam_user_owns_dlc(1995510) { dlc2 = 1 } else { dlc2 = 0 } //Commentary DLC
-if steam_user_owns_dlc(2407300) { dlc3 = 1 } else { dlc3 = 0 } //Asteroids
 hats = 0
-
 moni = 0
 actualmoni = 0
 global.donatedmoney = 0

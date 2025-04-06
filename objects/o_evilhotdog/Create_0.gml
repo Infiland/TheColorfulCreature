@@ -16,6 +16,7 @@ direction_animation = 0
 //alarm[0] = 100
 timer = 100
 hp = 3
+maxhp = 3
 littlepause = 0
 randomketchup = 0
 if global.boss1 = 1 {
@@ -23,3 +24,9 @@ instance_destroy()
 }
 
 if global.nostalgia = 1 { sprite_index = s_oldhotdog }
+
+if (room == r_boss1) {
+    healthbar = instance_create_depth(0, 0, -1000, o_healthbar);
+    healthbar.target = id;
+	healthbar.bar_segments = 3;
+}

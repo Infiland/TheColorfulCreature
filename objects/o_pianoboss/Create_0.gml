@@ -27,4 +27,12 @@ global.pianobuttonconfirm5 = 0
 global.pianobuttonconfirm6 = 0
 global.pianotries = 1
 global.pianohealth = 3
+hp = global.pianohealth;
+maxhp = hp;
+
 alarm[0] = 30
+
+healthbar = instance_create_depth(0, 0, -1000, o_healthbar);
+healthbar.target = id;
+healthbar.bar_segments = 3;
+healthbar.bar_x = 600

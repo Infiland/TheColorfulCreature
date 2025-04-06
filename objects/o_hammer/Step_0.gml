@@ -13,6 +13,8 @@ alarm[0] = 1;
 audio_play_sound(snd_bang,5,0)
 }
 
+hp = global.boss2health;
+
 if image_angle < 0 {
 rotate = 0
 image_angle = 0

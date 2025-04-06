@@ -34,4 +34,5 @@ global.hat[8] = -1
 global.hat[9] = -1
 global.hat[10] = -1
 global.hat[35] = -1
+global.hat[47] = 1 //Unlocked serbian hat
 }

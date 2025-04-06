@@ -13,3 +13,5 @@ scr_saveskins()
 scr_checkachievements()
 instance_destroy()
 }}
+
+hp = global.pianohealth;

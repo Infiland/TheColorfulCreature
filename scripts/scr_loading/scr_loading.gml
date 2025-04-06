@@ -469,6 +469,7 @@ audio_group_load(Music)
 //Android
 global.androidadtimer = 300
 
+global.hat[47] = 1 //Unlocked serbian hat
 
 //Folders
 var directory = directory_set("/Custom/")

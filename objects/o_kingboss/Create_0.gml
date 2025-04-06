@@ -5,9 +5,9 @@ if global.hardmode = 0 {
 } else { hp = 250 }
 maxhp = hp
 
-hsp = 0; //Horizontal
-vsp = 0; //Vertical
-grv = 0.5 //Gravity
+hsp = 0;
+vsp = 0;
+grv = 0.5
 
 
 timerjump = 120
@@ -16,3 +16,6 @@ timercannon = irandom_range(7,10)
 depth = -99
 
 image_speed = 0
+
+healthbar = instance_create_depth(0, 0, -1000, o_healthbar);
+healthbar.target = id;

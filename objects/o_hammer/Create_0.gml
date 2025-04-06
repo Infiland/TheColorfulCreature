@@ -12,6 +12,8 @@ if global.berserk = 1 {
 
 global.boss2button = 0
 global.boss2health = 6;
+hp = global.boss2health;
+maxhp = hp;
 image_xscale = 0.25
 image_yscale = 0.25
 image_index = 0
@@ -27,3 +29,8 @@ instance_destroy()
 }
 animation2 = 0.25
 change2 = 0
+
+healthbar = instance_create_depth(0, 0, -1000, o_healthbar);
+healthbar.target = id;
+healthbar.bar_x = 600
+healthbar.bar_segments = 6;

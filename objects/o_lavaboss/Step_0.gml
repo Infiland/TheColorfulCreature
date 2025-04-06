@@ -2,6 +2,17 @@ if global.pause = 1 {
 	if global.boss4 = 1 { audio_stop_sound(m_lavatime) }
 	exit }
 
+var old_hp = hp;
+hp = 0;
+if global.lavabuttonconfirm[1] = 1 { hp++; }
+if global.lavabuttonconfirm[2] = 1 { hp++; }
+if global.lavabuttonconfirm[3] = 1 { hp++; }
+
+if (hp > old_hp && instance_exists(healthbar)) {
+    healthbar.flash_alpha = 1;
+    healthbar.shake = 5;
+}
+
 if global.lavabuttonconfirm[1] = 1 {
 if global.lavabuttonconfirm[2] = 1 {
 if global.lavabuttonconfirm[3] = 1 {

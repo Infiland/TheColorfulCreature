@@ -1,23 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"o_kingboss",
+  "%Name":"o_healthbar",
   "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"o_playerbullet","path":"objects/o_playerbullet/o_playerbullet.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"o_kingboss",
+  "name":"o_healthbar",
   "overriddenProperties":[],
   "parent":{
-    "name":"King",
-    "path":"folders/Objects/Danger/Bosses/King.yy",
+    "name":"Healthbar",
+    "path":"folders/Objects/Danger/Bosses/Healthbar.yy",
   },
-  "parentObjectId":{
-    "name":"o_hazard",
-    "path":"objects/o_hazard/o_hazard.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -35,10 +32,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"s_theking",
-    "path":"sprites/s_theking/s_theking.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

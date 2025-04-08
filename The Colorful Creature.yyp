@@ -1,5 +1,5 @@
 {
-  "$GMProject":"",
+  "$GMProject":"v1",
   "%Name":"The Colorful Creature",
   "AudioGroups":[
     {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
@@ -44,8 +44,8 @@
     {"$GMFolder":"","%Name":"Custom Levels","folderPath":"folders/Objects/Custom Levels.yy","name":"Custom Levels","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Danger","folderPath":"folders/Objects/Danger.yy","name":"Danger","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Bosses","folderPath":"folders/Objects/Danger/Bosses.yy","name":"Bosses","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Healthbar","folderPath":"folders/Objects/Danger/Bosses/Healthbar.yy","name":"Healthbar","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Hammer","folderPath":"folders/Objects/Danger/Bosses/Hammer.yy","name":"Hammer","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Healthbar","folderPath":"folders/Objects/Danger/Bosses/Healthbar.yy","name":"Healthbar","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Hotdog","folderPath":"folders/Objects/Danger/Bosses/Hotdog.yy","name":"Hotdog","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"King","folderPath":"folders/Objects/Danger/Bosses/King.yy","name":"King","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Lava","folderPath":"folders/Objects/Danger/Bosses/Lava.yy","name":"Lava","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -397,6 +397,7 @@
     {"$GMFolder":"","%Name":"Tile Sets","folderPath":"folders/Tile Sets.yy","name":"Tile Sets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Timelines","folderPath":"folders/Timelines.yy","name":"Timelines","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
+  "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"LevelEditor.sav","CopyToMask":-1,"filePath":"datafiles/Calendar/Levels/r_c2022lvl73","name":"LevelEditor.sav","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"OtherLevelEditor.sav","CopyToMask":-1,"filePath":"datafiles/Calendar/Levels/r_c2022lvl73","name":"OtherLevelEditor.sav","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -437,7 +438,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.11.0.179",
+    "IDEVersion":"2024.13.0.190",
   },
   "name":"The Colorful Creature",
   "resources":[
@@ -509,6 +510,7 @@
     {"id":{"name":"o_babyskinbutton","path":"objects/o_babyskinbutton/o_babyskinbutton.yy",},},
     {"id":{"name":"o_backround1","path":"objects/o_backround1/o_backround1.yy",},},
     {"id":{"name":"o_backroundsettings","path":"objects/o_backroundsettings/o_backroundsettings.yy",},},
+    {"id":{"name":"o_badge","path":"objects/o_badge/o_badge.yy",},},
     {"id":{"name":"o_berserksettings","path":"objects/o_berserksettings/o_berserksettings.yy",},},
     {"id":{"name":"o_bigcannonboss5","path":"objects/o_bigcannonboss5/o_bigcannonboss5.yy",},},
     {"id":{"name":"o_biglevelperfsettings","path":"objects/o_biglevelperfsettings/o_biglevelperfsettings.yy",},},
@@ -1755,6 +1757,7 @@
     {"id":{"name":"action_kill_object","path":"scripts/action_kill_object/action_kill_object.yy",},},
     {"id":{"name":"action_move_point","path":"scripts/action_move_point/action_move_point.yy",},},
     {"id":{"name":"add_stats","path":"scripts/add_stats/add_stats.yy",},},
+    {"id":{"name":"badge_system","path":"scripts/badge_system/badge_system.yy",},},
     {"id":{"name":"badwords","path":"scripts/badwords/badwords.yy",},},
     {"id":{"name":"blockdeath","path":"scripts/blockdeath/blockdeath.yy",},},
     {"id":{"name":"calendarcheckmusic","path":"scripts/calendarcheckmusic/calendarcheckmusic.yy",},},

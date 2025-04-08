@@ -37,10 +37,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"s_spikebackgroundvertical",
-    "path":"sprites/s_spikebackgroundvertical/s_spikebackgroundvertical.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

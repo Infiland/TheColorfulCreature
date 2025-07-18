@@ -31,6 +31,7 @@
     {"name":"Custom Levels","order":18,"path":"folders/Objects/Custom Levels.yy",},
     {"name":"Danger","order":5,"path":"folders/Objects/Danger.yy",},
     {"name":"Bosses","order":13,"path":"folders/Objects/Danger/Bosses.yy",},
+    {"name":"Healthbar","order":7,"path":"folders/Objects/Danger/Bosses/Healthbar.yy",},
     {"name":"Hammer","order":2,"path":"folders/Objects/Danger/Bosses/Hammer.yy",},
     {"name":"Healthbar","order":7,"path":"folders/Objects/Danger/Bosses/Healthbar.yy",},
     {"name":"Hotdog","order":1,"path":"folders/Objects/Danger/Bosses/Hotdog.yy",},

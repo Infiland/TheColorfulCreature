@@ -46,7 +46,7 @@
 > **Note**
 > While other IDE's are possible to use for coding, modifying things like rooms, sprites etc is difficult. Developing TCC is preferable using the GameMaker IDE. Here are basic instructions on how to successfully run the game.
 
-1. Download the latest version of [GameMaker](https://gamemaker.io/en/download) on the Official Site or on [Steam](https://store.steampowered.com/app/1670460/GameMaker/) (2024.11)
+1. Download the latest version of [GameMaker](https://gamemaker.io/en/download) on the Official Site or on [Steam](https://store.steampowered.com/app/1670460/GameMaker/) (2024.13)
 2. Clone this repository
 
 ```sh

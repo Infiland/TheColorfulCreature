@@ -71,6 +71,7 @@ moni = 0
 actualmoni = 0
 global.donatedmoney = 0
 
+// Check for donations and update badge counts
 if steam_user_owns_dlc(2411810) { //2 Euro donation
 	moni = 1
 	actualmoni += 2
@@ -85,6 +86,15 @@ if steam_user_owns_dlc(2411812) { //5 Euro donation
 }
 
 global.donatedmoney = actualmoni
+
+// Create badge instance if it doesn't exist
+if (!instance_exists(o_badge)) {
+    instance_create_depth(0, 0, depth-1, o_badge);
+}
+
+// Update badge status based on data
+// This will be called every time data changes
+event_user(0);
 
 rng = 0
 

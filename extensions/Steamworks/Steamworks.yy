@@ -12,10 +12,10 @@
   "author":"",
   "classname":"",
   "ConfigValues":{},
-  "copyToTargets":17179869378,
+  "copyToTargets":194,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"2.1.2",
+  "extensionVersion":"2.1.5",
   "files":[
     {"$GMExtensionFile":"","%Name":"Steamworks.ext","constants":[
         {"$GMExtensionConstant":"","%Name":"ov_friends","hidden":false,"name":"ov_friends","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"0",},
@@ -119,6 +119,8 @@
         {"$GMExtensionConstant":"","%Name":"steam_lobby_type_private","hidden":false,"name":"steam_lobby_type_private","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"0",},
         {"$GMExtensionConstant":"","%Name":"steam_lobby_type_friends_only","hidden":false,"name":"steam_lobby_type_friends_only","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"1",},
         {"$GMExtensionConstant":"","%Name":"steam_lobby_type_public","hidden":false,"name":"steam_lobby_type_public","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"2",},
+        {"$GMExtensionConstant":"","%Name":"steam_lobby_type_invisible","hidden":false,"name":"steam_lobby_type_invisible","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"3",},
+        {"$GMExtensionConstant":"","%Name":"steam_lobby_type_private_unique","hidden":false,"name":"steam_lobby_type_private_unique","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"4",},
         {"$GMExtensionConstant":"","%Name":"steam_net_packet_type_unreliable","hidden":false,"name":"steam_net_packet_type_unreliable","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"0",},
         {"$GMExtensionConstant":"","%Name":"steam_net_packet_type_unreliable_nodelay","hidden":false,"name":"steam_net_packet_type_unreliable_nodelay","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"1",},
         {"$GMExtensionConstant":"","%Name":"steam_net_packet_type_reliable","hidden":false,"name":"steam_net_packet_type_reliable","resourceType":"GMExtensionConstant","resourceVersion":"2.0","value":"2",},
@@ -550,6 +552,12 @@
         {"$GMExtensionFunction":"","%Name":"steam_timeline_game_phase_set_id","argCount":0,"args":[],"documentation":"/// @param {string} id The id to attach to the current game phase.\r\n/// @returns {bool}","externalName":"steam_timeline_game_phase_set_id","help":"","hidden":false,"kind":4,"name":"steam_timeline_game_phase_set_id","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
         {"$GMExtensionFunction":"","%Name":"steam_timeline_game_phase_recording_exists","argCount":0,"args":[],"documentation":"/// @param {real} phase_id The id of the game phase.\r\n/// @returns {bool}","externalName":"steam_timeline_game_phase_recording_exists","help":"","hidden":false,"kind":4,"name":"steam_timeline_game_phase_recording_exists","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
         {"$GMExtensionFunction":"","%Name":"steam_timeline_game_phase_open_overlay","argCount":0,"args":[],"documentation":"/// @param {real} phase_id The id of the game phase.\r\n/// @returns {bool}","externalName":"steam_timeline_game_phase_open_overlay","help":"","hidden":false,"kind":4,"name":"steam_timeline_game_phase_open_overlay","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"steam_ugc_add_item_to_favorites","argCount":0,"args":[2,],"documentation":"/// @param {Int64} published_file_id The unique file ID\r\n/// @returns {Real}","externalName":"steam_ugc_add_item_to_favorites","help":"steam_ugc_add_item_to_favorites(publish_file_id)","hidden":false,"kind":4,"name":"steam_ugc_add_item_to_favorites","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
+        {"$GMExtensionFunction":"","%Name":"steam_ugc_remove_item_from_favorites","argCount":0,"args":[2,],"documentation":"/// @param {Int64} published_file_id The unique file ID\r\n/// @returns {Real}","externalName":"steam_ugc_remove_item_from_favorites","help":"steam_ugc_remove_item_from_favorites(publish_file_id) ","hidden":false,"kind":4,"name":"steam_ugc_remove_item_from_favorites","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
+        {"$GMExtensionFunction":"","%Name":"steam_ugc_set_user_item_vote","argCount":0,"args":[2,2,],"documentation":"/// @param {Int64} published_file_id The unique file ID\r\n/// @param {Int64} published_file_id The unique file ID for the UGC to subscribe to.\r\n/// @returns {Real}","externalName":"steam_ugc_set_user_item_vote","help":"steam_ugc_set_user_item_vote(publish_file_id,vote_up)","hidden":false,"kind":4,"name":"steam_ugc_set_user_item_vote","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
+        {"$GMExtensionFunction":"","%Name":"steam_ugc_get_user_item_vote","argCount":0,"args":[2,],"documentation":"/// @param {Int64} published_file_id The unique file ID\r\n/// @returns {Real}","externalName":"steam_ugc_get_user_item_vote","help":"steam_ugc_get_user_item_vote(publish_file_id)","hidden":false,"kind":4,"name":"steam_ugc_get_user_item_vote","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},
+        {"$GMExtensionFunction":"","%Name":"steam_inventory_get_item_definition_property","argCount":0,"args":[2,1,],"documentation":"","externalName":"steam_inventory_get_item_definition_property","help":"steam_inventory_get_item_definition_property(item_id, prop_name)","hidden":false,"kind":4,"name":"steam_inventory_get_item_definition_property","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
+        {"$GMExtensionFunction":"","%Name":"steam_get_friends","argCount":0,"args":[],"documentation":"","externalName":"steam_get_friends","help":"steam_get_friends()","hidden":false,"kind":4,"name":"steam_get_friends","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":1,},
       ],"init":"steam_init","kind":4,"name":"Steamworks.ext","order":[
         {"name":"steam_user_owns_dlc","path":"extensions/Steamworks/Steamworks.yy",},
         {"name":"steam_user_installed_dlc","path":"extensions/Steamworks/Steamworks.yy",},
@@ -750,7 +758,7 @@
   "name":"Steamworks",
   "options":[
     {"$GMExtensionOption":"","%Name":"__label1","defaultValue":"BUILD OPTIONS:","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"fc7d5b5e-1344-49ee-bca6-8579b0c68d50","hidden":false,"listItems":[],"name":"__label1","optType":5,"resourceType":"GMExtensionOption","resourceVersion":"2.0",},
-    {"$GMExtensionOption":"","%Name":"sdkPath","defaultValue":"","description":"The path to the steam sdk (v1.61)","displayName":"Steam SDK","exportToINI":false,"extensionId":null,"guid":"2d6a1c61-98e7-4289-8eff-d70ef6dac1ff","hidden":false,"listItems":[],"name":"sdkPath","optType":4,"resourceType":"GMExtensionOption","resourceVersion":"2.0",},
+    {"$GMExtensionOption":"","%Name":"sdkPath","defaultValue":"../Steamworks_sdk","description":"The path to the steam sdk (v1.61)","displayName":"Steam SDK","exportToINI":false,"extensionId":null,"guid":"2d6a1c61-98e7-4289-8eff-d70ef6dac1ff","hidden":false,"listItems":[],"name":"sdkPath","optType":4,"resourceType":"GMExtensionOption","resourceVersion":"2.0",},
     {"$GMExtensionOption":"","%Name":"__label2","defaultValue":"APP OPTIONS:","description":"","displayName":"","exportToINI":false,"extensionId":null,"guid":"c37a2e1d-c82f-4d90-9d0a-b4a2b3b3da08","hidden":false,"listItems":[],"name":"__label2","optType":5,"resourceType":"GMExtensionOption","resourceVersion":"2.0",},
     {"$GMExtensionOption":"","%Name":"appID","defaultValue":"480","description":"Get this value from your steam dashboard.","displayName":"Application ID","exportToINI":false,"extensionId":null,"guid":"2d512363-a8c0-4025-8b9f-b53e231b025d","hidden":false,"listItems":[],"name":"appID","optType":1,"resourceType":"GMExtensionOption","resourceVersion":"2.0",},
     {"$GMExtensionOption":"","%Name":"debug","defaultValue":"Auto","description":"Auto - automatically sets debug to false on export;\nEnabled - will always keep debug mode on (USE AT OWN RISK);","displayName":"Debug","exportToINI":true,"extensionId":null,"guid":"96a61e5d-c4ac-4104-b5ac-c8ef936e2609","hidden":false,"listItems":[
@@ -775,8 +783,8 @@
   "optionsFile":"options.json",
   "packageId":"",
   "parent":{
-    "name":"Extensions",
-    "path":"folders/Extensions.yy",
+    "name":"Steamworks",
+    "path":"folders/Extensions/Steamworks.yy",
   },
   "productId":"",
   "resourceType":"GMExtension",

@@ -7,6 +7,8 @@ shift & goto :%~1
     set "LOG_LABEL=UNSET"
     set "LOG_LEVEL=-1"
 
+    call :assertPowerShellExecutionPolicy
+
     :: Get extension data
     call :pathExtractBase %SCRIPT_PATH% EXTENSION_NAME
     call :extensionGetVersion EXTENSION_VERSION
@@ -22,6 +24,19 @@ shift & goto :%~1
         call :log "INIT" "Script initialization failed (v%EXTENSION_VERSION% :: %LOG_LEVEL%)."
     ) else (
         call :log "INIT" "Script initialization succeeded (v%EXTENSION_VERSION% :: %LOG_LEVEL%)."
+    )
+exit /b 0
+
+:assertPowerShellExecutionPolicy
+    :: Check the execution policy of the powershell
+    for /f "delims=" %%i in ('powershell -Command "Get-ExecutionPolicy"') do set ExecutionPolicy=%%i
+
+    :: If the execution policy is set to 'Restricted' echo the appropriate message.
+    IF "!ExecutionPolicy!"=="Restricted" (
+        echo The execution of our extensions requires changing the PowerShell Execution Policy.
+        echo To do so, please run the following command in your PowerShell terminal:
+        echo     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+        exit 1
     )
 exit /b 0
 
@@ -43,7 +58,7 @@ exit /b 0
 
     set "result=!YYEXTOPT_%EXTENSION_NAME%_%~1!"
     call :logInformation "Accessed extension option '%~1' with value '%result%'."
-    
+
     :: Need to end local (to push into main scope)
     endlocal & set "%~2=%result%"
 exit /b 0
@@ -108,40 +123,64 @@ exit /b 0
 :: Copies a file or folder to the specified destination folder (displays log messages)
 :itemCopyTo srcPath destFolder
 
+    :: Resolve the destination path based on the current directory and the second argument
     call :pathResolve "%cd%" "%~2" destination
 
-    if not exist "%~1" (
-        call :logError "Failed to copy '%~1' to '%destination%' (source doesn't exist)."
+    :: Enable delayed variable expansion for variables within this block
+    setlocal enabledelayedexpansion
+
+    :: Store the source and destination paths in variables
+    set "sourcePath=%~1"
+    set "destPath=%destination%"
+
+    :: Check if the source path exists
+    if not exist "!sourcePath!" (
+        :: Log an error message if the source doesn't exist and exit with error code 1
+        call :logError "Failed to copy "!sourcePath!" to "!destPath!" (source doesn't exist)."
         exit /b 1
     )
 
-    :: Set environment variables for srcPath and destination
-    set "PS_SRCPATH=%~1"
-    set "PS_DESTINATION=%destination%"
+    :: Check if the source path is a directory (contains files)
+    if exist "!sourcePath!\*" (
+        :: Copy the directory and its contents to the destination using xcopy
+        xcopy "!sourcePath!" "!destPath!" /E /I /H /Y
+    ) else (
+        :: Extract the directory path from the destination path
+        for %%I in ("!destPath!") do set "destDir=%%~dpI"
 
-    for /f "delims=" %%a in ('dir /b /a:d "%~1" 2^>nul') do (
-        if "%%~a" == "%~nx1" (
-            powershell -NoLogo -NoProfile -Command "New-Item -ItemType Directory -Force -Path $env:PS_DESTINATION; Copy-Item -Path $env:PS_SRCPATH -Destination $env:PS_DESTINATION -Recurse"
+        :: Check if the destination directory exists
+        if not exist "!destDir!" (
+            :: Log information about creating the destination directory
+            call :logInformation "Destination directory "!destDir!" does not exist. Creating it."
+            :: Create the destination directory
+            mkdir "!destDir!"
+            :: Check if the directory creation was successful
+            if !errorlevel! neq 0 (
+                :: Log an error message if the directory couldn't be created and exit with error code 1
+                call :logError "Failed to create destination directory ""!destDir!""."
+                exit /b 1
+            )
         )
+        :: Log information about copying the file
+        call :logInformation "Copying file "!sourcePath!" to "!destPath!""
+        :: Copy the file to the destination
+        copy /Y "!sourcePath!" "!destPath!"
     )
 
-    for /f "delims=" %%a in ('dir /b /a:-d "%~1" 2^>nul') do (
-        if "%%~a" == "%~nx1" (
-            powershell -NoLogo -NoProfile -Command "New-Item -ItemType Directory -Force -Path (Split-Path -Parent $env:PS_DESTINATION); Copy-Item -Path $env:PS_SRCPATH -Destination $env:PS_DESTINATION -Force"
-        )
-    )
-
-    :: Clean up environment variables
-    set "PS_SRCPATH="
-    set "PS_DESTINATION="
-    
-    :: Check if the copy operation succeeded
-    if %errorlevel% neq 0 (
-        call :logError "Failed to copy '%~1' to '%destination%'."
+    :: Check if the copy operation was successful
+    if !errorlevel! neq 0 (
+        :: Log an error message if the copy failed and exit with error code 1
+        call :logError "Failed to copy "!sourcePath!" to "!destPath!"."
         exit /b 1
     )
 
-    call :logInformation "Copied '%~1' to '%destination%'."
+    :: Log information that the copy was successful
+    call :logInformation "Copied "!sourcePath!" to "!destPath!"."
+
+    :: End the local environment changes (delayed variable expansion)
+    endlocal
+
+:: Exit the function with success code 0
 exit /b 0
 
 
@@ -227,6 +266,28 @@ exit /b 0
     set "PS_DESTFILE=%~2"
 
     powershell -Command "Compress-Archive -Path $env:PS_SRCFOLDER\* -DestinationPath $env:PS_DESTFILE -Force"
+
+    :: Check if the compression operation succeeded
+    if %errorlevel% neq 0 (
+        call :logError "Failed to compress contents of '%~1' into '%~2'."
+        exit /b 1
+    )
+
+    :: Clean up environment variables
+    set "PS_SRCFOLDER="
+    set "PS_DESTFILE="
+
+    call :logInformation "Compressed contents of '%~1' into '%~2'."
+exit /b 0
+
+:: Adds the contents of a folder into a zip file (displays log messages)
+:zipUpdate srcFolder destFile
+
+    :: Set environment variables for target
+    set "PS_SRCFOLDER=%~1"
+    set "PS_DESTFILE=%~2"
+
+    powershell -Command "Compress-Archive -Path $env:PS_SRCFOLDER\* -DestinationPath $env:PS_DESTFILE -Update"
 
     :: Check if the compression operation succeeded
     if %errorlevel% neq 0 (

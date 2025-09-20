@@ -1,4 +1,5 @@
 // Feather disable all
+
 /// This function will clear out all memory that Scribble is currently using. You will not normally need
 /// to call this function (Scribble automatically garbage collects resources that haven't been used recently)
 /// but it's occasionally useful when you need memory to be available immediately.
@@ -7,7 +8,7 @@ function scribble_flush_everything()
 {
     if (__SCRIBBLE_DEBUG) __scribble_trace("Flushing everything");
     
-    with(__scribble_initialize().__cache_state)
+    with(__scribble_system().__cache_state)
     {
         //Flush elements
         var _i = 0;

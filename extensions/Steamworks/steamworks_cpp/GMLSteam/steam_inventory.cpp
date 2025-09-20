@@ -614,6 +614,28 @@ YYEXPORT void /*bool*/ steam_inventory_request_prices(RValue& Result, CInstance*
 	Result.val = true;
 }
 
+
+YYEXPORT void steam_inventory_get_item_definition_property(RValue& Result, CInstance* selfinst, CInstance* otherinst, int argc, RValue* arg)
+{
+	int32 item_def = YYGetInt32(arg, 0);
+	char* property_name = (char*)YYGetString(arg, 1);
+
+	uint32 bufferSize = 0;
+
+	// The first call with nullptr output will just fetch the required size
+	if (!SteamInventory()->GetItemDefinitionProperty(item_def, property_name, nullptr, &bufferSize)) {
+		YYCreateString(&Result, "");
+		return;
+	}
+
+	// Create a vector to avoid dealing with freeing the data afterwards
+	std::vector<char> valueBuffer(bufferSize);
+
+	// No need to check for the return value we have already excluded errors in the first call
+	SteamInventory()->GetItemDefinitionProperty(item_def, property_name, valueBuffer.data(), &bufferSize);
+	YYCreateString(&Result, valueBuffer.data());
+}
+
 #pragma endregion
 
 // todo: serialization functions

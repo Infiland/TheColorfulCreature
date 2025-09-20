@@ -14,10 +14,9 @@ instance_create(x,y,o_getallinventoryitems) //Load all items from steam inventor
 
 //Fix sound volume
 musicandsoundvolumefix()
-if os_type = os_android {
-if (!GooglePlayServices_IsSignedIn()) {
-GooglePlayServices_StartSignInIntent();
-}}
+
+// Note: Google Play Services sign-in moved to main menu or dedicated handler
+// to avoid initialization issues during loading
 
 
 //Actually load the game

@@ -276,7 +276,20 @@ verticalcollision(o_shooter)
 verticalcollision(o_shooterright)
 verticalcollision(o_rocketlauncher)
 verticalcollision(o_rocketlauncherright)
-verticalcollision(o_onewayupblock)
+if vsp > 0 {
+    if place_meeting(x, y+vsp, o_onewayupblock) {
+        var platform = instance_place(x, y+vsp, o_onewayupblock);
+        if platform != noone {
+            if bbox_bottom <= platform.bbox_top {
+                while (!place_meeting(x, y+sign(vsp), o_onewayupblock)) {
+                    y = y + sign(vsp);
+                }
+                vsp = 0;
+                if onGround & !onCelling { coyotetime = coyotetimeMAX }
+            }
+        }
+    }
+}
 
 if vsp < 0 {
 verticalcollision(o_onewaydownblock)

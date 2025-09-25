@@ -45,7 +45,6 @@
     {"$GMFolder":"","%Name":"Custom Levels","folderPath":"folders/Objects/Custom Levels.yy","name":"Custom Levels","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Danger","folderPath":"folders/Objects/Danger.yy","name":"Danger","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Bosses","folderPath":"folders/Objects/Danger/Bosses.yy","name":"Bosses","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Healthbar","folderPath":"folders/Objects/Danger/Bosses/Healthbar.yy","name":"Healthbar","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Hammer","folderPath":"folders/Objects/Danger/Bosses/Hammer.yy","name":"Hammer","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Healthbar","folderPath":"folders/Objects/Danger/Bosses/Healthbar.yy","name":"Healthbar","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Hotdog","folderPath":"folders/Objects/Danger/Bosses/Hotdog.yy","name":"Hotdog","resourceType":"GMFolder","resourceVersion":"2.0",},

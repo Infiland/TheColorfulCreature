@@ -16,7 +16,21 @@ x -= move
 }
 if place_meeting(x,y,o_water) { inwater = 2 } else { inwater = 1 }
 vsp = (vsp + (grv/inwater));
-if place_meeting(x,y+vsp,o_redblock) or place_meeting(x,y+vsp,o_yellowblock) or place_meeting(x,y+vsp,o_greenblock) or place_meeting(x,y+vsp,o_blueblock) or place_meeting(x,y+vsp,o_whiteblock) or place_meeting(x,y+vsp,o_redblockmove) or place_meeting(x,y+vsp,o_yellowblockmove) or place_meeting(x,y+vsp,o_greenblockmove) or place_meeting(x,y+vsp,o_blueblockmove) or place_meeting(x,y+vsp,o_whiteblockmove) or place_meeting(x,y+vsp,o_iceblock) or place_meeting(x,y+vsp,o_box) or place_meeting(x,y+vsp,o_boxwithammo) or place_meeting(x,y+vsp,o_boxwithinfiniteammo) { 
+var solid_collision = place_meeting(x,y+vsp,o_redblock) or place_meeting(x,y+vsp,o_yellowblock) or place_meeting(x,y+vsp,o_greenblock) or place_meeting(x,y+vsp,o_blueblock) or place_meeting(x,y+vsp,o_whiteblock) or place_meeting(x,y+vsp,o_redblockmove) or place_meeting(x,y+vsp,o_yellowblockmove) or place_meeting(x,y+vsp,o_greenblockmove) or place_meeting(x,y+vsp,o_blueblockmove) or place_meeting(x,y+vsp,o_whiteblockmove) or place_meeting(x,y+vsp,o_iceblock) or place_meeting(x,y+vsp,o_box) or place_meeting(x,y+vsp,o_boxwithammo) or place_meeting(x,y+vsp,o_boxwithinfiniteammo);
+
+var oneway_collision = false;
+if vsp > 0 {
+    if place_meeting(x, y+vsp, o_onewayupblock) {
+        var platform = instance_place(x, y+vsp, o_onewayupblock);
+        if platform != noone {
+            if bbox_bottom <= platform.bbox_top {
+                oneway_collision = true;
+            }
+        }
+    }
+}
+
+if solid_collision or oneway_collision { 
 	vsp = 0 
 	onground = 1
 	}

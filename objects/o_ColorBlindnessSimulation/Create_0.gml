@@ -1,21 +1,36 @@
 /// @description  Setup Simulation Shaders 
 {
     // Enumerate shaders
+    modeShad[0] = -1;
+    modeText[0] = "Normal";
     modeShad[1] = xot_cbs_shDeuteranopia;
     modeText[1] = "Deuteranopia";
     modeShad[2] = xot_cbs_shProtanopia;
     modeText[2] = "Protanopia";
     modeShad[3] = xot_cbs_shTritanopia;
     modeText[3] = "Tritanopia";
-	modeShad[4] = xot_cbs_shGrayscale;
+    modeShad[4] = xot_cbs_shGrayscale;
     modeText[4] = "Grayscale";
 
-    // Set shader state
-    enabled = true;
-    mode = global.colorblindsettings;
-    modes = array_length_1d(modeShad);
+    // Cache count for valid shader modes (ignores the "Normal"/off slot)
+    modes = array_length_1d(modeShad) - 1;
 }
-if global.colorblindsettings = 0 { instance_destroy(o_ColorBlindnessSimulation) }
+
+// Ensure we only ever keep a single persistent simulator instance alive
+if (variable_global_exists("colorblind_simulator"))
+{
+    if (instance_exists(global.colorblind_simulator) && global.colorblind_simulator != id)
+    {
+        instance_destroy();
+        exit;
+    }
+}
+global.colorblind_simulator = id;
+
+// Set initial state from the saved preference
+mode = clamp(global.colorblindsettings, 0, modes);
+enabled = (mode > 0);
+manual_draw_active = false;
 
 /// README.TXT
 //
@@ -165,5 +180,3 @@ if global.colorblindsettings = 0 { instance_destroy(o_ColorBlindnessSimulation) 
 //      http://www.color-blindness.com/
 //
 ///
-
-

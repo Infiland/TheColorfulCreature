@@ -1,5 +1,5 @@
 {
-  "$GMWindowsOptions":"",
+  "$GMWindowsOptions":"v1",
   "%Name":"Windows",
   "name":"Windows",
   "option_windows_allow_fullscreen_switching":true,
@@ -7,6 +7,7 @@
   "option_windows_company_info":"Infiland",
   "option_windows_copyright_info":"Infiland",
   "option_windows_copy_exe_to_dest":false,
+  "option_windows_d3dswapeffectdiscard":false,
   "option_windows_description_info":"The Colorful Creature",
   "option_windows_disable_sandbox":true,
   "option_windows_display_cursor":true,
@@ -29,7 +30,7 @@
   "option_windows_steam_use_alternative_launcher":true,
   "option_windows_texture_page":"2048x2048",
   "option_windows_use_splash":false,
-  "option_windows_version":"1.1.9.13",
+  "option_windows_version":"1.1.9.14",
   "option_windows_vsync":false,
   "resourceType":"GMWindowsOptions",
   "resourceVersion":"2.0",

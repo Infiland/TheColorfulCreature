@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_CoinAIcon5",
   "bboxMode":0,
   "bbox_bottom":255,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"d9eb36f1-7a1d-448d-8a91-36d0580d5a8b","name":"d9eb36f1-7a1d-448d-8a91-36d0580d5a8b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d9eb36f1-7a1d-448d-8a91-36d0580d5a8b","name":"d9eb36f1-7a1d-448d-8a91-36d0580d5a8b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

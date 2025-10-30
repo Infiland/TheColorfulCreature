@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_yellowblockbricks",
   "bboxMode":2,
   "bbox_bottom":31,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"7fbfb3ae-8163-44d9-ba05-7fa77f0acf57","name":"7fbfb3ae-8163-44d9-ba05-7fa77f0acf57","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7fbfb3ae-8163-44d9-ba05-7fa77f0acf57","name":"7fbfb3ae-8163-44d9-ba05-7fa77f0acf57","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

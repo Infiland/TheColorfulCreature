@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_leveleditorhitbox",
   "bboxMode":1,
   "bbox_bottom":31,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"61fc5362-bea9-4558-bfe3-b5776d96b16e","name":"61fc5362-bea9-4558-bfe3-b5776d96b16e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"61fc5362-bea9-4558-bfe3-b5776d96b16e","name":"61fc5362-bea9-4558-bfe3-b5776d96b16e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

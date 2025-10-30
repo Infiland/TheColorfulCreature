@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_samuraihaticon",
   "bboxMode":0,
   "bbox_bottom":103,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"f699d0fd-b9ec-45b7-bd6d-d709d1649bcd","name":"f699d0fd-b9ec-45b7-bd6d-d709d1649bcd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f699d0fd-b9ec-45b7-bd6d-d709d1649bcd","name":"f699d0fd-b9ec-45b7-bd6d-d709d1649bcd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

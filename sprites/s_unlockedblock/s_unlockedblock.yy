@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_unlockedblock",
   "bboxMode":2,
   "bbox_bottom":24,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"ac8a9acf-0b0c-4d56-b901-97a4d720e1c7","name":"ac8a9acf-0b0c-4d56-b901-97a4d720e1c7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ac8a9acf-0b0c-4d56-b901-97a4d720e1c7","name":"ac8a9acf-0b0c-4d56-b901-97a4d720e1c7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

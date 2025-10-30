@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_hitboxskinbutton",
   "bboxMode":0,
   "bbox_bottom":103,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"5d225a54-3f4c-4afc-a2dc-f8c60ac0104d","name":"5d225a54-3f4c-4afc-a2dc-f8c60ac0104d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5d225a54-3f4c-4afc-a2dc-f8c60ac0104d","name":"5d225a54-3f4c-4afc-a2dc-f8c60ac0104d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

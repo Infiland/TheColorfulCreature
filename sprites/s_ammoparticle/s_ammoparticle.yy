@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_ammoparticle",
   "bboxMode":0,
   "bbox_bottom":25,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"50a1a9fe-06e5-44ba-b76e-4f53e63d5e41","name":"50a1a9fe-06e5-44ba-b76e-4f53e63d5e41","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"50a1a9fe-06e5-44ba-b76e-4f53e63d5e41","name":"50a1a9fe-06e5-44ba-b76e-4f53e63d5e41","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

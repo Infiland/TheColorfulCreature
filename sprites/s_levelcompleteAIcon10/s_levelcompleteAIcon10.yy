@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_levelcompleteAIcon10",
   "bboxMode":0,
   "bbox_bottom":255,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"888ff1ab-f71e-4ca3-8b52-8f82a05644ff","name":"888ff1ab-f71e-4ca3-8b52-8f82a05644ff","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"888ff1ab-f71e-4ca3-8b52-8f82a05644ff","name":"888ff1ab-f71e-4ca3-8b52-8f82a05644ff","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

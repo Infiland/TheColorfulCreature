@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_rathat",
   "bboxMode":0,
   "bbox_bottom":17,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"b3ecf18d-5ead-4e96-b2d7-ee080df6dc86","name":"b3ecf18d-5ead-4e96-b2d7-ee080df6dc86","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b3ecf18d-5ead-4e96-b2d7-ee080df6dc86","name":"b3ecf18d-5ead-4e96-b2d7-ee080df6dc86","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_devilhat",
   "bboxMode":0,
   "bbox_bottom":14,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"7bb3109f-f884-4317-8b4f-9bbe8b8d2e24","name":"7bb3109f-f884-4317-8b4f-9bbe8b8d2e24","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7bb3109f-f884-4317-8b4f-9bbe8b8d2e24","name":"7bb3109f-f884-4317-8b4f-9bbe8b8d2e24","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

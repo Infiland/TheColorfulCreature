@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_multiplayerplayer4button",
   "bboxMode":0,
   "bbox_bottom":72,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"6434e7b7-bcda-4826-b3ed-153d36a0f06a","name":"6434e7b7-bcda-4826-b3ed-153d36a0f06a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6434e7b7-bcda-4826-b3ed-153d36a0f06a","name":"6434e7b7-bcda-4826-b3ed-153d36a0f06a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

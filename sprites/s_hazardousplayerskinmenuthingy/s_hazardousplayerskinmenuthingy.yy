@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_hazardousplayerskinmenuthingy",
   "bboxMode":0,
   "bbox_bottom":31,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"a11ed80c-0372-4886-a263-4ed5edbd5278","name":"a11ed80c-0372-4886-a263-4ed5edbd5278","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a11ed80c-0372-4886-a263-4ed5edbd5278","name":"a11ed80c-0372-4886-a263-4ed5edbd5278","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

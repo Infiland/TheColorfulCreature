@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_skinsselectbutton",
   "bboxMode":0,
   "bbox_bottom":28,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"92b77ec2-40f5-4d08-be35-bba8cb5c2c28","name":"92b77ec2-40f5-4d08-be35-bba8cb5c2c28","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"722c754c-a912-4699-9c9b-578d1ce8149d","name":"722c754c-a912-4699-9c9b-578d1ce8149d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"92b77ec2-40f5-4d08-be35-bba8cb5c2c28","name":"92b77ec2-40f5-4d08-be35-bba8cb5c2c28","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"722c754c-a912-4699-9c9b-578d1ce8149d","name":"722c754c-a912-4699-9c9b-578d1ce8149d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

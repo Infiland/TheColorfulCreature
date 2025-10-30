@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_waterplayerred",
   "bboxMode":2,
   "bbox_bottom":31,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"ffc40a50-ea5d-4da2-8d8c-15366aa5c13c","name":"ffc40a50-ea5d-4da2-8d8c-15366aa5c13c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ffc40a50-ea5d-4da2-8d8c-15366aa5c13c","name":"ffc40a50-ea5d-4da2-8d8c-15366aa5c13c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

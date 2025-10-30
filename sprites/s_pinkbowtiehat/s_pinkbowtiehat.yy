@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_pinkbowtiehat",
   "bboxMode":0,
   "bbox_bottom":13,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"ec0cb834-664d-4cc2-9f12-43e0bb1f03bc","name":"ec0cb834-664d-4cc2-9f12-43e0bb1f03bc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ec0cb834-664d-4cc2-9f12-43e0bb1f03bc","name":"ec0cb834-664d-4cc2-9f12-43e0bb1f03bc","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

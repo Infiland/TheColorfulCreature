@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_bosnianhaticon",
   "bboxMode":0,
   "bbox_bottom":103,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"fd174ccc-81a7-4c5a-b5fb-5d389a63eba2","name":"fd174ccc-81a7-4c5a-b5fb-5d389a63eba2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"fd174ccc-81a7-4c5a-b5fb-5d389a63eba2","name":"fd174ccc-81a7-4c5a-b5fb-5d389a63eba2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_hatsselectbutton",
   "bboxMode":0,
   "bbox_bottom":28,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"93fab76c-015d-4039-8d42-aa10e3261cfd","name":"93fab76c-015d-4039-8d42-aa10e3261cfd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"0af71b66-4bf3-412e-82cb-aea882db1905","name":"0af71b66-4bf3-412e-82cb-aea882db1905","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"93fab76c-015d-4039-8d42-aa10e3261cfd","name":"93fab76c-015d-4039-8d42-aa10e3261cfd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"0af71b66-4bf3-412e-82cb-aea882db1905","name":"0af71b66-4bf3-412e-82cb-aea882db1905","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

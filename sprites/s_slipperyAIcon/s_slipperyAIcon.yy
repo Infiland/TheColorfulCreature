@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_slipperyAIcon",
   "bboxMode":0,
   "bbox_bottom":255,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c2e03a2b-7af8-4c2d-ba8f-1c4a0efd33f6","name":"c2e03a2b-7af8-4c2d-ba8f-1c4a0efd33f6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c2e03a2b-7af8-4c2d-ba8f-1c4a0efd33f6","name":"c2e03a2b-7af8-4c2d-ba8f-1c4a0efd33f6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

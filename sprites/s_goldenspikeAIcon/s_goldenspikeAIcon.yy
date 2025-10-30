@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_goldenspikeAIcon",
   "bboxMode":0,
   "bbox_bottom":255,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"b76d5cf0-ed43-4ff0-887d-fc0b06ccc2c4","name":"b76d5cf0-ed43-4ff0-887d-fc0b06ccc2c4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b76d5cf0-ed43-4ff0-887d-fc0b06ccc2c4","name":"b76d5cf0-ed43-4ff0-887d-fc0b06ccc2c4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMOperaGXOptions":"",
+  "$GMOperaGXOptions":"v1",
   "%Name":"operagx",
   "name":"operagx",
   "option_operagx_display_cursor":true,
@@ -23,6 +23,7 @@
   "option_operagx_team_id":"cfb6361a-2c1b-4340-81fc-9e3b5abfbcd7",
   "option_operagx_team_name":"Infiland studio",
   "option_operagx_texture_page":"2048x2048",
+  "option_operagx_transparent_background":false,
   "option_operagx_version":"1.1.9.12",
   "resourceType":"GMOperaGXOptions",
   "resourceVersion":"2.0",

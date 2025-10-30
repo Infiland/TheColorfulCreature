@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_scifiskineyes",
   "bboxMode":0,
   "bbox_bottom":4,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c50162bb-a6b7-492e-ae38-2493fa6fd819","name":"c50162bb-a6b7-492e-ae38-2493fa6fd819","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"155a4317-976b-4840-8f6c-12896dce46a1","name":"155a4317-976b-4840-8f6c-12896dce46a1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c50162bb-a6b7-492e-ae38-2493fa6fd819","name":"c50162bb-a6b7-492e-ae38-2493fa6fd819","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"155a4317-976b-4840-8f6c-12896dce46a1","name":"155a4317-976b-4840-8f6c-12896dce46a1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

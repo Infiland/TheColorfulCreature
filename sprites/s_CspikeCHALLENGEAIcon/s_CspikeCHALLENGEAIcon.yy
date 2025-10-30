@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_CspikeCHALLENGEAIcon",
   "bboxMode":0,
   "bbox_bottom":255,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"cfa62ecd-fb0e-4ecf-a059-d82add64926d","name":"cfa62ecd-fb0e-4ecf-a059-d82add64926d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"cfa62ecd-fb0e-4ecf-a059-d82add64926d","name":"cfa62ecd-fb0e-4ecf-a059-d82add64926d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

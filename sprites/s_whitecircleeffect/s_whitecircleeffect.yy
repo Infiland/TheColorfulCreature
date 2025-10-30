@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_whitecircleeffect",
   "bboxMode":0,
   "bbox_bottom":21,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"fa9e9a59-0283-4180-87a4-bd94d7f9caeb","name":"fa9e9a59-0283-4180-87a4-bd94d7f9caeb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"fa9e9a59-0283-4180-87a4-bd94d7f9caeb","name":"fa9e9a59-0283-4180-87a4-bd94d7f9caeb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

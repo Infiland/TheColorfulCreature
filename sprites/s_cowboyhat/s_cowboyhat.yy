@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_cowboyhat",
   "bboxMode":0,
   "bbox_bottom":9,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"6afe2d4b-4073-45aa-8997-ddd6091dcc47","name":"6afe2d4b-4073-45aa-8997-ddd6091dcc47","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6afe2d4b-4073-45aa-8997-ddd6091dcc47","name":"6afe2d4b-4073-45aa-8997-ddd6091dcc47","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

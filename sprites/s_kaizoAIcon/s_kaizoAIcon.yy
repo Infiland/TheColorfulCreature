@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_kaizoAIcon",
   "bboxMode":0,
   "bbox_bottom":255,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"f487e62b-5c56-4dfe-8ea5-6bdbf74c8e2d","name":"f487e62b-5c56-4dfe-8ea5-6bdbf74c8e2d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f487e62b-5c56-4dfe-8ea5-6bdbf74c8e2d","name":"f487e62b-5c56-4dfe-8ea5-6bdbf74c8e2d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

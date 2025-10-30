@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_lavadoorpipe",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"8473627c-77bb-477e-a480-7d89ea214cd3","name":"8473627c-77bb-477e-a480-7d89ea214cd3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"5c3aeba0-191f-4d00-9f77-7b4f0cbba6c1","name":"5c3aeba0-191f-4d00-9f77-7b4f0cbba6c1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8473627c-77bb-477e-a480-7d89ea214cd3","name":"8473627c-77bb-477e-a480-7d89ea214cd3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5c3aeba0-191f-4d00-9f77-7b4f0cbba6c1","name":"5c3aeba0-191f-4d00-9f77-7b4f0cbba6c1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

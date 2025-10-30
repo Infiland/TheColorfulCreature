@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_deathAIcon9",
   "bboxMode":0,
   "bbox_bottom":255,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"8e48e9b4-4287-41ca-8d0a-3fb06b243733","name":"8e48e9b4-4287-41ca-8d0a-3fb06b243733","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8e48e9b4-4287-41ca-8d0a-3fb06b243733","name":"8e48e9b4-4287-41ca-8d0a-3fb06b243733","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

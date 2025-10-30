@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_hatmerchantstandback",
   "bboxMode":0,
   "bbox_bottom":67,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"ca6e208f-cc5d-41c4-9fb3-c973bfe1ddd4","name":"ca6e208f-cc5d-41c4-9fb3-c973bfe1ddd4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ca6e208f-cc5d-41c4-9fb3-c973bfe1ddd4","name":"ca6e208f-cc5d-41c4-9fb3-c973bfe1ddd4","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

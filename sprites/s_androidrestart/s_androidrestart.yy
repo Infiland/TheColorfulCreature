@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_androidrestart",
   "bboxMode":0,
   "bbox_bottom":127,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"7a3d9a20-47ab-453d-a022-25f63e9014a2","name":"7a3d9a20-47ab-453d-a022-25f63e9014a2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"b00ca632-5d60-4e94-af76-7c1e2c2f1413","name":"b00ca632-5d60-4e94-af76-7c1e2c2f1413","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7a3d9a20-47ab-453d-a022-25f63e9014a2","name":"7a3d9a20-47ab-453d-a022-25f63e9014a2","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b00ca632-5d60-4e94-af76-7c1e2c2f1413","name":"b00ca632-5d60-4e94-af76-7c1e2c2f1413","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

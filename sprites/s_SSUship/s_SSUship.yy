@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_SSUship",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,7 +12,7 @@
   "edgeFiltering":true,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"baa2564f-5c4b-43f3-8d69-b75d112bcba7","name":"baa2564f-5c4b-43f3-8d69-b75d112bcba7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"baa2564f-5c4b-43f3-8d69-b75d112bcba7","name":"baa2564f-5c4b-43f3-8d69-b75d112bcba7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

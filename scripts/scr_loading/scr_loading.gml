@@ -353,6 +353,8 @@ global.breakablechallengedeaths = 999999
 global.lunarbasechallengedeaths = 999999
 
 global.currentchallenge = 0
+global.challenge_custom = false
+scr_challenges_init()
 scr_loadchallengetime()
 scr_loadchallengedeaths()
 

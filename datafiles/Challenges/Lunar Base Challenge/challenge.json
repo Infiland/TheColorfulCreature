@@ -1,0 +1,14 @@
+{
+  "id": 19,
+  "title_text": "WORK IN PROGRESS!",
+  "difficulty": 4,
+  "diamond_time": 130,
+  "unlock_type": "world",
+  "unlock_value": 4,
+  "reward_skins": [49],
+  "reward_credits": 0,
+  "level_dir": "Lunar Base Challenge/1",
+  "music_mode": "leveleditor",
+  "save_key": "Lunar Base Challenge",
+  "demo_blocked": 1
+}

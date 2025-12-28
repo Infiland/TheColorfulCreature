@@ -454,6 +454,7 @@
     {"name":"o_CERToggleLevels","order":4,"path":"objects/o_CERToggleLevels/o_CERToggleLevels.yy",},
     {"name":"o_CERToggleMusic","order":5,"path":"objects/o_CERToggleMusic/o_CERToggleMusic.yy",},
     {"name":"o_challengegamebutton","order":2,"path":"objects/o_challengegamebutton/o_challengegamebutton.yy",},
+    {"name":"o_challengebutton","order":3,"path":"objects/o_challengebutton/o_challengebutton.yy",},
     {"name":"o_challengelevelcreate","order":24,"path":"objects/o_challengelevelcreate/o_challengelevelcreate.yy",},
     {"name":"o_challengesbutton","order":1,"path":"objects/o_challengesbutton/o_challengesbutton.yy",},
     {"name":"o_changelanguagesettings","order":55,"path":"objects/o_changelanguagesettings/o_changelanguagesettings.yy",},

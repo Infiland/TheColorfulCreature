@@ -399,12 +399,16 @@
     {"$GMFolder":"","%Name":"Tile Sets","folderPath":"folders/Tile Sets.yy","name":"Tile Sets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Timelines","folderPath":"folders/Timelines.yy","name":"Timelines","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
-  "ForcedPrefabProjectReferences":[],
+  "ForcedPrefabProjectReferences":[
+    {"link":"io.gamemaker.gm_effect_windblown_particles-1.0.0","name":"io.gamemaker.gm_effect_windblown_particles-1.0.0","path":"io.gamemaker.gm_effect_windblown_particles-1.0.0.yyp",},
+  ],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"LevelEditor.sav","CopyToMask":-1,"filePath":"datafiles/Calendar/Levels/r_c2022lvl73","name":"LevelEditor.sav","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"OtherLevelEditor.sav","CopyToMask":-1,"filePath":"datafiles/Calendar/Levels/r_c2022lvl73","name":"OtherLevelEditor.sav","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"challenges.json","CopyToMask":-1,"filePath":"datafiles/Challenges","name":"challenges.json","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"LevelEditor.sav","CopyToMask":-1,"filePath":"datafiles/Challenges/Lunar Base Challenge/1","name":"LevelEditor.sav","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"OtherLevelEditor.sav","CopyToMask":-1,"filePath":"datafiles/Challenges/Lunar Base Challenge/1","name":"OtherLevelEditor.sav","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"challenge.json","CopyToMask":-1,"filePath":"datafiles/Challenges/Lunar Base Challenge","name":"challenge.json","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"22.ttf","CopyToMask":-1,"filePath":"datafiles/Fonts","name":"22.ttf","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"fnt_classic.ttf","CopyToMask":-1,"filePath":"datafiles/Fonts","name":"fnt_classic.ttf","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"fnt_cool.ttf","CopyToMask":-1,"filePath":"datafiles/Fonts","name":"fnt_cool.ttf","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -440,7 +444,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.13.1.193",
+    "IDEVersion":"2024.14.2.213",
   },
   "name":"The Colorful Creature",
   "resources":[
@@ -595,6 +599,7 @@
     {"id":{"name":"o_CERToggleLevels","path":"objects/o_CERToggleLevels/o_CERToggleLevels.yy",},},
     {"id":{"name":"o_CERToggleMusic","path":"objects/o_CERToggleMusic/o_CERToggleMusic.yy",},},
     {"id":{"name":"o_challengegamebutton","path":"objects/o_challengegamebutton/o_challengegamebutton.yy",},},
+    {"id":{"name":"o_challengebutton","path":"objects/o_challengebutton/o_challengebutton.yy",},},
     {"id":{"name":"o_challengelevelcreate","path":"objects/o_challengelevelcreate/o_challengelevelcreate.yy",},},
     {"id":{"name":"o_challengemedals","path":"objects/o_challengemedals/o_challengemedals.yy",},},
     {"id":{"name":"o_challengesbutton","path":"objects/o_challengesbutton/o_challengesbutton.yy",},},

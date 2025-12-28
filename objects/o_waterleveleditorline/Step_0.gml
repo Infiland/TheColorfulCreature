@@ -1,6 +1,11 @@
 var camy = camera_get_view_y(view_camera[0])
+if global.LEMode != 1 {
+	instance_destroy()
+	exit
+}
+var menu_open = instance_exists(o_itemmenuLE) || instance_exists(o_itemmenuselectLE)
 
-if mouse_check_button_pressed(mb_left) {
+if !menu_open && mouse_check_button_pressed(mb_left) {
 if mouse_y > camy+64 {
 if clicked = 0 {
 x1 = mouse_x
@@ -21,8 +26,8 @@ if global.LES = 1 { liquid = o_lava }
 }
 var createliquid = instance_create(x1,y1,liquid)
 with createliquid {
-image_xscale = -(x1-x2) / 1024
-image_yscale = -(y1-y2) / 232
+image_xscale = -(other.x1-other.x2) / 1024
+image_yscale = -(other.y1-other.y2) / 232
 }
 instance_destroy()
 }

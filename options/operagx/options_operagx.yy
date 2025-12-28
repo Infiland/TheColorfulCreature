@@ -17,7 +17,7 @@
   "option_operagx_mod_team_id":"",
   "option_operagx_mod_team_name":"",
   "option_operagx_mod_version":"1.0.0.0",
-  "option_operagx_next_version":"1.1.9.13",
+  "option_operagx_next_version":"1.2.0.0",
   "option_operagx_publicShareUrl":"https://gx.games/games/yg8cqp/the-colorful-creature-/",
   "option_operagx_scale":0,
   "option_operagx_team_id":"cfb6361a-2c1b-4340-81fc-9e3b5abfbcd7",

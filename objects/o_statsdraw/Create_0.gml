@@ -66,36 +66,36 @@ stats_challenge_deaths = [
 stats_rank_thresholds = [2500000,1500000,1000000,750000,550000,400000,300000,225000,170000,125000,95000,70000,50000,35000,27500,20000,15000,11500,9000,6000,4000,2500,1400,700,400,200,100]
 
 // Labels
-stats_label_rank = loc(59) + ": "
-stats_label_full = loc(128) + ": "
+stats_label_rank = loc("RANK") + ": "
+stats_label_full = loc("FULL_GAME_COMPLETION") + ": "
 stats_rank_names = [
-	loc(301),
-	loc(301) + " +",
-	loc(301) + " ++",
-	loc(302),
-	loc(302) + " +",
-	loc(302) + " ++",
-	loc(303),
-	loc(303) + " +",
-	loc(303) + " ++",
-	loc(304),
-	loc(304) + " +",
-	loc(304) + " ++",
-	loc(305),
-	loc(305) + " +",
-	loc(305) + " ++",
-	loc(306),
-	loc(306) + " +",
-	loc(306) + " ++",
-	loc(307),
-	loc(307) + " +",
-	loc(307) + " ++",
-	loc(308),
-	loc(308) + " +",
-	loc(308) + " ++",
-	loc(309),
-	loc(309) + " +",
-	loc(309) + " ++"
+	loc("NEWBIE"),
+	loc("NEWBIE") + " +",
+	loc("NEWBIE") + " ++",
+	loc("AMATEUR"),
+	loc("AMATEUR") + " +",
+	loc("AMATEUR") + " ++",
+	loc("NOVICE"),
+	loc("NOVICE") + " +",
+	loc("NOVICE") + " ++",
+	loc("EXPERIENCED"),
+	loc("EXPERIENCED") + " +",
+	loc("EXPERIENCED") + " ++",
+	loc("PROFESSIONAL"),
+	loc("PROFESSIONAL") + " +",
+	loc("PROFESSIONAL") + " ++",
+	loc("VETERAN"),
+	loc("VETERAN") + " +",
+	loc("VETERAN") + " ++",
+	loc("SUPER_VETERAN"),
+	loc("SUPER_VETERAN") + " +",
+	loc("SUPER_VETERAN") + " ++",
+	loc("COLOR_MASTER"),
+	loc("COLOR_MASTER") + " +",
+	loc("COLOR_MASTER") + " ++",
+	loc("GOD_GAMER"),
+	loc("GOD_GAMER") + " +",
+	loc("GOD_GAMER") + " ++"
 ]
 
 stats_reqnormalskins = 43
@@ -441,72 +441,72 @@ stats_draw_category = function(category, x, y, w) {
 
 // Stats categories
 stats_categories = [
-	stats_category(loc(72), make_color_rgb(248, 184, 72), [
-		stats_entry(73, "totalcoins", "num", 2500),
-		stats_entry(74, "totaljumps", "num", 500000),
-		stats_entry_calc(75, function() { return global.totaltime }, "time", 230400),
-		stats_entry(76, "totalskips", "num"),
-		stats_entry(83, "totalportal", "num"),
-		stats_entry(85, "totallevelcompleted", "num", 2500),
-		stats_entry(86, "customlevelcompleted", "num"),
-		stats_entry(87, "newendlesslevelhighscore", "num"),
-		stats_entry(88, "endlesslevelhighscore", "num"),
-		stats_entry(683, "totalquests", "num")
+	stats_category(loc("MAIN_STATS"), make_color_rgb(248, 184, 72), [
+		stats_entry("COINS_COLLECTED", "totalcoins", "num", 2500),
+		stats_entry("JUMPS", "totaljumps", "num", 500000),
+		stats_entry_calc("PLAYTIME", function() { return global.totaltime }, "time", 230400),
+		stats_entry("SKIPPED_LEVELS", "totalskips", "num"),
+		stats_entry("PORTALS_ENTERED", "totalportal", "num"),
+		stats_entry("LEVELS_COMPLETED", "totallevelcompleted", "num", 2500),
+		stats_entry("CUSTOM_LEVELS_COMPLETED", "customlevelcompleted", "num"),
+		stats_entry("ENDLESS_RUN_HIGHSCORE", "newendlesslevelhighscore", "num"),
+		stats_entry("OLD_SCHOOL_ENDLESS_RUN_HIGHSCORE", "endlesslevelhighscore", "num"),
+		stats_entry("QUESTS_COMPLETED", "totalquests", "num")
 	]),
 	stats_category("Pickups", make_color_rgb(96, 210, 255), [
-		stats_entry_calc(77, function() { return stats_totalpickups }, "num"),
-		stats_entry(78, "totalnormalpickups", "num"),
-		stats_entry(79, "totalgravitypickups", "num"),
-		stats_entry(80, "totalspeedpickups", "num"),
-		stats_entry(81, "totalusepickups", "num"),
-		stats_entry(82, "totalkeypickups", "num"),
-		stats_entry(84, "totaltorchpickups", "num"),
-		stats_entry(90, "totalgunpickups", "num"),
-		stats_entry(91, "totalammopickups", "num"),
-		stats_entry(94, "total1ups", "num"),
-		stats_entry(96, "totaloxygenpickups", "num"),
-		stats_entry(97, "totaldjumppickups", "num")
+		stats_entry_calc("TOTAL_PICKUPS", function() { return stats_totalpickups }, "num"),
+		stats_entry("NORMAL_PICKUPS", "totalnormalpickups", "num"),
+		stats_entry("GRAVITY_PICKUPS", "totalgravitypickups", "num"),
+		stats_entry("ACCELERATION_PICKUPS", "totalspeedpickups", "num"),
+		stats_entry("SPIRAL_PICKUPS", "totalusepickups", "num"),
+		stats_entry("KEY_PICKUPS", "totalkeypickups", "num"),
+		stats_entry("TORCH_PICKUPS", "totaltorchpickups", "num"),
+		stats_entry("GUN_PICKUPS", "totalgunpickups", "num"),
+		stats_entry("AMMO_PICKUPS", "totalammopickups", "num"),
+		stats_entry("1UPS_COLLECTED", "total1ups", "num"),
+		stats_entry("OXYGEN_PICKUPS", "totaloxygenpickups", "num"),
+		stats_entry("DOUBLE_JUMP_PICKUPS", "totaldjumppickups", "num")
 	]),
 	stats_category("Combat", make_color_rgb(255, 120, 96), [
-		stats_entry(89, "totalgunshots", "num"),
-		stats_entry(93, "totalenemykills", "num"),
-		stats_entry(95, "totalrocketkills", "num"),
-		stats_entry(92, "totaldestroyedboxes", "num"),
-		stats_entry(617, "totalblocksbroken", "num")
+		stats_entry("GUN_SHOTS", "totalgunshots", "num"),
+		stats_entry("ENEMY_KILLS", "totalenemykills", "num"),
+		stats_entry("ROCKETS_DESTROYED", "totalrocketkills", "num"),
+		stats_entry("DESTROYED_BOXES", "totaldestroyedboxes", "num"),
+		stats_entry("BLOCKS_BROKEN_STATS", "totalblocksbroken", "num")
 	]),
-	stats_category(loc(98), make_color_rgb(255, 96, 96), [
-		stats_entry(99, "totaldeaths", "num", 10000),
-		stats_entry(100, "totalblockdeaths", "num"),
-		stats_entry(101, "totalrestartdeaths", "num"),
-		stats_entry(102, "totalspikedeaths", "num"),
-		stats_entry(103, "totalinvisiblespikedeaths", "num"),
-		stats_entry(104, "totalverticalspikedeaths", "num"),
-		stats_entry(105, "totalhorizontalspikedeaths", "num"),
-		stats_entry(106, "totalgoldspikedeaths", "num"),
-		stats_entry(107, "totalweirdspikedeaths", "num"),
-		stats_entry(108, "totalvoiddeaths", "num"),
-		stats_entry(109, "totalfiredeaths", "num"),
-		stats_entry(110, "totallavadeaths", "num"),
-		stats_entry(111, "totalbulletdeaths", "num"),
-		stats_entry(112, "totalrocketdeaths", "num"),
-		stats_entry(113, "totaltroopdeaths", "num"),
-		stats_entry(114, "totalwaterdeaths", "num")
+	stats_category(loc("DEATHS"), make_color_rgb(255, 96, 96), [
+		stats_entry("TOTAL_DEATHS", "totaldeaths", "num", 10000),
+		stats_entry("BLOCK_DEATHS", "totalblockdeaths", "num"),
+		stats_entry("RESTART_DEATHS", "totalrestartdeaths", "num"),
+		stats_entry("SPIKE_DEATHS", "totalspikedeaths", "num"),
+		stats_entry("INVISIBLE_SPIKE_DEATHS", "totalinvisiblespikedeaths", "num"),
+		stats_entry("VERTICAL_MOVING_SPIKE_DEATHS", "totalverticalspikedeaths", "num"),
+		stats_entry("HORIZONTAL_MOVING_SPIKE_DEATHS", "totalhorizontalspikedeaths", "num"),
+		stats_entry("GOLDEN_SPIKE_DEATHS", "totalgoldspikedeaths", "num"),
+		stats_entry("WEIRD_SPIKE_DEATHS", "totalweirdspikedeaths", "num"),
+		stats_entry("VOID_DEATHS", "totalvoiddeaths", "num"),
+		stats_entry("SET_ON_FIRE", "totalfiredeaths", "num"),
+		stats_entry("LAVA_DEATHS", "totallavadeaths", "num"),
+		stats_entry("BULLET_DEATHS", "totalbulletdeaths", "num"),
+		stats_entry("ROCKET_DEATHS", "totalrocketdeaths", "num"),
+		stats_entry("TROOP_DEATHS", "totaltroopdeaths", "num"),
+		stats_entry("DROWNED", "totalwaterdeaths", "num")
 	]),
-	stats_category(loc(115), make_color_rgb(148, 220, 120), [
-		stats_entry_calc(116, function() { return stats_avg_deaths }, "float1"),
-		stats_entry_calc(117, function() { return stats_avg_time }, "minutes")
+	stats_category(loc("AVERAGES"), make_color_rgb(148, 220, 120), [
+		stats_entry_calc("AVERAGE_DEATHS_PER_LEVEL", function() { return stats_avg_deaths }, "float1"),
+		stats_entry_calc("AVERAGE_TIME_PER_LEVEL", function() { return stats_avg_time }, "minutes")
 	]),
-	stats_category(loc(118), make_color_rgb(255, 214, 98), [
-		stats_entry_calc(119, function() { return stats_normalskins }, "ratio", stats_reqnormalskins),
-		stats_entry_calc(120, function() { return stats_legskins }, "ratio", stats_reqlegskins),
-		stats_entry_calc(121, function() { return stats_allhats }, "ratio", undefined, "totalhatsAM"),
-		stats_entry_calc(122, function() { return stats_allitems }, "ratio", undefined, "totalitemsAM"),
-		stats_entry_calc(123, function() { return stats_hm_progress }, "ratio", stats_reqHM),
-		stats_entry_calc(124, function() { return stats_challenge_progress }, "ratio", stats_reqchallenge),
-		stats_entry_calc(125, function() { return stats_perfectchallenge }, "ratio", stats_reqperfectchallenge),
-		stats_entry_calc(126, function() { return stats_world_progress }, "ratio", stats_reqW),
-		stats_entry_calc(127, function() { return stats_allach }, "ratio", stats_reqach),
-		stats_entry_calc(128, function() { return stats_game_progress }, "percent", 100)
+	stats_category(loc("PROGRESSION"), make_color_rgb(255, 214, 98), [
+		stats_entry_calc("NORMAL_SKINS_UNLOCKED", function() { return stats_normalskins }, "ratio", stats_reqnormalskins),
+		stats_entry_calc("LEGENDARY_SKINS_UNLOCKED", function() { return stats_legskins }, "ratio", stats_reqlegskins),
+		stats_entry_calc("HATS_ACQUIRED", function() { return stats_allhats }, "ratio", undefined, "totalhatsAM"),
+		stats_entry_calc("ITEMS_ACQUIRED", function() { return stats_allitems }, "ratio", undefined, "totalitemsAM"),
+		stats_entry_calc("HARDMODE_DIFFICULTIES_BEATEN", function() { return stats_hm_progress }, "ratio", stats_reqHM),
+		stats_entry_calc("CHALLENGES_BEATEN", function() { return stats_challenge_progress }, "ratio", stats_reqchallenge),
+		stats_entry_calc("PERFECT_CHALLENGES_BEATEN", function() { return stats_perfectchallenge }, "ratio", stats_reqperfectchallenge),
+		stats_entry_calc("WORLDS_COMPLETED", function() { return stats_world_progress }, "ratio", stats_reqW),
+		stats_entry_calc("TOTAL_ACHIEVEMENTS", function() { return stats_allach }, "ratio", stats_reqach),
+		stats_entry_calc("FULL_GAME_COMPLETION", function() { return stats_game_progress }, "percent", 100)
 	])
 ]
 

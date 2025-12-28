@@ -212,7 +212,7 @@ instance_destroy(o_CERscroll) }
 else if global.CESConfigure = 1 {
 	global.CESConfigure = 0
 	if instance_exists(o_animatedtext) {
-	o_animatedtext.text = loc(37)
+	o_animatedtext.text = loc("ENDLESS_RUN")
 	}
 	instance_deactivate_object(o_CERSettings)
 	instance_activate_object(o_endlessbutton)

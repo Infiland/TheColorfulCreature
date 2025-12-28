@@ -1,1 +1,1 @@
-text = loc(571)
+text = loc("TROOP_TROUBLE_CHALLENGE")

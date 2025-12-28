@@ -51,7 +51,7 @@ draw_text(x-140,y-65,text)
  }
  
  if difficulty > 5 { draw_set_color(c_red) }
-	draw_text(x-140,y+10,loc(656))
+	draw_text(x-140,y+10,loc("DIFFICULTY"))
  
  draw_set_color(c_white)
 draw_set_alpha(1)

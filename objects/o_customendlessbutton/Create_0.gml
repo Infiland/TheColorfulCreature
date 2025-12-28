@@ -1,5 +1,5 @@
 declarecustombutton()
-text = loc(130)
+text = loc("CUSTOM_ENDLESS_RUN")
 if global.customERunlock = 0 {
 locked = 1	
 }

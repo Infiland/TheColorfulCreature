@@ -1,1 +1,1 @@
-text = loc(611)
+text = loc("CHOOSE_A_GAMEMODE")

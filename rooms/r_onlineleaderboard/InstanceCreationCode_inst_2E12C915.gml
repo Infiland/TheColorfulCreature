@@ -1,2 +1,2 @@
-text = loc(39)
+text = loc("ONLINE_LEADERBOARDS")
 texty = 50

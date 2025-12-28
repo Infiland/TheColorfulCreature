@@ -5,12 +5,12 @@ y = lerp(y,vy + 32,0.2)
 xscale = 0.5
 yscale = 0.5
 
-text = loc(7);
+text = loc("RETURN");
 
 } else {
 x = oldx
 y = oldy
-text = loc(62)
+text = loc("GO_TO_MAIN_MENU")
 xscale = 0.3
 yscale = 0.3
 }}

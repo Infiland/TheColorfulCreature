@@ -8,5 +8,5 @@ with popup {
 url = "https://www.youtube.com/channel/UC3d8UnmOezFZeCwY8K01PSw"	
 }
 } else {
-show_message(loc(646))
+show_message(loc("YOU_ARE_DISCONNECTED_PLEASE_TURN_ON_YOUR_INTERNET_CONNECTION"))
 }

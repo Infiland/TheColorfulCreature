@@ -1,6 +1,6 @@
 /// @description Variables
 declarecustombutton()
-text = loc(25)
+text = loc("HARD_MODE")
 
 scr_loadhardmode()
 if global.hardmodeunlock < 1 { locked = 1 }

@@ -4,7 +4,7 @@
 instance_destroy()
 
 declarecustombutton()
-text = loc(669);
+text = loc("SPECIAL_LEVELS");
 if global.donatedmoney = 0 {
 locked = 1
 } else { locked = 0 }

@@ -3,12 +3,14 @@
     {
       "id": 1,
       "order": 1,
-      "title_loc": 580,
+      "title_loc": "KAIZO_CHALLENGE",
       "difficulty": 5,
       "diamond_time": 444,
       "unlock_type": "world",
       "unlock_value": 5,
-      "reward_skins": [2],
+      "reward_skins": [
+        2
+      ],
       "reward_credits": 50,
       "room": "r_kaizolvl1",
       "music": "m_funmodelevels",
@@ -23,12 +25,14 @@
     {
       "id": 2,
       "order": 2,
-      "title_loc": 570,
+      "title_loc": "I_CANNOT_SEE_ANYTHING",
       "difficulty": 3,
       "diamond_time": 194.2,
       "unlock_type": "world",
       "unlock_value": 3,
-      "reward_skins": [4],
+      "reward_skins": [
+        4
+      ],
       "reward_credits": 30,
       "room": "r_blindlvl1",
       "music": "m_funmodelevels4",
@@ -43,12 +47,14 @@
     {
       "id": 3,
       "order": 3,
-      "title_loc": 567,
+      "title_loc": "HUGE_LEVELS_BIG_ROOMS",
       "difficulty": 2,
       "diamond_time": 150,
       "unlock_type": "world",
       "unlock_value": 2,
-      "reward_skins": [10],
+      "reward_skins": [
+        10
+      ],
       "reward_credits": 20,
       "room": "r_bigroomlvl1",
       "music": "m_funmodelevels3",
@@ -62,12 +68,14 @@
     {
       "id": 4,
       "order": 4,
-      "title_loc": 571,
+      "title_loc": "TROOP_TROUBLE_CHALLENGE",
       "difficulty": 3,
       "diamond_time": 55,
       "unlock_type": "world",
       "unlock_value": 3,
-      "reward_skins": [11],
+      "reward_skins": [
+        11
+      ],
       "reward_credits": 30,
       "room": "r_trooplvl1",
       "music": "m_troopsincoming",
@@ -82,12 +90,14 @@
     {
       "id": 5,
       "order": 5,
-      "title_loc": 568,
+      "title_loc": "SLIPPERY_CHALLENGE",
       "difficulty": 2,
       "diamond_time": 90,
       "unlock_type": "world",
       "unlock_value": 2,
-      "reward_skins": [14],
+      "reward_skins": [
+        14
+      ],
       "reward_credits": 20,
       "room": "r_slipperylvl1",
       "music": "m_emptyambient",
@@ -101,12 +111,14 @@
     {
       "id": 6,
       "order": 6,
-      "title_loc": 573,
+      "title_loc": "SPEED_IS_KEY_CHALLENGE",
       "difficulty": 3,
       "diamond_time": 105,
       "unlock_type": "world",
       "unlock_value": 3,
-      "reward_skins": [16],
+      "reward_skins": [
+        16
+      ],
       "reward_credits": 30,
       "room": "r_speedlvl1",
       "music": "m_funmodelevels",
@@ -121,13 +133,17 @@
     {
       "id": 7,
       "order": 7,
-      "title_loc": 581,
+      "title_loc": "WORLD_SIX",
       "difficulty": 5,
       "diamond_time": 191.6,
       "unlock_type": "world",
       "unlock_value": 5,
-      "reward_skins": [17],
-      "bonus_skins": [18],
+      "reward_skins": [
+        17
+      ],
+      "bonus_skins": [
+        18
+      ],
       "bonus_deaths_max": 25,
       "reward_credits": 50,
       "room": "r_world6lvl1",
@@ -143,12 +159,14 @@
     {
       "id": 8,
       "order": 8,
-      "title_loc": 566,
+      "title_loc": "LADDER_CHALLENGE",
       "difficulty": 1,
       "diamond_time": 45,
       "unlock_type": "world",
       "unlock_value": 1,
-      "reward_skins": [19],
+      "reward_skins": [
+        19
+      ],
       "reward_credits": 7,
       "room": "r_ladderlvl1",
       "music": "m_owthespikes",
@@ -163,7 +181,7 @@
     {
       "id": 9,
       "order": 9,
-      "title_loc": 565,
+      "title_loc": "TUTORIAL_CHALLENGE",
       "difficulty": 1,
       "diamond_time": 36,
       "unlock_type": "none",
@@ -188,7 +206,9 @@
       "diamond_time": 135,
       "unlock_type": "world",
       "unlock_value": 4,
-      "reward_skins": [21],
+      "reward_skins": [
+        21
+      ],
       "reward_credits": 40,
       "room": "r_spikelvl1",
       "music": "m_basicsretro",
@@ -203,12 +223,14 @@
     {
       "id": 11,
       "order": 11,
-      "title_loc": 575,
+      "title_loc": "WATER_CHALLENGE",
       "difficulty": 3,
       "diamond_time": 101.2,
       "unlock_type": "world",
       "unlock_value": 3,
-      "reward_skins": [23],
+      "reward_skins": [
+        23
+      ],
       "reward_credits": 30,
       "room": "r_waterlvl1",
       "music": "m_underwater",
@@ -223,12 +245,14 @@
     {
       "id": 12,
       "order": 12,
-      "title_loc": 576,
+      "title_loc": "MOVING_CHALLENGE",
       "difficulty": 3,
       "diamond_time": 94.5,
       "unlock_type": "world",
       "unlock_value": 3,
-      "reward_skins": [28],
+      "reward_skins": [
+        28
+      ],
       "reward_credits": 30,
       "room": "r_movinglvl1",
       "music": "m_everythingismoving",
@@ -243,12 +267,14 @@
     {
       "id": 13,
       "order": 13,
-      "title_loc": 578,
+      "title_loc": "COMMUNITY_CHALLENGE",
       "difficulty": 4,
       "diamond_time": 240,
       "unlock_type": "world",
       "unlock_value": 4,
-      "reward_skins": [31],
+      "reward_skins": [
+        31
+      ],
       "reward_credits": 40,
       "room": "r_communitylvl1",
       "music": "m_forthefans",
@@ -263,12 +289,14 @@
     {
       "id": 14,
       "order": 14,
-      "title_loc": 569,
+      "title_loc": "DOUBLE_JUMP_CHALLENGE",
       "difficulty": 2,
       "diamond_time": 57.1,
       "unlock_type": "world",
       "unlock_value": 2,
-      "reward_skins": [37],
+      "reward_skins": [
+        37
+      ],
       "reward_credits": 20,
       "room": "r_djlvl1",
       "music": "m_stealth",
@@ -282,12 +310,14 @@
     {
       "id": 15,
       "order": 15,
-      "title_loc": 579,
+      "title_loc": "CORRUPTED_SPIKE_CHALLENGE",
       "difficulty": 4,
       "diamond_time": 205,
       "unlock_type": "world",
       "unlock_value": 4,
-      "reward_skins": [40],
+      "reward_skins": [
+        40
+      ],
       "reward_credits": 40,
       "room": "r_cslvl1",
       "music": "m_somethingswrong",
@@ -307,7 +337,9 @@
       "diamond_time": 2097.9,
       "unlock_type": "skin",
       "unlock_value": 17,
-      "reward_skins": [41],
+      "reward_skins": [
+        41
+      ],
       "reward_credits": 100,
       "room": "r_world7lvl1",
       "music": "m_funmodelevels2",
@@ -322,12 +354,14 @@
     {
       "id": 17,
       "order": 17,
-      "title_loc": 602,
+      "title_loc": "INVISIBLE_CHALLENGE",
       "difficulty": 1,
       "diamond_time": 60,
       "unlock_type": "world",
       "unlock_value": 1,
-      "reward_skins": [43],
+      "reward_skins": [
+        43
+      ],
       "reward_credits": 10,
       "room": "r_invisiblelvl1",
       "music": "m_hammertime",
@@ -347,7 +381,9 @@
       "diamond_time": 58.5,
       "unlock_type": "world",
       "unlock_value": 3,
-      "reward_skins": [45],
+      "reward_skins": [
+        45
+      ],
       "reward_credits": 30,
       "room": "r_breakablelvl1",
       "music": "m_blocktension",

@@ -8,5 +8,5 @@ with popup {
 url = lnk
 }
 } else {
-show_message(loc(646))
+show_message(loc("YOU_ARE_DISCONNECTED_PLEASE_TURN_ON_YOUR_INTERNET_CONNECTION"))
 }

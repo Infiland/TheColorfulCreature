@@ -18,7 +18,7 @@ for(var i = 0; i < 50; i++;) {
 var avatar_x = 990 - max_width - avatar_padding - avatar_draw_size
 for(var i = 0; i < 50; i++;) {
 if steam_score[i] = 0 and steam_rank[i] = 0 {
-if i = 0 { draw_text(990,200 + (diff*240),loc(665)) }
+if i = 0 { draw_text(990,200 + (diff*240),loc("LOADING")) }
 } else {
 if i = 0 { draw_text_scribble(990,180 + (diff*240),"[rainbow]" + string(lbname)) }
 var row_y = 200+(i*20) + (diff*240)

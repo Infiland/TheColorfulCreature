@@ -1,3 +1,3 @@
 /// @description Variables
 declarecustombutton()
-text = loc(6);
+text = loc("SUPPORT_THE_DEVELOPER");

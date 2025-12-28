@@ -1,1 +1,1 @@
-text = loc(579)
+text = loc("CORRUPTED_SPIKE_CHALLENGE")

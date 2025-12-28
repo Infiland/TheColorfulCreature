@@ -1,24 +1,20 @@
 //lang = "english";
 var filename = lang + ".lang";
+var lang_path = "Languages\\" + string(filename);
 
-if !file_exists("Languages\\" + string(filename)){
+if !file_exists(lang_path){
 	filename = "english.lang"; //english is the default
 	lang = "english";
+	lang_path = "Languages\\" + string(filename);
 }
 
 
-if file_exists("Languages\\" + string(filename)){
-	ini_open("Languages\\" + string(filename));
-	ds_list_destroy(translator);
-	translator = ds_list_create();
-	for(var i=max_word;i > 0;i--){
-		if (ini_key_exists(lang,i)){
-			var translated = ini_read_string(lang,i,i);
-			translator[| i] = translated;
-		}		
-	}
+if (ds_exists(translator, ds_type_map)) ds_map_destroy(translator);
+translator = ds_map_create();
+loc_load_lang_file("Languages\\english.lang", "english", translator);
+if (lang_path != "Languages\\english.lang") {
+	loc_load_lang_file(lang_path, lang, translator);
 }
-ini_close();
 
 //Change font to cyrillic
 if lang == "macedonian" || lang == "serbian_cyrillic" {

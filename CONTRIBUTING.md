@@ -34,11 +34,11 @@ As for importing translations from the Google doc to the game, here's how you do
 ---
 ## Editing
 1. Go to folder [Languages](https://github.com/Infiland/TheColorfulCreature/tree/main/datafiles/Languages) and find the .lang file you would like to edit.
-2. Make sure the .lang file is correct like in the google sheets file, each word needs to have a number id.
+2. Make sure the .lang file is correct like in the google sheets file, each word needs to have the same string key as english.lang.
 ---
 ## Adding a new language
 1. Go to folder [Languages](https://github.com/Infiland/TheColorfulCreature/tree/main/datafiles/Languages) and make a new .lang file inside the folder.
-2. Place translatons in the .lang file from the google sheets file, each word needs to have a number id and a language's ini at the top should be unique.
+2. Place translatons in the .lang file from the google sheets file, each word needs to have the same string key as english.lang and a language's ini at the top should be unique.
 3. Go to the script [switchlang()](https://github.com/Infiland/TheColorfulCreature/blob/main/scripts/switchlang/switchlang.gml), place a new case (which will be the new language id) to add the new language. (WILL IMPROVE THIS LATER)
 4. Go to the room r_settings and in the layer "Languages", add a new instance "o_changelanguages", then edit the creation code to include the new language id. (WILL IMPROVE THIS LATER SO YOU DON'T HAVE TO DO THIS)
 Also go to the object [o_changelanguages in the Draw event](https://github.com/Infiland/TheColorfulCreature/blob/main/objects/o_changelanguagesettings/Draw_0.gml) add a new case for the new language
@@ -47,7 +47,7 @@ Also go to the object [o_changelanguages in the Draw event](https://github.com/I
 ### Additional / Optional
 7. Go to the script [setLanguageDependingOnRegion()](https://github.com/Infiland/TheColorfulCreature/blob/main/scripts/setLanguageDependingOnRegion/setLanguageDependingOnRegion.gml) and add your language code for the game to auto-translate the game.
 
-Note: The [loc(id)](https://github.com/Infiland/TheColorfulCreature/blob/main/scripts/loc/loc.gml) function checks for a translated word based on ID.
+Note: The [loc(key)](https://github.com/Infiland/TheColorfulCreature/blob/main/scripts/loc/loc.gml) function checks for a translated word based on its string key.
 ---
 ## Store Page Translating
 You can translate all of my store pages on Steam by going to [this repository](https://github.com/Infiland/InfilandGamesStorePageTranslations)

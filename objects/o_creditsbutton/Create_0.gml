@@ -1,3 +1,3 @@
 /// @description Variables
 declarecustombutton()
-text = loc(4);
+text = loc("CREDITS");

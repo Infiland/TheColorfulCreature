@@ -209,11 +209,11 @@ if global.skin[47] = 1 {draw_text_ext(32,704,"The worst skin in the game.",20,82
 break;
 case(48):
 if global.skin[48] = 0 {draw_text_ext(32,704,CALENDARSKINUNLOCK,20,820) }
-if global.skin[48] = 1 {draw_text_ext(32,704,loc(630),20,820) }
+if global.skin[48] = 1 {draw_text_ext(32,704,loc("REDDIE_S_ON_FIRE"),20,820) }
 break;
 case(49):
 if global.skin[49] = 0 {draw_text_ext(32,704,CALENDARSKINUNLOCK,20,820) }
-if global.skin[49] = 1 {draw_text_ext(32,704,loc(679),20,820) }
+if global.skin[49] = 1 {draw_text_ext(32,704,loc("BEWARE_OF_THE_CAMERAMEN_BIG_BROTHER_IS_WATCHING"),20,820) }
 break;
 case(50):
 if global.skin[50] = 0 {draw_text_ext(32,704,CALENDARSKINUNLOCK,20,820) }
@@ -225,160 +225,160 @@ break;
 //Hats
 case(2):
 switch(global.skininfo) {
-case(1): draw_text(32,704,loc(404)) break;
+case(1): draw_text(32,704,loc("UNEQUIP_A_HAT")) break;
 case(2):
-if global.hat[1] = -1 {draw_text(32,704,loc(405))}
+if global.hat[1] = -1 {draw_text(32,704,loc("BEAT_THE_TUTORIAL_CHALLENGE_TO_UNLOCK_THIS_HAT_IN_THE_HAT_ME"))}
 if global.hat[1] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[1] = 1 {draw_text(32,704,loc(406))}
+if global.hat[1] = 1 {draw_text(32,704,loc("YOU_GRADUATED"))}
 break;
 case(3):
 if global.hat[2] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[2] = 1 {draw_text(32,704,loc(407))}
+if global.hat[2] = 1 {draw_text(32,704,loc("ZOMBIES_WEAR_THIS"))}
 break;
 case(4):
-if global.hat[3] = -1 {draw_text(32,704,loc(408)) }
+if global.hat[3] = -1 {draw_text(32,704,loc("AVAILABLE_IN_THE_SHOP_ON_TCC_ANNIVERSARY_OR_ON_INFILAND_S_BI")) }
 if global.hat[3] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[3] = 1 {draw_text(32,704,loc(409))}
+if global.hat[3] = 1 {draw_text(32,704,loc("IT_S_TIME_TO_PARTY"))}
 break;
 case(5):
 if global.hat[4] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[4] = 1 {draw_text(32,704,loc(410))}
+if global.hat[4] = 1 {draw_text(32,704,loc("THESE_THINGS_ARE_OUT_OF_TREES"))}
 break;
 case(6):
 if global.hat[5] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[5] = 1 {draw_text(32,704,loc(411))}
+if global.hat[5] = 1 {draw_text(32,704,loc("NOW_YOU_RE_A_GENTLEMEN"))}
 break;
 case(7):
 if global.hat[6] = 0 {draw_text(32,704,"Hat available at the hat merchant. It's expensive though!")}
-if global.hat[6] = 1 {draw_text(32,704,loc(412))}
+if global.hat[6] = 1 {draw_text(32,704,loc("NOW_YOU_RE_A_RICH_SUPER_GENTLEMEN"))}
 break;
 case(8):
 if global.hat[7] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[7] = 1 {draw_text(32,704,loc(413))}
+if global.hat[7] = 1 {draw_text(32,704,loc("YOU_CAN_PUT_ANOTHER_REDDIE_ON_REDDIE"))}
 break;
 case(9):
-if global.hat[8] = -1 {draw_text(32,704,loc(414))}
+if global.hat[8] = -1 {draw_text(32,704,loc("AVAILABLE_IN_THE_SHOP_ON_CHRISTMAS_BOTH_25TH_DEC_AND_7TH_JAN"))}
 if global.hat[8] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[8] = 1 {draw_text(32,704,loc(415))}
+if global.hat[8] = 1 {draw_text(32,704,loc("HOO_HOO_HOO"))}
 break;
 case(10):
-if global.hat[9] = -1 {draw_text(32,704,loc(416))}
+if global.hat[9] = -1 {draw_text(32,704,loc("AVAILABLE_IN_THE_SHOP_ON_HALLOWEEN"))}
 if global.hat[9] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[9] = 1 {draw_text(32,704,loc(417))}
+if global.hat[9] = 1 {draw_text(32,704,loc("HOW_DO_I_MAKE_WITCH_SOUNDS"))}
 break;
 case(11):
-if global.hat[10] = -1 {draw_text(32,704,loc(416))}
+if global.hat[10] = -1 {draw_text(32,704,loc("AVAILABLE_IN_THE_SHOP_ON_HALLOWEEN"))}
 if global.hat[10] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[10] = 1 {draw_text(32,704,loc(418))}
+if global.hat[10] = 1 {draw_text(32,704,loc("SCARY"))}
 break;
 case(12):
 if global.hat[11] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[11] = 1 {draw_text(32,704,loc(419))}
+if global.hat[11] = 1 {draw_text(32,704,loc("A_BASIC_BROWN_HAT"))}
 break;
 case(13):
 if global.hat[12] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[12] = 1 {draw_text(32,704,loc(420))}
+if global.hat[12] = 1 {draw_text(32,704,loc("A_BASIC_GRAY_HAT"))}
 break;
 case(14):
 if global.hat[13] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[13] = 1 {draw_text(32,704,loc(421))}
+if global.hat[13] = 1 {draw_text(32,704,loc("A_BASIC_WHITE_HAT"))}
 break;
 case(15):
 if global.hat[14] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[14] = 1 {draw_text(32,704,loc(422))}
+if global.hat[14] = 1 {draw_text(32,704,loc("USE_THIS_WHEN_THE_WEATHER_IS_TOO_HOT_OR_JUST_AS_A_COSMETIC"))}
 break;
 case(16):
 if global.hat[15] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[15] = 1 {draw_text(32,704,loc(423))}
+if global.hat[15] = 1 {draw_text(32,704,loc("IT_S_A_TRADITIONAL_RED_BLOCK"))}
 break;
 case(17):
 if global.hat[16] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[16] = 1 {draw_text(32,704,loc(424))}
+if global.hat[16] = 1 {draw_text(32,704,loc("IT_S_A_TRADITIONAL_YELLOW_BLOCK"))}
 break;
 case(18):
 if global.hat[17] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[17] = 1 {draw_text(32,704,loc(425))}
+if global.hat[17] = 1 {draw_text(32,704,loc("IT_S_A_TRADITIONAL_GREEN_BLOCK"))}
 break;
 case(19):
 if global.hat[18] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[18] = 1 {draw_text(32,704,loc(426))}
+if global.hat[18] = 1 {draw_text(32,704,loc("IT_S_A_TRADITIONAL_BLUE_BLOCK"))}
 break;
 case(20):
 if global.hat[19] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[19] = 1 {draw_text(32,704,loc(427))}
+if global.hat[19] = 1 {draw_text(32,704,loc("IT_S_A_TRADITIONAL_WHITE_BLOCK"))}
 break;
 case(21):
 if global.hat[20] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[20] = 1 {draw_text(32,704,loc(428))}
+if global.hat[20] = 1 {draw_text(32,704,loc("IT_S_A_TRADITIONAL_SPIKE"))}
 break;
 case(22):
 if global.hat[21] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[21] = 1 {draw_text(32,704,loc(429))}
+if global.hat[21] = 1 {draw_text(32,704,loc("IT_S_A_TRADITIONAL_INVISIBLE_SPIKE"))}
 break;
 case(23):
 if global.hat[22] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[22] = 1 {draw_text(32,704,loc(430))}
+if global.hat[22] = 1 {draw_text(32,704,loc("IT_S_A_TRADITIONAL_VERTICAL_MOVING_SPIKE"))}
 break;
 case(24):
 if global.hat[23] = 0 {draw_text(32,704,HATAVAILABLE)}
-if global.hat[23] = 1 {draw_text(32,704,loc(431))}
+if global.hat[23] = 1 {draw_text(32,704,loc("IT_S_A_TRADITIONAL_HORIZONTAL_MOVING_SPIKE"))}
 break;
 case(25):
 if global.hat[24] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[24] = 1 {	draw_text(32,704,loc(432))}
+if global.hat[24] = 1 {	draw_text(32,704,loc("HEXAGON"))}
 break;
 case(26):
 if global.hat[25] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[25] = 1 {	draw_text(32,704,loc(433))}
+if global.hat[25] = 1 {	draw_text(32,704,loc("LET_S_GET_THAT_BREAD_THO"))}
 break;
 case(27):
 if global.hat[26] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[26] = 1 {	draw_text(32,704,loc(434))}
+if global.hat[26] = 1 {	draw_text(32,704,loc("PROTECTS_YOU_FROM_RATATATATATATA"))}
 break;
 case(28):
 if global.hat[27] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[27] = 1 {	draw_text(32,704,loc(435))}
+if global.hat[27] = 1 {	draw_text(32,704,loc("I_HOPE_YOU_HAVE_SHURIKENS_AT_YOUR_DISPOSAL"))}
 break;
 case(29):
 if global.hat[28] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[28] = 1 {	draw_text(32,704,loc(436))}
+if global.hat[28] = 1 {	draw_text(32,704,loc("THIS_IS_A_COZY_RED_BEANIE"))}
 break;
 case(30):
 if global.hat[29] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[29] = 1 {	draw_text(32,704,loc(437))}
+if global.hat[29] = 1 {	draw_text(32,704,loc("THIS_IS_A_COZY_YELLOW_BEANIE"))}
 break;
 case(31):
 if global.hat[30] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[30] = 1 {	draw_text(32,704,loc(438))}
+if global.hat[30] = 1 {	draw_text(32,704,loc("THIS_IS_A_COZY_GREEN_BEANIE"))}
 break;
 case(32):
 if global.hat[31] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[31] = 1 {	draw_text(32,704,loc(439))}
+if global.hat[31] = 1 {	draw_text(32,704,loc("THIS_IS_A_COZY_BLUE_BEANIE"))}
 break;
 case(33):
 if global.hat[32] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[32] = 1 {	draw_text(32,704,loc(601))}
+if global.hat[32] = 1 {	draw_text(32,704,loc("THIS_IS_A_COZY_WHITE_BEANIE"))}
 break;
 case(34):
 if global.hat[33] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[33] = 1 {	draw_text(32,704,loc(587))}
+if global.hat[33] = 1 {	draw_text(32,704,loc("CAPTAINS_ONLY"))}
 break;
 case(35):
 if global.hat[34] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[34] = 1 {	draw_text(32,704,loc(595))}
+if global.hat[34] = 1 {	draw_text(32,704,loc("A_CUTE_BOWTIE"))}
 break;
 case(36):
 if global.hat[35] = -1 {	draw_text(32,704,"Beat the game to unlock this hat!")}
 if global.hat[35] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[35] = 1 {	draw_text(32,704,loc(596))}
+if global.hat[35] = 1 {	draw_text(32,704,loc("AFTER_KING_S_DEFEAT_HIS_CROWN_WAS_SOLD_TO_YOU_WEAR_IT_WITH_P"))}
 break;
 case(37):
 if global.hat[36] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[36] = 1 {	draw_text(32,704,loc(600))}
+if global.hat[36] = 1 {	draw_text(32,704,loc("WHY_DOES_THIS_EXIST"))}
 break;
 case(38):
 if global.hat[37] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[37] = 1 {	draw_text(32,704,loc(603))}
+if global.hat[37] = 1 {	draw_text(32,704,loc("FOR_COMRADES_FROM_THE_GLORY_DAYS"))}
 break;
 case(39):
 if global.hat[38] = 0 {	draw_text(32,704,HATAVAILABLE)}
@@ -418,11 +418,11 @@ if global.hat[46] = 1 {	draw_text(32,704,"If only you could fly.") }
 break;
 case(48):
 if global.hat[47] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[47] = 1 {	draw_text_scribble(32,704,"[wave]"+loc(648)) }
+if global.hat[47] = 1 {	draw_text_scribble(32,704,"[wave]"+loc("NEVER_FORGOTTEN")) }
 break;
 case(49):
 if global.hat[48] = 0 {	draw_text(32,704,HATAVAILABLE)}
-if global.hat[48] = 1 {	draw_text_scribble(32,704,loc(647)) }
+if global.hat[48] = 1 {	draw_text_scribble(32,704,loc("R_PLACE_WAS_SOMETHING_SPECIAL_WASN_T_IT")) }
 break;
 case(50):
 if global.hat[49] = 0 {	draw_text(32,704,HATAVAILABLE)}
@@ -470,18 +470,18 @@ break;
 
 case(3): //ITEMS
 switch(global.skininfo) {
-case(1): draw_text(32,704,loc(626)) break;
+case(1): draw_text(32,704,loc("UNEQUIP_A_ITEM")) break;
 case(2):
 if global.item[1] = 0 {	draw_text(32,704,CALENDARITEMUNLOCK)}
-if global.item[1] = 1 {	draw_text(32,704,loc(627)) }
+if global.item[1] = 1 {	draw_text(32,704,loc("PAINT_WITH_YOUR_PAINTBRUSH")) }
 break;
 case(3):
 if global.item[2] = 0 {	draw_text(32,704,CALENDARITEMUNLOCK)}
-if global.item[2] = 1 {	draw_text(32,704,loc(628)) }
+if global.item[2] = 1 {	draw_text(32,704,loc("GIVE_THIS_TO_SOMEONE_YOU_LIKE")) }
 break;
 case(4):
 if global.item[3] = 0 {	draw_text(32,704,CALENDARITEMUNLOCK)}
-if global.item[3] = 1 {	draw_text(32,704,loc(629)) }
+if global.item[3] = 1 {	draw_text(32,704,loc("WE_SHALL_DEFEND_OURSELVES")) }
 break;
 }
 break;

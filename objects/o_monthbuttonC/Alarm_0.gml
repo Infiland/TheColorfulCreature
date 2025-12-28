@@ -13,30 +13,30 @@ locked = 1
 }*/
 
 switch(month) {
-default: text = loc(318) break;
-case(2): text = loc(319)
+default: text = loc("JANUARY") break;
+case(2): text = loc("FEBRUARY")
 xscale = 0.73
 yscale = 0.73
 break;
-case(3): text = loc(320) break;
-case(4): text = loc(321) break;
-case(5): text = loc(322) break;
-case(6): text = loc(323) break;
-case(7): text = loc(324) break
-case(8): text = loc(325) break;
-case(9): text = loc(326)
+case(3): text = loc("MARCH") break;
+case(4): text = loc("APRIL") break;
+case(5): text = loc("MAY") break;
+case(6): text = loc("JUNE") break;
+case(7): text = loc("JULY") break
+case(8): text = loc("AUGUST") break;
+case(9): text = loc("SEPTEMBER")
 xscale = 0.63
 yscale = 0.63
 break;
-case(10): text = loc(327)
+case(10): text = loc("OCTOBER")
 xscale = 0.75
 yscale = 0.75
 break;
-case(11): text = loc(328)
+case(11): text = loc("NOVEMBER")
 xscale = 0.65
 yscale = 0.65
 break;
-case(12): text = loc(329)
+case(12): text = loc("DECEMBER")
 xscale = 0.65
 yscale = 0.65
 break;

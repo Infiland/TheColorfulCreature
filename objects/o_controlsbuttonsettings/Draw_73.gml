@@ -6,22 +6,22 @@ draw_set_alpha(1)
 if ischanging = true { draw_set_color(c_yellow) }
 
 switch(controls) {
-case(0): var txtr = loc(18) //RIGHT
+case(0): var txtr = loc("MOVE_RIGHT") //RIGHT
 draw_text(x,y+50,string(txtr))
 controlschoose = global.controlsmoveright break;
-case(1): var txtl = loc(19) //LEFT
+case(1): var txtl = loc("MOVE_LEFT") //LEFT
 draw_text(x,y+50,string(txtl))
 controlschoose = global.controlsmoveleft break;
-case(2): var txtj = loc(20) //JUMP
+case(2): var txtj = loc("JUMP") //JUMP
 draw_text(x,y+50,string(txtj))
 controlschoose = global.controlsjump break;
-case(3): var txti = loc(21) //INTERACT
+case(3): var txti = loc("INTERACT") //INTERACT
 draw_text(x,y+50,string(txti))
 controlschoose = global.controlsinteract break;
-case(4): var txtsl = loc(22) //INTERACT
+case(4): var txtsl = loc("SKIP_LEVEL") //INTERACT
 draw_text(x,y+50,string(txtsl))
 controlschoose = global.controlsskiplevel break;
-case(5): var txtr = loc(23) //INTERACT
+case(5): var txtr = loc("RESTART") //INTERACT
 draw_text(x,y+50,string(txtr))
 controlschoose = global.controlsrestart break;
 }

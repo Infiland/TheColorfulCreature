@@ -40,7 +40,7 @@ draw_set_halign(fa_left)
 if nexttext = 1 { deaths = 0 }
 if nexttext > 0 {
 x1 = lerp(x1,0,0.05 * (60 / global.maxfps))
-text = loc(664) + " " + string(global.time)
+text = loc("TIME") + " " + string(global.time)
 for(textlayer = 0;textlayer < 5;textlayer++) {
 draw_set_color(make_color_rgb(100 + 32 * textlayer,100 + 32 * textlayer,100 + 32 * textlayer))
 draw_text((500 - x1) + ((changex*dist) * textlayer),90 + ((changey*dist) * textlayer),text)

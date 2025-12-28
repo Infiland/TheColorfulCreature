@@ -4,8 +4,8 @@ draw_set_font(global.gamemodefont)
 draw_set_alpha(1)
 draw_set_color(c_white)
 draw_set_halign(fa_center)
-draw_text(512,100,loc(134))
-draw_text(512,300,loc(65)+".\n"+ loc(135))
+draw_text(512,100,loc("CHANGE_DIAMOND_TIME"))
+draw_text(512,300,loc("PRESS_ENTER_WHEN_YOU_ARE_DONE")+".\n"+ loc("HOLD_LEFT_RIGHT_ARROW_KEYS_TO_CHANGE"))
 draw_set_font(global.deathfont)
 if global.LESavedWinTime != 0 {
 draw_text(512,500,"Your Level Time: " + string(global.LESavedWinTime) + "\n(If you want this reset, just return to playmode again)")
@@ -16,9 +16,9 @@ image_xscale = 45.8
 image_yscale = 13.8
 }}
 } else {
-draw_text(512,500,loc(136) + "\n"+loc(137))
+draw_text(512,500,loc("BEAT_THE_LEVEL_LEGITIMATELY_TO_KNOW_YOUR_LEVEL_TIME") + "\n"+loc("WHICH_MIGHT_HELP_YOU_WITH_YOUR_DIAMOND_MEDAL_TIME"))
 }
-draw_text(512,650,loc(138))
+draw_text(512,650,loc("HOLD_SHIFT_TO_BE_MORE_PRECISE"))
 draw_set_halign(fa_left)
 draw_sprite_ext(s_medals,3,240,220,0.07,0.07,0,c_white,1)
 draw_set_color(c_yellow)

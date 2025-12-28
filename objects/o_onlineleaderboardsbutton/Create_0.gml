@@ -1,6 +1,6 @@
 /// @description Variables
 declarecustombutton()
-text = loc(39)
+text = loc("ONLINE_LEADERBOARDS")
 
 depth = -11
 

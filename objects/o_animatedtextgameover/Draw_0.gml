@@ -49,7 +49,7 @@ draw_set_halign(fa_center)
 if nexttext = 1 { deaths = 0 }
 if nexttext > 0 {
 x1 = lerp(x1,0,0.05 * (60 / global.maxfps))
-text = loc(664) + " " + string(global.time)
+text = loc("TIME") + " " + string(global.time)
 if global.workshop = 1 {
 scr_drawmedalendscreen()
 }
@@ -61,7 +61,7 @@ draw_text((500 - x1) + ((changex*dist) * textlayer),232 + ((changey*dist) * text
 if nexttext > 1 {
 x2 = lerp(x2,0,0.05 * (60 / global.maxfps))
 deaths = lerp(deaths,global.deaths,0.04 * (60 / global.maxfps))
-text = loc(614) + ": " + string_format(deaths,0,0)
+text = loc("LIVES_LOST") + ": " + string_format(deaths,0,0)
 for(textlayer = 0;textlayer < 5;textlayer++) {
 var col_red = 100 + (32 * textlayer)
 var col_green = (100 + 32 * textlayer) / (1 + (deaths / 6))
@@ -80,7 +80,7 @@ if global.endless = 1 {
 var col_red = 0
 var col_blue = 100 + (32 * textlayer)
 var col_green = 10 + (32 * textlayer)
-text = loc(661) + " " + string_format(levels,0,0)
+text = loc("LEVELS_BEATEN") + " " + string_format(levels,0,0)
 }
 
 } else {
@@ -102,12 +102,12 @@ text = ""
 switch(global.endlessrunmode) {
 case(1):
 if global.newendlesslevelhighscore < global.endlesslevel {
-text = loc(316)
+text = loc("NEW_HIGHSCORE")
 }
 break;
 case(2):
 if global.endlesslevelhighscore < global.endlesslevel {
-text = loc(316)
+text = loc("NEW_HIGHSCORE")
 }
 break;
 }}

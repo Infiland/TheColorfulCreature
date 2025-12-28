@@ -3,7 +3,7 @@ instance_destroy()
 }
 
 declarecustombutton()
-text = loc(2);
+text = loc("LOAD");
 
 var directory = directory_set("/Save Files/")
 if file_exists(directory + "SaveFile.sav") {

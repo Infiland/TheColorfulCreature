@@ -11,5 +11,5 @@ if os_type = os_android || os_type = os_gxgames {
 }
 
 if instance_exists(o_animatedtext) {
-o_animatedtext.text = loc(11)
+o_animatedtext.text = loc("CHANGE_CONTROLS")
 }

@@ -1,1 +1,1 @@
-text =  loc(580)
+text =  loc("KAIZO_CHALLENGE")

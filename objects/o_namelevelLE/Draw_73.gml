@@ -9,7 +9,7 @@ draw_rectangle_color(0,0,room_width,room_height,c_black,c_black,c_black,c_black,
 draw_set_font(global.gamemodefont)
 draw_set_alpha(1)
 draw_set_halign(fa_center)
-draw_text(camx+512,camy+100,loc(133))
+draw_text(camx+512,camy+100,loc("NAME_YOUR_LEVEL"))
 var directory = directory_set("/LevelEditor Files//" + text + "/")
 if !directory_exists(directory) {
 draw_set_color(c_lime)
@@ -19,8 +19,8 @@ if directory_exists(directory) {
 draw_set_color(c_white)
 draw_set_font(global.deathfont)
 if text != "" {
-draw_text(camx+512,camy+270,loc(141)) }} //warning this level exists
+draw_text(camx+512,camy+270,loc("WARNING_THIS_LEVEL_ALREADY_EXISTS_SAVING_YOUR_LEVEL_WILL_OVE")) }} //warning this level exists
 draw_set_color(c_white)
 draw_set_font(global.gamemodefont)
-draw_text(camx+512,camy+300,loc(65)+".\n"+loc(66))
+draw_text(camx+512,camy+300,loc("PRESS_ENTER_WHEN_YOU_ARE_DONE")+".\n"+loc("PRESS_ESC_TO_CANCEL"))
 draw_set_halign(fa_left)

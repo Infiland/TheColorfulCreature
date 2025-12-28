@@ -1,3 +1,3 @@
 declarecustombutton()
-text = loc(180)
+text = loc("BUY")
 getcredits = 1000

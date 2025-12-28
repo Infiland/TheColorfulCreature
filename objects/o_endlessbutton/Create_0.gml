@@ -1,6 +1,6 @@
 /// @description Variables
 declarecustombutton()
-text = loc(37)
+text = loc("ENDLESS_RUN")
 
 
 global.endlessrunmode = 0

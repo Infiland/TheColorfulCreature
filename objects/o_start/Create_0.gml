@@ -1,3 +1,3 @@
 /// @description Variables
 declarecustombutton()
-text = loc(1);
+text = loc("START");

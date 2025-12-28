@@ -11,11 +11,11 @@ var d = date_hour_span(date_create_datetime(global.calendarcurrentyear, global.c
 
 draw_set_font(global.deathfont)
 if newquests = 1 {
-draw_text_scribble(x,y+128,"[rainbow]" + loc(687))
+draw_text_scribble(x,y+128,"[rainbow]" + loc("NEW_QUESTS"))
 } else {
 	if num != 0 {
-		draw_text(x,y+128,string(num) + " " + loc(688))
+		draw_text(x,y+128,string(num) + " " + loc("QUESTS_LEFT"))
 	} else {
-		draw_text(x,y+128,loc(686) + " " + string_format(d,0,1) + "h")
+		draw_text(x,y+128,loc("COME_BACK_IN") + " " + string_format(d,0,1) + "h")
 	}
 }

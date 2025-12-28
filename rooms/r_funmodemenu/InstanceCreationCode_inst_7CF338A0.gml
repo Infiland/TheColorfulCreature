@@ -1,1 +1,1 @@
-text = loc(26)
+text = loc("FUN_MODE")

@@ -1,1 +1,1 @@
-text = loc(572)
+text = loc("BLIND_CHALLENGE")

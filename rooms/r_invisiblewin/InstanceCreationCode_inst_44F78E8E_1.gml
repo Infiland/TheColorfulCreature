@@ -1,1 +1,1 @@
-text = loc(602)
+text = loc("INVISIBLE_CHALLENGE")

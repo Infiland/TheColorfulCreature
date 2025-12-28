@@ -6,7 +6,7 @@ xscale = 0.5
 yscale = 0.5
 width = 3
 
-text = loc(7);
+text = loc("RETURN");
 
 ingame = false
 image_speed = 0;
@@ -17,7 +17,7 @@ if instance_exists(o_pausescreen) {
 vx = 0
 vy = 0
 
-text = loc(62)
+text = loc("GO_TO_MAIN_MENU")
 xscale = 0.3
 yscale = 0.3
 if instance_exists(o_smoothcamera) {

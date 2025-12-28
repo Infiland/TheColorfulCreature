@@ -1,1 +1,1 @@
-text = loc(578)
+text = loc("COMMUNITY_CHALLENGE")

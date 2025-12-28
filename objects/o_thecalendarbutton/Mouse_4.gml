@@ -18,7 +18,7 @@ global.creditscurrency -= floor(calendarcost)
 audio_play_sound(snd_cashsound,0,0)
 global.calendar2022unlock = 1
 locked = 0
-text = loc(317)
+text = loc("THE_CALENDAR")
 scr_savestats()
 scr_savecalendar()
 }}}}

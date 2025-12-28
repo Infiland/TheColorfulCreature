@@ -49,7 +49,7 @@ if (global.steam_is_available) {
 }
 
 // Set version for special cases
-if (global.moddedGameDir != "") { version = loc(677) } // MODDED VERSION
+if (global.moddedGameDir != "") { version = loc("MODDED_CLIENT") } // MODDED VERSION
 if (os_type == os_android) { version = "Android Version" } // ANDROID VERSION
 if (os_type == os_gxgames) { version = "Website Version" } // WEB VERSION
 

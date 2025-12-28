@@ -4,6 +4,6 @@ instance_destroy()
 }
 
 declarecustombutton()
-text = loc(608)
+text = loc("GET_FULL_VERSION")
 
 scr_loadsettings()

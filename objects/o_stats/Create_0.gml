@@ -1,2 +1,2 @@
 declarecustombutton()
-text = loc(3)
+text = loc("VIEW_STATISTICS")

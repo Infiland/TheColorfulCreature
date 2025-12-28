@@ -15,7 +15,7 @@ instance_destroy(o_onlineleaderboardsmini)
 instance_destroy(o_reloadleaderboardsbutton)
 instance_activate_object(o_CERSettings)
 if instance_exists(o_animatedtext) {
-o_animatedtext.text = loc(130)
+o_animatedtext.text = loc("CUSTOM_ENDLESS_RUN")
 }
 }
 window_set_cursor(cr_default)

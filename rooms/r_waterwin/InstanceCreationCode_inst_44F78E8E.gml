@@ -1,1 +1,1 @@
-text = loc(575)
+text = loc("WATER_CHALLENGE")

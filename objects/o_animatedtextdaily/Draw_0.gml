@@ -49,7 +49,7 @@ draw_set_halign(fa_center)
 if nexttext = 1 { deaths = 0 }
 if nexttext > 0 {
 x1 = lerp(x1,0,0.05 * (60 / global.maxfps))
-text = loc(664) + " " + string(global.time)
+text = loc("TIME") + " " + string(global.time)
 if global.workshop = 1 {
 scr_drawmedalendscreen()
 }

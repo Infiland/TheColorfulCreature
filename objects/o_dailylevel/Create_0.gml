@@ -6,7 +6,7 @@ declarecustombutton()
 	global.calendarcurrentday = current_day
 }*/
 
-text = loc(632)
+text = loc("DAILY_LEVEL")
 
 GooglePlayServices_Leaderboard_SubmitScore("CgkI36PRjvEQEAIQMQ",global.dailylevelhighstreak,"")
 xscale = 0.7

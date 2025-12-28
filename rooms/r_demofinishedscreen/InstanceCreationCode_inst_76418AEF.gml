@@ -1,1 +1,1 @@
-text = loc(610)
+text = loc("DEMO_OVER")

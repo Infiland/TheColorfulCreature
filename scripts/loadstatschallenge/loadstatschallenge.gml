@@ -49,7 +49,7 @@ function scr_challenge_def_from_map(_map, _is_custom) {
 	var _def = {};
 	_def.id = scr_challenge_map_get(_map, "id", -1);
 	_def.order = scr_challenge_map_get(_map, "order", -1);
-	_def.title_loc = scr_challenge_map_get(_map, "title_loc", 0);
+	_def.title_loc = scr_challenge_map_get(_map, "title_loc", "");
 	_def.title_text = scr_challenge_map_get(_map, "title_text", "");
 	_def.difficulty = scr_challenge_map_get(_map, "difficulty", 1);
 	_def.diamond_time = scr_challenge_map_get(_map, "diamond_time", 9999);
@@ -180,7 +180,7 @@ function scr_challenge_get_def(_id) {
 
 function scr_challenge_get_title(_def) {
 	if (is_undefined(_def)) return "";
-	if (_def.title_loc > 0) return loc(_def.title_loc);
+	if (is_string(_def.title_loc) && _def.title_loc != "") return loc(_def.title_loc);
 	if (_def.title_text != "") return _def.title_text;
 	return "Challenge " + string(_def.id);
 }
@@ -304,8 +304,8 @@ function scr_challenge_button_setup(_id) {
 	wincol = c_white;
 	medalsprite = 0;
 	depth = -10;
-	BESTTIME = loc(544) + ": ";
-	LEASTDEATHS = loc(543) + ": ";
+	BESTTIME = loc("BEST_TIME") + ": ";
+	LEASTDEATHS = loc("LEAST_DEATHS") + ": ";
 	alarm[0] = 1;
 
 	var _def = scr_challenge_get_def(_id);
@@ -327,8 +327,8 @@ function scr_challenge_button_setup(_id) {
 	depth = -10;
 	loadstatschallenge();
 	loadgradechallenge();
-	BESTTIME = loc(544) + ": ";
-	LEASTDEATHS = loc(543) + ": ";
+	BESTTIME = loc("BEST_TIME") + ": ";
+	LEASTDEATHS = loc("LEAST_DEATHS") + ": ";
 	alarm[0] = 1;
 }
 

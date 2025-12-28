@@ -1,1 +1,1 @@
-text = loc(581)
+text = loc("WORLD_SIX")

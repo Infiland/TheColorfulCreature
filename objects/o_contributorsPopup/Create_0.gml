@@ -33,5 +33,5 @@ for(var i=0; i < namecnt;i++) {
 }	
 
 if names == "" {
-	names = loc(561)
+	names = loc("SOMETHING_WENT_WRONG")
 }

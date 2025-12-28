@@ -13,13 +13,13 @@ var normal = instance_create(458,530,o_newcalendardifficulty)
 var hard = instance_create(582,530,o_newcalendardifficulty)
 with easy {
 	image_xscale = 21.6 difficulty = 1
-	image_yscale = 10 text = loc(673) //Easy
+	image_yscale = 10 text = loc("EASY") //Easy
 }
 with normal {
 	image_xscale = 21.6 difficulty = 2
-	image_yscale = 10 text = loc(545) //Normal
+	image_yscale = 10 text = loc("NORMAL_MEDAL") //Normal
 }
 with hard {
 	image_xscale = 21.6 difficulty = 3
-	image_yscale = 10 text = loc(674) //Hard
+	image_yscale = 10 text = loc("HARD") //Hard
 }

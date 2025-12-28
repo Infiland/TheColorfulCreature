@@ -8,10 +8,10 @@ if global.levelselect = 0 {
 if used = false {
 if crash != 6969 {
 draw_text(390,375,"Press [" + string(keyd) + "] to convert coins into credits.")
-} else { draw_text(390,375,loc(607)) }
+} else { draw_text(390,375,loc("I_WILL_CRASH_THE_GAME_MUAHAHAH_I_MEAN_WHAT")) }
 } else {
 draw_text(390,375,"Thanks for depositing your coins!")		
 }} else {
-	draw_text(390,375,loc(606))	
+	draw_text(390,375,loc("NICE_TRY_MAKING_INFINITE_MONEY"))	
 }
 }

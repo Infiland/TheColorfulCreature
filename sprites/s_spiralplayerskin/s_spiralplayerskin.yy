@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_spiralplayerskin",
   "bboxMode":0,
   "bbox_bottom":31,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"e4405291-22f4-45fb-ac57-3fb98bfd5cf7","name":"e4405291-22f4-45fb-ac57-3fb98bfd5cf7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e4405291-22f4-45fb-ac57-3fb98bfd5cf7","name":"e4405291-22f4-45fb-ac57-3fb98bfd5cf7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_gamepaused",
   "bboxMode":0,
   "bbox_bottom":199,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"e505c7d8-bfb8-4973-888c-9e2f2a4f3b8f","name":"e505c7d8-bfb8-4973-888c-9e2f2a4f3b8f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e505c7d8-bfb8-4973-888c-9e2f2a4f3b8f","name":"e505c7d8-bfb8-4973-888c-9e2f2a4f3b8f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_gordonplayerskin",
   "bboxMode":0,
   "bbox_bottom":31,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"976176c1-e5b0-4c45-b2e2-32d07e9b93d7","name":"976176c1-e5b0-4c45-b2e2-32d07e9b93d7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"976176c1-e5b0-4c45-b2e2-32d07e9b93d7","name":"976176c1-e5b0-4c45-b2e2-32d07e9b93d7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

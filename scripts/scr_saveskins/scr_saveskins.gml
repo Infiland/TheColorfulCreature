@@ -64,6 +64,8 @@ function scr_saveskins() {
 	ini_write_real("Skins","Burning Skin",global.skin[48]);
 	ini_write_real("Skins","Toilet Skin",global.skin[49]);
 	ini_write_real("Skins","Kratos Skin",global.skin[50]);
+	
+	ini_write_string("CustomSkin","Custom Skin",global.CUSTOMskin);
 	ini_close();
 
 	}

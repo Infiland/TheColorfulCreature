@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_hevsuitoutfit",
   "bboxMode":0,
   "bbox_bottom":31,
@@ -12,9 +12,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"bf13cade-4aa7-49bb-8aeb-6a91d0b4c28c","name":"bf13cade-4aa7-49bb-8aeb-6a91d0b4c28c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"627d6ae0-9e70-4b66-a106-3976fe5c496a","name":"627d6ae0-9e70-4b66-a106-3976fe5c496a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"4fe7dd11-3f36-4c90-83a1-8e16f9621427","name":"4fe7dd11-3f36-4c90-83a1-8e16f9621427","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"bf13cade-4aa7-49bb-8aeb-6a91d0b4c28c","name":"bf13cade-4aa7-49bb-8aeb-6a91d0b4c28c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"627d6ae0-9e70-4b66-a106-3976fe5c496a","name":"627d6ae0-9e70-4b66-a106-3976fe5c496a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"4fe7dd11-3f36-4c90-83a1-8e16f9621427","name":"4fe7dd11-3f36-4c90-83a1-8e16f9621427","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

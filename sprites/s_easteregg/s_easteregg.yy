@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_easteregg",
   "bboxMode":0,
   "bbox_bottom":49,
@@ -12,8 +12,8 @@
   "edgeFiltering":true,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"2879e53c-72b1-44f7-9ee1-2577e01ea9a3","name":"2879e53c-72b1-44f7-9ee1-2577e01ea9a3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"a75a7578-eb75-48b2-92c2-7c4338d0e56c","name":"a75a7578-eb75-48b2-92c2-7c4338d0e56c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"2879e53c-72b1-44f7-9ee1-2577e01ea9a3","name":"2879e53c-72b1-44f7-9ee1-2577e01ea9a3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a75a7578-eb75-48b2-92c2-7c4338d0e56c","name":"a75a7578-eb75-48b2-92c2-7c4338d0e56c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

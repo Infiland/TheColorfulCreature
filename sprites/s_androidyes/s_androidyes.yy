@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_androidyes",
   "bboxMode":0,
   "bbox_bottom":63,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"43233d83-7cc0-4bf0-8bb0-9c7fe15067fe","name":"43233d83-7cc0-4bf0-8bb0-9c7fe15067fe","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"43233d83-7cc0-4bf0-8bb0-9c7fe15067fe","name":"43233d83-7cc0-4bf0-8bb0-9c7fe15067fe","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

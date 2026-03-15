@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_friendleaderboardsettings",
   "bboxMode":0,
   "bbox_bottom":49,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"184ee1fb-8925-4d14-8ef3-a7f9f03f1522","name":"184ee1fb-8925-4d14-8ef3-a7f9f03f1522","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"43feea36-2168-43c0-92f3-017271ec17e7","name":"43feea36-2168-43c0-92f3-017271ec17e7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"184ee1fb-8925-4d14-8ef3-a7f9f03f1522","name":"184ee1fb-8925-4d14-8ef3-a7f9f03f1522","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"43feea36-2168-43c0-92f3-017271ec17e7","name":"43feea36-2168-43c0-92f3-017271ec17e7","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

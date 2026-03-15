@@ -1,15 +1,17 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v2",
   "%Name":"m_hammertime",
   "audioGroupId":{
     "name":"Music",
     "path":"audiogroups/Music",
   },
   "bitDepth":1,
-  "bitRate":192,
+  "channelFormat":1,
   "compression":1,
+  "compressionQuality":6,
   "conversionMode":0,
   "duration":192.0,
+  "exportDir":"",
   "name":"m_hammertime",
   "parent":{
     "name":"Music",
@@ -20,6 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"m_hammertime.wav",
-  "type":1,
   "volume":1.0,
 }

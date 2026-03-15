@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_customlevelstempbutton",
   "bboxMode":0,
   "bbox_bottom":89,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"19b1f6a9-fa62-4739-99fd-38c0ecb0c200","name":"19b1f6a9-fa62-4739-99fd-38c0ecb0c200","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"19b1f6a9-fa62-4739-99fd-38c0ecb0c200","name":"19b1f6a9-fa62-4739-99fd-38c0ecb0c200","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_commentarynodegame",
   "bboxMode":0,
   "bbox_bottom":29,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"2fa5af4a-6e3a-4036-a1ea-f7485da3135b","name":"2fa5af4a-6e3a-4036-a1ea-f7485da3135b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"2fa5af4a-6e3a-4036-a1ea-f7485da3135b","name":"2fa5af4a-6e3a-4036-a1ea-f7485da3135b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

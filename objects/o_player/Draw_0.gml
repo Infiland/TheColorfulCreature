@@ -26,6 +26,12 @@ if breath < 126 { draw_sprite(s_breathinghud,3,x,y-35) }
 if breath < 41 { draw_sprite(s_breathinghud,4,x-random_range(-3,3),y-random_range(32,38)) }
 
 //Skins
+if customskin = 1 {
+	draw_sprite_ext(sprite_index, image_index, x, y, skinxscale * image_xscale, skinyscale * image_yscale, image_angle, image_blend, image_alpha)
+	scr_hats()
+	scr_items()
+	exit
+}
 switch(global.skinselected) {
 default:
 draw_self()

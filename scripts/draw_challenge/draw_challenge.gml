@@ -18,8 +18,10 @@ global.challengescroll -= 12
 if global.challengescroll < 0 {
 global.challengescroll = 0	
 }
-if global.challengescroll > 600 {
-global.challengescroll = 500
+var _scroll_max = 500
+if variable_global_exists("challenge_scroll_max") { _scroll_max = global.challenge_scroll_max }
+if global.challengescroll > (_scroll_max + 100) {
+	global.challengescroll = _scroll_max
 }
 
 if os_type = os_android || os_type = os_gxgames {
@@ -49,7 +51,7 @@ draw_text(x-140,y-65,text)
  }
  
  if difficulty > 5 { draw_set_color(c_red) }
-	draw_text(x-140,y+10,loc(656))
+	draw_text(x-140,y+10,loc("DIFFICULTY"))
  
  draw_set_color(c_white)
 draw_set_alpha(1)

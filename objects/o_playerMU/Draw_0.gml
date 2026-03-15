@@ -16,6 +16,9 @@ draw_text(330,20 + (25 * (multiplayerplayer - 1)),"Ammo: Infinite! >:)")
 draw_set_color(c_white)
 
 //Skins
+if customskin = 1 {
+	draw_sprite_ext(sprite_index, image_index, x, y, skinxscale * image_xscale, skinyscale * image_yscale, image_angle, image_blend, image_alpha)
+} else {
 switch(multiplayerplayerskin) {
 default:
 draw_self()
@@ -113,6 +116,7 @@ if hsp < 0 { draw_sprite(s_fancyoutfit,1,x,y) }
 if hsp > 0 { draw_sprite(s_fancyoutfit,2,x,y) }
 break;
 }
+} //end custom skin else
 
 //Hats
 scr_hats()

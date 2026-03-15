@@ -1,5 +1,6 @@
 function directory_set(dir,save=0){
 var directory = ""
+if (!variable_global_exists("moddedGameDir")) { global.moddedGameDir = "" }
 if room = r_logointro { global.moddedGameDir = "" }
 //if global.moddedGameDir = undefined { global.moddedGameDir = "" }
 if save = 0 { directory += game_save_id }

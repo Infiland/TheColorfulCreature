@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_LEDiamondMedalTime",
   "bboxMode":0,
   "bbox_bottom":49,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"96691b25-1523-4530-ac7f-76be075d0512","name":"96691b25-1523-4530-ac7f-76be075d0512","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"60f52fbf-edf3-49a0-a743-67cdcce40845","name":"60f52fbf-edf3-49a0-a743-67cdcce40845","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"96691b25-1523-4530-ac7f-76be075d0512","name":"96691b25-1523-4530-ac7f-76be075d0512","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"60f52fbf-edf3-49a0-a743-67cdcce40845","name":"60f52fbf-edf3-49a0-a743-67cdcce40845","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

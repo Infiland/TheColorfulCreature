@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_maidskinbutton",
   "bboxMode":0,
   "bbox_bottom":103,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"e0b34e94-3596-4f81-9ce9-5e31d2a42bbb","name":"e0b34e94-3596-4f81-9ce9-5e31d2a42bbb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e0b34e94-3596-4f81-9ce9-5e31d2a42bbb","name":"e0b34e94-3596-4f81-9ce9-5e31d2a42bbb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

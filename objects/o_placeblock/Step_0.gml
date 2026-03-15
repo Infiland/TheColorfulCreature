@@ -59,7 +59,9 @@ global.canchange = true
 }
 break;
 case(3):
-if !instance_exists(o_waterleveleditorline) {instance_create(x,y,o_waterleveleditorline)}
+if global.LEMode = 1 {
+	if !instance_exists(o_waterleveleditorline) {instance_create(x,y,o_waterleveleditorline)}
+}
 break;
 }
 

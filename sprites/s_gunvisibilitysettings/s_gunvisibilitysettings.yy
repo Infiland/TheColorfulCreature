@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_gunvisibilitysettings",
   "bboxMode":0,
   "bbox_bottom":49,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"3df72165-7297-476e-91a7-bac447a57d3a","name":"3df72165-7297-476e-91a7-bac447a57d3a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"d9f61749-58f6-410c-bc51-7ad464514540","name":"d9f61749-58f6-410c-bc51-7ad464514540","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"3df72165-7297-476e-91a7-bac447a57d3a","name":"3df72165-7297-476e-91a7-bac447a57d3a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d9f61749-58f6-410c-bc51-7ad464514540","name":"d9f61749-58f6-410c-bc51-7ad464514540","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

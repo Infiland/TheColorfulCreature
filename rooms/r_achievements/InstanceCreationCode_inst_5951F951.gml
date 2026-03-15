@@ -1,2 +1,2 @@
 texty = 55
-text = loc(70)
+text = loc("ACHIEVEMENTS")

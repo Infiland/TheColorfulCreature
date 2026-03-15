@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_forsenEskinbutton",
   "bboxMode":0,
   "bbox_bottom":103,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"050d7a37-fbbc-4680-8217-fd1f35316e2e","name":"050d7a37-fbbc-4680-8217-fd1f35316e2e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"acc82de2-a50d-495d-a592-2e8d6cb86803","name":"acc82de2-a50d-495d-a592-2e8d6cb86803","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"050d7a37-fbbc-4680-8217-fd1f35316e2e","name":"050d7a37-fbbc-4680-8217-fd1f35316e2e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"acc82de2-a50d-495d-a592-2e8d6cb86803","name":"acc82de2-a50d-495d-a592-2e8d6cb86803","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

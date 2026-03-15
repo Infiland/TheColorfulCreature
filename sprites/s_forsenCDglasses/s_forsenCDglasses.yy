@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_forsenCDglasses",
   "bboxMode":0,
   "bbox_bottom":23,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"64776c81-edbb-4a9f-94e3-33d059fb565d","name":"64776c81-edbb-4a9f-94e3-33d059fb565d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"7bd7bbf4-3b35-4a60-8e5e-32f8dd1b806e","name":"7bd7bbf4-3b35-4a60-8e5e-32f8dd1b806e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"64776c81-edbb-4a9f-94e3-33d059fb565d","name":"64776c81-edbb-4a9f-94e3-33d059fb565d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7bd7bbf4-3b35-4a60-8e5e-32f8dd1b806e","name":"7bd7bbf4-3b35-4a60-8e5e-32f8dd1b806e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

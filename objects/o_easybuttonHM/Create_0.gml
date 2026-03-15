@@ -1,5 +1,5 @@
 /// @description Variables
 declarecustombutton()
-text = loc(29)
+text = loc("NORMAL_DIFFICULTY")
 
 image_speed = 0;

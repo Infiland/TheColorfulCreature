@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_redblockbricks",
   "bboxMode":2,
   "bbox_bottom":31,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"6cfaf336-dc9c-451c-a1d4-8b3ae52795f6","name":"6cfaf336-dc9c-451c-a1d4-8b3ae52795f6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6cfaf336-dc9c-451c-a1d4-8b3ae52795f6","name":"6cfaf336-dc9c-451c-a1d4-8b3ae52795f6","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

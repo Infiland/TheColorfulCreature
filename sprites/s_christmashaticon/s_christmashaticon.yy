@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_christmashaticon",
   "bboxMode":0,
   "bbox_bottom":103,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c3aaba25-92ce-44b2-a449-c2e1e8e5a690","name":"c3aaba25-92ce-44b2-a449-c2e1e8e5a690","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c3aaba25-92ce-44b2-a449-c2e1e8e5a690","name":"c3aaba25-92ce-44b2-a449-c2e1e8e5a690","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,0 +1,21 @@
+{
+    "id":  9,
+    "order":  9,
+    "title_loc":  "TUTORIAL_CHALLENGE",
+    "difficulty":  1,
+    "diamond_time":  36,
+    "unlock_type":  "none",
+    "reward_hat":  1,
+    "reward_hat_state":  0,
+    "reward_credits":  5,
+    "room":  "r_tutoriallvl1",
+    "music":  "m_heaven",
+    "achievement":  "TUTORIAL_CHALLENGE",
+    "leaderboard":  "Tutorial Challenge Time",
+    "leaderboard_mobile":  "CgkI36PRjvEQEAIQLg",
+    "save_key":  "Tutorial Challenge",
+    "time_var":  "tutorialchallengetime",
+    "deaths_var":  "tutorialchallengedeaths",
+    "win_room":  "r_tutorialwin",
+    "is_custom":  0
+}

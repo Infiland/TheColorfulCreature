@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_flyingcollision",
   "bboxMode":2,
   "bbox_bottom":24,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"7376a8a4-05e9-4bf2-ac60-033f4a7d4462","name":"7376a8a4-05e9-4bf2-ac60-033f4a7d4462","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"7376a8a4-05e9-4bf2-ac60-033f4a7d4462","name":"7376a8a4-05e9-4bf2-ac60-033f4a7d4462","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_bigcannonboss5_p2",
   "bboxMode":0,
   "bbox_bottom":39,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"74b67218-d1de-4b6a-8613-9d5b30cdde56","name":"74b67218-d1de-4b6a-8613-9d5b30cdde56","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"74b67218-d1de-4b6a-8613-9d5b30cdde56","name":"74b67218-d1de-4b6a-8613-9d5b30cdde56","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

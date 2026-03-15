@@ -47,7 +47,7 @@ draw_set_halign(fa_center)
 if nexttext = 1 { deaths = 0 }
 if nexttext > 0 {
 x1 = lerp(x1,0,0.05 * (60 / global.maxfps))
-text = loc(664) + " " + string(global.time)
+text = loc("TIME") + " " + string(global.time)
 scr_drawmedalendscreen()
 
 draw_set_font(global.completefont)
@@ -74,33 +74,33 @@ x3 = lerp(x3,0,0.05 * (60 / global.maxfps))
 for(textlayer = 0;textlayer < 5;textlayer++) {
 if global.cheats = 0 {
 if global.deaths < 50 { 
-	text = loc(313)
+	text = loc("MEDIOCRE")
 	var col_red = 100 + (32 * textlayer)
 	var col_green = 100 + (32 * textlayer)
 	var col_blue = 0
 	} else {
-	text = loc(314)
+	text = loc("TERRIBLE")
 var col_red = 100 + (32 * textlayer)
 var col_blue = 0
 var col_green = 0
 	}
-if global.deaths < 20 { text = loc(312)
+if global.deaths < 20 { text = loc("GOOD_JOB")
 	var col_red = 0
 	var col_green = 100 + (32 * textlayer)
 	var col_blue = 0
 	}
-if global.deaths < 5 { text = loc(311)
+if global.deaths < 5 { text = loc("EPIC")
 	var col_red = 100 + (32 * textlayer)
 	var col_green = 0
 	var col_blue = 100 + (32 * textlayer)
 	}
-if global.deaths = 0 { text = loc(310)
+if global.deaths = 0 { text = loc("PERFECT")
 	var col_red = 0
 	var col_green = 100 + (32 * textlayer)
 	var col_blue = 100 + (32 * textlayer)
 	}
 } else {
-text = loc(315)
+text = loc("CHEATS_WERE_ON")
 var col_red = 100 + (32 * textlayer)
 var col_blue = 0
 var col_green = 0
@@ -112,7 +112,7 @@ draw_text((500 - x3) + ((changex*dist) * textlayer),424 + ((changey*dist) * text
 if nexttext > 3 {
 if showhighscore = 1 {
 x4 = lerp(x4,0,0.05 * (60 / global.maxfps))
-text = loc(316)
+text = loc("NEW_HIGHSCORE")
 if colorchange = 0 {
 colorthingy = lerp(colorthingy,100,0.03 * (60 / global.maxfps))	
 if colorthingy > 99 { colorchange = 1 }

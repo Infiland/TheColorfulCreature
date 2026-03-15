@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_water",
   "bboxMode":2,
   "bbox_bottom":244,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":true,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"b73c0b82-4b4c-45f2-9808-9cf040c75297","name":"b73c0b82-4b4c-45f2-9808-9cf040c75297","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b73c0b82-4b4c-45f2-9808-9cf040c75297","name":"b73c0b82-4b4c-45f2-9808-9cf040c75297","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

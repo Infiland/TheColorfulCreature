@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_goldplayerskinbutton",
   "bboxMode":0,
   "bbox_bottom":103,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"2dd5459c-847c-4027-9c82-0984ac3ea25f","name":"2dd5459c-847c-4027-9c82-0984ac3ea25f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"2dd5459c-847c-4027-9c82-0984ac3ea25f","name":"2dd5459c-847c-4027-9c82-0984ac3ea25f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

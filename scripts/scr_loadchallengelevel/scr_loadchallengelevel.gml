@@ -1,10 +1,27 @@
 function scr_loadchallengelevel() {
+	var directory = "";
+	if (argument_count > 0 && argument0 != "") {
+		directory = argument0;
+	} else if (variable_global_exists("challenge_level_dir") && global.challenge_level_dir != "") {
+		directory = global.challenge_level_dir;
+	} else {
+		directory = "Lunar Base Challenge/1";
+	}
 
-var directory = program_directory + "//Challenges//Lunar Base Challenge//1/"
+	directory = string_replace_all(directory, "\\", "/");
+	if (string_pos(":", directory) = 0) {
+		var _base_dir = "";
+		if (variable_global_exists("challenge_base_dir")) _base_dir = global.challenge_base_dir;
+		if (_base_dir == "") _base_dir = scr_challenge_get_base_dir();
+		directory = _base_dir + directory;
+	}
+	if (string_copy(directory, string_length(directory), 1) != "/") {
+		directory += "/";
+	}
 
-//show_message(program_directory + "\n" + directory_exists(directory))
+	//show_message(program_directory + "\n" + directory_exists(directory))
 
-if directory_exists(directory) {
+	if directory_exists(directory) {
 	if (file_exists(directory + "OtherLevelEditor.sav")) {
 	ini_open(directory + "OtherLevelEditor.sav");
 	global.leveleditorstring = ini_read_string("Other LE","Text","");
@@ -54,13 +71,17 @@ if directory_exists(directory) {
 		if !instance_exists(o_smoothcamera) {
 			if instance_exists(o_player) {
 				instance_create(o_player.x,o_player.y,o_smoothcamera) 
+			} else if instance_exists(o_playerspawner) {
+				instance_create(o_playerspawner.x,o_playerspawner.y,o_smoothcamera)
+			} else {
+				instance_create(room_width/2,room_height/2,o_smoothcamera)
 			}
 		}	
 	}
 	
 	
-} else {
-game_restart()	
-}
+	} else {
+		game_restart()	
+	}
 
 }

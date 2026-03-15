@@ -1,4 +1,4 @@
-text = loc(317)
+text = loc("THE_CALENDAR")
 //text = "The Calendar"
 texty = 40
 

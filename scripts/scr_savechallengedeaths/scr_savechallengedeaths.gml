@@ -1,28 +1,20 @@
 function scr_savechallengedeaths() {
 	if global.cheats = 0 {
+		if (!variable_global_exists("challenge_defs")) return;
+		if (!ds_exists(global.challenge_deaths, ds_type_map)) global.challenge_deaths = ds_map_create();
 		
-	var directory = directory_set("//Save Files/")
-	
-	if (file_exists(directory + "ChallengeDeaths.sav")) file_delete(directory + "ChallengeDeaths.sav");
-	ini_open(directory + "ChallengeDeaths.sav");
-	ini_write_real("Challenges","Tutorial Challenge",global.tutorialchallengedeaths);
-	ini_write_real("Challenges","Ladder Challenge",global.ladderchallengedeaths);
-	ini_write_real("Challenges","Big Room Challenge",global.bigroomchallengedeaths);
-	ini_write_real("Challenges","Slippery Challenge",global.slipperychallengedeaths);
-	ini_write_real("Challenges","Blind Challenge",global.blindchallengedeaths);
-	ini_write_real("Challenges","Troop Challenge",global.troopchallengedeaths);
-	ini_write_real("Challenges","Speed Challenge",global.speedchallengedeaths);
-	ini_write_real("Challenges","Spike Challenge",global.spikechallengedeaths);
-	ini_write_real("Challenges","Kaizo Challenge",global.kaizochallengedeaths);
-	ini_write_real("Challenges","World 6 Challenge",global.world6challengedeaths);
-	ini_write_real("Challenges","Water Challenge",global.waterchallengedeaths);
-	ini_write_real("Challenges","Moving Challenge",global.movingchallengedeaths);
-	ini_write_real("Challenges","Community Challenge",global.communitychallengedeaths);
-	ini_write_real("Challenges","D.Jump Challenge",global.djumpchallengedeaths);
-	ini_write_real("Challenges","C.Spike Challenge",global.cspikechallengedeaths);
-	ini_write_real("Challenges","World 7 Challenge",global.world7challengedeaths);
-	ini_write_real("Challenges","Invisible Challenge",global.invisiblechallengedeaths);
-	ini_write_real("Challenges","Breakable Challenge",global.breakablechallengedeaths);
-	ini_close();
+		var directory = directory_set("//Save Files/")
+		
+		if (file_exists(directory + "ChallengeDeaths.sav")) file_delete(directory + "ChallengeDeaths.sav");
+		ini_open(directory + "ChallengeDeaths.sav");
+		var _keys = scr_map_keys(global.challenge_defs);
+		for (var i = 0; i < ds_list_size(_keys); i++) {
+			var _key = _keys[| i];
+			var _def = global.challenge_defs[? _key];
+			var _value = scr_challenge_get_deaths(_def.id);
+			ini_write_real("Challenges", _def.save_key, _value);
+		}
+		ds_list_destroy(_keys);
+		ini_close();
 	}
 }

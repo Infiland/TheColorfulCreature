@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_invisiblespikehaticon",
   "bboxMode":0,
   "bbox_bottom":103,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"4b660f8b-abf9-4ff6-ad04-d0298be7610b","name":"4b660f8b-abf9-4ff6-ad04-d0298be7610b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"4b660f8b-abf9-4ff6-ad04-d0298be7610b","name":"4b660f8b-abf9-4ff6-ad04-d0298be7610b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

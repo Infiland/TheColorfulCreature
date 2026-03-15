@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_leveleditorresizeblock",
   "bboxMode":0,
   "bbox_bottom":2,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"728a6af8-fbb7-4939-a61d-bf354bb3472f","name":"728a6af8-fbb7-4939-a61d-bf354bb3472f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"728a6af8-fbb7-4939-a61d-bf354bb3472f","name":"728a6af8-fbb7-4939-a61d-bf354bb3472f","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

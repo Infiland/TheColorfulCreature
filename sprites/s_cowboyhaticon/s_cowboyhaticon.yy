@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_cowboyhaticon",
   "bboxMode":0,
   "bbox_bottom":103,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"dbcd1340-12a7-4fc0-a77b-6b2c1d344a5b","name":"dbcd1340-12a7-4fc0-a77b-6b2c1d344a5b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"dbcd1340-12a7-4fc0-a77b-6b2c1d344a5b","name":"dbcd1340-12a7-4fc0-a77b-6b2c1d344a5b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

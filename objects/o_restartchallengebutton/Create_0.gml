@@ -1,6 +1,6 @@
 /// @description Variables
 declarecustombutton()
-text = loc(612)
+text = loc("RESTART_CHALLENGE")
 
 challenge = r_tutoriallvl1
 

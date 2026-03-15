@@ -5,9 +5,9 @@ x = 224
 if instance_number(o_webask) > 1 { instance_destroy() }
 
 url = ""
-text = loc(678) + " (Y/N)"
+text = loc("THIS_WILL_OPEN_YOUR_BROWSER_GO_TO_THE_PAGE") + " (Y/N)"
 if gamepad_is_connected(0) {
-text = loc(678) +" [s_xboxcontrollerscheme,5] / [s_xboxcontrollerscheme,7]"	
+text = loc("THIS_WILL_OPEN_YOUR_BROWSER_GO_TO_THE_PAGE") +" [s_xboxcontrollerscheme,5] / [s_xboxcontrollerscheme,7]"	
 }
 
 delay = 1

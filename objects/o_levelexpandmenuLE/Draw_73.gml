@@ -15,7 +15,7 @@ draw_text(centerx,propery+160,"Resize your level so you can make them big!")
 
 if previouswidth > sizewidth || previousheight > sizeheight {
 draw_set_color(c_red)
-draw_text_ext(centerx,propery+190,loc(141),20,700)
+draw_text_ext(centerx,propery+190,loc("WARNING_THIS_LEVEL_ALREADY_EXISTS_SAVING_YOUR_LEVEL_WILL_OVE"),20,700)
 }
 
 draw_set_color(c_white)

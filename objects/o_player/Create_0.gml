@@ -8,11 +8,25 @@ if os_type != os_gxgames {
 	scr_moddinghats(global.CUSTOMhat)
 }
 
+customskin = 0
+customskin_spr = -1
+skinxscale = 1
+skinyscale = 1
+if os_type != os_gxgames {
+	if global.CUSTOMskin != "" {
+		scr_moddingskins(global.CUSTOMskin)
+	}
+}
+
 if global.skinselected != 24 {
 sprite_set_offset(sprite_index,0,0)
 }
 
-if room = r_customlevelworkshop { global.time = 0 }
+if room = r_customlevelworkshop {
+	if (!variable_global_exists("workshopchallenge") || global.workshopchallenge != 1) {
+		global.time = 0
+	}
+}
 
 AdMob_Banner_Hide()
 

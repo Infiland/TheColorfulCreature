@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_toilettoiletoutfit",
   "bboxMode":0,
   "bbox_bottom":31,
@@ -12,9 +12,9 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"9898a401-5086-4a72-841c-d3e8be6dbd2e","name":"9898a401-5086-4a72-841c-d3e8be6dbd2e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"f2f8a852-834d-4b14-8c81-063d362b41ef","name":"f2f8a852-834d-4b14-8c81-063d362b41ef","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"3e2b3f60-ccea-4b4a-badc-fd24e7f57c9d","name":"3e2b3f60-ccea-4b4a-badc-fd24e7f57c9d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"9898a401-5086-4a72-841c-d3e8be6dbd2e","name":"9898a401-5086-4a72-841c-d3e8be6dbd2e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f2f8a852-834d-4b14-8c81-063d362b41ef","name":"f2f8a852-834d-4b14-8c81-063d362b41ef","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"3e2b3f60-ccea-4b4a-badc-fd24e7f57c9d","name":"3e2b3f60-ccea-4b4a-badc-fd24e7f57c9d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

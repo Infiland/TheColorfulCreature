@@ -1,8 +1,7 @@
 /// @description Init
 
 lang			= "english";
-translator		= ds_list_create();
-max_word		= 1000;	//just to stay safe
+translator		= ds_map_create();
 
 //set the starting language based on the operative system
 /* switch (os_get_language()){

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_redsushat",
   "bboxMode":0,
   "bbox_bottom":17,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"16dbfcf9-8508-4c8a-a2d8-f53eadbc366a","name":"16dbfcf9-8508-4c8a-a2d8-f53eadbc366a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"16dbfcf9-8508-4c8a-a2d8-f53eadbc366a","name":"16dbfcf9-8508-4c8a-a2d8-f53eadbc366a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

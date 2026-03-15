@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_ketchup",
   "bboxMode":0,
   "bbox_bottom":31,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"8370b32e-c19f-48ba-81c4-aa1d15f4981b","name":"8370b32e-c19f-48ba-81c4-aa1d15f4981b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8370b32e-c19f-48ba-81c4-aa1d15f4981b","name":"8370b32e-c19f-48ba-81c4-aa1d15f4981b","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

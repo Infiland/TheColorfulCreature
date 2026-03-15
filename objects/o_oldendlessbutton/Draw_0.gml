@@ -5,7 +5,7 @@ draw_set_halign(fa_left)
 if room = r_endlessrunmenu {
 if global.endlesslevelhighscore > 0 {
 draw_set_font(global.deathfont)
-draw_text(x,y+122,loc(38) + ": "+string(global.endlesslevelhighscore))
+draw_text(x,y+122,loc("HIGHSCORE") + ": "+string(global.endlesslevelhighscore))
 }}
 } else {
 draw_sprite_ext(s_lockedbutton,0,x,y,2.36,2.36,0,c_white,1)

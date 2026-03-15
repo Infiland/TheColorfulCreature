@@ -1,0 +1,23 @@
+{
+    "id":  6,
+    "order":  6,
+    "title_loc":  "SPEED_IS_KEY_CHALLENGE",
+    "difficulty":  3,
+    "diamond_time":  105,
+    "unlock_type":  "world",
+    "unlock_value":  3,
+    "reward_skins":  [
+                         16
+                     ],
+    "reward_credits":  30,
+    "room":  "r_speedlvl1",
+    "music":  "m_funmodelevels",
+    "demo_blocked":  1,
+    "achievement":  "SPEED_CHALLENGE",
+    "leaderboard":  "Speed Challenge Time",
+    "save_key":  "Speed Challenge",
+    "time_var":  "speedchallengetime",
+    "deaths_var":  "speedchallengedeaths",
+    "win_room":  "r_speedwin",
+    "is_custom":  0
+}

@@ -1,0 +1,23 @@
+{
+    "id":  10,
+    "order":  10,
+    "title_text":  "Spike Challenge",
+    "difficulty":  4,
+    "diamond_time":  135,
+    "unlock_type":  "world",
+    "unlock_value":  4,
+    "reward_skins":  [
+                         21
+                     ],
+    "reward_credits":  40,
+    "room":  "r_spikelvl1",
+    "music":  "m_basicsretro",
+    "demo_blocked":  1,
+    "achievement":  "SPIKE_CHALLENGE",
+    "leaderboard":  "Spike Challenge Time",
+    "save_key":  "Spike Challenge",
+    "time_var":  "spikechallengetime",
+    "deaths_var":  "spikechallengedeaths",
+    "win_room":  "r_spikewin",
+    "is_custom":  0
+}

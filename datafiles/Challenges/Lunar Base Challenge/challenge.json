@@ -1,0 +1,18 @@
+{
+  "id": 19,
+  "order": 19,
+  "title_text": "Lunar Base",
+  "difficulty": 4,
+  "diamond_time": 130,
+  "unlock_type": "world",
+  "unlock_value": 4,
+  "reward_skins": [49],
+  "reward_credits": 0,
+  "is_custom": 0,
+  "level_dir": "Lunar Base Challenge/1",
+  "level_dirs": ["Lunar Base Challenge/1"],
+  "music_mode": "leveleditor",
+  "win_room": "r_kaizowin",
+  "save_key": "Lunar Base Challenge",
+  "demo_blocked": 1
+}

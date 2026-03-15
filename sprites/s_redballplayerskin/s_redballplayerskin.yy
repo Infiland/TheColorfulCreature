@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_redballplayerskin",
   "bboxMode":2,
   "bbox_bottom":27,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c6cd7e9b-5902-484c-9f7f-86d8ed01298a","name":"c6cd7e9b-5902-484c-9f7f-86d8ed01298a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c6cd7e9b-5902-484c-9f7f-86d8ed01298a","name":"c6cd7e9b-5902-484c-9f7f-86d8ed01298a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

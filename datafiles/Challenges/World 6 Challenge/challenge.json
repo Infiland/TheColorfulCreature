@@ -1,0 +1,27 @@
+{
+    "id":  7,
+    "order":  7,
+    "title_loc":  "WORLD_SIX",
+    "difficulty":  5,
+    "diamond_time":  191.6,
+    "unlock_type":  "world",
+    "unlock_value":  5,
+    "reward_skins":  [
+                         17
+                     ],
+    "bonus_skins":  [
+                        18
+                    ],
+    "bonus_deaths_max":  25,
+    "reward_credits":  50,
+    "room":  "r_world6lvl1",
+    "music":  "m_world6",
+    "demo_blocked":  1,
+    "achievement":  "WORLD_6",
+    "leaderboard":  "World 6 Challenge Time",
+    "save_key":  "World 6 Challenge",
+    "time_var":  "world6challengetime",
+    "deaths_var":  "world6challengedeaths",
+    "win_room":  "r_world6win",
+    "is_custom":  0
+}

@@ -2,9 +2,13 @@ minselect = -4
 maxselect = 22
 scroll = 0
 userID = noone
-reloadleaderboards()
+avatar_draw_size = 16
+avatar_padding = 4
+avatar_request_size = steam_user_avatar_size_small
+steam_userid = array_create(100, noone)
+avatar_sprites = ds_map_create()
 
-function steam_image_create_sprite(l_img)
+steam_image_create_sprite = function(l_img)
 {
 	var l_dims = steam_image_get_size(l_img);
 	if (l_dims == undefined) 
@@ -30,11 +34,4 @@ function steam_image_create_sprite(l_img)
 	return l_sprite;
 }
 
-
-var av = steam_get_user_avatar(steam_get_user_steam_id(), steam_user_avatar_size_small);
-if (av != -1) 
-	avatar_sprite = steam_image_create_sprite(av);
-else 
-	avatar_sprite = -1;
-	
-alarm[0] = 1
+reloadleaderboards()

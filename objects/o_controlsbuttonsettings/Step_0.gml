@@ -1,10 +1,25 @@
 if global.choosesettings != 3 { 
 x = lerp(x,camera_get_view_x(view_camera[0])-256,0.2 * (60 / global.maxfps))
 	editcontrols = -1
+	global.gp_remap_listening = -1
 	}
 if global.choosesettings = 3 { x = lerp(x,camera_get_view_x(view_camera[0])+32,0.2 * (60 / global.maxfps)) }
 
 if global.choosesettings = 3 {
+	if (gamepad_is_connected(0)) {
+		// === CONTROLLER CONNECTED: only listen for gamepad buttons ===
+		if (editcontrols == controls) {
+			var _pressed = gamepad_remap_listen();
+			if (_pressed != -1) {
+				gamepad_remap_set(controls, _pressed);
+				ischanging = false;
+				editcontrols = -1;
+				scr_savesettings();
+				exit;
+			}
+		}
+	} else {
+	// === NO CONTROLLER: keyboard remap (original logic) ===
 	if keyboard_check_pressed(vk_anykey) and string_length(keyboard_string) < 2 {
 	controlschoose = keyboard_string
 	
@@ -46,5 +61,6 @@ if global.choosesettings = 3 {
 
 	ischanging = false
 	editcontrols = -1
-	}	
+	}
+	} // end else (no controller)
 }

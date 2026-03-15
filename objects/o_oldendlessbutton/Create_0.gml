@@ -1,5 +1,5 @@
 declarecustombutton()
-text = loc(131)
+text = loc("OLD_SCHOOL_ENDLESS_RUN")
 if global.oldERunlock = 0 {
 locked = 1
 }

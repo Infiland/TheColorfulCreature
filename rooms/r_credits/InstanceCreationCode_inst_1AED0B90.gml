@@ -1,1 +1,1 @@
-text = loc(4)
+text = loc("CREDITS")

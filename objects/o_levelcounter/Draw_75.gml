@@ -17,13 +17,13 @@ switch(global.endlessrunmode) {
 case(1):
 if global.newendlesslevelhighscore < global.endlesslevel {
 draw_set_color(c_yellow)
-draw_text(70 + string_width(global.endlesslevel),660,loc(316))	
+draw_text(70 + string_width(global.endlesslevel),660,loc("NEW_HIGHSCORE"))	
 }
 break;
 case(2):
 if global.endlesslevelhighscore < global.endlesslevel {
 draw_set_color(c_yellow)
-draw_text(70 + string_width(global.endlesslevel),660,loc(316))	
+draw_text(70 + string_width(global.endlesslevel),660,loc("NEW_HIGHSCORE"))	
 }
 break;
 }

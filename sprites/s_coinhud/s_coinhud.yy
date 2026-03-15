@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_coinhud",
   "bboxMode":0,
   "bbox_bottom":97,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c78d8a3a-22ab-40f8-92c7-c0015a71e613","name":"c78d8a3a-22ab-40f8-92c7-c0015a71e613","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c78d8a3a-22ab-40f8-92c7-c0015a71e613","name":"c78d8a3a-22ab-40f8-92c7-c0015a71e613","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

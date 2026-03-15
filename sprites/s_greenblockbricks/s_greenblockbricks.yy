@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_greenblockbricks",
   "bboxMode":2,
   "bbox_bottom":31,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"f7fbff0f-1688-49e7-ac70-7a73ad3d0e57","name":"f7fbff0f-1688-49e7-ac70-7a73ad3d0e57","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f7fbff0f-1688-49e7-ac70-7a73ad3d0e57","name":"f7fbff0f-1688-49e7-ac70-7a73ad3d0e57","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

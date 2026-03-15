@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_LELiquids",
   "bboxMode":0,
   "bbox_bottom":49,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"2e7f7821-33ed-41aa-aff3-fa9f830c51ef","name":"2e7f7821-33ed-41aa-aff3-fa9f830c51ef","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"1f04f484-751f-4f18-8f41-2d79b092a58d","name":"1f04f484-751f-4f18-8f41-2d79b092a58d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"2e7f7821-33ed-41aa-aff3-fa9f830c51ef","name":"2e7f7821-33ed-41aa-aff3-fa9f830c51ef","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"1f04f484-751f-4f18-8f41-2d79b092a58d","name":"1f04f484-751f-4f18-8f41-2d79b092a58d","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

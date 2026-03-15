@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_bluebeaniehaticon",
   "bboxMode":0,
   "bbox_bottom":103,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"e283ca6b-f9bb-44f8-9a2e-270232c55fb9","name":"e283ca6b-f9bb-44f8-9a2e-270232c55fb9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"e283ca6b-f9bb-44f8-9a2e-270232c55fb9","name":"e283ca6b-f9bb-44f8-9a2e-270232c55fb9","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

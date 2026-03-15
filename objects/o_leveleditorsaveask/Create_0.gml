@@ -1,3 +1,3 @@
 y = -64
 x = 224
-text = loc(691) + " (Y/N)"
+text = loc("DO_YOU_WANT_TO_SAVE_A_LEVEL_BEFORE_QUITTING") + " (Y/N)"

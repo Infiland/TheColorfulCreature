@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_samuraihat",
   "bboxMode":0,
   "bbox_bottom":10,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"8bc85bca-0a0e-490e-b7e0-4ebe49a00bd3","name":"8bc85bca-0a0e-490e-b7e0-4ebe49a00bd3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8bc85bca-0a0e-490e-b7e0-4ebe49a00bd3","name":"8bc85bca-0a0e-490e-b7e0-4ebe49a00bd3","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

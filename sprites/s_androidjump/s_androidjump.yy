@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_androidjump",
   "bboxMode":0,
   "bbox_bottom":127,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"5c09e3c6-3a3a-41e1-af6e-aa41b19400f5","name":"5c09e3c6-3a3a-41e1-af6e-aa41b19400f5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"ff15e5a2-cb29-4848-a97a-03740c95b748","name":"ff15e5a2-cb29-4848-a97a-03740c95b748","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"5c09e3c6-3a3a-41e1-af6e-aa41b19400f5","name":"5c09e3c6-3a3a-41e1-af6e-aa41b19400f5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ff15e5a2-cb29-4848-a97a-03740c95b748","name":"ff15e5a2-cb29-4848-a97a-03740c95b748","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

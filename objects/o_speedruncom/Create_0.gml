@@ -1,6 +1,6 @@
 /// @description Variables
 declarecustombutton()
-text = loc(144)
+text = loc("TCC_SPEEDRUNS")
 
 image_speed = 0;
 depth = -10000

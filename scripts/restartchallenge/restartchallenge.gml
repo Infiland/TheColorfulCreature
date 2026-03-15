@@ -1,27 +1,34 @@
 function restartchallenge(){
 if global.challenges = 1 {
-switch(global.currentchallenge) {
-default: challenge = r_tutoriallvl1 break;
-case(1): challenge = r_kaizolvl1 break;
-case(2): challenge = r_blindlvl1 break;
-case(3): challenge = r_bigroomlvl1 break;
-case(4): challenge = r_trooplvl1 break;
-case(5): challenge = r_slipperylvl1 break;
-case(6): challenge = r_speedlvl1 break;
-case(7): challenge = r_world6lvl1 break;
-case(8): challenge = r_ladderlvl1 break;
-//NO CHALLENGE 9, NOT A BUG!
-case(10): challenge = r_spikelvl1 break;
-case(11): challenge = r_waterlvl1 break;
-case(12): challenge = r_movinglvl1 break;
-case(13): challenge = r_communitylvl1 break;
-case(14): challenge = r_djlvl1 break;
-case(15): challenge = r_cslvl1 break;
-case(16): challenge = r_world7lvl1 break;
-case(17): challenge = r_invisiblelvl1 break;
-case(18): challenge = r_breakablelvl1 break;
-}
-resetgeneral()
-room_goto(challenge)
-audio_group_set_gain(Music,global.musicvolume,1000)
+	var _def = scr_challenge_get_def(global.currentchallenge);
+		if (!is_undefined(_def)) {
+			if (array_length(_def.level_dirs) > 0) {
+				var _idx = 0;
+				if (variable_global_exists("challenge_level_index")) _idx = global.challenge_level_index;
+				if (_idx < 0 || _idx >= array_length(_def.level_dirs)) _idx = 0;
+				scr_challenge_prepare_custom_level(_def, _def.level_dirs[_idx]);
+				room_goto(r_challengelevel);
+			} else if (array_length(_def.rooms) > 0) {
+				var _idx = 0;
+				if (variable_global_exists("challenge_room_index")) _idx = global.challenge_room_index;
+				if (_idx < 0 || _idx >= array_length(_def.rooms)) _idx = 0;
+				var _room_name = _def.rooms[_idx];
+				if (_room_name == "") {
+					for (var i = 0; i < array_length(_def.rooms); i++) {
+						if (_def.rooms[i] != "") {
+							_room_name = _def.rooms[i];
+							global.challenge_room_index = i;
+							break;
+						}
+					}
+				}
+				if (_room_name != "") {
+					room_goto(asset_get_index(_room_name));
+				}
+			} else if (_def.room != "") {
+				room_goto(asset_get_index(_def.room));
+			}
+			resetgeneral()
+			audio_group_set_gain(Music,global.musicvolume,1000)
+		}
 }}

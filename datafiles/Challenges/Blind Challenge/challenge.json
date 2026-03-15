@@ -1,0 +1,23 @@
+{
+    "id":  2,
+    "order":  2,
+    "title_loc":  "I_CANNOT_SEE_ANYTHING",
+    "difficulty":  3,
+    "diamond_time":  194.2,
+    "unlock_type":  "world",
+    "unlock_value":  3,
+    "reward_skins":  [
+                         4
+                     ],
+    "reward_credits":  30,
+    "room":  "r_blindlvl1",
+    "music":  "m_funmodelevels4",
+    "demo_blocked":  1,
+    "achievement":  "BLIND_CHALLENGE",
+    "leaderboard":  "Blind Challenge Time",
+    "save_key":  "Blind Challenge",
+    "time_var":  "blindchallengetime",
+    "deaths_var":  "blindchallengedeaths",
+    "win_room":  "r_blindwin",
+    "is_custom":  0
+}

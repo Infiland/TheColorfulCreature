@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_redparticle",
   "bboxMode":0,
   "bbox_bottom":3,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"daa4959c-4af9-4bcd-9e54-ba06cb6d3347","name":"daa4959c-4af9-4bcd-9e54-ba06cb6d3347","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"daa4959c-4af9-4bcd-9e54-ba06cb6d3347","name":"daa4959c-4af9-4bcd-9e54-ba06cb6d3347","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

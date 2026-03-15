@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_bomberplayerskin",
   "bboxMode":0,
   "bbox_bottom":31,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"8348d940-ffd9-4dcc-8d5a-6f6e29857ced","name":"8348d940-ffd9-4dcc-8d5a-6f6e29857ced","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8348d940-ffd9-4dcc-8d5a-6f6e29857ced","name":"8348d940-ffd9-4dcc-8d5a-6f6e29857ced","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

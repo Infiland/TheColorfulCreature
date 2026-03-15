@@ -6,14 +6,14 @@ if os_is_network_connected() {
 if keyboard_check(vk_control) {
 if (global.playercount + global.playercountdemo) = 0 { 
 	draw_set_color(c_yellow)
-	draw_text(32,712,loc(633) + ": 0 :(") } else {
-draw_text(32,712,loc(633)+": " + string(global.playercount + global.playercountdemo)) }
+	draw_text(32,712,loc("CURRENT_NUMBER_OF_GAMERS") + ": 0 :(") } else {
+draw_text(32,712,loc("CURRENT_NUMBER_OF_GAMERS")+": " + string(global.playercount + global.playercountdemo)) }
 } else { draw_text_scribble(32,712,"[c_white][scale,0.8]Original Author (2018 - " + string(global.calendarcurrentyear) + ") - Infiland") }
 if (global.playercount + global.playercountdemo) > 1 {
 draw_text_scribble(32,732,"[rainbow][wave]CREDITS MULTIPLIER: " + string(global.creditsmultiplier) + "X")
 }} else {
 draw_set_color(c_red)
-draw_text(32,732,loc(635))	
+draw_text(32,732,loc("NOT_CONNECTED_TO_THE_INTERNET"))	
 }
 
 draw_set_color(c_white)
@@ -29,7 +29,7 @@ if mouse_x > 930 { //Profile Picture
 if mouse_x < 994 {
 if mouse_y > 352 {
 if mouse_y < 416 {
-drawinfoboxbadge(loc(636),c_lime,c_orange)
+drawinfoboxbadge(loc("THIS_IS_ME_D"),c_lime,c_orange)
 }}}}
 
 // Steam Avatar display would go here if needed

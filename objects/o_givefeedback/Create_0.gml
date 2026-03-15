@@ -1,6 +1,6 @@
 /// @description Variables
 declarecustombutton()
-text = loc(145)
+text = loc("GIVE_FEEDBACK")
 
 image_speed = 0;
 depth = -10000

@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_TimeAIcon7",
   "bboxMode":0,
   "bbox_bottom":255,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"a2d5164e-06ba-42d7-9a3a-3756c80dc659","name":"a2d5164e-06ba-42d7-9a3a-3756c80dc659","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"a2d5164e-06ba-42d7-9a3a-3756c80dc659","name":"a2d5164e-06ba-42d7-9a3a-3756c80dc659","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

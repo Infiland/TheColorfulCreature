@@ -1,0 +1,23 @@
+{
+    "id":  8,
+    "order":  8,
+    "title_loc":  "LADDER_CHALLENGE",
+    "difficulty":  1,
+    "diamond_time":  45,
+    "unlock_type":  "world",
+    "unlock_value":  1,
+    "reward_skins":  [
+                         19
+                     ],
+    "reward_credits":  7,
+    "room":  "r_ladderlvl1",
+    "music":  "m_owthespikes",
+    "achievement":  "LADDER_CHALLENGE",
+    "leaderboard":  "Ladder Challenge Time",
+    "leaderboard_mobile":  "CgkI36PRjvEQEAIQLw",
+    "save_key":  "Ladder Challenge",
+    "time_var":  "ladderchallengetime",
+    "deaths_var":  "ladderchallengedeaths",
+    "win_room":  "r_ladderwin",
+    "is_custom":  0
+}

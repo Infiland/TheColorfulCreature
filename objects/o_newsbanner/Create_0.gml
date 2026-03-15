@@ -2,7 +2,7 @@ y = -600
 image_alpha = 0
 depth = -15001
 req = 19 //Change this so that news can appear
-newsText = string_upper(loc(618))
+newsText = string_upper(loc("NEWS"))
 
 //text = "New Level Editor has been released! The UI was updated to make it easy for people to make levels. You can now make levels much more quickly, the UI makes more sense, and this was in development during February and March. This is still in 'Beta' so please give us feedback in the official discord server.\n\nHave fun!"
 //text = "Wow! We have released [rainbow][wave]SKINS[/] for the setting button! To gather them, participate in the [c_yellow]'Distance Cog'[/] event where you have to put your mouse on the setting button in order to rotate the settings cog enough to get it going! The more you spin it, the farther it goes. 1st place gets a golden cog, 2nd place silver, and 3rd bronze.\n\nHave Fun!"
@@ -24,7 +24,7 @@ text = "What's better than a soundtrack? [rainbow][wave]A SUPER SOUNDTRACK![/]\n
 
 if global.moddedGameDir != "" {
 text = "You are running a modded client! Save files will not be confilcted with the modded game. Have fun!\n\n[c_yellow]Mod Name: " + string(global.moddedGameDir)	
-newsText = string_upper(loc(677))
+newsText = string_upper(loc("MODDED_CLIENT"))
 sprite_index = s_moddedbanner
 } else {
 if req <= global.gamenews { instance_destroy() }	

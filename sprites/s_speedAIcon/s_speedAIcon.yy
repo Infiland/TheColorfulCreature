@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_speedAIcon",
   "bboxMode":0,
   "bbox_bottom":255,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"318e992f-32e9-4ff0-8b97-a3d34a6d5bd5","name":"318e992f-32e9-4ff0-8b97-a3d34a6d5bd5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"318e992f-32e9-4ff0-8b97-a3d34a6d5bd5","name":"318e992f-32e9-4ff0-8b97-a3d34a6d5bd5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

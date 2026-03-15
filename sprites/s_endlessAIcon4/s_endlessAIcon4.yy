@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_endlessAIcon4",
   "bboxMode":0,
   "bbox_bottom":255,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"3024b6bf-a463-44f6-9792-a83cdf2532e1","name":"3024b6bf-a463-44f6-9792-a83cdf2532e1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"3024b6bf-a463-44f6-9792-a83cdf2532e1","name":"3024b6bf-a463-44f6-9792-a83cdf2532e1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

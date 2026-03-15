@@ -1,0 +1,22 @@
+{
+    "id":  3,
+    "order":  3,
+    "title_loc":  "HUGE_LEVELS_BIG_ROOMS",
+    "difficulty":  2,
+    "diamond_time":  150,
+    "unlock_type":  "world",
+    "unlock_value":  2,
+    "reward_skins":  [
+                         10
+                     ],
+    "reward_credits":  20,
+    "room":  "r_bigroomlvl1",
+    "music":  "m_funmodelevels3",
+    "achievement":  "BIGROOM_CHALLENGE",
+    "leaderboard":  "Big Room Challenge Time",
+    "save_key":  "Big Room Challenge",
+    "time_var":  "bigroomchallengetime",
+    "deaths_var":  "bigroomchallengedeaths",
+    "win_room":  "r_bigroomwin",
+    "is_custom":  0
+}

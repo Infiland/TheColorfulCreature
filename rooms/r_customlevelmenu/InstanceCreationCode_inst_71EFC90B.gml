@@ -1,1 +1,1 @@
-text = loc(181)
+text = loc("PLAY_CUSTOM_LEVELS")

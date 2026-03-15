@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_breakableskinbutton",
   "bboxMode":0,
   "bbox_bottom":103,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"088b20ba-dfe4-4476-8ed8-44aa15ff6b28","name":"088b20ba-dfe4-4476-8ed8-44aa15ff6b28","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"088b20ba-dfe4-4476-8ed8-44aa15ff6b28","name":"088b20ba-dfe4-4476-8ed8-44aa15ff6b28","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

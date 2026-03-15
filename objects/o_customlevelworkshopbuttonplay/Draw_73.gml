@@ -22,12 +22,12 @@ draw_set_halign(fa_center)
 if mBanned = false {
 draw_text_ext(room_width/2,y+2,string(mTitle),20,300)
 //draw_text(x+5,y+22,"Made by: " + string(mName))
-draw_text(room_width/2,y+42,loc(653) +" " + string(ownername))
+draw_text(room_width/2,y+42,loc("MADE_BY") +" " + string(ownername))
 draw_text_scribble(room_width/2,y+62,"[s_likeemote]" + string(mLikes) + "  [s_dislikeemote]" + string(mDislikes))
 } else {
 draw_text(room_width/2,y+7,string(mTitle))
 draw_set_color(c_red)
-draw_text(room_width/2,y+32,loc(654))
+draw_text(room_width/2,y+32,loc("THIS_MAP_IS_BANNED_FROM_WORKSHOP"))
 }
 
 if mFeatured = true {
@@ -74,9 +74,9 @@ if time < dmedal { spr_num = 3 }
  }
  
  if difficulty = 0 {
-	 draw_text_transformed(x-55,y+70,loc(655),0.6,0.6,0)
+	 draw_text_transformed(x-55,y+70,loc("NOT_RATED_YET"),0.6,0.6,0)
  } else {
-	 draw_text_transformed(x-50,y+42,loc(656),0.8,0.8,0)
+	 draw_text_transformed(x-50,y+42,loc("DIFFICULTY"),0.8,0.8,0)
  }
  
  draw_set_color(c_white)

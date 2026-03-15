@@ -104,7 +104,7 @@ for (i2=0;i2<=17;i2++) {
 instance_create(x,y,o_animatedtext)
 with(o_animatedtext) {
 	texty = 40
-	text = loc(8);
+	text = loc("ADJUST_OPTIONS");
 }
 
 alarm[0] = 2

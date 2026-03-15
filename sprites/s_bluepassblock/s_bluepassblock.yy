@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_bluepassblock",
   "bboxMode":2,
   "bbox_bottom":24,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"4be19e8e-fb53-4cdd-9b6f-4c620c660693","name":"4be19e8e-fb53-4cdd-9b6f-4c620c660693","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"4be19e8e-fb53-4cdd-9b6f-4c620c660693","name":"4be19e8e-fb53-4cdd-9b6f-4c620c660693","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

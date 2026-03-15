@@ -190,20 +190,30 @@ if global.endless = 1 {room_goto(r_endlessrunmenu)
 	}
 }
 if room = r_skinmenu {
-if !instance_exists(o_choosecustomhats) {
+if !instance_exists(o_choosecustomhats) && !instance_exists(o_choosecustomskins) {
 room_goto(r_gamemode)	
-}}
+}
+if instance_exists(o_choosecustomskins) { instance_destroy(o_choosecustomskins) exit }
+}
 if room = r_challenges {
 room_goto(r_funmodemenu)
 }
 if room = r_customlevelmenu {
 room_goto(r_funmodemenu)
 }
-if room = r_workshoplevelwin {
-global.workshop = 0
+if room = r_workshopchallengemenu {
 room_goto(r_customlevelmenu)
-audio_stop_all()
-audio_play_sound(m_mainmenu,0,1)
+}
+if room = r_workshoplevelwin {
+	if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1) {
+		scr_workshopchallenge_abort();
+		room_goto(r_workshopchallengemenu)
+	} else {
+		global.workshop = 0
+		room_goto(r_customlevelmenu)
+	}
+	audio_stop_all()
+	audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_endlessrunmenu {
 if global.CESConfigure = 0 {room_goto(r_funmodemenu)}
@@ -212,7 +222,7 @@ instance_destroy(o_CERscroll) }
 else if global.CESConfigure = 1 {
 	global.CESConfigure = 0
 	if instance_exists(o_animatedtext) {
-	o_animatedtext.text = loc(37)
+	o_animatedtext.text = loc("ENDLESS_RUN")
 	}
 	instance_deactivate_object(o_CERSettings)
 	instance_activate_object(o_endlessbutton)
@@ -289,9 +299,14 @@ if global.challenges = 1 {
 room_goto(r_challenges)
 }
 if global.workshop = 1 {
-room_goto(r_customlevelmenu)
-audio_play_sound(m_mainmenu,0,1)
-global.workshop = 0
+	if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1) {
+		scr_workshopchallenge_abort();
+		room_goto(r_workshopchallengemenu)
+	} else {
+		room_goto(r_customlevelmenu)
+		global.workshop = 0
+	}
+	audio_play_sound(m_mainmenu,0,1)
 }
 }
 if global.chooseminigameMU = true { 

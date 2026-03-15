@@ -7,6 +7,11 @@ instance_destroy(o_deathcounter)
 instance_destroy(o_musicdistortion)
 instance_destroy(o_ammocounter)
 
+if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1) {
+	audio_play_sound(m_goodending,0,1)
+	exit;
+}
+
 increase_stat("customlevelcompleted","QUESTcustomlevel",1)
 
 if !steam_get_achievement("WORKSHOP_BEGINNER") { steam_set_achievement("WORKSHOP_BEGINNER") }

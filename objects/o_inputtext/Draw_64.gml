@@ -4,7 +4,7 @@ if global.writingmode = 1 {
 draw_set_color(c_yellow)
 draw_text_ext(10,84,text,32,1000)
 draw_set_color(c_white)
-draw_text(10,64,loc(140)+" "+loc(65))
+draw_text(10,64,loc("WRITING_MODE")+" "+loc("PRESS_ENTER_WHEN_YOU_ARE_DONE"))
 } else {
 draw_set_color(c_white)
 draw_text_scribble_ext(10,64,global.leveleditorstring,1000)

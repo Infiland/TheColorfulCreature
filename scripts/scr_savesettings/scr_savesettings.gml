@@ -36,6 +36,7 @@ function scr_savesettings() {
 	ini_write_real("Settings","Big Level Perf",global.biglevelperfsettings);
 	ini_write_real("Settings","Custom Splashes",global.customsplashessettings)
 	ini_write_real("Settings","Hats Autoscale",global.customhatautoscale)
+	ini_write_real("Settings","Skins Autoscale",global.customskinautoscale)
 	ini_write_real("Settings","Fullscreen",global.fullscreen);
 	ini_write_real("Settings","No Ads in Menu",global.noadsinmenusettings)
 	//Controls Config
@@ -46,6 +47,10 @@ function scr_savesettings() {
 	ini_write_string("Controls","Move Left",global.controlsmoveleft);
 	ini_write_string("Controls","Move Right",global.controlsmoveright);
 	ini_write_real("Controls","Controller Vibration",global.controllervibrationsettings)
+	//Online Multiplayer
+	ini_write_real("Settings","Online Multiplayer",global.onlinemultiplayersettings)
+	//Controller Button Bindings
+	gamepad_remap_save();
 	ini_close();
 
 

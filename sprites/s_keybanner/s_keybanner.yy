@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_keybanner",
   "bboxMode":0,
   "bbox_bottom":449,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"559f8e52-24bc-4c7c-a171-52ee67e68f73","name":"559f8e52-24bc-4c7c-a171-52ee67e68f73","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"559f8e52-24bc-4c7c-a171-52ee67e68f73","name":"559f8e52-24bc-4c7c-a171-52ee67e68f73","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

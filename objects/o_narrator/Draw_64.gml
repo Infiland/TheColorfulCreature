@@ -10,11 +10,11 @@ if room = r_stats {
 if room = r_localmultiplayermenu { 
 	draw_set_font(global.gamemodefont);
 	if global.multiplayerplayers = 1 {
-	draw_text(180,100,string_hash_to_newline(string(loc(47))+":"))
+	draw_text(180,100,string_hash_to_newline(string(loc("CHOOSE_AMOUNT_OF_PLAYERS"))+":"))
 	} else { 
 		if global.multiplayerplayers >= global.multiplayerplayerconfigchoose {
-		draw_text(310,100,string_hash_to_newline(string(loc(51))+" "+ string(global.multiplayerplayerconfigchoose))) } else {
-		draw_text(250,100,loc(55))	
+		draw_text(310,100,string_hash_to_newline(string(loc("CONFIG_PLAYER"))+" "+ string(global.multiplayerplayerconfigchoose))) } else {
+		draw_text(250,100,loc("CHOOSE_A_MINIGAME"))	
 		}
 	}
 	}	
@@ -26,11 +26,11 @@ draw_set_font(global.cool2font);
 if room = r_localmultiplayermenu { 
 	draw_set_font(global.gamemodefont);
 	if global.multiplayerplayers = 1 {
-	draw_text(180,100,string_hash_to_newline(string(loc(47))+":"))
+	draw_text(180,100,string_hash_to_newline(string(loc("CHOOSE_AMOUNT_OF_PLAYERS"))+":"))
 	} else { 
 		if global.multiplayerplayers >= global.multiplayerplayerconfigchoose {
-		draw_text(310,100,string_hash_to_newline(string(loc(51))+" "+ string(global.multiplayerplayerconfigchoose))) } else {
-		draw_text(250,100,loc(55))	
+		draw_text(310,100,string_hash_to_newline(string(loc("CONFIG_PLAYER"))+" "+ string(global.multiplayerplayerconfigchoose))) } else {
+		draw_text(250,100,loc("CHOOSE_A_MINIGAME"))	
 		}
 	}
 	}

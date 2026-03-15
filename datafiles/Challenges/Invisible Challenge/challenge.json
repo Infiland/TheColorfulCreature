@@ -1,0 +1,23 @@
+{
+    "id":  17,
+    "order":  17,
+    "title_loc":  "INVISIBLE_CHALLENGE",
+    "difficulty":  1,
+    "diamond_time":  60,
+    "unlock_type":  "world",
+    "unlock_value":  1,
+    "reward_skins":  [
+                         43
+                     ],
+    "reward_credits":  10,
+    "room":  "r_invisiblelvl1",
+    "music":  "m_hammertime",
+    "achievement":  "INVISIBLE_CHALLENGE",
+    "leaderboard":  "Invisible Challenge Time",
+    "leaderboard_mobile":  "CgkI36PRjvEQEAIQMA",
+    "save_key":  "Invisible Challenge",
+    "time_var":  "invisiblechallengetime",
+    "deaths_var":  "invisiblechallengedeaths",
+    "win_room":  "r_invisiblewin",
+    "is_custom":  0
+}

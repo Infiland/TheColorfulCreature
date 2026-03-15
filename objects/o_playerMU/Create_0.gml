@@ -6,6 +6,13 @@ ychange = 0
 rotation = 0
 lightbomberframe = 0
 customhat = 0
+curhat = s_graduationhat
+hatxscale = 1
+hatyscale = 1
+customskin = 0
+customskin_spr = -1
+skinxscale = 1
+skinyscale = 1
 zerogrv = 0
 
 audio_stop_sound(m_mainmenu);

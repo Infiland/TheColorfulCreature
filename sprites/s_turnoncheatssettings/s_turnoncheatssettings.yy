@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_turnoncheatssettings",
   "bboxMode":0,
   "bbox_bottom":49,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"8fdfd6b2-0614-42fd-aa8c-cd90b5f0ad7c","name":"8fdfd6b2-0614-42fd-aa8c-cd90b5f0ad7c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"d3723810-947d-4388-b0b6-e55a1d845aa1","name":"d3723810-947d-4388-b0b6-e55a1d845aa1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8fdfd6b2-0614-42fd-aa8c-cd90b5f0ad7c","name":"8fdfd6b2-0614-42fd-aa8c-cd90b5f0ad7c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d3723810-947d-4388-b0b6-e55a1d845aa1","name":"d3723810-947d-4388-b0b6-e55a1d845aa1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

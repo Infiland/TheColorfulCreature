@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_deathblocksecret5",
   "bboxMode":0,
   "bbox_bottom":15,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"ccbb234b-ae74-4751-b3c6-612b1d04bad5","name":"ccbb234b-ae74-4751-b3c6-612b1d04bad5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ccbb234b-ae74-4751-b3c6-612b1d04bad5","name":"ccbb234b-ae74-4751-b3c6-612b1d04bad5","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

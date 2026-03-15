@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_shootersleftLE",
   "bboxMode":1,
   "bbox_bottom":31,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"97d027d3-b838-4e5a-97cf-927fd47aa7fb","name":"97d027d3-b838-4e5a-97cf-927fd47aa7fb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"6ca5bcde-4416-47c8-9843-11352570d096","name":"6ca5bcde-4416-47c8-9843-11352570d096","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"97d027d3-b838-4e5a-97cf-927fd47aa7fb","name":"97d027d3-b838-4e5a-97cf-927fd47aa7fb","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6ca5bcde-4416-47c8-9843-11352570d096","name":"6ca5bcde-4416-47c8-9843-11352570d096","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

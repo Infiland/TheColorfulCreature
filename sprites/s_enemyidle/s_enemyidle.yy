@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_enemyidle",
   "bboxMode":2,
   "bbox_bottom":27,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c68ae2ba-7eda-4dff-9f20-4664a4c26847","name":"c68ae2ba-7eda-4dff-9f20-4664a4c26847","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c68ae2ba-7eda-4dff-9f20-4664a4c26847","name":"c68ae2ba-7eda-4dff-9f20-4664a4c26847","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

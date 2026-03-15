@@ -1,0 +1,23 @@
+{
+    "id":  13,
+    "order":  13,
+    "title_loc":  "COMMUNITY_CHALLENGE",
+    "difficulty":  4,
+    "diamond_time":  240,
+    "unlock_type":  "world",
+    "unlock_value":  4,
+    "reward_skins":  [
+                         31
+                     ],
+    "reward_credits":  40,
+    "room":  "r_communitylvl1",
+    "music":  "m_forthefans",
+    "demo_blocked":  1,
+    "achievement":  "COMMUNITY_CHALLENGE",
+    "leaderboard":  "Community Challenge Time",
+    "save_key":  "Community Challenge",
+    "time_var":  "communitychallengetime",
+    "deaths_var":  "communitychallengedeaths",
+    "win_room":  "r_communitywin",
+    "is_custom":  0
+}

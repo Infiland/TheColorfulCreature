@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_kratosEyes",
   "bboxMode":0,
   "bbox_bottom":18,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"d106a6c7-4ea2-41a5-b6cf-aaac945676a0","name":"d106a6c7-4ea2-41a5-b6cf-aaac945676a0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d106a6c7-4ea2-41a5-b6cf-aaac945676a0","name":"d106a6c7-4ea2-41a5-b6cf-aaac945676a0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

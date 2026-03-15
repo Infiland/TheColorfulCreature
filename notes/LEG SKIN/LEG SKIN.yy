@@ -1,5 +1,5 @@
 {
-  "$GMNotes":"",
+  "$GMNotes":"v1",
   "%Name":"LEG SKIN",
   "name":"LEG SKIN",
   "parent":{

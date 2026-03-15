@@ -1,1 +1,1 @@
-text = loc(28)
+text = loc("CHOOSE_DIFFICULTY")

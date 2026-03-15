@@ -1,2 +1,2 @@
 texty = 75
-text = loc(42)
+text = loc("CUSTOMIZE_THE_PLAYER")

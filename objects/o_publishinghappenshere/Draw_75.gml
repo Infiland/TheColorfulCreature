@@ -27,7 +27,7 @@ case(0.5): draw_text(512,250,"Uploading Level") break;
 case(0.6): draw_text(512,250,"Setting Tags") break;
 case(0.7): draw_text(512,250,"Finishing up!") break;
 case(1):  if updated = 0 {
-draw_text(512,250,loc(559)) } else {  draw_text(room_width/2,250,loc(621)) }
+draw_text(512,250,loc("LEVEL_PUBLISHED")) } else {  draw_text(room_width/2,250,loc("LEVEL_UPDATED")) }
 draw_text(512,310,"Publish ID: " + string(global.Publish_ID))
 draw_text(512,410,"The game is likely to crash after this point. Please stay in the game\nfor a minute, so no corruptions happen!")
 if !steam_get_achievement("PUBLISHER") { steam_set_achievement("PUBLISHER") }
@@ -36,13 +36,13 @@ break;
 case(2): draw_text(512,250,"Failed because you didn't accept the\nLegal Agreement!")
 timer -= 1
 break;
-case(3): draw_text(512,250,loc(588))
+case(3): draw_text(512,250,loc("YOU_NEED_TO_BE_CONNECTED_ON_STEAM"))
 timer -= 1
 break;
-case(4): draw_text(512,250,loc(589))
+case(4): draw_text(512,250,loc("UPLOADING_FAILED"))
 timer -= 1
 break;
-case(5): draw_text(512,250,loc(590))
+case(5): draw_text(512,250,loc("THUMBNAIL_MISSING"))
 timer -= 1
 break;
 case(6): draw_text(512,250,"Not yet son")

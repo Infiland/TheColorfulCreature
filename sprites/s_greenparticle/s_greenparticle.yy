@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_greenparticle",
   "bboxMode":0,
   "bbox_bottom":3,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"ec533cc5-ff30-4f8c-a75a-d5db3f32668e","name":"ec533cc5-ff30-4f8c-a75a-d5db3f32668e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"ec533cc5-ff30-4f8c-a75a-d5db3f32668e","name":"ec533cc5-ff30-4f8c-a75a-d5db3f32668e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

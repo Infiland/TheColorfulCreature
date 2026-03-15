@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_blueblockhat",
   "bboxMode":0,
   "bbox_bottom":23,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c03dc6f4-a94b-4ef1-8c42-bb5aece70f84","name":"c03dc6f4-a94b-4ef1-8c42-bb5aece70f84","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c03dc6f4-a94b-4ef1-8c42-bb5aece70f84","name":"c03dc6f4-a94b-4ef1-8c42-bb5aece70f84","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

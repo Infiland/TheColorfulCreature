@@ -1,6 +1,6 @@
 /// @description Variables
 declarecustombutton()
-text = loc(32)
+text = loc("RIDICULOUS")
 
 global.deaths = 0
 global.special = 0

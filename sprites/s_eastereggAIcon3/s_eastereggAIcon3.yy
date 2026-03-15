@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_eastereggAIcon3",
   "bboxMode":0,
   "bbox_bottom":255,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"acaa28c6-75aa-4a12-bad9-bed1ac090733","name":"acaa28c6-75aa-4a12-bad9-bed1ac090733","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"acaa28c6-75aa-4a12-bad9-bed1ac090733","name":"acaa28c6-75aa-4a12-bad9-bed1ac090733","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

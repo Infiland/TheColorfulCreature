@@ -1,6 +1,6 @@
 /// @description Variables
 declarecustombutton()
-text = loc(317)
+text = loc("THE_CALENDAR")
 
 lockedtext = "???????"
 if global.calendar2022unlock = 0 {

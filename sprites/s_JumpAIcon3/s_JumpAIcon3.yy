@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_JumpAIcon3",
   "bboxMode":0,
   "bbox_bottom":255,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"4f7e4ac1-24d8-44a9-9b02-9029d759d0ca","name":"4f7e4ac1-24d8-44a9-9b02-9029d759d0ca","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"4f7e4ac1-24d8-44a9-9b02-9029d759d0ca","name":"4f7e4ac1-24d8-44a9-9b02-9029d759d0ca","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

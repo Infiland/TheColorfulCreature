@@ -1,0 +1,22 @@
+{
+    "id":  14,
+    "order":  14,
+    "title_loc":  "DOUBLE_JUMP_CHALLENGE",
+    "difficulty":  2,
+    "diamond_time":  57.1,
+    "unlock_type":  "world",
+    "unlock_value":  2,
+    "reward_skins":  [
+                         37
+                     ],
+    "reward_credits":  20,
+    "room":  "r_djlvl1",
+    "music":  "m_stealth",
+    "achievement":  "DOUBLEJUMP_CHALLENGE",
+    "leaderboard":  "DJ Challenge Time",
+    "save_key":  "D.Jump Challenge",
+    "time_var":  "djumpchallengetime",
+    "deaths_var":  "djumpchallengedeaths",
+    "win_room":  "r_djwin",
+    "is_custom":  0
+}

@@ -1,15 +1,17 @@
 {
-  "$GMSound":"",
+  "$GMSound":"v2",
   "%Name":"m_dankmlgsong",
   "audioGroupId":{
     "name":"Music",
     "path":"audiogroups/Music",
   },
   "bitDepth":1,
-  "bitRate":320,
+  "channelFormat":1,
   "compression":1,
+  "compressionQuality":9,
   "conversionMode":0,
   "duration":142.44571,
+  "exportDir":"",
   "name":"m_dankmlgsong",
   "parent":{
     "name":"Music",
@@ -20,6 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":48000,
   "soundFile":"m_dankmlgsong.mp3",
-  "type":1,
   "volume":0.48,
 }

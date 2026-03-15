@@ -1,1 +1,1 @@
-text = loc(613)
+text = loc("GAME_OVER")

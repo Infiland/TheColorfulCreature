@@ -1,0 +1,23 @@
+{
+    "id":  15,
+    "order":  15,
+    "title_loc":  "CORRUPTED_SPIKE_CHALLENGE",
+    "difficulty":  4,
+    "diamond_time":  205,
+    "unlock_type":  "world",
+    "unlock_value":  4,
+    "reward_skins":  [
+                         40
+                     ],
+    "reward_credits":  40,
+    "room":  "r_cslvl1",
+    "music":  "m_somethingswrong",
+    "demo_blocked":  1,
+    "achievement":  "CORRUPTED_SPIKE_CHALLENGE",
+    "leaderboard":  "Corrupted Spike Challenge Time",
+    "save_key":  "C.Spike Challenge",
+    "time_var":  "cspikechallengetime",
+    "deaths_var":  "cspikechallengedeaths",
+    "win_room":  "r_cswin",
+    "is_custom":  0
+}

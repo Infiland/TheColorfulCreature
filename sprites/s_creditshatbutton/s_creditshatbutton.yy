@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_creditshatbutton",
   "bboxMode":0,
   "bbox_bottom":103,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"c2c637ca-3fb2-41c3-824a-eeebdd7a2aca","name":"c2c637ca-3fb2-41c3-824a-eeebdd7a2aca","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"c2c637ca-3fb2-41c3-824a-eeebdd7a2aca","name":"c2c637ca-3fb2-41c3-824a-eeebdd7a2aca","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

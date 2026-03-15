@@ -74,6 +74,7 @@ if !directory_exists(directory) {
 }
 
 global.CUSTOMhat = ""
+global.CUSTOMskin = ""
 
 global.challengescroll = 0
 global.foundcog = 0
@@ -187,17 +188,46 @@ global.leaderboardselect = 0
 global.hatmerchantdiscount = 1
 global.friendleaderboardsettings = 0
 global.customhatautoscale = 1
+global.customskinautoscale = 1
 global.controllervibrationsettings = 1
 global.fullscreen = 0
+global.onlinemultiplayersettings = 1  // Online multiplayer enabled by default
 
-//Workshop
-global.LEMode = 0
-global.workshopfolder = ""
-global.workshop = 0
+	//Workshop
+	global.LEMode = 0
+	global.workshopfolder = ""
+	global.workshop = 0
 
-global.world1time = 0
-global.world2time = 0
-global.world3time = 0
+	//Workshop Challenges
+	global.workshopchallenge = 0
+	global.workshopchallenge_title = ""
+	global.workshopchallenge_levels = []
+	global.workshopchallenge_index = 0
+	global.workshopchallenge_diamond_time = 0
+	global.workshopchallenge_difficulty = 0
+	global.workshopchallenge_signature = ""
+	global.workshopchallenge_beaten_signature = ""
+	global.workshopchallenge_is_draft = 0
+	global.workshopchallenge_draft = undefined
+	global.workshopchallenge_draft_title = ""
+	global.workshopchallenge_draft_level_ids = []
+	global.workshopchallenge_scroll = 0
+	global.workshopchallenge_scrollmax = 0
+	global.workshopchallenges_scroll = 0
+	global.workshopchallenges_scrollmax = 0
+
+	//Load workshop challenge progress
+	var _wc_dir = directory_set("//Save Files/")
+	if !directory_exists(_wc_dir) { directory_create(_wc_dir) }
+	if file_exists(_wc_dir + "WorkshopChallenges.sav") {
+		ini_open(_wc_dir + "WorkshopChallenges.sav")
+		global.workshopchallenge_beaten_signature = ini_read_string("Workshop Challenges", "Beaten Signature", "")
+		ini_close()
+	}
+
+	global.world1time = 0
+	global.world2time = 0
+	global.world3time = 0
 global.world4time = 0
 global.world5time = 0
 
@@ -291,6 +321,8 @@ global.controlsjump = "Z"
 global.controlsmoveright = "39"
 global.controlsmoveleft = "37"
 global.controlsrestart = "R"
+//Controller Bindings (defaults, then overwritten by scr_loadsettings)
+gamepad_remap_init()
 scr_loadsettings()
 game_set_speed(global.maxfps, gamespeed_fps);
 
@@ -353,6 +385,8 @@ global.breakablechallengedeaths = 999999
 global.lunarbasechallengedeaths = 999999
 
 global.currentchallenge = 0
+global.challenge_custom = false
+scr_challenges_init()
 scr_loadchallengetime()
 scr_loadchallengedeaths()
 
@@ -368,7 +402,21 @@ variable_global_set("CERL" + string(i), 1)
 variable_global_set("CERM" + string(i), 1)
 }
 
-//Multiplayer
+//Online Multiplayer
+net_init()  // Initialize Steam networking globals
+
+// Check for Steam cold-launch: +connect_lobby <lobby_id>
+global.net_launch_lobby = ""
+var _pcount = parameter_count()
+for (var _pi = 1; _pi <= _pcount; _pi++) {
+	if (parameter_string(_pi) == "+connect_lobby" && _pi < _pcount) {
+		global.net_launch_lobby = parameter_string(_pi + 1)
+		show_debug_message("[NET] Cold launch detected, lobby ID: " + global.net_launch_lobby)
+		break;
+	}
+}
+
+//Local Multiplayer
 global.multiplayerplayerconfigchoose = 1
 global.multiplayerplayers = 1
 global.multiplayerplayerskin[0] = 0
@@ -490,7 +538,7 @@ var directory = directory_set("/Custom/")
 		
 		if file_exists(game_save_id + "/Custom/README.txt") file_delete(game_save_id + "/Custom/README.txt");
 		var _f = file_text_open_write(game_save_id + "/Custom/README.txt");
-	    file_text_write_string(_f, string("You can customize hats! Add hats in the player hats folder, put .png images. Recommended resolution is 32x24 resolution! This is not finished and has limited functionality, hopefully the future versions will :)"));
+	    file_text_write_string(_f, string("You can customize hats! Add hats in the player hats folder, put .png images. Recommended resolution is 32x24 resolution! You can also add custom skins in the Player Skins folder. Custom skins must be a horizontal sprite strip with 9 frames (32x32 per frame = 288x32 total). Frame order: Idle, Right, Left, Fall, Fall-Right, Fall-Left, Jump, Jump-Right, Jump-Left."));
 		file_text_close(_f);
 			if !file_exists(game_save_id + "/Custom/Custom Splash Texts.txt") {
 		var _f = file_text_open_write(game_save_id + "/Custom/Custom Splash Texts.txt");

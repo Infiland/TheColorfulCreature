@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_forseneplayerskin",
   "bboxMode":2,
   "bbox_bottom":27,
@@ -12,8 +12,8 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"9d9ebbf1-2507-4084-9a7c-cf414d08722c","name":"9d9ebbf1-2507-4084-9a7c-cf414d08722c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"","%Name":"6b381691-29a7-444e-a35c-fce887781225","name":"6b381691-29a7-444e-a35c-fce887781225","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"9d9ebbf1-2507-4084-9a7c-cf414d08722c","name":"9d9ebbf1-2507-4084-9a7c-cf414d08722c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6b381691-29a7-444e-a35c-fce887781225","name":"6b381691-29a7-444e-a35c-fce887781225","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

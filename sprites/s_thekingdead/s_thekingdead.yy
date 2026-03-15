@@ -1,5 +1,5 @@
 {
-  "$GMSprite":"",
+  "$GMSprite":"v2",
   "%Name":"s_thekingdead",
   "bboxMode":2,
   "bbox_bottom":121,
@@ -12,7 +12,7 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"","%Name":"72cfa488-44d5-4ed3-96f3-f02e3fa87c45","name":"72cfa488-44d5-4ed3-96f3-f02e3fa87c45","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"72cfa488-44d5-4ed3-96f3-f02e3fa87c45","name":"72cfa488-44d5-4ed3-96f3-f02e3fa87c45","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,

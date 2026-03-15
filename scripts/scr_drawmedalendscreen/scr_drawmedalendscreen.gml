@@ -1,7 +1,9 @@
 function scr_drawmedalendscreen(){
 	
 if global.workshop = 1 {
-global.DiamondMedalTimeChallenge = global.LEDiamondMedalTime
+	if (!variable_global_exists("workshopchallenge") || global.workshopchallenge != 1) {
+		global.DiamondMedalTimeChallenge = global.LEDiamondMedalTime
+	}
 }
 var dmedal = global.DiamondMedalTimeChallenge
 	

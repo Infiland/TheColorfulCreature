@@ -1,0 +1,22 @@
+{
+    "id":  5,
+    "order":  5,
+    "title_loc":  "SLIPPERY_CHALLENGE",
+    "difficulty":  2,
+    "diamond_time":  90,
+    "unlock_type":  "world",
+    "unlock_value":  2,
+    "reward_skins":  [
+                         14
+                     ],
+    "reward_credits":  20,
+    "room":  "r_slipperylvl1",
+    "music":  "m_emptyambient",
+    "achievement":  "SLIPPERY_CHALLENGE",
+    "leaderboard":  "Slippery Challenge Time",
+    "save_key":  "Slippery Challenge",
+    "time_var":  "slipperychallengetime",
+    "deaths_var":  "slipperychallengedeaths",
+    "win_room":  "r_slipperywin",
+    "is_custom":  0
+}

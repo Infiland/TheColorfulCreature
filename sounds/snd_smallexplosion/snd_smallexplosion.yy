@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.347959,
+  "duration":0.3479592,
   "exportDir":"",
   "name":"snd_smallexplosion",
   "parent":{

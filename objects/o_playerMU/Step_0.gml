@@ -181,6 +181,9 @@ if key_right and key_left and vsp = 0 { image_index = 0} //Pressing left and rig
 if key_right { playermove = 1 }
 if key_left { playermove = -1 }
 //Colors (AND SKINS)
+if customskin = 1 {
+	sprite_index = customskin_spr
+} else {
 switch(multiplayerplayerskin) {
 case 0:
 if color = 0 {sprite_index = s_playerred}
@@ -461,6 +464,7 @@ sprite_index = s_smileyplayerskin
 scr_playerrbgnormalMU()
 break;
 }
+} //end custom skin else
 
 if color = 4 { 
 	if global.playerpar > 0 {

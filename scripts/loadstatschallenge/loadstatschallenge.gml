@@ -47,13 +47,18 @@ function scr_challenge_get_base_dir() {
 
 function scr_challenge_def_from_map(_map, _is_custom) {
 	var _def = {};
+	var _custom_override = scr_challenge_map_get(_map, "is_custom", undefined);
+	if (!is_undefined(_custom_override)) {
+		_is_custom = (_custom_override == true) || (_custom_override == 1);
+	}
 	_def.id = scr_challenge_map_get(_map, "id", -1);
 	_def.order = scr_challenge_map_get(_map, "order", -1);
-	_def.title_loc = scr_challenge_map_get(_map, "title_loc", "");
+	_def.title_loc = scr_challenge_map_get(_map, "title_loc", 0);
 	_def.title_text = scr_challenge_map_get(_map, "title_text", "");
 	_def.difficulty = scr_challenge_map_get(_map, "difficulty", 1);
 	_def.diamond_time = scr_challenge_map_get(_map, "diamond_time", 9999);
 	_def.room = scr_challenge_map_get(_map, "room", "");
+	_def.rooms = scr_challenge_list_to_array(scr_challenge_map_get(_map, "rooms", undefined));
 	_def.music = scr_challenge_map_get(_map, "music", "");
 	_def.music_mode = scr_challenge_map_get(_map, "music_mode", "asset");
 	_def.unlock_type = scr_challenge_map_get(_map, "unlock_type", "none");
@@ -77,12 +82,15 @@ function scr_challenge_def_from_map(_map, _is_custom) {
 	_def.deaths_var = scr_challenge_map_get(_map, "deaths_var", "");
 	_def.win_room = scr_challenge_map_get(_map, "win_room", "");
 	_def.level_dir = scr_challenge_map_get(_map, "level_dir", "");
+	_def.level_dirs = scr_challenge_list_to_array(scr_challenge_map_get(_map, "level_dirs", undefined));
+	if (array_length(_def.level_dirs) == 0 && _def.level_dir != "") _def.level_dirs = [_def.level_dir];
 	_def.is_custom = _is_custom;
 	_def.enabled = scr_challenge_map_get(_map, "enabled", 1);
 	return _def;
 }
 
-function scr_challenges_register(_def) {
+function scr_challenges_register(_def, _allow_override) {
+	if (argument_count < 2) _allow_override = false;
 	if (!variable_global_exists("challenge_next_id")) global.challenge_next_id = 1000;
 	if (_def.id == -1) {
 		_def.id = global.challenge_next_id;
@@ -90,19 +98,69 @@ function scr_challenges_register(_def) {
 	}
 	var _key = scr_challenge_key(_def.id);
 	if (ds_map_exists(global.challenge_defs, _key)) {
-		_def.id = global.challenge_next_id;
-		global.challenge_next_id += 1;
-		_key = scr_challenge_key(_def.id);
-	}
-	if (_def.save_key == "") {
-		if (_def.title_text != "") {
-			_def.save_key = _def.title_text;
-		} else {
-			_def.save_key = "Challenge " + string(_def.id);
+		if (_allow_override) {
+			ds_map_replace(global.challenge_defs, _key, _def);
+			if (ds_list_find_index(global.challenge_order, _def.id) < 0) {
+				ds_list_add(global.challenge_order, _def.id);
+			}
+			return;
+		}
+		while (ds_map_exists(global.challenge_defs, _key)) {
+			_def.id = global.challenge_next_id;
+			global.challenge_next_id += 1;
+			_key = scr_challenge_key(_def.id);
 		}
 	}
-	ds_map_set(global.challenge_defs, _key, _def);
-	ds_list_add(global.challenge_order, _def.id);
+		if (_def.save_key == "") {
+			if (_def.title_text != "") {
+				_def.save_key = _def.title_text;
+			} else {
+				_def.save_key = "Challenge " + string(_def.id);
+			}
+		}
+		ds_map_add(global.challenge_defs, _key, _def);
+		if (ds_list_find_index(global.challenge_order, _def.id) < 0) {
+			ds_list_add(global.challenge_order, _def.id);
+		}
+	}
+
+function scr_challenges_sort_order() {
+	if (!ds_exists(global.challenge_order, ds_type_list)) return;
+	var _count = ds_list_size(global.challenge_order);
+	if (_count <= 1) return;
+
+	var _items = array_create(_count);
+	for (var i = 0; i < _count; i++) {
+		var _id = global.challenge_order[| i];
+		var _order = 999999;
+		var _def = scr_challenge_get_def(_id);
+		if (!is_undefined(_def)) {
+			_order = _def.order;
+			if (_order < 0) _order = 999999;
+		}
+		_items[i] = { id: _id, order: _order, index: i };
+	}
+
+	for (var i = 1; i < _count; i++) {
+		var _key = _items[i];
+		var j = i - 1;
+		while (j >= 0) {
+			var _a = _items[j];
+			if (_a.order < _key.order) break;
+			if (_a.order == _key.order && _a.index <= _key.index) break;
+			_items[j + 1] = _a;
+			j -= 1;
+		}
+		_items[j + 1] = _key;
+	}
+
+	ds_list_clear(global.challenge_order);
+	for (var i = 0; i < _count; i++) {
+		var _id = _items[i].id;
+		if (ds_list_find_index(global.challenge_order, _id) < 0) {
+			ds_list_add(global.challenge_order, _id);
+		}
+	}
 }
 
 function scr_challenges_load_defs() {
@@ -115,7 +173,7 @@ function scr_challenges_load_defs() {
 			for (var i = 0; i < ds_list_size(_list); i++) {
 				var _map = _list[| i];
 				var _def = scr_challenge_def_from_map(_map, false);
-				scr_challenges_register(_def);
+				scr_challenges_register(_def, true);
 			}
 		}
 		ds_map_destroy(_data);
@@ -128,20 +186,25 @@ function scr_challenges_load_defs() {
 			if (file_exists(_custom_file)) {
 				var _custom_data = LoadJSONFromFile(_custom_file);
 				var _custom_def = scr_challenge_def_from_map(_custom_data, true);
-				if (_custom_def.level_dir == "") {
-					if (file_exists(_base_dir + _dir + "/1/LevelEditor.sav")) {
-						_custom_def.level_dir = _dir + "/1";
-					} else {
-						_custom_def.level_dir = _dir;
-					}
+			if (_custom_def.level_dir == "") {
+				if (file_exists(_base_dir + _dir + "/1/LevelEditor.sav")) {
+					_custom_def.level_dir = _dir + "/1";
+				} else if (file_exists(_base_dir + _dir + "/LevelEditor.sav")) {
+					_custom_def.level_dir = _dir;
 				}
-				scr_challenges_register(_custom_def);
+			}
+				if (array_length(_custom_def.level_dirs) == 0 && _custom_def.level_dir != "") {
+					_custom_def.level_dirs = [_custom_def.level_dir];
+				}
+				scr_challenges_register(_custom_def, _custom_def.is_custom != true);
 				ds_map_destroy(_custom_data);
 			}
 		}
 		_dir = file_find_next();
 	}
 	file_find_close();
+
+	scr_challenges_sort_order();
 }
 
 function scr_challenges_init() {
@@ -375,12 +438,15 @@ function scr_challenge_play_music(_def) {
 	}
 }
 
-function scr_challenge_prepare_custom_level(_def) {
-	global.challenge_level_dir = _def.level_dir;
-	var _base_dir = "";
-	if (variable_global_exists("challenge_base_dir")) _base_dir = global.challenge_base_dir;
-	if (_base_dir == "") _base_dir = scr_challenge_get_base_dir();
-	_base_dir += _def.level_dir + "/";
+	function scr_challenge_prepare_custom_level(_def, _level_dir) {
+		var _dir = _def.level_dir;
+		if (!is_undefined(_level_dir) && _level_dir != "") _dir = _level_dir;
+		global.challenge_level_dir = _dir;
+		global.LEMode = 2;
+		var _base_dir = "";
+		if (variable_global_exists("challenge_base_dir")) _base_dir = global.challenge_base_dir;
+		if (_base_dir == "") _base_dir = scr_challenge_get_base_dir();
+	_base_dir += _dir + "/";
 	if (file_exists(_base_dir + "OtherLevelEditor.sav")) {
 		ini_open(_base_dir + "OtherLevelEditor.sav");
 		global.LELevelWidthBlocks = ini_read_real("Other LE", "Level Width Blocks", 32);
@@ -409,18 +475,88 @@ function scr_challenge_start(_id) {
 	global.DiamondMedalTimeChallenge = _def.diamond_time;
 	global.workshop = 0;
 	global.challenge_custom = (_def.is_custom == true);
-	global.challenge_level_dir = "";
+		global.challenge_level_dir = "";
+		global.challenge_level_index = 0;
+		global.challenge_room_index = 0;
 
-	if (_def.level_dir != "") {
-		scr_challenge_prepare_custom_level(_def);
-		room_goto(r_challengelevel);
-	} else if (_def.room != "") {
-		room_goto(asset_get_index(_def.room));
-	}
+		if (array_length(_def.level_dirs) > 0) {
+			scr_challenge_prepare_custom_level(_def, _def.level_dirs[0]);
+			room_goto(r_challengelevel);
+		} else if (array_length(_def.rooms) > 0) {
+			var _start_index = 0;
+			var _start_room = "";
+			for (var i = 0; i < array_length(_def.rooms); i++) {
+				if (_def.rooms[i] != "") {
+					_start_index = i;
+					_start_room = _def.rooms[i];
+					break;
+				}
+			}
+			if (_start_room != "") {
+				global.challenge_room_index = _start_index;
+				room_goto(asset_get_index(_start_room));
+			}
+		} else if (_def.room != "") {
+			room_goto(asset_get_index(_def.room));
+		}
 
-	loadhud();
+		loadhud();
 	audio_stop_sound(m_mainmenu);
 	scr_challenge_play_music(_def);
+}
+
+function scr_challenge_advance() {
+	if (global.challenges != 1) return false;
+	if (global.workshop == 1) return false;
+	var _def = scr_challenge_get_def(global.currentchallenge);
+	if (is_undefined(_def)) return false;
+
+	var _has_room_sequence = array_length(_def.rooms) > 0;
+	var _has_level_sequence = array_length(_def.level_dirs) > 0;
+	if (!_has_room_sequence && !_has_level_sequence) return false;
+
+	if (_has_room_sequence) {
+		var _current = -1;
+		for (var i = 0; i < array_length(_def.rooms); i++) {
+			var _room_name = _def.rooms[i];
+			if (_room_name == "") continue;
+			if (asset_get_index(_room_name) == room) {
+				_current = i;
+				break;
+			}
+		}
+		if (_current < 0) {
+			_current = 0;
+			if (variable_global_exists("challenge_room_index")) _current = global.challenge_room_index;
+		}
+		var _next = _current + 1;
+		if (_next < array_length(_def.rooms)) {
+			global.challenge_room_index = _next;
+			room_goto(asset_get_index(_def.rooms[_next]));
+			return true;
+		}
+	}
+
+	if (_has_level_sequence) {
+		var _current = 0;
+		if (variable_global_exists("challenge_level_index")) _current = global.challenge_level_index;
+		var _next = _current + 1;
+		if (_next < array_length(_def.level_dirs)) {
+			global.challenge_level_index = _next;
+			scr_challenge_prepare_custom_level(_def, _def.level_dirs[_next]);
+			room_goto(r_challengelevel);
+			return true;
+		}
+	}
+
+	var _win_room = _def.win_room;
+	if (_win_room == "") _win_room = "r_kaizowin";
+	var _win = asset_get_index(_win_room);
+	if (_win != -1) {
+		room_goto(_win);
+		return true;
+	}
+	return false;
 }
 
 function scr_challenge_apply_reward(_def) {

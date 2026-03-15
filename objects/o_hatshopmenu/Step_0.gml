@@ -5,8 +5,8 @@ RLselectedhat = selectedhat * -1
 
 if os_type != os_android {
 if interactcontrols = 0 {
-key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (gamepad_button_check_pressed(0,gp_shoulderrb))
-} else { key_interact = keyboard_check_pressed(global.controlsinteract) || (gamepad_button_check_pressed(0,gp_shoulderrb)) }
+key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (gamepad_button_check_pressed(0,global.gp_bind_interact))
+} else { key_interact = keyboard_check_pressed(global.controlsinteract) || (gamepad_button_check_pressed(0,global.gp_bind_interact)) }
 
 }else {
 key_interact = o_buttoninteractandroid.image_index = 1;

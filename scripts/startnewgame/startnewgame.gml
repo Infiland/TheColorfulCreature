@@ -36,4 +36,11 @@ global.isreversed = true
 audio_stop_sound(m_mainmenu);
 var directory = directory_set("/Save Files/")
 if file_exists(directory + "SaveFile.sav") file_delete(directory +"SaveFile.sav")
+
+// Online Multiplayer - Spawn network manager when starting main game
+if (global.onlinemultiplayersettings == 1 && steam_initialised()) {
+	if (!instance_exists(o_networkmanager)) {
+		instance_create(0, 0, o_networkmanager)
+	}
+}
 }

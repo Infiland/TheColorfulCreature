@@ -71,6 +71,10 @@ function scr_loadchallengelevel() {
 		if !instance_exists(o_smoothcamera) {
 			if instance_exists(o_player) {
 				instance_create(o_player.x,o_player.y,o_smoothcamera) 
+			} else if instance_exists(o_playerspawner) {
+				instance_create(o_playerspawner.x,o_playerspawner.y,o_smoothcamera)
+			} else {
+				instance_create(room_width/2,room_height/2,o_smoothcamera)
 			}
 		}	
 	}

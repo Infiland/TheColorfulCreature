@@ -1,0 +1,23 @@
+{
+    "id":  12,
+    "order":  12,
+    "title_loc":  "MOVING_CHALLENGE",
+    "difficulty":  3,
+    "diamond_time":  94.5,
+    "unlock_type":  "world",
+    "unlock_value":  3,
+    "reward_skins":  [
+                         28
+                     ],
+    "reward_credits":  30,
+    "room":  "r_movinglvl1",
+    "music":  "m_everythingismoving",
+    "demo_blocked":  1,
+    "achievement":  "MOVING_CHALLENGE",
+    "leaderboard":  "Moving Challenge Time",
+    "save_key":  "Moving Challenge",
+    "time_var":  "movingchallengetime",
+    "deaths_var":  "movingchallengedeaths",
+    "win_room":  "r_movingwin",
+    "is_custom":  0
+}

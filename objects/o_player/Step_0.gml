@@ -11,38 +11,38 @@ if global.pause = 1{
 if os_type != os_android {
 //Left
 if leftcontrols = 0 {
-key_left = (gamepad_axis_value(0,gp_axislh) < -0.2 || gamepad_button_check(0,gp_padl)) || keyboard_check(ord(global.controlsmoveleft))
+key_left = (gamepad_axis_value(0,gp_axislh) < -0.2 || gamepad_button_check(0,global.gp_bind_moveleft)) || keyboard_check(ord(global.controlsmoveleft))
 }
 if leftcontrols = 1 {
-key_left = (gamepad_axis_value(0,gp_axislh) < -0.2 || gamepad_button_check(0,gp_padl)) || keyboard_check(global.controlsmoveleft)
+key_left = (gamepad_axis_value(0,gp_axislh) < -0.2 || gamepad_button_check(0,global.gp_bind_moveleft)) || keyboard_check(global.controlsmoveleft)
 }
 //Right
 if rightcontrols = 0 {
-key_right = (gamepad_axis_value(0,gp_axislh) > 0.2 || gamepad_button_check(0,gp_padr)) || keyboard_check(ord(global.controlsmoveright));
+key_right = (gamepad_axis_value(0,gp_axislh) > 0.2 || gamepad_button_check(0,global.gp_bind_moveright)) || keyboard_check(ord(global.controlsmoveright));
 }
 if rightcontrols = 1 {
-key_right = (gamepad_axis_value(0,gp_axislh) > 0.2 || gamepad_button_check(0,gp_padr)) || keyboard_check(global.controlsmoveright);
+key_right = (gamepad_axis_value(0,gp_axislh) > 0.2 || gamepad_button_check(0,global.gp_bind_moveright)) || keyboard_check(global.controlsmoveright);
 }
 //Jump
 if doublejump = 0 {
-if jumpcontrols = 0 { key_jump = (gamepad_button_check(0,gp_face1)) || keyboard_check(ord(global.controlsjump)) }
-else { key_jump = (gamepad_button_check(0,gp_face1)) || keyboard_check(global.controlsjump) }
+if jumpcontrols = 0 { key_jump = (gamepad_button_check(0,global.gp_bind_jump)) || keyboard_check(ord(global.controlsjump)) }
+else { key_jump = (gamepad_button_check(0,global.gp_bind_jump)) || keyboard_check(global.controlsjump) }
 } else {
-if jumpcontrols = 0 { key_jump = (gamepad_button_check_pressed(0,gp_face1)) || keyboard_check_pressed(ord(global.controlsjump)) }
-else { key_jump = gamepad_button_check_pressed(0,gp_face1) || keyboard_check_pressed(global.controlsjump) }
+if jumpcontrols = 0 { key_jump = (gamepad_button_check_pressed(0,global.gp_bind_jump)) || keyboard_check_pressed(ord(global.controlsjump)) }
+else { key_jump = gamepad_button_check_pressed(0,global.gp_bind_jump) || keyboard_check_pressed(global.controlsjump) }
 }
 
 
 //Interact
 if interactcontrols = 0 {
-key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (gamepad_button_check_pressed(0,gp_shoulderrb)) //|| keyboard_check_pressed(ord("S"));
-} else { key_interact = keyboard_check_pressed(global.controlsinteract) || (gamepad_button_check_pressed(0,gp_shoulderrb)) }
+key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (gamepad_button_check_pressed(0,global.gp_bind_interact)) //|| keyboard_check_pressed(ord("S"));
+} else { key_interact = keyboard_check_pressed(global.controlsinteract) || (gamepad_button_check_pressed(0,global.gp_bind_interact)) }
 //Interact Hold
 if interactcontrols = 0 {
-key_interact_h = keyboard_check(ord(global.controlsinteract)) || (gamepad_button_check(0,gp_shoulderrb)) //|| keyboard_check_pressed(ord("S"));
-} else { key_interact_h = keyboard_check(global.controlsinteract) || (gamepad_button_check(0,gp_shoulderrb)) }
+key_interact_h = keyboard_check(ord(global.controlsinteract)) || (gamepad_button_check(0,global.gp_bind_interact)) //|| keyboard_check_pressed(ord("S"));
+} else { key_interact_h = keyboard_check(global.controlsinteract) || (gamepad_button_check(0,global.gp_bind_interact)) }
 //Restart
-if restartcontrols = 0 { key_restart = keyboard_check(ord(global.controlsrestart)) || (gamepad_button_check(0,gp_shoulderlb)) } else { key_restart = keyboard_check(global.controlsrestart) || (gamepad_button_check(0,gp_shoulderlb)) }
+if restartcontrols = 0 { key_restart = keyboard_check(ord(global.controlsrestart)) || (gamepad_button_check(0,global.gp_bind_restart)) } else { key_restart = keyboard_check(global.controlsrestart) || (gamepad_button_check(0,global.gp_bind_restart)) }
 } else {
 if instance_exists(o_buttonleftandroid) { key_left = o_buttonleftandroid.image_index = 1; }
 if instance_exists(o_buttonrightandroid) { key_right = o_buttonrightandroid.image_index = 1; }
@@ -76,7 +76,11 @@ death()
 //Restart Challenge
 if keyboard_check(vk_control) {
 	if keyboard_check_pressed(ord(global.controlsrestart)) { //Not using key_restart
-	restartchallenge()	
+		if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1) {
+			scr_workshopchallenge_restart();
+		} else {
+			restartchallenge();
+		}
 }}
 
 //Water
@@ -200,7 +204,7 @@ par_walktimer = 10
 }
 
 if global.managablejump = 1 {
-if (gamepad_button_check_released(0,gp_face1)) || keyboard_check_released(ord(global.controlsjump)) &&  vsp <= 0 {
+if (gamepad_button_check_released(0,global.gp_bind_jump)) || keyboard_check_released(ord(global.controlsjump)) &&  vsp <= 0 {
 //vsp = lerp(vsp,0,0.15)
 vsp = 0
 }}
@@ -736,6 +740,10 @@ if walksp != 8.5 {
 //Next Level
 if room != r_leveleditor {
 if place_meeting(x,y+3,o_door) {
+	if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1 && room == r_customlevelworkshop) {
+		scr_workshopchallenge_advance();
+		exit;
+	}
 	if global.wheelmultiplier < 3 {
 	global.wheelmultiplier += 0.01
 	}
@@ -745,16 +753,26 @@ global.pickup = 0
 scr_loadsettings()
 increase_stat("totallevelcompleted","QUESTlevelcompleted",1)
 
-if room = asset_get_index("r_lvl" + string(global.worldProgression)) {
-global.worldProgression += 1
-}
+ if room = asset_get_index("r_lvl" + string(global.worldProgression)) {
+ global.worldProgression += 1
+ }
 
 scr_savestats()
 
-room_goto_next()
-if global.challenges = 0 {
-global.wheeltimeleft -= 20
-} else { global.wheeltimeleft -= 10 }
+if global.workshop = 1 && room = r_customlevelworkshop {
+	room_goto(r_workshoplevelwin)
+} else {
+	if global.challenges = 1 && global.workshop = 0 {
+		if !scr_challenge_advance() {
+			room_goto_next()
+		}
+	} else {
+		room_goto_next()
+	}
+}
+ if global.challenges = 0 {
+ global.wheeltimeleft -= 20
+ } else { global.wheeltimeleft -= 10 }
 scr_resetcheckpointdata()
 if global.hardmodedifficulty = 6 { 
 	global.timeleftHM += 10 + (global.time / 90)

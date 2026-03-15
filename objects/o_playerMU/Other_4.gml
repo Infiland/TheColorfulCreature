@@ -2,6 +2,31 @@ multiplayerplayerskin = global.multiplayerplayerskin[multiplayerplayer-1]
 multiplayerplayerhat = global.multiplayerplayerhat[multiplayerplayer-1]
 multiplayerplayeritem = global.multiplayerplayeritem[multiplayerplayer-1]
 
+//Custom Skin (index -1)
+customskin = 0
+customskin_spr = -1
+skinxscale = 1
+skinyscale = 1
+if multiplayerplayerskin = -1 {
+	if os_type != os_gxgames {
+		if global.CUSTOMskin != "" {
+			scr_moddingskins(global.CUSTOMskin)
+		}
+	}
+}
+
+//Custom Hat (index -1)
+customhat = 0
+hatxscale = 1
+hatyscale = 1
+if multiplayerplayerhat = -1 {
+	if os_type != os_gxgames {
+		if global.CUSTOMhat != "" {
+			scr_moddinghats(global.CUSTOMhat)
+		}
+	}
+}
+
 //Skins
 switch(multiplayerplayerskin) {
 case 14: sprite_index = s_kindadeadplayerskin break;

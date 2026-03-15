@@ -29,6 +29,11 @@ x4 = -1000
 
 //Challanges
 if global.cheats = 0 {
+if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1) {
+	showhighscore = 0
+	alarm[0] = 1
+	exit;
+}
 if global.workshop = 0 {
 	var _def = scr_challenge_get_def(global.currentchallenge);
 	if (!is_undefined(_def)) {

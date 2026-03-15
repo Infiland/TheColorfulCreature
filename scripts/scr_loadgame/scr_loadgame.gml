@@ -26,6 +26,13 @@ function scr_loadgame() {
 	if LoadedRoom != r_lvl1 {
 	loadhud()
 	}
+	
+	// Online Multiplayer - Spawn network manager when loading a game
+	if (global.onlinemultiplayersettings == 1 && steam_initialised()) {
+		if (!instance_exists(o_networkmanager)) {
+			instance_create(0, 0, o_networkmanager)
+		}
+	}
 	} else {
 	
 	}

@@ -18,10 +18,10 @@ controlschoose = global.controlsjump break;
 case(3): var txti = loc("INTERACT") //INTERACT
 draw_text(x,y+50,string(txti))
 controlschoose = global.controlsinteract break;
-case(4): var txtsl = loc("SKIP_LEVEL") //INTERACT
+case(4): var txtsl = loc("SKIP_LEVEL") //SKIP
 draw_text(x,y+50,string(txtsl))
 controlschoose = global.controlsskiplevel break;
-case(5): var txtr = loc("RESTART") //INTERACT
+case(5): var txtr = loc("RESTART") //RESTART
 draw_text(x,y+50,string(txtr))
 controlschoose = global.controlsrestart break;
 }
@@ -47,17 +47,23 @@ case("8"): drawtext = "Backspace" break;
 }
 
 draw_set_halign(fa_center)
-draw_text(x+60,y+12,drawtext)
-draw_set_halign(fa_left)
 
-/*
-if controls = 0 {
-draw_set_font(global.coolfont)
-draw_text(mouse_x,mouse_y,"Right: " + string(global.controlsmoveright));
-draw_text(mouse_x,mouse_y+15,"Left: " + string(global.controlsmoveleft));
-draw_text(mouse_x,mouse_y+30,"Jump: " + string(global.controlsjump));
-draw_text(mouse_x,mouse_y+45,"Interact: " + string(global.controlsinteract));
-draw_text(mouse_x,mouse_y+60,"Skip: " + string(global.controlsskiplevel));
-draw_text(mouse_x,mouse_y+75,"KYS: " + string(global.controlsrestart));
-draw_text(mouse_x,mouse_y+90,"EDIT: " + string(editcontrols));
-}*/
+if (os_type != os_android && gamepad_is_connected(0)) {
+	// === Controller connected: show controller binding in place of keyboard ===
+	var _gpbtn = gamepad_remap_get(controls);
+	var _gptext = gamepad_button_display_name(_gpbtn);
+	
+	if (ischanging && editcontrols == controls) {
+		draw_set_color(c_yellow);
+		draw_text(x+60, y+12, "...");
+	} else {
+		draw_set_color(c_aqua);
+		draw_text(x+60, y+12, _gptext);
+	}
+	draw_set_color(c_white);
+} else {
+	// === No controller: show keyboard binding ===
+	draw_text(x+60,y+12,drawtext)
+}
+
+draw_set_halign(fa_left)

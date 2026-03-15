@@ -11,6 +11,7 @@
     {"name":"inst_71EFC90B","path":"rooms/r_customlevelmenu/r_customlevelmenu.yy",},
     {"name":"inst_4978ABF5","path":"rooms/r_customlevelmenu/r_customlevelmenu.yy",},
     {"name":"inst_4FD331A7","path":"rooms/r_customlevelmenu/r_customlevelmenu.yy",},
+    {"name":"inst_7B5C4C12","path":"rooms/r_customlevelmenu/r_customlevelmenu.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -20,6 +21,7 @@
         {"$GMRInstance":"v4","%Name":"inst_71EFC90B","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_71EFC90B","objectId":{"name":"o_animatedtext","path":"objects/o_animatedtext/o_animatedtext.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":32.0,"y":0.0,},
         {"$GMRInstance":"v4","%Name":"inst_4978ABF5","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4978ABF5","objectId":{"name":"o_customlevelsplay","path":"objects/o_customlevelsplay/o_customlevelsplay.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":52.2,"scaleY":26.6,"x":237.5,"y":242.5,},
         {"$GMRInstance":"v4","%Name":"inst_4FD331A7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4FD331A7","objectId":{"name":"o_customviewworkshop","path":"objects/o_customviewworkshop/o_customviewworkshop.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":52.2,"scaleY":26.6,"x":525.5,"y":242.5,},
+        {"$GMRInstance":"v4","%Name":"inst_7B5C4C12","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7B5C4C12","objectId":{"name":"o_workshopchallengesbutton","path":"objects/o_workshopchallengesbutton/o_workshopchallengesbutton.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":52.2,"scaleY":26.6,"x":381.5,"y":430.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":15.0,"animationSpeedType":0,"colour":4278190080,"depth":1000,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":true,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
   ],

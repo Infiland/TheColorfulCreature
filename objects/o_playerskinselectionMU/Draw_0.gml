@@ -21,6 +21,21 @@ realspritedistance = lerp(realspritedistance,spritedistance,0.2 * (60 / global.m
 	change = 1
 	}
 	if change = 0 { arrowyscale = lerp(arrowyscale,0.89,0.1 * (60 / global.maxfps)) } else { arrowyscale = lerp(arrowyscale,1.01,0.1 * (60 / global.maxfps)) }
+//Custom Skin slot (index -1)
+if global.CUSTOMskin != "" {
+draw_set_halign(fa_center)
+draw_set_font(global.deathfont)
+draw_rectangle_color(335+realspritedistance,205,335+100+realspritedistance,205+100,c_purple,c_purple,c_purple,c_purple,false)
+draw_rectangle_color(335+realspritedistance,205,335+100+realspritedistance,205+100,c_white,c_white,c_white,c_white,true)
+draw_text_color(335+50+realspritedistance,240,"CUSTOM\nSKIN",c_white,c_white,c_white,c_white,1)
+draw_set_halign(fa_left)
+} else {
+draw_set_halign(fa_center)
+draw_set_font(global.deathfont)
+draw_rectangle_color(335+realspritedistance,205,335+100+realspritedistance,205+100,c_dkgray,c_dkgray,c_dkgray,c_dkgray,false)
+draw_text_color(335+50+realspritedistance,240,"NO\nCUSTOM",c_gray,c_gray,c_gray,c_gray,1)
+draw_set_halign(fa_left)
+}
 draw_sprite(s_normalskinbutton,0,455+realspritedistance,205)
 if global.skin[3] = 0 {
 	draw_sprite(s_lockedskinicon,0,575+realspritedistance,205) } else {

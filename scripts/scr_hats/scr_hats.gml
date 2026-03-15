@@ -9,7 +9,9 @@ color=c_white
 var col=global.color
 if instance_exists(o_playerMU) {
 	col=color
-	customhat = 0
+	if multiplayerplayerhat != -1 {
+		customhat = 0
+	}
 }
 var xx=16,yy=8,hatspr=s_graduationhat,anim=0,colorhat=c_white,al=1,sx=1;
 if os_type = os_android || os_type = os_gxgames { customhat = 0 }

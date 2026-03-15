@@ -1,4 +1,8 @@
 function scr_changecolorplayervx(){
+if customskin = 1 {
+	sprite_index = customskin_spr
+	return;
+}
 switch(global.skinselected) {
 default: sprite_index = s_playerwhite break;
 case 0:

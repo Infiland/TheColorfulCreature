@@ -1,0 +1,22 @@
+{
+    "id":  18,
+    "order":  18,
+    "title_text":  "Breakable Challenge",
+    "difficulty":  3,
+    "diamond_time":  58.5,
+    "unlock_type":  "world",
+    "unlock_value":  3,
+    "reward_skins":  [
+                         45
+                     ],
+    "reward_credits":  30,
+    "room":  "r_breakablelvl1",
+    "music":  "m_blocktension",
+    "achievement":  "BREAKABLE_CHALLENGE",
+    "leaderboard":  "Breakable Challenge Time",
+    "save_key":  "Breakable Challenge",
+    "time_var":  "breakablechallengetime",
+    "deaths_var":  "breakablechallengedeaths",
+    "win_room":  "r_breakablewin",
+    "is_custom":  0
+}

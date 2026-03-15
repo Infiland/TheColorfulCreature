@@ -30,11 +30,11 @@ key_jump = keyboard_check(vk_numpad8)
 key_interact = keyboard_check_pressed(vk_numpad5)
 break;
 case(4):
-key_restart = (gamepad_button_check(0,gp_shoulderlb))
-key_left = (gamepad_axis_value(0,gp_axislh) < -0.2 || gamepad_button_check(0,gp_padl))
-key_right = (gamepad_axis_value(0,gp_axislh) > 0.2 || gamepad_button_check(0,gp_padr))
-key_jump = gamepad_button_check(0,gp_face1)
-key_interact = (gamepad_button_check_pressed(0,gp_shoulderrb))
+key_restart = (gamepad_button_check(0,global.gp_bind_restart))
+key_left = (gamepad_axis_value(0,gp_axislh) < -0.2 || gamepad_button_check(0,global.gp_bind_moveleft))
+key_right = (gamepad_axis_value(0,gp_axislh) > 0.2 || gamepad_button_check(0,global.gp_bind_moveright))
+key_jump = gamepad_button_check(0,global.gp_bind_jump)
+key_interact = (gamepad_button_check_pressed(0,global.gp_bind_interact))
 if key_left || key_right { window_set_cursor(cr_none) } //Cursor appears during gameplay
 break;
 }

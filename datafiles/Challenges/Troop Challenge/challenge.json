@@ -1,0 +1,23 @@
+{
+    "id":  4,
+    "order":  4,
+    "title_loc":  "TROOP_TROUBLE_CHALLENGE",
+    "difficulty":  3,
+    "diamond_time":  55,
+    "unlock_type":  "world",
+    "unlock_value":  3,
+    "reward_skins":  [
+                         11
+                     ],
+    "reward_credits":  30,
+    "room":  "r_trooplvl1",
+    "music":  "m_troopsincoming",
+    "demo_blocked":  1,
+    "achievement":  "TROOP_CHALLENGE",
+    "leaderboard":  "Troop Challenge Time",
+    "save_key":  "Troop Challenge",
+    "time_var":  "troopchallengetime",
+    "deaths_var":  "troopchallengedeaths",
+    "win_room":  "r_troopwin",
+    "is_custom":  0
+}

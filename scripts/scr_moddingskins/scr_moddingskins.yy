@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_moddingskins",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_moddingskins",
+  "parent":{
+    "name":"MODDING",
+    "path":"folders/Scripts/MODDING.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

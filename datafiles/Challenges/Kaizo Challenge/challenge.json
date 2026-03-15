@@ -1,0 +1,23 @@
+{
+    "id":  1,
+    "order":  1,
+    "title_loc":  "KAIZO_CHALLENGE",
+    "difficulty":  5,
+    "diamond_time":  444,
+    "unlock_type":  "world",
+    "unlock_value":  5,
+    "reward_skins":  [
+                         2
+                     ],
+    "reward_credits":  50,
+    "room":  "r_kaizolvl1",
+    "music":  "m_funmodelevels",
+    "demo_blocked":  1,
+    "achievement":  "KAIZO_CHALLENGE",
+    "leaderboard":  "Kaizo Challenge Time",
+    "save_key":  "Kaizo Challenge",
+    "time_var":  "kaizochallengetime",
+    "deaths_var":  "kaizochallengedeaths",
+    "win_room":  "r_kaizowin",
+    "is_custom":  0
+}

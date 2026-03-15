@@ -1,0 +1,23 @@
+{
+    "id":  16,
+    "order":  16,
+    "title_text":  "World Seven",
+    "difficulty":  6,
+    "diamond_time":  2097.9,
+    "unlock_type":  "skin",
+    "unlock_value":  17,
+    "reward_skins":  [
+                         41
+                     ],
+    "reward_credits":  100,
+    "room":  "r_world7lvl1",
+    "music":  "m_funmodelevels2",
+    "demo_blocked":  1,
+    "achievement":  "WORLD_7",
+    "leaderboard":  "World 7 Challenge Time",
+    "save_key":  "World 7 Challenge",
+    "time_var":  "world7challengetime",
+    "deaths_var":  "world7challengedeaths",
+    "win_room":  "r_world7win",
+    "is_custom":  0
+}

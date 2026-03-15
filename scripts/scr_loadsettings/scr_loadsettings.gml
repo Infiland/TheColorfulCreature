@@ -44,6 +44,7 @@ function scr_loadsettings() {
 	global.biglevelperfsettings = ini_read_real("Settings","Big Level Perf",0);
 	global.customsplashessettings = ini_read_real("Settings","Custom Splashes",0);
 	global.customhatautoscale = ini_read_real("Settings","Custom Splashes",1);
+	global.customskinautoscale = ini_read_real("Settings","Skins Autoscale",1);
 	//Controls
 	global.controlsrestart = ini_read_string("Controls","Restart","R")
 	global.controlsskiplevel = ini_read_string("Controls","Skip Level","C")
@@ -52,6 +53,10 @@ function scr_loadsettings() {
 	global.controlsmoveleft = ini_read_string("Controls","Move Left","37")
 	global.controlsmoveright = ini_read_string("Controls","Move Right","39")
 	global.controllervibrationsettings = ini_read_real("Controls","Controller Vibration",1);
+	//Online Multiplayer
+	global.onlinemultiplayersettings = ini_read_real("Settings","Online Multiplayer",1);
+	//Controller Button Bindings
+	gamepad_remap_load();
 	}
 	else {
 	}

@@ -17,6 +17,8 @@ if (async_load[? "success"])
 	
 	array_delete(global.itemdef,0,40000)
 	global.itemdef = array_create(5000) //This is terrible but oh well
+	array_delete(global.item_ids,0,40000)
+	global.item_ids = array_create(5000)
     for (var i = 0; i < array_length(_items); i++)
     {
         // It's also possible to get properties from each item using
@@ -25,6 +27,15 @@ if (async_load[? "success"])
 		var _struct = _items[i];
 		var _item_id = _struct.item_id;
 		array_set(global.itemdef,_struct.item_def,_struct.quantity)
+
+		// Store item_ids with quantities for steam_inventory_exchange_items (trade-ups)
+		// Stacked items may have quantity > 1 on a single item_id
+		var _def = _struct.item_def;
+		if !is_array(global.item_ids[_def]) {
+			global.item_ids[_def] = [];
+		}
+		array_push(global.item_ids[_def], { item_id: _item_id, quantity: _struct.quantity });
+
 		//show_debug_message(_struct) // Show items
     }
 	//show_debug_message(global.itemdef)

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_drawsettingbutton",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_drawsettingbutton",
+  "parent":{
+    "name":"Settings",
+    "path":"folders/Objects/Settings.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -29,24 +29,24 @@ if (global.steam_is_available) {
         version = "Release " + GM_version 
     }
 
-    // Check DLC ownership
-    if (steam_user_owns_dlc(1651680)) { game1 = 1 } else { game1 = 0 } //If the player owns the game
-    if (steam_user_owns_dlc(1749590)) { dlc1 = 1 } else { dlc1 = 0 } //TCC OST
-    if (steam_user_owns_dlc(1749600)) { dlc1 = 1 dlc1_1 = 1 } else { dlc1 = 0 dlc1_1 = 0 } //TCC Super OST
-    if (steam_user_owns_dlc(1995510)) { dlc2 = 1 } else { dlc2 = 0 } //Commentary DLC
-    if (steam_user_owns_dlc(2407300)) { dlc3 = 1 } else { dlc3 = 0 } //Asteroids
 } else {
     // Default values when Steam is not available
     version = "Release " + GM_version
-    game1 = 0
-    dlc1 = 0
-    dlc1_1 = 0
-    dlc2 = 0
-    dlc3 = 0
     busy = false
     success = false
     players = 0
 }
+
+// Check DLC and donation ownership
+var dlc_data = badge_check_dlc_ownership();
+game1 = dlc_data.game1;
+dlc1 = dlc_data.dlc1;
+dlc1_1 = dlc_data.dlc1_1;
+dlc2 = dlc_data.dlc2;
+dlc3 = dlc_data.dlc3;
+moni = dlc_data.moni;
+actualmoni = dlc_data.actualmoni;
+global.donatedmoney = actualmoni;
 
 // Set version for special cases
 if (global.moddedGameDir != "") { version = loc("MODDED_CLIENT") } // MODDED VERSION
@@ -62,30 +62,14 @@ diffsecond = date_second_span(date_create_datetime(2018, 9, 3, 15, 30, 27), date
 diffyearinfi = date_year_span(date_create_datetime(2003, 11, 18, 01, 30, 30), date_current_datetime());
 
 clicked = false
-e1 = 0 //Seasonal Endless Gold
-e2 = 0 //Seasonal Endless Silver
-e3 = 0 //Seasonal Endless Bronze
-e4 = 0 //Seasonal Endless Top 10
-hats = 0
-moni = 0
-actualmoni = 0
-global.donatedmoney = 0
 
-// Check for donations and update badge counts
-if steam_user_owns_dlc(2411810) { //2 Euro donation
-	moni = 1
-	actualmoni += 2
-}
-if steam_user_owns_dlc(2411811) { //3 Euro donation
-	moni = 1
-	actualmoni += 3
-}
-if steam_user_owns_dlc(2411812) { //5 Euro donation
-	moni = 1
-	actualmoni += 5
-}
-
-global.donatedmoney = actualmoni
+// Load seasonal endless run rankings from JSON
+var rankings = badge_load_seasonal_rankings();
+e1 = rankings.e1;
+e2 = rankings.e2;
+e3 = rankings.e3;
+e4 = rankings.e4;
+hats = rankings.hats;
 
 // Create badge instance if it doesn't exist
 if (!instance_exists(o_badge)) {

@@ -18,5 +18,6 @@ function loadhud() {
 	if !instance_exists(o_pausesystem) { instance_create(hx,hy,o_pausesystem) }
 	if !instance_exists(o_musicdistortion) { instance_create(hx,hy,o_musicdistortion) }
 
-
+	// Update Steam Rich Presence for current game state
+	set_rich_presence()
 }

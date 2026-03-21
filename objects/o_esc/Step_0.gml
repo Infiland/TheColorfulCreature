@@ -1,5 +1,6 @@
 if instance_exists(o_namelevelLE) { exit }
 if instance_exists(o_popup) { exit }
+if instance_exists(o_tradeup_menu) { exit }
 if room == r_challenges {
 	if !variable_global_exists("challenge_custom_spawned") { global.challenge_custom_spawned = false }
 	if !global.challenge_custom_spawned {

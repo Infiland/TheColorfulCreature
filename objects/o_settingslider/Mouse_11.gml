@@ -1,0 +1,1 @@
+global.infosettings = 0

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_skin_preview_data",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_skin_preview_data",
+  "parent":{
+    "name":"Hats",
+    "path":"folders/Scripts/Hats.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

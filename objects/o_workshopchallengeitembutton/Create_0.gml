@@ -10,6 +10,7 @@ difficulty = 0
 
 loaded = 0
 invalid = 0
+missing_levels = 0
 
 alarm[0] = 1
 

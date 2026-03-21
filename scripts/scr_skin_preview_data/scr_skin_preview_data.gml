@@ -1,0 +1,149 @@
+function scr_skin_preview_data() {
+	//Skin preview sprites (indexed by global.skinselected)
+	global.skin_preview_spr[0] = s_playerred                      //Normal
+	global.skin_preview_spr[1] = s_kaizoplayerred                 //Kaizo
+	global.skin_preview_spr[2] = s_madplayerred                   //Mad
+	global.skin_preview_spr[3] = s_blindplayerred                 //Blind
+	global.skin_preview_spr[4] = s_sadplayerredIDLE               //Sad
+	global.skin_preview_spr[5] = s_blockplayerred                 //Block
+	global.skin_preview_spr[6] = s_hdplayerred                    //HD
+	global.skin_preview_spr[7] = s_rewardedplayerred              //Rewarded
+	global.skin_preview_spr[8] = s_angryplayerred                 //Angry
+	global.skin_preview_spr[9] = s_coolplayerred                  //Cool
+	global.skin_preview_spr[10] = s_thedarkknightskin             //Dark Knight
+	global.skin_preview_spr[11] = s_richplayerred                 //Rich
+	global.skin_preview_spr[12] = s_goldplayerskin                //Gold
+	global.skin_preview_spr[13] = s_frozenplayerred               //Frozen
+	global.skin_preview_spr[14] = s_kindadeadplayerskin           //Kinda Dead
+	global.skin_preview_spr[15] = s_coronaplayerred               //Corona
+	global.skin_preview_spr[16] = s_canadianplayerred             //Canadian
+	global.skin_preview_spr[17] = s_hazardousplayerskinmenuthingy //Hazardous
+	global.skin_preview_spr[18] = s_babyplayerred                 //Baby
+	global.skin_preview_spr[19] = s_hexagonplayerred              //Hexagon
+	global.skin_preview_spr[20] = s_tuxedoplayerred               //Tuxedo
+	global.skin_preview_spr[21] = s_playerred                     //Animated (uses special draw)
+	global.skin_preview_spr[22] = s_waterplayerred                //Water
+	global.skin_preview_spr[23] = s_forseneplayerskin             //ForsenE
+	global.skin_preview_spr[24] = s_redballplayerskinmenu         //Red Ball
+	global.skin_preview_spr[25] = s_bomberplayerskin              //Bomber
+	global.skin_preview_spr[26] = s_hitboxplayerskin              //Hitbox
+	global.skin_preview_spr[27] = s_metallicplayerskin            //Metallic
+	global.skin_preview_spr[28] = s_monocleplayerskin             //Monocle
+	global.skin_preview_spr[29] = s_japaneseplayerskin            //Japanese
+	global.skin_preview_spr[30] = s_googlyeyeskin                 //Googly
+	global.skin_preview_spr[31] = s_upsidedownplayerskin          //Upside Down
+	global.skin_preview_spr[32] = s_spiralplayerskin              //Spiral
+	global.skin_preview_spr[33] = s_heartplayerskin               //Heart
+	global.skin_preview_spr[34] = s_playerred                     //Clock (uses special draw)
+	global.skin_preview_spr[35] = s_playerred                     //Invisible (uses special draw)
+	global.skin_preview_spr[36] = s_arrowplayerskin               //Arrow
+	global.skin_preview_spr[37] = s_spikeplayerskin               //Spike
+	global.skin_preview_spr[38] = s_splitplayerskin               //Split
+	global.skin_preview_spr[39] = s_pirateplayerskin              //Pirate
+	global.skin_preview_spr[40] = s_playerred                     //Sci-Fi (uses special draw)
+	global.skin_preview_spr[41] = s_gordonplayerskin              //Gordon
+	global.skin_preview_spr[42] = s_fancyplayerskin               //Fancy
+	global.skin_preview_spr[43] = s_steamplayerskin               //Steam
+	global.skin_preview_spr[44] = s_breakableplayerskin           //Breakable
+	global.skin_preview_spr[45] = s_smileyplayerskin              //Smiley
+	global.skin_preview_spr[46] = s_playerred                     //Maid (uses special draw)
+	global.skin_preview_spr[47] = s_playerred                     //Burning (uses special draw)
+	global.skin_preview_spr[48] = s_playerred                     //Toilet (uses special draw)
+	global.skin_preview_spr[49] = s_kratosplayerskin              //Kratos
+
+	//Skin preview blend colors (default to white, override specific entries)
+	for (var i = 0; i < 50; i++) { global.skin_preview_blend[i] = c_white }
+	global.skin_preview_blend[14] = make_color_rgb(255,0,0) //Kinda Dead
+	global.skin_preview_blend[23] = make_color_rgb(255,0,0) //ForsenE
+	global.skin_preview_blend[26] = make_color_rgb(255,0,0) //Hitbox
+	global.skin_preview_blend[27] = make_color_rgb(255,0,0) //Metallic
+	global.skin_preview_blend[29] = make_color_rgb(255,0,0) //Japanese
+	global.skin_preview_blend[31] = make_color_rgb(255,0,0) //Upside Down
+	global.skin_preview_blend[34] = make_color_rgb(255,0,0) //Clock
+	global.skin_preview_blend[36] = make_color_rgb(255,0,0) //Arrow
+	global.skin_preview_blend[37] = make_color_rgb(255,0,0) //Spike
+	global.skin_preview_blend[38] = make_color_rgb(255,0,0) //Split
+	global.skin_preview_blend[43] = make_color_rgb(255,0,0) //Steam
+	global.skin_preview_blend[44] = make_color_rgb(255,0,0) //Breakable
+	global.skin_preview_blend[45] = make_color_rgb(255,0,0) //Smiley
+
+	//Hat preview sprites (indexed by global.hatselected)
+	global.hat_preview_spr[0] = -1                //No hat
+	global.hat_preview_spr[1] = s_graduationhat   //Graduation
+	global.hat_preview_spr[2] = s_conehat         //Cone
+	global.hat_preview_spr[3] = s_partyhat        //Party
+	global.hat_preview_spr[4] = s_paperhat        //Paper
+	global.hat_preview_spr[5] = s_tophat          //Top Hat
+	global.hat_preview_spr[6] = s_yellowtophat    //Yellow Top Hat
+	global.hat_preview_spr[7] = s_reddiehat       //Reddie
+	global.hat_preview_spr[8] = s_santahat        //Christmas
+	global.hat_preview_spr[9] = s_witchhat        //Witch
+	global.hat_preview_spr[10] = s_pumpkinhat     //Pumpkin
+	global.hat_preview_spr[11] = s_brownhat       //Brown
+	global.hat_preview_spr[12] = s_grayhat        //Gray
+	global.hat_preview_spr[13] = s_whitehat       //White
+	global.hat_preview_spr[14] = s_sunhat         //Sun Hat
+	global.hat_preview_spr[15] = s_redblockhat    //Red Block
+	global.hat_preview_spr[16] = s_yellowblockhat //Yellow Block
+	global.hat_preview_spr[17] = s_greenblockhat  //Green Block
+	global.hat_preview_spr[18] = s_blueblockhat   //Blue Block
+	global.hat_preview_spr[19] = s_whiteblockhat  //White Block
+	global.hat_preview_spr[20] = s_spikehat       //Spike Hat
+	global.hat_preview_spr[21] = s_spikehat       //Invisible Spike Hat
+	global.hat_preview_spr[22] = s_spikehat       //V Spike Hat
+	global.hat_preview_spr[23] = s_spikehat       //H Spike Hat
+	global.hat_preview_spr[24] = s_hexagonhat     //Hexagon Hat
+	global.hat_preview_spr[25] = s_breadhat       //Bread Hat
+	global.hat_preview_spr[26] = s_soldierhat     //Soldier Hat
+	global.hat_preview_spr[27] = s_samuraihat     //Samurai Hat
+	global.hat_preview_spr[28] = s_redbeaniehat   //Red Beanie Hat
+	global.hat_preview_spr[29] = s_yellowbeaniehat //Yellow Beanie Hat
+	global.hat_preview_spr[30] = s_greenbeaniehat //Green Beanie Hat
+	global.hat_preview_spr[31] = s_bluebeaniehat  //Blue Beanie Hat
+	global.hat_preview_spr[32] = s_whitebeaniehat //White Beanie Hat
+	global.hat_preview_spr[33] = s_piratehat      //Pirate Hat
+	global.hat_preview_spr[34] = s_pinkbowtiehat  //Pink Bowtie Hat
+	global.hat_preview_spr[35] = s_kingshat       //King's Crown
+	global.hat_preview_spr[36] = s_hairhat        //Hair
+	global.hat_preview_spr[37] = s_comradehat     //Comrade
+	global.hat_preview_spr[38] = s_vikinghat      //Viking
+	global.hat_preview_spr[39] = s_cowboyhat      //Cowboy
+	global.hat_preview_spr[40] = s_redsushat      //Red Sus
+	global.hat_preview_spr[41] = s_yellowsushat   //Yellow Sus
+	global.hat_preview_spr[42] = s_greensushat    //Green Sus
+	global.hat_preview_spr[43] = s_bluesushat     //Blue Sus
+	global.hat_preview_spr[44] = s_whitesushat    //White Sus
+	global.hat_preview_spr[45] = s_flowerhat      //Flower
+	global.hat_preview_spr[46] = s_propellerhat   //Propeller
+	global.hat_preview_spr[47] = s_serbianhat     //Serbian
+	global.hat_preview_spr[48] = s_rathat         //Maus
+	global.hat_preview_spr[49] = s_germanhat      //German
+	global.hat_preview_spr[50] = s_frenchhat      //French
+	global.hat_preview_spr[51] = s_italianhat     //Italian
+	global.hat_preview_spr[52] = s_spanishhat     //Spanish
+	global.hat_preview_spr[53] = s_magyarhat      //Magyar
+	global.hat_preview_spr[54] = s_bosnianhat     //Bosnian
+	global.hat_preview_spr[55] = s_chinesehat     //Chinese
+	global.hat_preview_spr[56] = s_ukrainianhat   //Ukrainian
+	global.hat_preview_spr[57] = s_macedonianhat  //Macedonian
+	global.hat_preview_spr[58] = s_chickenhat     //Chicken
+	global.hat_preview_spr[59] = s_czechhat       //Czech
+	global.hat_preview_spr[60] = s_russianhat     //Russian
+	global.hat_preview_spr[61] = s_devilhat       //Devil
+	global.hat_preview_spr[62] = s_turkishhat     //Turkish
+	global.hat_preview_spr[63] = s_palestinianhat //Palestinian
+	global.hat_preview_spr[64] = s_slovenianhat   //Slovenian
+	global.hat_preview_spr[65] = s_japanesehat    //Japanese
+	global.hat_preview_spr[66] = s_romanianhat    //Romanian
+	global.hat_preview_spr[67] = s_portuguesehat  //Portuguese
+
+	//Hat preview blend colors (default to white, override specific entries)
+	for (var i = 0; i < 68; i++) { global.hat_preview_blend[i] = c_white }
+	global.hat_preview_blend[7] = c_red     //Reddie
+	global.hat_preview_blend[22] = c_lime   //V Spike Hat
+	global.hat_preview_blend[23] = c_yellow //H Spike Hat
+
+	//Hat preview xscale (default to 5, override specific entries)
+	for (var i = 0; i < 68; i++) { global.hat_preview_xscale[i] = 5 }
+	global.hat_preview_xscale[26] = 6.2 //Soldier Hat
+}

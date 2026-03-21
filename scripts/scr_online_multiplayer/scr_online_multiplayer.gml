@@ -13,13 +13,21 @@
 #macro NET_PACKET_PING				7
 
 #macro NET_MAX_PLAYERS				8
-#macro NET_SEND_RATE				3  // Send every 3 frames (20 ticks/sec at 60fps)
+#macro NET_SEND_RATE				1  // Send every frame (60 ticks/sec at 60fps)
 
 /// @function		net_init()
 /// @description	Initialize all online multiplayer global variables
 function net_init() {
 	// Note: global.onlinemultiplayersettings is set in scr_loading()
 	// and loaded from save in scr_loadsettings(). Do NOT set it here.
+	
+	// Preserve any pending join that was set before init (menu/cold-launch join flow
+	// sets this before the network manager is created, and Create_0 re-calls net_init)
+	var _saved_pending_join = -1
+	if (variable_global_exists("net_pending_join") && global.net_pending_join != -1) {
+		_saved_pending_join = global.net_pending_join
+	}
+	
 	global.net_active = false
 	global.net_lobby_id = -1
 	global.net_is_host = false
@@ -33,7 +41,7 @@ function net_init() {
 	global.net_connect_timer = 0     // Counts up while connecting (for dots animation)
 	global.net_connect_flash = 0     // Counts down for success/failure flash display
 	global.net_connect_msg = ""      // Extra message for success/failure
-	global.net_pending_join = -1     // Lobby ID to join next frame (deferred join)
+	global.net_pending_join = _saved_pending_join  // Restore preserved pending join
 	
 	// Clean up old resources if re-initializing (prevents memory leaks)
 	if (variable_global_exists("net_players") && ds_exists(global.net_players, ds_type_map)) {
@@ -128,6 +136,7 @@ function net_send_player_state() {
 	if (!global.net_active) return;
 	
 	var _is_dead = 0
+	var _zerogrv = 0
 	var _px = 0, _py = 0, _spr = s_playerred, _img = 0, _blend = c_white
 	var _xscale = 1, _yscale = 1, _angle = 0, _alpha = 1
 	var _hsp = 0, _vsp = 0
@@ -145,6 +154,7 @@ function net_send_player_state() {
 		_hsp = o_player.hsp
 		_vsp = o_player.vsp
 		_is_dead = 0
+		_zerogrv = o_player.zerogrv
 	} else if (instance_exists(o_playerdead)) {
 		_px = o_playerdead.x
 		_py = o_playerdead.y
@@ -185,6 +195,7 @@ function net_send_player_state() {
 	buffer_write(_buf, buffer_f32, _hsp)
 	buffer_write(_buf, buffer_f32, _vsp)
 	buffer_write(_buf, buffer_u8, _is_dead)
+	buffer_write(_buf, buffer_u8, _zerogrv)
 	
 	var _size = buffer_tell(_buf)
 	
@@ -233,6 +244,7 @@ function net_receive_packets() {
 				var _hsp = buffer_read(_buf, buffer_f32)
 				var _vsp = buffer_read(_buf, buffer_f32)
 				var _is_dead = buffer_read(_buf, buffer_u8)
+				var _zerogrv = buffer_read(_buf, buffer_u8)
 				
 				var _key = string(_sender)
 				if (ds_map_exists(global.net_players, _key)) {
@@ -254,6 +266,7 @@ function net_receive_packets() {
 					_data.hsp = _hsp
 					_data.vsp = _vsp
 					_data.is_dead = _is_dead
+					_data.zerogrv = _zerogrv
 					_data.last_update = current_time
 					
 					// Compute correct image_index from hsp/vsp for alive ghosts
@@ -339,6 +352,7 @@ function net_register_player(_steam_id, _username, _join_time, _skin, _hat) {
 		hsp: 0,
 		vsp: 0,
 		is_dead: 0,
+		zerogrv: 0,
 		dead_timer: 0,      // Local death animation timer
 		dead_drift: 0,      // Death horizontal drift
 		dead_fall: 0,       // Death vertical speed
@@ -569,12 +583,11 @@ function net_get_ghost_count() {
 }
 
 /// @function		net_update_ghosts()
-/// @description	Interpolate ghost positions toward their targets
+/// @description	Update ghost positions and state
 function net_update_ghosts() {
 	if (!global.net_active) return;
 	
 	var _current_room = room_get_name(room)
-	var _lerp_speed = 0.3
 	
 	var _key = ds_map_find_first(global.net_players)
 	while (!is_undefined(_key)) {
@@ -595,9 +608,9 @@ function net_update_ghosts() {
 			if (_data.ghost_alpha < 0) _data.ghost_alpha = 0
 		} else {
 			_data.dead_timer = 0
-			// Interpolate position
-			_data.x = lerp(_data.x, _data.target_x, _lerp_speed)
-			_data.y = lerp(_data.y, _data.target_y, _lerp_speed)
+			// Snap to received position
+			_data.x = _data.target_x
+			_data.y = _data.target_y
 		
 			// Fade ghost alpha based on same room - fully opaque
 			if (_data.room_name == _current_room) {
@@ -632,12 +645,22 @@ function net_draw_ghosts() {
 		
 		// Only draw ghosts that are in the same room and visible
 		if (_data.room_name == _current_room && _data.ghost_alpha > 0.01) {
+			// Compensate for sprite offset mismatch between local and remote player.
+			// When in zero gravity, the sender's sprite offset was (16,16) and position
+			// was shifted +16. The local sprite offset may differ, so we correct here.
+			var _sox = sprite_get_xoffset(_data.sprite_index)
+			var _soy = sprite_get_yoffset(_data.sprite_index)
+			var _ghost_ox = _data.zerogrv * 16
+			var _ghost_oy = _data.zerogrv * 16
+			var _draw_x = _data.x + (_sox - _ghost_ox)
+			var _draw_y = _data.y + (_soy - _ghost_oy)
+			
 			// Draw the ghost player sprite
 			draw_sprite_ext(
 				_data.sprite_index,
 				_data.image_index,
-				_data.x,
-				_data.y,
+				_draw_x,
+				_draw_y,
 				_data.image_xscale,
 				_data.image_yscale,
 				_data.image_angle,
@@ -651,6 +674,10 @@ function net_draw_ghosts() {
 			// Draw item on ghost
 			net_draw_ghost_item(_data)
 			
+			// Visual center of the ghost sprite (accounts for zero gravity offset)
+			var _center_x = _data.x + 16 - (_data.zerogrv * 16)
+			var _text_y = _data.y - 8 - (_data.zerogrv * 16)
+			
 			// Draw username above the ghost
 			draw_set_font(fnt_multiplayerfont)
 			draw_set_halign(fa_center)
@@ -659,14 +686,14 @@ function net_draw_ghosts() {
 			
 			// Text outline
 			draw_set_color(c_black)
-			draw_text(_data.x + 16 + 1, _data.y - 8 + 1, _data.username)
-			draw_text(_data.x + 16 - 1, _data.y - 8 - 1, _data.username)
-			draw_text(_data.x + 16 + 1, _data.y - 8 - 1, _data.username)
-			draw_text(_data.x + 16 - 1, _data.y - 8 + 1, _data.username)
+			draw_text(_center_x + 1, _text_y + 1, _data.username)
+			draw_text(_center_x - 1, _text_y - 1, _data.username)
+			draw_text(_center_x + 1, _text_y - 1, _data.username)
+			draw_text(_center_x - 1, _text_y + 1, _data.username)
 			
 			// Text fill
 			draw_set_color(c_white)
-			draw_text(_data.x + 16, _data.y - 8, _data.username)
+			draw_text(_center_x, _text_y, _data.username)
 			
 			draw_set_alpha(1)
 			draw_set_halign(fa_left)
@@ -683,8 +710,9 @@ function net_draw_ghost_hat(_data) {
 	var _hat = _data.hat
 	if (_hat <= 0) return;
 	
-	var _xx = _data.x + 16
-	var _yy = _data.y + 8
+	var _zg = _data.zerogrv * 16
+	var _xx = _data.x + 16 - _zg
+	var _yy = _data.y + 8 - _zg
 	var _alpha = _data.ghost_alpha
 	var _hatspr = s_graduationhat
 	var _colorhat = c_white
@@ -731,8 +759,9 @@ function net_draw_ghost_item(_data) {
 	var _item = _data.item
 	if (_item <= 0) return;
 	
-	var _xx = _data.x
-	var _yy = _data.y + 20
+	var _zg = _data.zerogrv * 16
+	var _xx = _data.x - _zg
+	var _yy = _data.y + 20 - _zg
 	var _alpha = _data.ghost_alpha
 	var _itemspr = -1
 	

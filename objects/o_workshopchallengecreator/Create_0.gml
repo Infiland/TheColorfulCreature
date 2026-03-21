@@ -75,7 +75,7 @@ with (btn_my) {
 	image_yscale = 6
 }
 
-var btn_play = instance_create(140, 700, o_workshopchallengecreatorbutton)
+var btn_play = instance_create(140, 680, o_workshopchallengecreatorbutton)
 with (btn_play) {
 	creator = other.id
 	kind = 2
@@ -84,7 +84,7 @@ with (btn_play) {
 	image_yscale = 12
 }
 
-var btn_upload = instance_create(584, 700, o_workshopchallengecreatorbutton)
+var btn_upload = instance_create(584, 680, o_workshopchallengecreatorbutton)
 with (btn_upload) {
 	creator = other.id
 	kind = 3

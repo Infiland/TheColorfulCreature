@@ -268,7 +268,7 @@ draw_text(512,240,"Place Block : Left Click\nDelete Block : Right Click\nSelect 
 break;
 case(5):
 draw_text(512,165,"Common")
-draw_text_transformed(512,196,"[/] - Reset all effects\n[[ - Add a bracket\n[<name of font>] - Change font (available: fnt_classic, fnt_cool1, fnt_cool2 (default), fnt_gamemode, fnt_death, fnt_skip, fnt_secret1, fnt_multiplayerfont, fnt_complete, fnt_mainmenu)\n[<name of colour>] - Change color of the text ([c_red])\n[#<hex code>] - Change color by using hex code.\n[d#<decimal>] - Change color by using BRG hex code. (Gamemaker uses BRG!!! NOT RGB!)\n[<name of sprite>,<image>,<speed>] - Draw a sprite, putting custom frame and speed is not required",0.55,0.55,0)
+draw_text_transformed(512,196,"[/] - Reset all effects\n[[ - Add a bracket\n[<name of font>] - Change font (available: fnt_cool1, fnt_cool2 (default), fnt_gamemode, fnt_death, fnt_skip, fnt_secret1, fnt_multiplayerfont, fnt_complete, fnt_mainmenu)\n[<name of colour>] - Change color of the text ([c_red])\n[#<hex code>] - Change color by using hex code.\n[d#<decimal>] - Change color by using BRG hex code. (Gamemaker uses BRG!!! NOT RGB!)\n[<name of sprite>,<image>,<speed>] - Draw a sprite, putting custom frame and speed is not required",0.55,0.55,0)
 draw_text(512,310,"Alignment")
 draw_text_transformed(512,340,"[fa_left] - Align text to the left\n[fa_center] - Align text to the center\n[fa_right] - Align text to the right\n[fa_top] - Align text to the top\n[fa_middle] - Align text to the middle",0.55,0.55,0)
 draw_text(512,420,"Transformation")

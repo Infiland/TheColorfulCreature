@@ -19,13 +19,15 @@ if (async_load[? "event_type"] == "lobby_join_requested") {
 			global.net_is_host = false
 		}
 		
+		// Set the pending join BEFORE creating the network manager so that
+		// Create_0 sees it and skips auto-hosting (net_init preserves it)
+		global.net_pending_join = _lobby_id
+		
 		// Create the network manager if it doesn't exist
 		if (!instance_exists(o_networkmanager)) {
 			instance_create(0, 0, o_networkmanager)
 		}
 		
-		// Defer the join (same pattern as the in-game handler)
-		global.net_pending_join = _lobby_id
 		global.net_connect_state = 2
 		global.net_connect_timer = 0
 		

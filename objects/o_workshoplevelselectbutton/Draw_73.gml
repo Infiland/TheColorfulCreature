@@ -3,7 +3,7 @@ if filtered_out = 1 { exit; }
 y = lerp(y,base_y - global.workshopchallenge_scroll,0.1 * (60 / global.maxfps))
 
 if y < 320 { exit; }
-if y > 610 { exit; }
+if y > 580 { exit; }
 
 var border_col = c_white
 if selected = 1 { border_col = c_lime }

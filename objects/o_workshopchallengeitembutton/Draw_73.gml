@@ -1,7 +1,7 @@
 y = lerp(y,ystart - global.workshopchallenges_scroll,0.1 * (60 / global.maxfps))
 
 if y < -90 { exit; }
-if y > 900 { exit; }
+if y > 680 { exit; }
 
 draw_rectangle_color(room_width/2-200,y,room_width/2+200,y+90,c_black,$1d1d1d,c_black,$1d1d1d,false)
 draw_rectangle_color(room_width/2-200,y,room_width/2+200,y+90,c_white,c_white,c_white,c_white,true)
@@ -49,6 +49,13 @@ for(var i=0;i<diff_disp;i++) {
 if diff_disp = 0 {
 	draw_set_color(c_white)
 	draw_text_transformed(room_width/2+190,y+70,"Not rated",0.6,0.6,0)
+}
+
+// Missing levels warning
+if missing_levels > 0 {
+	draw_set_halign(fa_right)
+	draw_set_color(c_yellow)
+	draw_text(room_width/2+190,y+42,string(missing_levels) + " missing")
 }
 
 draw_set_halign(fa_left)

@@ -8,6 +8,11 @@ if global.choosesettings = 0 {
 	}
 	
 	instance_destroy(o_allsettings)
+	instance_destroy(o_settingbutton)
+	instance_destroy(o_settingslider)
+	instance_destroy(o_changelanguagesettings)
+	instance_destroy(o_controlsbuttonsettings)
+	instance_destroy(o_defaultkeysbuttonsetings)
 	scr_savesettings()
 	instance_destroy(o_info)
 	instance_destroy(o_animatedtext)

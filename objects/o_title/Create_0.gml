@@ -4,8 +4,8 @@ sprite_set_offset(s_playerred,0,0)
 steam_inventory_trigger_item_drop(99)
 steam_inventory_request_prices(); //Test
 
-//Rich presence - Test
-steam_set_rich_presence("steam_display", "In Main Menu")
+//Rich presence
+set_rich_presence()
 
 // Cold launch: if game was launched via Steam "Join Game" with +connect_lobby
 if (variable_global_exists("net_launch_lobby") && global.net_launch_lobby != "") {
@@ -14,11 +14,14 @@ if (variable_global_exists("net_launch_lobby") && global.net_launch_lobby != "")
 		var _cold_lobby_id = int64(global.net_launch_lobby)
 		global.net_launch_lobby = "" // Clear so we don't re-process
 		
+		// Set the pending join BEFORE creating the network manager so that
+		// Create_0 sees it and skips auto-hosting (net_init preserves it)
+		global.net_pending_join = _cold_lobby_id
+		
 		if (!instance_exists(o_networkmanager)) {
 			instance_create(0, 0, o_networkmanager)
 		}
 		
-		global.net_pending_join = _cold_lobby_id
 		global.net_connect_state = 2
 		global.net_connect_timer = 0
 		

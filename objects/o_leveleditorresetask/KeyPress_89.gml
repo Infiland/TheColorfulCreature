@@ -2,6 +2,7 @@ if global.levelname = "" {
 room_set_width(r_leveleditor,1024)
 room_set_height(r_leveleditor,768)
 room_restart()
+instance_create(x,y,o_leveleditormenusetup)
 keyboard_string = ""
 global.LEBuild = 1
 global.levelname = ""

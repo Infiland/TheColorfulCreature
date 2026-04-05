@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_settings_callbacks",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_settings_callbacks",
+  "parent":{
+    "name":"Settings",
+    "path":"folders/Objects/Settings.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

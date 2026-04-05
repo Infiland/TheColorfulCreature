@@ -25,6 +25,9 @@ function randomlevel() {
 	case(3):
 	CERrandomlevel()
 	break;
+	case(4):
+	workshopERrandomlevel()
+	return;
 	}
 
 	switch(global.chooserandomlevel) {

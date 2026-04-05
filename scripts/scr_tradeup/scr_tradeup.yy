@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_tradeup",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_tradeup",
+  "parent":{
+    "name":"Hats",
+    "path":"folders/Scripts/Hats.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

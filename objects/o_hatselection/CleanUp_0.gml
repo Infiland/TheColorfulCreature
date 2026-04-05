@@ -1,0 +1,1 @@
+if custom_hat_spr != -1 { sprite_delete(custom_hat_spr) }

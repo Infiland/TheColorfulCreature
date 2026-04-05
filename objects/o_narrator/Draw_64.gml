@@ -38,7 +38,7 @@ if room = r_localmultiplayermenu {
 if room = r_settings { 
 draw_set_font(global.cool2font)
 if global.choosesettings = 1 {
-	draw_text(830,160,"Graphics Presets")
+	draw_text(560,130,loc("GRAPHICS_PRESETS"))
 }
 	}
 

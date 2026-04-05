@@ -1,4 +1,4 @@
-steam_set_rich_presence("Menu","In Fun Mode")
+set_rich_presence()
 
 if !audio_is_playing(m_mainmenu) {
 audio_play_sound(m_mainmenu,0,1)

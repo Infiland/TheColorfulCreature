@@ -807,7 +807,13 @@ scr_savegame()
 		if highscorepitch > 1.6 { highscorepitch = 1.6 }
 		audio_sound_pitch(snd_newhighscore,highscorepitch)
 	if global.endlesslevel > global.endlesslevelhighscore { audio_play_sound(snd_newhighscore,10,0) }}
-		
+	if global.endlessrunmode = 4 {
+	if global.endlesslevel > global.workshopERhighscore {
+		highscorepitch = (global.endlesslevel - 1) / max(1, global.workshopERhighscore)
+		if highscorepitch > 1.6 { highscorepitch = 1.6 }
+		audio_sound_pitch(snd_newhighscore,highscorepitch)
+		audio_play_sound(snd_newhighscore,10,0) }}
+
 	}} else {
 		increase_stat("totallevelcompleted","QUESTlevelcompleted",1)
 		room_goto(r_dailylevelwin)

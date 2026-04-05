@@ -42,6 +42,30 @@ draw_rectangle_color(850,100,1000,150,c_black,c_black,c_black,c_black,false)
 draw_rectangle_color(850,100,1000,150,col3,col3,col3,col3,true)
 draw_text(920,110,"Autoscale Hat")
 
+//Custom hat preview
+if global.CUSTOMhat != "" && global.CUSTOMhat != preview_loaded_name {
+	if preview_sprite != -1 { sprite_delete(preview_sprite) }
+	var _dir = game_save_id + "\\Custom\\Player Hats\\" + global.CUSTOMhat
+	if file_exists(_dir) {
+		preview_sprite = sprite_add(_dir, 1, false, false, 0, 0)
+	} else {
+		preview_sprite = -1
+	}
+	preview_loaded_name = global.CUSTOMhat
+}
+if global.CUSTOMhat = "" && preview_loaded_name != "" {
+	if preview_sprite != -1 { sprite_delete(preview_sprite) }
+	preview_sprite = -1
+	preview_loaded_name = ""
+}
+if preview_sprite != -1 {
+	var _pw = sprite_get_width(preview_sprite)
+	var _ph = sprite_get_height(preview_sprite)
+	var _scale = min(100 / _pw, 100 / _ph)
+	draw_sprite_ext(preview_sprite, 0, 920, 220, _scale, _scale, 0, c_white, 1)
+	draw_text(920, 280, "Preview")
+}
+
 if page != maxpage {
 
 for(var i=(page-1)*15;i<page*15;i++) {

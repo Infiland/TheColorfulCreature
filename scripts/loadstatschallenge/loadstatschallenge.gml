@@ -564,6 +564,7 @@ function scr_challenge_apply_reward(_def) {
 	var _save_hats = false;
 	if (is_undefined(_def)) return [_save_skins, _save_hats];
 	if (global.cheats != 0) return [_save_skins, _save_hats];
+	if (global.levelselect == 1) return [_save_skins, _save_hats];
 
 	if (_def.reward_credits > 0) {
 		global.creditscurrency += floor(_def.reward_credits * global.creditsmultiplier);

@@ -3,3 +3,4 @@ text = loc("THE_CALENDAR")
 texty = 40
 
 global.calendar = 0
+set_rich_presence()

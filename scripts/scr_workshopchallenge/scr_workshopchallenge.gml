@@ -37,6 +37,7 @@ function scr_workshopchallenge_abort() {
 	global.workshopchallenge_difficulty = 0
 	global.workshopchallenge_signature = ""
 	global.workshopchallenge_is_draft = 0
+	global.workshopchallenge_return_to_creator = 0
 	global.workshopfolder = ""
 	global.workshop = 0
 	global.challenges = 0
@@ -69,6 +70,7 @@ function scr_workshopchallenge_complete() {
 	if (global.workshopchallenge_is_draft == 1 && global.workshopchallenge_signature != "") {
 		global.workshopchallenge_beaten_signature = global.workshopchallenge_signature
 		scr_workshopchallenge_save_progress()
+		global.workshopchallenge_return_to_creator = 1
 	}
 
 	global.levelname = global.workshopchallenge_title
@@ -130,12 +132,61 @@ function scr_workshopchallenge_goto_level(_index) {
 	room_goto(r_customlevelworkshop)
 }
 
+function scr_workshopchallenge_validate_levels(_challenge) {
+	var _result = { valid: true, missing: [] };
+	if (!is_struct(_challenge)) return _result;
+	if (!variable_struct_exists(_challenge, "levels")) return _result;
+	if (!is_array(_challenge.levels)) return _result;
+	if (!global.steam_api) return _result;
+
+	for (var i = 0; i < array_length(_challenge.levels); i++) {
+		var _level = _challenge.levels[i];
+		var _level_id = _level;
+		var _level_title = "Workshop Level";
+		if (is_struct(_level)) {
+			if (variable_struct_exists(_level, "id")) _level_id = _level.id;
+			if (variable_struct_exists(_level, "title")) _level_title = _level.title;
+		}
+
+		var _info = ds_map_create();
+		steam_ugc_get_item_install_info(_level_id, _info);
+		var _folder = "";
+		if (ds_map_exists(_info, "folder")) _folder = _info[? "folder"];
+		ds_map_destroy(_info);
+
+		_folder = string_replace_all(string(_folder), "\\", "/");
+		if (_folder != "" && string_copy(_folder, string_length(_folder), 1) != "/") _folder += "/";
+
+		if (_folder == "" || !file_exists(_folder + "LevelEditor.sav")) {
+			_result.valid = false;
+			array_push(_result.missing, { id: _level_id, title: _level_title });
+		}
+	}
+	return _result;
+}
+
 function scr_workshopchallenge_start(_challenge) {
 	if (!global.steam_api) return;
 	if (is_undefined(_challenge)) return;
 	if (!is_struct(_challenge)) return;
 	if (!variable_struct_exists(_challenge, "levels")) return;
 	if (!is_array(_challenge.levels) || array_length(_challenge.levels) <= 0) return;
+
+	// Validate all levels are subscribed and installed
+	var _validation = scr_workshopchallenge_validate_levels(_challenge);
+	if (!_validation.valid) {
+		var _msg = "This challenge requires workshop levels you haven't subscribed to:";
+		for (var i = 0; i < array_length(_validation.missing); i++) {
+			var _m = _validation.missing[i];
+			_msg += "\n- " + string(_m.title) + " (" + string(_m.id) + ")";
+		}
+		_msg += "\n\nSubscribe to these levels first.";
+		if !instance_exists(o_popup) {
+			global.popup_config = { title: "Workshop Challenge", message: _msg, mode: 0 }
+			instance_create(0, 0, o_popup)
+		}
+		return;
+	}
 
 	global.challenges = 1
 	global.workshop = 1

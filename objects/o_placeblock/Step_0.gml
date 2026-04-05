@@ -65,11 +65,76 @@ if global.LEMode = 1 {
 break;
 }
 
+// Allow placement when canchange is true (block replacement)
+if (global.canchange) {
+	scr_leveleditorsprites(global.LES);
+}
+
 //if global.LEMode = 2 { image_alpha = 0 }
 
 //LEFT DOWN
 if mouse_check_button(mb_left) {
+	// Interpolation: fill gaps between previous and current grid position
+	if (prev_grid_x != -1 && prev_grid_y != -1) {
+		var _gx1 = prev_grid_x div 32;
+		var _gy1 = prev_grid_y div 32;
+		var _gx2 = x div 32;
+		var _gy2 = y div 32;
+		
+		if (_gx1 != _gx2 || _gy1 != _gy2) {
+			// Bresenham line algorithm to fill intermediate grid cells
+			var _dx = abs(_gx2 - _gx1);
+			var _dy = abs(_gy2 - _gy1);
+			var _sx = sign(_gx2 - _gx1);
+			var _sy = sign(_gy2 - _gy1);
+			var _err = _dx - _dy;
+			var _cx = _gx1;
+			var _cy = _gy1;
+			var _save_x = x;
+			var _save_y = y;
+			var _save_sprite = sprite_index;
+			
+			while (true) {
+				// Skip start (already placed last frame) and end (placed below)
+				if !((_cx == _gx1 && _cy == _gy1) || (_cx == _gx2 && _cy == _gy2)) {
+					x = _cx * 32;
+					y = _cy * 32;
+					
+					// Check if position is blocked and if canchange allows replacement
+					var _int_blocked = check_blocked();
+					var _int_canchange = false;
+					if (_int_blocked) { _int_canchange = check_canchange(); }
+					
+					if (!_int_blocked || _int_canchange) {
+						if (_int_canchange) { do_canchange_destroy(); }
+						sprite_index = _save_sprite;
+						if (sprite_index == s_cannotplace) {
+							scr_leveleditorsprites(global.LES);
+						}
+						scr_leftdownplacementLE();
+					}
+				}
+				
+				if (_cx == _gx2 && _cy == _gy2) break;
+				
+				var _e2 = 2 * _err;
+				if (_e2 > -_dy) { _err -= _dy; _cx += _sx; }
+				if (_e2 < _dx) { _err += _dx; _cy += _sy; }
+			}
+			
+			x = _save_x;
+			y = _save_y;
+			sprite_index = _save_sprite;
+		}
+	}
+	// Handle canchange at current position: destroy existing block before placement
+	if (global.canchange) { do_canchange_destroy(); }
 	scr_leftdownplacementLE()
+	prev_grid_x = x;
+	prev_grid_y = y;
+} else {
+	prev_grid_x = -1;
+	prev_grid_y = -1;
 }
 if mouse_check_button_pressed(mb_right) {
 	if instance_exists(o_leveleditorleaveask) { exit }

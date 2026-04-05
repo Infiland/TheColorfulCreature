@@ -14,6 +14,12 @@ if global.endlessrunmode = 2 {
 if global.endlesslevelhighscore < global.endlesslevel {
 global.endlesslevelhighscore = global.endlesslevel
 }}
+if global.endlessrunmode = 4 {
+if global.workshopERhighscore < global.endlesslevel {
+global.workshopERhighscore = global.endlesslevel
+}
+workshopER_cleanup()
+}
 
 if global.endlessrunmode != 3 {
 if global.skin[22] = 0 {
@@ -205,7 +211,15 @@ if room = r_workshopchallengemenu {
 room_goto(r_customlevelmenu)
 }
 if room = r_workshoplevelwin {
-	if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1) {
+	if (variable_global_exists("workshopchallenge_return_to_creator") && global.workshopchallenge_return_to_creator == 1) {
+		// Draft beaten — return to creator with state preserved so Upload works immediately
+		global.workshopchallenge_return_to_creator = 0
+		global.workshopchallenge_open_creator = 1
+		global.workshopchallenge = 0
+		global.challenges = 0
+		global.workshop = 0
+		room_goto(r_workshopchallengemenu)
+	} else if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1) {
 		scr_workshopchallenge_abort();
 		room_goto(r_workshopchallengemenu)
 	} else {
@@ -245,6 +259,11 @@ if !instance_exists(o_buttonpauseandroid) {
 instance_create(x,y,o_buttonpauseandroid)
 }
 instance_destroy(o_allsettings)
+instance_destroy(o_settingbutton)
+instance_destroy(o_settingslider)
+instance_destroy(o_changelanguagesettings)
+instance_destroy(o_controlsbuttonsettings)
+instance_destroy(o_defaultkeysbuttonsetings)
 instance_destroy(o_info)
 instance_destroy(o_settingspausemenu)
 instance_destroy(o_animatedtext)
@@ -298,7 +317,14 @@ audio_sound_gain(m_mainmenu,global.musicvolume,1000)
 if global.challenges = 1 {
 room_goto(r_challenges)
 }
-if global.workshop = 1 {
+if global.endless = 1 && global.endlessrunmode = 4 {
+	workshopER_cleanup()
+	audio_stop_all()
+	room_goto(r_endlessrunmenu)
+	audio_play_sound(m_mainmenu,0,1)
+	global.endless = 0
+}
+else if global.workshop = 1 {
 	if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1) {
 		scr_workshopchallenge_abort();
 		room_goto(r_workshopchallengemenu)

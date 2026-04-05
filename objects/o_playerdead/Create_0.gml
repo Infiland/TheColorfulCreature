@@ -14,7 +14,7 @@ global.gameoverplayerX = x
 global.gameoverplayerY = y
 
 if global.endless = 1 {
-if global.endlessrunmode < 3 {
+if global.endlessrunmode < 3 || global.endlessrunmode == 4 {
 if global.infinitelivessettings = 0 {
 if global.deaths > global.hardmodelives - 1 {
 audio_stop_all()
@@ -36,6 +36,15 @@ steam_upload_score("Old School Endless Run", global.endlesslevelhighscore);
 e = 2
 steam_upload_score("Seasonal Endless Run", global.endlesslevel);
 }}
+if global.endlessrunmode = 4 {
+if global.workshopERhighscore < global.endlesslevel {
+global.workshopERhighscore = global.endlesslevel
+steam_upload_score("Workshop Endless Run", global.workshopERhighscore);
+e = 2
+}
+steam_upload_score("Seasonal Endless Run", global.endlesslevel);
+workshopER_cleanup()
+}
 
 if global.endlessrunmode != 3 {
 if global.skin[22] = 0 {

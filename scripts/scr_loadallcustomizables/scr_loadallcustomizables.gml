@@ -2,6 +2,7 @@ function scr_loadallcustomizables(){
 
 //Load ItemDef
 global.itemdef = array_create(5000)
+global.item_ids = array_create(5000)
 
 //Load for selectbox
 global.skinnameobjectselected = o_normalskinbutton
@@ -38,4 +39,7 @@ global.hat[47] = 1 //Unlocked serbian hat
 
 global.CUSTOMskin = ""
 global.customskinautoscale = 1
+
+//Load MU customizable lookup arrays
+scr_loadMUcustomizables()
 }

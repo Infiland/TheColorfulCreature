@@ -14,13 +14,12 @@ global._ef_gain = audio_effect_create(AudioEffectType.Gain)
 global._ef_gain.gain = 1;
 audio_bus_main.effects[1] = global._ef_gain;
 
-/*global.classicfont = font_add("Fonts\\fnt_classic.ttf",20,false,false,32,128)
+/*
 global.coolfont = font_add("Fonts\\fnt_cool.ttf",15,false,false,32,128)
 global.cool2font = font_add("Fonts\\fnt_cool2.ttf",15,false,false,32,128)
 global.gamemodefont = font_add("Fonts\\fnt_gamemode.ttf",36,false,false,1040,1200)
 global.completefont = font_add("Fonts\\fnt_complete.ttf",36,false,false,1040,1200)*/
 
-global.classicfont = fnt_classic
 global.coolfont = fnt_cool
 global.cool2font = fnt_cool2
 global.gamemodefont = fnt_gamemode
@@ -192,6 +191,7 @@ global.customskinautoscale = 1
 global.controllervibrationsettings = 1
 global.fullscreen = 0
 global.onlinemultiplayersettings = 1  // Online multiplayer enabled by default
+global.netmaxplayers = 8  // Max players in online multiplayer lobby
 
 	//Workshop
 	global.LEMode = 0
@@ -208,6 +208,8 @@ global.onlinemultiplayersettings = 1  // Online multiplayer enabled by default
 	global.workshopchallenge_signature = ""
 	global.workshopchallenge_beaten_signature = ""
 	global.workshopchallenge_is_draft = 0
+	global.workshopchallenge_return_to_creator = 0
+	global.workshopchallenge_open_creator = 0
 	global.workshopchallenge_draft = undefined
 	global.workshopchallenge_draft_title = ""
 	global.workshopchallenge_draft_level_ids = []
@@ -402,6 +404,19 @@ variable_global_set("CERL" + string(i), 1)
 variable_global_set("CERM" + string(i), 1)
 }
 
+//Workshop Endless Run
+global.workshopERhighscore = 0
+global.workshopER_pool = []
+global.workshopER_pool_count = 0
+global.workshopER_auto_subscribed = []
+global.workshopER_last_file_id = 0
+global.workshopER_loading = false
+global.workshopER_current_file_id = 0
+global.workshopER_query_page = 1
+global.workshopER_query_id = -1
+global.workshopER_catalog_scan_done = false
+global.workshopER_catalog_ids = []
+
 //Online Multiplayer
 net_init()  // Initialize Steam networking globals
 
@@ -468,6 +483,7 @@ scr_loadallcustomizables()
 scr_loadskins()
 scr_loadhats()
 scr_loaditems()
+scr_skin_preview_data()
 
 if global.hat[3] = -1 {
 if current_month = 9 {

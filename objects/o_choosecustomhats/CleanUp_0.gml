@@ -1,0 +1,1 @@
+if preview_sprite != -1 { sprite_delete(preview_sprite) }

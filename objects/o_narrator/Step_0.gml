@@ -7,7 +7,6 @@ if room = r_lvl30 { l -= 0.2 * (60 / global.maxfps) }
 if room = r_lvl60 { l -= 0.2 * (60 / global.maxfps) }
 if room = r_lvl69 { l -= 0.2 * (60 / global.maxfps) }
 }
-print = string_copy(str,1,l);
 
 switch(room) {
 default: str = "" break;
@@ -324,3 +323,6 @@ case(r_breakablelvl6): str = strings[275] break;
 }
 
 if global.calendar = 1 { str = strings[269] }
+
+str = string_replace_all(str, "\\n", "\n")
+print = string_copy(str,1,l);

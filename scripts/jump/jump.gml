@@ -49,21 +49,6 @@ function jump() {
 	if room != r_leveleditor {
 	increase_stat("totaljumps","QUESTjump",1)
 	}}}}
-	if object_index = o_enemyplayer {
-	if !place_meeting(x,y-32,o_anyblock) {
-	vsp = -10.5
-	onground = 0
-		audio_sound_pitch(snd_enemyjump,random_range(0.6,0.8));
-		if distance_to_object(o_player) > 250 {
-	   audio_sound_gain(snd_enemyjump,0,1)
-		} else {
-		audio_sound_gain(snd_enemyjump,global.soundvolume,1)
-		}
-		if distance_to_object(o_player) < 250 {
-		if !audio_is_playing(snd_enemyjump) {
-		audio_play_sound(snd_enemyjump,5,0)
-		}}
-	}}
 if global.playerpar = 2 {
 	if global.noclip = 0 {
 /*var pmin = 4

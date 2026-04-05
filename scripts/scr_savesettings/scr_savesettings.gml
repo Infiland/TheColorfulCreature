@@ -49,6 +49,7 @@ function scr_savesettings() {
 	ini_write_real("Controls","Controller Vibration",global.controllervibrationsettings)
 	//Online Multiplayer
 	ini_write_real("Settings","Online Multiplayer",global.onlinemultiplayersettings)
+	ini_write_real("Settings","Net Max Players",global.netmaxplayers)
 	//Controller Button Bindings
 	gamepad_remap_save();
 	ini_close();

@@ -14,5 +14,4 @@ global.dailylevel = 1
 scr_dailylevelload(i)
 audio_stop_all()
 instance_destroy(o_coincounter)
-steam_set_rich_presence("Menu","Playing Daily Level")
 }

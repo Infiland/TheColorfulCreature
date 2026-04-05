@@ -23,5 +23,7 @@ maxpage = 1 + floor((len-1)/15)
 col = c_white
 col2 = c_white
 col3 = c_white
+preview_sprite = -1
+preview_loaded_name = ""
 
 lastlevels = len - (maxpage-1)*15

@@ -6,6 +6,7 @@ function scr_spawn_settings_buttons() {
 	var _defs = scr_settings_definitions()
 	var _cx = camera_get_view_x(view_camera[0])
 	var _cy = camera_get_view_y(view_camera[0])
+	global.soundchange = 0
 
 	for (var i = 0; i < array_length(_defs); i++) {
 		var _d = _defs[i]
@@ -27,10 +28,18 @@ function scr_spawn_settings_buttons() {
 		}
 	}
 
+	var _dkb
 	if os_type != os_android {
-		instance_create(_cx - 128, _cy + 640, o_defaultkeysbuttonsetings)
+		_dkb = instance_create(_cx - 128, _cy + 640, o_defaultkeysbuttonsetings)
 	} else {
-		instance_create(_cx - 128, _cy + 160, o_defaultkeysbuttonsetings)
+		_dkb = instance_create(_cx - 128, _cy + 160, o_defaultkeysbuttonsetings)
+	}
+	with _dkb {
+		xscale = 0.4
+		yscale = 0.4
+		width = 2
+		image_xscale = 24.2
+		image_yscale = 10.78844
 	}
 
 	// Languages
@@ -71,6 +80,7 @@ function settings_apply_from_def(_inst, _def) {
 		if variable_struct_exists(_def, "dlc_gate") { dlc_gate = _def.dlc_gate }
 		if variable_struct_exists(_def, "demo_gate") { demo_gate = _def.demo_gate }
 		if variable_struct_exists(_def, "header_label") { header_label = _def.header_label }
+		if variable_struct_exists(_def, "use_loc") { use_loc = _def.use_loc }
 	}
 }
 
@@ -84,10 +94,17 @@ function slider_apply_from_def(_inst, _def) {
 		slider_soundchange_id = variable_struct_exists(_def, "soundchange_id") ? _def.soundchange_id : 1
 		slider_label = _def.label
 
+		// Custom range support
+		if variable_struct_exists(_def, "slider_min") { slider_min = _def.slider_min }
+		if variable_struct_exists(_def, "slider_max") { slider_max = _def.slider_max }
+		if variable_struct_exists(_def, "slider_integer") { slider_integer = _def.slider_integer }
+		if variable_struct_exists(_def, "slider_beginx_offset") { slider_beginx_offset = _def.slider_beginx_offset }
+
 		// Recalculate position based on the global value
 		xcam = camera_get_view_x(view_camera[0])
-		x = xcam + 116 + (variable_global_get(slider_gvar) * 146) - 200
-		beginx = xcam + 116
-		endx = xcam + 262
+		beginx = xcam + slider_beginx_offset
+		endx = beginx + 146
+		var _normalized = (slider_max != slider_min) ? (variable_global_get(slider_gvar) - slider_min) / (slider_max - slider_min) : 0
+		x = beginx + (_normalized * 146) - 200
 	}
 }

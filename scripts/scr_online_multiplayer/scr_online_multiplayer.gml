@@ -12,7 +12,7 @@
 #macro NET_PACKET_SKIN_INFO			6
 #macro NET_PACKET_PING				7
 
-#macro NET_MAX_PLAYERS				8
+// NET_MAX_PLAYERS is now controlled by global.netmaxplayers (settings slider)
 #macro NET_SEND_RATE				1  // Send every frame (60 ticks/sec at 60fps)
 
 /// @function		net_init()
@@ -113,7 +113,7 @@ function net_host_lobby() {
 	global.net_my_steam_id = steam_get_user_steam_id()
 	global.net_connect_state = 1
 	global.net_connect_timer = 0
-	steam_lobby_create(steam_lobby_type_friends_only, NET_MAX_PLAYERS)
+	steam_lobby_create(steam_lobby_type_friends_only, global.netmaxplayers)
 	show_debug_message("[NET] Creating lobby...")
 }
 

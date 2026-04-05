@@ -18,9 +18,12 @@ var clicked = mouse_check_button_pressed(mb_left)
 if mouse_wheel_up() { global.workshopchallenge_scroll -= 60 }
 if mouse_wheel_down() { global.workshopchallenge_scroll += 60 }
 
-// Layout list + scrollmax (based on filter)
+// Layout grid + scrollmax (based on filter)
 var list_top_y = 320
-var list_step_y = 95
+var _tile_h = 140
+var _grid_x1 = 110
+var _grid_x2 = 520
+var _cols = 2
 var visible_count = 0
 var my_steam_id = steam_get_user_steam_id()
 
@@ -37,14 +40,20 @@ for (var i = 0; i < array_length(level_buttons); i++) {
 		}
 		btn.filtered_out = 1 - show
 		if show = 1 {
-			btn.base_y = list_top_y + (visible_count * list_step_y)
+			var _col = visible_count mod _cols
+			var _row = visible_count div _cols
+			btn.base_x = (_col == 0) ? _grid_x1 : _grid_x2
+			btn.base_y = list_top_y + (_row * _tile_h)
+			btn.grid_col = _col
 			visible_count += 1
 		}
 	}
 }
 
+var _total_rows = ceil(visible_count / _cols)
+var _visible_rows = 2
 global.workshopchallenge_scrollmax = 0
-if visible_count > 4 { global.workshopchallenge_scrollmax = (visible_count - 4) * list_step_y }
+if _total_rows > _visible_rows { global.workshopchallenge_scrollmax = (_total_rows - _visible_rows) * _tile_h }
 
 if global.workshopchallenge_scroll < 0 { global.workshopchallenge_scroll = 0 }
 if global.workshopchallenge_scroll > global.workshopchallenge_scrollmax { global.workshopchallenge_scroll = global.workshopchallenge_scrollmax }
@@ -84,8 +93,8 @@ var title_box_x2 = 864
 var title_box_y2 = 150
 
 if clicked {
-	// Click title field
-	if (mx > title_box_x1 && mx < title_box_x2 && my > title_box_y1 && my < title_box_y2) {
+	var _in_title = (mx > title_box_x1 && mx < title_box_x2 && my > title_box_y1 && my < title_box_y2)
+	if _in_title {
 		if editing_title = 0 {
 			editing_title = 1
 			keyboard_string = title
@@ -94,6 +103,11 @@ if clicked {
 			title = keyboard_string
 			keyboard_string = ""
 		}
+	} else if editing_title = 1 {
+		// Click outside title field deselects it
+		editing_title = 0
+		title = keyboard_string
+		keyboard_string = ""
 	}
 }
 

@@ -16,6 +16,18 @@ draw_set_halign(fa_left)
 draw_set_valign(fa_top)
 draw_set_color(c_white)
 
+// X close button (top-right corner, always visible)
+var _xbtn_x = margin_x + content_w - 12
+var _xbtn_y = margin_y + 2
+var _xmx = device_mouse_x_to_gui(0)
+var _xmy = device_mouse_y_to_gui(0)
+var _x_hover = (_xmx >= _xbtn_x - 18 && _xmx <= _xbtn_x + 18 && _xmy >= _xbtn_y - 4 && _xmy <= _xbtn_y + 30)
+draw_set_halign(fa_center)
+draw_set_color(_x_hover ? $5555ff : $aaaaaa)
+draw_text(_xbtn_x, _xbtn_y, "X")
+draw_set_halign(fa_left)
+draw_set_color(c_white)
+
 // ===== LOADING STATE =====
 if (state == "loading") {
     draw_set_halign(fa_center)
@@ -74,25 +86,72 @@ else if (state == "list") {
             draw_rectangle(margin_x, _ry, margin_x + content_w, _ry + row_h - 2, false)
         }
 
+        // Thumbnail
+        var _text_offset = 8
+        if (_article.thumb_url != "") {
+            var _tx = margin_x + 8
+            var _ty = _ry + 8
+            if (ds_map_exists(loaded_images, _article.thumb_url)) {
+                var _spr = ds_map_find_value(loaded_images, _article.thumb_url)
+                if (sprite_exists(_spr)) {
+                    var _sw = sprite_get_width(_spr)
+                    var _sh = sprite_get_height(_spr)
+                    var _scale = min(thumb_size / _sw, thumb_size / _sh)
+                    draw_sprite_ext(_spr, 0, _tx, _ty, _scale, _scale, 0, c_white, 1)
+                }
+            } else {
+                // Placeholder
+                draw_set_color($222222)
+                draw_rectangle(_tx, _ty, _tx + thumb_size, _ty + thumb_size, false)
+                draw_set_color($444444)
+                draw_rectangle(_tx, _ty, _tx + thumb_size, _ty + thumb_size, true)
+            }
+            _text_offset = thumb_size + 16
+        }
+
         // Article title
         draw_set_color(_hovered ? $55bbff : c_white)
-        draw_text_ext(margin_x + 8, _ry + 6, _article.title, -1, content_w - 16)
+        draw_text_ext(margin_x + _text_offset, _ry + 6, _article.title, -1, content_w - _text_offset - 8)
 
         // Date + feedlabel
         draw_set_color($888888)
         var _meta = _article.date_str
         if (_article.feedlabel != "") _meta += "  |  " + _article.feedlabel
-        draw_text(margin_x + 8, _ry + 32, _meta)
+        draw_text(margin_x + _text_offset, _ry + 32, _meta)
 
         // Author
         if (_article.author != "") {
             draw_set_color($666666)
-            draw_text(margin_x + 8, _ry + 50, "by " + _article.author)
+            draw_text(margin_x + _text_offset, _ry + 50, "by " + _article.author)
         }
 
         // Separator line
         draw_set_color($333333)
         draw_line(margin_x + 8, _ry + row_h - 2, margin_x + content_w - 8, _ry + row_h - 2)
+    }
+
+    // "Load More" button
+    if (can_load_more) {
+        var _lm_y = view_top + array_length(articles) * row_h - scroll
+        if (_lm_y + load_more_h > view_top && _lm_y < view_bottom) {
+            var _lm_hover = (_mx >= margin_x && _mx <= margin_x + content_w && _my >= _lm_y && _my < _lm_y + load_more_h && _my >= view_top && _my < view_bottom)
+            draw_set_color(_lm_hover ? $2a2a3a : $1e1e1e)
+            draw_rectangle(margin_x, _lm_y, margin_x + content_w, _lm_y + load_more_h, false)
+            draw_set_color($00aaff)
+            draw_rectangle(margin_x, _lm_y, margin_x + content_w, _lm_y + load_more_h, true)
+            draw_set_halign(fa_center)
+            draw_set_valign(fa_middle)
+            if (loading_more) {
+                var _dots = ""
+                repeat(loading_dots) _dots += "."
+                draw_text(512, _lm_y + load_more_h / 2, "LOADING" + _dots)
+            } else {
+                draw_set_color(_lm_hover ? $55bbff : $00aaff)
+                draw_text(512, _lm_y + load_more_h / 2, "LOAD MORE")
+            }
+            draw_set_halign(fa_left)
+            draw_set_valign(fa_top)
+        }
     }
 
     gpu_set_scissor(-1, -1, -1, -1)
@@ -178,6 +237,20 @@ else if (state == "article") {
             case "header":
                 draw_set_color($55bbff)
                 draw_text_ext(margin_x + 8, _draw_y + 4, _block.text, -1, content_w - 16)
+                _draw_y += _block.height
+                break
+
+            case "link":
+                var _lx = margin_x + 8
+                var _ly = _draw_y
+                var _lw = string_width_ext(_block.text, -1, content_w - 16)
+                var _lh = _block.height
+                var _link_hover = (_bmx >= _lx && _bmx <= _lx + _lw && _bmy >= _ly && _bmy < _ly + _lh && _bmy >= _content_top && _bmy < _content_bottom)
+                draw_set_color(_link_hover ? $ffcc44 : $44bbff)
+                draw_text_ext(_lx, _ly, _block.text, -1, content_w - 16)
+                // Underline
+                var _uw = min(_lw, content_w - 16)
+                draw_line(_lx, _ly + _lh - 4, _lx + _uw, _ly + _lh - 4)
                 _draw_y += _block.height
                 break
 

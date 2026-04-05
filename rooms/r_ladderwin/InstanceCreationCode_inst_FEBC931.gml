@@ -7,7 +7,7 @@ instance_destroy(o_deathcounter)
 instance_destroy(o_musicdistortion)
 instance_destroy(o_ammocounter)
 global.challenges = 1
-if global.easy = 0 {
+if global.easy = 0 && global.levelselect = 0 {
 global.skin019 = 1
 global.creditscurrency += 5
 if global.ladderchallengetime > global.time {

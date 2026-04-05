@@ -125,14 +125,14 @@ function badge_draw_infobox(x, y, badge_id) {
         draw_set_font(global.deathfont);
         draw_set_alpha(0.2);
         draw_rectangle_color(
-            x + 320, y - 110, 
-            x, y, 
-            badge.colors[0], badge.colors[1], 
-            badge.colors[0], badge.colors[1], 
+            x, y,
+            x + 300, y + 100,
+            badge.colors[0], badge.colors[1],
+            badge.colors[0], badge.colors[1],
             false
         );
         draw_set_alpha(1);
-        draw_text_ext(x + 300, y - 100, badge.description, 30, 300);
+        draw_text_ext(x + 10, y + 10, badge.description, 30, 280);
         draw_set_font(global.coolfont);
     }
 }
@@ -168,7 +168,6 @@ function badge_reset_positions() {
 /// @returns {struct} Struct with game1, dlc1, dlc1_1, dlc2, dlc3, moni, actualmoni
 function badge_check_dlc_ownership() {
     var result = { game1: 0, dlc1: 0, dlc1_1: 0, dlc2: 0, dlc3: 0, moni: 0, actualmoni: 0 };
-    if (!global.steam_is_available) return result;
 
     if (steam_user_owns_dlc(1651680)) { result.game1 = 1; } // Game
     if (steam_user_owns_dlc(1749590)) { result.dlc1 = 1; } // TCC OST
@@ -188,13 +187,12 @@ function badge_check_dlc_ownership() {
 /// @returns {struct} Struct with e1, e2, e3, e4, hats (all default 0)
 function badge_load_seasonal_rankings() {
     var result = { e1: 0, e2: 0, e3: 0, e4: 0, hats: 0 };
-    if (!global.steam_is_available) return result;
 
     var _file = program_directory + "/Other/seasonal_rankings.json";
     if (!file_exists(_file)) return result;
 
     var _data = LoadJSONFromFile(_file);
-    if (is_undefined(_data)) return result;
+    if (is_undefined(_data) || _data == -1) return result;
 
     var userid = steam_get_user_steam_id();
     if (ds_map_exists(_data, "rankings")) {

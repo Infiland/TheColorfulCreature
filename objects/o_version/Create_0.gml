@@ -76,9 +76,8 @@ if (!instance_exists(o_badge)) {
     instance_create_depth(0, 0, depth-1, o_badge);
 }
 
-// Update badge status based on data
-// This will be called every time data changes
-event_user(0);
+// Update badge counts directly
+badge_update_all(game1, dlc1, dlc1_1, dlc2, dlc3, actualmoni, e1, e2, e3, e4, hats);
 
 rng = 0
 

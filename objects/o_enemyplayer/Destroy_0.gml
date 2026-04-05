@@ -1,3 +1,5 @@
+nav_path = []
+
 if global.berserk = 0 {
 instance_create(x,y,o_enemydead);
 if instance_exists(o_player) {

@@ -1,5 +1,8 @@
 scr_saveleveleditor()
+room_set_width(r_leveleditor,1024)
+room_set_height(r_leveleditor,768)
 room_restart()
+instance_create(x,y,o_leveleditormenusetup)
 keyboard_string = ""
 global.LEBuild = 1
 global.levelname = ""
@@ -12,4 +15,5 @@ global.color = 0
 global.LEBackground = 0
 global.LEStarRotation = 0
 global.LEbuttonpage = 1
+global.LEVerified = 0
 instance_destroy()

@@ -8,11 +8,9 @@ if global.choosesettings != setting_menu {
 	x = lerp(x, _cam_x + setting_col, _lerp_speed)
 }
 
-// Update image_alpha for gated/locked settings
+// Gated settings: gray out when disabled
 if gated {
-	if setting_type = STYPE.CATEGORY {
-		// Languages category: gated by some condition if needed
-	}
+	image_alpha = 0.5
 }
 
 // Cheat-gated buttons: dim when cheats are off

@@ -15,6 +15,17 @@ if (mPath != "") {
 		diamond_time = ini_read_real("Other LE","Diamond Medal Time",0);
 		ini_close();
 	}
+
+	// Load thumbnail image
+	if (thumb_spr == -1) {
+		if (file_exists(dir + "thumb.jpg")) {
+			thumb_spr = sprite_add(dir + "thumb.jpg", 0, false, false, 0, 0);
+			thumb_loaded = 1;
+		} else if (file_exists(dir + "thumb.png")) {
+			thumb_spr = sprite_add(dir + "thumb.png", 0, false, false, 0, 0);
+			thumb_loaded = 1;
+		}
+	}
 }
 
 alarm[0] = -1

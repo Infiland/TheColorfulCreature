@@ -20,8 +20,20 @@ if horizontal == 1 {
 // === Water check ===
 if place_meeting(x, y, o_water) { inwater = 2 } else { inwater = 1 }
 
+// === Ladder climbing ===
+if climbing == 1 {
+	if place_meeting(x, y, o_ladder) {
+		vsp = -3
+		if y <= climb_target_y { climbing = 0; vsp = 0 }
+		if !place_meeting(x, y - 4, o_ladder) { climbing = 0; vsp = 0 }
+		if !audio_is_playing(snd_ladder) { audio_play_sound(snd_ladder, 0, 0) }
+	} else {
+		climbing = 0
+	}
+}
+
 // === Gravity + vertical collision ===
-vsp = (vsp + (grv / inwater))
+if climbing == 0 { vsp = (vsp + (grv / inwater)) }
 var solid_collision = place_meeting(x, y + vsp, o_anyblock)
 
 var oneway_collision = false
@@ -50,16 +62,16 @@ if state != 2 {
 	// === Player detection ===
 	if bored == 0 {
 		if instance_exists(o_player) {
-			if cansee == 0 {
-				if distance_to_object(o_player) < 100 {
-					state = 1
-					if reactiontime >= 0 {
-						reactiontime -= 1 * (60 / global.maxfps)
-					}
-					if troopsound < 2 { scr_troopvoiceline() }
+			var _dist = distance_to_object(o_player);
+			// Detect by sight (long range) or proximity/hearing (short range, through walls)
+			if (cansee == 0 && _dist < 250) || _dist < 100 {
+				state = 1
+				if reactiontime >= 0 {
+					reactiontime -= 1 * (60 / global.maxfps)
 				}
+				if troopsound < 2 { scr_troopvoiceline() }
 			}
-			if distance_to_object(o_player) > 150 {
+			if _dist > 350 {
 				state = 0
 				if reactiontime <= 30 {
 					reactiontime += 0.05 * (60 / global.maxfps)
@@ -77,24 +89,35 @@ if state != 2 {
 	if bored == 0 {
 		if state == 1 {
 			if instance_exists(o_player) {
-				// Move toward player
-				if x < o_player.x { move = 1 }
-				if x > o_player.x { move = -1 }
+				var _px = o_player.x
+				var _py = o_player.y
 
-				// Jump over obstacles when on ground and player is nearby above
-				if scr_troop_on_ground() {
-					if o_player.y < y + 20 {
-						if scr_troop_ledge_ahead(20) { scr_troop_jump() }
-						if scr_troop_ledge_ahead(-20) { scr_troop_jump() }
-					}
+				// Recalculate path periodically
+				nav_recalc_timer -= 1 * (60 / global.maxfps)
+				if nav_recalc_timer <= 0 {
+					nav_path = scr_troop_build_nav_path(_px, _py)
+					nav_path_index = 0
+					nav_recalc_timer = 45
 				}
 
-				// Jump up to reach player significantly above
-				if o_player.y < y - 60 {
+				// Follow path if we have one
+				if array_length(nav_path) > 0 {
+					scr_troop_follow_path()
+				} else {
+					// Reactive fallback: original chase behavior
+					if x < _px { move = 1 }
+					if x > _px { move = -1 }
+
 					if scr_troop_on_ground() {
-						if scr_troop_head_clear() {
-							if reactiontime < 0 {
-								scr_troop_jump()
+						if _py < y + 20 {
+							if scr_troop_ledge_ahead(20) { scr_troop_jump() }
+							if scr_troop_ledge_ahead(-20) { scr_troop_jump() }
+						}
+					}
+					if _py < y - 60 {
+						if scr_troop_on_ground() {
+							if scr_troop_head_clear() {
+								if reactiontime < 0 { scr_troop_jump() }
 							}
 						}
 					}
@@ -215,11 +238,10 @@ if place_meeting(x, y, o_deathblock) { instance_destroy() }
 
 // === Full idle -> chase transition ===
 if state == 2 {
-	if cansee == 0 {
-		if instance_exists(o_player) {
-			if distance_to_object(o_player) < 100 {
-				state = 1
-			}
+	if instance_exists(o_player) {
+		var _dist = distance_to_object(o_player);
+		if (cansee == 0 && _dist < 250) || _dist < 100 {
+			state = 1
 		}
 	}
 }

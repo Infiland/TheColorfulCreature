@@ -19,5 +19,5 @@ badge_draw_row(start_x, y_pos, spacing);
 
 // Draw info box for hovered badge
 if (hovered_badge != undefined) {
-    badge_draw_infobox(700, 340, hovered_badge);
+    badge_draw_infobox(700, 260, hovered_badge);
 }

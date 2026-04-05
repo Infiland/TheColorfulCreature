@@ -27,6 +27,14 @@ noreaction = 0
 
 dontxrayfix = 1 //Dont xray fixed
 
+// Pathfinding
+climbing = 0
+climb_target_y = 0
+nav_path = []
+nav_path_index = 0
+nav_recalc_timer = 0
+nav_ladder_id = noone
+
 /*
 State = 0 - idle
 State = 1 - Follow

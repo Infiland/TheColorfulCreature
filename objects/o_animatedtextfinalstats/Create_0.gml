@@ -28,7 +28,7 @@ x4 = -1000
 
 
 //Challanges
-if global.cheats = 0 {
+if global.cheats = 0 && global.levelselect = 0 {
 if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1) {
 	showhighscore = 0
 	alarm[0] = 1

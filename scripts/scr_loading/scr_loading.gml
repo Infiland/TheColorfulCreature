@@ -191,6 +191,7 @@ global.customskinautoscale = 1
 global.controllervibrationsettings = 1
 global.fullscreen = 0
 global.onlinemultiplayersettings = 1  // Online multiplayer enabled by default
+global.netmaxplayers = 8  // Max players in online multiplayer lobby
 
 	//Workshop
 	global.LEMode = 0
@@ -402,6 +403,19 @@ for(i=0;i<30;i++) {
 variable_global_set("CERL" + string(i), 1)
 variable_global_set("CERM" + string(i), 1)
 }
+
+//Workshop Endless Run
+global.workshopERhighscore = 0
+global.workshopER_pool = []
+global.workshopER_pool_count = 0
+global.workshopER_auto_subscribed = []
+global.workshopER_last_file_id = 0
+global.workshopER_loading = false
+global.workshopER_current_file_id = 0
+global.workshopER_query_page = 1
+global.workshopER_query_id = -1
+global.workshopER_catalog_scan_done = false
+global.workshopER_catalog_ids = []
 
 //Online Multiplayer
 net_init()  // Initialize Steam networking globals

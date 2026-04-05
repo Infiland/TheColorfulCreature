@@ -9,11 +9,22 @@ draw_set_halign(fa_left)
 // Title field
 draw_set_color(c_black)
 draw_rectangle(160,110,864,150,false)
-draw_set_color(c_white)
+if editing_title = 1 {
+	draw_set_color(c_lime)
+} else {
+	draw_set_color(c_white)
+}
 draw_rectangle(160,110,864,150,true)
 var title_text = "Title: " + string(title)
-if editing_title = 1 { title_text = "Title: " + string(keyboard_string) }
+if editing_title = 1 {
+	title_text = "Title: " + string(keyboard_string)
+	// Blinking cursor
+	if (current_time div 500) mod 2 = 0 {
+		title_text += "|"
+	}
+}
 draw_text(170,120,title_text)
+draw_set_color(c_white)
 
 // Stats
 draw_text(170,170,"Selected levels: " + string(selected_count))

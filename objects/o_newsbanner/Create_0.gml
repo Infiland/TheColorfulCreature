@@ -1,7 +1,13 @@
-y = -600
+banner_y = -600
 image_alpha = 0
 depth = -15001
-req = 19 //Change this so that news can appear
+req = 20 //Change this so that news can appear
+
+// Full-screen hitbox to block underlying mouse events (same as o_popup)
+x = 0
+y = 0
+image_xscale = room_width / 5
+image_yscale = room_height / 5
 newsText = string_upper(loc("NEWS"))
 
 //text = "New Level Editor has been released! The UI was updated to make it easy for people to make levels. You can now make levels much more quickly, the UI makes more sense, and this was in development during February and March. This is still in 'Beta' so please give us feedback in the official discord server.\n\nHave fun!"
@@ -20,7 +26,7 @@ newsText = string_upper(loc("NEWS"))
 //text = "The FREEDOM UPDATE! The game is now open sourced! You can now help develop the game, ensuring a longlasting life of this game. I have many things to talk about, so please read the 'News' on this. If you want to contribute, click the 'Help Development' or 'Feedback' buttons to get started.\n\nThank you!"
 //text = "Release 1.1.8 is here! Added quests and 40 OF THEM!! You can now earn credits by completing quests, each day you have 3 random quests to beat. Along with the update come general improvements.\n\nHave fun!"
 //text = "Release 1.1.9 introduces the TCC Economy! You can now recieve drops by actively playing the game, then you can trade with other players and sell those items!\n\nAlso, added [rainbow][wave]SKIN MASTERIES[/] so you can truly show your bling!\n\nHave fun!"
-text = "What's better than a soundtrack? [rainbow][wave]A SUPER SOUNDTRACK![/]\n\nThe difference? It includes all .flp files so you can remix songs, it also has unused songs and sound effects!\n\nAnd finally, you get a [s_badgesmenu,15] Isn't that cute?"
+text = "Release 1.2.0 is here! [rainbow][wave]STEAM WORKSHOP[/] has arrived! You can now browse, play and share custom levels and challenges with the community!\n\nAlso added [c_yellow]Online Multiplayer[/], an in-game News Viewer, Steam Rich Presence, and tons of language updates!\n\nHave Fun!"
 
 if global.moddedGameDir != "" {
 text = "You are running a modded client! Save files will not be confilcted with the modded game. Have fun!\n\n[c_yellow]Mod Name: " + string(global.moddedGameDir)	

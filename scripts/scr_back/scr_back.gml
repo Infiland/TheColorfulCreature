@@ -14,6 +14,12 @@ if global.endlessrunmode = 2 {
 if global.endlesslevelhighscore < global.endlesslevel {
 global.endlesslevelhighscore = global.endlesslevel
 }}
+if global.endlessrunmode = 4 {
+if global.workshopERhighscore < global.endlesslevel {
+global.workshopERhighscore = global.endlesslevel
+}
+workshopER_cleanup()
+}
 
 if global.endlessrunmode != 3 {
 if global.skin[22] = 0 {
@@ -311,7 +317,14 @@ audio_sound_gain(m_mainmenu,global.musicvolume,1000)
 if global.challenges = 1 {
 room_goto(r_challenges)
 }
-if global.workshop = 1 {
+if global.endless = 1 && global.endlessrunmode = 4 {
+	workshopER_cleanup()
+	audio_stop_all()
+	room_goto(r_endlessrunmenu)
+	audio_play_sound(m_mainmenu,0,1)
+	global.endless = 0
+}
+else if global.workshop = 1 {
 	if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1) {
 		scr_workshopchallenge_abort();
 		room_goto(r_workshopchallengemenu)

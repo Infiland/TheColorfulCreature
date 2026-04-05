@@ -17,6 +17,13 @@ if global.endlesslevelhighscore < global.endlesslevel {
 global.endlesslevelhighscore = global.endlesslevel
 steam_upload_score("Old School Endless Run", global.endlesslevelhighscore);
 }}
+if global.endlessrunmode = 4 {
+if global.workshopERhighscore < global.endlesslevel {
+global.workshopERhighscore = global.endlesslevel
+steam_upload_score("Workshop Endless Run", global.workshopERhighscore);
+}
+workshopER_cleanup()
+}
 
 if global.endlessrunmode != 3 {
 if global.skin[22] = 0 {

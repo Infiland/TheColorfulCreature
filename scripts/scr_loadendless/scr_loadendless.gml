@@ -7,6 +7,8 @@ if global.cheats = 0 {
 	ini_open(directory + "Endless.sav");
 	global.endlesslevelhighscore = ini_read_real("Endless","Highscore",0)
 	global.newendlesslevelhighscore = ini_read_real("Endless","Endless Highscore",0)
+	global.workshopERhighscore = ini_read_real("Endless","Workshop Highscore",0)
+	ini_close()
 	}
 	else {
 	}

@@ -19,7 +19,8 @@ one_way = false
 gated = false
 dlc_gate = -1
 demo_gate = false
+use_loc = false
 
-// Button sizing (wider buttons)
-image_xscale = 42
+// Button sizing
+image_xscale = 50
 image_yscale = 10

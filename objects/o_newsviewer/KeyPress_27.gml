@@ -8,7 +8,9 @@ if (state == "article") {
     selected_article = -1
     article_blocks = []
     // Recalculate list scroll max
-    scroll_max = max(0, array_length(articles) * row_h - (768 - margin_y * 2 - header_h - 20))
+    var _total = array_length(articles) * row_h
+    if (can_load_more) _total += load_more_h
+    scroll_max = max(0, _total - (view_bottom - view_top))
 } else {
     instance_destroy()
 }

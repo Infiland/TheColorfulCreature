@@ -55,6 +55,7 @@ function scr_loadsettings() {
 	global.controllervibrationsettings = ini_read_real("Controls","Controller Vibration",1);
 	//Online Multiplayer
 	global.onlinemultiplayersettings = ini_read_real("Settings","Online Multiplayer",1);
+	global.netmaxplayers = ini_read_real("Settings","Net Max Players",8);
 	//Controller Button Bindings
 	gamepad_remap_load();
 	}

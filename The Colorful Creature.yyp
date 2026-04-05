@@ -495,7 +495,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.3.217",
+    "IDEVersion":"2024.14.4.222",
   },
   "name":"The Colorful Creature",
   "resources":[
@@ -694,6 +694,7 @@
     {"id":{"name":"o_custombutton","path":"objects/o_custombutton/o_custombutton.yy",},},
     {"id":{"name":"o_customendlessbutton","path":"objects/o_customendlessbutton/o_customendlessbutton.yy",},},
     {"id":{"name":"o_customhatsselection","path":"objects/o_customhatsselection/o_customhatsselection.yy",},},
+    {"id":{"name":"o_customlevelsbrowser","path":"objects/o_customlevelsbrowser/o_customlevelsbrowser.yy",},},
     {"id":{"name":"o_customlevelsbutton","path":"objects/o_customlevelsbutton/o_customlevelsbutton.yy",},},
     {"id":{"name":"o_customlevelsplay","path":"objects/o_customlevelsplay/o_customlevelsplay.yy",},},
     {"id":{"name":"o_customlevelworkshopbuttonplay","path":"objects/o_customlevelworkshopbuttonplay/o_customlevelworkshopbuttonplay.yy",},},
@@ -1308,6 +1309,8 @@
     {"id":{"name":"o_workshopchallengesbutton","path":"objects/o_workshopchallengesbutton/o_workshopchallengesbutton.yy",},},
     {"id":{"name":"o_workshopchallengescreate","path":"objects/o_workshopchallengescreate/o_workshopchallengescreate.yy",},},
     {"id":{"name":"o_workshopchallengesplay","path":"objects/o_workshopchallengesplay/o_workshopchallengesplay.yy",},},
+    {"id":{"name":"o_workshopERbutton","path":"objects/o_workshopERbutton/o_workshopERbutton.yy",},},
+    {"id":{"name":"o_workshopERloading","path":"objects/o_workshopERloading/o_workshopERloading.yy",},},
     {"id":{"name":"o_workshoplevelselectbutton","path":"objects/o_workshoplevelselectbutton/o_workshoplevelselectbutton.yy",},},
     {"id":{"name":"o_world6challengebutton","path":"objects/o_world6challengebutton/o_world6challengebutton.yy",},},
     {"id":{"name":"o_world7challengebutton","path":"objects/o_world7challengebutton/o_world7challengebutton.yy",},},
@@ -2031,6 +2034,7 @@
     {"id":{"name":"scr_troop_helpers","path":"scripts/scr_troop_helpers/scr_troop_helpers.yy",},},
     {"id":{"name":"scr_troopvoiceline","path":"scripts/scr_troopvoiceline/scr_troopvoiceline.yy",},},
     {"id":{"name":"scr_workshopchallenge","path":"scripts/scr_workshopchallenge/scr_workshopchallenge.yy",},},
+    {"id":{"name":"scr_workshopER","path":"scripts/scr_workshopER/scr_workshopER.yy",},},
     {"id":{"name":"scribble_add_macro","path":"scripts/scribble_add_macro/scribble_add_macro.yy",},},
     {"id":{"name":"scribble_anim_blink","path":"scripts/scribble_anim_blink/scribble_anim_blink.yy",},},
     {"id":{"name":"scribble_anim_cycle","path":"scripts/scribble_anim_cycle/scribble_anim_cycle.yy",},},

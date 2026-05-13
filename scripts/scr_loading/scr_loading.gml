@@ -121,6 +121,7 @@ audio_master_gain(global.mastervolume)
 global.hardmode = 0
 global.hardmodelives = 100;
 global.levelselect = 0
+global.challenge_levelselect = 0
 global.autopausesettings = 0
 global.hardmodedifficulty = 0
 global.vignettesettings = 1

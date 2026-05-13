@@ -7,11 +7,13 @@ exit;
 if locked = 0 {
 window_set_cursor(cr_default)
 global.levelselect = 1
+global.challenge_levelselect = 0
 global.special = 0
 global.hatmerchantdiscount = 1.3333333333333
 global.pickup = 0
 
 if (is_challenge && challenge_id >= 0) {
+	global.challenge_levelselect = 1
 	// Set up challenge globals so the game knows we're in a challenge
 	global.challenges = 1
 	global.currentchallenge = challenge_id

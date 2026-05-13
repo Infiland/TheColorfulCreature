@@ -474,6 +474,7 @@ function scr_challenge_start(_id) {
 	global.currentchallenge = _def.id;
 	global.DiamondMedalTimeChallenge = _def.diamond_time;
 	global.workshop = 0;
+	global.challenge_levelselect = 0;
 	global.challenge_custom = (_def.is_custom == true);
 		global.challenge_level_dir = "";
 		global.challenge_level_index = 0;
@@ -565,6 +566,7 @@ function scr_challenge_apply_reward(_def) {
 	if (is_undefined(_def)) return [_save_skins, _save_hats];
 	if (global.cheats != 0) return [_save_skins, _save_hats];
 	if (global.levelselect == 1) return [_save_skins, _save_hats];
+	if (global.challenge_levelselect == 1) return [_save_skins, _save_hats];
 
 	if (_def.reward_credits > 0) {
 		global.creditscurrency += floor(_def.reward_credits * global.creditsmultiplier);

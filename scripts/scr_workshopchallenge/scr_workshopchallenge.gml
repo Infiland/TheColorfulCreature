@@ -191,6 +191,7 @@ function scr_workshopchallenge_start(_challenge) {
 	global.challenges = 1
 	global.workshop = 1
 	global.workshopchallenge = 1
+	global.challenge_levelselect = 0
 
 	global.workshopchallenge_title = variable_struct_exists(_challenge, "title") ? _challenge.title : "Workshop Challenge"
 	global.workshopchallenge_levels = _challenge.levels

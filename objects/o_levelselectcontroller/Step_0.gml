@@ -16,13 +16,13 @@ if (keyboard_check_pressed(vk_right)) {
 }
 
 // Gamepad shoulder buttons
-if (gamepad_button_check_pressed(0, gp_shoulderl)) {
+if (tcc_gamepad_button_check_pressed(0, gp_shoulderl)) {
 	if (current_page > 0) {
 		current_page--;
 		_changed = true;
 	}
 }
-if (gamepad_button_check_pressed(0, gp_shoulderr)) {
+if (tcc_gamepad_button_check_pressed(0, gp_shoulderr)) {
 	if (current_page < total_pages - 1) {
 		current_page++;
 		_changed = true;

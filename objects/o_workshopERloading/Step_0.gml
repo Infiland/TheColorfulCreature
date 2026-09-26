@@ -26,14 +26,14 @@ if poll_timer < 30 { exit }
 poll_timer = 0
 
 var info = ds_map_create()
-steam_ugc_get_item_update_info(target_file_id, info)
+tcc_steam_ugc_get_item_update_info(target_file_id, info)
 var is_installed = info[? "is_installed"]
 ds_map_destroy(info)
 
 if is_installed = 1 {
 	// Check if file is actually available
 	var file_info = ds_map_create()
-	steam_ugc_get_item_install_info(target_file_id, file_info)
+	tcc_steam_ugc_get_item_install_info(target_file_id, file_info)
 	var folder = file_info[? "folder"]
 	ds_map_destroy(file_info)
 

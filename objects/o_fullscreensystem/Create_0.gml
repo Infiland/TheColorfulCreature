@@ -1,3 +1,9 @@
+global.mobile_confirmation = noone;
+global.touch_blocked = false;
+global.mobile_background = false;
+// Otherwise a rapid second tap becomes mb_right and gameplay ignores it.
+if (platform_mobile()) device_mouse_dbclick_enable(false);
+platform_mobile_gui();
 global.windowsresizemain = application_get_position();
 global.pause = 0
 xx = global.windowsresizemain[0];

@@ -8,13 +8,13 @@ if global.steam_api = true {
 	global.workshopchallenges_scrollmax = 0
 
 	steam_list = ds_list_create();
-	steam_ugc_get_subscribed_items(steam_list);
+	tcc_steam_ugc_get_subscribed_items(steam_list);
 
 	var j = 0
 	for (var i = 0; i < ds_list_size(steam_list); i++) {
 		var file_id = steam_list[| i];
 		var file_info = ds_map_create();
-		steam_ugc_get_item_install_info(file_id, file_info);
+		tcc_steam_ugc_get_item_install_info(file_id, file_info);
 		var path_to_file = file_info[? "folder"];
 		ds_map_destroy(file_info);
 

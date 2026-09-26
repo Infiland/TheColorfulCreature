@@ -1,6 +1,6 @@
 //Pressing/Holding Left
-if !keyboard_check(vk_right) && !gamepad_button_check(0,gp_shoulderr) {
-if keyboard_check(vk_left) || gamepad_button_check(0,gp_shoulderl) {
+if !keyboard_check(vk_right) && !tcc_gamepad_button_check(0,gp_shoulderr) {
+if keyboard_check(vk_left) || tcc_gamepad_button_check(0,gp_shoulderl) {
 
 switch(global.customizeselect) {
 case(1):
@@ -59,7 +59,7 @@ break;
 }
 }
 
-if keyboard_check_released(vk_left) || gamepad_button_check_released(0,gp_shoulderl) {
+if keyboard_check_released(vk_left) || tcc_gamepad_button_check_released(0,gp_shoulderl) {
 press = 0
 holdcooldown = 40
 }

@@ -1,8 +1,8 @@
 function scr_loadhats() {
 if global.cheats = 0 {
-	
+
 	var directory = directory_set("//Save Files/")
-	
+
 	if (file_exists(directory + "Hats.sav")) {
 	ini_open(directory + "Hats.sav");
 	global.hatselected = ini_read_real("Hats","Selected Hat",0)
@@ -74,7 +74,9 @@ if global.cheats = 0 {
 	global.hat[65] = ini_read_real("Hats","Japanese Hat",0) //Flag
 	global.hat[66] = ini_read_real("Hats","Romanian Hat",0) //Flag
 	global.hat[67] = ini_read_real("Hats","Portuguese Hat",0) //Flag
-	
+
+	global.CUSTOMhat = ini_read_string("CustomHat","Custom Hat","")
+	ini_close();
 	var totalflag = 0
 	if global.hat[47] = 1 { totalflag += 1 }
 	if global.hat[49] = 1 { totalflag += 1 }
@@ -94,16 +96,16 @@ if global.cheats = 0 {
 	if global.hat[65] = 1 { totalflag += 1 }
 	if global.hat[66] = 1 { totalflag += 1 }
 	if global.hat[67] = 1 { totalflag += 1 }
-	
+
 	if totalflag >= 17 {
-	if !steam_get_achievement("FLAG_GUY") { steam_set_achievement("FLAG_GUY") }
+	if !achievement_earned("FLAG_GUY") { achievement_award("FLAG_GUY") }
 	}
-	
-	global.CUSTOMhat = ini_read_string("CustomHat","Custom Hat","")
+
+
 	}
 	else {
 	}
-	
+
 	}
 
 }

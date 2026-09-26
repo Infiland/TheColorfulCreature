@@ -1,3 +1,4 @@
+if (!tcc_steam_initialised()) exit;
 var event_id = async_load[? "id"];
 var type = async_load[? "event_type"];
 
@@ -16,19 +17,19 @@ if type == "ugc_create_item" && event_id == create_request {
 	}
 	published_file_id = async_load[? "published_file_id"];
 
-	update_handle = steam_ugc_start_item_update(global.appid, published_file_id);
-	steam_ugc_set_item_title(update_handle, challenge_title);
-	steam_ugc_set_item_description(update_handle, challenge_desc);
-	steam_ugc_set_item_visibility(update_handle, ugc_visibility_public);
+	update_handle = tcc_steam_ugc_start_item_update(global.appid, published_file_id);
+	tcc_steam_ugc_set_item_title(update_handle, challenge_title);
+	tcc_steam_ugc_set_item_description(update_handle, challenge_desc);
+	tcc_steam_ugc_set_item_visibility(update_handle, ugc_visibility_public);
 	var tags;
 	tags[0] = "Challenges";
-	steam_ugc_set_item_tags(update_handle, tags);
+	tcc_steam_ugc_set_item_tags(update_handle, tags);
 	if file_exists(preview_path) {
-		steam_ugc_set_item_preview(update_handle, preview_path);
+		tcc_steam_ugc_set_item_preview(update_handle, preview_path);
 	}
-	steam_ugc_set_item_content(update_handle, content_dir);
+	tcc_steam_ugc_set_item_content(update_handle, content_dir);
 
-	submit_request = steam_ugc_submit_item_update(update_handle, "Initial upload");
+	submit_request = tcc_steam_ugc_submit_item_update(update_handle, "Initial upload");
 	result = 0.5
 	exit
 }

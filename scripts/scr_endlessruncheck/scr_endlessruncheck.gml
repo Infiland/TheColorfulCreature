@@ -10,17 +10,17 @@ if global.cheats = 0 {
 if global.endlessrunmode = 1 {
 if global.newendlesslevelhighscore < global.endlesslevel {
 global.newendlesslevelhighscore = global.endlesslevel
-steam_upload_score("Endless Run", global.newendlesslevelhighscore);
+platform_submit_score("Endless Run", global.newendlesslevelhighscore);
 }}
 if global.endlessrunmode = 2 {
 if global.endlesslevelhighscore < global.endlesslevel {
 global.endlesslevelhighscore = global.endlesslevel
-steam_upload_score("Old School Endless Run", global.endlesslevelhighscore);
+platform_submit_score("Old School Endless Run", global.endlesslevelhighscore);
 }}
 if global.endlessrunmode = 4 {
 if global.workshopERhighscore < global.endlesslevel {
 global.workshopERhighscore = global.endlesslevel
-steam_upload_score("Workshop Endless Run", global.workshopERhighscore);
+platform_submit_score("Workshop Endless Run", global.workshopERhighscore);
 }
 workshopER_cleanup()
 }

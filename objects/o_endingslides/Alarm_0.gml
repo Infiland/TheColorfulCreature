@@ -12,18 +12,18 @@ var dth = depth
 
 if image_index != image_number - 1 {
 if image_alpha = 5 {
-var ending = instance_create(x,y,o_endingslides)	
+var ending = instance_create(x,y,o_endingslides)
 with ending {
-image_index = image+1	
+image_index = image+1
 depth = dth - 1
 }
 }}
 
 if image_alpha > 10 {
-instance_destroy()	
+instance_destroy()
 if image_index = image_number - 1 {
 if !instance_exists(o_endingslides) {
-if !steam_get_achievement("THE_CROWN") { steam_set_achievement("THE_CROWN") }
+if !achievement_earned("THE_CROWN") { achievement_award("THE_CROWN") }
 game_restart()
 }}
 }

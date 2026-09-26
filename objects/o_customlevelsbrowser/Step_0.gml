@@ -13,7 +13,7 @@ if mouse_wheel_up() { scroll_target -= 60 }
 scroll_target = clamp(scroll_target, 0, max(0, scroll_max))
 
 // Gamepad back
-if gamepad_button_check_pressed(0, gp_face2) {
+if tcc_gamepad_button_check_pressed(0, gp_face2) {
 	event_perform(ev_keypress, vk_escape)
 }
 
@@ -98,7 +98,7 @@ if mouse_check_button_pressed(mb_left) {
 		else if tab = 0 {
 			// Subscribed tab: play the level with download safety check
 			var info = ds_map_create()
-			steam_ugc_get_item_update_info(_lvl.file_id, info)
+			tcc_steam_ugc_get_item_update_info(_lvl.file_id, info)
 			var _is_installed = info[? "is_installed"]
 			var _is_downloading = info[? "is_downloading"]
 			var _is_pending = info[? "is_download_pending"]
@@ -145,7 +145,7 @@ if mouse_check_button_pressed(mb_left) {
 		} else {
 			// Browse tab: subscribe + download
 			if _lvl.download_state = "not_installed" || _lvl.download_state = "unknown" {
-				steam_ugc_subscribe_item(_lvl.file_id)
+				tcc_steam_ugc_subscribe_item(_lvl.file_id)
 				_lvl.download_state = "pending"
 			}
 		}
@@ -193,7 +193,7 @@ if download_poll_timer >= 60 {
 		var _lvl = levels[i]
 		if _lvl.download_state = "downloading" || _lvl.download_state = "pending" {
 			var info = ds_map_create()
-			steam_ugc_get_item_update_info(_lvl.file_id, info)
+			tcc_steam_ugc_get_item_update_info(_lvl.file_id, info)
 			if info[? "is_installed"] = 1 {
 				_lvl.download_state = "installed"
 				// Reset thumb_checked so lazy loader picks it up
@@ -210,7 +210,7 @@ if download_poll_timer >= 60 {
 		var _lvl = browse_levels[i]
 		if _lvl.download_state = "downloading" || _lvl.download_state = "pending" {
 			var info = ds_map_create()
-			steam_ugc_get_item_update_info(_lvl.file_id, info)
+			tcc_steam_ugc_get_item_update_info(_lvl.file_id, info)
 			if info[? "is_installed"] = 1 { _lvl.download_state = "installed" }
 			else if info[? "is_downloading"] = 1 { _lvl.download_state = "downloading" }
 			ds_map_destroy(info)

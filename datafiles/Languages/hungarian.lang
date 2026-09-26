@@ -1006,3 +1006,5 @@ NARRATOR_BREAK_L3=BREAK-L3 Lassan.
 NARRATOR_BREAK_L4=BREAK-L4 Az egesz palya megvaltozhat csak a csapatok miatt... vagy miattad.
 NARRATOR_BREAK_L5=BREAK-L5 De altalaban stabilan kell tartanod a blokkokat.
 NARRATOR_BREAK_L6=BREAK-L6 A raketak eleg erosek ahhoz, hogy kaert tegyenek a torheto blokkokban.
+CONFIRM_YES=Igen
+CONFIRM_NO=Nem

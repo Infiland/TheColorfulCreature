@@ -60,3 +60,6 @@ Temporary Items
 /.cursor
 
 tcc-upload.keystore
+
+# Local Python/build caches
+__pycache__/

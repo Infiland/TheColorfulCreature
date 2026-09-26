@@ -1,0 +1,26 @@
+{
+  "$schema": "./extgen.schema.json",
+  "input": "spec.gmidl",
+  "root": "./",
+  "gamemaker": {
+    "wrappers": {
+      "outputFile": "../../../scripts/GMGameCenter_API/GMGameCenter_API.gml"
+    },
+    "extension": {
+      "mode": "patch",
+      "outputFile": "../../../extensions/GMGameCenter/GMGameCenter.yy"
+    },
+    "injectors": { }
+  },
+  "targets": {
+    "macos":{},
+    "ios":{
+      "mode": "objc"
+    }
+  },
+  "extras": {
+    "docs": { 
+      "outputFile": "../../../../../docs/extgen_docs.js"
+    }
+  }
+}

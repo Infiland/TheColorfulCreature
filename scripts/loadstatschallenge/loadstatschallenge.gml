@@ -31,6 +31,7 @@ function scr_challenge_list_to_array(_list) {
 }
 
 function scr_challenge_get_base_dir() {
+	if (file_exists("challenges/challenges.json")) return "challenges/";
 	var _roots = [];
 	_roots[0] = string_replace_all(program_directory, "\\", "/");
 	_roots[1] = string_replace_all(working_directory, "\\", "/");
@@ -168,6 +169,7 @@ function scr_challenges_load_defs() {
 	var _file = _base_dir + "challenges.json";
 	if (file_exists(_file)) {
 		var _data = LoadJSONFromFile(_file);
+	if (is_undefined(_data)) return undefined;
 		if (ds_map_exists(_data, "challenges")) {
 			var _list = _data[? "challenges"];
 			for (var i = 0; i < ds_list_size(_list); i++) {
@@ -185,6 +187,7 @@ function scr_challenges_load_defs() {
 			var _custom_file = _base_dir + _dir + "/challenge.json";
 			if (file_exists(_custom_file)) {
 				var _custom_data = LoadJSONFromFile(_custom_file);
+	if (is_undefined(_custom_data)) return undefined;
 				var _custom_def = scr_challenge_def_from_map(_custom_data, true);
 			if (_custom_def.level_dir == "") {
 				if (file_exists(_base_dir + _dir + "/1/LevelEditor.sav")) {
@@ -326,6 +329,7 @@ function scr_challenge_get_deaths(_id) {
 }
 
 function scr_challenge_set_time(_id, _value) {
+	if (!scr_challenge_run_eligible(_id)) return;
 	var _key = scr_challenge_key(_id);
 	if (variable_global_exists("challenge_times")) {
 		ds_map_replace(global.challenge_times, _key, _value);
@@ -337,6 +341,7 @@ function scr_challenge_set_time(_id, _value) {
 }
 
 function scr_challenge_set_deaths(_id, _value) {
+	if (!scr_challenge_run_eligible(_id)) return;
 	var _key = scr_challenge_key(_id);
 	if (variable_global_exists("challenge_deaths")) {
 		ds_map_replace(global.challenge_deaths, _key, _value);
@@ -465,11 +470,15 @@ function scr_challenge_start(_id) {
 	if (is_undefined(_def)) return;
 	if (_def.enabled != 1) return;
 	if (!scr_challenge_is_unlocked(_def)) return;
-	if (_def.demo_blocked == 1 && steam_get_app_id() = 1749610) {
+	if (_def.demo_blocked == 1 && tcc_steam_get_app_id() = 1749610) {
 		if !instance_exists(o_demoask) { instance_create(x, y, o_demoask); }
 		return;
 	}
 
+	global.levelselect = 0;
+	global.challenge_run_id = _def.id;
+	global.time = 0;
+	global.deaths = 0;
 	global.challenges = 1;
 	global.currentchallenge = _def.id;
 	global.DiamondMedalTimeChallenge = _def.diamond_time;
@@ -563,8 +572,7 @@ function scr_challenge_apply_reward(_def) {
 	var _save_skins = false;
 	var _save_hats = false;
 	if (is_undefined(_def)) return [_save_skins, _save_hats];
-	if (global.cheats != 0) return [_save_skins, _save_hats];
-	if (global.levelselect == 1) return [_save_skins, _save_hats];
+	if (!scr_challenge_run_eligible(_def.id)) return [_save_skins, _save_hats];
 
 	if (_def.reward_credits > 0) {
 		global.creditscurrency += floor(_def.reward_credits * global.creditsmultiplier);
@@ -653,4 +661,11 @@ function scr_challenge_spawn_custom_buttons() {
 	} else {
 		global.challenge_scroll_max = 500;
 	}
+}
+
+// Practice remains ineligible even after pause/settings or a later flag reset.
+function scr_challenge_run_eligible(_id) {
+    return variable_global_exists("challenge_run_id") && global.challenge_run_id == _id
+        && global.currentchallenge == _id && global.challenges == 1
+        && global.cheats == 0 && global.levelselect == 0 && global.workshop == 0;
 }

@@ -12,7 +12,7 @@ draw_set_font(global.deathfont)
 if global.LEVerified = 1 {
 if global.cheats = 0 {
 if global.steam_api = true {
-if steam_is_user_logged_on() {
+if tcc_steam_is_user_logged_on() {
 if global.levelname != "" {
 if global.LEDiamondMedalTime >= global.LESavedWinTime {
 if instance_exists(o_playerspawner) || instance_exists(o_door) {

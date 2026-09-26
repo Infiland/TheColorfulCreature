@@ -8,7 +8,7 @@ if interacted = 0 {
 if caninteract = 1 {
 
 draw_set_color(c_white)
-if os_type != os_android {
+if !platform_mobile() {
 controls_key_display(global.controlsinteract)
 draw_text(x+16,ystart - 64,"Press [" + string(keyd) + "] to interact.")
 } else { draw_text(x+16,ystart - 64,"Press [I] to interact.") }
@@ -22,7 +22,7 @@ instance_create(x,y,o_creditscounter)
 } else {
 if instance_exists(o_hatshopmenu) {
 draw_text(x+16,ystart - 64,text)
-} else { draw_text(x+16,ystart - 64,loc("COME_BACK_LATER")) } 
+} else { draw_text(x+16,ystart - 64,loc("COME_BACK_LATER")) }
 //Shop Appears
 if !instance_exists(o_creditscounter) {
 instance_create(x,y,o_creditscounter)

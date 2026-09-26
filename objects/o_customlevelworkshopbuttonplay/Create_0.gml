@@ -17,8 +17,8 @@ mBanned = false
 mTags = ""
 mFeatured = false
 checkfeatured = 0
-steam_details = steam_ugc_request_item_details(level, 30);
-requestname = steam_get_user_persona_name(mOwner);
+steam_details = tcc_steam_ugc_request_item_details(level, 30);
+requestname = tcc_steam_get_user_persona_name(mOwner);
 
 loaded = 0
 
@@ -30,7 +30,7 @@ requiredtime = 999999
 difficulty = 0
 
 
-//request_name = steam_get_user_persona_name(mOwner);
+//request_name = tcc_steam_get_user_persona_name(mOwner);
 
 
 alarm[0] = 20

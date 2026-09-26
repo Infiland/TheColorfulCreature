@@ -1,143 +1,113 @@
-/// @description Initialize variables
-if os_type != os_android {
-instance_destroy()	
-} else {
-// Debug variables (used in draw event)
-status = "UNKNOWN";
-type = "UNKNOWN";
+if (!platform_mobile()) { instance_destroy(); exit; }
+ready = false;
+initializing = false;
+consent_done = false;
+privacy_open = false;
+reward_handle = -1;
+interstitial_handle = -1;
+reward_loading = false;
+interstitial_loading = false;
+showing = false;
+banner_created = false;
+banner_wanted = false;
+next_load = 0;
+next_interstitial = current_time + 180000;
+reward_session = undefined;
+ad_generation = 0;
+global.ad_reward_unsaved = false;
 
-/*
-	The first step to configure AdMob with your application/game is to get the
-	unique string ad block ids from the admob development console for you app.
-	In this example we are using all the bellow ad types:
-	
-		- Banners
-		- Interstitial
-		- RewardedVideo
-		- RewardedInterstitial
-		
-	In your case you just need the ones you are using, these ids also change from
-	Android to iOS so we also provide a code sample that acounts for that.
-	You can set them inside the extension using the new extension options features
-	these will be used and set by default or optionaly you can use the old method of
-	initialization if you need to change them at runtime (see end of the page).
-	
-*/
-var BANNER_ID, INTERSTITIAL_ID, REWANTED_ID, REWANTED_INTERSTITIAL_ID;
-	
+load_ads = function() {
+    if (!ready || showing || privacy_open || !tcc_consent_can_request_ads()) return;
+    next_load = current_time + 60000;
+    if (reward_handle == -1 && !reward_loading) {
+        reward_loading = true;
+        var _result = admob_rewarded_video_load(method({controller:id, generation:ad_generation}, function(_result, _handle = -1) {
+            if (!instance_exists(controller)) { if (_result.success) admob_rewarded_video_dispose(_handle); return; }
+            if (generation == controller.ad_generation) controller.reward_loading = false;
+            if (!_result.success) return;
+            if (generation != controller.ad_generation || controller.privacy_open || !tcc_consent_can_request_ads())
+                admob_rewarded_video_dispose(_handle);
+            else controller.reward_handle = _handle;
+        }), undefined);
+        if (_result != AdMobError.Ok) reward_loading = false;
+    }
+    if (platform_google_play() && interstitial_handle == -1 && !interstitial_loading) {
+        interstitial_loading = true;
+        var _result = admob_interstitial_load(method({controller:id, generation:ad_generation}, function(_result, _handle = -1) {
+            if (!instance_exists(controller)) { if (_result.success) admob_interstitial_dispose(_handle); return; }
+            if (generation == controller.ad_generation) controller.interstitial_loading = false;
+            if (!_result.success) return;
+            if (generation != controller.ad_generation || controller.privacy_open || !tcc_consent_can_request_ads())
+                admob_interstitial_dispose(_handle);
+            else controller.interstitial_handle = _handle;
+        }), undefined);
+        if (_result != AdMobError.Ok) interstitial_loading = false;
+    }
+};
 
-	BANNER_ID = "ca-app-pub-7108130195717311/1705849205";
-	INTERSTITIAL_ID = "ca-app-pub-7108130195717311/1322705824"
-		REWANTED_ID = "ca-app-pub-7108130195717311/8981703993"
-	REWANTED_INTERSTITIAL_ID = "ca-app-pub-7108130195717311/3182582404"
+consent_finished = function() {
+    consent_done = true;
+    if (!tcc_consent_can_request_ads() || ready || initializing) return;
+    initializing = true;
+    var _result = admob_initialize(function(_result) {
+        initializing = false;
+        ready = _result.success;
+        if (ready) load_ads();
+    });
+    if (_result != AdMobError.Ok) initializing = false;
+};
 
-// ###############################################
-//                 UTILITY METHODS
-// ###############################################
+show_reward = function() {
+    if (!ready || showing || privacy_open || reward_handle == -1 || !tcc_consent_can_request_ads()) return false;
+    var _handle = reward_handle;
+    reward_handle = -1;
+    showing = true;
+    reward_session = {granted:false};
+    platform_interrupt();
+    // Bind a unique session to this callback, so a late callback cannot reward a subsequent ad.
+    var _callback = method({controller:id, session:reward_session}, function(_result, _event = -1, _reward = undefined) {
+        if (!instance_exists(controller)) return;
+        if (_result.success && _event == AdMobRewardedVideoShowEvent.Reward) {
+            ads_grant_reward(session);
+        }
+        if (!_result.success || _event == AdMobRewardedVideoShowEvent.Dismissed) {
+            controller.showing = false;
+            controller.next_load = current_time + 1000;
+        }
+    });
+    var _result = admob_rewarded_video_show(_handle, _callback);
+    if (_result != AdMobError.Ok) { showing = false; next_load = current_time + 60000; }
+    return _result == AdMobError.Ok;
+};
 
-// This function is here for debug purposes and uses 'AdMob_Consent_GetType' and
-// 'AdMob_Consent_GetStatus' to print the current consent Status/Type to the console.
-function showDebugInfo()
-{
-	var consent_type = AdMob_Consent_GetType();
-	switch(consent_type)//https://developers.google.com/admob/ump/android/api/reference/com/google/android/ump/ConsentInformation.ConsentType
-	{
-		// The user gave permission for data to be collected in order to provide personalized ads.
-		case AdMob_Consent_Type_PERSONALIZED:
-			show_debug_message("GoogleMobilesAds ConsentType: PERSONALIZED")
-		break
-			
-		// The user refused to share data for personalized ads. Ads will be NON PERSONALIZED
-		case AdMob_Consent_Type_NON_PERSONALIZED:
-			show_debug_message("GoogleMobilesAds ConsentType: NON_PERSONALIZED")
-		break			
+show_interstitial = function() {
+    if (!platform_google_play() || room != r_mainmenu || !ready || showing || privacy_open
+        || current_time < next_interstitial || interstitial_handle == -1 || !tcc_consent_can_request_ads()) return;
+    var _handle = interstitial_handle;
+    interstitial_handle = -1;
+    showing = true;
+    next_interstitial = current_time + 180000;
+    platform_interrupt();
+    var _result = admob_interstitial_show(_handle, function(_result, _event = -1) {
+        if (!_result.success || _event == AdMobInterstitialShowEvent.Dismissed) {
+            showing = false;
+            next_load = current_time + 1000;
+        }
+    });
+    if (_result != AdMobError.Ok) showing = false;
+};
 
-		// Unable to get the current type of consent provided by the use
-		// Note that for EEA users, the type will always be UNKNOWN (known issue) 
-		case AdMob_Consent_Type_UNKNOWN:
-			show_debug_message("GoogleMobilesAds ConsentType: UNKNOWN")
-		break
-	}
-}
-
-// This function is an helper function used for loading all ads
-function loadAllAds() {
-	AdMob_Interstitial_Load();
-	AdMob_RewardedVideo_Load();
-	AdMob_RewardedInterstitial_Load();
-}
-
-// This function updates both consent Status and Type strings
-// To avoid calling the logic every frame
-function updateConsentStrings() {
-
-	// The function 'AdMob_Consent_GetStatus' allows the developer to know if the
-	// GDPR consent request is required or not or if the user already answered to the
-	// consent request (OBTAINED).
-	switch(AdMob_Consent_GetStatus())
-	{
-		case AdMob_Consent_Status_UNKNOWN: status = "UNKNOWN"; break;
-		case AdMob_Consent_Status_NOT_REQUIRED: status = "NOT_REQUIRED"; break;
-		case AdMob_Consent_Status_REQUIRED: status = "REQUIRED"; break;
-		case AdMob_Consent_Status_OBTAINED: status = "OBTAINED"; break;
-	}
-
-	// The function 'AdMob_Consent_GetType' allows the developer to know what was the
-	// type of consent given by the user. Can the ads be personalized (allowed) or not (rejected).
-	switch(AdMob_Consent_GetType())
-	{
-		case AdMob_Consent_Type_UNKNOWN: type = "UNKNOWN"; break;
-		case AdMob_Consent_Type_NON_PERSONALIZED: type = "NON_PERSONALIZED"; break;
-		case AdMob_Consent_Type_PERSONALIZED: type = "PERSONALIZED"; break;
-		case AdMob_Consent_Type_DECLINED: type = "DECLINED"; break;
-	}
-}
-
-// ###############################################
-//                  CONFIGURATION
-// ###############################################
-
-// Sets this device as a test device (should be called before AdMob_Initialize)
-// NOTE: This is for development only and should not be used when your game enters production.
-// ** On iOS devices to use test device you need to include the App Tracking Transparency extension. **
-//AdMob_SetTestDeviceId();
-
-// On the new version of this extension you are also able to control the max rating of the
-// content displayed on the ads, bellow there is an example with all the possible options available.
-AdMob_Targeting_MaxAdContentRating(AdMob_ContentRating_GENERAL);
-//AdMob_Targeting_MaxAdContentRating(AdMob_ContentRating_PARENTAL_GUIDANCE);
-//AdMob_Targeting_MaxAdContentRating(AdMob_ContentRating_TEEN);
-//AdMob_Targeting_MaxAdContentRating(AdMob_ContentRating_MATURE_AUDIENCE);
-
-// Now you can configure targeting, the functions bellow will allow you to enable and disable
-// special ad filtering for children and under age users (respectively)
-AdMob_Targeting_COPPA(false);
-AdMob_Targeting_UnderAge(false);
-
-// ###############################################
-//                  INITIALIZATION
-// ###############################################
-
-// The first function to be called is Initialize, this is demanding that it is called in first
-// place to initialize the AdMob Extension API and allow for everything to work properly.
-AdMob_Initialize();
-
-
-
-// ###############################################
-//                       NEW
-// ###############################################
-
-// After API initialization the extension will automatically initialize the available
-// ads using the unique ad unit id values provided inside the extension options panel.
-// So the code below is not required anymore unless you want to change the ad unit ids at runtime. 
-//
-// Note that after a call to AbMod_*_Init to change the ad unit id you will need to reload
-// the respective ad using AdMob_*_Load (or AdMob_Banner_Create() for ads of banner type).
-//
-AdMob_Banner_Init(BANNER_ID);
-AdMob_Interstitial_Init(INTERSTITIAL_ID);
-AdMob_RewardedVideo_Init(REWANTED_ID);
-AdMob_RewardedInterstitial_Init(REWANTED_INTERSTITIAL_ID);
-
-}
+admob_targeting_max_ad_content_rating(AdMobMaxAdContentRating.General);
+// UMP first. A failed request never implies permission to load an ad.
+var _request = admob_consent_request_info_update(AdMobConsentDebugGeography.Disabled, function(_result) {
+    if (_result.success && admob_consent_get_status() == AdMobConsentStatus.Required) {
+        var _load = admob_consent_load(function(_result) {
+            if (!_result.success) { consent_finished(); return; }
+            platform_interrupt();
+            var _show = admob_consent_show(function(_result) { consent_finished(); });
+            if (_show != AdMobError.Ok) consent_finished();
+        });
+        if (_load != AdMobError.Ok) consent_finished();
+    } else consent_finished();
+});
+if (_request != AdMobError.Ok) consent_finished();

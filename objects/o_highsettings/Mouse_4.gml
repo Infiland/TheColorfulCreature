@@ -10,6 +10,6 @@ global.whiteblock = 2
 global.visual3dsettings = 1
 global.watershadersettings = 1
 scr_savesettings()
-if !steam_get_achievement("BENCHMARK") { //Benchmark
-steam_set_achievement("BENCHMARK")
+if !achievement_earned("BENCHMARK") { //Benchmark
+achievement_award("BENCHMARK")
 }

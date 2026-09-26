@@ -1,5 +1,5 @@
 /// @description Click to start
-if steam_get_app_id() = 1749610 {
+if tcc_steam_get_app_id() = 1749610 {
 if !instance_exists(o_demoask) {instance_create(x,y,o_demoask)}
 exit;
 }

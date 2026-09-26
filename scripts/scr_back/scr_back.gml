@@ -5,7 +5,7 @@ audio_stop_all()
 room_goto(r_endlessrunmenu)
 instance_destroy(o_levelcounter)
 if global.infinitelivessettings = 0 {
-	
+
 if global.endlessrunmode = 1 {
 if global.newendlesslevelhighscore < global.endlesslevel {
 global.newendlesslevelhighscore = global.endlesslevel
@@ -51,7 +51,7 @@ room_goto(r_funmodemenu)
 }
 if global.chooseminigameMU = false {
 if global.multiplayerplayerconfigchoose != 1 {
-	global.multiplayerplayerconfigchoose -= 1 
+	global.multiplayerplayerconfigchoose -= 1
 if global.multiplayerplayerconfigchoose = 1 {global.multiplayerplayercontrols[1] = -1}
 if global.multiplayerplayerconfigchoose = 2 {global.multiplayerplayercontrols[2] = -2}
 if global.multiplayerplayerconfigchoose = 3 {global.multiplayerplayercontrols[3] = -3}
@@ -64,7 +64,7 @@ instance_destroy(o_skinsselectbuttonMU)
 instance_destroy(o_hatsselectbuttonMU)
 instance_destroy(o_itemsselectbuttonMU)
 }}
-if global.chooseminigameMU = true { 
+if global.chooseminigameMU = true {
 global.multiplayerplayerconfigchoose -= 1
 global.chooseminigameMU = false
 if !instance_exists(o_playerskinselectionMU) {instance_create(x,y,o_playerskinselectionMU)}
@@ -79,7 +79,7 @@ if room = r_settings {
 global.infosettings = 0
 if global.choosesettings = 0 {
 scr_savesettings()
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 }
 if global.choosesettings > 0 {
 global.choosesettings = 0
@@ -89,13 +89,13 @@ instance_destroy(o_buttoninteractandroid)
 instance_destroy(o_buttonjumpandroid)
 instance_destroy(o_buttonskipandroid)
 instance_destroy(o_buttonrestartandroid)
-if os_type = os_android || os_type = os_gxgames { scr_saveandroid() }
+if platform_touch() { scr_saveandroid() }
 scr_TRadjustoptions()
 scr_savesettings()
 }
 }
 if room = r_dailylevelwin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_kaizowin {
@@ -103,71 +103,71 @@ room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_blindwin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_bigroomwin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_troopwin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_slipperywin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_speedwin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_world6win {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_ladderwin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_tutorialwin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_spikewin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_waterwin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_movingwin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_communitywin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_djwin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_cswin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_world7win {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_invisiblewin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_breakablewin {
-room_goto(r_mainmenu)	
+room_goto(r_mainmenu)
 audio_play_sound(m_mainmenu,0,1)
 }
 if room = r_hardmodediff {
@@ -184,20 +184,20 @@ if room = r_gameoverscreen {
 	audio_stop_all()
 if global.hardmode = 1 {room_goto(r_hardmodediff)
 	if !audio_is_playing(m_mainmenu) {
-	audio_play_sound(m_mainmenu,0,1)	
+	audio_play_sound(m_mainmenu,0,1)
 	}
 	global.hardmode = 0
 	}
 if global.endless = 1 {room_goto(r_endlessrunmenu)
 		if !audio_is_playing(m_mainmenu) {
-	audio_play_sound(m_mainmenu,0,1)	
+	audio_play_sound(m_mainmenu,0,1)
 	}
 	global.endless = 0
 	}
 }
 if room = r_skinmenu {
 if !instance_exists(o_choosecustomhats) && !instance_exists(o_choosecustomskins) {
-room_goto(r_gamemode)	
+room_goto(r_gamemode)
 }
 if instance_exists(o_choosecustomskins) { instance_destroy(o_choosecustomskins) exit }
 }
@@ -275,7 +275,7 @@ instance_destroy(o_buttoninteractandroid)
 instance_destroy(o_buttonjumpandroid)
 instance_destroy(o_buttonskipandroid)
 instance_destroy(o_buttonrestartandroid)
-if os_type = os_android || os_type = os_gxgames { scr_saveandroid() }
+if platform_touch() { scr_saveandroid() }
 	global.choosesettings = 0 }
 } else {
 	if global.pause = 1 {
@@ -292,7 +292,7 @@ global.gunammo = 0
 hidehud()
 instance_destroy(o_smoothcamera)
 
-if os_type = os_android || os_type = os_gxgames {hideandroidbuttons()}
+if platform_touch() {hideandroidbuttons()}
 
 audio_group_set_gain(Music,global.musicvolume,1000)
 if global.chooseminigameMU = false {
@@ -335,7 +335,7 @@ else if global.workshop = 1 {
 	audio_play_sound(m_mainmenu,0,1)
 }
 }
-if global.chooseminigameMU = true { 
+if global.chooseminigameMU = true {
 	audio_stop_sound(m_justonline)
 	audio_play_sound(m_justonline,0,1)
 	global.MinigameMU = 0
@@ -357,7 +357,7 @@ if !instance_exists(o_progressask)  {
 if room = r_gamemode {
 audio_stop_sound(m_justonline)
 room_goto(r_mainmenu)
-}} else { 
+}} else {
 
 if instance_exists(o_bigwheel) || instance_exists(o_hatshopmenu) {
 if instance_exists(o_bigwheel) {
@@ -373,7 +373,7 @@ instance_destroy(o_wheelpaycooldown)
 } else {
 instance_destroy(o_progressask)
 instance_destroy(o_hatshopmenu)
-instance_destroy(o_wheelpaycooldown)	
+instance_destroy(o_wheelpaycooldown)
 }
 
 	}

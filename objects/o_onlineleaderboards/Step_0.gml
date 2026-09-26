@@ -1,9 +1,9 @@
-if keyboard_check_pressed(vk_right) || gamepad_button_check_pressed(0,gp_padr) {
+if keyboard_check_pressed(vk_right) || tcc_gamepad_button_check_pressed(0,gp_padr) {
 	global.leaderboardselect += 1
 	reloadleaderboards()
 	scroll = 0
 }
-if keyboard_check_pressed(vk_left) || gamepad_button_check_pressed(0,gp_padl) {
+if keyboard_check_pressed(vk_left) || tcc_gamepad_button_check_pressed(0,gp_padl) {
 	global.leaderboardselect -= 1
 	reloadleaderboards()
 	scroll = 0
@@ -18,7 +18,7 @@ if global.leaderboardselect > maxselect {
 	reloadleaderboards()
 }
 
-if gamepad_axis_value(0,gp_axisrv) < -0.2 || gamepad_axis_value(0,gp_axisrv) > 0.2 { scroll += 10 * gamepad_axis_value(0,gp_axisrv) }
+if tcc_gamepad_axis_value(0,gp_axisrv) < -0.2 || tcc_gamepad_axis_value(0,gp_axisrv) > 0.2 { scroll += 10 * tcc_gamepad_axis_value(0,gp_axisrv) }
 
 if mouse_wheel_down() {
 scroll += 40	

@@ -47,8 +47,8 @@ if (ds_exists(avatar_sprites, ds_type_map)) {
 }
 
 if global.friendleaderboardsettings = 0 {
-score_get = steam_download_scores(lbname, 1, 100);
+score_get = tcc_steam_download_scores(lbname, 1, 100);
 } else {
-score_get = steam_download_friends_scores(lbname);
+score_get = tcc_steam_download_friends_scores(lbname);
 }
 }

@@ -1,5 +1,5 @@
 if os_is_network_connected() {
-if !steam_get_achievement("WORLD_WIDE_WEB") { steam_set_achievement("WORLD_WIDE_WEB") }
+if !achievement_earned("WORLD_WIDE_WEB") { achievement_award("WORLD_WIDE_WEB") }
 url_open(url)
 } else {
 	show_message(loc("YOU_ARE_DISCONNECTED_PLEASE_TURN_ON_YOUR_INTERNET_CONNECTION"))

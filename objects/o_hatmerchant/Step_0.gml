@@ -1,6 +1,7 @@
-if os_type != os_android {
+key_interact = false;
+if !platform_mobile() {
 if interactcontrols = 0 {
-key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (gamepad_button_check_pressed(4,gp_shoulderr)) //|| keyboard_check_pressed(ord("S"));
+key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (tcc_gamepad_button_check_pressed(0,global.gp_bind_interact)) //|| keyboard_check_pressed(ord("S"));
 } else { key_interact = keyboard_check_pressed(global.controlsinteract) }
 } else {
 if instance_exists(o_buttoninteractandroid) {
@@ -25,7 +26,7 @@ instance_destroy(o_hatshopmenu)
 	}
 
 if distance_to_object(o_player) < 20 {
-image_index = 0	
+image_index = 0
 } else {
 if o_player.x < x { image_index = 1 }
 if o_player.x > x { image_index = 2 }
@@ -35,7 +36,7 @@ if o_player.x > x { image_index = 2 }
 
 if caninteract = 1 {
 if key_interact {
-	if !steam_get_achievement("HAT_MERCHANT") { steam_set_achievement("HAT_MERCHANT") }
+	if !achievement_earned("HAT_MERCHANT") { achievement_award("HAT_MERCHANT") }
 	interacted = 1
 	}
 }

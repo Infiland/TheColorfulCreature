@@ -20,7 +20,7 @@ if (mouse_wheel_up()) scroll_target -= 60
 scroll_target = clamp(scroll_target, 0, max(0, scroll_max))
 
 // Gamepad back
-if (gamepad_button_check_pressed(0, gp_face2)) {
+if (tcc_gamepad_button_check_pressed(0, gp_face2)) {
     event_perform(ev_keypress, vk_escape)
 }
 

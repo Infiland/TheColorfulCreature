@@ -309,7 +309,7 @@ strings[115] = loc("NARRATOR_LIT_L6")
 strings[116] = loc("NARRATOR_LIT_L7")
 }
 
-if gamepad_is_connected(0) {
+if tcc_gamepad_is_connected(0) {
 strings[48] = string_replace(loc("NARRATOR_W2_L16"), "{key}", "[scale,0.5][s_xboxcontrollerscheme,7][scale,1]")
 strings[56] = string_replace(loc("NARRATOR_W3_L2"), "{key}", "[scale,0.5][s_xboxcontrollerscheme,50][scale,1]")
 strings[130] = string_replace(loc("NARRATOR_SLIPPERY_L6"), "{key}", "[scale,0.5][s_xboxcontrollerscheme,56][scale,1]")

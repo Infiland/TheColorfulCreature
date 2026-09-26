@@ -1,15 +1,10 @@
-if os_type != os_android {
-if interactcontrols = 0 {
-key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (gamepad_button_check_pressed(0,global.gp_bind_interact))
-} else { key_interact = keyboard_check_pressed(global.controlsinteract) || (gamepad_button_check(0,global.gp_bind_interact)) }} else {
-key_interact = o_buttoninteractandroid.image_index = 1;
-}
+if (global.pause != 0) exit;
 
-if key_interact {
+if (key_interact || (platform_mobile() && key_interact_h)) {
 global.color = 2
 passblockcooldown = 10
 scr_changecolorplayervx()
-if room != r_leveleditor { 
+if room != r_leveleditor {
 	increase_stat("totalusepickups","QUESTusepickups",1)
 	}
 var item = instance_nearest(x+16,y+16,o_greenspiral)
@@ -17,5 +12,5 @@ with item {
 instance_destroy()
 }
 audio_play_sound(snd_pickup,5,0);
-if global.itempar = 1 { instance_create(x+8,y+8,o_greenpickup) } 
+if global.itempar = 1 { instance_create(x+8,y+8,o_greenpickup) }
 }

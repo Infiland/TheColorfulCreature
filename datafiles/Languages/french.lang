@@ -1006,3 +1006,5 @@ NARRATOR_BREAK_L3=BREAK-L3 Du calme.
 NARRATOR_BREAK_L4=BREAK-L4 Le niveau entier peut changer a cause des troupes... ou de toi.
 NARRATOR_BREAK_L5=BREAK-L5 Mais en general tu dois garder les blocs stables.
 NARRATOR_BREAK_L6=BREAK-L6 Les roquettes sont assez puissantes pour endommager les blocs cassables.
+CONFIRM_YES=Oui
+CONFIRM_NO=Non

@@ -56,7 +56,7 @@ key_up = keyboard_check(vk_down) || keyboard_check(ord("S"))
 if mouse_wheel_up() { yscrollreal -= 4000 * (delta_time / 1000000) }
 if mouse_wheel_down() { yscrollreal += 4000 * (delta_time / 1000000) }
 
-if os_type = os_android || os_type = os_gxgames {
+if platform_touch() {
 	if mouse_check_button(mb_left) {
 		if mouse_y < 512 { key_down = true } else { key_up = true }
 	} else {

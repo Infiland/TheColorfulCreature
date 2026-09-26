@@ -304,3 +304,5 @@ NARRATOR_BREAK_L4=BREAK-L4 The entire level can be changed just because of troop
 NARRATOR_BREAK_L5=BREAK-L5 But you usually need to keep the blocks stable.
 NARRATOR_BREAK_L6=BREAK-L6 Rockets are strong enough to deal damage to breakable blocks.
 SET_MAX_PLAYERS_IN_ONLINE_LOBBY=Set the maximum number of players in your online multiplayer lobby (2-256). Takes effect next lobby creation.
+CONFIRM_YES=Yes
+CONFIRM_NO=No

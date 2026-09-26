@@ -1,6 +1,6 @@
 files = [];
 
-var dir = game_save_id + "\\Custom\\Player Skins\\*"
+var dir = game_save_id + "/Custom/Player Skins/*"
 
 var file_name = file_find_first(dir, fa_directory);
 

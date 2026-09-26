@@ -1,6 +1,6 @@
-if os_type = os_android || os_type = os_gxgames { instance_destroy() }
-if global.hardmode = 1 { instance_destroy() 
-exit;	
+if !platform_steam() { instance_destroy(); exit; }
+if global.hardmode = 1 { instance_destroy()
+exit;
 }
 diff = 0
 numerical = 0
@@ -12,26 +12,26 @@ avatar_sprites = ds_map_create()
 
 steam_image_create_sprite = function(l_img)
 {
-	var l_dims = steam_image_get_size(l_img);
-	if (l_dims == undefined) 
+	var l_dims = tcc_steam_image_get_size(l_img);
+	if (l_dims == undefined)
 		return -1;
-	
+
 	var buff_size = l_dims[0] * l_dims[1] * 4
 	var l_cols = buffer_create(buff_size, buffer_fixed, 1);
 	var l_sprite, l_ok;
-	
-	l_ok = steam_image_get_rgba(l_img, l_cols, buff_size);
 
-	if (l_ok) 
+	l_ok = tcc_steam_image_get_rgba(l_img, l_cols, buff_size);
+
+	if (l_ok)
 	{
 		var l_surf = surface_create(l_dims[0], l_dims[1]);
 		buffer_set_surface(l_cols, l_surf, 0);
 		l_sprite = sprite_create_from_surface(l_surf, 0, 0, l_dims[0], l_dims[1], false, false, 0, 0);
 		surface_free(l_surf);
-	} 
-	else 
+	}
+	else
 		l_sprite = -1;
-		
+
 	buffer_delete(l_cols);
 	return l_sprite;
 }
@@ -72,17 +72,17 @@ case(r_cswin): lbname = "Corrupted Spike Challenge Time" break;
 case(r_world7win): lbname = "World 7 Challenge Time" break;
 case(r_invisiblewin): lbname = "Invisible Challenge Time" break;
 case(r_breakablewin): lbname = "Breakable Challenge Time" break;
-case(r_endlessrunmenu): 
+case(r_endlessrunmenu):
 if diff = 0 {
-lbname = "Endless Run 20L" 
+lbname = "Endless Run 20L"
 } else {
-lbname = "Endless Run 50L" 
+lbname = "Endless Run 50L"
 } numerical = 1 break;
-case(r_dailylevelwin): 
+case(r_dailylevelwin):
 if diff = 0 {
 lbname = "Daily Level Streak"
 } else {
-lbname = "Current Daily Level Streak"	
+lbname = "Current Daily Level Streak"
 } numerical = 1 break;
 }
 }

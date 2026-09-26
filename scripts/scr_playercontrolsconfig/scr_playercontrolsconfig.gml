@@ -1,11 +1,12 @@
 function scr_playercontrolsconfig(){
-	if os_type != os_android {
+// Every caller receives initialized flags, including mobile tutorial objects.
 leftcontrols = 0
 rightcontrols = 0
 jumpcontrols = 0
 interactcontrols = 0
 skipcontrols = 0
 restartcontrols = 0
+	if !platform_mobile() {
 //Left
 switch(global.controlsmoveleft) {
 case("40"): leftcontrols = 1

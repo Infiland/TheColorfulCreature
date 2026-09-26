@@ -15,8 +15,8 @@ timeleft = 366 - (((global.calendarcurrentmonth - 1) * 30.41666666666667) + glob
 } else { timeleft = 0 }
 
 calendarcost = 100
-if os_type = os_android || os_type = os_gxgames {
-calendarcost = 250	
+if platform_touch() {
+calendarcost = 250
 }
 
 /*if global.calendarcurrentyear = 2022 {

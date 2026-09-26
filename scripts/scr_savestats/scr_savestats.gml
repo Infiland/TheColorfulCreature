@@ -1,9 +1,9 @@
 function scr_savestats() {
+var _saved = false;
 if global.cheats = 0 {
 	var directory = directory_set("//Save Files/")
 
-	if (file_exists(directory + "Stats.sav")) file_delete(directory +"Stats.sav");
-	ini_open(directory + "Stats.sav");
+	scr_save_begin(directory + "Stats.sav");
 	//STATS
 	ini_write_real("Stats","Total Deaths",global.totaldeaths);
 	ini_write_real("Stats","Total Time",global.totaltime);
@@ -56,20 +56,20 @@ if global.cheats = 0 {
 	ini_write_real("Stats","Rocket Deaths",global.totalrocketdeaths);
 	ini_write_real("Stats","Troop Deaths",global.totaltroopdeaths);
 	ini_write_real("Stats","Water Deaths",global.totalwaterdeaths);
-	
+
 	//QUESTS
-	
+
 	for(var i=0;i<5;i++) {
 	ini_write_real("Quests","QuestN"+string(i),global.QUEST[i]);
 	}
 	ini_write_real("Quests","Quest Day",global.QUESTday);
-	
+
 	ini_write_real("Quests","Total Deaths",global.QUESTdeaths);
 	ini_write_real("Quests","Total Time",global.QUESTtime);
 	ini_write_real("Quests","Total Jumps",global.QUESTjump);
 	ini_write_real("Quests","Total Coins",global.QUESTcoins);
 	ini_write_real("Quests","Total Skips",global.QUESTskip);
-	
+
 	ini_write_real("Quests","Total Normal Pickups",global.QUESTnormalpickups);
 	ini_write_real("Quests","Total Gravity Pickups",global.QUESTgravitypickups);
 	ini_write_real("Quests","Total Speed Pickups",global.QUESTspeedpickups);
@@ -89,7 +89,7 @@ if global.cheats = 0 {
 	ini_write_real("Quests","Total Oxygen Pickups",global.QUESToxygenpickups);
 	ini_write_real("Quests","Total D.Jump Pickups",global.QUESTdjumppickups);
 	ini_write_real("Quests","Total Blocks Broken",global.QUESTblocksbroken);
-	
+
 	//Deaths
 	ini_write_real("Quests","Block Deaths",global.QUESTblockdeaths);
 	ini_write_real("Quests","Restart Deaths",global.QUESTrestartdeaths);
@@ -106,11 +106,12 @@ if global.cheats = 0 {
 	ini_write_real("Quests","Rocket Deaths",global.QUESTrocketdeaths);
 	ini_write_real("Quests","Troop Deaths",global.QUESTtroopdeaths);
 	ini_write_real("Quests","Water Deaths",global.QUESTwaterdeaths);
-	
-	ini_close();
+
+	_saved = scr_save_finish(directory + "Stats.sav");
 	}
-	
+
 	//Achievements
 	scr_checkachievements()
-	
+return _saved;
+
 }

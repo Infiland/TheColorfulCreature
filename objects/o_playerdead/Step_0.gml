@@ -1,7 +1,7 @@
-if global.pause = 1{ 
+if global.pause = 1{
 	image_speed = 0
 	gamepad_set_vibration(0, 0, 0);
-	exit 
+	exit
 	}
 image_speed = 1/3 * (60 / global.maxfps)
 fall += 0.25 * (60 / global.maxfps)
@@ -22,16 +22,10 @@ var vb = global.controllervibrationsettings
 gamepad_set_vibration(0, (vibx2 * image_alpha)*vb, (vibx1 * image_alpha)*vb);
 if image_alpha < 0 {
 if room != r_hardmodedeathroom {
-	if global.androidadtimer < 0 {
-		if AdMob_Interstitial_IsLoaded() {
-		AdMob_Interstitial_Show()
-	}
-	
-	}
 room_restart()
 instance_destroy()
 gamepad_set_vibration(0, 0, 0);
-} else { 
+} else {
 	hideandroidbuttons()
 	instance_destroy() }
 if global.challenges = 0 {

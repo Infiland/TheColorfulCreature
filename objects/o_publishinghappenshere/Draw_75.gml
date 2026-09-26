@@ -5,7 +5,7 @@ draw_set_alpha(1)
 draw_set_halign(fa_center)
 
 		/*var uploadMap = ds_map_create();
-steam_ugc_get_item_update_progress(new_map, uploadMap);
+tcc_steam_ugc_get_item_update_progress(new_map, uploadMap);
 var statusCode = uploadMap[? "status_code"];
 var status = uploadMap[? "status_string"];
 var processed = uploadMap[? "bytes_processed"];
@@ -30,7 +30,7 @@ case(1):  if updated = 0 {
 draw_text(512,250,loc("LEVEL_PUBLISHED")) } else {  draw_text(room_width/2,250,loc("LEVEL_UPDATED")) }
 draw_text(512,310,"Publish ID: " + string(global.Publish_ID))
 draw_text(512,410,"The game is likely to crash after this point. Please stay in the game\nfor a minute, so no corruptions happen!")
-if !steam_get_achievement("PUBLISHER") { steam_set_achievement("PUBLISHER") }
+if !achievement_earned("PUBLISHER") { achievement_award("PUBLISHER") }
 timer -= 1
 break;
 case(2): draw_text(512,250,"Failed because you didn't accept the\nLegal Agreement!")
@@ -54,7 +54,7 @@ draw_set_halign(fa_left)
 draw_set_color(c_white)
 draw_rectangle(0,740,timer,770,false)
 
-if timer < 0 { 
+if timer < 0 {
 	if result = 1 {
 	global.workshoplevelversion += 1
 	var directory = directory_set("/LevelEditor Files/" + "/" + global.levelname + "/")

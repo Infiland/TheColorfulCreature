@@ -1,4 +1,4 @@
-key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (gamepad_button_check_pressed(4,gp_shoulderr));
+key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (tcc_gamepad_button_check_pressed(4,gp_shoulderr));
 if instance_exists(o_player) {
 
 if o_player.zerogrv = 0 {

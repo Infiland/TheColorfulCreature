@@ -4,52 +4,52 @@
 audio_play_sound_at(snd_troopattack6,x-mouse_x,y-mouse_y,0,100,100,100,0,1)
 }*/
 
-if global.pause = 1{ 
+if global.pause = 1{
 	scr_playercontrolsconfig()
 	speed = 0
 	exit }
-if os_type != os_android {
+if !platform_mobile() {
 //Left
 if leftcontrols = 0 {
-key_left = (gamepad_axis_value(0,gp_axislh) < -0.2 || gamepad_button_check(0,global.gp_bind_moveleft)) || keyboard_check(ord(global.controlsmoveleft))
+key_left = (tcc_gamepad_axis_value(0,gp_axislh) < -0.2 || tcc_gamepad_button_check(0,global.gp_bind_moveleft)) || keyboard_check(ord(global.controlsmoveleft))
 }
 if leftcontrols = 1 {
-key_left = (gamepad_axis_value(0,gp_axislh) < -0.2 || gamepad_button_check(0,global.gp_bind_moveleft)) || keyboard_check(global.controlsmoveleft)
+key_left = (tcc_gamepad_axis_value(0,gp_axislh) < -0.2 || tcc_gamepad_button_check(0,global.gp_bind_moveleft)) || keyboard_check(global.controlsmoveleft)
 }
 //Right
 if rightcontrols = 0 {
-key_right = (gamepad_axis_value(0,gp_axislh) > 0.2 || gamepad_button_check(0,global.gp_bind_moveright)) || keyboard_check(ord(global.controlsmoveright));
+key_right = (tcc_gamepad_axis_value(0,gp_axislh) > 0.2 || tcc_gamepad_button_check(0,global.gp_bind_moveright)) || keyboard_check(ord(global.controlsmoveright));
 }
 if rightcontrols = 1 {
-key_right = (gamepad_axis_value(0,gp_axislh) > 0.2 || gamepad_button_check(0,global.gp_bind_moveright)) || keyboard_check(global.controlsmoveright);
+key_right = (tcc_gamepad_axis_value(0,gp_axislh) > 0.2 || tcc_gamepad_button_check(0,global.gp_bind_moveright)) || keyboard_check(global.controlsmoveright);
 }
 //Jump
 if doublejump = 0 {
-if jumpcontrols = 0 { key_jump = (gamepad_button_check(0,global.gp_bind_jump)) || keyboard_check(ord(global.controlsjump)) }
-else { key_jump = (gamepad_button_check(0,global.gp_bind_jump)) || keyboard_check(global.controlsjump) }
+if jumpcontrols = 0 { key_jump = (tcc_gamepad_button_check(0,global.gp_bind_jump)) || keyboard_check(ord(global.controlsjump)) }
+else { key_jump = (tcc_gamepad_button_check(0,global.gp_bind_jump)) || keyboard_check(global.controlsjump) }
 } else {
-if jumpcontrols = 0 { key_jump = (gamepad_button_check_pressed(0,global.gp_bind_jump)) || keyboard_check_pressed(ord(global.controlsjump)) }
-else { key_jump = gamepad_button_check_pressed(0,global.gp_bind_jump) || keyboard_check_pressed(global.controlsjump) }
+if jumpcontrols = 0 { key_jump = (tcc_gamepad_button_check_pressed(0,global.gp_bind_jump)) || keyboard_check_pressed(ord(global.controlsjump)) }
+else { key_jump = tcc_gamepad_button_check_pressed(0,global.gp_bind_jump) || keyboard_check_pressed(global.controlsjump) }
 }
 
 
 //Interact
 if interactcontrols = 0 {
-key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (gamepad_button_check_pressed(0,global.gp_bind_interact)) //|| keyboard_check_pressed(ord("S"));
-} else { key_interact = keyboard_check_pressed(global.controlsinteract) || (gamepad_button_check_pressed(0,global.gp_bind_interact)) }
+key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (tcc_gamepad_button_check_pressed(0,global.gp_bind_interact)) //|| keyboard_check_pressed(ord("S"));
+} else { key_interact = keyboard_check_pressed(global.controlsinteract) || (tcc_gamepad_button_check_pressed(0,global.gp_bind_interact)) }
 //Interact Hold
 if interactcontrols = 0 {
-key_interact_h = keyboard_check(ord(global.controlsinteract)) || (gamepad_button_check(0,global.gp_bind_interact)) //|| keyboard_check_pressed(ord("S"));
-} else { key_interact_h = keyboard_check(global.controlsinteract) || (gamepad_button_check(0,global.gp_bind_interact)) }
+key_interact_h = keyboard_check(ord(global.controlsinteract)) || (tcc_gamepad_button_check(0,global.gp_bind_interact)) //|| keyboard_check_pressed(ord("S"));
+} else { key_interact_h = keyboard_check(global.controlsinteract) || (tcc_gamepad_button_check(0,global.gp_bind_interact)) }
 //Restart
-if restartcontrols = 0 { key_restart = keyboard_check(ord(global.controlsrestart)) || (gamepad_button_check(0,global.gp_bind_restart)) } else { key_restart = keyboard_check(global.controlsrestart) || (gamepad_button_check(0,global.gp_bind_restart)) }
+if restartcontrols = 0 { key_restart = keyboard_check(ord(global.controlsrestart)) || (tcc_gamepad_button_check(0,global.gp_bind_restart)) } else { key_restart = keyboard_check(global.controlsrestart) || (tcc_gamepad_button_check(0,global.gp_bind_restart)) }
 } else {
-if instance_exists(o_buttonleftandroid) { key_left = o_buttonleftandroid.image_index = 1; }
-if instance_exists(o_buttonrightandroid) { key_right = o_buttonrightandroid.image_index = 1; }
-if instance_exists(o_buttonjumpandroid) { key_jump = o_buttonjumpandroid.image_index = 1; }
-if instance_exists(o_buttoninteractandroid) {key_interact = o_buttoninteractandroid.image_index = 1; }
-if instance_exists(o_buttoninteractandroid) { key_interact_h = o_buttoninteractandroid.image_index = 1; }
-if instance_exists(o_buttonrestartandroid) { key_restart = o_buttonrestartandroid.image_index = 1; }
+key_left = instance_exists(o_buttonleftandroid) && o_buttonleftandroid.pressed;
+key_right = instance_exists(o_buttonrightandroid) && o_buttonrightandroid.pressed;
+key_jump = instance_exists(o_buttonjumpandroid) && (o_buttonjumpandroid.press || (doublejump == 0 && o_buttonjumpandroid.pressed));
+key_interact = instance_exists(o_buttoninteractandroid) && o_buttoninteractandroid.press == 1;
+key_interact_h = instance_exists(o_buttoninteractandroid) && o_buttoninteractandroid.pressed;
+key_restart = instance_exists(o_buttonrestartandroid) && o_buttonrestartandroid.press == 1;
 }
 
 if global.noclip = 1 {
@@ -85,7 +85,7 @@ if keyboard_check(vk_control) {
 
 //Water
 if place_meeting(x,y,o_water) { inwater = 2 } else { inwater = 1 }
-if inwater = 2 { 
+if inwater = 2 {
 	if global.musicdistortionsettings = 1 {
 	global._ef_water.cutoff = lerp(global._ef_water.cutoff,500,0.05);
 	global._ef_gain.gain = lerp(global._ef_gain.gain,0.5*(breath/500),0.05);
@@ -137,14 +137,14 @@ if key_right and key_left {
 		if realwalk > 0 {
 	realwalk -= 0.05 * (60 / global.maxfps)
 		} else { realwalk = 0 }
-	} else { realwalk = 0 }	
+	} else { realwalk = 0 }
 }
 if global.writingmode = 0 {
 hsp = (((move * realwalk) + hspzerogrv) / inwater) * (60 / global.maxfps)
 }
-if move = 0 { 
+if move = 0 {
 	if onice = false {
-	realwalk = 0 
+	realwalk = 0
 	} else {
 	if realwalk > 0 {
 		realwalk -= 0.05 * (60 / global.maxfps)
@@ -204,7 +204,7 @@ par_walktimer = 10
 }
 
 if global.managablejump = 1 {
-if (gamepad_button_check_released(0,global.gp_bind_jump)) || keyboard_check_released(ord(global.controlsjump)) &&  vsp <= 0 {
+if (tcc_gamepad_button_check_released(0,global.gp_bind_jump)) || keyboard_check_released(ord(global.controlsjump)) &&  vsp <= 0 {
 //vsp = lerp(vsp,0,0.15)
 vsp = 0
 }}
@@ -222,7 +222,7 @@ if vsp > 0 {
 if (place_meeting(x,y+1,o_onewayupblock)) and (key_jump) { {jump()} }
 }
 if (place_meeting(x,y+1,o_iceblock)) and (key_jump) {jump()}
-if (place_meeting(x,y,o_ladder)) and (key_jump) { 
+if (place_meeting(x,y,o_ladder)) and (key_jump) {
 	vsp = -3
 	onice = false
 	if !audio_is_playing(snd_ladder) {
@@ -237,7 +237,7 @@ jumptest2 = jumptest
 }
 jumptest = 0
 }}
-	
+
 //Collision
 if global.noclip = 0 {
 
@@ -267,7 +267,7 @@ x = x + hsp
 
 /*
 	if (place_meeting(x,y+vsp,o_redblockslope)) { //Test
-	    while (!place_meeting(x,y+sign(vsp),o_redblockslope)) 
+	    while (!place_meeting(x,y+sign(vsp),o_redblockslope))
 	    {
 	        y = y + sign(vsp);
 	    }
@@ -369,7 +369,7 @@ jump()
 	if (doublejump > 0) and (key_jump) {
 	jump()
 	}}
-	
+
 //Colors (AND SKINS)
 switch(global.skinselected) {
 case 4:
@@ -448,7 +448,7 @@ if randomblinking < 0 {
 blinkinganimatioon += 0.33 * (60 / global.maxfps)
 if blinkinganimatioon > 9 {
 blinkinganimatioon = 0
-randomblinking = irandom_range(250,450)	
+randomblinking = irandom_range(250,450)
 }}
 break;
 case 22: scr_playerrbgnormal() break;
@@ -483,7 +483,7 @@ if key_right and key_left and vsp = 0 { googlyeyesrot = 0 } //Pressing left and 
 googlyeyesrotreal = lerp(googlyeyesrotreal,googlyeyesrot,0.25 * (60 / global.maxfps))
 if keyboard_check_pressed(vk_anykey) {
 randomeeyerotationR = lerp(randomeeyerotationR,random_range(-360,360),0.2 * (60 / global.maxfps))
-randomeeyerotationL = lerp(randomeeyerotationL,random_range(-360,360),0.2 * (60 / global.maxfps))	
+randomeeyerotationL = lerp(randomeeyerotationL,random_range(-360,360),0.2 * (60 / global.maxfps))
 }
 break;
 case 31: scr_playerrbgnormal() break;
@@ -513,10 +513,10 @@ case 48: scr_playerrbgnormal() break;
 case 49: scr_playerrbgnormal()
 scr_animatedeyes() break;
 }
-if global.color = 4 { 
+if global.color = 4 {
 	if global.playerpar > 0 {
 	if whiteplayer = 0 {
-	instance_create(x+12,y+14,o_whitecircleeffect);	
+	instance_create(x+12,y+14,o_whitecircleeffect);
 	whiteplayer = 1
 	}}}
 //Wrap Script
@@ -534,14 +534,14 @@ teleportcooldown -= 1 * (60 / global.maxfps)
 }}}
 if teleportcooldown < 0 {
 if place_meeting(x,y,o_portalpurpleopen) {
-portallast = 0	
+portallast = 0
 }
 if place_meeting(x,y,o_portalpurpleclosed) {
 portallast = 1
 }
 }
 if teleportcooldown <= 0 {
-if portallast = 0 {	
+if portallast = 0 {
 if place_meeting(x,y,o_portalpurpleopen) {
 if instance_exists(o_portalpurpleclosed) {
 teleportcooldown = 15
@@ -558,7 +558,7 @@ increase_stat("totalportal","QUESTportal",1)
 }
 }}}
 if place_meeting(x,y,o_portalpurpleclosed) {
-if portallast = 1 {		
+if portallast = 1 {
 if instance_exists(o_portalpurpleopen) {
 teleportcooldown = 15
 repeat (irandom_range(3,7)) { var star = instance_create(x+16,y+16,o_itemstar)
@@ -604,7 +604,7 @@ audio_play_sound(snd_noammo,0,0)
 } else { audio_play_sound(snd_noammo,0,0) }
 }}
 if instance_exists(o_gunequipped) {
-if key_right { o_gunequipped.timer = 0 }	
+if key_right { o_gunequipped.timer = 0 }
 if key_left { o_gunequipped.timer = 0 }
 }
 
@@ -633,7 +633,7 @@ if place_meeting(x,y,o_redpassblock) { blockdeath() }
 if global.color != 1 {
 if !place_meeting(x,y-1,o_redblock) and !place_meeting(x,y+1,o_redblock) and !place_meeting(x,y-1,o_greenblock) and !place_meeting(x,y+1,o_greenblock) and !place_meeting(x,y-1,o_blueblock) and !place_meeting(x,y+1,o_blueblock) {
 if place_meeting(x-10,y-10,o_yellowblockmove) || place_meeting(x+1,y+2,o_yellowblockmove) || place_meeting(x-1,y-1,o_yellowblock) || place_meeting(x+1,y+1,o_yellowblock) || place_meeting(x-1,y+1,o_yellowblock) || place_meeting(x+1,y-1,o_yellowblock) {
-blockdeath() 
+blockdeath()
 }}
 
 if hsp = 0 {
@@ -650,7 +650,7 @@ if place_meeting(x,y,o_yellowpassblock) { blockdeath() }
 if global.color != 2 {
 if !place_meeting(x,y-1,o_yellowblock) and !place_meeting(x,y+1,o_yellowblock) and !place_meeting(x,y-1,o_redblock) and !place_meeting(x,y+1,o_redblock) and !place_meeting(x,y-1,o_blueblock) and !place_meeting(x,y+1,o_blueblock) {
 if place_meeting(x-10,y-10,o_greenblockmove) || place_meeting(x+1,y+2,o_greenblockmove) || place_meeting(x-1,y-1,o_greenblock) || place_meeting(x+1,y+1,o_greenblock) || place_meeting(x-1,y+1,o_greenblock) || place_meeting(x+1,y-1,o_greenblock) {
-blockdeath() 
+blockdeath()
 }}
 
 if hsp = 0 {
@@ -666,7 +666,7 @@ if place_meeting(x,y,o_greenpassblock) { blockdeath() }
 if global.color != 3 {
 if !place_meeting(x,y-1,o_yellowblock) and !place_meeting(x,y+1,o_yellowblock) and !place_meeting(x,y-1,o_greenblock) and !place_meeting(x,y+1,o_greenblock) and !place_meeting(x,y-1,o_redblock) and !place_meeting(x,y+1,o_redblock) {
 if place_meeting(x-10,y-10,o_blueblockmove) || place_meeting(x+1,y+2,o_blueblockmove) || place_meeting(x-1,y-1,o_blueblock) || place_meeting(x+1,y+1,o_blueblock) || place_meeting(x-1,y+1,o_blueblock) || place_meeting(x+1,y-1,o_blueblock) {
-blockdeath() 
+blockdeath()
 }}
 
 if hsp = 0 {
@@ -681,7 +681,7 @@ if place_meeting(x,y,o_bluepassblock) { blockdeath() }
 //WHITE
 if passblockcooldown < 1 {
 if place_meeting(x,y,o_whitepassblock) {
-blockdeath() 
+blockdeath()
 }}
 
 }
@@ -698,42 +698,42 @@ if place_meeting(x,y,o_unlockedblock) { blockdeath() }
 }}
 
 if passblockcooldown < 1 {
-if place_meeting(x,y,o_gravitylimit01) { 
+if place_meeting(x,y,o_gravitylimit01) {
 if grv != 0.027 {
-	blockdeath() 
+	blockdeath()
 	}}
-if place_meeting(x,y,o_gravitylimit05) { 
+if place_meeting(x,y,o_gravitylimit05) {
 if grv != 0.172 {
-	blockdeath() 
+	blockdeath()
 	}}
-if place_meeting(x,y,o_gravitylimit15) { 
+if place_meeting(x,y,o_gravitylimit15) {
 if grv != 0.5 {
-	blockdeath() 
+	blockdeath()
 	}}
-if place_meeting(x,y,o_gravitylimit25) { 
+if place_meeting(x,y,o_gravitylimit25) {
 if grv != 0.83 {
-	blockdeath() 
+	blockdeath()
 	}}
-if place_meeting(x,y,o_zerogravitylimit) { 
+if place_meeting(x,y,o_zerogravitylimit) {
 if zerogrv = 0 {
 	blockdeath()
 }}}
 
-if place_meeting(x,y,o_speedlimit5) { 
+if place_meeting(x,y,o_speedlimit5) {
 if walksp != 2.8 {
-	blockdeath() 
+	blockdeath()
 	}}
-if place_meeting(x,y,o_speedlimit7) { 
+if place_meeting(x,y,o_speedlimit7) {
 if walksp != 4 {
-	blockdeath() 
+	blockdeath()
 	}}
-if place_meeting(x,y,o_speedlimit10) { 
+if place_meeting(x,y,o_speedlimit10) {
 if walksp != 5.5 {
-	blockdeath() 
+	blockdeath()
 	}}
-if place_meeting(x,y,o_speedlimit15) { 
+if place_meeting(x,y,o_speedlimit15) {
 if walksp != 8.5 {
-	blockdeath() 
+	blockdeath()
 	}}
 }
 
@@ -774,7 +774,7 @@ if global.workshop = 1 && room = r_customlevelworkshop {
  global.wheeltimeleft -= 20
  } else { global.wheeltimeleft -= 10 }
 scr_resetcheckpointdata()
-if global.hardmodedifficulty = 6 { 
+if global.hardmodedifficulty = 6 {
 	global.timeleftHM += 10 + (global.time / 90)
 	}
 if global.hardmodedifficulty = 7 {
@@ -792,12 +792,12 @@ scr_savegame()
 	global.endlesslevel += 1
 	if global.cheats = 0 {
 	if global.endlessrunmode != 3 {
-	if global.endlesslevel = 20 { steam_upload_score("Endless Run 20L", global.time * 1000)}
-	if global.endlesslevel = 50 { steam_upload_score("Endless Run 50L", global.time * 1000)}
+	if global.endlesslevel = 20 { platform_submit_score("Endless Run 20L", global.time * 1000)}
+	if global.endlesslevel = 50 { platform_submit_score("Endless Run 50L", global.time * 1000)}
 	}}
 	scr_checkachievements()
 	if global.endlessrunmode = 1 {
-	if global.endlesslevel > global.newendlesslevelhighscore { 
+	if global.endlesslevel > global.newendlesslevelhighscore {
 		highscorepitch = (global.endlesslevel - 1) / global.newendlesslevelhighscore
 		if highscorepitch > 1.6 { highscorepitch = 1.6 }
 		audio_sound_pitch(snd_newhighscore,highscorepitch)
@@ -823,7 +823,7 @@ scr_savegame()
 		audio_play_sound(m_goodending,0,1)
 	}
 if global.calendar = 1 {
-	
+
 	switch(global.calendarday - (7 * (global.calendarweek - 1))) {
 	case(1): global.calendarday1required = 1 break;
 	case(2): global.calendarday2required = 1 break;
@@ -833,12 +833,12 @@ if global.calendar = 1 {
 	case(6): global.calendarday6required = 1 break;
 	case(7): global.calendarday7required = 1 break;
 	}
-	
+
 	scr_saverewardscalendar()
 	scr_checkcalendarrewards(global.calendarmonth,global.calendarweek)
-	
+
 	global.calendarday++
-		
+
 	if global.calendarday > 7 {
 	global.calendarweek = 2
 	}
@@ -854,16 +854,16 @@ if global.calendar = 1 {
 	global.calendarmonth += 1
 	calendarcheckmusic()
 	}
-	
+
 	scr_loadrewardscalendar()
-	
-	if steam_get_app_id() = 1749610 {
+
+	if tcc_steam_get_app_id() = 1749610 {
 if global.calendarmonth > 2 {
 kickoutofcalendar()
 if !instance_exists(o_demoask) {instance_create(x,y,o_demoask)}
 exit
 }}
-	
+
 	if global.calendarmonth = global.calendarcurrentmonth {
 	if global.calendarcurrentday < 8 {
 	if global.calendarweek = 2 {
@@ -876,11 +876,11 @@ exit
 	if global.calendarcurrentday < 22 {
 	if global.calendarweek = 4 {
 		kickoutofcalendar()
-	}}} 
+	}}}
 	if global.calendarmonth > global.calendarcurrentmonth {
 		kickoutofcalendar()
 	}
-	
+
 	}
 if global.calendar = 2 {
 if room = asset_get_index("r_c2022lvl" + string(global.calendarday1)) {
@@ -920,22 +920,22 @@ var rwd = irandom_range(1,global.calendardifficulty)
 
 if rwd = 1 { //Hats
 var cust = irandom_range(1,global.totalhatsAM)
-if global.hat[cust] = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) } else { global.hat[cust] = 1 } 
+if global.hat[cust] = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) } else { global.hat[cust] = 1 }
 }
 if rwd = 2 { //Skins
 var cust = irandom_range(1,global.totalskinsAM)
-if global.skin[cust] = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) } else { global.skin[cust] = 1 } 
+if global.skin[cust] = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) } else { global.skin[cust] = 1 }
 }
 if rwd = 3 { //Items
 var cust = irandom_range(1,global.totalitemsAM)
-if global.item[cust] = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) } else { global.item[cust] = 1 } 
+if global.item[cust] = 1 { global.creditscurrency += floor(50 * global.creditsmultiplier) } else { global.item[cust] = 1 }
 }
 
 if global.calendardifficulty = 2 { global.creditscurrency += floor(100 * global.creditsmultiplier) }
 if global.calendardifficulty = 3 { global.creditscurrency += floor(250 * global.creditsmultiplier) }
 global.newcalendarrewarded = 1
 global.newcalendarrecord += 1
-steam_upload_score("Calendar Wins", global.newcalendarrecord);
+platform_submit_score("Calendar Wins", global.newcalendarrecord);
 global.newcalendarreward = cust
 }}}}}}}
 
@@ -946,7 +946,7 @@ scr_savenewcalendar()
 
 
 }
-} else { 
+} else {
 if place_meeting(x,y+3,o_door) {
 if !instance_exists(o_key) {
 global.LEMode = 1
@@ -964,17 +964,17 @@ instance_destroy() }}}
 if debug_mode{
 	if keyboard_check_pressed(ord("N")) {
 	if global.endless = 0 {
-room_goto_next()	
+room_goto_next()
 	} else { randomlevel() }
-	}	
+	}
 		if keyboard_check_pressed(ord("P")) {
 	if global.endless = 0 {
-room_goto_previous()	
+room_goto_previous()
 	} else { randomlevel() }
 	}
 		if keyboard_check_pressed(ord("M")) {
 audio_stop_all()
-	}	
+	}
 }
 
 if global.biglevelperfsettings < 1 { exit }

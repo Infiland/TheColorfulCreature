@@ -12,7 +12,7 @@ if mus = 1 { ismus = true }
 if islvl = true && ismus = true {
 global.endlessrunmode = 3
 global.endless = 1
-if !steam_get_achievement("YOUR_OWN_ENDLESS_RUN") { steam_set_achievement("YOUR_OWN_ENDLESS_RUN") }
+if !achievement_earned("YOUR_OWN_ENDLESS_RUN") { achievement_award("YOUR_OWN_ENDLESS_RUN") }
 audio_stop_all()
 CERrandommusic()
 instance_create(x,y,o_levelcounter)

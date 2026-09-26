@@ -2,19 +2,21 @@ enum STYPE { TOGGLE, MULTI, CATEGORY, ACTION, SLIDER, CONTROL, LANGUAGE }
 
 function scr_settings_definitions() {
 	return [
+        { type: STYPE.CATEGORY, menu: 0, col: 544, row: 7, label: "Privacy options", use_loc: false, target_menu: 0, mobile_privacy: true, callback: ads_privacy_options },
 		// ===== MAIN HUB (choosesettings = 0) =====
 		// Category headers (these have localization keys)
 		{ type: STYPE.CATEGORY, menu: 0, col: 32,  row: 0, label: "CHANGE_VISUALS",   use_loc: true, target_menu: 1, info: 21, header_label: "CHANGE_VISUALS" },
 		{ type: STYPE.CATEGORY, menu: 0, col: 32,  row: 1, label: "CHANGE_AUDIO",     use_loc: true, target_menu: 2, info: 22, header_label: "CHANGE_AUDIO" },
 		{ type: STYPE.CATEGORY, menu: 0, col: 32,  row: 2, label: "CHANGE_CONTROLS",  use_loc: true, target_menu: 3, info: 23, header_label: "CHANGE_CONTROLS",
 		  callback: function() {
-			if os_type = os_android || os_type = os_gxgames {
-				if !instance_exists(o_buttonleftandroid) { instance_create(x,y,o_buttonleftandroid) }
-				if !instance_exists(o_buttonrightandroid) { instance_create(x,y,o_buttonrightandroid) }
-				if !instance_exists(o_buttonjumpandroid) { instance_create(x,y,o_buttonjumpandroid) }
-				if !instance_exists(o_buttoninteractandroid) { instance_create(x,y,o_buttoninteractandroid) }
-				if !instance_exists(o_buttonrestartandroid) { instance_create(x,y,o_buttonrestartandroid) }
-				if !instance_exists(o_buttonskipandroid) { instance_create(x,y,o_buttonskipandroid) }
+			if platform_touch() {
+				// This callback belongs to the settings definition, which has no x/y.
+				if !instance_exists(o_buttonleftandroid) { instance_create(0,0,o_buttonleftandroid) }
+				if !instance_exists(o_buttonrightandroid) { instance_create(0,0,o_buttonrightandroid) }
+				if !instance_exists(o_buttonjumpandroid) { instance_create(0,0,o_buttonjumpandroid) }
+				if !instance_exists(o_buttoninteractandroid) { instance_create(0,0,o_buttoninteractandroid) }
+				if !instance_exists(o_buttonrestartandroid) { instance_create(0,0,o_buttonrestartandroid) }
+				if !instance_exists(o_buttonskipandroid) { instance_create(0,0,o_buttonskipandroid) }
 			}
 		  }
 		},
@@ -45,13 +47,12 @@ function scr_settings_definitions() {
 		{ type: STYPE.TOGGLE,  menu: 0, col: 288, row: 2, gvar: "casualmode",         label: "Casual Mode",    info: 40 },
 		{ type: STYPE.TOGGLE,  menu: 0, col: 288, row: 3, gvar: "autothumbnailsettings", label: "Auto-Thumbnail", info: 41,
 		  callback: function() {
-			if steam_get_app_id() = 1749610 {
+			if tcc_steam_get_app_id() = 1749610 {
 				if !instance_exists(o_demoask) { instance_create(0,0,o_demoask) }
 			}
 		  },
 		  demo_gate: true
 		},
-		{ type: STYPE.TOGGLE,  menu: 0, col: 288, row: 4, gvar: "skipintroscreensettings", label: "Skip Intro", info: 42 },
 		{ type: STYPE.MULTI,   menu: 0, col: 288, row: 5, gvar: "antialiasingsettings", label: "Anti-Aliasing", info: 43, max_val: 8,
 		  options: ["Off", "2x", "4x", "8x"],
 		  custom_cycle: true,
@@ -135,7 +136,7 @@ function scr_settings_definitions() {
 			global.itempar = 0; global.playerpar = 0; global.blockbackgroundsettings = 0
 			global.whiteblock = 0; global.visual3dsettings = 0; global.watershadersettings = 0
 			scr_savesettings()
-			if !steam_get_achievement("POTATO_SETTINGS") { steam_set_achievement("POTATO_SETTINGS") }
+			if !achievement_earned("POTATO_SETTINGS") { achievement_award("POTATO_SETTINGS") }
 		  }
 		},
 		{ type: STYPE.ACTION,  menu: 1, col: 560, row: 1, label: "Low",    info: -1,
@@ -160,7 +161,7 @@ function scr_settings_definitions() {
 			global.itempar = 1; global.playerpar = 2; global.blockbackgroundsettings = 1
 			global.whiteblock = 2; global.visual3dsettings = 1; global.watershadersettings = 1
 			scr_savesettings()
-			if !steam_get_achievement("BENCHMARK") { steam_set_achievement("BENCHMARK") }
+			if !achievement_earned("BENCHMARK") { achievement_award("BENCHMARK") }
 		  }
 		},
 
@@ -213,6 +214,8 @@ function scr_settings_definitions() {
 		},
 
 		// ===== CONTROLS (choosesettings = 3) =====
+        { type: STYPE.MULTI, menu: 3, col: 426, row: 1, gvar: "androidbuttonsize", label: "Button Size", info: -1,
+          mobile_only: true, max_val: 2, options: ["100%", "125%", "150%"], callback: scr_saveandroid },
 		{ type: STYPE.TOGGLE,  menu: 3, col: 170, row: 0, gvar: "skiplevelholdsettings", label: "Skip Level Hold", info: 32 },
 		{ type: STYPE.TOGGLE,  menu: 3, col: 426, row: 0, gvar: "controllervibrationsettings", label: "Controller Vibration", info: 49 },
 	]

@@ -31,11 +31,11 @@ key_interact = keyboard_check_pressed(vk_numpad5)
 break;
 case(4):
 var _pad = multiplayerplayer - 1
-key_restart = (gamepad_button_check(_pad,global.gp_bind_restart))
-key_left = (gamepad_axis_value(_pad,gp_axislh) < -0.2 || gamepad_button_check(_pad,global.gp_bind_moveleft))
-key_right = (gamepad_axis_value(_pad,gp_axislh) > 0.2 || gamepad_button_check(_pad,global.gp_bind_moveright))
-key_jump = gamepad_button_check(_pad,global.gp_bind_jump)
-key_interact = (gamepad_button_check_pressed(_pad,global.gp_bind_interact))
+key_restart = (tcc_gamepad_button_check(_pad,global.gp_bind_restart))
+key_left = (tcc_gamepad_axis_value(_pad,gp_axislh) < -0.2 || tcc_gamepad_button_check(_pad,global.gp_bind_moveleft))
+key_right = (tcc_gamepad_axis_value(_pad,gp_axislh) > 0.2 || tcc_gamepad_button_check(_pad,global.gp_bind_moveright))
+key_jump = tcc_gamepad_button_check(_pad,global.gp_bind_jump)
+key_interact = (tcc_gamepad_button_check_pressed(_pad,global.gp_bind_interact))
 if key_left || key_right { window_set_cursor(cr_none) } //Cursor appears during gameplay
 break;
 }

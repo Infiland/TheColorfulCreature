@@ -1,7 +1,7 @@
-if !steam_get_achievement("OH_NO_THERES_MORE") { //Oh no there's more
-steam_set_achievement("OH_NO_THERES_MORE")
+if !achievement_earned("OH_NO_THERES_MORE") { //Oh no there's more
+achievement_award("OH_NO_THERES_MORE")
 }
-	
+
 global.hardmode = 1
 global.time = 0
 global.deaths = 0

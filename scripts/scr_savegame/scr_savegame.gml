@@ -1,23 +1,13 @@
 function scr_savegame() {
-	if steam_get_app_id() != 1749610 {
-	if room != r_leveleditor {
-	if global.hardmode = 0 {
-	if global.challenges = 0 {
-	if global.endless = 0 {
-	if global.cheats = 0 {
-	if global.hardmode = 0 {
-	if global.workshop = 0 {
-	if global.calendar = 0 {
-	if global.levelselect = 0 {
-	if global.dailylevel = 0 {
-		
+    if ((platform_steam() && tcc_steam_get_app_id() == 1749610) || global.hardmode
+        || global.challenges || global.endless || global.cheats || global.workshop
+        || global.calendar || global.levelselect || global.dailylevel) return;
 	var directory = directory_set("//Save Files/")
-	
+
 	var SavedRoom = room_get_name(room)
-	
-	if SavedRoom != r_lvl1 {
-	if (file_exists(directory + "SaveFile.sav")) file_delete(directory + "SaveFile.sav");
-	ini_open(directory + "SaveFile.sav");
+
+	if (scr_saved_room(SavedRoom) == -1) return;
+	scr_save_begin(directory + "SaveFile.sav");
 	ini_write_real("SaveFile Information","Deaths",global.deaths);
 	ini_write_real("SaveFile Information","Coins",global.special);
 	ini_write_real("SaveFile Information","Time",global.time);
@@ -33,6 +23,6 @@ function scr_savegame() {
 	ini_write_real("SaveFile Information","World 4 Time",global.world4time);
 	ini_write_real("SaveFile Information","World 5 Time",global.world5time);
 	ini_write_string("SaveFile Information","Level",SavedRoom);
-	ini_close();
-	}}}}}}}}}}}}
+	scr_save_finish(directory + "SaveFile.sav");
+
 }

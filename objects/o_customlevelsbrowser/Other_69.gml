@@ -1,3 +1,4 @@
+if (!tcc_steam_initialised()) exit;
 /// @description Async - Steam event handler
 
 var _event_type = async_load[? "event_type"]
@@ -66,7 +67,7 @@ if _event_type = "ugc_query" && _map_id = browse_query_id {
 
 				// Check if already subscribed/installed
 				var info = ds_map_create()
-				steam_ugc_get_item_update_info(lvl.file_id, info)
+				tcc_steam_ugc_get_item_update_info(lvl.file_id, info)
 				if info[? "is_installed"] = 1 { lvl.download_state = "installed" }
 				else if info[? "is_downloading"] = 1 { lvl.download_state = "downloading" }
 				else if info[? "is_download_pending"] = 1 { lvl.download_state = "pending" }
@@ -74,7 +75,7 @@ if _event_type = "ugc_query" && _map_id = browse_query_id {
 				ds_map_destroy(info)
 
 				// Request persona name (store with "browse:" prefix to disambiguate)
-				var _name_req = steam_get_user_persona_name(lvl.owner_id)
+				var _name_req = tcc_steam_get_user_persona_name(lvl.owner_id)
 				async_names[? _name_req] = "browse:" + string(browse_count)
 
 				browse_levels[browse_count] = lvl
@@ -126,7 +127,7 @@ if ds_map_exists(async_details, _map_id) {
 			}
 
 			// Request persona name for owner (store with "sub:" prefix)
-			var _name_req = steam_get_user_persona_name(_lvl.owner_id)
+			var _name_req = tcc_steam_get_user_persona_name(_lvl.owner_id)
 			async_names[? _name_req] = "sub:" + string(_idx)
 		}
 	}

@@ -6,7 +6,7 @@ x = lerp(x,camera_get_view_x(view_camera[0])-256,0.2 * (60 / global.maxfps))
 if global.choosesettings = 3 { x = lerp(x,camera_get_view_x(view_camera[0])+32,0.2 * (60 / global.maxfps)) }
 
 if global.choosesettings = 3 {
-	if (gamepad_is_connected(0)) {
+	if (tcc_gamepad_is_connected(0)) {
 		// === CONTROLLER CONNECTED: only listen for gamepad buttons ===
 		if (editcontrols == controls) {
 			var _pressed = gamepad_remap_listen();

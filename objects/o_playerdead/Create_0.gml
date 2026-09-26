@@ -23,26 +23,26 @@ if global.cheats = 0 {
 if global.endlessrunmode = 1 {
 if global.newendlesslevelhighscore < global.endlesslevel {
 global.newendlesslevelhighscore = global.endlesslevel
-steam_upload_score("Endless Run", global.newendlesslevelhighscore);
+platform_submit_score("Endless Run", global.newendlesslevelhighscore);
 e = 2
 }
-steam_upload_score("Seasonal Endless Run", global.endlesslevel);
+platform_submit_score("Seasonal Endless Run", global.endlesslevel);
 
 }
 if global.endlessrunmode = 2 {
 if global.endlesslevelhighscore < global.endlesslevel {
 global.endlesslevelhighscore = global.endlesslevel
-steam_upload_score("Old School Endless Run", global.endlesslevelhighscore);
+platform_submit_score("Old School Endless Run", global.endlesslevelhighscore);
 e = 2
-steam_upload_score("Seasonal Endless Run", global.endlesslevel);
+platform_submit_score("Seasonal Endless Run", global.endlesslevel);
 }}
 if global.endlessrunmode = 4 {
 if global.workshopERhighscore < global.endlesslevel {
 global.workshopERhighscore = global.endlesslevel
-steam_upload_score("Workshop Endless Run", global.workshopERhighscore);
+platform_submit_score("Workshop Endless Run", global.workshopERhighscore);
 e = 2
 }
-steam_upload_score("Seasonal Endless Run", global.endlesslevel);
+platform_submit_score("Seasonal Endless Run", global.endlesslevel);
 workshopER_cleanup()
 }
 
@@ -72,7 +72,7 @@ room_goto(r_hardmodedeathroom)
 switch(global.skinselected) {
 case(5): sprite_index = s_blockplayerdead break;
 case(19): sprite_index = s_hexagonplayerdead break;
-case(24): 
+case(24):
 x += 16
 y += 16
 break;

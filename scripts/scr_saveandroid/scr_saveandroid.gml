@@ -2,8 +2,9 @@ function scr_saveandroid() {
 	
 	var directory = directory_set("//Save Files/")
 	
-	if (file_exists(directory + "Android.sav")) file_delete(directory + "Android.sav");
-	ini_open(directory + "Android.sav");
+	scr_save_begin(directory + "Android.sav");
+	ini_write_real("Android", "Layout", 2);
+	ini_write_real("Android", "Button Size", global.androidbuttonsize);
 	//Android
 	ini_write_real("Android","Left X",global.androidleftx);
 	ini_write_real("Android","Left Y",global.androidlefty);
@@ -17,5 +18,5 @@ function scr_saveandroid() {
 	ini_write_real("Android","Skip Y",global.androidskipy);
 	ini_write_real("Android","Restart X",global.androidrestartx);
 	ini_write_real("Android","Restart Y",global.androidrestarty);
-	ini_close();
+	scr_save_finish(directory + "Android.sav");
 }

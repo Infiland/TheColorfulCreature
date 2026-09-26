@@ -194,7 +194,7 @@ function scr_drawsettingbutton() {
 
 	// Controller support
 	if mouseon = true {
-		if gamepad_button_check_pressed(0, gp_face1) {
+		if tcc_gamepad_button_check_pressed(0, gp_face1) {
 			event_perform(ev_mouse, ev_left_press)
 		}
 	}

@@ -10,7 +10,7 @@ if room == r_challenges {
 } else {
 	if variable_global_exists("challenge_custom_spawned") { global.challenge_custom_spawned = false }
 }
-if keyboard_check_pressed(vk_escape) || gamepad_button_check_pressed(0,gp_face2) {
+if keyboard_check_pressed(vk_escape) || tcc_gamepad_button_check_pressed(0,gp_face2) {
 		if room == r_workshopchallengemenu {
 			if instance_exists(o_workshopchallengecreator) {
 				with (o_workshopchallengecreatorbg) instance_destroy()

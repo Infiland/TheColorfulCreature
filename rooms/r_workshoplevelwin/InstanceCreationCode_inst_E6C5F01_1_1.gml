@@ -14,26 +14,26 @@ if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1
 
 increase_stat("customlevelcompleted","QUESTcustomlevel",1)
 
-if !steam_get_achievement("WORKSHOP_BEGINNER") { steam_set_achievement("WORKSHOP_BEGINNER") }
-if !steam_get_achievement("FEATURED_LEVEL") { steam_set_achievement("FEATURED_LEVEL") }	
+if !achievement_earned("WORKSHOP_BEGINNER") { achievement_award("WORKSHOP_BEGINNER") }
+if !achievement_earned("FEATURED_LEVEL") { achievement_award("FEATURED_LEVEL") }
 if global.customlevelcompleted > 49 {
 if global.cheats = 0 {
 global.skin[44] = 1
-if !steam_get_achievement("WORKSHOP_MASTER") { steam_set_achievement("WORKSHOP_MASTER") }
+if !achievement_earned("WORKSHOP_MASTER") { achievement_award("WORKSHOP_MASTER") }
 }}
-if global.time > 3 { 
+if global.time > 3 {
 global.creditscurrency += floor(1 * global.creditsmultiplier)
 }
-	
+
 	var directory = directory_set("/Custom/Workshop/Medals/" + string(global.Publish_ID) + "/")
 	if !directory_exists(directory) {
 	directory_create(directory)
 	}
-	
+
 	scr_saveworkshopmedals()
-	
+
 	if !instance_exists(o_onlineleaderboardsmini) {
-	instance_create(x,y,o_onlineleaderboardsmini)	
+	instance_create(x,y,o_onlineleaderboardsmini)
 	}
 
 

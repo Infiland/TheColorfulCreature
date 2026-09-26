@@ -1,19 +1,19 @@
 function death() {
 	global.deaths += 1
 	increase_stat("totaldeaths","QUESTdeaths",1)
-	
+
 	global.androidadtimer -= 20
-	
+
 	if instance_place(x,y,o_allspikes)  { //Spike Deaths
 		increase_stat("totalspikedeaths","QUESTspikedeaths",1)
 		}
 	if instance_place(x,y,o_goldenspike)  { //Golden Spike Deaths
 		increase_stat("totalgoldspikedeaths","QUESTgoldspikedeaths",1)
-if !steam_get_achievement("GOLDEN_SPIKE_DEATH") { steam_set_achievement("GOLDEN_SPIKE_DEATH") } //GOLDEN SPIKE ACHIEVEMENT
+if !achievement_earned("GOLDEN_SPIKE_DEATH") { achievement_award("GOLDEN_SPIKE_DEATH") } //GOLDEN SPIKE ACHIEVEMENT
 		}
 		if instance_place(x,y,o_weirdspike)  { //Weird Spike Deaths
 			increase_stat("totalweirdspikedeaths","QUESTweirdspikedeaths",1)
-if !steam_get_achievement("WEIRD_SPIKE_DEATH") { steam_set_achievement("WEIRD_SPIKE_DEATH") } //WEIRD SPIKE ACHIEVEMENT
+if !achievement_earned("WEIRD_SPIKE_DEATH") { achievement_award("WEIRD_SPIKE_DEATH") } //WEIRD SPIKE ACHIEVEMENT
 		}
 	if instance_place(x,y,o_allinvspikes) { //Invisible Spike Deaths
 		increase_stat("totalinvisiblespikedeaths","QUESTinvisiblespikedeaths",1)
@@ -36,15 +36,15 @@ if !steam_get_achievement("WEIRD_SPIKE_DEATH") { steam_set_achievement("WEIRD_SP
 	if instance_place(x,y,o_rocket) || instance_place(x,y,o_rocket2) {
 	increase_stat("totalrocketdeaths","QUESTrocketdeaths",1)
 	}
-	
+
 	if room = r_boss2 {
 		if global.boss2 = 0 {
-		global.boss2health = 6	
+		global.boss2health = 6
 		}}
 	if global.skin[15] = 0 {
 	if global.totaldeaths > 999 {global.skin[15] = 1}
 	}
-	
+
 if global.endless = 1 {
 if global.endlessrunmode = 1 {
 global.difficultyincreaseER += 1
@@ -54,7 +54,7 @@ if global.difficultyER != 1 {
 instance_create(x,y,o_difficultydownER)
 global.difficultyER -= 1
 }}}}
-	
+
 	scr_savestats()
 	var offset = 0
 	if instance_exists(o_player) {
@@ -65,7 +65,7 @@ global.difficultyER -= 1
 	if global.skinselected = 24 {
 	with(o_playerdead) {
 	x -= 16
-	y -= 16	
+	y -= 16
 	}
 	}
 	if global.pickup = 1 {

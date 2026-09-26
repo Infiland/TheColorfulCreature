@@ -1,15 +1,10 @@
 scr_playercontrolsconfig()
 
 if global.hardmode = 1 {
-instance_destroy()	
+instance_destroy()
 }
 
-if os_type != os_android {
-key_skip = keyboard_check(ord(global.controlsskiplevel)) || (gamepad_button_check(0,global.gp_bind_skip))
-} else { 
-	if instance_exists(o_buttonskipandroid) {
-	key_skip = o_buttonskipandroid.image_index = 1;
-	}}
+key_skip = false
 
 skipcontrols = 0
 timer = 0.7

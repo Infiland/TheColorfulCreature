@@ -20,13 +20,13 @@ colorB = make_color_rgb(255,255,255)
 redB = 0
 depth = -10001
 
-if os_type = os_android || os_type = os_gxgames {
+if platform_touch() {
 if !instance_exists(o_watchad) {
-instance_create(864,78,o_watchad)	
+instance_create(864,78,o_watchad)
 }}
 
 if global.cheats = 0 {
-if global.creditscurrency >= 100 { if !steam_get_achievement("A_SMALL_LOAN") { steam_set_achievement("A_SMALL_LOAN") }}
-if global.creditscurrency >= 1000 { if !steam_get_achievement("MONEY_SAVER") { steam_set_achievement("MONEY_SAVER") }}
-if global.creditscurrency >= 10000 { if !steam_get_achievement("THE_GLITTERING_RICH") { steam_set_achievement("THE_GLITTERING_RICH") }}
+if global.creditscurrency >= 100 { if !achievement_earned("A_SMALL_LOAN") { achievement_award("A_SMALL_LOAN") }}
+if global.creditscurrency >= 1000 { if !achievement_earned("MONEY_SAVER") { achievement_award("MONEY_SAVER") }}
+if global.creditscurrency >= 10000 { if !achievement_earned("THE_GLITTERING_RICH") { achievement_award("THE_GLITTERING_RICH") }}
 }

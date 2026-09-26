@@ -1,4 +1,4 @@
-steam_details = steam_ugc_request_item_details(global.fileID, 60);
+steam_details = tcc_steam_ugc_request_item_details(global.fileID, 60);
 
 var map_id = async_load[? "id"];
 var result = async_load[? "result"];

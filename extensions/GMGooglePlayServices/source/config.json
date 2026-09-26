@@ -1,0 +1,25 @@
+{
+  "$schema": "./extgen.schema.json",
+  "input": "spec.gmidl",
+  "root": "./",
+  "gamemaker": {
+    "wrappers": {
+      "outputFile": "../../../scripts/GMGooglePlayServices_API/GMGooglePlayServices_API.gml"
+    },
+    "extension": {
+      "mode": "patch",
+      "outputFile": "../../../extensions/GMGooglePlayServices/GMGooglePlayServices.yy"
+    },
+    "injectors": { }
+  },
+  "targets": {
+    "android":{
+      "mode": "java"
+    }
+  },
+  "extras": {
+    "docs": { 
+      "outputFile": "../../../../../docs/extgen_docs.js"
+    }
+  }
+}

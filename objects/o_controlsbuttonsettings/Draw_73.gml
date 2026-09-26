@@ -48,11 +48,11 @@ case("8"): drawtext = "Backspace" break;
 
 draw_set_halign(fa_center)
 
-if (os_type != os_android && gamepad_is_connected(0)) {
+if (!platform_mobile() && tcc_gamepad_is_connected(0)) {
 	// === Controller connected: show controller binding in place of keyboard ===
 	var _gpbtn = gamepad_remap_get(controls);
 	var _gptext = gamepad_button_display_name(_gpbtn);
-	
+
 	if (ischanging && editcontrols == controls) {
 		draw_set_color(c_yellow);
 		draw_text(x+60, y+12, "...");

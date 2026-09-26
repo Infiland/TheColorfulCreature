@@ -5,4 +5,4 @@ case(2): link = "https://store.steampowered.com/itemstore/1651680/browse/?filter
 case(3): link = "https://store.steampowered.com/itemstore/1651680/browse/?filter=Items" break; //Items
 }
 
-steam_activate_overlay_browser(link)
+tcc_steam_activate_overlay_browser(link)

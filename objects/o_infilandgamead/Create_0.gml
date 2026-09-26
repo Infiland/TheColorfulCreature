@@ -1,3 +1,4 @@
+if (!platform_steam()) { instance_destroy(); exit; }
 maxGames = 3
 game = irandom(maxGames)+1
 image_xscale = 0.7
@@ -8,5 +9,5 @@ timer = timerRotation
 gameChanged = 0
 
 if global.noadsinmenusettings = 1 {
-	instance_destroy()	
+	instance_destroy()
 }

@@ -10,6 +10,10 @@ function scr_spawn_settings_buttons() {
 
 	for (var i = 0; i < array_length(_defs); i++) {
 		var _d = _defs[i]
+        if (!platform_steam() && variable_struct_exists(_d, "dlc_gate")) continue;
+        if (variable_struct_exists(_d, "mobile_only") && !platform_mobile()) continue;
+        if (variable_struct_exists(_d, "mobile_privacy") && (!platform_mobile() || !tcc_privacy_options_required())) continue;
+        if (platform_mobile() && variable_struct_exists(_d, "gvar") && _d.gvar == "maxfps") continue;
 
 		if _d.type = STYPE.SLIDER {
 			var _inst = instance_create(_cx, _cy + 160 + (_d.row * 64), o_settingslider)
@@ -29,7 +33,7 @@ function scr_spawn_settings_buttons() {
 	}
 
 	var _dkb
-	if os_type != os_android {
+	if !platform_mobile() {
 		_dkb = instance_create(_cx - 128, _cy + 640, o_defaultkeysbuttonsetings)
 	} else {
 		_dkb = instance_create(_cx - 128, _cy + 160, o_defaultkeysbuttonsetings)

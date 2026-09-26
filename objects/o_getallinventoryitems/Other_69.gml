@@ -1,3 +1,4 @@
+if (!tcc_steam_initialised()) exit;
 // Early exit if event type doesn't match
 if (async_load[? "event_type"] != "inventory_result_ready") exit;
 
@@ -7,14 +8,14 @@ if (async_load[? "handle"] != handle) exit;
 // Early exit if handle doesn't match
 if (async_load[? "success"])
 {
-    var _items = steam_inventory_result_get_items(handle);
+    var _items = tcc_steam_inventory_result_get_items(handle);
 
-    var _status = steam_inventory_result_get_status(handle);
-    var _timestamp = steam_inventory_result_get_unix_timestamp(handle);
-	
-	
+    var _status = tcc_steam_inventory_result_get_status(handle);
+    var _timestamp = tcc_steam_inventory_result_get_unix_timestamp(handle);
+
+
 	//show_debug_message(_items)
-	
+
 	array_delete(global.itemdef,0,40000)
 	global.itemdef = array_create(5000) //This is terrible but oh well
 	array_delete(global.item_ids,0,40000)
@@ -22,13 +23,13 @@ if (async_load[? "success"])
     for (var i = 0; i < array_length(_items); i++)
     {
         // It's also possible to get properties from each item using
-        //prop1 = steam_inventory_result_get_item_property(handle, i, "property_name1");
-        // prop2 = steam_inventory_result_get_item_property(handle, i, "property_name2");
+        //prop1 = tcc_steam_inventory_result_get_item_property(handle, i, "property_name1");
+        // prop2 = tcc_steam_inventory_result_get_item_property(handle, i, "property_name2");
 		var _struct = _items[i];
 		var _item_id = _struct.item_id;
 		array_set(global.itemdef,_struct.item_def,_struct.quantity)
 
-		// Store item_ids with quantities for steam_inventory_exchange_items (trade-ups)
+		// Store item_ids with quantities for tcc_steam_inventory_exchange_items (trade-ups)
 		// Stacked items may have quantity > 1 on a single item_id
 		var _def = _struct.item_def;
 		if !is_array(global.item_ids[_def]) {
@@ -42,5 +43,5 @@ if (async_load[? "success"])
 }
 
 // Don't forget to clean the unused handle
-steam_inventory_result_destroy(handle);
+tcc_steam_inventory_result_destroy(handle);
 handle = undefined;

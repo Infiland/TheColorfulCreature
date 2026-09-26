@@ -1,4 +1,4 @@
-steam_details = steam_ugc_request_item_details(level, 30);
+steam_details = tcc_steam_ugc_request_item_details(level, 30);
 
 /*if mTags != "" {
 if mFeatured = false {
@@ -9,7 +9,7 @@ mFeatured = true
 }
 
 if mFeatured = true {
-	checkfeatured = string_count( "Level of the Week", mTags );	
+	checkfeatured = string_count( "Level of the Week", mTags );
 }
 if checkfeatured < 0 {
 mFeatured = false

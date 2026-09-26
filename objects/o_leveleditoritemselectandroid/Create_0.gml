@@ -1,3 +1,3 @@
-if os_type != os_android {
-instance_destroy();	
+if !platform_mobile() {
+instance_destroy();
 }

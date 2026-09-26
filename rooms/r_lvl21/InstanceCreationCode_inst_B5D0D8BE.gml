@@ -6,13 +6,13 @@ if global.cheats = 1 { exit }
 if global.endless = 1 { exit }
 
 if global.world1time = 0 {
-instance_create(x,y,o_showworldtimeHUD)	
+instance_create(x,y,o_showworldtimeHUD)
 }
 
 global.world1time = global.time
 if global.world1time > 60 {
-steam_upload_score("World 1 Time", global.world1time * 1000);
+platform_submit_score("World 1 Time", global.world1time * 1000);
 }
 if global.world1time < 120 {
-if !steam_get_achievement("WORLD_1_QUICK") { steam_set_achievement("WORLD_1_QUICK") }
+if !achievement_earned("WORLD_1_QUICK") { achievement_award("WORLD_1_QUICK") }
 }

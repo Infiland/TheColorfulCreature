@@ -3,7 +3,7 @@ if level = 0 {
 	exit
 }
 
-steam_details = steam_ugc_request_item_details(level, 30);
+steam_details = tcc_steam_ugc_request_item_details(level, 30);
 
 // Read diamond time from installed workshop level metadata
 if (mPath != "") {

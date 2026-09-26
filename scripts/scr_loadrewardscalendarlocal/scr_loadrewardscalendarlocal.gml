@@ -18,7 +18,7 @@ case(12): month = "/December//" break;
 var directory = directory_set("/Save Files//Calendar//" + string(global.calendaryear) + "/" + month)
 
 if global.cheats = 0 {
-	
+
 	if (file_exists(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_" + string(week) + ".sav")) {
 	ini_open(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_" + string(week) + ".sav");
 	day1 = ini_read_real("Day","1",0);
@@ -29,9 +29,10 @@ if global.cheats = 0 {
 	day6 = ini_read_real("Day","6",0);
 	day7 = ini_read_real("Day","7",0);
 	rewarded = ini_read_real("Day","Rewarded?",0);
+	ini_close();
 	}
 	else {
 	}
-	
+
 	}
 }

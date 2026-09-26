@@ -1,1 +1,1 @@
-steam_activate_overlay_store(1651680)
+tcc_steam_activate_overlay_store(1651680)

@@ -18,12 +18,12 @@ draw_text(x,y+140,"Current Streak: " + string(global.dailylevelstreak))
 //draw_text(x,y+160,"Diff: " + string(diff2));
 
 if global.dailylevelhighstreak > diff2 { global.cheats = 1
-	steam_upload_score_ext("Current Daily Level Streak", 0,true);
+	platform_submit_score_ext("Current Daily Level Streak", 0,true);
 	}
 if global.dailylevelstreak > diff2 { global.cheats = 1
-	steam_upload_score_ext("Current Daily Level Streak", 0,true);
+	platform_submit_score_ext("Current Daily Level Streak", 0,true);
 	}
 
 if global.dailylevelhighstreak >= 10 {
-if !steam_get_achievement("DAILIES") { steam_set_achievement("DAILIES") }		
+if !achievement_earned("DAILIES") { achievement_award("DAILIES") }
 }

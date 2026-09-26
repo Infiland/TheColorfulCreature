@@ -22,18 +22,22 @@ if global.cheats = 0 {
 if (file_exists(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_" + string(1) + ".sav")) {
 	ini_open(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_" + string(1) + ".sav")
 	rewarded1 = ini_read_real("Day","Rewarded?",0);
+ini_close();
 }
 if (file_exists(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_" + string(2) + ".sav")) {
 	ini_open(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_" + string(2) + ".sav")
 	rewarded2 = ini_read_real("Day","Rewarded?",0);
+ini_close();
 }
 if (file_exists(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_" + string(3) + ".sav")) {
 	ini_open(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_" + string(3) + ".sav")
 	rewarded3 = ini_read_real("Day","Rewarded?",0);
+ini_close();
 }
 if (file_exists(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_" + string(4) + ".sav")) {
 	ini_open(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_" + string(4) + ".sav")
 	rewarded4 = ini_read_real("Day","Rewarded?",0);
+ini_close();
 }
 
 

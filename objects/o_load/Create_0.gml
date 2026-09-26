@@ -1,4 +1,4 @@
-if steam_get_app_id() = 1749610 {
+if tcc_steam_get_app_id() = 1749610 {
 instance_destroy()
 }
 
@@ -7,6 +7,6 @@ text = loc("LOAD");
 
 var directory = directory_set("/Save Files/")
 if file_exists(directory + "SaveFile.sav") {
-image_alpha = 1	
+image_alpha = 1
 }
 else { image_alpha = 0.5 }

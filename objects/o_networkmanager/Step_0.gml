@@ -18,7 +18,7 @@ if (!global.net_active) exit;
 
 // Host: keep lobby data updated with current room name
 if (global.net_is_host && net_is_main_game()) {
-	steam_lobby_set_data("current_room", room_get_name(room))
+	tcc_steam_lobby_set_data("current_room", room_get_name(room))
 }
 
 // Only send player state when we're in gameplay (main game levels)

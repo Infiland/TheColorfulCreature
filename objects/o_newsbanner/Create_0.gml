@@ -1,3 +1,5 @@
+// Desktop release news advertises Steam-only features.
+if (!platform_steam()) { instance_destroy(); exit; }
 banner_y = -600
 image_alpha = 0
 depth = -15001

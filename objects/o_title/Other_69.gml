@@ -1,36 +1,37 @@
+if (!tcc_steam_initialised()) exit;
 // Online Multiplayer - Handle join requests from Steam overlay on title/menu screens
 if (async_load[? "event_type"] == "lobby_join_requested") {
-	if (global.onlinemultiplayersettings == 1 && steam_initialised()) {
+	if (global.onlinemultiplayersettings == 1 && tcc_steam_initialised()) {
 		var _lobby_id = async_load[? "lobby_id"]
 		show_debug_message("[NET] Join request received on menu for lobby: " + string(_lobby_id))
-		
+
 		// Initialize networking if needed
 		if (!variable_global_exists("net_active")) {
 			net_init()
 		}
-		
+
 		// Leave any existing lobby
 		if (global.net_active) {
 			net_send_leave_info()
-			steam_lobby_leave()
+			tcc_steam_lobby_leave()
 			ds_map_clear(global.net_players)
 			global.net_active = false
 			global.net_lobby_id = -1
 			global.net_is_host = false
 		}
-		
+
 		// Set the pending join BEFORE creating the network manager so that
 		// Create_0 sees it and skips auto-hosting (net_init preserves it)
 		global.net_pending_join = _lobby_id
-		
+
 		// Create the network manager if it doesn't exist
 		if (!instance_exists(o_networkmanager)) {
 			instance_create(0, 0, o_networkmanager)
 		}
-		
+
 		global.net_connect_state = 2
 		global.net_connect_timer = 0
-		
+
 		// Start the game - enter as level select
 		scr_loadskins()
 		global.levelselect = 1
@@ -56,7 +57,7 @@ if (async_load[? "success"])
 {
     //show_debug_message("The currency being used is: " + async_load[? "currency"]);
 	//Might use this later
-	//var _price = steam_inventory_get_item_price(100);
-	//steam_inventory_exchange_items()
+	//var _price = tcc_steam_inventory_get_item_price(100);
+	//tcc_steam_inventory_exchange_items()
 	//show_debug_message("Found at one item that costs: " + string(_price));
 }

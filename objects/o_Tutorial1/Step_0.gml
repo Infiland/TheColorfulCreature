@@ -1,17 +1,22 @@
 scr_playercontrolsconfig()
 
+if (platform_mobile()) {
+key_left = instance_exists(o_buttonleftandroid) && o_buttonleftandroid.pressed;
+key_right = instance_exists(o_buttonrightandroid) && o_buttonrightandroid.pressed;
+} else {
 if leftcontrols = 0 {
-key_left = (gamepad_axis_value(0,gp_axislh) < -0.2 || gamepad_button_check(0,gp_padl)) || keyboard_check(ord(global.controlsmoveleft))
+key_left = (tcc_gamepad_axis_value(0,gp_axislh) < -0.2 || tcc_gamepad_button_check(0,gp_padl)) || keyboard_check(ord(global.controlsmoveleft))
 }
 if leftcontrols = 1 {
-key_left = (gamepad_axis_value(0,gp_axislh) < -0.2 || gamepad_button_check(0,gp_padl)) || keyboard_check(global.controlsmoveleft)
+key_left = (tcc_gamepad_axis_value(0,gp_axislh) < -0.2 || tcc_gamepad_button_check(0,gp_padl)) || keyboard_check(global.controlsmoveleft)
 }
 //Right
 if rightcontrols = 0 {
-key_right = (gamepad_axis_value(0,gp_axislh) > 0.2 || gamepad_button_check(0,gp_padr)) || keyboard_check(ord(global.controlsmoveright));
+key_right = (tcc_gamepad_axis_value(0,gp_axislh) > 0.2 || tcc_gamepad_button_check(0,gp_padr)) || keyboard_check(ord(global.controlsmoveright));
 }
 if rightcontrols = 1 {
-key_right = (gamepad_axis_value(0,gp_axislh) > 0.2 || gamepad_button_check(0,gp_padr)) || keyboard_check(global.controlsmoveright);
+key_right = (tcc_gamepad_axis_value(0,gp_axislh) > 0.2 || tcc_gamepad_button_check(0,gp_padr)) || keyboard_check(global.controlsmoveright);
+}
 }
 
 if global.pause = 1{ exit }

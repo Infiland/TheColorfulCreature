@@ -4,11 +4,11 @@ image_xscale = 5
 
 //Custom hat display
 if global.CUSTOMhat != "" {
-	if os_type != os_android && os_type != os_gxgames {
+	if !platform_mobile() {
 		if global.CUSTOMhat != custom_hat_name {
 			if custom_hat_spr != -1 { sprite_delete(custom_hat_spr) }
-			var _dir = game_save_id + "\\Custom\\Player Hats\\" + global.CUSTOMhat
-			if file_exists(_dir) {
+			var _dir = directory_set("/Custom/Player Hats/") + global.CUSTOMhat
+			if (filename_name(global.CUSTOMhat) == global.CUSTOMhat && file_exists(_dir) && !directory_exists(_dir)) {
 				custom_hat_spr = sprite_add(_dir, 1, false, false, 0, 0)
 			} else {
 				custom_hat_spr = -1

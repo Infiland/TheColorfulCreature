@@ -5,6 +5,7 @@ if global.cheats = 0 {
 	ini_open(directory + "Calendar.sav");
 	global.calendar2022unlock = ini_read_real("Calendar","2022",0);
 	var week = ini_read_real("Calendar","Week",0)
+	ini_close();
 	}
 	else {
 	}

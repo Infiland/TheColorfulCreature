@@ -1,21 +1,21 @@
 function scr_loadleveleditor() {
-	
+
 	instance_destroy(o_savedandloaded)
 	box = instance_create(x,y,o_savedandloaded)
-	
+
 	var directory = directory_set("//LevelEditor Files//" + global.levelname + "/")
 	if !directory_exists(directory) {
-		with box { 
+		with box {
 			//global.LEMode = 1
 			image_index = 3 }
-		exit 
+		exit
 		} else { with box { image_index = 1
 			//global.LEMode = 2
 			}}
-	
+
 	global.LELevelPreviousWidthBlocks = global.LELevelWidthBlocks
 	global.LELevelPreviousHeightBlocks = global.LELevelHeightBlocks
-	
+
 	if (file_exists(directory + "OtherLevelEditor.sav")) {
 	ini_open(directory + "OtherLevelEditor.sav");
 	global.leveleditorstring = ini_read_string("Other LE","Text","");
@@ -35,22 +35,22 @@ function scr_loadleveleditor() {
 	global.workshoplevelversion = ini_read_real("Other LE","Workshop Level Version",0);
 	ini_close();
 	}
-	
+
 	/*room_set_height(r_leveleditor,32*global.LELevelHeightBlocks)
 	room_set_width(r_leveleditor,32*global.LELevelWidthBlocks)
 	room_restart()*/
-	
+
 	/*instance_destroy(o_smoothcamera)
 	if global.LELevelWidthBlocks <= 32 {global.LELevelWidthBlocks = 32} else {
 		room_set_width(r_leveleditor,32*global.LELevelWidthBlocks)
 		if !instance_exists(o_smoothcamera) {instance_create(x,y,o_smoothcamera)}
 	}
 		if global.LELevelHeightBlocks <= 22 {global.LELevelHeightBlocks = 22} else {
-	
+
 		room_set_height(r_leveleditor,32*global.LELevelHeightBlocks)
 		if !instance_exists(o_smoothcamera) {instance_create(x,y,o_smoothcamera)}
 	}
-	
+
 	if global.LELevelPreviousHeightBlocks != global.LELevelHeightBlocks {
 		room_set_height(r_leveleditor,32*global.LELevelHeightBlocks)
 		room_set_width(r_leveleditor,32*global.LELevelWidthBlocks)
@@ -64,15 +64,22 @@ function scr_loadleveleditor() {
 	scr_loadleveleditor()
 	}*/
 
-	
+
 	layer = layer_create(-100)
 	with(o_leveleditorloadplacement) instance_destroy();
 	if file_exists(directory + "LevelEditor.sav") {
 	var _wrapper = LoadJSONFromFile(directory + "LevelEditor.sav");
-	var _list = _wrapper[? "ROOT"]; //var list = ds_map_find_value(_wrapper,"ROOT")
+	if (is_undefined(_wrapper)) return undefined;
+	var _list = _wrapper[? "ROOT"];
+    if (!(is_real(_list) || is_handle(_list)) || !ds_exists(_list, ds_type_list)) { ds_map_destroy(_wrapper); exit; } //var list = ds_map_find_value(_wrapper,"ROOT")
 	for (var i=0;i < ds_list_size(_list);i++) {
 	var _map = _list[| i] //var _map = ds_list_find_value(_list,i)
-	var _obj = _map[? "obj"];
+	if (!(is_real(_map) || is_handle(_map)) || !ds_exists(_map, ds_type_map)) continue;
+    var _obj = _map[? "obj"];
+    if (!is_string(_obj)) continue;
+    var _asset = asset_get_index(_obj);
+    if (_asset == -1 || asset_get_type(_asset) != asset_object) continue;
+    if (!is_real(_map[? "x"]) || !is_real(_map[? "y"])) continue;
 	with(instance_create_layer(0,0,layer,asset_get_index(_obj))) {
 	x = _map[? "x"]
 	y = _map[? "y"]

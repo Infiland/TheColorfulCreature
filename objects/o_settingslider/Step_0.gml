@@ -29,8 +29,8 @@ if global.choosesettings = slider_menu {
 	}
 
 	// Keyboard/D-pad adjustment
-	var _key_left = keyboard_check(vk_left) || (gamepad_button_check(4, gp_padl)) || keyboard_check(ord("A"))
-	var _key_right = keyboard_check(vk_right) || (gamepad_button_check(4, gp_padr)) || keyboard_check(ord("D"))
+	var _key_left = keyboard_check(vk_left) || (tcc_gamepad_button_check(4, gp_padl)) || keyboard_check(ord("A"))
+	var _key_right = keyboard_check(vk_right) || (tcc_gamepad_button_check(4, gp_padr)) || keyboard_check(ord("D"))
 	if global.soundchange = slider_soundchange_id {
 		var _cur = variable_global_get(slider_gvar)
 		var _step = slider_integer ? max(1, ceil((slider_max - slider_min) / 100)) : 0.01
@@ -42,7 +42,7 @@ if global.choosesettings = slider_menu {
 		}
 		if slider_integer { variable_global_set(slider_gvar, round(variable_global_get(slider_gvar))) }
 	}
-	if keyboard_check_released(vk_left) or gamepad_button_check_released(0, gp_padl) or keyboard_check_released(ord("A")) or keyboard_check_released(vk_right) or gamepad_button_check_released(0, gp_padr) or keyboard_check_released(ord("D")) {
+	if keyboard_check_released(vk_left) or tcc_gamepad_button_check_released(0, gp_padl) or keyboard_check_released(ord("A")) or keyboard_check_released(vk_right) or tcc_gamepad_button_check_released(0, gp_padr) or keyboard_check_released(ord("D")) {
 		scr_savesettings()
 	}
 
@@ -56,13 +56,13 @@ if global.choosesettings = slider_menu {
 
 	// Gamepad support
 	if global.infosettings = slider_info_id {
-		if gamepad_button_check_pressed(0, gp_face1) {
+		if tcc_gamepad_button_check_pressed(0, gp_face1) {
 			event_perform(ev_mouse, ev_left_press)
 		}
 	}
 
 	// Release drag
-	if device_mouse_check_button_released(0, mb_left) || gamepad_button_check_released(0, gp_face1) {
+	if device_mouse_check_button_released(0, mb_left) || tcc_gamepad_button_check_released(0, gp_face1) {
 		grab = false
 		global.soundchange = 0
 	}

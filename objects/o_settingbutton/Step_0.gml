@@ -28,5 +28,5 @@ if one_way {
 
 // DLC gate check
 if dlc_gate > 0 {
-	if !steam_user_owns_dlc(dlc_gate) { image_alpha = 0.5 }
+	if !tcc_steam_user_owns_dlc(dlc_gate) { image_alpha = 0.5 }
 }

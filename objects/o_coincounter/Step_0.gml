@@ -1,7 +1,7 @@
 scr_playercontrolsconfig()
 
 if global.pickup = 0 {
-shake = 0	
+shake = 0
 }
 if global.pickup = 1 {
 shake = 1.5
@@ -9,39 +9,29 @@ shake = 1.5
 
 controls_key_display(global.controlsskiplevel)
 
-//Skip
-if os_type != os_android {
-key_skip = keyboard_check(ord(global.controlsskiplevel)) || (gamepad_button_check(0,global.gp_bind_skip))
-} else { 
-	if instance_exists(o_buttonskipandroid) {
-	key_skip = o_buttonskipandroid.image_index = 1;
-	}}
+// Skip uses the same keyboard/controller binding on both desktop editions.
+// Always clear it when the touch button is absent (menus, challenges or pause).
+key_skip = false;
+if (!platform_mobile()) {
+    var _key = is_real(global.controlsskiplevel) ? global.controlsskiplevel : ord(global.controlsskiplevel);
+    if (global.skiplevelholdsettings == 0)
+        key_skip = keyboard_check_pressed(_key) || tcc_gamepad_button_check_pressed(0, global.gp_bind_skip);
+    else
+        key_skip = keyboard_check(_key) || tcc_gamepad_button_check(0, global.gp_bind_skip);
+} else if (instance_exists(o_buttonskipandroid)) {
+    key_skip = o_buttonskipandroid.image_index == 1;
+}
 
-
-if global.special >= reqcoin {
-if global.pause = 0 {
-if skip != "You can't skip\nthis level" {
-if global.skiplevelholdsettings = 0 {
-if skipcontrols = 0 { key_skip = keyboard_check_pressed(ord(global.controlsskiplevel)) } else { key_skip = keyboard_check_pressed(global.controlsskiplevel) }
-timer = -0.1
-} else {
-if global.skiplevelholdsettings = 0 {
-if skipcontrols = 0 { key_skip = keyboard_check(ord(global.controlsskiplevel)) } else { key_skip = keyboard_check(global.controlsskiplevel) }
-}
-if key_skip { timer -= 1 / room_speed } else { timer = 0.7 }
-	}
-}
-/*if global.skiplevelholdsettings = 0 {
-	key_skip = keyboard_check_pressed(ord(global.controlsskiplevel))
-	timer = -0.1
-	} else {
-key_skip = keyboard_check(ord(global.controlsskiplevel))
-if key_skip { timer -= 1 / room_speed }
-}*/
-}} else {
-if key_skip { 
-	if !steam_get_achievement("UH_OH") { steam_set_achievement("UH_OH") }
-}
+if (global.pause == 0) {
+    if (global.special >= reqcoin) {
+        if (skip != "You can't skip\nthis level") {
+            if (global.skiplevelholdsettings == 0) timer = -0.1;
+            else if (key_skip) timer -= 1 / room_speed;
+            else timer = 0.7;
+        }
+    } else if (key_skip && !achievement_earned("UH_OH")) {
+        achievement_award("UH_OH");
+    }
 }
 
 if room != r_boss1 {
@@ -64,7 +54,7 @@ if timer < 0 {
 if key_skip {
 if global.special >= reqcoin {
 increase_stat("totalskips","QUESTskip",1)
-if !steam_get_achievement("BYE_BYE_LEVEL") { steam_set_achievement("BYE_BYE_LEVEL") }
+if !achievement_earned("BYE_BYE_LEVEL") { achievement_award("BYE_BYE_LEVEL") }
 
 if room = asset_get_index("r_lvl" + string(global.worldProgression)) {
 global.worldProgression += 1

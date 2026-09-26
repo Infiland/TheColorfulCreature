@@ -24,7 +24,7 @@ function badge_create(id, sprite, sprite_index, name, description, colors) {
         count: 0,
         visible: true
     };
-    
+
     ds_map_add(global.badges, id, badge);
     ds_list_add(global.badge_order, id);
     return badge;
@@ -120,7 +120,7 @@ function badge_draw_row(x, y, spacing) {
 /// @param {string} badge_id Badge identifier
 function badge_draw_infobox(x, y, badge_id) {
     var badge = global.badges[? badge_id];
-    
+
     if (badge != undefined) {
         draw_set_font(global.deathfont);
         draw_set_alpha(0.2);
@@ -143,17 +143,17 @@ function badge_draw_infobox(x, y, badge_id) {
 /// @returns {string} Badge ID that is being hovered, or undefined if none
 function badge_check_hover(mouse_x, mouse_y) {
     var key = ds_map_find_first(global.badge_positions);
-    
+
     while (!is_undefined(key)) {
         var pos = global.badge_positions[? key];
-        
+
         if (point_in_rectangle(mouse_x, mouse_y, pos.x1, pos.y1, pos.x2, pos.y2)) {
             return key;
         }
-        
+
         key = ds_map_find_next(global.badge_positions, key);
     }
-    
+
     return undefined;
 }
 
@@ -169,15 +169,15 @@ function badge_reset_positions() {
 function badge_check_dlc_ownership() {
     var result = { game1: 0, dlc1: 0, dlc1_1: 0, dlc2: 0, dlc3: 0, moni: 0, actualmoni: 0 };
 
-    if (steam_user_owns_dlc(1651680)) { result.game1 = 1; } // Game
-    if (steam_user_owns_dlc(1749590)) { result.dlc1 = 1; } // TCC OST
-    if (steam_user_owns_dlc(1749600)) { result.dlc1 = 1; result.dlc1_1 = 1; } // TCC Super OST
-    if (steam_user_owns_dlc(1995510)) { result.dlc2 = 1; } // Commentary DLC
-    if (steam_user_owns_dlc(2407300)) { result.dlc3 = 1; } // Asteroids
+    if (tcc_steam_user_owns_dlc(1651680)) { result.game1 = 1; } // Game
+    if (tcc_steam_user_owns_dlc(1749590)) { result.dlc1 = 1; } // TCC OST
+    if (tcc_steam_user_owns_dlc(1749600)) { result.dlc1 = 1; result.dlc1_1 = 1; } // TCC Super OST
+    if (tcc_steam_user_owns_dlc(1995510)) { result.dlc2 = 1; } // Commentary DLC
+    if (tcc_steam_user_owns_dlc(2407300)) { result.dlc3 = 1; } // Asteroids
 
-    if (steam_user_owns_dlc(2411810)) { result.moni = 1; result.actualmoni += 2; } // $2 Donation
-    if (steam_user_owns_dlc(2411811)) { result.moni = 1; result.actualmoni += 3; } // $3 Donation
-    if (steam_user_owns_dlc(2411812)) { result.moni = 1; result.actualmoni += 5; } // $5 Donation
+    if (tcc_steam_user_owns_dlc(2411810)) { result.moni = 1; result.actualmoni += 2; } // $2 Donation
+    if (tcc_steam_user_owns_dlc(2411811)) { result.moni = 1; result.actualmoni += 3; } // $3 Donation
+    if (tcc_steam_user_owns_dlc(2411812)) { result.moni = 1; result.actualmoni += 5; } // $5 Donation
 
     return result;
 }
@@ -187,23 +187,25 @@ function badge_check_dlc_ownership() {
 /// @returns {struct} Struct with e1, e2, e3, e4, hats (all default 0)
 function badge_load_seasonal_rankings() {
     var result = { e1: 0, e2: 0, e3: 0, e4: 0, hats: 0 };
+    if (!tcc_steam_initialised()) return result;
 
-    var _file = program_directory + "/Other/seasonal_rankings.json";
+    var _file = "other/seasonal_rankings.json";
     if (!file_exists(_file)) return result;
 
     var _data = LoadJSONFromFile(_file);
+
     if (is_undefined(_data) || _data == -1) return result;
 
-    var userid = steam_get_user_steam_id();
+    var userid = string(tcc_steam_get_user_steam_id());
     if (ds_map_exists(_data, "rankings")) {
         var _rankings = _data[? "rankings"];
-        if (ds_map_exists(_rankings, userid)) {
+        if ((is_real(_rankings) || is_handle(_rankings)) && ds_exists(_rankings, ds_type_map) && ds_map_exists(_rankings, userid)) {
             var _entry = _rankings[? userid];
-            if (ds_map_exists(_entry, "e1")) result.e1 = _entry[? "e1"];
-            if (ds_map_exists(_entry, "e2")) result.e2 = _entry[? "e2"];
-            if (ds_map_exists(_entry, "e3")) result.e3 = _entry[? "e3"];
-            if (ds_map_exists(_entry, "e4")) result.e4 = _entry[? "e4"];
-            if (ds_map_exists(_entry, "hats")) result.hats = _entry[? "hats"];
+            if ((is_real(_entry) || is_handle(_entry)) && ds_exists(_entry, ds_type_map) && ds_map_exists(_entry, "e1")) result.e1 = _entry[? "e1"];
+            if ((is_real(_entry) || is_handle(_entry)) && ds_exists(_entry, ds_type_map) && ds_map_exists(_entry, "e2")) result.e2 = _entry[? "e2"];
+            if ((is_real(_entry) || is_handle(_entry)) && ds_exists(_entry, ds_type_map) && ds_map_exists(_entry, "e3")) result.e3 = _entry[? "e3"];
+            if ((is_real(_entry) || is_handle(_entry)) && ds_exists(_entry, ds_type_map) && ds_map_exists(_entry, "e4")) result.e4 = _entry[? "e4"];
+            if ((is_real(_entry) || is_handle(_entry)) && ds_exists(_entry, ds_type_map) && ds_map_exists(_entry, "hats")) result.hats = _entry[? "hats"];
         }
     }
     ds_map_destroy(_data);

@@ -151,18 +151,18 @@ draw_sprite(s_creditshatbutton,0,860,406)
 if global.calendardifficulty = 2 {
 draw_text(900,483,"100")
 if global.newcalendarrewarded = 1 {
-if !steam_get_achievement("CALENDAR_MEDIUM") { steam_set_achievement("CALENDAR_MEDIUM") }}
+if !achievement_earned("CALENDAR_MEDIUM") { achievement_award("CALENDAR_MEDIUM") }}
 } else if global.calendardifficulty = 3 {
 draw_text(900,483,"250")
 if global.newcalendarrewarded = 1 {
-if !steam_get_achievement("CALENDAR_HARD") { steam_set_achievement("CALENDAR_HARD") }}
+if !achievement_earned("CALENDAR_HARD") { achievement_award("CALENDAR_HARD") }}
 }
 }
 
 if global.newcalendarrewarded = 1 {
 draw_sprite(s_levelhud,0,862,282)
 
-if !steam_get_achievement("CALENDAR_EASY") { steam_set_achievement("CALENDAR_EASY") }
+if !achievement_earned("CALENDAR_EASY") { achievement_award("CALENDAR_EASY") }
 
 
 if global.calendardifficulty > 1 {

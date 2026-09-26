@@ -1,6 +1,5 @@
-if os_type = os_android || os_type = os_gxgames {
-AdMob_Banner_Create(AdMob_Banner_SMART,true)
-AdMob_Banner_Show()
+if platform_touch() {
+ads_show_banner(true)
 }
 audio_stop_all()
 instance_destroy(o_pausesystem)
@@ -12,12 +11,12 @@ instance_destroy(o_musicdistortion)
 if global.cheats = 0 {
 global.dailylevelstreak += 1
 var cheatcheck = global.dailylevelhighstreak - global.dailylevelstreak
-steam_upload_score("Current Daily Level Streak", global.dailylevelstreak);
+platform_submit_score("Current Daily Level Streak", global.dailylevelstreak);
 if global.dailylevelstreak > global.dailylevelhighstreak {
 	if cheatcheck >= -1 {
 	global.dailylevelhighstreak = global.dailylevelstreak
-	steam_upload_score("Daily Level Streak", global.dailylevelhighstreak);
-	GooglePlayServices_Leaderboard_SubmitScore("CgkI36PRjvEQEAIQMQ",global.dailylevelhighstreak,"")
+	platform_submit_score("Daily Level Streak", global.dailylevelhighstreak);
+	platform_google_score("CgkI36PRjvEQEAIQMQ",global.dailylevelhighstreak)
 	} else { global.cheats = 1
 	global.dailylevelstreak = 0
 	global.dailylevelhighstreak = 0

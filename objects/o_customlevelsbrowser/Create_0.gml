@@ -51,23 +51,23 @@ thumb_loading = false
 // Browse query method (bound to this instance)
 send_browse_query = function() {
 	browse_state = "loading"
-	var qh = steam_ugc_create_query_all(ugc_query_RankedByVote, ugc_match_Items, browse_page)
+	var qh = tcc_steam_ugc_create_query_all(ugc_query_RankedByVote, ugc_match_Items, browse_page)
 	if browse_search_text != "" {
-		steam_ugc_query_set_search_text(qh, browse_search_text)
+		tcc_steam_ugc_query_set_search_text(qh, browse_search_text)
 	}
-	browse_query_id = steam_ugc_send_query(qh)
+	browse_query_id = tcc_steam_ugc_send_query(qh)
 }
 
 // Populate subscribed levels (NO thumbnail loading here - done lazily in draw)
 if global.steam_api = true {
 	var steam_list = ds_list_create()
-	steam_ugc_get_subscribed_items(steam_list)
+	tcc_steam_ugc_get_subscribed_items(steam_list)
 
 	var j = 0
 	for (var i = 0; i < ds_list_size(steam_list); i++) {
 		var file_id = steam_list[| i]
 		var file_info = ds_map_create()
-		steam_ugc_get_item_install_info(file_id, file_info)
+		tcc_steam_ugc_get_item_install_info(file_id, file_info)
 		var path_to_file = file_info[? "folder"]
 		ds_map_destroy(file_info)
 
@@ -114,7 +114,7 @@ if global.steam_api = true {
 
 		// Check download state
 		var info = ds_map_create()
-		steam_ugc_get_item_update_info(file_id, info)
+		tcc_steam_ugc_get_item_update_info(file_id, info)
 		if info[? "is_installed"] = 1 { lvl.download_state = "installed" }
 		else if info[? "is_downloading"] = 1 { lvl.download_state = "downloading" }
 		else if info[? "is_download_pending"] = 1 { lvl.download_state = "pending" }
@@ -122,7 +122,7 @@ if global.steam_api = true {
 		ds_map_destroy(info)
 
 		// Request Steam details (async) - owner name will be requested in Other_69 callback
-		var req_id = steam_ugc_request_item_details(file_id, 30)
+		var req_id = tcc_steam_ugc_request_item_details(file_id, 30)
 		async_details[? req_id] = j
 
 		levels[j] = lvl

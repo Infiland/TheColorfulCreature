@@ -20,21 +20,21 @@
 function net_init() {
 	// Note: global.onlinemultiplayersettings is set in scr_loading()
 	// and loaded from save in scr_loadsettings(). Do NOT set it here.
-	
+
 	// Preserve any pending join that was set before init (menu/cold-launch join flow
 	// sets this before the network manager is created, and Create_0 re-calls net_init)
 	var _saved_pending_join = -1
 	if (variable_global_exists("net_pending_join") && global.net_pending_join != -1) {
 		_saved_pending_join = global.net_pending_join
 	}
-	
+
 	global.net_active = false
 	global.net_lobby_id = -1
 	global.net_is_host = false
 	global.net_my_steam_id = -1
 	global.net_send_timer = 0
 	global.net_join_time = 0		// Timestamp when we joined the lobby
-	
+
 	// Connection overlay state
 	// 0 = idle, 1 = creating lobby, 2 = joining lobby, 3 = success flash, 4 = failure flash
 	global.net_connect_state = 0
@@ -42,7 +42,7 @@ function net_init() {
 	global.net_connect_flash = 0     // Counts down for success/failure flash display
 	global.net_connect_msg = ""      // Extra message for success/failure
 	global.net_pending_join = _saved_pending_join  // Restore preserved pending join
-	
+
 	// Clean up old resources if re-initializing (prevents memory leaks)
 	if (variable_global_exists("net_players") && ds_exists(global.net_players, ds_type_map)) {
 		ds_map_destroy(global.net_players)
@@ -53,7 +53,7 @@ function net_init() {
 	if (variable_global_exists("net_send_buffer") && buffer_exists(global.net_send_buffer)) {
 		buffer_delete(global.net_send_buffer)
 	}
-	
+
 	// Remote player data: ds_map keyed by steam_id (as string)
 	// Each entry is a struct with: x, y, sprite_index, image_index, image_blend,
 	//   skin, hat, item, color, room_name, username, join_time, last_update, image_xscale
@@ -67,7 +67,7 @@ function net_init() {
 function net_cleanup() {
 	if (global.net_lobby_id != -1) {
 		// If we're host and others are in the lobby, transfer ownership
-		if (global.net_is_host && steam_lobby_get_member_count() > 1) {
+		if (global.net_is_host && tcc_steam_lobby_get_member_count() > 1) {
 			// Find the player who joined earliest (longest stay)
 			var _earliest_time = infinity
 			var _earliest_id = -1
@@ -81,24 +81,24 @@ function net_cleanup() {
 				_key = ds_map_find_next(global.net_players, _key)
 			}
 			if (_earliest_id != -1) {
-				steam_lobby_set_owner_id(_earliest_id)
+				tcc_steam_lobby_set_owner_id(_earliest_id)
 			}
 		}
-		steam_lobby_leave()
+		tcc_steam_lobby_leave()
 	}
-	
+
 	// Close P2P sessions with all players
 	var _key = ds_map_find_first(global.net_players)
 	while (!is_undefined(_key)) {
 		var _data = global.net_players[? _key]
-		steam_net_close_p2p_session(_data.steam_id)
+		tcc_steam_net_close_p2p_session(_data.steam_id)
 		_key = ds_map_find_next(global.net_players, _key)
 	}
-	
+
 	ds_map_destroy(global.net_players)
 	buffer_delete(global.net_recv_buffer)
 	buffer_delete(global.net_send_buffer)
-	
+
 	global.net_active = false
 	global.net_lobby_id = -1
 	global.net_is_host = false
@@ -107,26 +107,26 @@ function net_cleanup() {
 /// @function		net_host_lobby()
 /// @description	Create a new Steam lobby (friends only so people can join via overlay)
 function net_host_lobby() {
-	if (!steam_initialised()) return;
+	if (!tcc_steam_initialised()) return;
 	if (global.net_active) return;
-	
-	global.net_my_steam_id = steam_get_user_steam_id()
+
+	global.net_my_steam_id = tcc_steam_get_user_steam_id()
 	global.net_connect_state = 1
 	global.net_connect_timer = 0
-	steam_lobby_create(steam_lobby_type_friends_only, global.netmaxplayers)
+	tcc_steam_lobby_create(steam_lobby_type_friends_only, global.netmaxplayers)
 	show_debug_message("[NET] Creating lobby...")
 }
 
 /// @function		net_join_lobby(lobby_id)
 /// @description	Join an existing lobby by ID
 function net_join_lobby(_lobby_id) {
-	if (!steam_initialised()) return;
+	if (!tcc_steam_initialised()) return;
 	if (global.net_active) return;
-	
-	global.net_my_steam_id = steam_get_user_steam_id()
+
+	global.net_my_steam_id = tcc_steam_get_user_steam_id()
 	global.net_connect_state = 2
 	global.net_connect_timer = 0
-	steam_lobby_join_id(_lobby_id)
+	tcc_steam_lobby_join_id(_lobby_id)
 	show_debug_message("[NET] Joining lobby: " + string(_lobby_id))
 }
 
@@ -134,13 +134,13 @@ function net_join_lobby(_lobby_id) {
 /// @description	Broadcast local player position and state to all peers
 function net_send_player_state() {
 	if (!global.net_active) return;
-	
+
 	var _is_dead = 0
 	var _zerogrv = 0
 	var _px = 0, _py = 0, _spr = s_playerred, _img = 0, _blend = c_white
 	var _xscale = 1, _yscale = 1, _angle = 0, _alpha = 1
 	var _hsp = 0, _vsp = 0
-	
+
 	if (instance_exists(o_player)) {
 		_px = o_player.x
 		_py = o_player.y
@@ -169,14 +169,14 @@ function net_send_player_state() {
 	} else {
 		return; // Neither alive nor dead, nothing to send
 	}
-	
+
 	global.net_send_timer++
 	if (global.net_send_timer < NET_SEND_RATE) return;
 	global.net_send_timer = 0
-	
+
 	var _buf = global.net_send_buffer
 	buffer_seek(_buf, buffer_seek_start, 0)
-	
+
 	buffer_write(_buf, buffer_u8, NET_PACKET_PLAYER_STATE)
 	buffer_write(_buf, buffer_f32, _px)
 	buffer_write(_buf, buffer_f32, _py)
@@ -196,15 +196,15 @@ function net_send_player_state() {
 	buffer_write(_buf, buffer_f32, _vsp)
 	buffer_write(_buf, buffer_u8, _is_dead)
 	buffer_write(_buf, buffer_u8, _zerogrv)
-	
+
 	var _size = buffer_tell(_buf)
-	
+
 	// Send to all lobby members except self
-	var _count = steam_lobby_get_member_count()
+	var _count = tcc_steam_lobby_get_member_count()
 	for (var i = 0; i < _count; i++) {
-		var _member = steam_lobby_get_member_id(i)
+		var _member = tcc_steam_lobby_get_member_id(i)
 		if (_member != global.net_my_steam_id) {
-			steam_net_packet_send(_member, _buf, _size, steam_net_packet_type_unreliable)
+			tcc_steam_net_packet_send(_member, _buf, _size, steam_net_packet_type_unreliable)
 		}
 	}
 }
@@ -213,18 +213,18 @@ function net_send_player_state() {
 /// @description	Poll and process all incoming P2P packets
 function net_receive_packets() {
 	if (!global.net_active) return;
-	
+
 	var _buf = global.net_recv_buffer
-	
-	while (steam_net_packet_receive()) {
-		var _sender = steam_net_packet_get_sender_id()
-		var _size = steam_net_packet_get_size()
-		
-		steam_net_packet_get_data(_buf)
+
+	while (tcc_steam_net_packet_receive()) {
+		var _sender = tcc_steam_net_packet_get_sender_id()
+		var _size = tcc_steam_net_packet_get_size()
+
+		tcc_steam_net_packet_get_data(_buf)
 		buffer_seek(_buf, buffer_seek_start, 0)
-		
+
 		var _type = buffer_read(_buf, buffer_u8)
-		
+
 		switch (_type) {
 			case NET_PACKET_PLAYER_STATE:
 				var _px = buffer_read(_buf, buffer_f32)
@@ -245,7 +245,7 @@ function net_receive_packets() {
 				var _vsp = buffer_read(_buf, buffer_f32)
 				var _is_dead = buffer_read(_buf, buffer_u8)
 				var _zerogrv = buffer_read(_buf, buffer_u8)
-				
+
 				var _key = string(_sender)
 				if (ds_map_exists(global.net_players, _key)) {
 					var _data = global.net_players[? _key]
@@ -268,7 +268,7 @@ function net_receive_packets() {
 					_data.is_dead = _is_dead
 					_data.zerogrv = _zerogrv
 					_data.last_update = current_time
-					
+
 					// Compute correct image_index from hsp/vsp for alive ghosts
 					if (_is_dead == 0 && _data.skin != 23) {
 						var _gi = _img // fallback to received
@@ -285,7 +285,7 @@ function net_receive_packets() {
 					}
 				}
 				break;
-				
+
 			case NET_PACKET_PLAYER_JOIN:
 				var _username = buffer_read(_buf, buffer_string)
 				var _join_time = buffer_read(_buf, buffer_f64)
@@ -295,11 +295,11 @@ function net_receive_packets() {
 				// Send our info back
 				net_send_join_info(_sender)
 				break;
-				
+
 			case NET_PACKET_PLAYER_LEAVE:
 				net_remove_player(_sender)
 				break;
-				
+
 			case NET_PACKET_HOST_CHANGE:
 				var _new_host_id = buffer_read(_buf, buffer_f64)
 				if (_new_host_id == global.net_my_steam_id) {
@@ -307,7 +307,7 @@ function net_receive_packets() {
 					show_debug_message("[NET] We are now the host!")
 				}
 				break;
-				
+
 			case NET_PACKET_PING:
 				// Simple keep-alive, do nothing
 				break;
@@ -319,9 +319,9 @@ function net_receive_packets() {
 /// @description	Register a remote player in our tracking map
 function net_register_player(_steam_id, _username, _join_time, _skin, _hat) {
 	var _key = string(_steam_id)
-	
+
 	if (ds_map_exists(global.net_players, _key)) return; // Already registered
-	
+
 	// Start ghost at player's position so it doesn't lerp from (0,0)
 	var _init_x = 0
 	var _init_y = 0
@@ -329,7 +329,7 @@ function net_register_player(_steam_id, _username, _join_time, _skin, _hat) {
 		_init_x = o_player.x
 		_init_y = o_player.y
 	}
-	
+
 	var _data = {
 		steam_id: _steam_id,
 		username: _username,
@@ -360,7 +360,7 @@ function net_register_player(_steam_id, _username, _join_time, _skin, _hat) {
 		last_update: current_time,
 		ghost_alpha: 0  // Fade in
 	}
-	
+
 	ds_map_add(global.net_players, _key, _data)
 	show_debug_message("[NET] Player joined: " + _username + " (ID: " + _key + ")")
 }
@@ -374,7 +374,7 @@ function net_remove_player(_steam_id) {
 		show_debug_message("[NET] Player left: " + _data.username)
 		ds_map_delete(global.net_players, _key)
 	}
-	steam_net_close_p2p_session(_steam_id)
+	tcc_steam_net_close_p2p_session(_steam_id)
 }
 
 /// @function		net_send_join_info(target_id)
@@ -382,26 +382,26 @@ function net_remove_player(_steam_id) {
 function net_send_join_info(_target_id) {
 	var _buf = global.net_send_buffer
 	buffer_seek(_buf, buffer_seek_start, 0)
-	
+
 	buffer_write(_buf, buffer_u8, NET_PACKET_PLAYER_JOIN)
-	buffer_write(_buf, buffer_string, steam_get_persona_name())
+	buffer_write(_buf, buffer_string, tcc_steam_get_persona_name())
 	buffer_write(_buf, buffer_f64, global.net_join_time)
 	buffer_write(_buf, buffer_u8, global.skinselected)
 	buffer_write(_buf, buffer_u8, global.hatselected)
-	
+
 	var _size = buffer_tell(_buf)
-	
+
 	if (_target_id == -1) {
 		// Broadcast to all
-		var _count = steam_lobby_get_member_count()
+		var _count = tcc_steam_lobby_get_member_count()
 		for (var i = 0; i < _count; i++) {
-			var _member = steam_lobby_get_member_id(i)
+			var _member = tcc_steam_lobby_get_member_id(i)
 			if (_member != global.net_my_steam_id) {
-				steam_net_packet_send(_member, _buf, _size, steam_net_packet_type_reliable)
+				tcc_steam_net_packet_send(_member, _buf, _size, steam_net_packet_type_reliable)
 			}
 		}
 	} else {
-		steam_net_packet_send(_target_id, _buf, _size, steam_net_packet_type_reliable)
+		tcc_steam_net_packet_send(_target_id, _buf, _size, steam_net_packet_type_reliable)
 	}
 }
 
@@ -412,12 +412,12 @@ function net_send_leave_info() {
 	buffer_seek(_buf, buffer_seek_start, 0)
 	buffer_write(_buf, buffer_u8, NET_PACKET_PLAYER_LEAVE)
 	var _size = buffer_tell(_buf)
-	
-	var _count = steam_lobby_get_member_count()
+
+	var _count = tcc_steam_lobby_get_member_count()
 	for (var i = 0; i < _count; i++) {
-		var _member = steam_lobby_get_member_id(i)
+		var _member = tcc_steam_lobby_get_member_id(i)
 		if (_member != global.net_my_steam_id) {
-			steam_net_packet_send(_member, _buf, _size, steam_net_packet_type_reliable)
+			tcc_steam_net_packet_send(_member, _buf, _size, steam_net_packet_type_reliable)
 		}
 	}
 }
@@ -426,7 +426,7 @@ function net_send_leave_info() {
 /// @description	Handle Steam async events for lobby management
 function net_handle_async_steam(_map) {
 	var _event_type = _map[? "event_type"]
-	
+
 	switch (_event_type) {
 		case "lobby_created":
 			// If we have a pending join, discard our own lobby creation
@@ -434,22 +434,22 @@ function net_handle_async_steam(_map) {
 			if (global.net_pending_join != -1) {
 				if (_map[? "success"]) {
 					show_debug_message("[NET] Own lobby created but pending join exists - leaving it")
-					steam_lobby_leave()
+					tcc_steam_lobby_leave()
 				}
 				break;
 			}
-			
+
 			if (_map[? "success"]) {
 				global.net_lobby_id = _map[? "lobby_id"]
 				global.net_active = true
 				global.net_is_host = true
 				global.net_join_time = current_time
-				
-				steam_lobby_set_data("game_name", "TheColorfulCreature")
-				steam_lobby_set_data("version", "1.0")
-				steam_lobby_set_data("host_name", steam_get_persona_name())
-				steam_lobby_set_data("current_room", room_get_name(room))
-				
+
+				tcc_steam_lobby_set_data("game_name", "TheColorfulCreature")
+				tcc_steam_lobby_set_data("version", "1.0")
+				tcc_steam_lobby_set_data("host_name", tcc_steam_get_persona_name())
+				tcc_steam_lobby_set_data("current_room", room_get_name(room))
+
 				global.net_connect_state = 3
 				global.net_connect_flash = 180
 				global.net_connect_msg = "Lobby created"
@@ -461,25 +461,25 @@ function net_handle_async_steam(_map) {
 				show_debug_message("[NET] Failed to create lobby")
 			}
 			break;
-			
+
 		case "lobby_joined":
 			if (_map[? "success"]) {
 				global.net_lobby_id = _map[? "lobby_id"]
 				global.net_active = true
 				global.net_join_time = current_time
-				
+
 				// Check if we are the owner
-				global.net_is_host = steam_lobby_is_owner()
-				
+				global.net_is_host = tcc_steam_lobby_is_owner()
+
 				if (!global.net_is_host) {
 					// Send our join info to everyone
 					net_send_join_info(-1)
-					
+
 					// Treat joining as entering level select for the client
 					global.levelselect = 1
-					
+
 					// Read the host's current room from lobby data and go there
-					var _host_room = steam_lobby_get_data("current_room")
+					var _host_room = tcc_steam_lobby_get_data("current_room")
 					if (_host_room != "" && asset_get_index(_host_room) != -1) {
 						show_debug_message("[NET] Going to host's room: " + _host_room)
 						room_goto(asset_get_index(_host_room))
@@ -488,7 +488,7 @@ function net_handle_async_steam(_map) {
 						}
 					}
 				}
-				
+
 				global.net_connect_state = 3
 				global.net_connect_flash = 180
 				global.net_connect_msg = "Connected!"
@@ -500,64 +500,64 @@ function net_handle_async_steam(_map) {
 				show_debug_message("[NET] Failed to join lobby")
 			}
 			break;
-			
+
 		case "lobby_chat_update":
 			var _flags = _map[? "change_flags"]
 			var _uid = _map[? "user_id"]
-			
+
 			// Player left or disconnected
 			if (_flags & 2 || _flags & 4) {
 				net_remove_player(_uid)
-				
+
 				// Check if we became the new owner (Steam auto-transfers)
-				if (steam_lobby_is_owner() && !global.net_is_host) {
+				if (tcc_steam_lobby_is_owner() && !global.net_is_host) {
 					global.net_is_host = true
 					show_debug_message("[NET] Host migration: we are now the host")
-					
+
 					// Notify everyone about the host change
 					var _buf = global.net_send_buffer
 					buffer_seek(_buf, buffer_seek_start, 0)
 					buffer_write(_buf, buffer_u8, NET_PACKET_HOST_CHANGE)
 					buffer_write(_buf, buffer_f64, global.net_my_steam_id)
 					var _size = buffer_tell(_buf)
-					
-					var _count = steam_lobby_get_member_count()
+
+					var _count = tcc_steam_lobby_get_member_count()
 					for (var i = 0; i < _count; i++) {
-						var _member = steam_lobby_get_member_id(i)
+						var _member = tcc_steam_lobby_get_member_id(i)
 						if (_member != global.net_my_steam_id) {
-							steam_net_packet_send(_member, _buf, _size, steam_net_packet_type_reliable)
+							tcc_steam_net_packet_send(_member, _buf, _size, steam_net_packet_type_reliable)
 						}
 					}
 				}
-				
+
 				// If we're the only one left, check if we should close
-				if (steam_lobby_get_member_count() <= 1 && ds_map_size(global.net_players) == 0) {
+				if (tcc_steam_lobby_get_member_count() <= 1 && ds_map_size(global.net_players) == 0) {
 					show_debug_message("[NET] All players left, lobby still active for new joins")
 				}
 			}
-			
+
 			// Player joined
 			if (_flags & 1) {
 				show_debug_message("[NET] Someone joined the lobby: " + string(_uid))
 			}
 			break;
-			
+
 		case "lobby_join_requested":
 			// Someone accepted our invite or clicked "Join Game" in Steam overlay
 			var _lobby_id = _map[? "lobby_id"]
 			show_debug_message("[NET] Join request received for lobby: " + string(_lobby_id))
-			
+
 			// Leave our current lobby first if we have one
 			if (global.net_active) {
 				show_debug_message("[NET] Leaving current lobby to join another")
 				net_send_leave_info()
-				steam_lobby_leave()
+				tcc_steam_lobby_leave()
 				ds_map_clear(global.net_players)
 				global.net_active = false
 				global.net_lobby_id = -1
 				global.net_is_host = false
 			}
-			
+
 			// Defer the join to next frame so Steam can fully process the leave
 			global.net_pending_join = _lobby_id
 			global.net_connect_state = 2
@@ -586,13 +586,13 @@ function net_get_ghost_count() {
 /// @description	Update ghost positions and state
 function net_update_ghosts() {
 	if (!global.net_active) return;
-	
+
 	var _current_room = room_get_name(room)
-	
+
 	var _key = ds_map_find_first(global.net_players)
 	while (!is_undefined(_key)) {
 		var _data = global.net_players[? _key]
-		
+
 		// Death animation: when ghost dies, play a local rising/fading animation
 		if (_data.is_dead == 1) {
 			if (_data.dead_timer == 0) {
@@ -611,7 +611,7 @@ function net_update_ghosts() {
 			// Snap to received position
 			_data.x = _data.target_x
 			_data.y = _data.target_y
-		
+
 			// Fade ghost alpha based on same room - fully opaque
 			if (_data.room_name == _current_room) {
 				_data.ghost_alpha = lerp(_data.ghost_alpha, 1.0, 0.05)
@@ -619,7 +619,7 @@ function net_update_ghosts() {
 				_data.ghost_alpha = lerp(_data.ghost_alpha, 0, 0.1)
 			}
 		}
-		
+
 		// Timeout: remove players we haven't heard from in 10 seconds
 		if (current_time - _data.last_update > 10000) {
 			var _next_key = ds_map_find_next(global.net_players, _key)
@@ -627,7 +627,7 @@ function net_update_ghosts() {
 			_key = _next_key
 			continue;
 		}
-		
+
 		_key = ds_map_find_next(global.net_players, _key)
 	}
 }
@@ -636,13 +636,13 @@ function net_update_ghosts() {
 /// @description	Draw all ghost players that are in the same room
 function net_draw_ghosts() {
 	if (!global.net_active) return;
-	
+
 	var _current_room = room_get_name(room)
-	
+
 	var _key = ds_map_find_first(global.net_players)
 	while (!is_undefined(_key)) {
 		var _data = global.net_players[? _key]
-		
+
 		// Only draw ghosts that are in the same room and visible
 		if (_data.room_name == _current_room && _data.ghost_alpha > 0.01) {
 			// Compensate for sprite offset mismatch between local and remote player.
@@ -654,7 +654,7 @@ function net_draw_ghosts() {
 			var _ghost_oy = _data.zerogrv * 16
 			var _draw_x = _data.x + (_sox - _ghost_ox)
 			var _draw_y = _data.y + (_soy - _ghost_oy)
-			
+
 			// Draw the ghost player sprite
 			draw_sprite_ext(
 				_data.sprite_index,
@@ -667,39 +667,39 @@ function net_draw_ghosts() {
 				_data.image_blend,
 				_data.ghost_alpha
 			)
-			
+
 			// Draw hat on ghost
 			net_draw_ghost_hat(_data)
-			
+
 			// Draw item on ghost
 			net_draw_ghost_item(_data)
-			
+
 			// Visual center of the ghost sprite (accounts for zero gravity offset)
 			var _center_x = _data.x + 16 - (_data.zerogrv * 16)
 			var _text_y = _data.y - 8 - (_data.zerogrv * 16)
-			
+
 			// Draw username above the ghost
 			draw_set_font(fnt_multiplayerfont)
 			draw_set_halign(fa_center)
 			draw_set_valign(fa_bottom)
 			draw_set_alpha(_data.ghost_alpha)
-			
+
 			// Text outline
 			draw_set_color(c_black)
 			draw_text(_center_x + 1, _text_y + 1, _data.username)
 			draw_text(_center_x - 1, _text_y - 1, _data.username)
 			draw_text(_center_x + 1, _text_y - 1, _data.username)
 			draw_text(_center_x - 1, _text_y + 1, _data.username)
-			
+
 			// Text fill
 			draw_set_color(c_white)
 			draw_text(_center_x, _text_y, _data.username)
-			
+
 			draw_set_alpha(1)
 			draw_set_halign(fa_left)
 			draw_set_valign(fa_top)
 		}
-		
+
 		_key = ds_map_find_next(global.net_players, _key)
 	}
 }
@@ -709,14 +709,14 @@ function net_draw_ghosts() {
 function net_draw_ghost_hat(_data) {
 	var _hat = _data.hat
 	if (_hat <= 0) return;
-	
+
 	var _zg = _data.zerogrv * 16
 	var _xx = _data.x + 16 - _zg
 	var _yy = _data.y + 8 - _zg
 	var _alpha = _data.ghost_alpha
 	var _hatspr = s_graduationhat
 	var _colorhat = c_white
-	
+
 	switch(_hat) {
 		case 1: _hatspr = s_graduationhat; break;
 		case 2: _hatspr = s_conehat; break;
@@ -749,7 +749,7 @@ function net_draw_ghost_hat(_data) {
 		case 45: _hatspr = s_flowerhat; break;
 		default: return; // Unknown hat, skip
 	}
-	
+
 	draw_sprite_ext(_hatspr, 0, _xx, _yy, 1, 1, _data.image_angle, _colorhat, _alpha)
 }
 
@@ -758,20 +758,20 @@ function net_draw_ghost_hat(_data) {
 function net_draw_ghost_item(_data) {
 	var _item = _data.item
 	if (_item <= 0) return;
-	
+
 	var _zg = _data.zerogrv * 16
 	var _xx = _data.x - _zg
 	var _yy = _data.y + 20 - _zg
 	var _alpha = _data.ghost_alpha
 	var _itemspr = -1
-	
+
 	switch(_item) {
 		case 1: _itemspr = s_paintbrushitem; break;
 		case 2: _itemspr = s_floweritem; break;
 		case 3: _itemspr = s_shielditem; break;
 		default: return;
 	}
-	
+
 	// Simple bobbing animation using current_time
 	var _rot = sin(current_time / 500) * 30
 	draw_sprite_ext(_itemspr, 0, _xx, _yy, 1, 1, _rot, c_white, _alpha)

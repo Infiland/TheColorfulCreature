@@ -18,7 +18,7 @@ if !global.steam_api {
 	timer = 600
 	exit
 }
-if steam_is_user_logged_on() = false {
+if tcc_steam_is_user_logged_on() = false {
 	result = 3
 	timer = 600
 	exit
@@ -88,7 +88,7 @@ if (variable_struct_exists(draft, "levels") && is_array(draft.levels) && array_l
 	var _first_id = variable_struct_exists(_first_level, "id") ? _first_level.id : 0;
 	if (_first_id != 0 && global.steam_api) {
 		var _info = ds_map_create();
-		steam_ugc_get_item_install_info(_first_id, _info);
+		tcc_steam_ugc_get_item_install_info(_first_id, _info);
 		if (ds_map_exists(_info, "folder")) {
 			_thumb_folder = string_replace_all(string(_info[? "folder"]), "\\", "/");
 			if (_thumb_folder != "" && string_copy(_thumb_folder, string_length(_thumb_folder), 1) != "/") _thumb_folder += "/";
@@ -173,5 +173,5 @@ for (var i = 0; i < array_length(levels_arr); i++) {
 }
 
 // Create workshop item
-create_request = steam_ugc_create_item(global.appid, ugc_filetype_community);
+create_request = tcc_steam_ugc_create_item(global.appid, ugc_filetype_community);
 result = 0.1

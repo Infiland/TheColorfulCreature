@@ -1,0 +1,348 @@
+[gml_api]
+module GMGameCenter;
+
+// Structured Java/Objective-C++ -> GML values are returned with StructStream
+// and ArrayStream. Structured callbacks receive exactly one result struct.
+
+// View presentation
+[global, bind = typed_gml]
+function gamecenter_view_callback_subscribe(callback: func): unit;
+[global, bind = typed_gml]
+function gamecenter_present_view_achievement(achievement_id: string): bool;
+[global, bind = typed_gml]
+function gamecenter_present_view_leaderboard(
+    leaderboard_id: string,
+    [type_hint=`GameCenterLeaderboardTimeScope`] time_scope,
+    [type_hint=`GameCenterLeaderboardPlayerScope`] player_scope
+): bool;
+
+// Local player
+[global, bind = typed_gml]
+function gamecenter_local_player_authenticate(callback: func): unit;
+[global, bind = typed_gml]
+function gamecenter_local_player_is_authenticated(): bool;
+[global, bind = typed_gml]
+function gamecenter_local_player_is_underage(): bool;
+[global, bind = typed_gml]
+function gamecenter_local_player_is_multiplayer_gaming_restricted(): bool;
+[global, bind = typed_gml]
+function gamecenter_local_player_is_personalized_communication_restricted(): bool;
+[global, bind = typed_gml, type_hint=`GameCenterPlayer`]
+function gamecenter_local_player_get_info(): gmval;
+
+// Saved games
+[global, bind = typed_gml]
+function gamecenter_saved_games_callback_subscribe(callback: func): unit;
+[global, bind = typed_gml]
+function gamecenter_saved_games_fetch(callback: func): unit;
+[global, bind = typed_gml]
+function gamecenter_saved_games_save(name: string, [type_hint=buffer] data: gmval, callback: func): unit;
+[global, bind = typed_gml]
+function gamecenter_saved_games_delete(name: string, callback: func): unit;
+[global, bind = typed_gml]
+function gamecenter_saved_games_data_request(name: string, callback: func): unit;
+[global, bind = typed_gml]
+function gamecenter_saved_games_data_fetch(handle_id: real, [type_hint=buffer] data: gmval): bool;
+[global, bind = typed_gml]
+function gamecenter_saved_games_data_release(handle_id: real): bool;
+[global, bind = typed_gml]
+function gamecenter_saved_games_resolve_conflict(conflict_id: real, [type_hint=buffer] data: gmval, callback: func): unit;
+
+// Leaderboards
+[global, bind = typed_gml]
+function gamecenter_leaderboard_submit(leaderboard_id: string, score: int32, context: int32, callback: func): unit;
+[global, bind = typed_gml]
+function gamecenter_leaderboard_load(
+    leaderboard_id: string,
+    [type_hint=`GameCenterLeaderboardTimeScope`] time_scope,
+    range_start: real,
+    range_count: real,
+    [type_hint=`GameCenterLeaderboardPlayerScope`] player_scope,
+    callback: func
+): unit;
+
+// Achievements
+[global, bind = typed_gml]
+function gamecenter_achievement_report(identifier: string, percent_complete: real, show_completion_banner: bool, callback: func): unit;
+[global, bind = typed_gml]
+function gamecenter_achievement_reset_all(callback: func): unit;
+[global, bind = typed_gml]
+function gamecenter_achievement_load(callback: func): unit;
+
+// Access point
+[global, bind = typed_gml]
+function gamecenter_access_point_set_active(active: bool): bool;
+[global, bind = typed_gml]
+function gamecenter_access_point_get_active(): bool;
+[global, bind = typed_gml]
+function gamecenter_access_point_set_location([type_hint=`GameCenterAccessPointLocation`] location): bool;
+[global, bind = typed_gml]
+function gamecenter_access_point_get_location(): real;
+[global, bind = typed_gml]
+function gamecenter_access_point_is_presenting_game_center(): bool;
+[global, bind = typed_gml]
+function gamecenter_access_point_is_visible(): bool;
+[global, bind = typed_gml]
+function gamecenter_access_point_set_show_highlights(show: bool): bool;
+[global, bind = typed_gml]
+function gamecenter_access_point_get_show_highlights(): bool;
+[global, bind = typed_gml]
+function gamecenter_access_point_get_coordinate([type_hint=`GameCenterAccessPointCoordinate`] coordinate): real;
+[global, bind = typed_gml]
+function gamecenter_access_point_present_with_state([type_hint=`GameCenterViewState`] state, callback: func): bool;
+[global, bind = typed_gml]
+function gamecenter_access_point_present(callback: func): bool;
+
+[global, bind = typed_gml]
+enum GameCenterLeaderboardTimeScope:int32
+{
+    Today = 0,
+    Week = 1,
+    AllTime = 2,
+}
+
+[global, bind = typed_gml]
+enum GameCenterLeaderboardPlayerScope:int32
+{
+    Global = 0,
+    FriendsOnly = 1,
+}
+
+[global, bind = typed_gml]
+enum GameCenterAccessPointLocation:int32
+{
+    TopLeading = 0,
+    TopTrailing = 1,
+    BottomLeading = 2,
+    BottomTrailing = 3,
+}
+
+[global, bind = typed_gml]
+enum GameCenterAccessPointCoordinate:int32
+{
+    X = 0,
+    Y = 1,
+    Width = 2,
+    Height = 3,
+}
+
+[global, bind = typed_gml]
+enum GameCenterViewState:int32
+{
+    Default = -1,
+    Leaderboards = 0,
+    Achievements = 1,
+    Challenges = 2,
+    LocalPlayerProfile = 3,
+    Dashboard = 4,
+    LocalPlayerFriendsList = 5,
+}
+
+// =============================================================================
+// Typed records
+//
+// These structs describe the exact shape of every value returned by a function
+// or delivered to a callback. The generator emits matching GML constructors and
+// decoders (and native gm_structs types) so the GML side receives typed structs
+// instead of opaque values. Callbacks stay `func`; the native side constructs
+// the appropriate struct and the typed decoders rebuild it on the GML side.
+// =============================================================================
+
+// Local player / participant information.
+[global]
+class `[[GameCenterPlayer]]` prototype Object
+{
+    [field] property alias : string { get; set; }
+    [field] property display_name : string { get; set; }
+    [field] property player_id : string { get; set; }
+    [field] property game_player_id : string { get; set; }
+    [field] property team_player_id : string { get; set; }
+}
+
+// Metadata of a single saved-game slot.
+[global]
+class `[[GameCenterSavedGame]]` prototype Object
+{
+    [field] property device_name : string { get; set; }
+    [field] property modification_date : real { get; set; }
+    [field] property name : string { get; set; }
+}
+
+// A single leaderboard entry (rank == -1 means "no entry for this player").
+[global]
+class `[[GameCenterLeaderboardEntry]]` prototype Object
+{
+    [field] property context : real { get; set; }
+    [field] property date : real { get; set; }
+    [field] property rank : real { get; set; }
+    [field] property score : real { get; set; }
+    [field] property formatted_score : string { get; set; }
+    [field, type_hint = `GameCenterPlayer`]
+    property player : gmval { get; set; }
+}
+
+// A single achievement.
+[global]
+class `[[GameCenterAchievement]]` prototype Object
+{
+    [field] property identifier : string { get; set; }
+    [field] property percent_complete : real { get; set; }
+    [field] property is_completed : bool { get; set; }
+    [field] property shows_completion_banner : bool { get; set; }
+    [field, type_hint = `GameCenterPlayer`]
+    property player : gmval { get; set; }
+    [field] property last_reported_date : real { get; set; }
+}
+
+// Result of gamecenter_local_player_authenticate().
+[global]
+class `[[GameCenterAuthResult]]` prototype Object
+{
+    [field] property success : bool { get; set; }
+    [field] property error_code : int32 { get; set; }
+    [field] property error_message : string { get; set; }
+    [field] property authentication_state : string { get; set; }
+    [field] property authenticated : bool { get; set; }
+    [field, type_hint = `GameCenterPlayer`]
+    property player : gmval { get; set; }
+}
+
+// Result of gamecenter_saved_games_fetch().
+[global]
+class `[[GameCenterSavedGamesFetchResult]]` prototype Object
+{
+    [field] property success : bool { get; set; }
+    [field] property error_code : int32 { get; set; }
+    [field] property error_message : string { get; set; }
+    [field, type_hint = `GameCenterSavedGame[]`]
+    property slots : gmval { get; set; }
+}
+
+// Result of gamecenter_saved_games_save().
+[global]
+class `[[GameCenterSavedGamesSaveResult]]` prototype Object
+{
+    [field] property success : bool { get; set; }
+    [field] property error_code : int32 { get; set; }
+    [field] property error_message : string { get; set; }
+    [field] property name : string { get; set; }
+    [field, type_hint = `GameCenterSavedGame`]
+    property slot : gmval { get; set; }
+}
+
+// Result of gamecenter_saved_games_delete().
+[global]
+class `[[GameCenterSavedGamesDeleteResult]]` prototype Object
+{
+    [field] property success : bool { get; set; }
+    [field] property error_code : int32 { get; set; }
+    [field] property error_message : string { get; set; }
+    [field] property name : string { get; set; }
+}
+
+// Result of gamecenter_saved_games_data_request().
+[global]
+class `[[GameCenterSavedGamesDataResult]]` prototype Object
+{
+    [field] property success : bool { get; set; }
+    [field] property error_code : int32 { get; set; }
+    [field] property error_message : string { get; set; }
+    [field] property name : string { get; set; }
+    [field] property handle_id : int32 { get; set; }
+    [field] property required_size : real { get; set; }
+}
+
+// Result of gamecenter_saved_games_resolve_conflict().
+[global]
+class `[[GameCenterSavedGamesResolveResult]]` prototype Object
+{
+    [field] property success : bool { get; set; }
+    [field] property error_code : int32 { get; set; }
+    [field] property error_message : string { get; set; }
+    [field] property conflict_id : int32 { get; set; }
+    [field, type_hint = `GameCenterSavedGame[]`]
+    property slots : gmval { get; set; }
+}
+
+// Event delivered to gamecenter_saved_games_callback_subscribe().
+// `type` is "modified" (player + slot) or "conflict" (conflict_id + player + slots).
+[global]
+class `[[GameCenterSavedGamesEvent]]` prototype Object
+{
+    [field] property type : string { get; set; }
+    [field] property conflict_id : int32 { get; set; }
+    [field, type_hint = `GameCenterPlayer`]
+    property player : gmval { get; set; }
+    [field, type_hint = `GameCenterSavedGame`]
+    property slot : gmval { get; set; }
+    [field, type_hint = `GameCenterSavedGame[]`]
+    property slots : gmval { get; set; }
+}
+
+// Result of gamecenter_leaderboard_submit().
+[global]
+class `[[GameCenterLeaderboardSubmitResult]]` prototype Object
+{
+    [field] property success : bool { get; set; }
+    [field] property error_code : int32 { get; set; }
+    [field] property error_message : string { get; set; }
+    [field] property leaderboard_id : string { get; set; }
+    [field] property score : int32 { get; set; }
+    [field] property context : int32 { get; set; }
+}
+
+// Result of gamecenter_leaderboard_load().
+[global]
+class `[[GameCenterLeaderboardLoadResult]]` prototype Object
+{
+    [field] property success : bool { get; set; }
+    [field] property error_code : int32 { get; set; }
+    [field] property error_message : string { get; set; }
+    [field] property leaderboard_id : string { get; set; }
+    [field] property time_scope : int32 { get; set; }
+    [field] property range_start : real { get; set; }
+    [field] property range_count : real { get; set; }
+    [field] property player_scope : int32 { get; set; }
+    [field] property leaderboard_title : string { get; set; }
+    [field] property leaderboard_group : string { get; set; }
+    [field] property leaderboard_type : int32 { get; set; }
+    [field] property leaderboard_start_date : real { get; set; }
+    [field] property leaderboard_next_start_date : real { get; set; }
+    [field] property leaderboard_duration : real { get; set; }
+    [field] property total_players_count : real { get; set; }
+    [field, type_hint = `GameCenterLeaderboardEntry`]
+    property local_entry : gmval { get; set; }
+    [field, type_hint = `GameCenterLeaderboardEntry[]`]
+    property entries : gmval { get; set; }
+}
+
+// Result of gamecenter_achievement_report().
+[global]
+class `[[GameCenterAchievementReportResult]]` prototype Object
+{
+    [field] property success : bool { get; set; }
+    [field] property error_code : int32 { get; set; }
+    [field] property error_message : string { get; set; }
+    [field] property identifier : string { get; set; }
+    [field] property percent_complete : real { get; set; }
+}
+
+// Result of gamecenter_achievement_reset_all().
+[global]
+class `[[GameCenterAchievementResetResult]]` prototype Object
+{
+    [field] property success : bool { get; set; }
+    [field] property error_code : int32 { get; set; }
+    [field] property error_message : string { get; set; }
+}
+
+// Result of gamecenter_achievement_load().
+[global]
+class `[[GameCenterAchievementsResult]]` prototype Object
+{
+    [field] property success : bool { get; set; }
+    [field] property error_code : int32 { get; set; }
+    [field] property error_message : string { get; set; }
+    [field, type_hint = `GameCenterAchievement[]`]
+    property achievements : gmval { get; set; }
+}

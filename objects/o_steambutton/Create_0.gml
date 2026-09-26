@@ -1,3 +1,4 @@
+if (!platform_steam()) { instance_destroy(); exit; }
 /// @description Variables
 declarecustombutton()
 text = "Steam"

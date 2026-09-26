@@ -1,30 +1,30 @@
 sprite_set_offset(s_playerred,0,0)
 
 //Drop random item
-steam_inventory_trigger_item_drop(99)
-steam_inventory_request_prices(); //Test
+tcc_steam_inventory_trigger_item_drop(99)
+tcc_steam_inventory_request_prices(); //Test
 
 //Rich presence
 set_rich_presence()
 
 // Cold launch: if game was launched via Steam "Join Game" with +connect_lobby
 if (variable_global_exists("net_launch_lobby") && global.net_launch_lobby != "") {
-	if (global.onlinemultiplayersettings == 1 && steam_initialised()) {
+	if (global.onlinemultiplayersettings == 1 && tcc_steam_initialised()) {
 		show_debug_message("[NET] Processing cold launch lobby join: " + global.net_launch_lobby)
 		var _cold_lobby_id = int64(global.net_launch_lobby)
 		global.net_launch_lobby = "" // Clear so we don't re-process
-		
+
 		// Set the pending join BEFORE creating the network manager so that
 		// Create_0 sees it and skips auto-hosting (net_init preserves it)
 		global.net_pending_join = _cold_lobby_id
-		
+
 		if (!instance_exists(o_networkmanager)) {
 			instance_create(0, 0, o_networkmanager)
 		}
-		
+
 		global.net_connect_state = 2
 		global.net_connect_timer = 0
-		
+
 		// Start the game
 		scr_loadskins()
 		global.levelselect = 1
@@ -46,10 +46,10 @@ hidehud()
 
 instance_destroy(o_smoothcamera)
 
-instance_create(930,352,o_profilepicture)
+if (tcc_steam_initialised()) instance_create(930,352,o_profilepicture)
 
 //Hide Android control on main menu
-if os_type = os_android || os_type = os_gxgames {
+if platform_touch() {
 instance_destroy(o_buttoninteractandroid)
 instance_destroy(o_buttonjumpandroid)
 instance_destroy(o_buttonpauseandroid)
@@ -58,11 +58,11 @@ instance_destroy(o_buttonrightandroid)
 instance_destroy(o_buttonrestartandroid)
 }
 
-if steam_initialised()
+if tcc_steam_initialised()
     {
         global.steam_api = true;
     }
-global.appid = steam_get_app_id();
+global.appid = tcc_steam_get_app_id();
 
 gamebootup = 0
 image_speed = 0
@@ -125,7 +125,7 @@ global.hat[8] = 0
 if global.hat[34] = -1 { global.hat[34] = 0 }
 
 //Android banner hide
-AdMob_Banner_Hide()
+ads_hide_banner()
 //Fix sound pitch
 audio_sound_gain(snd_reload,global.soundvolume,1)
 audio_sound_gain(snd_gunvoice,global.soundvolume,1)
@@ -163,3 +163,4 @@ if (instance_exists(o_networkmanager)) {
 	// It will be re-created when starting a new game
 	instance_destroy(o_networkmanager)
 }
+if (instance_exists(Obj_AdMob)) Obj_AdMob.show_interstitial();

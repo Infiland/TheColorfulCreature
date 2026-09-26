@@ -15,6 +15,7 @@ if !file_exists(dir + "challenge.json") {
 }
 
 var data = LoadJSONFromFile(dir + "challenge.json")
+	if (is_undefined(data)) exit;
 if (ds_map_exists(data, "type") && data[? "type"] != "workshop_challenge") {
 	title = "Invalid challenge"
 	invalid = 1

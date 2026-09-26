@@ -6,11 +6,11 @@ draw_set_halign(fa_center)
 
 if page != maxpage {
 if keyboard_check_pressed(vk_right) {
-page += 1	
+page += 1
 }}
 if page != 1 {
 if keyboard_check_pressed(vk_left) {
-page -= 1	
+page -= 1
 }}
 
 var xcam = camera_get_view_x(view_camera[0])+512
@@ -45,7 +45,7 @@ draw_text(920,110,"Autoscale Hat")
 //Custom hat preview
 if global.CUSTOMhat != "" && global.CUSTOMhat != preview_loaded_name {
 	if preview_sprite != -1 { sprite_delete(preview_sprite) }
-	var _dir = game_save_id + "\\Custom\\Player Hats\\" + global.CUSTOMhat
+	var _dir = game_save_id + "/Custom/Player Hats/" + global.CUSTOMhat
 	if file_exists(_dir) {
 		preview_sprite = sprite_add(_dir, 1, false, false, 0, 0)
 	} else {
@@ -69,12 +69,12 @@ if preview_sprite != -1 {
 if page != maxpage {
 
 for(var i=(page-1)*15;i<page*15;i++) {
-	
+
 if mouse_x > xcam-300 && mouse_x < xcam+300 && mouse_y > 85-(floor(i/15)*600)+i*40 && mouse_y < 115-(floor(i/15)*600)+i*40 {
 	col = c_yellow
 } else { col = c_white }
 if files[i] = global.CUSTOMhat { col = c_lime }
-	
+
 draw_rectangle_color(xcam+300,85-((page-1)*600)+i*40,xcam-300,115-((page-1)*600)+i*40,c_black,c_black,c_black,c_black,false)
 draw_rectangle_color(xcam+300,85-((page-1)*600)+i*40,xcam-300,115-((page-1)*600)+i*40,col,col,col,col,true)
 draw_text(xcam,87-((page-1)*600)+i*40,files[i])
@@ -86,12 +86,12 @@ selecthatCUSTOM(i,files[i])
 } else {
 
 for(var i=(maxpage-1)*15;i<((maxpage-1)*15) + lastlevels;i++) {
-	
+
 if mouse_x > xcam-300 && mouse_x < xcam+300 && mouse_y > 85-(floor(i/15)*600)+i*40 && mouse_y < 115-(floor(i/15)*600)+i*40 {
 	col = c_yellow
 } else { col = c_white }
 if files[i] = global.CUSTOMhat { col = c_lime }
-	
+
 draw_rectangle_color(xcam+300,85-((page-1)*600)+i*40,xcam-300,115-((page-1)*600)+i*40,c_black,c_black,c_black,c_black,false)
 draw_rectangle_color(xcam+300,85-((page-1)*600)+i*40,xcam-300,115-((page-1)*600)+i*40,col,col,col,col,true)
 draw_text(xcam,87-((page-1)*600)+i*40,files[i])
@@ -106,5 +106,5 @@ draw_text(xcam,720,"Page: " + string(page) + "/" + string(maxpage))
 draw_set_halign(fa_left)
 
 if keyboard_check_pressed(vk_escape) {
-instance_destroy()	
+instance_destroy()
 }

@@ -4,19 +4,19 @@ dir = random_range(0.12 * (5 * jumped),-0.12 * (5 * jumped))
 if instance_exists(o_player) {
 scr_playercontrolsconfig()
 //Left
-if os_type != os_android {
+if !platform_mobile() {
 if leftcontrols = 0 {
-key_left = (gamepad_button_check(4,gp_padl)) || keyboard_check(ord(global.controlsmoveleft)); //keyboard_check(vk_left) ||
+key_left = (tcc_gamepad_button_check(4,gp_padl)) || keyboard_check(ord(global.controlsmoveleft)); //keyboard_check(vk_left) ||
 }
 if leftcontrols = 1 {
-key_left = (gamepad_button_check(4,gp_padl)) || keyboard_check(global.controlsmoveleft);
+key_left = (tcc_gamepad_button_check(4,gp_padl)) || keyboard_check(global.controlsmoveleft);
 }
 //Right
 if rightcontrols = 0 {
-key_right = (gamepad_button_check(4,gp_padr)) || keyboard_check(ord(global.controlsmoveright));
+key_right = (tcc_gamepad_button_check(4,gp_padr)) || keyboard_check(ord(global.controlsmoveright));
 }
 if rightcontrols = 1 {
-key_right = (gamepad_button_check(4,gp_padr)) || keyboard_check(global.controlsmoveright); //keyboard_check(vk_right) ||
+key_right = (tcc_gamepad_button_check(4,gp_padr)) || keyboard_check(global.controlsmoveright); //keyboard_check(vk_right) ||
 }} else {
 key_left = o_buttonleftandroid.image_index = 1;
 key_right = o_buttonrightandroid.image_index = 1;

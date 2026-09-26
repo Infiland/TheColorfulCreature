@@ -4,7 +4,7 @@ players = 0; // the actual number, can be 0
 
 // Only try to get Steam player count if Steam is available
 if (variable_global_exists("steam_is_available") && global.steam_is_available) {
-    if (steam_get_number_of_current_players()) {
+    if (tcc_steam_get_number_of_current_players()) {
         busy = true; // waiting for the request
     }
 }

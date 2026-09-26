@@ -1,8 +1,8 @@
 function scr_loadsettings() {
-	if steam_get_app_id() != 1749610 {
-		
+	if tcc_steam_get_app_id() != 1749610 {
+
 	var directory = directory_set("//Save Files/")
-	
+
 	if (file_exists(directory + "Settings.sav")) {
 	ini_open(directory + "Settings.sav")
 	//Settings
@@ -31,11 +31,11 @@ function scr_loadsettings() {
 	global.skiplevelholdsettings = ini_read_real("Settings","Skip Level Hold",1);
 	global.oldGSsettings = ini_read_real("Settings","Old GS",0);
 	global.objcountersettings = ini_read_real("Settings","OBJ Counter",0);
-	
+
 	//Language return on default
 	global.language = ini_read_real("Settings","Language",setLanguageDependingOnRegion());
-	
-	
+
+
 	global.casualmode = ini_read_real("Settings","Casual Mode",1);
 	global.autothumbnailsettings = ini_read_real("Settings","Auto-Thumbnail",1);
 	global.skipintroscreensettings = ini_read_real("Settings","Skip Intro Screen",1);
@@ -58,6 +58,9 @@ function scr_loadsettings() {
 	global.netmaxplayers = ini_read_real("Settings","Net Max Players",8);
 	//Controller Button Bindings
 	gamepad_remap_load();
+	ini_close();
+	if (!platform_steam()) global.onlinemultiplayersettings = 0;
+	if (platform_mobile()) global.maxfps = 60;
 	}
 	else {
 	}

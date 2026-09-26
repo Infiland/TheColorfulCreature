@@ -6,7 +6,7 @@ namecnt = 0
 //name[0] = "[rainbow]If you see this, this doesn't work[/]"
 //var directory = program_directory + "//Challenges//Lunar Base Challenge//1/"
 
-var dir = program_directory + "Other\\translators.txt" //Reading text files doesn't work for some reason
+var dir = "other/translators.txt" //Reading text files doesn't work for some reason
 var file = file_text_open_read(dir)
 var num = 0
 
@@ -23,7 +23,7 @@ file_text_close(file);
 
 for(var i=0; i < namecnt;i++) {
 	names += name[i] + "\n"
-}	
+}
 
 if names == "" {
 	names = loc("SOMETHING_WENT_WRONG")

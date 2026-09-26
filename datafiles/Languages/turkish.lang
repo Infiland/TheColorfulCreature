@@ -1006,3 +1006,5 @@ NARRATOR_BREAK_L3=BREAK-L3 Sabit dur.
 NARRATOR_BREAK_L4=BREAK-L4 Tum bolum sadece askerler yuzunden degisebilir... ya da sen.
 NARRATOR_BREAK_L5=BREAK-L5 Ama genellikle bloklari sabit tutman gerekir.
 NARRATOR_BREAK_L6=BREAK-L6 Roketler kirillabilir bloklara hasar verecek kadar guclu.
+CONFIRM_YES=Evet
+CONFIRM_NO=Hayır

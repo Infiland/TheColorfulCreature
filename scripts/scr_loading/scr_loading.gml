@@ -1,6 +1,9 @@
 function scr_loading(){
-	
+
 gml_pragma("UnityBuild", "true");
+
+if (variable_global_exists("tcc_loaded") && global.tcc_loaded) return;
+global.tcc_loaded = true;
 
 randomize()
 
@@ -46,31 +49,8 @@ font_enable_sdf(fnt_deathcyrillic,true)*/
 
 var directory = directory_set("//Save Files/")
 
-if !directory_exists(directory) {
-		directory_create(directory)
-		file_copy("Achievements.sav",directory + "Achievements.sav")
-		file_delete("Achievements.sav"); //Achievements
-		file_copy("Stats.sav",directory + "Stats.sav")
-		file_delete("Stats.sav"); //Stats
-		file_copy("Skins.sav",directory + "Skins.sav")
-		file_delete("Skins.sav"); //Skins
-		file_copy("Settings.sav",directory + "Settings.sav")
-		file_delete("Settings.sav"); //Settings
-		file_copy("Hats.sav",directory + "Hats.sav")
-		file_delete("Hats.sav"); //Hats
-		file_copy("Hardmode.sav",directory + "Hardmode.sav")
-		file_delete("Hardmode.sav"); //Hardmode
-		file_copy("Endless.sav",directory + "Endless.sav")
-		file_delete("Endless.sav"); //Endless
-		file_copy("SaveFile.sav",directory + "SaveFile.sav")
-		file_delete("SaveFile.sav"); //Save File
-		file_copy("ChallengeTime.sav",directory + "ChallengeTime.sav")
-		file_delete("ChallengeTime.sav"); //Challenge Time
-		file_copy("ChallengeDeaths.sav",directory + "ChallengeDeaths.sav")
-		file_delete("ChallengeDeaths.sav"); //Challenge Deaths
-		
-		file_delete("Calendar.sav"); //Calendar
-}
+scr_migrate_saves(directory)
+scr_save_recover(directory + "SaveFile.sav");
 
 global.CUSTOMhat = ""
 global.CUSTOMskin = ""
@@ -190,7 +170,7 @@ global.customhatautoscale = 1
 global.customskinautoscale = 1
 global.controllervibrationsettings = 1
 global.fullscreen = 0
-global.onlinemultiplayersettings = 1  // Online multiplayer enabled by default
+global.onlinemultiplayersettings = platform_steam()  // Online multiplayer enabled by default
 global.netmaxplayers = 8  // Max players in online multiplayer lobby
 
 	//Workshop
@@ -331,14 +311,14 @@ game_set_speed(global.maxfps, gamespeed_fps);
 if global.fullscreen = 1 {
 	window_enable_borderless_fullscreen(true);
 	window_set_fullscreen(true);
-	} else { 
+	} else {
 		window_set_fullscreen(false);
 }
 
 if global.fpssettings > 0 {
 instance_create(x,y,o_fpscounter)
 }
-instance_create(x,y,o_ColorBlindnessSimulation)	
+instance_create(x,y,o_ColorBlindnessSimulation)
 
 //Stats
 scr_reloadstats()
@@ -386,6 +366,7 @@ global.invisiblechallengedeaths = 999999
 global.breakablechallengedeaths = 999999
 global.lunarbasechallengedeaths = 999999
 
+global.challenge_run_id = -1
 global.currentchallenge = 0
 global.challenge_custom = false
 scr_challenges_init()
@@ -463,6 +444,7 @@ global.isgrayscale = false
 global.isinvisible = false
 global.isreversed = false
 scr_loadachievements()
+platform_services_init()
 
 /*
 //Skins
@@ -489,12 +471,12 @@ if global.hat[3] = -1 {
 if current_month = 9 {
 if current_day = 3 {
 global.hat[3] = 0
-scr_savehats()	
+scr_savehats()
 }}
 if current_month = 11 {
 if current_day = 18 {
 global.hat[3] = 0
-scr_savehats()	
+scr_savehats()
 }}
 }
 
@@ -502,12 +484,12 @@ if global.hat[8] = -1 {
 if current_month = 1 {
 if current_day <= 7 {
 global.hat[8] = 0
-scr_savehats()	
+scr_savehats()
 }}
 if current_month = 12 {
 if current_day >= 20 {
 global.hat[8] = 0
-scr_savehats()	
+scr_savehats()
 }}
 }
 
@@ -516,7 +498,7 @@ if current_month = 10 {
 if current_day >= 20 {
 global.hat[9] = 0
 global.hat[10] = 0
-scr_savehats()	
+scr_savehats()
 }}
 }
 
@@ -551,31 +533,31 @@ var directory = directory_set("/Custom/")
 	}
 	directory_destroy(directory + "Hats")
 	directory_destroy(directory + "Skins")
-		
+
 		if file_exists(game_save_id + "/Custom/README.txt") file_delete(game_save_id + "/Custom/README.txt");
 		var _f = file_text_open_write(game_save_id + "/Custom/README.txt");
 	    file_text_write_string(_f, string("You can customize hats! Add hats in the player hats folder, put .png images. Recommended resolution is 32x24 resolution! You can also add custom skins in the Player Skins folder. Custom skins must be a horizontal sprite strip with 9 frames (32x32 per frame = 288x32 total). Frame order: Idle, Right, Left, Fall, Fall-Right, Fall-Left, Jump, Jump-Right, Jump-Left."));
 		file_text_close(_f);
 			if !file_exists(game_save_id + "/Custom/Custom Splash Texts.txt") {
 		var _f = file_text_open_write(game_save_id + "/Custom/Custom Splash Texts.txt");
-	    file_text_write_string(_f, string("Go to local files or %appdata% to change this text\n[rainbow][wave]You can use text like this:"));	
+	    file_text_write_string(_f, string("Go to local files or %appdata% to change this text\n[rainbow][wave]You can use text like this:"));
 		file_text_close(_f);
 		}
 	}
 	var directory = directory_set("/LevelEditor Files/")
 	if !directory_exists(directory) {directory_create(directory)}
-	
+
 	var directory = directory_set("/Save Files/Calendar/")
 		if !directory_exists(directory) {
 	directory_create(directory)
 	}
 	var directory = directory_set("/Custom/Workshop/Medals/")
 	if !directory_exists(directory) { directory_create(directory) }
-	
+
 	var directory = directory_set("/Custom/Custom Languages/")
 	if !directory_exists(directory) { directory_create(directory) }
 
-	
+
 //Read_Me Text File
     if file_exists("Save Files/README.txt") file_delete("Save Files/README.txt");
     var _f = file_text_open_write("Save Files/README.txt");

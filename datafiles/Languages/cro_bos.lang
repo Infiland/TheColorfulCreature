@@ -1006,3 +1006,5 @@ NARRATOR_BREAK_L3=BREAK-L3 Polako.
 NARRATOR_BREAK_L4=BREAK-L4 Cijeli nivo se moze promijeniti samo zbog vojnika... ili vas.
 NARRATOR_BREAK_L5=BREAK-L5 Ali obicno morate drzati blokove stabilnima.
 NARRATOR_BREAK_L6=BREAK-L6 Rakete su dovoljno jake da ostete lomljive blokove.
+CONFIRM_YES=Da
+CONFIRM_NO=Ne

@@ -6,4 +6,4 @@ if !audio_is_playing(m_forthefans) {
 audio_play_sound(m_forthefans,0,0)
 }
 
-if !steam_get_achievement("EASTEREGG_4") { steam_set_achievement("EASTEREGG_4") }	
+if !achievement_earned("EASTEREGG_4") { achievement_award("EASTEREGG_4") }

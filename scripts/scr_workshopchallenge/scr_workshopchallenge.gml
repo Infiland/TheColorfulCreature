@@ -91,7 +91,7 @@ function scr_workshopchallenge_goto_level(_index) {
 	}
 
 	var _info = ds_map_create();
-	steam_ugc_get_item_install_info(_level_id, _info);
+	tcc_steam_ugc_get_item_install_info(_level_id, _info);
 	var _folder = "";
 	if (ds_map_exists(_info, "folder")) _folder = _info[? "folder"];
 	ds_map_destroy(_info);
@@ -149,7 +149,7 @@ function scr_workshopchallenge_validate_levels(_challenge) {
 		}
 
 		var _info = ds_map_create();
-		steam_ugc_get_item_install_info(_level_id, _info);
+		tcc_steam_ugc_get_item_install_info(_level_id, _info);
 		var _folder = "";
 		if (ds_map_exists(_info, "folder")) _folder = _info[? "folder"];
 		ds_map_destroy(_info);
@@ -216,6 +216,7 @@ function scr_workshopchallenge_load_from_folder(_folder) {
 	if !file_exists(_path + "challenge.json") return undefined;
 
 	var _data = LoadJSONFromFile(_path + "challenge.json");
+	if (is_undefined(_data)) return undefined;
 	var _type = "";
 	if (ds_map_exists(_data, "type")) _type = _data[? "type"];
 	if (_type != "workshop_challenge") {

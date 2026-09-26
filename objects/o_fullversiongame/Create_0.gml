@@ -1,5 +1,6 @@
+if (!platform_steam()) { instance_destroy(); exit; }
 /// @description Variables
-if steam_get_app_id() != 1749610 {
+if tcc_steam_get_app_id() != 1749610 {
 instance_destroy()
 }
 

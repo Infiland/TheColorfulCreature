@@ -10,12 +10,12 @@ function deathMU() {
 	case(1):
 	global.shootemupscore[o_playerMU.multiplayerplayer-1] += 1
 	if global.shootemupscore[o_playerMU.multiplayerplayer-1] >= 10 {
-	if !steam_get_achievement("BOOTLEG_BR") { steam_set_achievement("BOOTLEG_BR") }
+	if !achievement_earned("BOOTLEG_BR") { achievement_award("BOOTLEG_BR") }
 	}
 	break;
 	case(2):
 	global.racescore[o_playerMU.multiplayerplayer-1] += 1
-	if !steam_get_achievement("RACES_MULTI") { steam_set_achievement("RACES_MULTI") }
+	if !achievement_earned("RACES_MULTI") { achievement_award("RACES_MULTI") }
 	break;
 	}}}
 }

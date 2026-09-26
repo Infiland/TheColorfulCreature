@@ -38,7 +38,7 @@ function scr_execute_trade_up(skin_id, current_tier) {
 	// Build create array with 1 item of next tier
 	var create_arr = [{ item_def: target_def, quantity: 1 }];
 
-	return steam_inventory_exchange_items(create_arr, destroy_arr);
+	return tcc_steam_inventory_exchange_items(create_arr, destroy_arr);
 }
 
 /// Returns the display name for a mastery tier (1-5)

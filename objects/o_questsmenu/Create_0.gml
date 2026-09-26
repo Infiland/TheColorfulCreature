@@ -1,6 +1,6 @@
 alphalerp = 0
 
-var dirquests = program_directory + "/Quests/quests.txt"
+var dirquests = "quests/quests.txt"
 var num = 0;
 maxquests = 0
 //var _path_parts = string_split(dirquests, "|");
@@ -16,7 +16,7 @@ maxquests = num
 show_debug_message(maxquests)
 file_text_close(file);
 } else {
-	instance_destroy()	
+	instance_destroy()
 }
 
 

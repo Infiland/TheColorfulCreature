@@ -1,7 +1,5 @@
 #!/bin/bash
 
-sed -i -e 's/\r$//' "$(dirname "$0")/scriptUtils.sh"
-chmod +x "$(dirname "$0")/scriptUtils.sh"
 source "$(dirname "$0")/scriptUtils.sh"
 
 # ######################################################################################
@@ -10,7 +8,7 @@ source "$(dirname "$0")/scriptUtils.sh"
 setupmacOS() {
 
     SDK_SOURCE="$SDK_PATH/redistributable_bin/osx/libsteam_api.dylib"
-    assertFileHashEquals $SDK_SOURCE $SDK_HASH_OSX "$ERROR_SDK_HASH"
+    assertFileHashEquals "$SDK_SOURCE" "$SDK_HASH_OSX" "$ERROR_SDK_HASH"
 
     for f in "${SDK_SOURCE}"; do
         # Skip empty vars
@@ -54,7 +52,7 @@ setupmacOS() {
 
             itemCopyTo "./libSteamworks.dylib" "${TEMP_FOLDER}/assets/libSteamworks.dylib"
             itemCopyTo "./libsteam_api.dylib" "${TEMP_FOLDER}/assets/libsteam_api.dylib"
-    
+
             zipUpdate "${TEMP_FOLDER}" "game.zip"
             rm -r ${TEMP_FOLDER}
         fi
@@ -80,7 +78,7 @@ setupLinux() {
     assertFileHashEquals $SDK_SOURCE $SDK_HASH_LINUX "$ERROR_SDK_HASH"
 
     echo "Copying Linux (64 bit) dependencies"
-    
+
     # When running from CI the 'YYprojectName' will not be set use 'YYprojectPath' instead.
     if [ -z "$YYprojectName" ]; then
         YYprojectName=$(basename "${YYprojectPath%.*}")
@@ -117,6 +115,7 @@ optionGetValue "sdkHashLinux" SDK_HASH_LINUX
 
 # SDK Path
 optionGetValue "sdkPath" SDK_PATH
+SDK_PATH="${TCC_STEAM_SDK:-$SDK_PATH}"
 optionGetValue "sdkVersion" SDK_VERSION
 
 # Debug Mode

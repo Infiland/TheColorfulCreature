@@ -1,5 +1,5 @@
 /// @description Click to start
-if steam_get_app_id() = 1749610 {
+if tcc_steam_get_app_id() = 1749610 {
 if !instance_exists(o_demoask) {instance_create(x,y,o_demoask)}
 exit;
 }
@@ -7,6 +7,7 @@ exit;
 if locked = 0 {
 window_set_cursor(cr_default)
 global.levelselect = 1
+global.challenge_run_id = -1
 global.special = 0
 global.hatmerchantdiscount = 1.3333333333333
 global.pickup = 0

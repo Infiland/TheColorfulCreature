@@ -45,7 +45,7 @@ if (global.pause = 0) {
    instance_activate_object(o_pausescreen)
 }}}}
 
-if keyboard_check_pressed(vk_escape) || gamepad_button_check_pressed(0,gp_start) {
+if keyboard_check_pressed(vk_escape) || tcc_gamepad_button_check_pressed(0,gp_start) {
 if room != r_tale {
 if (global.pause = 0) {
    global.pause = 1

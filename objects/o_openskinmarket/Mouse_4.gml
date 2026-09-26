@@ -1,1 +1,1 @@
-steam_activate_overlay_browser("https://steamcommunity.com/market/search?appid=1651680")
+tcc_steam_activate_overlay_browser("https://steamcommunity.com/market/search?appid=1651680")

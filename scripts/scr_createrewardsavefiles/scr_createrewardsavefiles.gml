@@ -28,6 +28,7 @@ ini_write_real("Day","5",global.calendarday5required);
 ini_write_real("Day","6",global.calendarday6required);
 ini_write_real("Day","7",global.calendarday7required);
 ini_write_real("Day","Rewarded?",global.calendarrewarded);
+ini_close();
 
 if (file_exists(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_2.sav")) file_delete(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_2.sav");
 ini_open(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_2.sav");
@@ -40,6 +41,7 @@ ini_write_real("Day","5",global.calendarday5required);
 ini_write_real("Day","6",global.calendarday6required);
 ini_write_real("Day","7",global.calendarday7required);
 ini_write_real("Day","Rewarded?",global.calendarrewarded);
+ini_close();
 
 if (file_exists(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_3.sav")) file_delete(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_3.sav");
 ini_open(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_3.sav");
@@ -52,6 +54,7 @@ ini_write_real("Day","5",global.calendarday5required);
 ini_write_real("Day","6",global.calendarday6required);
 ini_write_real("Day","7",global.calendarday7required);
 ini_write_real("Day","Rewarded?",global.calendarrewarded);
+ini_close();
 
 if (file_exists(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_4.sav")) file_delete(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_4.sav");
 ini_open(directory + "Cal" + string(global.calendaryear) + "_" + string(global.calendarmonth) + "_4.sav");
@@ -64,6 +67,7 @@ ini_write_real("Day","5",global.calendarday5required);
 ini_write_real("Day","6",global.calendarday6required);
 ini_write_real("Day","7",global.calendarday7required);
 ini_write_real("Day","Rewarded?",global.calendarrewarded);
+ini_close();
 
 	}
 }

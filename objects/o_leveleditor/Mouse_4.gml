@@ -30,5 +30,5 @@ room_set_height(r_leveleditor,3200)*/
 room_goto(r_leveleditor);
 instance_create(x,y,o_leveleditormenusetup)
 
-AdMob_Banner_Hide()
+ads_hide_banner()
 }

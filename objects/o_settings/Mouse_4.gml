@@ -8,5 +8,5 @@ if room = r_mainmenu {
 room_goto(r_settings);
 } else {
 instance_create(x,y,o_settingspausemenu)
-AdMob_Banner_Hide()
+ads_hide_banner()
 }}

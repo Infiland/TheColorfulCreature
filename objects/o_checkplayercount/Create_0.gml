@@ -1,5 +1,5 @@
 if os_browser != browser_not_a_browser {
-	instance_destroy()	
+	instance_destroy()
 }
 
 r_str = "0"
@@ -16,7 +16,7 @@ success = false; // did we obtain a number successfully?
 players = 0; // the actual number, can be 0
 
 if (variable_global_exists("steam_is_available") && global.steam_is_available) {
-    if (steam_get_number_of_current_players()) {
+    if (tcc_steam_get_number_of_current_players()) {
         busy = true;
     }
 }

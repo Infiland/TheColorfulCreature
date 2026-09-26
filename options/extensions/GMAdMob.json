@@ -1,0 +1,17 @@
+{
+  "$GMExtensionConfigSet": "GMExtensionConfigSet",
+  "configurables": {
+    "fb7dfcc4-8a4f-480d-80a1-4353f93c9a2d": {
+      "AndroidRelease": {"value": "ca-app-pub-7108130195717311~2960588105"}
+    },
+    "b9284c2f-2652-43e0-8857-83c4b381d452": {
+      "AndroidRelease": {"value": "ca-app-pub-7108130195717311/1705849205"}
+    },
+    "4253cbf6-25ef-47ab-a865-b33f15272ba6": {
+      "AndroidRelease": {"value": "ca-app-pub-7108130195717311/1322705824"}
+    },
+    "b19aeb11-226a-4d31-a7b2-1960aa422c5d": {
+      "AndroidRelease": {"value": "ca-app-pub-7108130195717311/8981703993"}
+    }
+  }
+}

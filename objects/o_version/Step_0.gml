@@ -5,7 +5,7 @@ var badge_data_changed = false;
 
 // Handle Steam player count updates
 if (busy) {
-    var result = steam_get_number_of_current_players();
+    var result = tcc_steam_get_number_of_current_players();
     if (result != 0) {
         busy = false; // no longer busy
         if (result < 0) {

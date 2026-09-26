@@ -28,7 +28,7 @@ if room = r_customlevelworkshop {
 	}
 }
 
-AdMob_Banner_Hide()
+ads_hide_banner()
 
 window_set_cursor(cr_default)
 mask_index = s_playerred
@@ -42,7 +42,7 @@ zerogrv = 0
 hspzerogrv = 0
 onice = false
 if instance_place(x,y+32,o_iceblock) {
-onice = true	
+onice = true
 }
 teleportcooldown = 0
 portallast = 0
@@ -79,7 +79,7 @@ if room = r_leveleditor || room = r_customlevelworkshop {
 global.LESavedWinTime = 0
 global.color = global.defaultcolorLE
 } else {
-global.color = 0;	
+global.color = 0;
 }
 
 global.gunammo = 0

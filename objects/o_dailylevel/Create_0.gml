@@ -8,7 +8,7 @@ declarecustombutton()
 
 text = loc("DAILY_LEVEL")
 
-GooglePlayServices_Leaderboard_SubmitScore("CgkI36PRjvEQEAIQMQ",global.dailylevelhighstreak,"")
+platform_google_score("CgkI36PRjvEQEAIQMQ",global.dailylevelhighstreak)
 xscale = 0.7
 yscale = 0.7
 seed = ((global.calendarcurrentyear * global.calendarcurrentmonth) / global.calendarcurrentday)
@@ -28,7 +28,7 @@ if diff = 0 { locked = 1 }
 if diff = 1 { locked = 0 }
 if diff >= 14 { locked = 0
 	global.dailylevelstreak = 0
-	steam_upload_score_ext("Current Daily Level Streak", 0,true);
+	platform_submit_score_ext("Current Daily Level Streak", 0,true);
 	}
 
 image_speed = 0

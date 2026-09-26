@@ -1,8 +1,8 @@
 function scr_loadskins() {
 	if global.cheats = 0 {
-		
+
 	var directory = directory_set("//Save Files/")
-	
+
 	if (file_exists(directory + "Skins.sav")) {
 	ini_open(directory + "Skins.sav");
 	global.world1 = ini_read_real("Skins","World 1",0)
@@ -62,8 +62,9 @@ function scr_loadskins() {
 	global.skin[48] = ini_read_real("Skins","Burning Skin",0);
 	global.skin[49] = ini_read_real("Skins","Toilet Skin",0);
 	global.skin[50] = ini_read_real("Skins","Kratos Skin",0);
-	
+
 	global.CUSTOMskin = ini_read_string("CustomSkin","Custom Skin","")
+	ini_close();
 	}
 	else {
 	}

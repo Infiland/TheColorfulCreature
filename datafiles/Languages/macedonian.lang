@@ -1006,3 +1006,5 @@ NARRATOR_BREAK_L3=BREAK-L3 Стабилно.
 NARRATOR_BREAK_L4=BREAK-L4 Целото ниво може да се промени само поради војска... или тебе.
 NARRATOR_BREAK_L5=BREAK-L5 Но обично мораш да ги одржуваш блоковите стабилни.
 NARRATOR_BREAK_L6=BREAK-L6 Ракетите се доволно силни да нанесат штета на кршливите блокови.
+CONFIRM_YES=Да
+CONFIRM_NO=Не

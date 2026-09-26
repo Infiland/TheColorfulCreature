@@ -9,16 +9,16 @@ wheelspeed -= 0.12 * (60 / global.maxfps)
 wheelspeed = 0
 rewarded = 1
 spinned = 0
-global.wheeltimeleft = 3600	
+global.wheeltimeleft = 3600
 
 if direction > 0 { //Reward 1
 if direction < 36 {
 global.creditscurrency += floor(250 * multi)
-if !steam_get_achievement("JACKPOT") { steam_set_achievement("JACKPOT") }
+if !achievement_earned("JACKPOT") { achievement_award("JACKPOT") }
 }}
 if direction > 36 { //Reward 2
 if direction < 72 {
-global.creditscurrency += floor(25 * multi)	
+global.creditscurrency += floor(25 * multi)
 }}
 if direction > 72 { //Reward 3
 if direction < 108 {
@@ -59,7 +59,7 @@ getwheelskin(SKIN,maxS)
 global.wheelskincooldown += 10800
 
 if global.totaltime >= global.wheelskincooldown {
-image_index = 1	
+image_index = 1
 } else { image_index = 0 }
 
 } else {

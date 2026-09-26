@@ -25,7 +25,7 @@ var _grid_x1 = 110
 var _grid_x2 = 520
 var _cols = 2
 var visible_count = 0
-var my_steam_id = steam_get_user_steam_id()
+var my_steam_id = tcc_steam_get_user_steam_id()
 
 for (var i = 0; i < array_length(level_buttons); i++) {
 	var btn = level_buttons[i]

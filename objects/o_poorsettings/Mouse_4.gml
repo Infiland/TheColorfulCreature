@@ -10,6 +10,6 @@ global.whiteblock = 0
 global.visual3dsettings = 0
 global.watershadersettings = 0
 scr_savesettings()
-if !steam_get_achievement("POTATO_SETTINGS") { //Potato Settings
-steam_set_achievement("POTATO_SETTINGS")
+if !achievement_earned("POTATO_SETTINGS") { //Potato Settings
+achievement_award("POTATO_SETTINGS")
 }

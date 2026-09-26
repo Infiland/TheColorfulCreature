@@ -1,5 +1,6 @@
-if global.hardmode = 1 { instance_destroy() 
-exit;	
+if (!tcc_steam_initialised()) exit;
+if global.hardmode = 1 { instance_destroy()
+exit;
 }
 
 var async_id = ds_map_find_value(async_load, "id");
@@ -23,7 +24,7 @@ if async_id == score_get
             steam_name[i] = ds_map_find_value(entry, "name");
             steam_score[i] = ds_map_find_value(entry, "score");
             steam_rank[i] = ds_map_find_value(entry, "rank");
-			
+
 			var entry_user_id = noone;
 			if ds_map_exists(entry, "userID") {
 				entry_user_id = ds_map_find_value(entry, "userID");
@@ -31,11 +32,11 @@ if async_id == score_get
 				entry_user_id = ds_map_find_value(entry, "steamid");
 			}
 			steam_userid[i] = entry_user_id;
-			
+
 			if entry_user_id != noone && entry_user_id != 0 {
 				var user_key = string(entry_user_id);
 				if (!ds_map_exists(avatar_sprites, user_key)) {
-					var img = steam_get_user_avatar(real(entry_user_id), avatar_request_size);
+					var img = tcc_steam_get_user_avatar(real(entry_user_id), avatar_request_size);
 					if (img > 0) {
 						var spr = steam_image_create_sprite(img);
 						ds_map_set(avatar_sprites, user_key, spr);

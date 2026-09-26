@@ -1,4 +1,4 @@
-if steam_get_app_id() = 1749610 {
+if tcc_steam_get_app_id() = 1749610 {
 if !instance_exists(o_demoask) {instance_create(x,y,o_demoask)}
 exit;
 }
@@ -21,7 +21,7 @@ global.endless = 0
 	global.isgrayscale = false
 	scr_saveachievements()
 	}}}
-	
+
 	if global.isinvisible = true {
 	if global.skinselected != 35 {
 	global.isinvisible = false
@@ -34,7 +34,7 @@ scr_loadsettings()
 o_narrator.l = 0
 if global.musicvolume < 0.01 {
 if room = r_easteregg1 {
-audio_stop_sound(m_warp)	
+audio_stop_sound(m_warp)
 }}
 audio_stop_sound(m_mainmenu);
 }

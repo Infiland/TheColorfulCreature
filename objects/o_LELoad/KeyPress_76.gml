@@ -7,16 +7,16 @@ instance_destroy(o_chooseleveleditorlevel)
 
 if global.levelname != "" {
 instance_create(x,y,o_levelreloadagain)
-if !steam_get_achievement("LOAD_LEVEL") { //Load Level
-steam_set_achievement("LOAD_LEVEL") 
+if !achievement_earned("LOAD_LEVEL") { //Load Level
+achievement_award("LOAD_LEVEL")
 }
 } else {
 	instance_destroy(o_savedandloaded)
 	box = instance_create(x,y,o_savedandloaded)
 	with(box) {
-	image_index = 3	
+	image_index = 3
 	}
-	
+
 }
 
 

@@ -1006,3 +1006,5 @@ NARRATOR_BREAK_L3=BREAK-L3 Con calma.
 NARRATOR_BREAK_L4=BREAK-L4 El nivel entero puede cambiar solo por las tropas... o por ti.
 NARRATOR_BREAK_L5=BREAK-L5 Pero normalmente necesitas mantener los bloques estables.
 NARRATOR_BREAK_L6=BREAK-L6 Los cohetes son lo suficientemente fuertes para danar los bloques rompibles.
+CONFIRM_YES=Sí
+CONFIRM_NO=No

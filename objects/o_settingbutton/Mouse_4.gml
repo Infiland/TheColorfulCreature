@@ -3,12 +3,12 @@ if (image_alpha = 0.5 && setting_type != STYPE.ACTION) { exit }
 
 // DLC gate check
 if dlc_gate > 0 {
-	if !steam_user_owns_dlc(dlc_gate) { exit }
+	if !tcc_steam_user_owns_dlc(dlc_gate) { exit }
 }
 
 // Demo gate check
 if demo_gate {
-	if steam_get_app_id() = 1749610 {
+	if tcc_steam_get_app_id() = 1749610 {
 		if !instance_exists(o_demoask) { instance_create(x, y, o_demoask) }
 		exit
 	}

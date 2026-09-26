@@ -14,7 +14,7 @@ if instance_exists(o_playerMU) {
 	}
 }
 var xx=16,yy=8,hatspr=s_graduationhat,anim=0,colorhat=c_white,al=1,sx=1;
-if os_type = os_android || os_type = os_gxgames { customhat = 0 }
+if platform_touch() { customhat = 0 }
 if customhat = 0 {
 if hat = 0 { hatspr = s_graduationhat al = 0 }
 switch(hat) {
@@ -79,7 +79,7 @@ draw_sprite_ext(s_propellerhattop,current_time/30,x+xx,y+yy-18,sx,1,image_angle,
 } else {
 	xx = lengthdir_x(30,image_angle+90)
 	yy = lengthdir_y(30,image_angle+90)
-	draw_sprite_ext(s_propellerhattop,current_time/30,x+xx,y+yy,sx,1,image_angle,colorhat,al) 
+	draw_sprite_ext(s_propellerhattop,current_time/30,x+xx,y+yy,sx,1,image_angle,colorhat,al)
 	}
 }
 break;

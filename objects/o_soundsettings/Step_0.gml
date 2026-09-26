@@ -1,5 +1,5 @@
-key_left = keyboard_check(vk_left) || (gamepad_button_check(4,gp_padl)) || keyboard_check(ord("A"));
-key_right = keyboard_check(vk_right) || (gamepad_button_check(4,gp_padr)) || keyboard_check(ord("D"));
+key_left = keyboard_check(vk_left) || (tcc_gamepad_button_check(4,gp_padl)) || keyboard_check(ord("A"));
+key_right = keyboard_check(vk_right) || (tcc_gamepad_button_check(4,gp_padr)) || keyboard_check(ord("D"));
 if global.soundchange = 2 {
 if key_left {
 if global.soundvolume < 1.02 {
@@ -12,7 +12,7 @@ global.soundvolume += 0.01
 }
 }
 }
-if keyboard_check_released(vk_left) or gamepad_button_check_released(0,gp_padl) or keyboard_check_released(ord("A")) or keyboard_check_released(vk_right) or gamepad_button_check_released(0,gp_padr) or keyboard_check_released(ord("D")) { scr_savesettings() }
+if keyboard_check_released(vk_left) or tcc_gamepad_button_check_released(0,gp_padl) or keyboard_check_released(ord("A")) or keyboard_check_released(vk_right) or tcc_gamepad_button_check_released(0,gp_padr) or keyboard_check_released(ord("D")) { scr_savesettings() }
 
 if global.soundchange = 0 { image_index = 0 }
 if global.soundchange = 1 { image_index = 0 }

@@ -10,13 +10,13 @@ function workshopER_build_pool() {
 	if !global.steam_api { return false }
 
 	var steam_list = ds_list_create()
-	steam_ugc_get_subscribed_items(steam_list)
+	tcc_steam_ugc_get_subscribed_items(steam_list)
 
 	var j = 0
 	for (var i = 0; i < ds_list_size(steam_list); i++) {
 		var file_id = steam_list[| i]
 		var file_info = ds_map_create()
-		steam_ugc_get_item_install_info(file_id, file_info)
+		tcc_steam_ugc_get_item_install_info(file_id, file_info)
 		var path_to_file = file_info[? "folder"]
 		ds_map_destroy(file_info)
 
@@ -76,8 +76,8 @@ function workshopER_start() {
 /// Sends a Steam UGC query page to discover non-subscribed levels
 function workshopER_query_catalog() {
 	if !global.steam_api { return }
-	var qh = steam_ugc_create_query_all(ugc_query_RankedByPublicationDate, ugc_match_Items, global.workshopER_query_page)
-	global.workshopER_query_id = steam_ugc_send_query(qh)
+	var qh = tcc_steam_ugc_create_query_all(ugc_query_RankedByPublicationDate, ugc_match_Items, global.workshopER_query_page)
+	global.workshopER_query_id = tcc_steam_ugc_send_query(qh)
 }
 
 /// Core level selection for Workshop Endless Run
@@ -159,7 +159,7 @@ function workshopER_pick_catalog_level() {
 
 	// Check if already installed
 	var info = ds_map_create()
-	steam_ugc_get_item_install_info(file_id, info)
+	tcc_steam_ugc_get_item_install_info(file_id, info)
 	var folder = ""
 	if ds_map_exists(info, "folder") { folder = info[? "folder"] }
 	ds_map_destroy(info)
@@ -176,7 +176,7 @@ function workshopER_pick_catalog_level() {
 	}
 
 	// Need to subscribe and download
-	steam_ugc_subscribe_item(file_id)
+	tcc_steam_ugc_subscribe_item(file_id)
 	array_push(global.workshopER_auto_subscribed, file_id)
 
 	global.workshopER_current_file_id = file_id
@@ -202,7 +202,7 @@ function workshopER_goto_level(_file_id) {
 	if !global.steam_api { return }
 
 	var _info = ds_map_create()
-	steam_ugc_get_item_install_info(_file_id, _info)
+	tcc_steam_ugc_get_item_install_info(_file_id, _info)
 	var _folder = ""
 	if ds_map_exists(_info, "folder") { _folder = _info[? "folder"] }
 	ds_map_destroy(_info)
@@ -288,9 +288,9 @@ function workshopER_game_over() {
 	if global.cheats = 0 {
 		if global.workshopERhighscore < global.endlesslevel {
 			global.workshopERhighscore = global.endlesslevel
-			steam_upload_score("Workshop Endless Run", global.workshopERhighscore)
+			platform_submit_score("Workshop Endless Run", global.workshopERhighscore)
 		}
-		steam_upload_score("Seasonal Endless Run", global.endlesslevel)
+		platform_submit_score("Seasonal Endless Run", global.endlesslevel)
 		scr_saveendless()
 	}
 
@@ -310,7 +310,7 @@ function workshopER_game_over() {
 function workshopER_cleanup() {
 	// Unsubscribe from auto-subscribed levels
 	for (var i = 0; i < array_length(global.workshopER_auto_subscribed); i++) {
-		steam_ugc_unsubscribe_item(global.workshopER_auto_subscribed[i])
+		tcc_steam_ugc_unsubscribe_item(global.workshopER_auto_subscribed[i])
 	}
 	global.workshopER_auto_subscribed = []
 	global.workshopER_pool = []

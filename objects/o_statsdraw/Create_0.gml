@@ -516,19 +516,19 @@ stats_refresh()
 stats_compute_scroll()
 
 if stats_normalskins_pct = 100 {
-	if !steam_get_achievement("SKIN_COMPLETIONIST") {
-		steam_set_achievement("SKIN_COMPLETIONIST")
+	if !achievement_earned("SKIN_COMPLETIONIST") {
+		achievement_award("SKIN_COMPLETIONIST")
 	}
 }
 
 if stats_hats_pct = 100 {
-	if !steam_get_achievement("HAT_COMPLETIONIST") {
-		steam_set_achievement("HAT_COMPLETIONIST")
+	if !achievement_earned("HAT_COMPLETIONIST") {
+		achievement_award("HAT_COMPLETIONIST")
 	}
 }
 
 if stats_allhats > 9 {
-	if !steam_get_achievement("A_FAN_OF_HATS") {
-		steam_set_achievement("A_FAN_OF_HATS")
+	if !achievement_earned("A_FAN_OF_HATS") {
+		achievement_award("A_FAN_OF_HATS")
 	}
 }

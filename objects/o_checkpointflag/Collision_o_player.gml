@@ -6,8 +6,8 @@ global.checkpointCOLOR = global.color
 global.checkpointGRV = o_player.grv
 global.checkpointAMMO = global.gunammo
 if instance_exists(o_gunequipped) {
-global.checkpointGUN = true	
+global.checkpointGUN = true
 }
 image_index = 1
-if !steam_get_achievement("CHECKPOINT") { steam_set_achievement("CHECKPOINT") }
+if !achievement_earned("CHECKPOINT") { achievement_award("CHECKPOINT") }
 }}

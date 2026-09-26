@@ -103,7 +103,7 @@ function gamepad_remap_listen() {
 		gp_padu, gp_padd, gp_padl, gp_padr
 	];
 	for (var _i = 0; _i < array_length(_buttons); _i++) {
-		if (gamepad_button_check_pressed(0, _buttons[_i])) {
+		if (tcc_gamepad_button_check_pressed(0, _buttons[_i])) {
 			return _buttons[_i];
 		}
 	}

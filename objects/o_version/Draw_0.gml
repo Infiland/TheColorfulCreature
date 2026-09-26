@@ -4,7 +4,7 @@ draw_text_scribble(588,128,"[wave]" + string(version))
 
 if os_is_network_connected() {
 if keyboard_check(vk_control) {
-if (global.playercount + global.playercountdemo) = 0 { 
+if (global.playercount + global.playercountdemo) = 0 {
 	draw_set_color(c_yellow)
 	draw_text(32,712,loc("CURRENT_NUMBER_OF_GAMERS") + ": 0 :(") } else {
 draw_text(32,712,loc("CURRENT_NUMBER_OF_GAMERS")+": " + string(global.playercount + global.playercountdemo)) }
@@ -13,13 +13,13 @@ if (global.playercount + global.playercountdemo) > 1 {
 draw_text_scribble(32,732,"[rainbow][wave]CREDITS MULTIPLIER: " + string(global.creditsmultiplier) + "X")
 }} else {
 draw_set_color(c_red)
-draw_text(32,732,loc("NOT_CONNECTED_TO_THE_INTERNET"))	
+draw_text(32,732,loc("NOT_CONNECTED_TO_THE_INTERNET"))
 }
 
 draw_set_color(c_white)
-if os_type != os_android {
-var userid = steam_get_user_steam_id();
-var name = steam_get_persona_name() //steam_get_user_persona_name(test)
+if !platform_mobile() {
+var userid = tcc_steam_get_user_steam_id();
+var name = tcc_steam_get_persona_name() //tcc_steam_get_user_persona_name(test)
 draw_set_halign(fa_right)
 draw_text(1000,416,string(name))
 
@@ -33,9 +33,9 @@ draw_tooltip_box(loc("THIS_IS_ME_D"),c_lime,c_orange)
 }}}}
 
 // Steam Avatar display would go here if needed
-// steam_get_user_avatar(userid,steam_user_avatar_size_medium);
+// tcc_steam_get_user_avatar(userid,steam_user_avatar_size_medium);
 }
- 
+
 draw_set_halign(fa_left)
 draw_set_font(global.deathfont)
 draw_set_color(c_white)

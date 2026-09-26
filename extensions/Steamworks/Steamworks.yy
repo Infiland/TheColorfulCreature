@@ -11,7 +11,7 @@
   "androidsourcedir":"",
   "author":"",
   "classname":"",
-  "ConfigValues":{},
+  "ConfigValues":{"Apple":{"copyToTargets":"0"},"Mobile":{"copyToTargets":"0"}},
   "copyToTargets":194,
   "description":"",
   "exportToGame":true,

@@ -8,7 +8,7 @@ vx = 0
 vy = 0
 
 if room = r_mainmenu {
-vy = -64	
+vy = -64
 }
 
 if instance_exists(o_smoothcamera) {
@@ -20,19 +20,19 @@ x = 960 + vx
 	if room = r_mainmenu {
 	y = 610 + vy
 	} else {
-	y = 704 + vy	
+	y = 704 + vy
 	}
 
 audio_sound_pitch(m_mainmenu,pitch)
 
-name = steam_get_persona_name()
+name = tcc_steam_get_persona_name()
 for(var i = 0; i <= 10; i++;)
         {
 steam_name[i] = ""
 steam_score[i] = 0
 steam_rank[i] = 0
 		}
-score_get = steam_download_scores("Cog Distance", 1, 10);
+score_get = tcc_steam_download_scores("Cog Distance", 1, 10);
 
 
 foundrank = 0

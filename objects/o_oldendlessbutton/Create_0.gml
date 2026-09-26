@@ -5,7 +5,7 @@ locked = 1
 }
 
 cost = 100
-if os_type != os_android {
+if !platform_mobile() {
 cost = 0
 locked = 0
 global.oldERunlock = 1

@@ -1,8 +1,9 @@
+key_interact = false;
 scr_playercontrolsconfig()
 
 if global.levelselect = 0 {
 
-if os_type != os_android {
+if !platform_mobile() {
 if interactcontrols = 0 {
 key_interact = keyboard_check_pressed(ord(global.controlsinteract))
 } else { key_interact = keyboard_check_pressed(global.controlsinteract) }} else {
@@ -13,7 +14,7 @@ key_interact = keyboard_check_pressed(ord(global.controlsinteract))
 
 if instance_place(x,y,o_player) {
 if !instance_exists(o_creditscounter) {
-instance_create(x,y,o_creditscounter)	
+instance_create(x,y,o_creditscounter)
 }} else {
 instance_destroy(o_creditscounter)
 }

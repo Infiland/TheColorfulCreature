@@ -1,3 +1,4 @@
+if (!platform_steam()) { instance_destroy(); exit; }
 declarecustombutton()
 depth = -24000
 

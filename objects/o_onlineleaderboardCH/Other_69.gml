@@ -1,4 +1,5 @@
-score_get = steam_download_scores("Tutorial Challenge Time", 1, rlen);
+if (!tcc_steam_initialised()) exit;
+score_get = tcc_steam_download_scores("Tutorial Challenge Time", 1, rlen);
 var async_id = ds_map_find_value(async_load, "id");
 if async_id == score_get
    {

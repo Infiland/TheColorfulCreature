@@ -1,3 +1,4 @@
+if (!platform_steam()) { instance_destroy(); exit; }
 declarecustombutton()
 xscale = 0.5
 yscale = 0.5

@@ -1,1 +1,1 @@
-steam_activate_overlay(ov_achievements)
+tcc_steam_activate_overlay(ov_achievements)

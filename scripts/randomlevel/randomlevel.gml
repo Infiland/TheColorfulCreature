@@ -15,7 +15,7 @@ function randomlevel() {
 	case(10): global.chooserandomlevel = choose(12,12,6,6,23,23,24) break;
 	}
 	break;
-	case(2): 
+	case(2):
 	if global.endlesslevel < 50 {
 	global.chooserandomlevel = choose(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25,26,27)
 	} else {
@@ -60,7 +60,7 @@ function randomlevel() {
 	case(27): scr_ERSpecialW1() break;
 	}
 	room_goto(global.chosenlevelER)
-	
+
 	//Difficulty
 	if global.endlessrunmode = 1 {
 	if global.difficultyER != 10 {
@@ -74,24 +74,24 @@ function randomlevel() {
 		}
 	} else {
 	if global.cheats = 0 {
-	if !steam_get_achievement("ABSOLUTE_ENDLESS_HELL") { steam_set_achievement("ABSOLUTE_ENDLESS_HELL") }
+	if !achievement_earned("ABSOLUTE_ENDLESS_HELL") { achievement_award("ABSOLUTE_ENDLESS_HELL") }
 	}
 	if global.skin[32] = 0 {
 	global.skin[32] = 1
 	scr_saveskins()
 	}}}
-	
+
 	//Music
 	global.endlessmusicchange -= 1
 	global.endless1upchange -= 1
-	
+
 	if global.endless1upchange < 1 {
 	if global.infinitelivessettings = 0 {
 	global.hardmodelives += 1
 	if global.endlessrunmode != 3 {global.endless1upchange = 10} else { global.endless1upchange = global.CER1upChange }
-	
+
 	}}
-	
+
 	if global.endlessmusicchange < 1 {
 		if global.endlessrunmode != 3 {
 	global.chooserandommusic = irandom_range(1,29)

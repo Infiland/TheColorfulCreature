@@ -7,4 +7,4 @@ audio_sound_gain(m_mainmenu,global.musicvolume,1000)
 global.diamondmedalcount = 0
 global.perfectscorecount = 0
 
-AdMob_Banner_Hide()
+ads_hide_banner()

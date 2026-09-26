@@ -1,5 +1,5 @@
-steam_details = steam_ugc_request_item_details(level, 30);
-requestname = steam_get_user_persona_name(mOwner);
+steam_details = tcc_steam_ugc_request_item_details(level, 30);
+requestname = tcc_steam_get_user_persona_name(mOwner);
 
 if loaded = 1 {
 	var bruh = string_count( "Level of the Week",  string(mTags));
@@ -12,7 +12,7 @@ if loaded = 1 {
 	directory_create(directory)
 	}
 	scr_loadworkshopmedals()
-	
+
 if loaded = 1 {
 
 var easy = string_count( "Easy", string(mTags) );
@@ -35,10 +35,10 @@ if impossible = 1 { difficulty = 6 }
 alarm[0] = 30
 
 
-/*steam_details = steam_ugc_request_item_details(level, 30);
+/*steam_details = tcc_steam_ugc_request_item_details(level, 30);
 /*if canrequest = 1 {
 if mName = "" {
-request_name = steam_get_user_persona_name(mOwner);
+request_name = tcc_steam_get_user_persona_name(mOwner);
 }}
 if mTags != "" {
 if mFeatured = false {
@@ -49,7 +49,7 @@ mFeatured = true
 }
 
 if mFeatured = true {
-	checkfeatured = string_count( "Level of the Week", mTags );	
+	checkfeatured = string_count( "Level of the Week", mTags );
 }
 if checkfeatured < 0 {
 mFeatured = false
@@ -61,5 +61,5 @@ mFeatured = false
 	directory_create(directory)
 	}
 	scr_loadworkshopmedals()
-	
+
 alarm[0] = 20

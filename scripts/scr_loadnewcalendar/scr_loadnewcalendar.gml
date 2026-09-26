@@ -25,6 +25,7 @@ if global.cheats = 0 {
 	week = ini_read_real(diff,"Week",0)
 	month = ini_read_real(diff,"Month",0)
     year = ini_read_real(diff,"Year",0)
+	ini_close();
 	}
 	else {
 	}

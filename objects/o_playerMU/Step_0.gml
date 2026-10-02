@@ -1,5 +1,7 @@
+if (!timing_instance_step()) exit;
 //Get Player Input
 scr_multiplayercontrolsplayer()
+qa_player_input();
 //Restart
 if global.pause = 1{ exit }
 if key_restart {
@@ -67,6 +69,8 @@ if move = 0 {
 vsp = (vsp + ((grv* (60 / global.maxfps))/inwater));
 onGround = false
 onCelling = false
+if (scr_slope_place(x,y+1) != noone) { onice = false; onGround = true; }
+if (scr_slope_place(x,y-1) != noone) { onice = false; onCelling = true; }
 if place_meeting(x,y+1,o_anyblock) {onice = false onGround = true}
 if place_meeting(x,y+1,o_iceblock) {onice = true onGround = true}
 if place_meeting(x,y+1,o_redblockmove) {onice = false onGround = true}
@@ -110,6 +114,7 @@ par_walktimer = 3
 }
 
 //Jumps
+if (scr_slope_place(x,y+1) != noone) && key_jump { jump(); }
 if coyotetime > 0 and (key_jump) and vsp > 0 and !onGround and !onCelling { jump() }
 if (place_meeting(x,y+1,o_anyblock)) and (key_jump) {jump()}
 if (place_meeting(x,y+1,o_redblockmove)) and (key_jump) {jump()}
@@ -151,7 +156,13 @@ horizontalcollision()
 x = x + hsp
 
 //Vertical Collision
-verticalcollision(o_redblockslope)
+var _vertical_start_y = y;
+var _vertical_direction = sign(vsp);
+var _vertical_scale = 60 / global.maxfps;
+// Legacy square collision can consume unscaled vsp before the final scaled
+// move. Bound both paths, then clamp only if their actual displacement crosses
+// the first diagonal; movement away from slopes remains unchanged.
+var _slope_vertical = scr_slope_resolve_vertical(vsp * max(1, _vertical_scale));
 verticalcollision(o_anyblock)
 verticalcollision(o_movingplatforms,1)
 verticalcollision(o_shooter)
@@ -161,22 +172,31 @@ verticalcollision(o_rocketlauncherright)
 verticalcollision(o_onewayupblock)
 verticalcollision(o_onewaydownblock)
 verticalcollision(o_playerMU)
+if (_slope_vertical.blocked && _vertical_direction * (y - _vertical_start_y + vsp * _vertical_scale)
+    >= _vertical_direction * _slope_vertical.dy) {
+    if (_vertical_direction > 0) { onGround = true; coyotetime = coyotetimeMAX; }
+    y = _vertical_start_y + _slope_vertical.dy;
+    vsp = 0;
+}
 y = y + vsp * (60 / global.maxfps)
 if vsp > 30 * (global.maxfps / 60) { vsp = 30 * (global.maxfps / 60) }
 
 //Animation
+animation_vsp = player_animation_velocity();
+if (animation_vsp == 0 && vsp >= 0 && !key_left && !key_right
+    && scr_slope_place(x,y+1) != noone) image_index = 0;
 if multiplayerplayerskin != 23 {
-if vsp < -0.1 and !hsp  { image_index = 6 } //Jump
-if vsp > 0.1 and !hsp  { image_index = 3 } //Fall
-if key_right and vsp = 0 { image_index = 1 } //Moving right without jumping
-if key_right and vsp < -0.1 { image_index = 7 } //Jumping right
-if key_right and vsp > 0.1 { image_index = 4 } //Falling rightH
-if key_left and vsp = 0 { image_index = 2 } //Moving left without jumpin
-if key_left and vsp < -0.1 { image_index = 8 } //Jumping left
-if key_left and vsp > 0.1 { image_index = 5 } //Falling left
-if key_right and key_left and vsp > 0.1 { image_index = 3 } //Falling while pressing left and right
-if key_right and key_left and vsp < -0.1 { image_index = 6 } //Jumping while pressing left and right
-if key_right and key_left and vsp = 0 { image_index = 0} //Pressing left and right
+if animation_vsp < -0.1 and !hsp  { image_index = 6 } //Jump
+if animation_vsp > 0.1 and !hsp  { image_index = 3 } //Fall
+if key_right and animation_vsp = 0 { image_index = 1 } //Moving right without jumping
+if key_right and animation_vsp < -0.1 { image_index = 7 } //Jumping right
+if key_right and animation_vsp > 0.1 { image_index = 4 } //Falling rightH
+if key_left and animation_vsp = 0 { image_index = 2 } //Moving left without jumpin
+if key_left and animation_vsp < -0.1 { image_index = 8 } //Jumping left
+if key_left and animation_vsp > 0.1 { image_index = 5 } //Falling left
+if key_right and key_left and animation_vsp > 0.1 { image_index = 3 } //Falling while pressing left and right
+if key_right and key_left and animation_vsp < -0.1 { image_index = 6 } //Jumping while pressing left and right
+if key_right and key_left and animation_vsp = 0 { image_index = 0} //Pressing left and right
 }
 if key_right { playermove = 1 }
 if key_left { playermove = -1 }
@@ -336,13 +356,13 @@ if color = 4 {sprite_index = s_tuxedoplayerwhite}
 break;
 case 21:
 scr_playerrbgMU()
-if vsp = 0 {
+if animation_vsp = 0 {
 eyesY = lerp(eyesY,0,0.2 * (60 / global.maxfps))
 }
-if vsp < 0 {
+if animation_vsp < 0 {
 eyesY = lerp(eyesY,-7,0.2 * (60 / global.maxfps))
 }
-if vsp > 0 {
+if animation_vsp > 0 {
 eyesY = lerp(eyesY,7,0.2 * (60 / global.maxfps))
 }
 if hsp != 0 {
@@ -414,19 +434,19 @@ case 30:
 scr_playerrbgnormalMU()
 scr_animatedeyesMU()
 
-if vsp < -0.1 and !hsp  { googlyeyesrot = 0 } //Jump
-if vsp > 0.1 and !hsp  { googlyeyesrot = 180 } //Fall
-if key_right and vsp = 0 { googlyeyesrot = 270 } //Moving right without jumping
-if key_right and vsp < -0.1 { googlyeyesrot = 315 } //Jumping right
-if key_right and vsp > 0.1 { googlyeyesrot = 225 } //Falling right
-if key_left and vsp = 0 { googlyeyesrot = 90 } //Moving left without jumpin
-if key_left and vsp < -0.1 { googlyeyesrot = 35 } //Jumping left
-if key_left and vsp > 0.1 { googlyeyesrot = 135 } //Falling left
-if key_right and key_left and vsp > 0.1 { googlyeyesrot = 180 } //Falling while pressing left and right
-if key_right and key_left and vsp < -0.1 { googlyeyesrot = 0 } //Jumping while pressing left and right
-if key_right and key_left and vsp = 0 { googlyeyesrot = 0 } //Pressing left and right
+if animation_vsp < -0.1 and !hsp  { googlyeyesrot = 0 } //Jump
+if animation_vsp > 0.1 and !hsp  { googlyeyesrot = 180 } //Fall
+if key_right and animation_vsp = 0 { googlyeyesrot = 270 } //Moving right without jumping
+if key_right and animation_vsp < -0.1 { googlyeyesrot = 315 } //Jumping right
+if key_right and animation_vsp > 0.1 { googlyeyesrot = 225 } //Falling right
+if key_left and animation_vsp = 0 { googlyeyesrot = 90 } //Moving left without jumpin
+if key_left and animation_vsp < -0.1 { googlyeyesrot = 35 } //Jumping left
+if key_left and animation_vsp > 0.1 { googlyeyesrot = 135 } //Falling left
+if key_right and key_left and animation_vsp > 0.1 { googlyeyesrot = 180 } //Falling while pressing left and right
+if key_right and key_left and animation_vsp < -0.1 { googlyeyesrot = 0 } //Jumping while pressing left and right
+if key_right and key_left and animation_vsp = 0 { googlyeyesrot = 0 } //Pressing left and right
 googlyeyesrotreal = lerp(googlyeyesrotreal,googlyeyesrot,0.25 * (60 / global.maxfps))
-if keyboard_check_pressed(vk_anykey) {
+if timing_keyboard_pressed(vk_anykey) {
 randomeeyerotationR = lerp(randomeeyerotationR,random_range(-360,360),0.2 * (60 / global.maxfps))
 randomeeyerotationL = lerp(randomeeyerotationL,random_range(-360,360),0.2 * (60 / global.maxfps))	
 }
@@ -569,6 +589,7 @@ if key_left { o_gunequipped.timer = 0 }
 
 //Death
 
+if (global.easy == 0 && scr_slope_harmful_contact(color)) { deathMU(); exit; }
 if color != 4 {
 if place_meeting(x,y-3,o_yellowblock) || place_meeting(x,y+3,o_yellowblock) {
 deathMU()

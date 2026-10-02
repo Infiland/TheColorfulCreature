@@ -1,3 +1,11 @@
+// The vendor advances an element only when it is actually drawn. Its native
+// delta_time covers one outer frame, which may be shorter than the Draw gap.
+// Use the central presentation interval; this retains its explicit 0.1s clamp.
+function timing_scribble_animation_speed() {
+    if (!variable_global_exists("tcc_timing") || delta_time <= 0) return 1;
+    return global.tcc_timing.draw_seconds * 1000000 / delta_time;
+}
+
 // Feather disable all
 /// Emulation of draw_text(), but using Scribble for rendering
 /// 
@@ -36,5 +44,6 @@ function draw_text_scribble(_x, _y, _string, _reveal = undefined)
     .starting_format(_font, c_white)
     .blend(draw_get_color(), draw_get_alpha());
     if (_reveal != undefined) _element.reveal(_reveal);
+    _element.animation_speed(timing_scribble_animation_speed());
     _element.draw(_x, _y);
 }

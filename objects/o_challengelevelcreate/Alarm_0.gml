@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if room != r_challengelevel {
 room_goto(r_challengelevel)
 }

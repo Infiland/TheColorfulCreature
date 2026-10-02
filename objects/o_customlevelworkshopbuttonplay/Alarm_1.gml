@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 instance_create(x,y,o_customlevelworkshopcreate)
 loadhud()
 	var directory = directory_set("/Custom/Workshop/Medals/" + string(level) + "/")

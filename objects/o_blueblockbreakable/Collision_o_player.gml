@@ -1,1 +1,1 @@
-hpbreakable -= 1 * (60 / global.maxfps)
+hpbreakable -= 1 * (60 / TCC_SIM_HZ)

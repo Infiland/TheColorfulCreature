@@ -1,0 +1,10 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_slope_helpers",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_slope_helpers",
+  "parent":{"name":"Other","path":"folders/Scripts/Other.yy",},
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

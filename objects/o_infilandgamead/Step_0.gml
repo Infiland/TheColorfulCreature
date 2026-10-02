@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 timer -= 1
 
 if timer <= 0 {
@@ -21,4 +22,6 @@ if game > maxGames {
 }}
 gameChanged = 1	
 }
-/*
+
+image_index = game - 1
+link = timing_ui_ad_link(game)

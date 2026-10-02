@@ -1,17 +1,5 @@
-image_index = game - 1
-
-switch(image_index) {
-default: //Asteroids ++
-link = "https://store.steampowered.com/app/2407300/Asteroids/" 
-break;
-case(1): //Monophobia Echoes
-link = "https://infiland.itch.io/monophobia-echoes"
-break;
-case(2): //Brik Brik
-link = "https://play.google.com/store/apps/details?id=com.infiland.brikbrik"
-break;
-}
-
-draw_self()
-//draw_set_font(fnt_multiplayerfont)
-//draw_text(x+25,y-20,"NEW GAMES IN\nDEVELOPMENT")
+// The selected frame and URL follow logical updates; native animation must
+// not change which advertisement is presented between those updates.
+var _frames = sprite_get_number(sprite_index)
+var _frame = (game - 1 + _frames) mod _frames
+draw_sprite_ext(sprite_index,_frame,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)

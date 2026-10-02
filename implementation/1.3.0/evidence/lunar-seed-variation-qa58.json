@@ -1,0 +1,306 @@
+{
+  "status": "ACTUAL_QA58_SEED7_ORDINARY_LUNAR_COMPLETION_INDEPENDENT_PASS",
+  "successfulRun": "/Users/infi/Library/Caches/TCC130/lunar-variations-native-qa58-01/lunar-seed7-spike-phase-repair60",
+  "preservedFailedRun": "/Users/infi/Library/Caches/TCC130/lunar-variations-native-qa58-01/lunar-seed7-delay6-render60",
+  "baselineSeed1Run": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-uncompressed-volley01",
+  "frozenQA58Binding": {
+    "build": "/Users/infi/Library/Caches/TCC130/gameplay-qa-58",
+    "snapshot": "/Users/infi/Library/Caches/TCC130/gameplay-qa-58/source",
+    "source": {
+      "identityVersion": 2,
+      "identityScheme": "project-runtime-assets-v2",
+      "sourceSha256": "cc00e83ffd8450c11a2e48f81a78049549e6a2d1631bbec2d6446ba456b52655",
+      "physicsSha256": "7d8eb9addbd5ed405bcf67e2b1144d1163c9c2e95b186729b6a3df3a1a21a610",
+      "fileCount": 23352
+    },
+    "executableSha256": "f440355df55021ab165e34838696e35515162c7541b79a69ee051e755eb31c7e",
+    "artifact": {
+      "sha256": "1a2dd917873095503cfcc5208958e4c14c33f7fe6862885528e1712bd9eef771",
+      "fileCount": 106
+    },
+    "compilerBackend": "VM"
+  },
+  "provenance": {
+    "frozenFullSourceExecutableAppRehashedThisReview": true,
+    "prefabInstalledAndCompiledCopyFreshEqualFiles": 16,
+    "prefabCompilerMergeLineVerified": true,
+    "quietLibrary": {
+      "path": "/Users/infi/Library/Caches/TCC130/gameplay-qa-58/DerivedData/Build/Products/Release/The_Colorful_Creature.app/Contents/Frameworks/TCCDiagnosticQuiet.dylib",
+      "sha256": "9267ad93767fcae436a5ca835e2b89bec5a8b249764417170c2036257e8ba8a1",
+      "sourceSha256": "42f395536522327baf045a0f11b223f9aadc3819ad9bb5a887840d48311aaf0a",
+      "policy": "Accessory app; suppress host activation/window ordering only"
+    },
+    "buildEvidenceSha256": "09c925a5c1451060263a92882f5ee36f87ef6faf0fa1178cba819b402117e64f",
+    "compileLogSha256": "0a06dd9cb5ca18f07b20b5b93ce3c5098e2c1448bcaca2016be845ce71bcb240",
+    "currentness": "Current-at-launch QA58. Later room/manifest authoring changes whole source hash; the review rehashed unchanged physics7d8eb9ad and current Lunar content06f7b1e0 equal to frozen build. This does not claim a new compiled source.",
+    "wholeSourceIdentityReadDuringReview": {
+      "sourceSha256": "389e9d85388f0c4975c34878b751d7f257b16707867d02f548295b36017f58ab",
+      "physicsSha256": "7d8eb9addbd5ed405bcf67e2b1144d1163c9c2e95b186729b6a3df3a1a21a610",
+      "fileCount": 23352
+    }
+  },
+  "ordinaryReader": {
+    "path": "/Users/infi/Library/Caches/TCC130/requests/qa56-ordinary-lunar-backstep-entrypoint01/ordinary_common.py",
+    "sha256": "c11a89616aea1e8860639e865ce105982079ddbfd21acecb4d19d7b9ae9633cf",
+    "freshDynamicQA58Errors": [],
+    "diagnosticSlopeReaderUsed": false
+  },
+  "freshLunarInspector": {
+    "errors": [],
+    "releaseGates": [],
+    "qualifiesAsLunarCompletion": true,
+    "gunCollected": true,
+    "keyCollected": true
+  },
+  "normalInputAndResourceChecks": {
+    "candidate": "/private/tmp/tcc-lunar-seed7-spike-phase-repair-01/lunar-seed7-delay6-local-spike-phase-repair-60.json",
+    "candidateSha256": "75be3424a14444c58d0dc1afb6255e27389107aaf1a8d61019c183fdc9c89dda",
+    "submittedMatchesCandidateExceptIdentityOutputSaveRoot": true,
+    "actualInputsExactlySubmitted": true,
+    "eventCount": 786,
+    "normalFirePresses": 40,
+    "actualSingleAmmoLossTicksExactly40PressTicks": true,
+    "challenge": 19,
+    "seed": 7,
+    "allowDeaths": false,
+    "normalRules": true,
+    "diagnosticOnly": false,
+    "simulationHz": 60,
+    "inputClock": "simulation-60",
+    "requestedRenderCap": 60,
+    "traceEvery": 1,
+    "sourceAnchors": [
+      "Frozen scr_gameplay_qa:196,331 random_set_seed and actual exported seed7 at every tick.",
+      "Frozen scr_gameplay_qa:546 bit8 pressed maps to key_interact; o_player Step542-567 equipped gun, dry water state1 and positive ammo create ordinary bullet/decrement.",
+      "Frozen o_enemyplayer Step229/235/257/283/345 actual random choices; individual RNG values and bullet hits are not exported."
+    ]
+  },
+  "phaseRepair": {
+    "initialStationaryDelayPreservedTicks": 6,
+    "actualFirstMovementTick": 66,
+    "unchangedFull38FieldPlayerPrefixThroughTick": 3385,
+    "comparedPlayerDictionaries": 3386,
+    "groundedNeutralWaitStart": 3243,
+    "oldEndExclusive": 3392,
+    "newEndExclusive": 3386,
+    "oldWaitTicks": 149,
+    "actualNewGroundedStationaryWaitTicks": 143,
+    "allParentEventsFrom3392ShiftedMinus6": true,
+    "completeInputSuffixFrom3386EqualsSeed1AtSameAbsoluteTick": true
+  },
+  "preservedFailure": {
+    "status": "death",
+    "frames": 3418,
+    "deathTick": 3417,
+    "stats": "V.Spike Deaths1; all other cause counters0",
+    "actualPlayer": {
+      "frame": 3417.0,
+      "x": 2273.00830078125,
+      "y": 3172.478759765625,
+      "bbox": [
+        2280.00830078125,
+        3175.478759765625,
+        2298.00830078125,
+        3200.478759765625
+      ],
+      "grounded": true,
+      "hsp": 4.0,
+      "vsp": 0.0,
+      "ammo": 7.0,
+      "keysRemaining": 1.0,
+      "observationPhase": "death-contact"
+    },
+    "actualDeathWorldHazard": {
+      "kindOrder": 32.0,
+      "x": 2272.0,
+      "type": "o_spikemovingdownup",
+      "y": 3193.5,
+      "scaleX": 1.0,
+      "scaleY": 1.0,
+      "state": {
+        "originaly": 6.5,
+        "cooldown": 20.0,
+        "change": 1.0,
+        "originalcooldown": 20.0,
+        "spikespeed": 0.5
+      },
+      "startX": 2272.0,
+      "startY": 3168.0
+    }
+  },
+  "successfulHazardCrossing": {
+    "formerFatalPlayerCoordinateSafelyObservedAt3411": {
+      "frame": 3411.0,
+      "x": 2273.00830078125,
+      "y": 3172.478759765625,
+      "bbox": [
+        2280.00830078125,
+        3175.478759765625,
+        2298.00830078125,
+        3200.478759765625
+      ],
+      "grounded": true,
+      "hsp": 4.0,
+      "vsp": 0.0,
+      "ammo": 7.0,
+      "keysRemaining": 1.0,
+      "observationPhase": "root-end"
+    },
+    "safe3417": {
+      "frame": 3417.0,
+      "x": 2297.00830078125,
+      "y": 3172.478759765625,
+      "bbox": [
+        2304.00830078125,
+        3175.478759765625,
+        2322.00830078125,
+        3200.478759765625
+      ],
+      "grounded": true,
+      "hsp": 4.0,
+      "vsp": 0.0,
+      "ammo": 7.0,
+      "keysRemaining": 1.0,
+      "observationPhase": "root-end"
+    },
+    "limit": "No later success spike poses exported. Safe RootEnd/continued completion establishes survival, not a reconstructed spike bbox/phase or unique collision identity."
+  },
+  "actualTroopVariation": {
+    "nativeRowsComparedAtSameAbsoluteTick": 434840,
+    "rowsDifferent": 7764,
+    "differentFields": [
+      "alive",
+      "bbox",
+      "floor",
+      "move",
+      "overlap",
+      "reactionTicks",
+      "state",
+      "vsp",
+      "x",
+      "y"
+    ],
+    "firstObservedDifference": {
+      "tick": 497,
+      "actor": "authored-35",
+      "seed1State": 1,
+      "seed7State": 2
+    },
+    "firstAliveToAbsentTicks": [
+      {
+        "actor": "authored-35",
+        "seed1": 514,
+        "seed7": 520
+      },
+      {
+        "actor": "authored-15",
+        "seed1": 7948,
+        "seed7": 8057
+      },
+      {
+        "actor": "authored-18",
+        "seed1": 7967,
+        "seed7": 7967
+      },
+      {
+        "actor": "authored-17",
+        "seed1": 8057,
+        "seed7": 8058
+      },
+      {
+        "actor": "authored-16",
+        "seed1": 8058,
+        "seed7": 8060
+      }
+    ],
+    "limits": "Actual exported state/pose/alive differences, not metadata-only evidence. Seed and initial player phase differ, so do not attribute isolated RNG causality. Alive-to-absent does not identify a bullet hit. Final room-transition removals10870 excluded; absent actor fields never filled."
+  },
+  "actualCompletion": {
+    "status": "complete",
+    "reason": "Real exit contact and room transition",
+    "simulationTicks": 10871,
+    "deaths": 0,
+    "finalKeys": 0,
+    "finalAmmo": 0,
+    "endingRoom": "r_lunarbasewin",
+    "nativeChallengeSeconds": 181.18333333336966,
+    "unchangedTargetSeconds": 130,
+    "targetMet": false,
+    "playerFieldsEachTick": 38,
+    "everyPlayerTickSeed7OrdinaryRun19NoAssistance": true,
+    "traceSchemaVersion": 2,
+    "observationPhases": {
+      "root-end": 10870,
+      "exit-contact": 1
+    },
+    "nativeTroopRows": 434840,
+    "troopsPerTick": 40,
+    "normalEngineEnd": true,
+    "launcherExitCode": 0,
+    "renderFrames": 10870.0,
+    "observedRenderFps": 42.948210981385344,
+    "nativeElapsedUs": 253108675.0,
+    "wallSeconds": 260.2211056249798,
+    "clockMeaning": "Fixed60 gameplay challengeTime is separate from wall/native/render measurements."
+  },
+  "actualIsolatedSaveChecks": {
+    "saveRoot": "/Users/infi/Library/Caches/TCC130/lunar-variations-native-qa58-01/lunar-seed7-spike-phase-repair60/saves",
+    "TotalGunShots": 40,
+    "GunPickups": 1,
+    "AmmoPickups": 1,
+    "KeyPickups": 1,
+    "EnemyKills": 22,
+    "RocketKills": 1,
+    "LevelCompletions": 1,
+    "TotalDeaths": 0,
+    "AllDeathCauseCounters": 0,
+    "Credits": 0,
+    "WorldProgression": 1,
+    "LunarChallengeTime": 181.183333,
+    "LunarChallengeDeaths": 0,
+    "ToiletSkin": 1
+  },
+  "rawFileHashes": {
+    "success": {
+      "lunar-report.json": "540d0c0bf734a547a3bcfcbe2684a1486af93d2efb0d6b66e91931868ec383e8",
+      "runtime.json": "884ca002f6fac21d47a4876d7d12b75feab6f281b9ccdb973f7fc4b2ab79525f",
+      "runtime.launcher.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime.log": "796335f82e89424250bdf0bde55c629b803c31b5a5c82d10939c06a5e72603b0",
+      "runtime.stderr.log": "c487cadd557e064ab45b313916e41a27a6054f3ab26de37b4a68403daf6a49a3",
+      "saves/Custom/Custom Splash Texts.txt": "d5f72a873219325fac0be7e6ef791a0e50139feaa490c57a28d2c07ed15fefd8",
+      "saves/Custom/README.txt": "6bcbd00598bbdc262c7d8d13a0a626ca40b5fbba51d084d8c1dc571fc0336520",
+      "saves/Save Files/ChallengeDeaths.sav": "f1c7e7a74d946c425ea46bf3e7b9931f1ff03539dd4e26c782b316b24323b5a9",
+      "saves/Save Files/ChallengeTime.sav": "36e280a65757799c65d2baa7b49082e00cc04222b13c358794405c1e50be4db6",
+      "saves/Save Files/Skins.sav": "169c754df95fe5bb8af64af5f9e9a67a5bb6dbc83c154c721e977bdd1ad9053f",
+      "saves/Save Files/Stats.sav": "e17a69413ebcb2fb540614f9b0b95d2322a43645a3d7dcc714d4531415a1ec25",
+      "saves/Save Files/Stats.sav.bak": "96fadc4673463d863ba440f3a5795e0455062b4d5c7eedf8018190af1d315e0d",
+      "spec.json": "0389bf6ee5bfea88a709f462656a56170cde31e435728c4f66cf06f6036ec896",
+      "summary.json": "d754c55a369768c13fff589b2a7455550514b9c70afc4235560e8aa40e49d761"
+    },
+    "preservedFailure": {
+      "lunar-report.json": "60eadb5458af75af516a5444d5c6a3a377af8c24e5ded5af1169a02130a71d3e",
+      "runtime.json": "20f6a57e2d2b23ea214e87c4d27d7e76b63fd0711b8346bbb5e5f1be88a8c279",
+      "runtime.launcher.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "runtime.log": "5c502527255e84e88e8e1af13c6805c22b09c86630a034e40ff3aa23764a4cd8",
+      "runtime.stderr.log": "485d4c38a4fe74e38f66514766ded166295c79b6acec1d9c072bb176dfda20bf",
+      "saves/Custom/Custom Splash Texts.txt": "d5f72a873219325fac0be7e6ef791a0e50139feaa490c57a28d2c07ed15fefd8",
+      "saves/Custom/README.txt": "6bcbd00598bbdc262c7d8d13a0a626ca40b5fbba51d084d8c1dc571fc0336520",
+      "saves/Save Files/Stats.sav": "394a093276cbd1ffc52f558d214bd89c5446809708f5570ddc7e89918eb78ba3",
+      "spec.json": "f84b7b8a24a00f1235a127a4ab2a3393f279b66048ec9ebe42f4ccca3b5006ac",
+      "summary.json": "4f8a76dfa6aba3db9358e1252fb99ceb85fe90110703ad44a3aa9860287d2122"
+    }
+  },
+  "baselineReferences": {
+    "spec.json": "aeeb37678c15758b705ca960f7ca24a0dd05aca8c10e6f2343309baf8fb42425",
+    "runtime.json": "e5f2e187dc4baf41a489162a77420dc45db2fc2efc9a8357a706f4478ba9707d",
+    "summary.json": "bf3a8520ae4433ae0577708f319be1cfa4d5fb8368ae48ae7f296b5d5089a248",
+    "runtime.log": "2b9ee53baaa48abe22512d9b41897e7332a8bac338fafdbdfaab9a199bacfd9c",
+    "lunar-report-current-map.json": "e138eb49a94345f58461655580a7b0e599f4ab547ae76037c91bb5fdb54c0970"
+  },
+  "rawFilesUnchangedDuringReview": true,
+  "limits": [
+    "Legitimate seed7 completion atcap60;181.1833s exceeds unchanged130target.",
+    "Adds actual distinct seed/timing evidence to previously qualified seed1 all-six-cap completion. Not a seed7 six-cap comparison.",
+    "Seed42 unused/unlaunched. No further replay/input/source/native/build/gate/STATUS edits in this review."
+  ]
+}

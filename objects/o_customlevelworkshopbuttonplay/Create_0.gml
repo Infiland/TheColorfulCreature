@@ -1,4 +1,5 @@
 global.workshop = 0
+timing_ui_register_target("workshop-level");
 depth = -102
 //level = 2561237485
 level = 2592571669

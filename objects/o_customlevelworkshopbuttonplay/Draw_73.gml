@@ -1,4 +1,3 @@
-y = lerp(y,ystart - global.customlevelsscroll,0.1 * (60 / global.maxfps))
 //var owner = tcc_steam_get_user_persona_name(mOwner)
 //var directory = global.workshopfolder + "\\"
 if y < -90 {
@@ -7,10 +6,6 @@ exit;
 if y > 900 {
 exit;
 }
-
-if mPubFileId = 0 {
-image_blend = c_red
-} else { image_blend = c_white }
 
 //draw_self()
 draw_rectangle_color(room_width/2-200,y,room_width/2+200,y+90,c_black,$1d1d1d,c_black,$1d1d1d,false)

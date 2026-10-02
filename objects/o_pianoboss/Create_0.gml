@@ -1,4 +1,4 @@
-randomize();
+tcc_randomize();
 global.boss3spikespeed = 0.1
 if !audio_is_playing(m_pianotime) {
 audio_play_sound(m_pianotime,0,1)
@@ -32,7 +32,7 @@ maxhp = hp;
 
 alarm[0] = 30
 
-healthbar = instance_create_depth(0, 0, -1000, o_healthbar);
+healthbar = timing_create_depth(0, 0, -1000, o_healthbar);
 healthbar.target = id;
 healthbar.bar_segments = 3;
 healthbar.bar_x = 600

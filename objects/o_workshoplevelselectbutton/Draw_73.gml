@@ -3,12 +3,6 @@ if filtered_out = 1 { exit; }
 // Grid tile layout: 2 columns
 var _tile_w = 390
 var _tile_h = 130
-var _col_x = base_x
-var _row_y = base_y - global.workshopchallenge_scroll
-
-x = lerp(x, _col_x, 0.1 * (60 / global.maxfps))
-y = lerp(y, _row_y, 0.1 * (60 / global.maxfps))
-
 // Clip to visible area
 if y < 280 { exit; }
 if y > 580 { exit; }

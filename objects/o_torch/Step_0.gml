@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.pause = 1{ image_speed = 0 }
 if global.pause = 0{ image_speed = 1 }
 if died = 0 {
@@ -22,7 +23,7 @@ died = 1
 }}
 
 if died = 1 { fall += 0.25
-randomize()
+tcc_randomize()
 image_alpha -= 0.025
 if image_alpha < 0 {
 instance_destroy()	

@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 event_inherited()
 image_speed = 0
 image_index = global.onlinemultiplayersettings

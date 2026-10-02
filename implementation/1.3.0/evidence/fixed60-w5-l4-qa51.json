@@ -1,0 +1,83 @@
+{
+  "format": "tcc.implementation-evidence",
+  "schemaVersion": 1,
+  "scope": "Actual W5-L4 original route, three seed/timing groups at six render caps",
+  "status": "actual native scoped assessment",
+  "passed": true,
+  "assessedActualNativeRecordings": 18,
+  "sourceBinding": {
+    "build": "/Users/infi/Library/Caches/TCC130/gameplay-qa-51",
+    "snapshot": "/Users/infi/Library/Caches/TCC130/gameplay-qa-51/source",
+    "source": {
+      "identityVersion": 2,
+      "identityScheme": "project-runtime-assets-v2",
+      "sourceSha256": "da519bdbce3cd221b3db1085aa30fffd2100d04042450081a81d3b7c1aeb29d9",
+      "physicsSha256": "8ab6dd07a17b4ba6465a8daec8eba4c601a159bc39cb56f79c28314d68990d59",
+      "fileCount": 23352
+    },
+    "executableSha256": "cd5e96abf65001894f42528b36678c95bc9944a212a44aae0dfc50fc5743b2ee",
+    "artifact": {
+      "sha256": "35215da1402d1e06201d000be28d1ef1e8a1b9771544e7e38ffef73c720bc531",
+      "fileCount": 106
+    },
+    "compilerBackend": "VM",
+    "sourceCoverage": {
+      "identity": {
+        "identityVersion": 2,
+        "identityScheme": "project-runtime-assets-v2",
+        "sourceSha256": "da519bdbce3cd221b3db1085aa30fffd2100d04042450081a81d3b7c1aeb29d9",
+        "physicsSha256": "8ab6dd07a17b4ba6465a8daec8eba4c601a159bc39cb56f79c28314d68990d59",
+        "fileCount": 23352
+      },
+      "identityVersion": 2,
+      "completeProjectRuntimeCoverage": true,
+      "compilerDependenciesBound": false,
+      "currentQualificationPermitted": true,
+      "qualification": "Coverage permission only; native payload/log/state and fresh current source/content bindings still required."
+    }
+  },
+  "contentSha256": "a2fffc37120c7b46af1606504cbf03cd2487ea41a36a7d0bdd9e22c97e5c60ce",
+  "requestedCaps": [
+    60,
+    75,
+    100,
+    120,
+    144,
+    150
+  ],
+  "seedDelayGroups": [
+    "w5-original-seed130084",
+    "w5-seed7-delay6",
+    "w5-seed42-delay12"
+  ],
+  "simulationFramesTotal": 4896.0,
+  "playerTraceRowsTotal": 4896,
+  "troopTraceRowsTotal": 4896,
+  "actualCap60ComparatorCount": 3,
+  "otherCapComparisons": 15,
+  "hostAssertionFailure": {
+    "retainedBatch": "/Users/infi/Library/Caches/TCC130/w5-native-qa51-01/batch.json",
+    "retainedTraceback": "/Users/infi/Library/Caches/TCC130/w5-native-qa51-01/batch-failure.txt",
+    "classification": "Host wrapper incorrectly required diagnosticOnly=true. First native run completed normally.",
+    "nativeDiagnosticOnly": false,
+    "ordinaryInputProof": "Intentionally absent for unmodified normal-room qa_finish; adapter diagnostic exports only"
+  },
+  "comparisonTolerance": "Exact JSON numeric/state equality; no position/time/bbox/AI/RNG epsilon or rounding",
+  "limitations": [
+    "Single original W5-L4 route, three exact seed/input-delay groups at six requested rendering caps only.",
+    "Troop initial record is the source-defined first End registration, not a fabricated pre-input pose.",
+    "Final troop alive=false reflects actual room-transition destruction; x/y/AI are honestly absent for that row.",
+    "Only serialized player/troop/world fields are compared; unobserved native actor fields are not established.",
+    "No new native runs, hardware/platform/services, whole-game visual acceptance or special-level design qualification.",
+    "Compiler prefab/dependency binding remains a separate environment limit; current project/source/executable/payload bytes rehashed."
+  ],
+  "independentReport": {
+    "path": "/Users/infi/Library/Caches/TCC130/requests/qa51-independent-w5-assessment01/report.json",
+    "sha256": "e35643bcacab9dbea46a6b75bd4c7aaf4875d9d8cca494c3612406dd347c62c5"
+  },
+  "fullRawEquality": {
+    "path": "/Users/infi/Library/Caches/TCC130/requests/qa51-independent-w5-assessment01/raw-state-equality.json",
+    "sha256": "c2f3a20ee002313e6205911d2de69bc5ae7b09829867f56e77bcf0ae72a9d6cf"
+  },
+  "authoredSpecialContentAcceptance": 0
+}

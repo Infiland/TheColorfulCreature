@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-02",
+  "status": "PASS_CURRENT_BOUNDED_YELLOW_SP_DIAGNOSTICS",
+  "sourceSha256": "cc00e83ffd8450c11a2e48f81a78049549e6a2d1631bbec2d6446ba456b52655",
+  "physicsSha256": "7d8eb9addbd5ed405bcf67e2b1144d1163c9c2e95b186729b6a3df3a1a21a610",
+  "batch": {
+    "path": "/Users/infi/Library/Caches/TCC130/yellow-slope-native-qa58-01/batch.json",
+    "sha256": "4a2e8fa518317c5aab0ed5fb1151c5ffd8c94c0a9cdff48c7a9fbce4c41f21ea"
+  },
+  "scope": "Yellow single-player four orientations, four appropriate scenarios, render60/150",
+  "nativeAttempts": 32,
+  "strictlyAcceptedRecords": 32,
+  "outcomes": {
+    "complete": 20,
+    "expectedMismatchDeath": 8,
+    "fullBudgetObservedSide": 4
+  },
+  "fullPlayerRows": 3296,
+  "fullPlayerFields": 38,
+  "fullStateFields": 19,
+  "exactPairs": 16,
+  "exactPlayerTickPairs": 1648,
+  "floatTolerance": 0,
+  "presentationExclusions": [],
+  "independentReview": {
+    "passed": true,
+    "rawFilesUnchanged": 284,
+    "sourceAndAppBindingsPassed": true,
+    "normalMutedTerminationAll32": true
+  },
+  "temporaryHostFailure": {
+    "path": "/Users/infi/Library/Caches/TCC130/yellow-slope-native-qa58-01/host-adapter-failure.json",
+    "cause": "First wrapper treated geometry(errors,details) tuple as errors; corrected unpacking only",
+    "nativeGameFailure": false,
+    "firstNativeRecordingReused": true,
+    "newLaunchesOnResumption": 31
+  },
+  "limits": [
+    "Diagnostic geometry and motion, not authored-level completion",
+    "Other colours/intermediatecaps/actors/localmultiplayer remain separate gates",
+    "No independent OS window observer in this batch; quiet/headless/background requests use retained verified helper",
+    "Copied prefab files and compile line retained; no historical before/after dependency receipts claimed"
+  ]
+}

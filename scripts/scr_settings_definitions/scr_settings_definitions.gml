@@ -38,11 +38,13 @@ function scr_settings_definitions() {
 		{ type: STYPE.TOGGLE,  menu: 0, col: 32,  row: 7, gvar: "decimalsettings",    label: "Decimal",        info: 14 },
 
 		// General settings (col 288, rows 0-7)
-		{ type: STYPE.MULTI,   menu: 0, col: 288, row: 0, gvar: "maxfps",             label: "Max FPS",        info: 30, max_val: 5,
+		{ type: STYPE.MULTI,   menu: 0, col: 288, row: 0, gvar: "renderfps",             label: "Max FPS",        info: 30, max_val: 5,
 		  options: ["60", "75", "100", "120", "144", "150"],
-		  gated: true,
 		  custom_cycle: true
 		},
+        { type: STYPE.ACTION, menu: 0, col: 544, row: 4, label: "Custom FPS", info: 30,
+          callback: settings_fps_open
+        },
 		{ type: STYPE.TOGGLE,  menu: 0, col: 288, row: 1, gvar: "objcountersettings", label: "OBJ Counter",    info: 39 },
 		{ type: STYPE.TOGGLE,  menu: 0, col: 288, row: 2, gvar: "casualmode",         label: "Casual Mode",    info: 40 },
 		{ type: STYPE.TOGGLE,  menu: 0, col: 288, row: 3, gvar: "autothumbnailsettings", label: "Auto-Thumbnail", info: 41,
@@ -135,7 +137,6 @@ function scr_settings_definitions() {
 			global.vignettesettings = 0; global.background = 0; global.stars = 0
 			global.itempar = 0; global.playerpar = 0; global.blockbackgroundsettings = 0
 			global.whiteblock = 0; global.visual3dsettings = 0; global.watershadersettings = 0
-			scr_savesettings()
 			if !achievement_earned("POTATO_SETTINGS") { achievement_award("POTATO_SETTINGS") }
 		  }
 		},
@@ -144,7 +145,6 @@ function scr_settings_definitions() {
 			global.vignettesettings = 1; global.background = 1; global.stars = 0
 			global.itempar = 1; global.playerpar = 0; global.blockbackgroundsettings = 1
 			global.whiteblock = 0; global.visual3dsettings = 0; global.watershadersettings = 1
-			scr_savesettings()
 		  }
 		},
 		{ type: STYPE.ACTION,  menu: 1, col: 560, row: 2, label: "Medium", info: -1,
@@ -152,7 +152,6 @@ function scr_settings_definitions() {
 			global.vignettesettings = 1; global.background = 1; global.stars = 1
 			global.itempar = 1; global.playerpar = 1; global.blockbackgroundsettings = 1
 			global.whiteblock = 1; global.visual3dsettings = 0; global.watershadersettings = 1
-			scr_savesettings()
 		  }
 		},
 		{ type: STYPE.ACTION,  menu: 1, col: 560, row: 3, label: "High",   info: -1,
@@ -160,7 +159,6 @@ function scr_settings_definitions() {
 			global.vignettesettings = 1; global.background = 1; global.stars = 2
 			global.itempar = 1; global.playerpar = 2; global.blockbackgroundsettings = 1
 			global.whiteblock = 2; global.visual3dsettings = 1; global.watershadersettings = 1
-			scr_savesettings()
 			if !achievement_earned("BENCHMARK") { achievement_award("BENCHMARK") }
 		  }
 		},

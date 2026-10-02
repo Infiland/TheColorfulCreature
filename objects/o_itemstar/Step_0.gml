@@ -1,5 +1,6 @@
-image_alpha -= 0.05* (60 / global.maxfps);
-speed += 0.25* (60 / global.maxfps)
+if (!timing_instance_step()) exit;
+image_alpha -= 0.05* (60 / TCC_SIM_HZ);
+speed += 0.25* (60 / TCC_SIM_HZ)
 
 if vib = 1 {
 var vb = global.controllervibrationsettings

@@ -1,5 +1,6 @@
 {
   "$GMExtension": "",
+  "ConfigValues":{"SteamAndroid":{"copyToTargets":"0"}},
   "%Name": "GMAdMob",
   "androidactivityinject": null,
   "androidclassname": "GMAdMob",

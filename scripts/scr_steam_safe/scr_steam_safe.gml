@@ -167,8 +167,12 @@ function tcc_steam_net_packet_receive() {
     if (platform_steam() && steam_initialised()) return steam_net_packet_receive();
     return false;
 }
-function tcc_steam_net_packet_send(_a0, _a1, _a2) {
-    if (platform_steam() && steam_initialised()) return steam_net_packet_send(_a0, _a1, _a2);
+function tcc_steam_net_packet_send(_a0, _a1, _a2, _a3 = undefined) {
+    if (platform_steam() && steam_initialised()) {
+        // Omission retains the extension's configured default packet protocol.
+        if (is_undefined(_a3)) return steam_net_packet_send(_a0, _a1, _a2);
+        return steam_net_packet_send(_a0, _a1, _a2, _a3);
+    }
     return false;
 }
 function tcc_steam_net_set_auto_accept_p2p_sessions(_a0) {

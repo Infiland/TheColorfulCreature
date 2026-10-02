@@ -30,3 +30,6 @@ if global.creditscurrency >= 100 { if !achievement_earned("A_SMALL_LOAN") { achi
 if global.creditscurrency >= 1000 { if !achievement_earned("MONEY_SAVER") { achievement_award("MONEY_SAVER") }}
 if global.creditscurrency >= 10000 { if !achievement_earned("THE_GLITTERING_RICH") { achievement_award("THE_GLITTERING_RICH") }}
 }
+
+ui_credits_border_color = c_white;
+timing_ui_register_target("credits-display");

@@ -3,22 +3,8 @@ draw_set_alpha(0.5)
 draw_rectangle_color(0,0,1024,768,c_black,c_black,c_black,c_black,false)
 draw_set_alpha(1)
 draw_set_font(global.deathfont)
-numSub = tcc_steam_ugc_num_subscribed_items();
-draw_text(16,700,"Current Number of\nDownloaded Maps: " + string(numSub))
-
-if mouse_wheel_up() {
-global.customlevelsscroll -= 60
-}
-if mouse_wheel_down() {
-global.customlevelsscroll += 60
-}
-
-if global.customlevelsscroll < 0 {
-global.customlevelsscroll = 0
-}
-if global.customlevelsscroll > global.customlevelsscrollmax {
-global.customlevelsscroll = global.customlevelsscrollmax
-}
+var _num_sub = variable_instance_exists(id, "numSub") ? numSub : 0;
+draw_text(16,700,"Current Number of\nDownloaded Maps: " + string(_num_sub))
 
 /*
 steam_list = ds_list_create();

@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if month > global.calendarcurrentmonth {
 locked = 1
 }

@@ -10,10 +10,10 @@ draw_set_alpha(image_alpha)
 depth = -10000
 draw_set_font(global.deathfont)
 if room != r_tale {
-	
+
 if room = r_leveleditor {
 if global.LEMode != 2 {
-exit;	
+exit;
 }}
 
 shake = 0
@@ -26,28 +26,24 @@ draw_set_color(c_red)
 }
 if global.hardmode = 0 {
 if global.endless = 0 {
-draw_sprite_ext(s_skull,0,15+random_range(shake,-shake),723+random_range(shake,-shake),0.38,0.38,0,c_white,image_alpha)	
-draw_text(room_width-room_width+64+random_range(shake,-shake),731+random_range(shake,-shake),string_hash_to_newline(string(global.deaths)))
+draw_sprite_ext(s_skull,0,15+timing_visual_random_range(shake,-shake),723+timing_visual_random_range(shake,-shake),0.38,0.38,0,c_white,image_alpha)
+draw_text(room_width-room_width+64+timing_visual_random_range(shake,-shake),731+timing_visual_random_range(shake,-shake),string_hash_to_newline(string(global.deaths)))
 draw_set_color(c_white)
 }}
 //Endless
 if global.hardmode = 0 {
 if global.endless = 1 {
-draw_sprite_ext(s_heart,0,15+random_range(shake,-shake),723+random_range(shake,-shake),0.38,0.38,0,c_white,image_alpha)
-draw_text(room_width-room_width+64+random_range(shake,-shake),731+random_range(shake,-shake),string_hash_to_newline(string(global.hardmodelives - global.deaths)))
+draw_sprite_ext(s_heart,0,15+timing_visual_random_range(shake,-shake),723+timing_visual_random_range(shake,-shake),0.38,0.38,0,c_white,image_alpha)
+draw_text(room_width-room_width+64+timing_visual_random_range(shake,-shake),731+timing_visual_random_range(shake,-shake),string_hash_to_newline(string(global.hardmodelives - global.deaths)))
 draw_set_color(c_white)
 }}
 
 //Hard mode
 if global.hardmode = 1 {
 if global.endless = 0 {
-draw_sprite_ext(s_heart,0,15+random_range(shake,-shake),723+random_range(shake,-shake),0.38,0.38,0,c_white,image_alpha)	
-draw_text(room_width-room_width+64+random_range(shake,-shake),731+random_range(shake,-shake),string_hash_to_newline(string(global.hardmodelives - global.deaths)))
+draw_sprite_ext(s_heart,0,15+timing_visual_random_range(shake,-shake),723+timing_visual_random_range(shake,-shake),0.38,0.38,0,c_white,image_alpha)
+draw_text(room_width-room_width+64+timing_visual_random_range(shake,-shake),731+timing_visual_random_range(shake,-shake),string_hash_to_newline((global.infinitelivessettings == 1 ? "Infinite" : string(global.hardmodelives - global.deaths))))
 draw_set_color(c_white)
-if global.infinitelivessettings = 0 {
-if global.deaths > global.hardmodelives - 1 {
-room_goto(r_hardmodedeathroom)
-}} else { global.hardmodelives = "Infinite" }
 }}
 
 //Legendary Skin Color Indicator

@@ -1,4 +1,3 @@
-y = lerp(y,ystart - global.workshopchallenges_scroll,0.1 * (60 / global.maxfps))
 
 if y < -90 { exit; }
 if y > 680 { exit; }
@@ -60,4 +59,3 @@ if missing_levels > 0 {
 
 draw_set_halign(fa_left)
 draw_set_color(c_white)
-

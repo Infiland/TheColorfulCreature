@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 switch(global.customizeselect) {
 default: object = global.skinnameobjectselected break;
 case(2): object = global.hatnameobjectselected break;

@@ -11,32 +11,97 @@ import zipfile
 from pathlib import Path
 import subprocess
 import sys
+from tcc_project import source_identity, read_yy, validate_events, artifact_identity
+from native_runner import run_native
+from diagnostic_host import prepare_quiet_bundle
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = '2026.0.0.23'
 IDE = '2026.0.0.16'
 
 
+def normalize_included_file_destinations(project):
+    """Match YYC's native resource copies to GameMaker's virtual file names.
+
+    The 2026 exporter normalizes spaces in the included-file lookup table but
+    leaves spaces in Xcode's Copy Game Files destinations. The files then exist
+    physically but cannot be opened by the sandboxed game. Only generated copy
+    destinations are changed; source data and user save paths remain untouched.
+    """
+    source = project.read_text()
+    changes = []
+
+    def phase(match):
+        block = match.group(0)
+        if 'Copy Game Files' not in block:
+            return block
+
+        def destination(field):
+            old = field.group(1)
+            new = old.lower().replace(' ', '_')
+            if old != new:
+                changes.append({'from': old, 'to': new})
+            return 'dstPath = "' + new + '";'
+
+        return re.sub(r'dstPath\s*=\s*"([^"\n]*)";', destination, block)
+
+    source = re.sub(r'[^\n]*Copy Game Files[^\n]*=\s*\{[^}]*\};', phase, source)
+    project.write_text(source)
+    return changes
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('configuration', choices=['Steam', 'Apple', 'MacAppStore', 'iOS', 'iOSCheck', 'Android', 'AndroidRelease', 'Check'])
+    parser.add_argument('configuration', choices=['Steam', 'Apple', 'MacAppStore', 'iOS', 'iOSCheck', 'Android', 'AndroidRelease', 'SteamAndroid', 'Check', 'QA'])
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--native-diagnostic', action='store_true')
+    parser.add_argument('--runtime', choices=['YYC', 'VM'], default='YYC',
+        help='Use VM for faster diagnostic iteration; release builds keep YYC')
     parser.add_argument('--self-check', action='store_true')
+    parser.add_argument('--headless', action='store_true', help='Use the native runner headless flag for --self-check')
+    parser.add_argument('--quiet-window', action='store_true', help='Package an isolated Mac QA/Check host that cannot take desktop focus')
     parser.add_argument('--mac-store-sign-embedded', action='store_true',
         help='Pre-sign generated Mac App Store dylibs with TCC_MAC_DEVELOPMENT_IDENTITY before archiving')
     parser.add_argument('--clean', action='store_true', help='Discard generated compiler caches before export')
+    parser.add_argument('--snapshot', action='store_true',
+        help='Compile an immutable copy in the output directory while other work continues')
     args = parser.parse_args()
+    if args.runtime == 'VM' and args.configuration not in ['Check', 'QA']:
+        parser.error('VM iteration is limited to Check and QA diagnostics')
     output = args.output.expanduser().absolute()
     if output.resolve() == ROOT or ROOT in output.resolve().parents:
         parser.error('Keep build outputs outside the checkout')
     if args.self_check and (not args.native_diagnostic or args.configuration != 'Check'):
         parser.error('--self-check requires Check --native-diagnostic')
+    if args.headless and not args.self_check:
+        parser.error('--headless requires --self-check')
+    if args.quiet_window and (not args.native_diagnostic or args.configuration not in ['QA', 'Check']):
+        parser.error('--quiet-window requires QA or Check --native-diagnostic')
     if args.self_check and output != output.resolve():
         parser.error('Use a real, non-symlink output path for Mac runtime checks, such as ~/Library/Caches/TCCPort/check')
     if args.mac_store_sign_embedded and args.configuration != 'MacAppStore':
         parser.error('--mac-store-sign-embedded requires MacAppStore')
     output.mkdir(parents=True, exist_ok=True)
+    compile_root = ROOT
+    if args.snapshot:
+        compile_root = output / 'source'
+        for attempt in range(3):
+            before = source_identity()
+            if compile_root.exists():
+                shutil.rmtree(compile_root)
+            compile_root.mkdir()
+            project = read_yy(ROOT / 'The Colorful Creature.yyp')
+            folders = {'datafiles', 'options'} | {r['id']['path'].split('/')[0] for r in project['resources']}
+            for folder in sorted(folders):
+                shutil.copytree(ROOT / folder, compile_root / folder,
+                                ignore=shutil.ignore_patterns('.git', '__pycache__'))
+            for name in ['The Colorful Creature.yyp', 'The Colorful Creature.resource_order']:
+                shutil.copy2(ROOT / name, compile_root / name)
+            if before == source_identity() == source_identity(compile_root):
+                break
+        else:
+            parser.error('Source kept changing during snapshot; retry at a stable edit boundary')
+    validate_events(compile_root)
     if args.clean:
         for name in ['cache', 'temp', 'export']:
             if (output / name).exists():
@@ -50,7 +115,8 @@ def main():
         parser.error('Set TCC_GM_USER to the licensed GameMaker user directory')
     if runtime.name != f'runtime-{RUNTIME}':
         parser.error(f'Tested runtime pin is {RUNTIME}')
-    target = {'iOS': 'ios', 'iOSCheck': 'ios', 'Android': 'android', 'AndroidRelease': 'android'}.get(args.configuration, 'mac')
+    target = {'iOS': 'ios', 'iOSCheck': 'ios', 'Android': 'android', 'AndroidRelease': 'android', 'SteamAndroid': 'android'}.get(args.configuration, 'mac')
+    steam_android = args.configuration == 'SteamAndroid'
     env = dict(os.environ, DOTNET_EnableHWIntrinsic='0')
     env.setdefault('DEVELOPER_DIR', '/Applications/Xcode-26.6.app/Contents/Developer')
     if target == 'android':
@@ -61,15 +127,18 @@ def main():
             env['TCC_UPLOAD_PASSWORD'] = subprocess.check_output(['security', 'find-generic-password',
                 '-s', 'The Colorful Creature Android upload 2026', '-a', 'com.infiland.tcc', '-w'], text=True).strip()
     igor = runtime / 'bin/igor/osx/arm64/Igor'
-    command = [str(igor), f'--project={ROOT / "The Colorful Creature.yyp"}', f'--rp={runtime}', f'--uf={user}',
+    command = [str(igor), f'--project={compile_root / "The Colorful Creature.yyp"}', f'--rp={runtime}', f'--uf={user}',
         f'--pf={os.environ.get("TCC_GM_PREFABS", "/Users/Shared/GameMakerStudio2-LTS2026/Prefabs")}',
-        '--runtime=YYC', f'--config={args.configuration}', f'--cache={output / "cache"}', f'--temp={output / "temp"}',
+        '--runtime=' + args.runtime, f'--config={args.configuration}', f'--cache={output / "cache"}', f'--temp={output / "temp"}',
         f'--of={product_dir / "TCC.zip"}', f'--tf={product_dir / "TCC.zip"}', '--ignorecache', '-j=1']
     if target == 'android':
-        command += ['--packagetype=aab', '--', target, 'Package']
+        command += ['--packagetype=' + ('apk' if steam_android else 'aab'), '--', target, 'Package']
     else:
         command += ['--', target, 'Compile']
-    evidence = {'configuration': args.configuration, 'IDE': IDE, 'runtime': RUNTIME,
+    build_identity = source_identity(compile_root)
+    evidence = {'configuration': args.configuration, 'IDE': IDE, 'runtime': RUNTIME, 'compiler_backend': args.runtime,
+        'source_identity': build_identity,
+        'source_snapshot': str(compile_root) if args.snapshot else None,
         'baseline': '4b6e942c', 'xcode': subprocess.check_output(['xcodebuild', '-version'], env=env, text=True).strip(),
         'compiler_workaround': 'DOTNET_EnableHWIntrinsic=0 and -j=1; not isolated',
         'device_tests': 'not performed', 'store_status': 'not uploaded'}
@@ -84,16 +153,39 @@ def main():
         (output / 'evidence.json').write_text(json.dumps(evidence, indent=2) + '\n')
         recovered = bool(result.returncode and recoverable_error and recoverable_error in log_text)
         if (result.returncode or failed) and not recovered:
-            print('\n'.join(log_text.splitlines()[-25:]))
+            diagnostics = [line for line in log_text.splitlines()
+                           if re.search(r'Error :|error:|Undefined symbols|Exception:', line)]
+            print('\n'.join(diagnostics[:8] + log_text.splitlines()[-10:]))
             sys.exit(result.returncode or 1)
         return recovered
+
+    def record_native(app):
+        if args.quiet_window:
+            evidence['quiet_launch_library'] = prepare_quiet_bundle(app)
+        executable = app / 'Contents/MacOS/The_Colorful_Creature'
+        evidence['executable_sha256'] = hashlib.sha256(executable.read_bytes()).hexdigest()
+        evidence['artifact_identity'] = artifact_identity(app)
+        # Preserve the finished package identity even if a queued self-check is
+        # cancelled or rejected by the testing pause guard before it launches.
+        (output / 'evidence.json').write_text(json.dumps(evidence, indent=2) + '\n')
+        if args.self_check:
+            result = run_native(executable, output / 'self-check.log', 45, env=env, headless=args.headless)
+            evidence['self_check_process'] = result
+            passed = result['normalRuntimeEnd'] and 'TCC_PORT_SELF_CHECK_PASS' in (output / 'self-check.log').read_text()
+            evidence['self_check'] = passed
+            (output / 'evidence.json').write_text(json.dumps(evidence, indent=2) + '\n')
+            if not passed:
+                raise RuntimeError(f'Self-check failed; inspect {output / "self-check.log"}')
+        (output / 'evidence.json').write_text(json.dumps(evidence, indent=2) + '\n')
     if args.configuration == 'MacAppStore':
-        run(['sh', str(ROOT / 'extensions/TCCGameController/build.sh'), '--self-check'], 'controllers.log')
+        run(['sh', str(compile_root / 'extensions/TCCGameController/build.sh'), '--self-check'], 'controllers.log')
     recovered_android_signing = run(command, 'compile.log',
         "Cannot convert '' to File." if target == 'android' else None)
+    if source_identity(compile_root) != build_identity:
+        raise RuntimeError('Project source changed during compiler export; repeat with a stable source snapshot')
     if target == 'android':
         extension_options = json.loads((output / 'cache/ExtensionOptions.json').read_text())
-        admob = next(e['Options'] for e in extension_options['Extensions'] if e['Name'] == 'GMAdMob')
+        admob = next((e['Options'] for e in extension_options['Extensions'] if e['Name'] == 'GMAdMob'), {})
         if args.configuration == 'AndroidRelease':
             expected_ads = {
                 'Android_AppID': 'ca-app-pub-7108130195717311~2960588105',
@@ -105,11 +197,15 @@ def main():
                 if admob[name]['Value'] != value:
                     raise RuntimeError(f'AndroidRelease has the wrong {name} ad identifier')
             evidence['production_ad_ids'] = expected_ads
-        gradle_root = output / 'cache' / args.configuration / args.configuration
-    if target == 'android' and recovered_android_signing:
+        gradle_root = output / 'cache' / target / args.configuration
+        android_options = read_yy(compile_root / 'options/android/options_android.yy')
+        android_options.update(android_options.get('ConfigValues', {}).get(args.configuration, {}))
+        package_name = '.'.join(android_options['option_android_package_' + key] for key in ['domain', 'company', 'product'])
+        module = gradle_root / package_name
+    if target == 'android' and (recovered_android_signing or steam_android):
         # Igor leaves the CLI keystore settings blank in Gradle. Complete the already
         # compiled project using environment-backed signing; never write the password.
-        gradle = gradle_root / 'com.infiland.tcc/build.gradle'
+        gradle = module / 'build.gradle'
         if not gradle.is_file():
             raise RuntimeError(f'Android signing recovery has no Gradle project: {gradle}')
         source = gradle.read_text()
@@ -120,35 +216,90 @@ def main():
             'keyPassword ""': 'keyPassword System.getenv("TCC_UPLOAD_PASSWORD")',
         }
         for old, new in replacements.items():
+            if not recovered_android_signing:
+                break
             if source.count(old) != 1:
                 raise RuntimeError(f'Unexpected Android signing template: {old}')
             source = source.replace(old, new)
-        # AGP 8.13 cannot build an AAB while GameMaker's APK ABI splits are enabled.
-        source, split_count = re.subn(r'(splits\s*\{\s*abi\s*\{\s*enable\s+)true',
+        # AAB needs no APK ABI splits. Steam's Android depot also needs one
+        # installable universal APK, rather than separate per-ABI APKs.
+        source, split_count = re.subn(r'(splits\s*\{\s*abi\s*\{\s*enable\s+)(?:true|false)',
             r'\1false', source, count=1)
         if split_count != 1:
             raise RuntimeError('Expected exactly one Android ABI split setting')
         gradle.write_text(source)
-        run([str(gradle_root / 'com.infiland.tcc/gradle/gradlew'), '-p', str(gradle_root),
-            'clean', ':com.infiland.tcc:bundleRelease', '--no-daemon'], 'gradle-package.log')
+        task = 'assembleRelease' if steam_android else 'bundleRelease'
+        run([str(module / 'gradle/gradlew'), '-p', str(gradle_root),
+            'clean', ':' + package_name + ':' + task, '--no-daemon'], 'gradle-package.log')
     if target == 'android':
-        bundles = list((gradle_root / 'com.infiland.tcc/build/outputs/bundle/release').glob('*.aab'))
+        android_version = android_options['option_android_version']
+        suffix = 'apk' if steam_android else 'aab'
+        artifact_folder = 'apk' if steam_android else 'bundle'
+        bundles = list((module / f'build/outputs/{artifact_folder}/release').glob('*.' + suffix))
         if len(bundles) != 1:
-            raise RuntimeError(f'Expected one signed AAB, found {bundles}')
-        artifact = product_dir / 'TCC-1.2.0-1002000.aab'
+            raise RuntimeError(f'Expected one signed {suffix.upper()}, found {bundles}')
+        artifact = product_dir / f'TCC-{args.configuration}-{android_version}.{suffix}'
         shutil.copy2(bundles[0], artifact)
-        evidence['android_aab'] = {'path': str(artifact),
+        evidence['android_' + suffix] = {'path': str(artifact), 'package': package_name,
             'sha256': hashlib.sha256(artifact.read_bytes()).hexdigest()}
+        if steam_android:
+            evidence['steam_android'] = {'services': 'local only', 'ads_and_google_auth': 'disabled',
+                'native_steam_sdk': 'not available in installed extension',
+                'steam_frame_device_compatibility': 'not tested',
+                'depot_layout': 'Place this APK at the top level of the Android depot',
+                'packaging_reference': 'https://partner.steamgames.com/doc/steamhardware/steamframe/apk_upload'}
         evidence['compile.log']['recovered_empty_signing_config'] = recovered_android_signing
         (output / 'evidence.json').write_text(json.dumps(evidence, indent=2) + '\n')
         return
+    if target == 'mac' and args.runtime == 'VM':
+        # VM Compile supplies the bytecode/assets zip rather than an Xcode
+        # project. Package that unchanged payload with the pinned native runner.
+        app = output / 'DerivedData/Build/Products/Release/The_Colorful_Creature.app'
+        if app.exists():
+            shutil.rmtree(app)
+        shutil.copytree(runtime / 'mac/YoYo Runner.app', app)
+        resources = app / 'Contents/Resources'
+        with zipfile.ZipFile(product_dir / 'game.zip') as archive:
+            for entry in archive.infolist():
+                if entry.is_dir():
+                    continue
+                relative = Path(entry.filename)
+                if relative.parts[0] != 'assets' or '..' in relative.parts:
+                    raise RuntimeError(f'Unexpected VM payload path: {entry.filename}')
+                destination = resources.joinpath(*relative.parts[1:])
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_bytes(archive.read(entry))
+        for filename in ['game.ini', 'options.ini']:
+            path = resources / filename
+            if path.is_file():
+                path.write_text(re.sub(r'^Splash=.*$', 'Splash=""', path.read_text(), flags=re.MULTILINE))
+        mac_options = read_yy(compile_root / 'options/mac/options_mac.yy')
+        mac_options.update(mac_options.get('ConfigValues', {}).get(args.configuration, {}))
+        plist_path = app / 'Contents/Info.plist'
+        plist = plistlib.loads(plist_path.read_bytes())
+        executable = app / 'Contents/MacOS' / plist['CFBundleExecutable']
+        executable.rename(executable.with_name('The_Colorful_Creature'))
+        plist.update(CFBundleExecutable='The_Colorful_Creature',
+                     CFBundleIdentifier=mac_options['option_mac_app_id'],
+                     CFBundleName=mac_options['option_mac_display_name'],
+                     CFBundleDisplayName=mac_options['option_mac_display_name'], NSAppSleepDisabled=True)
+        plist_path.write_bytes(plistlib.dumps(plist))
+        subprocess.run(['codesign', '--force', '--deep', '--sign', '-', str(app)], check=True,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+        evidence['native_runner'] = {'path': str(runtime / 'mac/YoYo Runner.app'),
+                                     'diagnostic_package': str(app)}
+        record_native(app)
+        return
     project_dir = product_dir / 'The_Colorful_Creature'
+    if target in ['mac', 'ios']:
+        evidence['included_file_destination_repairs'] = normalize_included_file_destinations(
+            project_dir / 'The_Colorful_Creature.xcodeproj/project.pbxproj')
     if target == 'mac':
         support = project_dir / 'The_Colorful_Creature/Supporting Files'
         # GameMaker 2026.0.0.23 exports its stock green icon.icns even when
         # option_mac_icon_png points at the project's shared artwork.
-        icon_source = ROOT / 'options/shared/icon.png'
-        ios_icon_source = ROOT / 'options/ios/icons/itunes/itunes_1024.png'
+        icon_source = compile_root / 'options/shared/icon.png'
+        ios_icon_source = compile_root / 'options/ios/icons/itunes/itunes_1024.png'
         if icon_source.read_bytes() != ios_icon_source.read_bytes():
             raise RuntimeError('The Mac and iOS source icons no longer match')
         iconset = output / 'mac-app-icon.iconset'
@@ -202,7 +353,7 @@ def main():
         frameworks = project_dir / 'Fw'
         frameworks.mkdir(exist_ok=True)
         for name in ['GMAdMob', 'GMGameCenter']:
-            with zipfile.ZipFile(ROOT / 'extensions' / name / 'iOSSourceFromMac' / f'{name}.zip') as archive:
+            with zipfile.ZipFile(compile_root / 'extensions' / name / 'iOSSourceFromMac' / f'{name}.zip') as archive:
                 archive.extractall(frameworks)
         podfile = project_dir / 'Podfile'
         podfile.write_text(re.sub(r'https://github.com/CocoaPods/Specs(?:\.git)?', 'https://cdn.cocoapods.org/', podfile.read_text()))
@@ -213,6 +364,12 @@ def main():
                  '-scheme', 'The_Colorful_Creature', '-configuration', 'Release', '-sdk', 'iphonesimulator',
                  '-destination', 'generic/platform=iOS Simulator', '-derivedDataPath', str(output / 'DerivedData'),
                  'ARCHS=arm64', 'CODE_SIGNING_ALLOWED=NO', 'build'], 'native.log')
+            app = output / 'DerivedData/Build/Products/Release-iphonesimulator/The_Colorful_Creature.app'
+            info = plistlib.loads((app / 'Info.plist').read_bytes())
+            evidence['ios_simulator_app'] = str(app)
+            evidence['executable_sha256'] = hashlib.sha256((app / info['CFBundleExecutable']).read_bytes()).hexdigest()
+            evidence['artifact_identity'] = artifact_identity(app)
+            (output / 'evidence.json').write_text(json.dumps(evidence, indent=2) + '\n')
             return
         if target != 'mac':
             parser.error('--native-diagnostic supports Apple exports only')
@@ -238,21 +395,7 @@ def main():
             if steam:
                 raise RuntimeError(f'Non-Steam package contains Steam libraries: {steam}')
             evidence['steam_libraries'] = 'absent'
-        executable = app / 'Contents/MacOS/The_Colorful_Creature'
-        evidence['executable_sha256'] = hashlib.sha256(executable.read_bytes()).hexdigest()
-        if args.self_check:
-            try:
-                with (output / 'self-check.log').open('w') as log:
-                    result = subprocess.run([str(executable)], env=env, stdout=log, stderr=subprocess.STDOUT, timeout=45)
-                passed = result.returncode == 0 and 'TCC_PORT_SELF_CHECK_PASS' in (output / 'self-check.log').read_text()
-            except subprocess.TimeoutExpired:
-                passed = False
-                evidence['self_check_timeout'] = True
-            evidence['self_check'] = passed
-            (output / 'evidence.json').write_text(json.dumps(evidence, indent=2) + '\n')
-            if not passed:
-                raise RuntimeError(f'Self-check failed; inspect {output / "self-check.log"}')
-        (output / 'evidence.json').write_text(json.dumps(evidence, indent=2) + '\n')
+        record_native(app)
 
 
 if __name__ == '__main__':

@@ -1,1 +1,1 @@
-alarm[0] = 20 * (global.maxfps/60)
+alarm[0] = 20 * (TCC_SIM_HZ/60)

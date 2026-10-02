@@ -16,3 +16,6 @@ i = irandom(10000)
 if i != 420 {
 text = "The Colorful Creature"
 } else { text = "Teh Colourful Creature" }
+
+ui_draw_texty = texty;
+timing_ui_register_target("main-header");

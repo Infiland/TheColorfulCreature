@@ -1,15 +1,13 @@
 function LoadJSONFromFile(_filename) {
-    if (!is_string(_filename) || !file_exists(_filename)) return undefined;
-    var _buffer = buffer_load(_filename);
-    if (_buffer < 0) return undefined;
-    var _json = undefined;
+    // Preserve the DS-map adapter used by older callers, while sharing the safe
+    // terminated/rewound UTF-8 reader with ordinary JSON and legacy NUL files.
+    var _document = level_parse_json_file(_filename);
+    if (is_undefined(_document)) return undefined;
     try {
-        var _string = buffer_read(_buffer, buffer_string);
-        _json = json_decode(_string);
-        if (!(is_real(_json) || is_handle(_json)) || !ds_exists(_json, ds_type_map)) _json = undefined;
+        var _map = json_decode(json_stringify(_document));
+        if ((is_real(_map) || is_handle(_map)) && ds_exists(_map, ds_type_map)) return _map;
     } catch (_error) {
-        show_debug_message("Could not read " + _filename + ": " + string(_error));
+        show_debug_message("Could not decode " + _filename + ": " + string(_error));
     }
-    buffer_delete(_buffer);
-    return _json;
+    return undefined;
 }

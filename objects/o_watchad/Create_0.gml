@@ -1,3 +1,3 @@
-if os_type = os_gxgames {
+if !platform_admob() {
 	instance_destroy()	
 }

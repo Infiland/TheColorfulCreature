@@ -1,8 +1,9 @@
-function scr_savesettings() {
-	var directory = directory_set("//Save Files/")
+function scr_savesettings(_directory = undefined) {
+	scr_settings_validate();
+	var directory = is_undefined(_directory) ? directory_set("//Save Files/") : _directory;
+	if (!directory_exists(directory)) directory_create(directory);
 	
-	if (file_exists(directory + "Settings.sav")) file_delete(directory + "Settings.sav");
-	ini_open(directory + "Settings.sav");
+	scr_save_begin(directory + "Settings.sav");
 	//Settings
 	ini_write_real("Settings","Star Settings",global.stars);
 	ini_write_real("Settings","White Block Settings",global.whiteblock);
@@ -23,7 +24,7 @@ function scr_savesettings() {
 	ini_write_real("Settings","Troop Voiceline",global.troopvoicelinesettings);
 	ini_write_real("Settings","Water Shader",global.watershadersettings);
 	ini_write_real("Settings","Gun Visibility",global.gunvisibilitysettings);
-	ini_write_real("Settings","Max FPS",global.maxfps);
+	ini_write_real("Settings","Max FPS",global.renderfps);
 	ini_write_real("Settings","Skip Level Hold",global.skiplevelholdsettings);
 	ini_write_real("Settings","Old GS",global.oldGSsettings);
 	ini_write_real("Settings","OBJ Counter",global.objcountersettings);
@@ -39,6 +40,8 @@ function scr_savesettings() {
 	ini_write_real("Settings","Skins Autoscale",global.customskinautoscale)
 	ini_write_real("Settings","Fullscreen",global.fullscreen);
 	ini_write_real("Settings","No Ads in Menu",global.noadsinmenusettings)
+	ini_write_real("Settings","Items Autoscale",global.customitemautoscale);
+	ini_write_real("Settings","Dev Commentary",global.devcommentarysettings);
 	//Controls Config
 	ini_write_string("Controls","Restart",global.controlsrestart);
 	ini_write_string("Controls","Skip Level",global.controlsskiplevel);
@@ -52,7 +55,7 @@ function scr_savesettings() {
 	ini_write_real("Settings","Net Max Players",global.netmaxplayers)
 	//Controller Button Bindings
 	gamepad_remap_save();
-	ini_close();
+	return scr_save_finish(directory + "Settings.sav");
 
 
 }

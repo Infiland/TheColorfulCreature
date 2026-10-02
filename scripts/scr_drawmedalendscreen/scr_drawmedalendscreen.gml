@@ -1,11 +1,11 @@
 function scr_drawmedalendscreen(){
 	
+var dmedal = global.DiamondMedalTimeChallenge
 if global.workshop = 1 {
 	if (!variable_global_exists("workshopchallenge") || global.workshopchallenge != 1) {
-		global.DiamondMedalTimeChallenge = global.LEDiamondMedalTime
+		dmedal = global.LEDiamondMedalTime
 	}
 }
-var dmedal = global.DiamondMedalTimeChallenge
 	
 var gmedal = dmedal * 1.1
 var smedal = gmedal * 1.2

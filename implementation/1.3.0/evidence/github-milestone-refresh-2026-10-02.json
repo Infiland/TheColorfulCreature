@@ -1,0 +1,144 @@
+{
+  "queriedAt": "2026-10-02T06:24:43.430878+00:00",
+  "repository": "Infiland/TheColorfulCreature",
+  "milestone": {
+    "number": 2,
+    "title": "TCC Release 1.3.0",
+    "state": "open",
+    "open_issues": 1,
+    "closed_issues": 13,
+    "html_url": "https://github.com/Infiland/TheColorfulCreature/milestone/2"
+  },
+  "issues": [
+    {
+      "number": 121,
+      "title": "Add Android support on Steam",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-10-01T23:00:42Z",
+      "updated_at": "2026-10-01T23:00:42Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/121"
+    },
+    {
+      "number": 98,
+      "title": "Add true online multiplayer",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-03-21T08:49:35Z",
+      "updated_at": "2026-03-21T08:49:35Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/98"
+    },
+    {
+      "number": 93,
+      "title": "Add MacOS Support",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-10-01T22:45:28Z",
+      "updated_at": "2026-10-01T22:45:28Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/93"
+    },
+    {
+      "number": 77,
+      "title": "Return Android Support",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-10-01T22:45:27Z",
+      "updated_at": "2026-10-01T22:45:27Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/77"
+    },
+    {
+      "number": 58,
+      "title": "Skin Trade Ups from Steam's Inventory",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-04-01T00:02:49Z",
+      "updated_at": "2026-04-01T00:02:49Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/58"
+    },
+    {
+      "number": 51,
+      "title": "Enemy Troop Code-Refactor",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-10-01T20:25:41Z",
+      "updated_at": "2026-10-01T20:25:41Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/51"
+    },
+    {
+      "number": 38,
+      "title": "Level Select Code-Refactor",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-09-30T18:02:01Z",
+      "updated_at": "2026-09-30T18:02:01Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/38"
+    },
+    {
+      "number": 34,
+      "title": "Custom Skins from files",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-09-30T20:38:22Z",
+      "updated_at": "2026-09-30T20:38:22Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/34"
+    },
+    {
+      "number": 33,
+      "title": "Code Refactor for Settings",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-10-01T20:28:55Z",
+      "updated_at": "2026-10-01T20:28:55Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/33"
+    },
+    {
+      "number": 32,
+      "title": "Controller Customization",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-10-01T21:23:28Z",
+      "updated_at": "2026-10-01T21:23:28Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/32"
+    },
+    {
+      "number": 31,
+      "title": "Special Levels",
+      "state": "open",
+      "state_reason": null,
+      "closed_at": null,
+      "updated_at": "2024-04-20T01:08:37Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/31"
+    },
+    {
+      "number": 25,
+      "title": "Commentary Mode DLC",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-10-01T20:30:44Z",
+      "updated_at": "2026-10-01T20:30:44Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/25"
+    },
+    {
+      "number": 14,
+      "title": "Code Refactor with how the game loads levels from files",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-10-01T20:30:33Z",
+      "updated_at": "2026-10-01T20:30:33Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/14"
+    },
+    {
+      "number": 13,
+      "title": "Slopes",
+      "state": "closed",
+      "state_reason": "completed",
+      "closed_at": "2026-10-01T20:25:30Z",
+      "updated_at": "2026-10-01T20:25:30Z",
+      "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/13"
+    }
+  ],
+  "mutationsThisRefresh": 0,
+  "limits": [
+    "Issue closure records retain their stated implementation and release-gate scope. This state refresh is not additional gameplay or platform evidence."
+  ]
+}

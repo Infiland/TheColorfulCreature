@@ -1,0 +1,317 @@
+{
+  "date": "2026-10-02",
+  "status": "PASS_ALL_SIX_CAPS_AND_FULL_GAMEPLAY_COMPARISONS",
+  "baseEvidence": "lunar-full-exit-qa58.json",
+  "sourceSha256": "cc00e83ffd8450c11a2e48f81a78049549e6a2d1631bbec2d6446ba456b52655",
+  "completedCapsIncludingBaseline": [
+    60,
+    75,
+    100,
+    120,
+    144,
+    150
+  ],
+  "completedAdditionalRuns": [
+    {
+      "fps": 75,
+      "run": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-other-caps01/75",
+      "returned": true,
+      "status": "complete",
+      "errors": [],
+      "qualifiesAsLunarCompletion": true,
+      "final": {
+        "frame": 10870.0,
+        "simulationSeconds": 181.1667,
+        "x": 175.1125,
+        "y": 558.1763,
+        "vsp": 8.404,
+        "grounded": false,
+        "color": 0.0,
+        "gravity": 0.172,
+        "walkSpeed": 2.8,
+        "ammo": 0.0,
+        "keysRemaining": 0.0,
+        "water": 1.0,
+        "zeroGravity": 0.0,
+        "challengeTime": 181.18333333336966,
+        "challengeDeaths": 0.0,
+        "challengeRunId": 19.0,
+        "challengePractice": false
+      }
+    },
+    {
+      "fps": 100,
+      "run": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-other-caps01/100",
+      "returned": true,
+      "status": "complete",
+      "errors": [],
+      "qualifiesAsLunarCompletion": true,
+      "final": {
+        "frame": 10870.0,
+        "simulationSeconds": 181.1667,
+        "x": 175.1125,
+        "y": 558.1763,
+        "vsp": 8.404,
+        "grounded": false,
+        "color": 0.0,
+        "gravity": 0.172,
+        "walkSpeed": 2.8,
+        "ammo": 0.0,
+        "keysRemaining": 0.0,
+        "water": 1.0,
+        "zeroGravity": 0.0,
+        "challengeTime": 181.18333333336966,
+        "challengeDeaths": 0.0,
+        "challengeRunId": 19.0,
+        "challengePractice": false
+      }
+    },
+    {
+      "fps": 120,
+      "run": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-other-caps01/120",
+      "returned": true,
+      "status": "complete",
+      "errors": [],
+      "qualifiesAsLunarCompletion": true,
+      "final": {
+        "frame": 10870.0,
+        "simulationSeconds": 181.1667,
+        "x": 175.1125,
+        "y": 558.1763,
+        "vsp": 8.404,
+        "grounded": false,
+        "color": 0.0,
+        "gravity": 0.172,
+        "walkSpeed": 2.8,
+        "ammo": 0.0,
+        "keysRemaining": 0.0,
+        "water": 1.0,
+        "zeroGravity": 0.0,
+        "challengeTime": 181.18333333336966,
+        "challengeDeaths": 0.0,
+        "challengeRunId": 19.0,
+        "challengePractice": false
+      }
+    },
+    {
+      "fps": 144,
+      "run": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-other-caps01/144",
+      "returned": true,
+      "status": "complete",
+      "errors": [],
+      "qualifiesAsLunarCompletion": true,
+      "final": {
+        "frame": 10870.0,
+        "simulationSeconds": 181.1667,
+        "x": 175.1125,
+        "y": 558.1763,
+        "vsp": 8.404,
+        "grounded": false,
+        "color": 0.0,
+        "gravity": 0.172,
+        "walkSpeed": 2.8,
+        "ammo": 0.0,
+        "keysRemaining": 0.0,
+        "water": 1.0,
+        "zeroGravity": 0.0,
+        "challengeTime": 181.18333333336966,
+        "challengeDeaths": 0.0,
+        "challengeRunId": 19.0,
+        "challengePractice": false
+      }
+    },
+    {
+      "fps": 150,
+      "run": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-other-caps01/150",
+      "returned": true,
+      "status": "complete",
+      "errors": [],
+      "qualifiesAsLunarCompletion": true,
+      "final": {
+        "frame": 10870.0,
+        "simulationSeconds": 181.1667,
+        "x": 175.1125,
+        "y": 558.1763,
+        "vsp": 8.404,
+        "grounded": false,
+        "color": 0.0,
+        "gravity": 0.172,
+        "walkSpeed": 2.8,
+        "ammo": 0.0,
+        "keysRemaining": 0.0,
+        "water": 1.0,
+        "zeroGravity": 0.0,
+        "challengeTime": 181.18333333336966,
+        "challengeDeaths": 0.0,
+        "challengeRunId": 19.0,
+        "challengePractice": false
+      }
+    }
+  ],
+  "pendingCaps": [],
+  "pendingAfterCapReplays": [
+    "Dynamic seed/timing variation"
+  ],
+  "runtimeControl": {
+    "rootOwnedSession": 73623,
+    "worker": "/private/tmp/tcc_lunar_qa58_other_caps.py",
+    "output": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-other-caps01",
+    "gate": "/Users/infi/Library/Caches/TCC130/testing-control.json",
+    "nativeConcurrency": 1,
+    "headless": true,
+    "muted": true,
+    "completed": true,
+    "exitCode": 0,
+    "gateEnabledAfterBatch": false
+  },
+  "limit": "Configured render cap is not observed delivery rate. Heavy diagnostic recording costs are included; no overall performance/hardware compatibility claim.",
+  "independentComparisons": [
+    {
+      "renderCap": 75,
+      "report": {
+        "path": "/private/tmp/tcc-lunar-qa58-render75-comparison.json",
+        "sha256": "7586d3050a2e375f0f7dfc2105fbe7540b7e74f5fdc1b5dfc6d5f12ab9d41fe3"
+      },
+      "allFullPlayerRowsEqual": 10871,
+      "playerFields": 38,
+      "allTroopRowsEqual": 434840,
+      "floatTolerance": 0,
+      "presentationExclusions": [],
+      "literalStateDifferences": [
+        {
+          "path": "$.events[1].world.nativeClock.nativeElapsedUs",
+          "baseline": 60831.0,
+          "candidate": 67670.0,
+          "signedDelta": 6839.0
+        },
+        {
+          "path": "$.events[1].world.nativeClock.renderCap",
+          "baseline": 60.0,
+          "candidate": 75.0,
+          "signedDelta": 15.0
+        }
+      ],
+      "gameplayStateDifferences": 0,
+      "rawAndSaveFilesUnchanged": true,
+      "observedRenderFps": 34.02291480405764
+    },
+    {
+      "renderCap": 100,
+      "report": {
+        "path": "/private/tmp/tcc-lunar-qa58-render100-comparison.json",
+        "sha256": "c216abed1909933dea66af0d8d5fc7747654e6a5c77dc7007c3a22bb5c3805c9"
+      },
+      "allFullPlayerRowsEqual": 10871,
+      "playerFields": 38,
+      "allTroopRowsEqual": 434840,
+      "floatTolerance": 0,
+      "presentationExclusions": [],
+      "literalStateDifferences": [
+        {
+          "path": "$.events[1].world.nativeClock.nativeElapsedUs",
+          "baseline": 60831.0,
+          "candidate": 69526.0,
+          "signedDelta": 8695.0
+        },
+        {
+          "path": "$.events[1].world.nativeClock.renderCap",
+          "baseline": 60.0,
+          "candidate": 100.0,
+          "signedDelta": 40.0
+        }
+      ],
+      "gameplayStateDifferences": 0,
+      "rawAndSaveFilesUnchanged": true,
+      "observedRenderFps": 36.6141971645513
+    },
+    {
+      "renderCap": 120,
+      "report": {
+        "path": "/private/tmp/tcc-lunar-qa58-render120-comparison.json",
+        "sha256": "0c274f15af4b33dc912872ac195bff9af800e61a94e115a4a945da378be3cf4a"
+      },
+      "allFullPlayerRowsEqual": 10871,
+      "playerFields": 38,
+      "allTroopRowsEqual": 434840,
+      "floatTolerance": 0,
+      "presentationExclusions": [],
+      "literalStateDifferences": [
+        {
+          "path": "$.events[1].world.nativeClock.nativeElapsedUs",
+          "baseline": 60831.0,
+          "candidate": 63284.0,
+          "signedDelta": 2453.0
+        },
+        {
+          "path": "$.events[1].world.nativeClock.renderCap",
+          "baseline": 60.0,
+          "candidate": 120.0,
+          "signedDelta": 60.0
+        }
+      ],
+      "gameplayStateDifferences": 0,
+      "rawAndSaveFilesUnchanged": true,
+      "observedRenderFps": 42.803402907155615
+    },
+    {
+      "renderCap": 144,
+      "report": {
+        "path": "/private/tmp/tcc-lunar-qa58-render144-comparison.json",
+        "sha256": "cd1f282615e3c356c5d18ff7e885916fc458114e3d0f017a20b092446c9d6f68"
+      },
+      "allFullPlayerRowsEqual": 10871,
+      "playerFields": 38,
+      "allTroopRowsEqual": 434840,
+      "floatTolerance": 0,
+      "presentationExclusions": [],
+      "literalStateDifferences": [
+        {
+          "path": "$.events[1].world.nativeClock.nativeElapsedUs",
+          "baseline": 60831.0,
+          "candidate": 65539.0,
+          "signedDelta": 4708.0
+        },
+        {
+          "path": "$.events[1].world.nativeClock.renderCap",
+          "baseline": 60.0,
+          "candidate": 144.0,
+          "signedDelta": 84.0
+        }
+      ],
+      "gameplayStateDifferences": 0,
+      "rawAndSaveFilesUnchanged": true,
+      "observedRenderFps": 42.99876275204187
+    },
+    {
+      "renderCap": 150,
+      "report": {
+        "path": "/private/tmp/tcc-lunar-qa58-render150-comparison.json",
+        "sha256": "4e81dfc4de728a6a544b8153c5439903b74fafc8b3c07e7027a5959f113ae325"
+      },
+      "allFullPlayerRowsEqual": 10871,
+      "playerFields": 38,
+      "allTroopRowsEqual": 434840,
+      "floatTolerance": 0,
+      "presentationExclusions": [],
+      "literalStateDifferences": [
+        {
+          "path": "$.events[1].world.nativeClock.nativeElapsedUs",
+          "baseline": 60831.0,
+          "candidate": 64245.0,
+          "signedDelta": 3414.0
+        },
+        {
+          "path": "$.events[1].world.nativeClock.renderCap",
+          "baseline": 60.0,
+          "candidate": 150.0,
+          "signedDelta": 90.0
+        }
+      ],
+      "gameplayStateDifferences": 0,
+      "rawAndSaveFilesUnchanged": true,
+      "observedRenderFps": 41.4596321819987
+    }
+  ],
+  "medalTarget": "130-second target remains unchanged. The verified route takes181.183333seconds; an under-target route is not demonstrated.",
+  "currentRetryEvidence": "lunar-retry-qa58.json"
+}

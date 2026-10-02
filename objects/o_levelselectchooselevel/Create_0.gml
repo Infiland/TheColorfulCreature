@@ -6,6 +6,11 @@ is_challenge = false
 challenge_id = -1
 declarecustombutton()
 width = 3
-lockedtext = "???"
+text = string(level)
+lockedtext = text
 
 image_speed = 0;
+level_dir = "";
+sequence_index = 0;
+
+catalog_index = -1;

@@ -1,11 +1,12 @@
+if (!timing_instance_step()) exit;
 /// @description Keys presses
 if global.writingmode = 1 {
-if(keyboard_check(vk_anykey) and string_length(text) < 256) {
+if(timing_keyboard_down(vk_anykey) and string_length(text) < 256) {
 text += string(keyboard_string)
 keyboard_string = "";
 }
 
-if keyboard_check(vk_backspace) {
+if timing_keyboard_down(vk_backspace) {
 //delete_timer -= 1 * floor(60 / global.maxfps)
 delete_timer -= 1 * (144 / global.maxfps)
 //delete_timer = 1 + floor(60 / global.maxfps)
@@ -17,7 +18,7 @@ text = string_delete(text,string_length(text),1)
 keyboard_string = "";
 }
 
-/*if keyboard_check_pressed(vk_backspace) {
+/*if timing_keyboard_pressed(vk_backspace) {
 text = string_delete(text,string_length(text),1)
 keyboard_string = "";
 
@@ -29,7 +30,7 @@ keyboard_string = "";
 if delete_timer != 2 {
 delete_timer += 1;
 }*/
-if keyboard_check_pressed(vk_enter) {
+if timing_keyboard_pressed(vk_enter) {
 global.writingmode = 0
 }
 global.leveleditorstring = text

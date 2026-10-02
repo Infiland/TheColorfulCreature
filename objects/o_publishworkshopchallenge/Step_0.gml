@@ -1,4 +1,5 @@
-if keyboard_check_pressed(vk_escape) {
+if (!timing_instance_step()) exit;
+if timing_keyboard_pressed(vk_escape) {
 	instance_destroy()
 	exit
 }

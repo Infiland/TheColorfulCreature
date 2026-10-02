@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if randomketchup2 = 0 { 
 instance_create(x,y,o_mayonese)
 }

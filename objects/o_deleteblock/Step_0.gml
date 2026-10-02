@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 // Store previous position for interpolation
 var _prev_x = prev_mx;
 var _prev_y = prev_my;
@@ -46,7 +47,7 @@ if (_gx1 != _gx2 || _gy1 != _gy2) {
 				              o_onewayupblock, o_onewaydownblock, o_onewayrightblock, o_onewayleftblock,
 				              o_speedlimit5, o_speedlimit7, o_speedlimit10, o_speedlimit15,
 				              o_gravitylimit01, o_gravitylimit05, o_gravitylimit15, o_gravitylimit25,
-				              o_zerogravitylimit, o_redblockslope];
+				              o_zerogravitylimit, o_slope];
 				for (var _i = 0; _i < array_length(_types); _i++) {
 					_inst = instance_position(_px, _py, _types[_i]);
 					if (_inst != noone) {
@@ -79,7 +80,7 @@ if (_gx1 != _gx2 || _gy1 != _gy2) {
 prev_mx = mouse_x;
 prev_my = mouse_y;
 
-if device_mouse_check_button_released(0,mb_right) {
+if timing_device_mouse_released(0,mb_right) {
 instance_create(x,y,o_placeblock)
 instance_destroy()
 }

@@ -1,10 +1,11 @@
+if (settings_fps_input_blocked() || gamepad_remap_consume_back()) exit;
 if global.choosesettings = 0 {
-	instance_activate_object(o_settings)
-	instance_activate_object(o_pausescreen)
-	instance_activate_object(o_givefeedback)
+	timing_activate_object(o_settings)
+	timing_activate_object(o_pausescreen)
+	timing_activate_object(o_givefeedback)
 	
-	if global.challenges = 1 {
-		instance_activate_object(o_restartchallengebutton)
+	if (global.challenges == 1) {
+		timing_activate_object(o_restartchallengebutton)
 	}
 	
 	instance_destroy(o_allsettings)

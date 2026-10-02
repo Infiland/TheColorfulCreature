@@ -1,0 +1,101 @@
+{
+  "artifact": {
+    "fileCount": 105,
+    "sha256": "a7456fb1b900b1f4b10bd9e583ae39048684e9cefaf2e09e58942c3711b6ade8"
+  },
+  "checked": {
+    "actualStartBackSettingsTransactions": true,
+    "campaignSaveLoadTransactions": [
+      "30 to actual merchant destination",
+      "practice does not overwrite campaign",
+      "valid campaign entry clears transient modes and checkpoints but preserves loaded counters/preferences/unlocks",
+      "provisional pickup reload",
+      "restart/death rollback",
+      "deposit-once reload",
+      "merchant to exact stage31",
+      "invalid room preserves both file and session state"
+    ],
+    "controllerAssignmentCases": 96,
+    "declaredCopiedAndConsumedPrefabFiles": 16,
+    "lunarInstances": 4636,
+    "navigationCellComparisons": 26880,
+    "navigationGeometryComparisons": 35,
+    "normalEndLine": 183,
+    "passMarkers": 17,
+    "productionSpecialCatalogEntries": 0,
+    "slopeOrientations": 20,
+    "suites": 14,
+    "world2Entries": 20,
+    "world2LockedAtProgression31": 9,
+    "world2UnlockedAtProgression31": 11
+  },
+  "compiledBinding": {
+    "path": "/Users/infi/Library/Caches/TCC130/native-check-27-repair01/compiled-binding.json",
+    "sha256": "3452c212437818bd83a86b99ae426b63c98263ee5e821135d112051d3ccd7b83"
+  },
+  "compilerBackend": "YYC",
+  "configuration": "Check",
+  "executableSha256": "7d8729835910764b04858ec9cbd714006b3ca76133d65efa946a85ea03536e17",
+  "gateOffAfterRun": true,
+  "hardwareOrLiveServiceAcceptance": false,
+  "independentReview": {
+    "agent": "/root/pause_consistency",
+    "passed": true,
+    "path": "/Users/infi/Library/Caches/TCC130/check27-read-only-assessment01/independent-review.txt",
+    "readOnly": true,
+    "sha256": "83f00b8b9ff536c35e3f9486a8f1846d10fd9a82ea3fe2f0492bc8cfa621a686"
+  },
+  "limitations": [
+    "Local fixtures do not prove physical controller/touch behavior or actual 30/merchant/31 input-only gameplay routes.",
+    "Broader ordinary routes, Lunar 130-second completion, special level quality, live services and final platform acceptance remain separate gates."
+  ],
+  "ordinaryGameplayClockProof": false,
+  "originalNativeResult": {
+    "errors": [
+      "ValueError('Unknown native ERROR path/message/ordered stack')"
+    ],
+    "passed": false,
+    "path": "/Users/infi/Library/Caches/TCC130/check27-native-01/result.json",
+    "preservedUnchanged": true,
+    "rawFilesRehashed": 11,
+    "sha256": "35beb73e41eb67a12c18d11eda53abf2d37081539d9a7673c026599fe976acde"
+  },
+  "ownedNativeAppsAfterRootWrapper": 0,
+  "productionProfileUnchanged": true,
+  "quietObserver": {
+    "activeChecks": 0,
+    "checks": 234,
+    "maximumConcurrentOwnedProcesses": 1,
+    "nonBackgroundChecks": 234,
+    "observerChangesAppState": false,
+    "ownedProcesses": 1,
+    "visibleWindowChecks": 0
+  },
+  "readOnlyAssessment": {
+    "exception": "Exact known three-line malformed fixture, five fields, ordered stack and Create context. Only native struct key order is normalized in memory; raw logs and original failure remain unchanged.",
+    "nativeReruns": 0,
+    "passed": true,
+    "path": "/Users/infi/Library/Caches/TCC130/check27-read-only-assessment01/report.json",
+    "readerSourcePath": "/Users/infi/Library/Caches/TCC130/check27-read-only-assessment01/reader-source.py",
+    "readerSourceSha256": "80cfd5335c3ac8b309c73d0f0f0d0eec9dba32b010fb0447876d4bace810abba",
+    "sha256": "67f53cb3ea1c3f7ed25b32cd78566edeae7c564e663916077ceb4faf656879eb"
+  },
+  "retainedCampaignFixture": {
+    "actualBackupCoins": 9,
+    "actualBackupDeaths": 12,
+    "actualBackupRoom": "r_lvl31",
+    "actualBackupTime": 123.25,
+    "directory": "/Users/infi/Library/Application Support/com.infiland.tcc.check/PortSelfCheck/CampaignResume_5579",
+    "invalidCurrentSha256": "a29bb3f27615d98479fb1a7bebf0da6a81914bcb043f72525f57f48f5a6b4b47",
+    "invalidPreservedSha256": "a29bb3f27615d98479fb1a7bebf0da6a81914bcb043f72525f57f48f5a6b4b47",
+    "stage31BackupSha256": "4b2c69a666f45d83fb2a081a11a1db700bdf91cb64c53a4c73a8b01b093f77eb"
+  },
+  "source": {
+    "fileCount": 23352,
+    "identityScheme": "project-runtime-assets-v2",
+    "identityVersion": 2,
+    "physicsSha256": "c800e2734d9dd35ad340651a74dbe7d2b236bda68184a81624b1bd800d627a20",
+    "sourceSha256": "a6f3a78fb4211ff4ad6f0f80732fcc8cb0637f8fcea87d0812bef0799b6fc7aa"
+  },
+  "status": "PASS_CURRENT_LOCAL_NATIVE_FIXTURES_AFTER_STRICT_READ_ONLY_ASSESSMENT"
+}

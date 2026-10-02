@@ -40,7 +40,7 @@ function ads_hide_banner() {
 }
 
 function ads_privacy_options() {
-    if (!platform_mobile() || !instance_exists(Obj_AdMob) || !tcc_privacy_options_required()) return;
+    if (!platform_admob() || !instance_exists(Obj_AdMob) || !tcc_privacy_options_required()) return;
     with (Obj_AdMob) {
         if (showing || privacy_open) exit;
         ad_generation += 1;

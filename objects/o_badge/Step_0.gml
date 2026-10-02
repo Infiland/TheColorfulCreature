@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 /// @description Handle badge interactions
 
 // Check if mouse is hovering over any badge

@@ -104,7 +104,7 @@ if tab = 1 {
 
 // Determine active level array
 var _active_levels = (tab = 0) ? levels : browse_levels
-var _active_count = (tab = 0) ? levels_count : browse_count
+var _active_count = max(0, min(floor((tab = 0) ? levels_count : browse_count), array_length(_active_levels)))
 
 // Scissor clip the grid area
 gpu_set_scissor(grid_margin_x - 5, _actual_grid_top, 1024 - 2 * grid_margin_x + 10, grid_bottom_y - _actual_grid_top)
@@ -124,7 +124,6 @@ if tab = 1 && browse_state = "loading" {
 var _thumbs_loaded_this_frame = 0
 
 // Draw tiles in 3-column grid
-hover_index = -1
 for (var i = 0; i < _active_count; i++) {
 	var _col = i mod grid_cols
 	var _row = i div grid_cols
@@ -137,7 +136,6 @@ for (var i = 0; i < _active_count; i++) {
 
 	var _lvl = _active_levels[i]
 	var _is_hover = (_mx >= _tx && _mx <= _tx + tile_w && _my >= max(_actual_grid_top, _ty) && _my <= min(grid_bottom_y, _ty + tile_h))
-	if _is_hover { hover_index = i }
 
 	// Lazy load thumbnail if not yet checked and tile is visible
 	if !_lvl.thumb_checked && _lvl.path != "" && _thumbs_loaded_this_frame < 2 {

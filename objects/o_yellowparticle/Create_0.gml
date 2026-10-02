@@ -5,4 +5,4 @@ if place_meeting(x,y,o_anyblock) || place_meeting(x,y,o_deathblock) or place_mee
 instance_destroy()	
 }
 direction = random_range(0,360)
-speed = random_range(0.1 * (60 / global.maxfps),1*(60 / global.maxfps))
+speed = random_range(0.1 * (60 / TCC_SIM_HZ),1*(60 / TCC_SIM_HZ))

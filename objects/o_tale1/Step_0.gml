@@ -1,7 +1,8 @@
-timer += 1
+if (!timing_instance_step()) exit;
+timer += 0.5
 
 if timer = 20 {
-instance_create(x,y,o_tale2)	
+instance_create(x,y,o_tale2)
 }
 if timer = 200 {
 instance_create(x,y,o_tale3)
@@ -98,14 +99,14 @@ instance_create(x,y,o_tale21)
 }
 if timer = 3400 {
 room_goto(r_taleroom)
-	game_set_speed(global.maxfps, gamespeed_fps);
-	room_speed = global.maxfps
+	timing_apply_render_rate();
+
 
 }
 
-if keyboard_check_pressed(ord("S")) {
+if timing_keyboard_pressed(ord("S")) {
 audio_stop_sound(m_tale)
 room_goto(r_taleroom)
-	game_set_speed(global.maxfps, gamespeed_fps);
-	room_speed = global.maxfps
+	timing_apply_render_rate();
+
 }

@@ -13,3 +13,5 @@ if x = 0 {
 if y = 0 {
 instance_destroy()	
 }}}
+// Navigation geometry changed; culling alone never invalidates the cache.
+scr_troop_nav_mark_dirty();

@@ -1,9 +1,10 @@
+if (!timing_instance_step()) exit;
 if global.pause = 1 { 
 	speed = 0
 	exit }
 
 
-speed = (7 * (60/global.maxfps)) / inwater
+speed = (7 * (60/TCC_SIM_HZ)) / inwater
 
 if playerbullet = 0 {
 image_xscale += 0.2
@@ -40,3 +41,5 @@ if place_meeting(x,y,o_onewayleftblock) {instance_destroy()}
 if playerbullet = 2 {
 if place_meeting(x,y,o_onewayrightblock) {instance_destroy()}
 }
+// A slope blocks only its filled triangle.
+if (scr_slope_projectile_sweep(x, y, x + hspeed, y + vspeed)) { instance_destroy(); exit; }

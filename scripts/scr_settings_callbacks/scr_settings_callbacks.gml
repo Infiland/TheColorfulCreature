@@ -12,8 +12,7 @@ function scr_spawn_settings_buttons() {
 		var _d = _defs[i]
         if (!platform_steam() && variable_struct_exists(_d, "dlc_gate")) continue;
         if (variable_struct_exists(_d, "mobile_only") && !platform_mobile()) continue;
-        if (variable_struct_exists(_d, "mobile_privacy") && (!platform_mobile() || !tcc_privacy_options_required())) continue;
-        if (platform_mobile() && variable_struct_exists(_d, "gvar") && _d.gvar == "maxfps") continue;
+        if (variable_struct_exists(_d, "mobile_privacy") && (!platform_admob() || !tcc_privacy_options_required())) continue;
 
 		if _d.type = STYPE.SLIDER {
 			var _inst = instance_create(_cx, _cy + 160 + (_d.row * 64), o_settingslider)
@@ -109,6 +108,14 @@ function slider_apply_from_def(_inst, _def) {
 		beginx = xcam + slider_beginx_offset
 		endx = beginx + 146
 		var _normalized = (slider_max != slider_min) ? (variable_global_get(slider_gvar) - slider_min) / (slider_max - slider_min) : 0
-		x = beginx + (_normalized * 146) - 200
+		x = beginx + (clamp(_normalized, 0, 1) * 146) - 200
 	}
+}
+
+// A gesture changes the value immediately and writes once on release/exit.
+function settings_slider_commit() {
+    if (slider_dirty) {
+        slider_dirty = false;
+        scr_savesettings();
+    }
 }

@@ -1,0 +1,10 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_camera_follow_qa",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_camera_follow_qa",
+  "parent":{"name":"Other","path":"folders/Scripts/Other.yy",},
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

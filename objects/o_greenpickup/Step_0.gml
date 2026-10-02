@@ -1,7 +1,8 @@
-size += 0.025 * (60 / global.maxfps)
+if (!timing_instance_step()) exit;
+size += 0.025 * (60 / TCC_SIM_HZ)
 image_xscale = size;
 image_yscale = size;
-image_alpha -= 0.05 * (60 / global.maxfps)
+image_alpha -= 0.05 * (60 / TCC_SIM_HZ)
 var vb = global.controllervibrationsettings
 gamepad_set_vibration(0,(image_alpha/5)*vb,(image_alpha/5)*vb)
 if image_alpha < 0 { instance_destroy()

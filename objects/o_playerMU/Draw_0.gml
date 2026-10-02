@@ -16,8 +16,8 @@ draw_text(330,20 + (25 * (multiplayerplayer - 1)),"Ammo: Infinite! >:)")
 draw_set_color(c_white)
 
 //Skins
-if customskin = 1 {
-	draw_sprite_ext(sprite_index, image_index, x, y, skinxscale * image_xscale, skinyscale * image_yscale, image_angle, image_blend, image_alpha)
+if customskin = 1 && sprite_exists(customskin_spr) {
+	cosmetics_draw_skin();
 } else {
 switch(multiplayerplayerskin) {
 default:
@@ -33,17 +33,15 @@ draw_sprite_ext(s_animatedskineyes,blinkinganimatioon,x+eyesX,(y+31)+eyesY,1,1*b
 break;
 case(22):
 draw_self()
-if vsp > -0.1 and vsp < 0.1 { draw_sprite(s_underwatermask,0,x,y) }
-if vsp < -0.1  { draw_sprite(s_underwatermask,1,x,y) }
-if vsp > 0.1 { draw_sprite(s_underwatermask,2,x,y) }
+if animation_vsp > -0.1 and animation_vsp < 0.1 { draw_sprite(s_underwatermask,0,x,y) }
+if animation_vsp < -0.1  { draw_sprite(s_underwatermask,1,x,y) }
+if animation_vsp > 0.1 { draw_sprite(s_underwatermask,2,x,y) }
 break;
 case(24):
 draw_sprite_ext(s_redballplayerskin,image_index,x,y,1,1,rotation,image_blend,1)
 break;
 case(25):
 draw_self()
-lightbomberframe += 0.1 * (60 / global.maxfps)
-if lightbomberframe > 4 { lightbomberframe = 0 }
 if hsp = 0 { 
 	draw_sprite(s_bomberoutfit,0,x,y) 
 	draw_sprite(s_bomberlight,lightbomberframe,x+10,y+23)
@@ -67,22 +65,11 @@ draw_sprite_ext(s_googlyeye,0,x+9+eyesX,y+16+eyesY,1,1*basesize,googlyeyesrotrea
 draw_sprite_ext(s_googlyeye,0,x+22+eyesX,y+16+eyesY,1,1*basesize,googlyeyesrotreal + randomeeyerotationL ,c_white,1)
 break;
 case(32):
-spiraleyerot += (4 * (60 / global.maxfps)) * (walksp / 4)
-if spiraleyerot > 7200 { spiraleyerot = 0 }
 draw_sprite_ext(s_animatedskinbase,0,x,y+31,1,1,0,image_blend,1)
 draw_sprite_ext(s_spiraleye,0,x+9+eyesX,y+16+eyesY,1,1,spiraleyerot,image_blend,1)
 draw_sprite_ext(s_spiraleye,0,x+22+eyesX,y+16+eyesY,1,1,180+spiraleyerot,image_blend,1)
 break;
 case(33):
-heartbump -= (1 * (60 / global.maxfps))
-if distance_to_object(o_door) < heartbump { heartbump = distance_to_object(o_door) / 1.5 }
-if heartbump < 0 { 
-	hearteyeincrease = 1.3
-	if instance_exists(o_door) {
-heartbump = distance_to_object(o_door) / 1.5
-} else { heartbump = 120 }
-	}
-hearteyeincrease = lerp(hearteyeincrease,1,0.1 *(60 / global.maxfps))
 draw_sprite_ext(s_animatedskinbase,0,x,y+31,1,1,0,image_blend,1)
 draw_sprite_ext(s_hearteye,0,x+9+eyesX,y+16+eyesY,1 * hearteyeincrease,1 * hearteyeincrease,0,image_blend,1)
 draw_sprite_ext(s_hearteye,0,x+22+eyesX,y+16+eyesY,1 * hearteyeincrease,1 * hearteyeincrease,0,image_blend,1)
@@ -137,46 +124,10 @@ if breath < 251 { draw_sprite(s_breathinghud,2,x,y-35) }
 if breath > 40 { 
 if breath < 126 { draw_sprite(s_breathinghud,3,x,y-35) }
 }
-if breath < 41 { draw_sprite(s_breathinghud,4,x-random_range(-3,3),y-random_range(32,38)) }
+if breath < 41 { draw_sprite(s_breathinghud,4,x-timing_visual_random_range(-3,3),y-timing_visual_random_range(32,38)) }
 
 //Gun
 if hasgun = true {
-//Right
-if timer < 30 {
-if playermove = 1 {
-	gunrotation = 0
-	xcord = lerp(xcord,-2,0.2)
-	ycord = lerp(ycord,10,0.2)
-	timer = 0
-	}
-//Left
-if playermove = -1 {
-	gunrotation = 60
-	xcord = lerp(xcord,-5,0.2)
-	ycord = lerp(ycord,10,0.2)
-	timer = 0
-	}
-}
-timer += 1
-gunframe = lerp(gunframe,gunrotation,0.1)
-gunangle = lerp(gunangle,0,0.3)
-if timer > 30 {
-gunrotation = 30
-xcord = lerp(xcord,9,0.2)
-	ycord = lerp(ycord,5,0.2)
-}
-if key_interact {
-if inwater = 1 {
-if ammo > 0 {
-timer = 0
-if playermove = -1 {
-if global.playerpar = 1 { instance_create(x+20,y-10,o_ammoparticle) }
-	gunangle = -40
-}
-if playermove = 1 {
-if global.playerpar = 1 { instance_create(x,y-10,o_ammoparticle) }
-	gunangle = 40
-}}}}
 draw_sprite_ext(s_gunequipped,gunframe,x + xcord + 9 - xchange,y + ycord + 23 - ychange,1,1,gunangle,c_white,1)
 }
 
@@ -185,3 +136,4 @@ draw_sprite(s_MUplayerhudarrow,multiplayerplayer-1,x+8 - xchange,y-15 - ychange)
 } else {
 draw_sprite(s_MUplayerhudarrow,multiplayerplayer-1,x+8 - xchange,y-25 - ychange)	
 }
+camera_qa_sample("actor-draw", true, id);

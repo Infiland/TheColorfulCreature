@@ -1,6 +1,7 @@
+if (!timing_instance_step()) exit;
 if global.pause = 1 { exit }
 mask_index = s_redblockplatform
-hsp = (movespeed * (60 / global.maxfps)) * dir
+hsp = (movespeed * (60 / TCC_SIM_HZ)) * dir
 
 //Collision
 if (place_meeting(x+hsp,y,o_anyblock)) {

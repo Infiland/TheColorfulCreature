@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if (privacy_open && tcc_privacy_options_state() != 1) {
     privacy_open = false;
     next_load = current_time + 1000;

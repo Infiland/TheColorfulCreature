@@ -4,8 +4,9 @@ gml_pragma("UnityBuild", "true");
 
 if (variable_global_exists("tcc_loaded") && global.tcc_loaded) return;
 global.tcc_loaded = true;
+qa_boot();
 
-randomize()
+tcc_randomize()
 
 //AUDIO EFFECTS
 global._ef_water = audio_effect_create(AudioEffectType.LPF2)
@@ -54,6 +55,9 @@ scr_save_recover(directory + "SaveFile.sav");
 
 global.CUSTOMhat = ""
 global.CUSTOMskin = ""
+global.CUSTOMitem = ""
+cosmetics_defaults();
+cosmetics_ensure_folders();
 
 global.challengescroll = 0
 global.foundcog = 0
@@ -97,7 +101,7 @@ global.hatsettings = 1
 global.musicvolume = 0.5
 global.soundvolume = 0.5
 global.mastervolume = 0.5
-audio_master_gain(global.mastervolume)
+platform_master_gain(global.mastervolume)
 global.hardmode = 0
 global.hardmodelives = 100;
 global.levelselect = 0
@@ -119,7 +123,8 @@ global.oldGSsettings = 0
 global.skipintroscreensettings = 0
 global.devcommentarysettings = 0
 global.customsplashessettings = 0
-global.maxfps = 60
+global.maxfps = TCC_SIM_HZ;
+global.renderfps = TCC_SIM_HZ;
 global.world1 = 0
 global.world2 = 0
 global.world3 = 0
@@ -306,7 +311,7 @@ global.controlsrestart = "R"
 //Controller Bindings (defaults, then overwritten by scr_loadsettings)
 gamepad_remap_init()
 scr_loadsettings()
-game_set_speed(global.maxfps, gamespeed_fps);
+timing_apply_render_rate();
 
 if global.fullscreen = 1 {
 	window_enable_borderless_fullscreen(true);
@@ -534,12 +539,12 @@ var directory = directory_set("/Custom/")
 	directory_destroy(directory + "Hats")
 	directory_destroy(directory + "Skins")
 
-		if file_exists(game_save_id + "/Custom/README.txt") file_delete(game_save_id + "/Custom/README.txt");
-		var _f = file_text_open_write(game_save_id + "/Custom/README.txt");
+		if file_exists(directory_set("/Custom/README.txt")) file_delete(directory_set("/Custom/README.txt"));
+		var _f = file_text_open_write(directory_set("/Custom/README.txt"));
 	    file_text_write_string(_f, string("You can customize hats! Add hats in the player hats folder, put .png images. Recommended resolution is 32x24 resolution! You can also add custom skins in the Player Skins folder. Custom skins must be a horizontal sprite strip with 9 frames (32x32 per frame = 288x32 total). Frame order: Idle, Right, Left, Fall, Fall-Right, Fall-Left, Jump, Jump-Right, Jump-Left."));
 		file_text_close(_f);
-			if !file_exists(game_save_id + "/Custom/Custom Splash Texts.txt") {
-		var _f = file_text_open_write(game_save_id + "/Custom/Custom Splash Texts.txt");
+			if !file_exists(directory_set("/Custom/Custom Splash Texts.txt")) {
+		var _f = file_text_open_write(directory_set("/Custom/Custom Splash Texts.txt"));
 	    file_text_write_string(_f, string("Go to local files or %appdata% to change this text\n[rainbow][wave]You can use text like this:"));
 		file_text_close(_f);
 		}
@@ -559,8 +564,8 @@ var directory = directory_set("/Custom/")
 
 
 //Read_Me Text File
-    if file_exists("Save Files/README.txt") file_delete("Save Files/README.txt");
-    var _f = file_text_open_write("Save Files/README.txt");
+    if file_exists(directory_set("/Save Files/README.txt")) file_delete(directory_set("/Save Files/README.txt"));
+    var _f = file_text_open_write(directory_set("/Save Files/README.txt"));
     file_text_write_string(_f, string("You found the Local Files, congrats!\nAnyway if you are reading this, PLEASE DO NOT MODIFY THESE FILES, it is considered cheating.\nPlease use this only for bugfixing purposes.\n\nAlso if the game crashed, go to the Other folder and send it to our discord server: https://discord.gg/SSz5THd"));
     file_text_close(_f);
-	file_delete("README.txt")
+	if (!qa_active()) file_delete("README.txt")

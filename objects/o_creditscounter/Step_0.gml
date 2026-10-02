@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 //RGB System
 if credits > 9999999 {
 if change = 0 {

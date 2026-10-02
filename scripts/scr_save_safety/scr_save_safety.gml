@@ -16,7 +16,8 @@ function scr_files_equal(_a, _b) {
 
 function scr_migrate_saves(_directory, _source_directory = "") {
     if (!directory_exists(_directory)) directory_create(_directory);
-    var _names = ["Achievements", "Stats", "Skins", "Settings", "Hats", "Hardmode",
+    if (qa_active() && _source_directory == "") return;
+    var _names = ["Achievements", "Stats", "Skins", "Settings", "Hats", "Items", "Hardmode",
         "Endless", "SaveFile", "ChallengeTime", "ChallengeDeaths", "Calendar"];
     for (var _i = 0; _i < array_length(_names); ++_i) {
         var _source = _source_directory + _names[_i] + ".sav";
@@ -63,7 +64,8 @@ function scr_saved_room(_name) {
     var _asset = asset_get_index(_name);
     if (_asset == -1 || asset_get_type(_asset) != asset_room) return -1;
     // Campaign rooms only. A valid editor, challenge or menu room is not a campaign save.
-    if (string_pos("r_lvl", _name) != 1 && string_pos("r_boss", _name) != 1) return -1;
+    if (string_pos("r_lvl", _name) != 1 && string_pos("r_boss", _name) != 1
+        && _name != "r_hatmerchantroom") return -1;
     return _asset;
 }
 

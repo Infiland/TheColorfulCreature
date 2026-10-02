@@ -1,3 +1,4 @@
+if (!variable_global_exists("timing_confirmation_dispatch_active") || !global.timing_confirmation_dispatch_active) exit;
 audio_stop_all()
 /*var directory = working_directory + "/LevelEditor Files/" + global.levelname + "/Music.ogg"
 audio_destroy_stream(directory)*/

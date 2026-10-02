@@ -1,3 +1,4 @@
-option = "off"
-text = "Press H to change to hardmode: " + string(option)
-if global.hardmodeunlock < 1 { instance_destroy() }
+// Keep the explanation visible until the campaign has been beaten once.
+if (!levelselect_hardmode_available()) global.hardmode = 0;
+x = 257;
+y = 148;

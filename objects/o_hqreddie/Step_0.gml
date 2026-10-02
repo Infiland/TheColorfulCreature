@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if image_yscale < 1.1 {
 if change = 0 {
 image_yscale -= 0.005 * (60 / global.maxfps)

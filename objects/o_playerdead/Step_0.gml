@@ -1,13 +1,14 @@
+if (!timing_instance_step()) exit;
 if global.pause = 1{
 	image_speed = 0
 	gamepad_set_vibration(0, 0, 0);
 	exit
 	}
-image_speed = 1/3 * (60 / global.maxfps)
-fall += 0.25 * (60 / global.maxfps)
-randomize()
-image_alpha -= 0.025 * (60 / global.maxfps)
-y -= (5 - fall) * (60 / global.maxfps)
+image_speed = 1/3 * (60 / TCC_SIM_HZ)
+fall += 0.25 * (60 / TCC_SIM_HZ)
+tcc_randomize()
+image_alpha -= 0.025 * (60 / TCC_SIM_HZ)
+y -= (5 - fall) * (60 / TCC_SIM_HZ)
 
 var vibx1 = (x/room_width)
 var vibx2 = 1 - (x/room_width)

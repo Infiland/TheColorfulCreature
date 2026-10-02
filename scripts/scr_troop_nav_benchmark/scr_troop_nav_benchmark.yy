@@ -1,0 +1,10 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_troop_nav_benchmark",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_troop_nav_benchmark",
+  "parent":{"name":"Other","path":"folders/Scripts/Other.yy",},
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

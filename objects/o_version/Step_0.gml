@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 /// @description Handle version-related updates
 
 // Check for changes in badge-related data

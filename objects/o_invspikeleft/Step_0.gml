@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if instance_exists(o_player) {
 if distance_to_object(o_player) > 100 {
 image_alpha = 0	

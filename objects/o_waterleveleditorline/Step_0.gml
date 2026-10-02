@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 var camy = camera_get_view_y(view_camera[0])
 if global.LEMode != 1 {
 	instance_destroy()
@@ -14,7 +15,7 @@ if (_grid_on) {
 	_my = round(mouse_y / 32) * 32;
 }
 
-if !menu_open && mouse_check_button_pressed(mb_left) {
+if !menu_open && timing_mouse_pressed(mb_left) {
 if mouse_y > camy+64 {
 if clicked = 0 {
 x1 = _mx

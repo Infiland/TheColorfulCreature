@@ -1,7 +1,11 @@
+if (!timing_instance_step()) exit;
 if (!press) exit;
+if (!platform_pause_menu_allowed()) exit;
+qa_record_pause_action("touch");
 platform_clear_input();
 if global.pause = 0 {
 global.pause = 1
+timing_sequence_flush();
 
 instance_destroy(o_buttonleftandroid)
 instance_destroy(o_buttonrightandroid)
@@ -14,25 +18,7 @@ ads_show_banner(false)
    scr_savestats()
    audio_group_set_gain(Music,global.musicvolume/5,1000)
 
-	instance_create(288,288,o_pausescreen)
-	instance_create(480,490,o_returnbutton)
-	with(o_returnbutton) {
-		ingame = true
-	}
-	instance_create(960,704,o_settings)
-	with(o_settings) {
-	image_xscale = 2
-	image_yscale = 2
-	}
-	instance_create(750,670,o_givefeedback)
-	with(o_givefeedback) {
-	image_xscale = 31
-	image_yscale = 16
-	xscale = 0.6
-	yscale = 0.6
-	}
-
-   instance_activate_object(o_pausescreen)
+   platform_pause_menu_create();
 } else {
    global.pause = 0
    ads_hide_banner()
@@ -46,6 +32,7 @@ ads_show_banner(false)
    audio_group_set_gain(Music,global.musicvolume,1000)
    instance_destroy(o_returnbutton)
    instance_destroy(o_givefeedback)
+   instance_destroy(o_restartchallengebutton)
    instance_destroy(o_pausescreen)
    instance_destroy(o_settings)
 }

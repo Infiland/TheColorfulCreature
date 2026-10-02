@@ -13,3 +13,5 @@ hidesprites = false
 alarm[0] = random_range(20,80);
 
 scr_activateobjects()
+// Navigation geometry changed; culling alone never invalidates the cache.
+scr_troop_nav_mark_dirty();

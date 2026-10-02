@@ -19,7 +19,7 @@ ct = camera_get_view_y(cam)
 cw = camera_get_view_width(cam)
 ch = camera_get_view_height(cam)
 
-instance_activate_region(cl-100,ct-100,cw+100,ch+100,true)
+timing_activate_region(cl-100,ct-100,cw+200,ch+200,true)
 
 alarm[0] = 10
 

@@ -1,4 +1,5 @@
 scr_loadsettings()
+qa_apply_fps();
 gamepad_set_color(0,c_red)
 
 customhat = 0
@@ -35,6 +36,7 @@ mask_index = s_playerred
 
 hsp = 0; //Horizontal
 vsp = 0; //Vertical
+animation_vsp = 0;
 grv = 0.5 //Gravity
 walksp = 4; //Speed
 realwalk = 0 //Total Speed
@@ -75,7 +77,7 @@ itemscale = 1
 rot1 = 0
 rot2 = -180
 
-if room = r_leveleditor || room = r_customlevelworkshop {
+if room = r_leveleditor || room = r_customlevelworkshop || room = r_challengelevel {
 global.LESavedWinTime = 0
 global.color = global.defaultcolorLE
 } else {
@@ -184,3 +186,6 @@ global.pickup = 0
 
 
 alarm[0] = 1 * (global.maxfps / 60 )
+
+// Cache owns imported sprites independently of the player lifetime.
+cosmetics_player_init();

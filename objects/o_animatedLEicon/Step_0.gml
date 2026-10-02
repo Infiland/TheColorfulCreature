@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if instance_exists(o_placeblock) {
 realx = lerp(realx,o_placeblock.x,0.5)
 realy = lerp(realy,o_placeblock.y,0.5)

@@ -4,7 +4,6 @@ draw_rectangle_color(0,0,2000,2000,c_black,c_black,c_black,c_black,false)
 draw_set_alpha(1)
 
 draw_set_color(c_white)
-dis = lerp(dis, selected, 0.1 * (144 / global.maxfps))
 
 var entry_count = array_length(entries)
 
@@ -16,7 +15,11 @@ draw_text_color(room_width/2, 340, loc("TRADE_UP"), c_white, c_white, c_white, c
 
 if entry_count = 0 {
 	draw_set_font(fnt_secret1)
-	draw_text_color(room_width/2, 500, "No eligible skins to trade up.\nYou need 5 items of the same skin and tier.", c_gray, c_gray, c_gray, c_gray, 1)
+	var _empty = global.tradeup_state.ready ? "No eligible skins to trade up.\nYou need 5 items of the same skin and tier." : "Loading Steam inventory...";
+	if (global.tradeup_state.phase == "idle" && !global.tradeup_state.ready) _empty = "Steam inventory is unavailable.";
+	draw_text_color(room_width/2, 500, _empty, c_gray, c_gray, c_gray, c_gray, 1)
+	draw_text_ext(room_width/2,630,global.tradeup_state.message,-1,760);
+	draw_text(room_width/2,710,"ESC to close - R to refresh");
 	draw_set_font(global.deathfont)
 	draw_set_halign(fa_left)
 	draw_set_valign(fa_top)
@@ -66,24 +69,16 @@ if selected >= 0 && selected < entry_count {
 	var preview_text = "5x " + tier_name + " " + sel.name + "  >  1x " + next_tier_name + " " + sel.name
 	draw_text_color(room_width/2, 630, preview_text, tier_col, tier_col, next_tier_col, next_tier_col, 1)
 
-	if trade_in_progress {
-		draw_set_font(fnt_secret1)
-		draw_text_color(room_width/2, 670, "Trading...", c_yellow, c_yellow, c_yellow, c_yellow, 1)
-	} else {
-		draw_set_font(fnt_secret1)
-		draw_text_color(room_width/2, 670, "Press ENTER to trade", c_gray, c_gray, c_gray, c_gray, 1)
-	}
+	draw_set_font(fnt_secret1);
+	var _status = global.tradeup_state.message;
+	if (global.tradeup_state.phase == "refreshing") _status = "Refreshing Steam inventory...";
+	if (_status == "") _status = "Press ENTER to trade";
+	draw_text_ext(room_width/2,670,_status,-1,760);
+	draw_text(room_width/2,735,"ESC to close - R to refresh");
 }
 
 // Navigation arrow
 draw_sprite_ext(s_liquidarrow,0,355,520,1,arrowyscale,0,c_white,1)
-if arrowyscale > 1 {
-	change = 0
-}
-if arrowyscale < 0.9 {
-	change = 1
-}
-if change = 0 { arrowyscale = lerp(arrowyscale,0.89,0.1 * (60 / global.maxfps)) } else { arrowyscale = lerp(arrowyscale,1.01,0.1 * (60 / global.maxfps)) }
 
 // Reset draw state
 draw_set_halign(fa_left)

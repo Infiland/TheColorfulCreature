@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 instance_destroy()
 if global.itempar > 0 {
 if instance_exists(o_door) {

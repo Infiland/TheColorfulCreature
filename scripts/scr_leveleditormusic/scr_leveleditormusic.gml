@@ -1,24 +1,17 @@
-function scr_leveleditormusic() {
-	audio_stop_all()
-	
-	if room = r_leveleditor {
-	
-	var directory = directory_set("/LevelEditor Files/" + global.levelname + "/Music.ogg")
-	
-} else {
-//var directory = global.workshopfolder + "/Music.ogg/"
-var directory = directory_set(global.workshopfolder + "/Music.ogg")
-directory = string_replace_all(directory,"\\","/")
-}
-
-if file_exists(directory) {
-var mus = audio_create_stream(directory)
-audio_stop_all()
-//audio_create_stream(mus)
-audio_play_sound(mus,0,1)
-audio_sound_gain(mus,global.musicvolume,1)
-exit;
-}
+function scr_leveleditormusic(_directory = "") {
+    audio_stop_all();
+    level_music_release();
+    if (_directory == "") {
+        if (room == r_leveleditor) {
+            _directory = level_editor_directory();
+        } else {
+            // Workshop install paths are already absolute; never prefix game_save_id.
+            _directory = global.workshopfolder;
+        }
+    }
+    _directory = level_directory(_directory);
+    global.level_music_directory = _directory;
+    if (_directory != "" && level_music_play(_directory + "Music.ogg")) return;
 
 	switch(global.leveleditormusic) {
 	case(0):

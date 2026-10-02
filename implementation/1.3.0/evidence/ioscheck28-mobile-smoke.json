@@ -1,0 +1,139 @@
+{
+  "date": "2026-10-02",
+  "source": {
+    "fileCount": 23352,
+    "identityScheme": "project-runtime-assets-v2",
+    "identityVersion": 2,
+    "physicsSha256": "7d8eb9addbd5ed405bcf67e2b1144d1163c9c2e95b186729b6a3df3a1a21a610",
+    "sourceSha256": "cc00e83ffd8450c11a2e48f81a78049549e6a2d1631bbec2d6446ba456b52655"
+  },
+  "build": {
+    "path": "/Users/infi/Library/Caches/TCC130/ioscheck-current-28/local-platform-result.json",
+    "sha256": "7a35eca9d3a317c2841974bcd7e97f03f072bebe3e5b2c783019d2353bc4aa95"
+  },
+  "app": "/Users/infi/Library/Caches/TCC130/ioscheck-current-28/DerivedData/Build/Products/Release-iphonesimulator/The_Colorful_Creature.app",
+  "executableSha256": "b955cbe3e6dbdac63b2a3d660cb9a683ffcea9a057e49cd8805e17d91e3d2aa6",
+  "artifact": {
+    "fileCount": 153,
+    "sha256": "d7d54b704c4fd7bbc717a1d9cb9459ffc5e7e4aa997f069f1d5bea4c22ddc9ad"
+  },
+  "devices": [
+    {
+      "receipt": {
+        "path": "/Users/infi/Library/Caches/TCC130/ioscheck-current-28-smoke18-01/TCCRoot-iPad-check28-18/device-owner.json",
+        "sha256": "14814543a13b53179b4d83a76eabb0a24b5eaef888e4b9a7334c2ae9f22271ec"
+      },
+      "name": "TCCRoot-iPad-check28-18",
+      "udid": "6866CF86-1299-44A2-AC6D-E1434A63FE2C",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-18-5",
+      "stages": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "passed": true,
+      "explicitAppTerminationCode": 0,
+      "shutdownCode": 0,
+      "normalGameEndClaim": false,
+      "console": {
+        "path": "/Users/infi/Library/Caches/TCC130/ioscheck-current-28-smoke18-01/TCCRoot-iPad-check28-18/console.log",
+        "sha256": "f1c213680f2a95db1a98ff0235c5728449355c15124d696c9f94b33225d8bafa"
+      },
+      "screenshots": [
+        {
+          "path": "/Users/infi/Library/Caches/TCC130/ioscheck-current-28-smoke18-01/TCCRoot-iPad-check28-18/continue.png",
+          "sha256": "2431ea4bfae0faf1243448ad8e5dff16a9a3729b6fd9a20997f76205e4b2ccc8"
+        },
+        {
+          "path": "/Users/infi/Library/Caches/TCC130/ioscheck-current-28-smoke18-01/TCCRoot-iPad-check28-18/final.png",
+          "sha256": "d92b4711556701b7dd025d8bbb9fd838a30a793bbb3872c32d895de1a066a902"
+        }
+      ]
+    },
+    {
+      "receipt": {
+        "path": "/Users/infi/Library/Caches/TCC130/ioscheck-current-28-smoke18-01/TCCRoot-iPhone-check28-18/device-owner.json",
+        "sha256": "eb1d88b5b9fc8b61b510fd54c04fbf0e3a0b56657e212a52a6490643a614b75a"
+      },
+      "name": "TCCRoot-iPhone-check28-18",
+      "udid": "18C32383-66D0-44D6-8C49-ADA8C979F156",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-18-5",
+      "stages": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "passed": true,
+      "explicitAppTerminationCode": 0,
+      "shutdownCode": 0,
+      "normalGameEndClaim": false,
+      "console": {
+        "path": "/Users/infi/Library/Caches/TCC130/ioscheck-current-28-smoke18-01/TCCRoot-iPhone-check28-18/console.log",
+        "sha256": "26d650fa11b67bd56b7e0dcec9c0cddd6ee4919913f2a30c8b316d5fa48a85ef"
+      },
+      "screenshots": [
+        {
+          "path": "/Users/infi/Library/Caches/TCC130/ioscheck-current-28-smoke18-01/TCCRoot-iPhone-check28-18/continue.png",
+          "sha256": "6417844f0b5f05452b78a1d259638287b20554e9c37a937fe58184c054e47f28"
+        },
+        {
+          "path": "/Users/infi/Library/Caches/TCC130/ioscheck-current-28-smoke18-01/TCCRoot-iPhone-check28-18/final.png",
+          "sha256": "7101be62632cbe2df15d634bcc908a774ebae920946387b8239ee2da735f1970"
+        }
+      ]
+    }
+  ],
+  "scope": [
+    "Current YYC simulator build",
+    "All13 native smoke stages on both phone and tablet",
+    "Actual normal new-game/save/load/Endless/settings/confirmation transitions with isolated source smoke policy",
+    "Native diagnostic touch-layout and touch-input assertions"
+  ],
+  "isolation": {
+    "muted": true,
+    "services": "TCC_MOBILE_SMOKE excludes normal live platform service paths",
+    "visibleSimulatorRequested": false,
+    "ownedFreshDevicesOnly": true
+  },
+  "iOS26_5": {
+    "passed": false,
+    "failure": "Apple OpenGL/libLLVMContainer shader-compiler invalid-free SIGABRT during GameMaker splash rendering, before first GML smoke stage",
+    "evidenceDirectory": "/Users/infi/Library/Caches/TCC130/ioscheck-current-28-smoke01",
+    "crashRetained": true,
+    "ownedSimulatorStopped": true
+  },
+  "limits": [
+    "Simulator signing is not distribution or physical-device acceptance",
+    "Injected diagnostic contact fixtures are not physical touchscreen/controller/hot-plug coverage",
+    "No complete authored-level route claim",
+    "Explicit termination after final smoke PASS; no normal game_end claim",
+    "No live service/store operation"
+  ],
+  "independentReview": {
+    "result": "PASS for bounded iOS18.5 phone/tablet smoke",
+    "sourceAndArtifacts": "Fresh hashes match current source/physics,153-file app and both installed copies",
+    "rawFilesUnchanged": 12,
+    "markers": "Exactly one each of three PASS markers per device; all13stages ordered",
+    "limits": "Automated contacts/layout, not physical input or measured audio; explicit termination, not natural game end"
+  }
+}

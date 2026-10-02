@@ -1,3 +1,6 @@
+// Recreate the HTTP receipt owner before any viewer can be opened.
+news_images_boot();
+
 //Create nessesary components
 
 instance_create(x,y,o_loadingbar)

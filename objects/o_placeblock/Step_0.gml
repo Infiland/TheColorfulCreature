@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 //Controls
 image_alpha = 0
 
@@ -19,7 +20,7 @@ image_alpha = 0
 sprite_index = s_cannotplace
 }
 if global.LEBuild = 1 {
-if place_meeting(x,y,o_player) || place_meeting(x,y,o_redblockslope) || place_meeting(x,y,o_editoritems) || place_meeting(x,y,o_anyblock) ||place_meeting(x,y,o_allspikes) || place_meeting(x,y,o_allinvspikes) || place_meeting(x,y,o_door) || place_meeting(x,y,o_portalpurpleclosed) || place_meeting(x,y,o_portalpurpleopen) || place_meeting(x,y,o_redpassblock) || place_meeting(x,y,o_yellowpassblock) || place_meeting(x,y,o_greenpassblock) || place_meeting(x,y,o_bluepassblock) || place_meeting(x,y,o_whitepassblock) || place_meeting(x,y,o_torchLE) || place_meeting(x,y,o_enemyplayerLE) || place_meeting(x,y,o_enemyplayer) || place_meeting(x,y,o_ladder) || place_meeting(x,y,o_deathblock) || place_meeting(x,y,o_blockcheck2) || place_meeting(x,y,o_gravitylimit01) || place_meeting(x,y,o_gravitylimit05) || place_meeting(x,y,o_gravitylimit15) || place_meeting(x,y,o_gravitylimit25) || place_meeting(x,y,o_speedlimit5) || place_meeting(x,y,o_speedlimit7) || place_meeting(x,y,o_speedlimit10) || place_meeting(x,y,o_speedlimit15) || place_meeting(x,y,o_lockedblock) || place_meeting(x,y,o_unlockedblock) || place_meeting(x,y,o_zerogravitylimit) {
+if place_meeting(x,y,o_player) || place_meeting(x,y,o_slope) || place_meeting(x,y,o_editoritems) || place_meeting(x,y,o_anyblock) ||place_meeting(x,y,o_allspikes) || place_meeting(x,y,o_allinvspikes) || place_meeting(x,y,o_door) || place_meeting(x,y,o_portalpurpleclosed) || place_meeting(x,y,o_portalpurpleopen) || place_meeting(x,y,o_redpassblock) || place_meeting(x,y,o_yellowpassblock) || place_meeting(x,y,o_greenpassblock) || place_meeting(x,y,o_bluepassblock) || place_meeting(x,y,o_whitepassblock) || place_meeting(x,y,o_torchLE) || place_meeting(x,y,o_enemyplayerLE) || place_meeting(x,y,o_enemyplayer) || place_meeting(x,y,o_ladder) || place_meeting(x,y,o_deathblock) || place_meeting(x,y,o_blockcheck2) || place_meeting(x,y,o_gravitylimit01) || place_meeting(x,y,o_gravitylimit05) || place_meeting(x,y,o_gravitylimit15) || place_meeting(x,y,o_gravitylimit25) || place_meeting(x,y,o_speedlimit5) || place_meeting(x,y,o_speedlimit7) || place_meeting(x,y,o_speedlimit10) || place_meeting(x,y,o_speedlimit15) || place_meeting(x,y,o_lockedblock) || place_meeting(x,y,o_unlockedblock) || place_meeting(x,y,o_zerogravitylimit) {
 sprite_index = s_cannotplace
 }}
 if global.LEBuild = 2 {
@@ -73,7 +74,7 @@ if (global.canchange) {
 //if global.LEMode = 2 { image_alpha = 0 }
 
 //LEFT DOWN
-if mouse_check_button(mb_left) {
+if timing_mouse_down(mb_left) {
 	// Interpolation: fill gaps between previous and current grid position
 	if (prev_grid_x != -1 && prev_grid_y != -1) {
 		var _gx1 = prev_grid_x div 32;
@@ -136,7 +137,7 @@ if mouse_check_button(mb_left) {
 	prev_grid_x = -1;
 	prev_grid_y = -1;
 }
-if mouse_check_button_pressed(mb_right) {
+if timing_mouse_pressed(mb_right) {
 	if instance_exists(o_leveleditorleaveask) { exit }
 
 if global.LEMode = 1 {

@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if rotate = 0 {
 if image_angle > 0 {
 	image_angle -= 10
@@ -33,11 +34,12 @@ if image_angle > 0 {
 else
 {image_angle += 1}
 if room != r_mainmenu {
-if keyboard_check_pressed(vk_escape) || tcc_gamepad_button_check_pressed(0,gp_start) {
+if player_pause_pressed() {
 instance_destroy()
 }}
 //Controller
 if rotate = 1 {
-if tcc_gamepad_button_check_pressed(0,gp_face1) {
+var _device = gamepad_remap_active_device(true);
+if (_device >= 0 && tcc_gamepad_button_check_pressed(_device,gp_face1)) {
 event_perform(ev_mouse,ev_left_press)
 }}

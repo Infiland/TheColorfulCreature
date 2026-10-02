@@ -19,9 +19,9 @@ function scr_troopvoiceline() {
 
 	// Pick and play random sound based on state
 	var _sounds = (state == 1) ? _attack_sounds : _idle_sounds;
-	randomize();
+	tcc_randomize();
 	var _snd = _sounds[irandom(array_length(_sounds) - 1)];
 	audio_play_sound_at(_snd, o_player.x - x, o_player.y - y, 0, 100, 100, 100, 0, 0);
 
-	troopsound = irandom_range(200 * (60 / global.maxfps), 500 * (60 / global.maxfps));
+	troopsound = irandom_range(200 * (60 / TCC_SIM_HZ), 500 * (60 / TCC_SIM_HZ));
 }

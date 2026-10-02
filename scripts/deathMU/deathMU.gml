@@ -1,4 +1,5 @@
 function deathMU() {
+	qa_observe_death();
 	global.playersleft -= 1
 	instance_destroy()
 	instance_create(x,y,o_playerdeadLE)

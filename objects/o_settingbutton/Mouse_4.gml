@@ -1,4 +1,4 @@
-if (global.choosesettings != setting_menu) { exit }
+if (settings_fps_input_blocked() || global.choosesettings != setting_menu) { exit }
 if (image_alpha = 0.5 && setting_type != STYPE.ACTION) { exit }
 
 // DLC gate check
@@ -30,23 +30,9 @@ switch (setting_type) {
 				if global.antialiasingsettings = 4 { global.antialiasingsettings += 2 }
 				global.antialiasingsettings += 2
 				if global.antialiasingsettings > 8 { global.antialiasingsettings = 0 }
-			} else if setting_gvar = "maxfps" {
-				// maxfps stores an index 0-5
-				var _idx = 0
-				switch (global.maxfps) {
-					case 60:  _idx = 0; break;
-					case 75:  _idx = 1; break;
-					case 100: _idx = 2; break;
-					case 120: _idx = 3; break;
-					case 144: _idx = 4; break;
-					case 150: _idx = 5; break;
-				}
-				_idx += 1
-				if _idx > 5 { _idx = 0 }
-				var _fps_values = [60, 75, 100, 120, 144, 150]
-				global.maxfps = _fps_values[_idx]
-				game_set_speed(global.maxfps, gamespeed_fps)
-				room_speed = global.maxfps
+			} else if setting_gvar = "renderfps" {
+				global.renderfps = settings_fps_next_preset(global.renderfps);
+				settings_fps_apply_rate();
 			} else {
 				// Default cycle
 				var _v = variable_global_get(setting_gvar) + 1
@@ -80,6 +66,7 @@ switch (setting_type) {
 		}
 		if cheat_gated && image_alpha != 1 { exit }
 		if setting_callback != undefined { setting_callback() }
+		if (settings_fps_active()) break;
 		scr_savesettings()
 		break
 }

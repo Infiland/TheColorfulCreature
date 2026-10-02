@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 with o_defaultkeysbuttonsetings {
 	xscale = 0.4
 	yscale = 0.4

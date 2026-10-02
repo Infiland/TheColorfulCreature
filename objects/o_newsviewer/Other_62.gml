@@ -5,17 +5,18 @@ var _status = async_load[? "status"]
 
 // === Handle image file downloads ===
 if (ds_map_exists(pending_image_reqs, _id)) {
+    if (_status != 0 && _status >= 0) exit
+    var _info = ds_map_find_value(pending_image_reqs, _id)
+    ds_map_delete(pending_image_reqs, _id)
+    news_images_settle(_id)
     if (_status < 0) {
-        ds_map_delete(pending_image_reqs, _id)
+        if (file_exists(_info.filename)) file_delete(_info.filename)
         loading_image = false
         exit
     }
-    if (_status != 0) exit
-
-    var _info = ds_map_find_value(pending_image_reqs, _id)
-    ds_map_delete(pending_image_reqs, _id)
 
     if (file_exists(_info.filename)) {
+        array_push(temp_image_files, _info.filename)
         var _spr = sprite_add(_info.filename, 0, false, true, 0, 0)
         if (_spr >= 0) {
             ds_map_add(loaded_images, _info.url, _spr)

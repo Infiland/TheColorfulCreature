@@ -11,6 +11,10 @@ draw_set_color(c_white);
 // Page title (below the warning text and hardmode toggle)
 draw_text(512, 210, _page.title);
 
+draw_set_font(fnt_death);
+draw_text(512, 693, "Arrows / D-pad: choose     Enter / A: play     Q / E, PgUp / PgDn, LB / RB: pages");
+draw_set_font(fnt_mainmenu);
+
 // Page indicator
 draw_text(512, 745, string(current_page + 1) + " / " + string(total_pages));
 

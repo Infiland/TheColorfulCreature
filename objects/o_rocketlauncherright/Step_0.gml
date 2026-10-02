@@ -1,10 +1,11 @@
+if (!timing_instance_step()) exit;
 if room = r_leveleditor {
 if global.LEMode = 1 {
 timer = originaltimer
 }
 }
 if global.pause = 1 { exit }
-timer -= 1 * (60 / global.maxfps)
+timer -= 1 * (60 / TCC_SIM_HZ)
 if timer < 0 {
 if instance_exists(o_player) {
 if global.pause = 0 {

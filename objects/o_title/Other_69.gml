@@ -10,19 +10,8 @@ if (async_load[? "event_type"] == "lobby_join_requested") {
 			net_init()
 		}
 
-		// Leave any existing lobby
-		if (global.net_active) {
-			net_send_leave_info()
-			tcc_steam_lobby_leave()
-			ds_map_clear(global.net_players)
-			global.net_active = false
-			global.net_lobby_id = -1
-			global.net_is_host = false
-		}
-
-		// Set the pending join BEFORE creating the network manager so that
-		// Create_0 sees it and skips auto-hosting (net_init preserves it)
-		global.net_pending_join = _lobby_id
+		// Queue BEFORE Create so net_init preserves intent and skips auto-host.
+		net_queue_join(_lobby_id);
 
 		// Create the network manager if it doesn't exist
 		if (!instance_exists(o_networkmanager)) {

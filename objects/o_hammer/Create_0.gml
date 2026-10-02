@@ -30,7 +30,7 @@ instance_destroy()
 animation2 = 0.25
 change2 = 0
 
-healthbar = instance_create_depth(0, 0, -1000, o_healthbar);
+healthbar = timing_create_depth(0, 0, -1000, o_healthbar);
 healthbar.target = id;
 healthbar.bar_x = 600
 healthbar.bar_segments = 6;

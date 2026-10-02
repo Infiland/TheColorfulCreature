@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if level = 0 {
 	alarm[0] = 10
 	exit
@@ -10,11 +11,8 @@ if (mPath != "") {
 	var dir = string_replace_all(string(mPath),"\\","/")
 	if (string_copy(dir, string_length(dir), 1) != "/") { dir += "/" }
 	mPath = dir
-	if (file_exists(dir + "OtherLevelEditor.sav")) {
-		ini_open(dir + "OtherLevelEditor.sav");
-		diamond_time = ini_read_real("Other LE","Diamond Medal Time",0);
-		ini_close();
-	}
+    var _metadata = level_metadata(dir);
+    if (!is_undefined(_metadata)) diamond_time = _metadata.diamondTime;
 
 	// Load thumbnail image
 	if (thumb_spr == -1) {

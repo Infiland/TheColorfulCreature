@@ -1,13 +1,11 @@
 var hat = s_lockedskinicon
 
-global.newcalendarseed = string(global.calendarday1)+string(global.calendarday2)+string(global.calendarday3)+string(global.calendarday4)+string(global.calendarday5)+string(global.calendarday6)+string(global.calendarday7)
-random_set_seed(global.newcalendarseed)
-
-var rwd = irandom_range(1,global.calendardifficulty)
+// Selection/reward updates run once on logical menu initialization.
+if !variable_instance_exists(id,"timing_calendar_reward_kind") { exit }
+var rwd = timing_calendar_reward_kind
 
 //This system chooses rewards, need to make it better
 if rwd = 1 {
-global.newcalendarreward = irandom_range(1,global.totalhatsAM)
 switch(global.newcalendarreward) {
 default: hat = s_lockedskinicon break;
 case(1): hat = s_graduationhaticon break;
@@ -78,7 +76,6 @@ case(65): hat = s_japanesehaticon break;
 case(66): hat = s_romanianhaticon break;
 }}
 if rwd = 2 {
-global.newcalendarreward = irandom_range(1,global.totalskinsAM)
 switch(global.newcalendarreward) {
 default: hat = s_lockedskinicon break;
 case(1): hat = s_normalskinbutton break;
@@ -133,7 +130,6 @@ case(49): hat = s_toiletskinbutton break;
 case(50): hat = s_kratosskinbutton break;
 }}
 if rwd = 3 {
-global.newcalendarreward = irandom_range(1,global.totalitemsAM)
 switch(global.newcalendarreward) {
 default: hat = s_lockedskinicon break;
 case(1): hat = s_paintbrushitembutton break;
@@ -150,24 +146,18 @@ if global.calendardifficulty > 1 {
 draw_sprite(s_creditshatbutton,0,860,406)
 if global.calendardifficulty = 2 {
 draw_text(900,483,"100")
-if global.newcalendarrewarded = 1 {
-if !achievement_earned("CALENDAR_MEDIUM") { achievement_award("CALENDAR_MEDIUM") }}
 } else if global.calendardifficulty = 3 {
 draw_text(900,483,"250")
-if global.newcalendarrewarded = 1 {
-if !achievement_earned("CALENDAR_HARD") { achievement_award("CALENDAR_HARD") }}
 }
 }
 
 if global.newcalendarrewarded = 1 {
 draw_sprite(s_levelhud,0,862,282)
 
-if !achievement_earned("CALENDAR_EASY") { achievement_award("CALENDAR_EASY") }
 
 
 if global.calendardifficulty > 1 {
 draw_sprite(s_levelhud,0,862,412)
 }}
 
-random_set_seed(global.calendarcurrentmonth + global.calendarcurrentweek * global.calendarcurrentyear)
-choosedifficultycalendar()
+draw_text(1020,740,"Seed: " + string(global.newcalendarseed))

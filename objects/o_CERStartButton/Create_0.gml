@@ -1,7 +1,7 @@
 x = -300
-checklvl = 21
-checkmus = 26
+checklvl = 26
+checkmus = 29
 
-islvl = true
-ismus = true
+islvl = false
+ismus = false
 repeatend = 100

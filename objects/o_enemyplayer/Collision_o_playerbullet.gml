@@ -1,9 +1,7 @@
-hp -= 1
-if hp = 0 {
-instance_destroy()
-if room != r_leveleditor { 
-	increase_stat("totalenemykills","QUESTenemykills",1)
-}
+if (!timing_is_tick()) exit;
+hp -= 1;
+if (hp <= 0) {
+    scr_troop_defeat(true);
 } else {
-audio_play_sound(snd_bang,10,0,0.5)	
+    audio_play_sound(snd_bang, 10, 0, 0.5);
 }

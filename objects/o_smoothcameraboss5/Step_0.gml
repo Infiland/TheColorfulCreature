@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.pause = 1 { exit }
 if instance_exists(o_player) {
 x = lerp(x,o_player.x,(0.04 + (0.02 * (o_player.vsp / 15)) * (60 / global.maxfps)))

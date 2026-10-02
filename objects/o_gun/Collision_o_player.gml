@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 instance_destroy()
 global.gunammo += 16
 if room != r_leveleditor {

@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 y = camera_get_view_y(view_camera[0])
 if x > (room_width + 1000) {
 gotodirection = 1

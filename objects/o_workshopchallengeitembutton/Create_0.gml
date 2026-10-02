@@ -1,4 +1,5 @@
 depth = -102
+timing_ui_register_target("workshop-challenge");
 
 item_id = 0
 mPath = ""

@@ -1,4 +1,5 @@
 function platform_clear_input() {
+    timing_input_clear();
     keyboard_clear(vk_anykey);
     mouse_clear(mb_any);
     global.touch_blocked = true;
@@ -15,20 +16,60 @@ function platform_clear_input() {
     for (var _i = 0; _i < 4; ++_i) gamepad_set_vibration(_i, 0, 0);
 }
 
-function platform_interrupt() {
-    if (!variable_global_exists("tcc_loaded")) return;
-    platform_clear_input();
-    scr_savestats();
-    scr_savegame();
-    platform_services_save();
-    if (global.pause != 0 || !instance_exists(o_pausesystem)) return;
-    global.pause = 1;
-    audio_group_set_gain(Music, global.musicvolume / 5, 100);
+// Keep input/save/audio/ad lifecycles in each caller; share the menu and
+// the existing keyboard/controller narrative and overlay restrictions.
+function platform_pause_menu_allowed() {
+    return instance_exists(o_pausesystem) && room != r_tale && room != r_theend
+        && !instance_exists(o_settingspausemenu) && !instance_exists(o_hatshopmenu);
+}
+
+// The caller has already entered pause. Configure only newly created IDs so
+// repeated calls cannot duplicate controls or alter unrelated instances.
+function platform_pause_menu_create() {
+    if (global.pause != 1 || !platform_pause_menu_allowed()) return false;
     if (!instance_exists(o_pausescreen)) instance_create(288, 288, o_pausescreen);
     if (!instance_exists(o_returnbutton)) {
         var _back = instance_create(480, 490, o_returnbutton);
         _back.ingame = true;
     }
+    if (!instance_exists(o_settings)) {
+        var _settings = instance_create(960, 704, o_settings);
+        _settings.image_xscale = 2;
+        _settings.image_yscale = 2;
+    }
+    if (!instance_exists(o_givefeedback)) {
+        var _feedback = instance_create(750, 670, o_givefeedback);
+        _feedback.image_xscale = 31;
+        _feedback.image_yscale = 16;
+        _feedback.xscale = 0.6;
+        _feedback.yscale = 0.6;
+    }
+    // Normal challenge restarts reject Workshop, matching the pause-menu policy.
+    if (global.challenges == 1 && global.workshop == 0
+        && !instance_exists(o_restartchallengebutton)) {
+        var _restart = instance_create(570, 670, o_restartchallengebutton);
+        _restart.image_xscale = 32.8;
+        _restart.image_yscale = 16.1;
+        _restart.xscale = 0.5;
+        _restart.yscale = 0.5;
+    }
+    timing_activate_object(o_pausescreen);
+    return true;
+}
+
+function platform_interrupt() {
+    timing_interrupt_clock();
+    if (!variable_global_exists("tcc_loaded")) return;
+    platform_clear_input();
+    scr_savestats();
+    scr_savegame();
+    platform_services_save();
+    if (global.pause != 0 || !platform_pause_menu_allowed()) return;
+    global.pause = 1;
+    timing_sequence_flush();
+    audio_group_set_gain(Music, global.musicvolume / 5, 100);
+    if (window_get_cursor() == cr_none) window_set_cursor(cr_arrow);
+    platform_pause_menu_create();
 }
 
 function platform_mobile_step() {
@@ -36,7 +77,7 @@ function platform_mobile_step() {
     var _background = os_is_paused();
     if (_background && !global.mobile_background) platform_interrupt();
     if (!_background && global.mobile_background && platform_google_play())
-        play_services_is_authenticated(platform_google_auth_result);
+        platform_google_auth_begin();
     global.mobile_background = _background;
     if (global.touch_blocked) {
         var _held = false;
@@ -54,15 +95,19 @@ function platform_mobile_gui() {
     display_set_gui_maximise((_pos[2] - _pos[0]) / 1024, (_pos[3] - _pos[1]) / 768, _pos[0], _pos[1]);
 }
 
+function platform_safe_inset(_edge) {
+    return TCC_STEAM_ANDROID ? tcc_android_safe_inset(_edge) : tcc_safe_inset(_edge);
+}
+
 function platform_touch_bounds() {
     if (!platform_mobile()) return [0, 0, 1024, 768];
     var _pos = application_get_position();
     var _sx = 1024 / max(1, _pos[2] - _pos[0]);
     var _sy = 768 / max(1, _pos[3] - _pos[1]);
-    return [(tcc_safe_inset(0) * window_get_width() - _pos[0]) * _sx,
-            (tcc_safe_inset(1) * window_get_height() - _pos[1]) * _sy,
-            ((1 - tcc_safe_inset(2)) * window_get_width() - _pos[0]) * _sx,
-            ((1 - tcc_safe_inset(3)) * window_get_height() - _pos[1]) * _sy];
+    return [(platform_safe_inset(0) * window_get_width() - _pos[0]) * _sx,
+            (platform_safe_inset(1) * window_get_height() - _pos[1]) * _sy,
+            ((1 - platform_safe_inset(2)) * window_get_width() - _pos[0]) * _sx,
+            ((1 - platform_safe_inset(3)) * window_get_height() - _pos[1]) * _sy];
 }
 
 // Positions stay in playfield GUI units; negative X and X > 1024 use the side bars.
@@ -129,7 +174,7 @@ function platform_touch_begin() {
         if (touch_name != "")
             platform_touch_position(variable_global_get("android" + touch_name + "x"), variable_global_get("android" + touch_name + "y"));
         else
-            platform_touch_position(928, 8 + global.pause * 100);
+            platform_touch_position(928, 8);
     }
     return _editing;
 }

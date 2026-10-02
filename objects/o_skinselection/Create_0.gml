@@ -13,7 +13,10 @@ rot2 = -180
 zerogrv = 0
 anim = 0
 
-instance_activate_object(o_allskinbuttons)
+timing_activate_object(o_allskinbuttons)
 instance_deactivate_object(o_allhatbuttons)
 instance_deactivate_object(o_allitembuttons)
 alarm[0] = 3
+cosmetics_defaults();
+customskin = 0;
+customitem = 0;

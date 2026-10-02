@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if o_player.vsp = 0 {
 if image_index = 0 {
 global.checkpointX = o_player.x

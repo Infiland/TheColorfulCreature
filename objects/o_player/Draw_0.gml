@@ -1,3 +1,4 @@
+camera_qa_sample("actor-draw", true, id);
 //draw_text(x,y,global.workshopfolder)
 //draw_text(x,y-10,realwalk)
 
@@ -23,11 +24,11 @@ if breath < 251 { draw_sprite(s_breathinghud,2,x,y-35) }
 if breath > 40 { 
 if breath < 126 { draw_sprite(s_breathinghud,3,x,y-35) }
 }
-if breath < 41 { draw_sprite(s_breathinghud,4,x-random_range(-3,3),y-random_range(32,38)) }
+if breath < 41 { draw_sprite(s_breathinghud,4,x-timing_visual_random_range(-3,3),y-timing_visual_random_range(32,38)) }
 
 //Skins
-if customskin = 1 {
-	draw_sprite_ext(sprite_index, image_index, x, y, skinxscale * image_xscale, skinyscale * image_yscale, image_angle, image_blend, image_alpha)
+if customskin = 1 && sprite_exists(customskin_spr) {
+	cosmetics_draw_skin();
 	scr_hats()
 	scr_items()
 	exit
@@ -47,9 +48,9 @@ break;
 case(22):
 draw_self()
 if zerogrv = 0 {
-if vsp > -0.1 and vsp < 0.1 { draw_sprite_ext(s_underwatermask,0,x+16,y+16,1,1,image_angle,c_white,1) }
-if vsp < -0.1  { draw_sprite_ext(s_underwatermask,1,x+16,y+16,1,1,image_angle,c_white,1) }
-if vsp > 0.1 { draw_sprite_ext(s_underwatermask,2,x+16,y+16,1,1,image_angle,c_white,1) }
+if animation_vsp > -0.1 and animation_vsp < 0.1 { draw_sprite_ext(s_underwatermask,0,x+16,y+16,1,1,image_angle,c_white,1) }
+if animation_vsp < -0.1  { draw_sprite_ext(s_underwatermask,1,x+16,y+16,1,1,image_angle,c_white,1) }
+if animation_vsp > 0.1 { draw_sprite_ext(s_underwatermask,2,x+16,y+16,1,1,image_angle,c_white,1) }
 } else { draw_sprite_ext(s_underwatermask,1,x,y,1,1,image_angle,c_white,1) }
 break;
 case(23):
@@ -63,8 +64,6 @@ draw_sprite_ext(s_redballplayerskin,image_index,x + xchange ,y + ychange,1,1,rot
 break;
 case(25):
 draw_self()
-lightbomberframe += 0.1 * (60 / global.maxfps)
-if lightbomberframe > 4 { lightbomberframe = 0 }
 if zerogrv = 0 {
 if hsp = 0 {
 	draw_sprite(s_bomberoutfit,0,x,y) 
@@ -96,22 +95,11 @@ draw_sprite_ext(s_googlyeye,0,x+9+eyesX-(zerogrv*16)+(_xx*zerogrv),y+16+eyesY-(z
 draw_sprite_ext(s_googlyeye,0,x+22+eyesX-(zerogrv*16)+(_xx*zerogrv),y+16+eyesY-(zerogrv*16)+(_yy*zerogrv),1,1*basesize,image_angle + (googlyeyesrotreal + randomeeyerotationL) ,c_white,1)
 break;
 case(32):
-spiraleyerot += (4 * (60 / global.maxfps)) * (walksp / 4)
-if spiraleyerot > 7200 { spiraleyerot = 0 }
 draw_sprite_ext(s_animatedskinbase,0,x,y+31,1,1,0,image_blend,1)
 draw_sprite_ext(s_spiraleye,0,x+9+eyesX,y+16+eyesY,1,1,spiraleyerot,image_blend,1)
 draw_sprite_ext(s_spiraleye,0,x+22+eyesX,y+16+eyesY,1,1,180+spiraleyerot,image_blend,1)
 break;
 case(33):
-heartbump -= (1 * (60 / global.maxfps))
-if distance_to_object(o_door) < heartbump { heartbump = distance_to_object(o_door) / 1.5 }
-if heartbump < 0 { 
-	hearteyeincrease = 1.3
-	if instance_exists(o_door) {
-heartbump = distance_to_object(o_door) / 1.5
-} else { heartbump = 120 }
-	}
-hearteyeincrease = lerp(hearteyeincrease,1,0.1 *(60 / global.maxfps))
 draw_sprite_ext(s_animatedskinbase,0,x,y+31,1,1,0,image_blend,1)
 draw_sprite_ext(s_hearteye,0,x+9+eyesX,y+16+eyesY,1 * hearteyeincrease,1 * hearteyeincrease,0,image_blend,1)
 draw_sprite_ext(s_hearteye,0,x+22+eyesX,y+16+eyesY,1 * hearteyeincrease,1 * hearteyeincrease,0,image_blend,1)

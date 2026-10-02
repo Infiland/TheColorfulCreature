@@ -1,7 +1,7 @@
-randomize()
+tcc_randomize()
 depth = 1
 image_index = irandom_range(0,5)
-image_speed = (1/6) * (60 / global.maxfps)
+image_speed = (1/6) * (60 / TCC_SIM_HZ)
 goldenspikechance = irandom_range(1,1000)
 if room != r_leveleditor {
 dissaperance = irandom_range(0,100000)

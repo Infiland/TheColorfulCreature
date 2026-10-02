@@ -1,0 +1,139 @@
+{
+  "passed": true,
+  "source": {
+    "identityVersion": 2,
+    "identityScheme": "project-runtime-assets-v2",
+    "sourceSha256": "cc00e83ffd8450c11a2e48f81a78049549e6a2d1631bbec2d6446ba456b52655",
+    "physicsSha256": "7d8eb9addbd5ed405bcf67e2b1144d1163c9c2e95b186729b6a3df3a1a21a610",
+    "fileCount": 23352
+  },
+  "executableSha256": "f440355df55021ab165e34838696e35515162c7541b79a69ee051e755eb31c7e",
+  "nativeBuild": "/Users/infi/Library/Caches/TCC130/gameplay-qa-58",
+  "assessment": "/private/tmp/tcc-qa58-independent01/report-final.json",
+  "assessmentSha256": "97d733ac74972e36712f695d39ea9fa75f8ebcc8dd80c45673ac20d3cf5fd48b",
+  "runs": [
+    {
+      "renderCap": 60,
+      "run": "/Users/infi/Library/Caches/TCC130/timing-current-qa58-01/60",
+      "normalRuntimeEnd": true,
+      "muted": true,
+      "deaths": 0,
+      "simulationTicks": 80,
+      "renderFrames": 79.0,
+      "drawCountCheckpoints": [
+        25.0,
+        50.0,
+        77.0,
+        104.0
+      ],
+      "drawProgressInEachThird": true,
+      "skippedOuterFrames": 1
+    },
+    {
+      "renderCap": 30,
+      "run": "/Users/infi/Library/Caches/TCC130/timing-current-qa58-01/30",
+      "normalRuntimeEnd": true,
+      "muted": true,
+      "deaths": 0,
+      "simulationTicks": 80,
+      "renderFrames": 40.0,
+      "drawCountCheckpoints": [
+        18.0,
+        29.0,
+        43.0,
+        58.0
+      ],
+      "drawProgressInEachThird": true,
+      "skippedOuterFrames": 5
+    },
+    {
+      "renderCap": 150,
+      "run": "/Users/infi/Library/Caches/TCC130/timing-current-qa58-01/150",
+      "normalRuntimeEnd": true,
+      "muted": true,
+      "deaths": 0,
+      "simulationTicks": 80,
+      "renderFrames": 174.0,
+      "drawCountCheckpoints": [
+        42.0,
+        98.0,
+        157.0,
+        216.0
+      ],
+      "drawProgressInEachThird": true,
+      "skippedOuterFrames": 96
+    }
+  ],
+  "comparisons": [
+    {
+      "baselineCap": 60,
+      "candidateCap": 30,
+      "fullPlayerTickPairs": 80,
+      "rawStateFields": [
+        "status",
+        "deaths",
+        "frames",
+        "simulationFrames",
+        "normalRules",
+        "diagnosticOnly",
+        "initial",
+        "final",
+        "completion",
+        "bounds",
+        "trace",
+        "events",
+        "initialNativeActors",
+        "nativeActors",
+        "endingContext",
+        "practiceObservation",
+        "specialObservationVersion",
+        "traceSchemaVersion",
+        "traceBoundaries"
+      ],
+      "floatTolerance": 0,
+      "stateDifferences": [],
+      "nativeCanonicalCells": 40275,
+      "nativeLiteralDifferences": [],
+      "troopNavigationDifferences": []
+    },
+    {
+      "baselineCap": 60,
+      "candidateCap": 150,
+      "fullPlayerTickPairs": 80,
+      "rawStateFields": [
+        "status",
+        "deaths",
+        "frames",
+        "simulationFrames",
+        "normalRules",
+        "diagnosticOnly",
+        "initial",
+        "final",
+        "completion",
+        "bounds",
+        "trace",
+        "events",
+        "initialNativeActors",
+        "nativeActors",
+        "endingContext",
+        "practiceObservation",
+        "specialObservationVersion",
+        "traceSchemaVersion",
+        "traceBoundaries"
+      ],
+      "floatTolerance": 0,
+      "stateDifferences": [],
+      "nativeCanonicalCells": 40275,
+      "nativeLiteralDifferences": [],
+      "troopNavigationDifferences": []
+    }
+  ],
+  "strictNativeComparatorPassed": true,
+  "rawUnchanged": true,
+  "limits": [
+    "Requested cap is not delivered display FPS or Android/vsync hardware proof.",
+    "These probes do not force sustained simulation debt.",
+    "The fixture has no authored troop navigation activity; all19 refers to complete raw STATE_FIELDS."
+  ],
+  "originalSupplementaryFailure": "The first temporary reader incorrectly required equal per-actor timestamps. Original failed assessment and raw samples are retained; corrected reader removes only that unsupported assertion."
+}

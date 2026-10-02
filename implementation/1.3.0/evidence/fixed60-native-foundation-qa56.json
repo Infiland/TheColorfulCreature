@@ -1,0 +1,92 @@
+{
+  "status": "PASS_BOUNDED_NATIVE_FOUNDATION",
+  "binding": {
+    "build": "/Users/infi/Library/Caches/TCC130/gameplay-qa-56",
+    "snapshot": "/Users/infi/Library/Caches/TCC130/gameplay-qa-56/source",
+    "source": {
+      "identityVersion": 2,
+      "identityScheme": "project-runtime-assets-v2",
+      "sourceSha256": "4db206c4f6a2fbfbb30e6420a74d14fcdf7c317bdae1cfea050c859e72da8217",
+      "physicsSha256": "d902c7264bc94017999b15119b1c7fae713f97ebc2f3f7da5aa676374a9a4957",
+      "fileCount": 23352
+    },
+    "executableSha256": "f4acd208f3129ab98db92960eda9d482bfb4400753ab7d21cb0534a667655a22",
+    "artifact": {
+      "sha256": "df86bf7510849ac6c2c2597eddb5bb025bdb65c62e829c62496c2534532dd4b0",
+      "fileCount": 106
+    },
+    "compilerBackend": "VM",
+    "sourceCoverage": {
+      "identity": {
+        "identityVersion": 2,
+        "identityScheme": "project-runtime-assets-v2",
+        "sourceSha256": "4db206c4f6a2fbfbb30e6420a74d14fcdf7c317bdae1cfea050c859e72da8217",
+        "physicsSha256": "d902c7264bc94017999b15119b1c7fae713f97ebc2f3f7da5aa676374a9a4957",
+        "fileCount": 23352
+      },
+      "identityVersion": 2,
+      "completeProjectRuntimeCoverage": true,
+      "compilerDependenciesBound": false,
+      "currentQualificationPermitted": true,
+      "qualification": "Coverage permission only; native payload/log/state and fresh current source/content bindings still required."
+    }
+  },
+  "renderCaps": [
+    60,
+    75,
+    100,
+    120,
+    144,
+    150
+  ],
+  "nativeRuns": 6,
+  "nativeCanonicalCellsCompared": 201375,
+  "nativeCanonicalCellsExactlyEqual": 201375,
+  "exactFullPlayerTickPairs": 400,
+  "fullPlayerFields": 38,
+  "initialPlayerFields": 37,
+  "rawStateFields": [
+    "status",
+    "deaths",
+    "frames",
+    "simulationFrames",
+    "normalRules",
+    "diagnosticOnly",
+    "initial",
+    "final",
+    "completion",
+    "bounds",
+    "trace",
+    "events",
+    "initialNativeActors",
+    "nativeActors",
+    "endingContext",
+    "practiceObservation",
+    "specialObservationVersion",
+    "traceSchemaVersion",
+    "traceBoundaries"
+  ],
+  "floatTolerance": 0,
+  "actualObserver": {
+    "ownedProcesses": 6,
+    "checks": 1300,
+    "activeChecks": 0,
+    "visibleWindowChecks": 0,
+    "nonBackgroundChecks": 1300,
+    "maximumConcurrentOwnedProcesses": 1,
+    "observerChangesAppState": false
+  },
+  "sameCap60HistoricalReferenceExactlyEqual": true,
+  "terminalBatchSha256": "8ba8a5b7ae6ed12383be95eefce40f27273ac000d4c74f7909eedbb818f5a89a",
+  "independentReport": "/Users/infi/Library/Caches/TCC130/requests/qa56-foundation-independent-assessment01/report.json",
+  "independentReportSha256": "c6b13fa7ced1c2f80cb79bd3e873c4a017e6092559d528342bd04ebe1f666979",
+  "independentManifestSha256": "07e1e4291548323df14b034190e98515227286553276fa87f4d673eb129eb320",
+  "integrationReceipt": "/Users/infi/Library/Caches/TCC130/requests/root-qa56-zero-native-guard-integration01/integration.json",
+  "limits": [
+    "Literal exactness applies to recorded player/state dictionaries and declared canonical root-after-native logical actor cells; raw outer/render/elapsed clocks, native IDs, supplementary Begin/End counts remain distinct original observations.",
+    "Intermediate held native states are audited at genuine named phases under the existing phase reader policy; no new tolerance or phase normalization was introduced.",
+    "Requested render caps do not assert delivered display FPS.",
+    "Historical QA55 evidence is not promoted to current QA56 qualification.",
+    "This diagnostic fixture does not qualify all movement cases, pause/menu behavior, full campaign/special completion, physical controller/mobile hardware or native service integrations."
+  ]
+}

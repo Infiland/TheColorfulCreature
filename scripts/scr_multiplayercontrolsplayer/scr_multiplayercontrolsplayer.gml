@@ -2,32 +2,32 @@ function scr_multiplayercontrolsplayer(){
 
 switch(global.multiplayerplayercontrols[multiplayerplayer-1]) {
 case(0):
-key_restart = keyboard_check(vk_rcontrol)
-key_left = keyboard_check(vk_left)
-key_right = keyboard_check(vk_right)
-key_jump = keyboard_check(vk_up)
-key_interact = keyboard_check_pressed(vk_down)
+key_restart = timing_keyboard_down(vk_rcontrol)
+key_left = timing_keyboard_down(vk_left)
+key_right = timing_keyboard_down(vk_right)
+key_jump = timing_keyboard_down(vk_up)
+key_interact = timing_keyboard_pressed(vk_down)
 break;
 case(1):
-key_restart = keyboard_check(ord("R"))
-key_left = keyboard_check(ord("A"))
-key_right = keyboard_check(ord("D"))
-key_jump = keyboard_check(ord("W"))
-key_interact = keyboard_check_pressed(ord("S"))
+key_restart = timing_keyboard_down(ord("R"))
+key_left = timing_keyboard_down(ord("A"))
+key_right = timing_keyboard_down(ord("D"))
+key_jump = timing_keyboard_down(ord("W"))
+key_interact = timing_keyboard_pressed(ord("S"))
 break;
 case(2):
-key_restart = keyboard_check(ord("P"))
-key_left = keyboard_check(ord("J"))
-key_right = keyboard_check(ord("L"))
-key_jump = keyboard_check(ord("I"))
-key_interact = keyboard_check_pressed(ord("K"))
+key_restart = timing_keyboard_down(ord("P"))
+key_left = timing_keyboard_down(ord("J"))
+key_right = timing_keyboard_down(ord("L"))
+key_jump = timing_keyboard_down(ord("I"))
+key_interact = timing_keyboard_pressed(ord("K"))
 break;
 case(3):
-key_restart = keyboard_check(vk_numpad9)
-key_left = keyboard_check(vk_numpad4)
-key_right = keyboard_check(vk_numpad6)
-key_jump = keyboard_check(vk_numpad8)
-key_interact = keyboard_check_pressed(vk_numpad5)
+key_restart = timing_keyboard_down(vk_numpad9)
+key_left = timing_keyboard_down(vk_numpad4)
+key_right = timing_keyboard_down(vk_numpad6)
+key_jump = timing_keyboard_down(vk_numpad8)
+key_interact = timing_keyboard_pressed(vk_numpad5)
 break;
 case(4):
 var _pad = multiplayerplayer - 1

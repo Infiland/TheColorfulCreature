@@ -12,3 +12,5 @@ vdepth = 0;
 hidesprites = false
 
 scr_activateobjects()
+// Navigation geometry changed; culling alone never invalidates the cache.
+scr_troop_nav_mark_dirty();

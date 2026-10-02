@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 audio_play_sound(snd_shooter,10,0)
 if !instance_place(x,y,o_ammoinfinite) {
 instance_create(x,y,o_ammoinfinite)

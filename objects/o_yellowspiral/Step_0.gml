@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.pause = 0 { image_speed = 1 } else{ image_speed = 0 }
 
 if room = r_leveleditor {

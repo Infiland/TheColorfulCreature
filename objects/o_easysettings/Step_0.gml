@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 event_inherited()
 image_index = global.easy
 	if global.choosesettings != 4 { x = lerp(x,-256,0.2 * (60 / global.maxfps)) }

@@ -27,6 +27,10 @@ def main():
     android_release = next(c for c in project['configs']['children'] if c['name'] == 'Mobile')
     android_release = next(c for c in android_release['children'] if c['name'] == 'Android')
     assert any(c['name'] == 'AndroidRelease' for c in android_release['children'])
+    assert any(c['name'] == 'SteamAndroid' for c in android_release['children'])
+    for extension in ['GMAdMob', 'GMGooglePlayServices', 'TCCPrivacy']:
+        assert yy(f'extensions/{extension}/{extension}.yy')['ConfigValues']['SteamAndroid']['copyToTargets'] == '0'
+    assert yy('extensions/TCCAndroidSafeArea/TCCAndroidSafeArea.yy')['ConfigValues']['SteamAndroid']['copyToTargets'] == '8'
     admob = yy('options/extensions/GMAdMob.json')['configurables']
     production_ad_ids = {
         'fb7dfcc4-8a4f-480d-80a1-4353f93c9a2d': 'ca-app-pub-7108130195717311~2960588105',
@@ -50,6 +54,12 @@ def main():
     assert android['option_android_target_sdk'] == '36'
     assert android['option_android_minimum_sdk'] == '23'
     assert android['option_android_splash_time'] == 0
+    assert android['option_android_gamepad_support'] is True
+    steam_android = android['ConfigValues']['SteamAndroid']
+    assert steam_android['option_android_package_product'] == 'tccsteam'
+    assert steam_android['option_android_google_dynamic_asset_delivery'] == 'False'
+    assert steam_android['option_android_google_services_app_id'] == ''
+    assert steam_android['option_android_permission_internet'] == 'True'
     for path in (ROOT / 'options/ios/icons').rglob('*.png'):
         # PNG IHDR color type 2 is RGB without an alpha channel, required by Apple.
         assert path.read_bytes()[25] == 2, f'Apple icon must be opaque: {path}'

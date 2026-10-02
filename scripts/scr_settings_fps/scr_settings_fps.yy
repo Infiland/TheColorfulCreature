@@ -1,0 +1,10 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_settings_fps",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_settings_fps",
+  "parent":{"name":"Settings","path":"folders/Objects/Settings.yy"},
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0"
+}

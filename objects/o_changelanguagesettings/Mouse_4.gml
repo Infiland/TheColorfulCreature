@@ -1,4 +1,4 @@
-if global.choosesettings != 5 { exit }
+if (settings_fps_input_blocked() || global.choosesettings != 5) { exit }
 
 global.language = language
 

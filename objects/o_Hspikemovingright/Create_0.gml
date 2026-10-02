@@ -1,4 +1,4 @@
-randomize()
+tcc_randomize()
 depth = 1
 spikespeed = 1
 change = 0

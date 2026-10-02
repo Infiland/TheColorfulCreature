@@ -6,3 +6,5 @@ audio_play_sound(snd_blockbreak1,0,0)
 instance_create(x,y,o_deleteblockanimation)
 audio_play_sound(snd_blockbreak1,0,0)
 }
+// Navigation geometry changed; culling alone never invalidates the cache.
+scr_troop_nav_mark_dirty();

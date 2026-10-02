@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.multiplayerplayers = 1 { x = lerp(x,originalx,0.2 * (60 / global.maxfps)) } else {
 	if global.chooseminigameMU = false {
 	x = lerp(x,299,0.2 * (60 / global.maxfps))

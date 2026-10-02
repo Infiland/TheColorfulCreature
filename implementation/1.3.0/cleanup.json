@@ -1,0 +1,63 @@
+{
+  "schema": "tcc-release-diff-cleanup-v1",
+  "specialLevelsDeferredByUser": true,
+  "unfinishedWorkArchive": "/Users/infi/Library/Caches/TCC130/release-pr-130-cleanup01/pre-cleanup-source.tar.gz",
+  "archiveSha256": "a703bd629c8ed218d3599c96ebc910e39e6b2d7fc62a27e77133b11e83ec1d62",
+  "allPreCleanupBytesArchivedAndVerified": true,
+  "preservedHistoricalEvidence": {
+    "fixed60-native-foundation-qa56.json": "c36f49047a74c66da46b8bd7f77b9f7ba21e3fd09508a0752a1e143bfefdb464",
+    "fixed60-movement-qa56.json": "0bffb7ca38244188788d8b3964f8b32fbb2277183b82289a3edf2dd521109005",
+    "fixed60-draw-qa58.json": "19c34d0c5203c8bdababbd3c5688e81485586dd1b092172855b86c6e9cf64758",
+    "remaining-slope-sp-qa58.json": "09e8b993b542c3ec47cdc2cda8b18c1437fbc3f5c161495b0d3e93ba0ca5d1bb",
+    "yellow-slope-qa58.json": "416189e32295180e04649e28c101ab33c9ff7b28b3285902bcc7389fac72e696",
+    "mu-actor-slope-qa58.json": "ca1c3a9d4a7fd0093ea99d150da0d39bb1ee20e333305ed909d55214b48ac1c6",
+    "native-integration-check27.json": "b5405e8d87b0b21b25ae075026511b7380ac69c91f0c6638eaad687c2a09e6ae",
+    "quiet-launch-qa24.json": "39a0e611a6220e64095c3ea5c3651ea644fe530f7c96051d072ca8ad4c856ed8",
+    "ioscheck28-mobile-smoke.json": "7233184438ab99995eecf0240f36f643acb2a5eb656ec689bf300b8916874a18",
+    "steamandroid21-mobile-smoke.json": "93c57353d6e192995348ad6f1fab1e53b5e1d242f5d878065e8a295dc9086e19",
+    "campaign-level30-qa58.json": "b5eea9a2c7bd4bfa54c8ece24d0b71825a860dd22a2de2b90c846813fb099ee9",
+    "lunar-full-exit-qa58.json": "adc75a166f7bd1e53d78a38413d53afd4f7634126555872603f72386904390fd",
+    "lunar-cross-cap-qa58.json": "8fd24c716b7c7f8ecccf2b221ed7de992aaf50c54644c1fd9b1aeedc98831694",
+    "lunar-retry-qa58.json": "f7a4a4d6a02257235ee808c5fec8e12242e3197abd81db8a0ac318c54cc77b07",
+    "lunar-seed-variation-qa58.json": "b3a10a0d0ebc67c64bd1639a79463727d97e841bb20c799ed2f235a6ec1a5f37",
+    "fixed60-w5-l4-qa51.json": "1b5f49f5825df560db409b254333ea677d2d4b75fd95b357379e1747ba49e84e",
+    "troop-cache-qa17-comparison.json": "4bd04bd52f2e545f87d78f7bdba4c8cbd3fb502e4e9289a0ec4ccb22c23b46b7",
+    "lunar-cache-qa21-comparison.json": "aa5cad9d4d57d52094129ea9b3d93f837df65ad22902113dced32b662d7a997d",
+    "github-issue-audit-2026-10-01.json": "332a57225e62debc557e56d937ed625b8fb7ae6380bc7547685b4d93b3e72ffd",
+    "github-port-closures-2026-10-02.json": "b43ef2abd44fc12c6da6d8bb6200e9ffd812f53b444352ecaa786dc53a5198b3",
+    "github-milestone-refresh-2026-10-02.json": "28fe174da8be3beab4052c1b6ae8a42aa98bf440e11fa6f9de79459cff715f10"
+  },
+  "removedSpecialOnlyTools": [
+    "tools/special_qa.py",
+    "tools/special_evidence.py",
+    "tools/special_proof_batch.py",
+    "tools/special_room_proofs.py"
+  ],
+  "rawNativeEvidenceRemoved": false,
+  "docsSubmoduleTouched": false,
+  "limits": [
+    "Preserved historical validation retains each packet's original build/physics scope. Final cleaned-source checks are recorded separately.",
+    "No special levels ship in this PR; prior authored rooms and every earlier evidence file are retained in the external archive and existing native caches."
+  ],
+  "restoredRequiredFixture": {
+    "path": "implementation/1.3.0/lunar-route/route-plan.json",
+    "bytes": 39855,
+    "sha256": "7cf67a38a1b7f552ceac421bfe1d4312f3a3cb9ca05653d5dc2d46d3e948de7a",
+    "reason": "Required input for retained Lunar QA tooling; no preview/report bulk restored."
+  },
+  "sharedScriptWhitespaceCleanup": {
+    "path": "scripts/scr_credits_windblown/scr_credits_windblown.gml",
+    "lines": 386,
+    "bytesRemoved": 1077,
+    "tokensUnchanged": 19173,
+    "stringLiteralsUnchanged": 497,
+    "resultSha256": "40dffabfe4e750f3d78ebe63ac5581774d059ad6cd8a9d233723550ab5e3f5de"
+  },
+  "independentReview": {
+    "specialAndToolRemoval": "passed",
+    "resourceReferences": "passed; 2669 registered resources and 89 included files",
+    "originalUserFiles": "preserved exactly",
+    "cursorRegression": "fixed with transition-only reset; final Check rerun",
+    "archiveMembersRehashed": 8297
+  }
+}

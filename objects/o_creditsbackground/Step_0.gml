@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 x = lerp(x,mouse_x,0.004)
 y = lerp(y,mouse_y,0.002)
 if y > 540 { y = 540 }

@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 steam_details = tcc_steam_ugc_request_item_details(level, 30);
 requestname = tcc_steam_get_user_persona_name(mOwner);
 

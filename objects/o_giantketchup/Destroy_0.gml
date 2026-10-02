@@ -27,5 +27,5 @@ spawn = instance_create(x,y,o_ketchup)
 spawn.image_angle = 330 + randomangle
 with o_ketchup {
 direction = image_angle
-speed = 3 * (60 / global.maxfps) 
+speed = 3 * (60 / TCC_SIM_HZ)
 }

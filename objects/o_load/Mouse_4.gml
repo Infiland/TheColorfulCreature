@@ -7,12 +7,10 @@ if !instance_exists(o_progressask) {
 if !instance_exists(o_quitask) {
 var directory = directory_set("/Save Files/")
 if file_exists(directory + "SaveFile.sav") {
+if (!scr_loadgame()) exit;
 window_set_cursor(cr_default)
 audio_sound_pitch(m_mainmenu,1)
 musicandsoundvolumefix()
-global.hardmode = 0
-global.challenges = 0
-global.endless = 0
 
 //Achievements
 	if global.isgrayscale = true {
@@ -28,7 +26,6 @@ global.endless = 0
 	scr_saveachievements()
 	}}
 
-scr_loadgame()
 audio_stop_sound(m_mainmenu);
 scr_loadsettings()
 o_narrator.l = 0

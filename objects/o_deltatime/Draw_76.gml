@@ -1,0 +1,9 @@
+timing_qa_layers_sample("root-before-draw");
+camera_qa_sample("pre-draw-authoritative");
+camera_follow_qa_sample("pre-draw-authoritative");
+sequence_qa_sample("pre-draw");
+sequence_probe_qa_sample("pre-draw");
+credits_windblown_qa_observe("pre-draw");
+timing_before_draw();
+camera_qa_sample("pre-draw-interpolated");
+camera_follow_qa_sample("pre-draw-interpolated");

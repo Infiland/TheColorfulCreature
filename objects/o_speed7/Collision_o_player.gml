@@ -1,4 +1,5 @@
-randomize()
+if (!timing_is_tick()) exit;
+tcc_randomize()
 audio_sound_pitch(snd_speed,random_range(0.9,1.1));
 audio_play_sound(snd_speed,10,0)
 instance_destroy()

@@ -1,6 +1,7 @@
 {
   "$GMExtension":"",
   "%Name":"TCCPrivacy",
+  "ConfigValues":{"SteamAndroid":{"copyToTargets":"0"}},
   "androidactivityinject":"",
   "androidclassname":"TCCPrivacy",
   "androidcodeinjection":"",

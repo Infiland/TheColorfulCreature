@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.visual3dsettings = 1 {
 hdepth = (obj_to_follow.x-x)/factor;
 vdepth = (obj_to_follow.y-y)/factor;

@@ -1,9 +1,9 @@
-randomize()
+tcc_randomize()
 image_xscale = 2
 image_yscale = 2
-speed = 1 * (60 / global.maxfps) 
+speed = 1 * (60 / TCC_SIM_HZ)
 if global.easy = 1 {
-speed = -1 * (60 / global.maxfps) 
+speed = -1 * (60 / TCC_SIM_HZ)
 }
 image_angle = random_range(0,360);
 if instance_exists(o_player) {	

@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 y = lerp(y,384,0.1 * (60 / global.maxfps))
 
 direction += wheelspeed * (60 / global.maxfps)

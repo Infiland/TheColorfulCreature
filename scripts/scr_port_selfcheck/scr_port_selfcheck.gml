@@ -3,6 +3,7 @@ function scr_port_assert(_condition, _message) {
 }
 
 function scr_port_selfcheck() {
+    platform_master_gain(0);
     scr_port_assert(mobile_confirmation_hit(336, 472) == ord("N"), "confirmation No hit target");
     scr_port_assert(mobile_confirmation_hit(688, 472) == ord("Y"), "confirmation Yes hit target");
     scr_port_assert(mobile_confirmation_hit(512, 472) == 0, "confirmation gap ignores taps");
@@ -90,6 +91,20 @@ function scr_port_selfcheck() {
     scr_port_assert(scr_save_number("Test", "Bad", 0) == 0, "negative progress");
     scr_port_assert(scr_save_number("Test", "Good", 0) == 42, "valid progress");
     ini_close();
+    level_selfcheck();
+    scr_challenges_init();
+    scr_lunarbase_selfcheck();
+    global.hardmodeunlock = 0; global.world4 = 0;
+    levelselect_selfcheck();
+    commentary_selfcheck();
+    CER_selection_selfcheck();
+    scr_slope_geometry_selfcheck();
+    scr_troop_nav_benchmark();
+    scr_settings_selfcheck();
+    scr_cosmetics_selfcheck();
+    scr_cosmetics_runtime_selfcheck();
+    scr_tradeup_selfcheck();
+    scr_online_cosmetics_selfcheck();
     show_debug_message("TCC_PORT_SELF_CHECK_PASS");
     game_end();
 }
@@ -199,13 +214,20 @@ function scr_mobile_smoke_step() {
             break;
         case 10:
             scr_port_assert(instance_exists(o_progressask), "mobile confirmation opens");
-            with (o_progressask) mobile_confirmation_submit(ord("N"));
+            with (o_progressask) {
+                mobile_confirmation_submit(ord("N"));
+                scr_port_assert(instance_exists(o_progressask), "No stays queued until a logical tick");
+                confirmation_tick_update();
+            }
             scr_port_assert(!instance_exists(o_progressask), "No dismisses confirmation");
             scr_port_assert(room == r_gamemode, "No preserves current room");
             instance_create(0, 0, o_progressask);
             break;
         case 11:
-            with (o_progressask) mobile_confirmation_submit(ord("Y"));
+            with (o_progressask) {
+                mobile_confirmation_submit(ord("Y"));
+                confirmation_tick_update();
+            }
             break;
         case 12:
             scr_port_assert(room == r_lvl1 && instance_exists(o_player), "Yes starts campaign without URL action");

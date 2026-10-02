@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 busy = false; // are we busy with the request?
 success = false; // did we obtain a number successfully?
 players = 0; // the actual number, can be 0

@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 // Animate x position based on which submenu is active
 var _cam_x = camera_get_view_x(view_camera[0])
 var _lerp_speed = 0.2 * (60 / global.maxfps)
@@ -7,6 +8,8 @@ if global.choosesettings != setting_menu {
 } else {
 	x = lerp(x, _cam_x + setting_col, _lerp_speed)
 }
+
+image_alpha = 1;
 
 // Gated settings: gray out when disabled
 if gated {
@@ -29,4 +32,9 @@ if one_way {
 // DLC gate check
 if dlc_gate > 0 {
 	if !tcc_steam_user_owns_dlc(dlc_gate) { image_alpha = 0.5 }
+}
+
+if (!settings_fps_input_blocked() && global.choosesettings == setting_menu && mouseon) {
+    var _device = gamepad_remap_active_device(true);
+    if (_device >= 0 && tcc_gamepad_button_check_pressed(_device, gp_face1)) event_perform(ev_mouse, ev_left_press);
 }

@@ -1,5 +1,4 @@
 //Logic for the quests menu to appear
-alphalerp = lerp(alphalerp,0.8,0.1)
 draw_set_alpha(alphalerp)
 draw_set_color(c_white)
 draw_set_halign(fa_center)
@@ -14,13 +13,11 @@ var d = date_hour_span(date_create_datetime(global.calendarcurrentyear, global.c
 
 draw_text(room_width/2,120,loc("QUESTS_RESET_IN") + ": " + string_format(d,0,1) + "h")
 
-//RANDOMNESS
-seed = ((global.calendarcurrentyear * global.calendarcurrentmonth) / global.calendarcurrentday)
-random_set_seed(seed)
-
-//QUESTS
-drawquest(150,irandom_range(0,maxquests-1),0) //Quest 1
-drawquest(310,irandom_range(0,maxquests-1),1) //Quest 2
-drawquest(470,irandom_range(0,maxquests-1),2) //Quest 3
+// Daily choices are initialized by the fixed simulation, never by rendering.
+if variable_instance_exists(id,"timing_quest_indices") {
+    drawquest(150,timing_quest_indices[0],0)
+    drawquest(310,timing_quest_indices[1],1)
+    drawquest(470,timing_quest_indices[2],2)
+}
 draw_set_halign(fa_left)
 draw_sprite_ext(s_cannotplace,0,64,80,3,3,0,c_white,1)

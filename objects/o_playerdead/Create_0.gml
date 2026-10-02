@@ -1,9 +1,9 @@
 var e = 1
 image_alpha = 1
 image_index = 0
-image_speed = 1/3 * (60 / global.maxfps)
-gotheredead = random_range(2.5 * (60 / global.maxfps),-2.5 * (60 / global.maxfps))
-fall = random_range(-1 * (60 / global.maxfps),1 * (60 / global.maxfps))
+image_speed = 1/3 * (60 / TCC_SIM_HZ)
+gotheredead = random_range(2.5 * (60 / TCC_SIM_HZ),-2.5 * (60 / TCC_SIM_HZ))
+fall = random_range(-1 * (60 / TCC_SIM_HZ),1 * (60 / TCC_SIM_HZ))
 audio_stop_sound(snd_youfellformytrap)
 
 if room = r_leveleditor {

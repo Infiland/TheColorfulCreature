@@ -1,10 +1,11 @@
 function scr_savehats() {
 if global.cheats = 0 {
 	
-	var directory = directory_set("//Save Files/")
+	cosmetics_defaults();
+	var directory = directory_set("//Save Files/");
+	if (!directory_exists(directory)) directory_create(directory);
 	
-	if (file_exists(directory + "Hats.sav")) file_delete(directory + "Hats.sav");
-	ini_open(directory + "Hats.sav");
+	scr_save_begin(directory + "Hats.sav");
 	//Hats
 	ini_write_real("Hats","Selected Hat",global.hatselected);
 	ini_write_real("Hats","Hat Name Object Selected",global.hatnameobjectselected)
@@ -77,6 +78,6 @@ if global.cheats = 0 {
 	ini_write_real("Hats","Portuguese Hat",global.hat[67])
 	
 	ini_write_string("CustomHat","Custom Hat",global.CUSTOMhat);
-	ini_close();
+	return scr_save_finish(directory + "Hats.sav");
 }
 }

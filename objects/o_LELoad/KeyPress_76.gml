@@ -1,4 +1,4 @@
-if keyboard_check(vk_control) {
+if timing_keyboard_down(vk_control) {
 
 instance_destroy(o_leveleditormenusetup)
 instance_destroy(o_allbackgrounds)

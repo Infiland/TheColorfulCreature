@@ -1,94 +1,17 @@
-function scr_loadchallengelevel() {
-	var directory = "";
-	if (argument_count > 0 && argument0 != "") {
-		directory = argument0;
-	} else if (variable_global_exists("challenge_level_dir") && global.challenge_level_dir != "") {
-		directory = global.challenge_level_dir;
-	} else {
-		directory = "Lunar Base Challenge/1";
-	}
-
-	directory = string_replace_all(directory, "\\", "/");
-	if (string_pos(":", directory) == 0 && string_copy(directory, 1, 1) != "/") {
-		var _base_dir = "";
-		if (variable_global_exists("challenge_base_dir")) _base_dir = global.challenge_base_dir;
-		if (_base_dir == "") _base_dir = scr_challenge_get_base_dir();
-		directory = _base_dir + directory;
-	}
-	if (string_copy(directory, string_length(directory), 1) != "/") {
-		directory += "/";
-	}
-
-	//show_message(program_directory + "\n" + directory_exists(directory))
-
-	if directory_exists(directory) {
-	if (file_exists(directory + "OtherLevelEditor.sav")) {
-	ini_open(directory + "OtherLevelEditor.sav");
-	global.leveleditorstring = ini_read_string("Other LE","Text","");
-	global.leveleditormusic = ini_read_string("Other LE","Music","");
-	global.leveleditorversion = ini_read_string("Other LE","Version","");
-	global.levelname = ini_read_string("Other LE","Name","");
-	global.defaultcolorLE = ini_read_real("Other LE","Default Starting Color",0);
-	global.LEBackground = ini_read_real("Other LE","Background",0);
-	global.LEStarRotation = ini_read_real("Other LE","Star Rotation",0);
-	global.LEStarStyle = ini_read_real("Other LE","Level Star Style",0);
-	global.LEBlockStyle = ini_read_real("Other LE","Level Block Style",0);
-	global.LEDiamondMedalTime = ini_read_real("Other LE","Diamond Medal Time",35);
-	global.LELevelWidthBlocks = ini_read_real("Other LE","Level Width Blocks",32);
-	global.LELevelHeightBlocks = ini_read_real("Other LE","Level Height Blocks",22);
-	ini_close();
-	}
-
-	if global.LEStarRotation != 0 {
-	var customstar = instance_create(x,y,o_customstarbackground)
-	with customstar {
-	customdirection = global.LEStarRotation
-	}}
-	scr_LEChangeScenery()
-
-	layer = layer_create(-100)
-	with(o_leveleditorloadplacement) instance_destroy();
-	if file_exists(directory + "LevelEditor.sav") {
-	var _wrapper = LoadJSONFromFile(directory + "LevelEditor.sav");
-	if (is_undefined(_wrapper)) return undefined;
-	var _list = _wrapper[? "ROOT"];
-    if (!(is_real(_list) || is_handle(_list)) || !ds_exists(_list, ds_type_list)) { ds_map_destroy(_wrapper); exit; } //var list = ds_map_find_value(_wrapper,"ROOT")
-	for (var i=0;i < ds_list_size(_list);i++) {
-	var _map = _list[| i] //var _map = ds_list_find_value(_list,i)
-	if (!(is_real(_map) || is_handle(_map)) || !ds_exists(_map, ds_type_map)) continue;
-    var _obj = _map[? "obj"];
-    if (!is_string(_obj)) continue;
-    var _asset = asset_get_index(_obj);
-    if (_asset == -1 || asset_get_type(_asset) != asset_object) continue;
-    if (!is_real(_map[? "x"]) || !is_real(_map[? "y"])) continue;
-	with(instance_create_layer(0,0,layer,asset_get_index(_obj))) {
-	x = _map[? "x"]
-	y = _map[? "y"]
-	if global.leveleditorversion > 1 {
-	image_index = _map[? "imageindex"]
-	image_xscale = _map[? "xscale"]
-	image_yscale = _map[? "yscale"]
-	}
-	}
-	}
-	ds_map_destroy(_wrapper)
-	}
-
-	if global.LELevelHeightBlocks > 22 || global.LELevelWidthBlocks > 32 {
-		if !instance_exists(o_smoothcamera) {
-			if instance_exists(o_player) {
-				instance_create(o_player.x,o_player.y,o_smoothcamera)
-			} else if instance_exists(o_playerspawner) {
-				instance_create(o_playerspawner.x,o_playerspawner.y,o_smoothcamera)
-			} else {
-				instance_create(room_width/2,room_height/2,o_smoothcamera)
-			}
-		}
-	}
-
-
-	} else {
-		game_restart()
-	}
-
+function scr_loadchallengelevel(_directory = "") {
+    if (_directory == "" && variable_global_exists("challenge_level_dir")) _directory = global.challenge_level_dir;
+    if (_directory == "") _directory = "Lunar Base Challenge/1";
+    _directory = string_replace_all(_directory, "\\", "/");
+    if (string_pos(":", _directory) == 0 && string_copy(_directory, 1, 1) != "/") {
+        var _base = variable_global_exists("challenge_base_dir") ? global.challenge_base_dir : "";
+        if (_base == "") _base = scr_challenge_get_base_dir();
+        _directory = level_directory(_base) + _directory;
+    }
+    var _document = level_read(_directory);
+    if (is_undefined(_document)) {
+        level_load_failure();
+        return false;
+    }
+    global.LEMode = 2;
+    return level_apply(_document, "challenge");
 }

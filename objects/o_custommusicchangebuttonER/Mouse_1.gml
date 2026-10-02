@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 timer -= 1
 if timer < 0 {
 if global.CERMusicChange != 1 {

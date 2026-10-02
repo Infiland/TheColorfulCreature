@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.CESConfigure = 1 {
 x = lerp(x,xstart,0.2 * (60 / global.maxfps))
 } else {

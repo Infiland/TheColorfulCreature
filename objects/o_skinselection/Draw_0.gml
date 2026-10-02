@@ -1,3 +1,8 @@
+if (customskin == 1 && sprite_exists(customskin_spr)) {
+    draw_sprite_ext(customskin_spr, floor(anim / 8) mod 9, x, y, 5 * skinxscale, 5 * skinyscale, 0, c_white, 1);
+    scr_items();
+    exit;
+}
 switch(global.skinselected) {
 default:
 draw_self()

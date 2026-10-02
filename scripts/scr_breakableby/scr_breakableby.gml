@@ -1,5 +1,5 @@
 function scr_breakableby(object){
-var _dt = (60 / global.maxfps)
+var _dt = (60 / TCC_SIM_HZ)
 
 
 if instance_exists(object) {

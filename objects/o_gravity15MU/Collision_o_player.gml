@@ -1,4 +1,4 @@
-randomise();
+tcc_randomize();
 if global.sound = 1 {
 audio_sound_pitch(snd_gravity,random_range(0.9,1.1));
 audio_play_sound(snd_gravity,10,0)

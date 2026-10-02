@@ -1,6 +1,9 @@
 depth = -10000000001
 image_speed = 0
 grab = false
+slider_dirty = false
+slider_adjusting = false
+slider_repeat = 0
 
 // Settings-specific instance variables (set by spawner)
 slider_gvar = "musicvolume"

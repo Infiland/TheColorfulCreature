@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.musicdistortionsettings = 1 {
 if !(room = r_leveleditor) {
 if instance_exists(o_player) {

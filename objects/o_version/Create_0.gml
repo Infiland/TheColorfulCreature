@@ -1,5 +1,5 @@
 /// @description Game's Version
-randomize()
+tcc_randomize()
 global._ef_water.cutoff = 20000
 global._ef_gain.gain = 1
 r_str = "0"
@@ -23,12 +23,12 @@ if (global.steam_is_available) {
     if (tcc_steam_get_app_id() == 1749610) {
         version = "Demo"
     } else {
-        version = "Release " + GM_version
+        version = "Release " + TCC_RELEASE_VERSION
     }
 
 } else {
     // Default values when Steam is not available
-    version = "Release " + GM_version
+    version = "Release " + TCC_RELEASE_VERSION
     busy = false
     success = false
     players = 0
@@ -47,8 +47,8 @@ global.donatedmoney = actualmoni;
 
 // Set version for special cases
 if (global.moddedGameDir != "") { version = loc("MODDED_CLIENT") } // MODDED VERSION
-if (os_type == os_android) { version = "Android " + GM_version }
-if (os_type == os_ios) { version = "iOS " + GM_version } // ANDROID VERSION
+if (os_type == os_android) { version = "Android " + TCC_RELEASE_VERSION }
+if (os_type == os_ios) { version = "iOS " + TCC_RELEASE_VERSION } // ANDROID VERSION
 if (os_type == os_gxgames) { version = "Website Version" } // WEB VERSION
 
 window_set_caption("The Colorful Creature | " + version)
@@ -71,7 +71,7 @@ hats = rankings.hats;
 
 // Create badge instance if it doesn't exist
 if (!instance_exists(o_badge)) {
-    instance_create_depth(0, 0, depth-1, o_badge);
+    timing_create_depth(0, 0, depth-1, o_badge);
 }
 
 // Update badge counts directly

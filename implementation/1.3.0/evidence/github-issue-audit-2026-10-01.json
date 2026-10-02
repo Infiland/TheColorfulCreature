@@ -1,0 +1,259 @@
+{
+  "date": "2026-10-01",
+  "branch": "1.2.1",
+  "allIssuesRead": 70,
+  "openIssuesAtAudit": 16,
+  "completedClosures": 6,
+  "milestoneIssueCount": 14,
+  "milestoneClosedAfterAudit": 10,
+  "milestoneOpenAfterAudit": [
+    31,
+    77,
+    93,
+    121
+  ],
+  "noCommitsOrPushes": true,
+  "entries": [
+    {
+      "number": 12,
+      "title": "Documenting all my code",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/12",
+      "milestone": 5,
+      "observedStateBefore": "open",
+      "stateAfter": "open",
+      "reason": "Documentation-wide commentary and style work remain; milestone 1.4.0, outside this implementation."
+    },
+    {
+      "number": 13,
+      "title": "Slopes",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/13",
+      "milestone": 2,
+      "observedStateBefore": "open",
+      "stateAfter": "closed",
+      "reason": "Completed shared slopes, art and editor persistence; closed with local implementation evidence and broader release gates disclosed.",
+      "closure": {
+        "number": 13,
+        "commentUrl": "https://github.com/Infiland/TheColorfulCreature/issues/13#issuecomment-5939893561",
+        "body": "Implemented locally on `1.2.1`: all five coloured slopes have four quarter-turn orientations, shared triangle collision, and player support for walking up and down without jumping. Editor placement, rotation and persistence, block-style art and supported walking animation are included.\n\nCurrent native integration covers all 20 colour/orientation combinations; 32 current red-slope runtime cases pass. Broader actor, multiplayer and frame-cap regression remains on the release checklist.\n\nClosing the implemented feature scope. These changes have not yet been committed, pushed or released.",
+        "confirmation": {
+          "closed_at": "2026-10-01T20:25:30Z",
+          "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/13",
+          "number": 13,
+          "state": "closed",
+          "state_reason": "completed"
+        }
+      }
+    },
+    {
+      "number": 14,
+      "title": "Code Refactor with how the game loads levels from files",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/14",
+      "milestone": 2,
+      "observedStateBefore": "open",
+      "stateAfter": "closed",
+      "reason": "Completed shared level-document implementation and compatibility fixtures; closed with local evidence and live Workshop gate disclosed.",
+      "closure": {
+        "number": 14,
+        "commentUrl": "https://github.com/Infiland/TheColorfulCreature/issues/14#issuecomment-5939968728",
+        "body": "Implemented locally on `1.2.1`: editor, packaged challenges and Workshop levels now use the same global level-document reader, validator and instance-application implementation. Existing entrypoints are context adapters. New-format saves, legacy compatibility, metadata and ordered instance creation share that implementation.\n\nNative integration fixtures pass for legacy/new round trips, malformed-load preservation, metadata/order and the 4,636-instance Lunar document. Actual Steam Workshop service interactions remain part of release testing.\n\nClosing the implemented refactor scope. These changes have not yet been committed, pushed or released.",
+        "confirmation": {
+          "closed_at": "2026-10-01T20:30:33Z",
+          "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/14",
+          "number": 14,
+          "state": "closed",
+          "state_reason": "completed"
+        }
+      }
+    },
+    {
+      "number": 25,
+      "title": "Commentary Mode DLC",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/25",
+      "milestone": 2,
+      "observedStateBefore": "open",
+      "stateAfter": "closed",
+      "reason": "Completed DLC-gated sourced gallery and position persistence; closed with local evidence and owned-Steam gate disclosed.",
+      "closure": {
+        "number": 25,
+        "commentUrl": "https://github.com/Infiland/TheColorfulCreature/issues/25#issuecomment-5939971256",
+        "body": "Implemented locally on `1.2.1`: Commentary has its own DLC-gated gallery with 22 sourced development-history chapters, existing images, navigation and saved reading position. The timeline begins in 2018; representative artwork is labelled accurately. Access uses existing Steam DLC 1995510 ownership.\n\nNative catalog, ownership-policy and reading-position fixtures pass, and gallery renders were checked. This is a curated milestone history; actual owned-Steam navigation and physical-input acceptance remain release checks.\n\nClosing the implemented gallery scope. These changes have not yet been committed, pushed or released.",
+        "confirmation": {
+          "closed_at": "2026-10-01T20:30:44Z",
+          "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/25",
+          "number": 25,
+          "state": "closed",
+          "state_reason": "completed"
+        }
+      }
+    },
+    {
+      "number": 31,
+      "title": "Special Levels",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/31",
+      "milestone": 2,
+      "observedStateBefore": "open",
+      "stateAfter": "open",
+      "reason": "Production catalog is empty: 0/200 accepted special levels. User requires this content last."
+    },
+    {
+      "number": 32,
+      "title": "Controller Customization",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/32",
+      "milestone": 2,
+      "observedStateBefore": "open",
+      "stateAfter": "closed",
+      "reason": "Completed all sixteen-button/six-action remapping including Start, unused Pause routing and actual saved mapping transactions; current native completion independently checked, physical-input release gates disclosed.",
+      "closure": {
+        "number": 32,
+        "commentUrl": "https://github.com/Infiland/TheColorfulCreature/issues/32#issuecomment-5940891914",
+        "body": "Implemented locally on `1.2.1`: all six gameplay actions can be assigned any of the sixteen standard controller buttons, including Start. Capture/cancel/reset, selected-device polling and persistence use the shared mapping implementation. Pause chooses an unused button when needed, and controls/pause prompts display it.\n\nCurrent native validation completes all 16 \u00d7 6 assignment assertions and actual settings save/load with Start bound to Jump and Back bound to Skip. Independent read-only review confirms the normal engine completion, isolated test saves and an unchanged production profile. Physical controllers, hotplug and mobile-device input remain release checks.\n\nClosing the requested customization scope. These changes have not yet been committed, pushed or released.\n",
+        "confirmation": {
+          "closed_at": "2026-10-01T21:23:28Z",
+          "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/32",
+          "number": 32,
+          "state": "closed",
+          "state_reason": "completed"
+        }
+      }
+    },
+    {
+      "number": 33,
+      "title": "Code Refactor for Settings",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/33",
+      "milestone": 2,
+      "observedStateBefore": "open",
+      "stateAfter": "closed",
+      "reason": "All four original settings checklist items implemented and checked; closed with local evidence and hardware gates disclosed.",
+      "closure": {
+        "number": 33,
+        "commentUrl": "https://github.com/Infiland/TheColorfulCreature/issues/33#issuecomment-5939943702",
+        "body": "Implemented locally on `1.2.1`: settings use shared data-driven definitions, code-created and code-drawn buttons, Boolean and partial (`~`) indicators, and common music/sound/master-volume sliders. Main settings and the pause overlay use the same settings spawner and cleanup paths.\n\nCurrent Check26 native settings validation and persistence fixtures pass. Physical controller/touch checks remain part of the platform release testing.\n\nAll four checklist items are complete. These changes have not yet been committed, pushed or released.",
+        "checklistItemsCompleted": 4,
+        "confirmation": {
+          "closed_at": "2026-10-01T20:28:55Z",
+          "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/33",
+          "number": 33,
+          "state": "closed",
+          "state_reason": "completed"
+        }
+      }
+    },
+    {
+      "number": 35,
+      "title": "Level Editor Properties System",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/35",
+      "milestone": 3,
+      "observedStateBefore": "open",
+      "stateAfter": "open",
+      "reason": "General editor properties remain future milestone 1.4.0 work, outside approved implementation."
+    },
+    {
+      "number": 51,
+      "title": "Enemy Troop Code-Refactor",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/51",
+      "milestone": 2,
+      "observedStateBefore": "open",
+      "stateAfter": "closed",
+      "reason": "Completed shared navigation/lifecycle refactor and W5-L4 route checks; closed with local evidence and Lunar route gate disclosed.",
+      "closure": {
+        "number": 51,
+        "commentUrl": "https://github.com/Infiland/TheColorfulCreature/issues/51#issuecomment-5939896249",
+        "body": "Implemented locally on `1.2.1`: troop navigation geometry is shared and cached, path requests are staggered and bounded, geometry changes invalidate the cache, and defeat rewards are separated from ordinary cleanup. Movement/reaction guards and activation-region dimensions are repaired.\n\nCurrent ordinary W5-L4 replays complete 18/18 runs across 60, 75, 100, 120, 144 and 150 render caps, with zero deaths and no gun/ammo use. Current native integration also passes 35 navigation comparisons covering 26,880 cells. Other encounters, including Lunar Base's full route, remain on the release checklist.\n\nClosing the implemented refactor scope. These changes have not yet been committed, pushed or released.",
+        "confirmation": {
+          "closed_at": "2026-10-01T20:25:41Z",
+          "html_url": "https://github.com/Infiland/TheColorfulCreature/issues/51",
+          "number": 51,
+          "state": "closed",
+          "state_reason": "completed"
+        }
+      }
+    },
+    {
+      "number": 61,
+      "title": "Adding all skins in the TCC Store",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/61",
+      "milestone": 4,
+      "observedStateBefore": "open",
+      "stateAfter": "open",
+      "reason": "Store skin publication belongs to release work; no store operations authorized in this implementation."
+    },
+    {
+      "number": 63,
+      "title": "Update Screenshots on Steam's Store Page",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/63",
+      "milestone": 4,
+      "observedStateBefore": "open",
+      "stateAfter": "open",
+      "reason": "Steam screenshots require release content and store publication, deferred to release chat."
+    },
+    {
+      "number": 77,
+      "title": "Return Android Support",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/77",
+      "milestone": 2,
+      "observedStateBefore": "open",
+      "stateAfter": "open",
+      "reason": "Android implementation exists; final-source build/device verification and signed/store upgrade acceptance remain."
+    },
+    {
+      "number": 93,
+      "title": "Add MacOS Support",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/93",
+      "milestone": 2,
+      "observedStateBefore": "open",
+      "stateAfter": "open",
+      "reason": "Local Mac runtime works; official Steam/Mac App Store distribution, packaging and hardware acceptance remain."
+    },
+    {
+      "number": 121,
+      "title": "Add Android support on Steam",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/121",
+      "milestone": 2,
+      "observedStateBefore": "open",
+      "stateAfter": "open",
+      "reason": "SteamAndroid configuration exists; final APK/device/Steam Frame acceptance remains; no native Android Steam services inferred."
+    },
+    {
+      "number": 127,
+      "title": "Add iOS Support",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/127",
+      "milestone": null,
+      "observedStateBefore": "open",
+      "stateAfter": "open",
+      "reason": "iOS support exists; final-source build and physical-device smoke acceptance remain."
+    },
+    {
+      "number": 128,
+      "title": "Add Game Center Support",
+      "url": "https://github.com/Infiland/TheColorfulCreature/issues/128",
+      "milestone": null,
+      "observedStateBefore": "open",
+      "stateAfter": "open",
+      "reason": "Game Center mapping and local fixtures exist; real account, submission and sync verification remain."
+    }
+  ],
+  "freshStateConfirmation": {
+    "observedAtUtc": "2026-10-01T21:31:44.717165+00:00",
+    "totalIssues": 70,
+    "openIssues": [
+      12,
+      31,
+      35,
+      61,
+      63,
+      77,
+      93,
+      121,
+      127,
+      128
+    ],
+    "allSixClosuresConfirmed": true,
+    "milestoneClosed": 10,
+    "milestoneOpen": [
+      31,
+      77,
+      93,
+      121
+    ]
+  }
+}

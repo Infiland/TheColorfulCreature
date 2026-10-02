@@ -143,7 +143,12 @@ case(92): instance_create(x,y,o_blueblockbreakableLE) break;
 case(93): instance_create(x,y,o_whiteblockbreakableLE) break;
 case(94): instance_create(x,y,o_zerogravityLE) break;
 case(95): instance_create(x,y,o_zerogravitylimit) break;
-case(96): instance_create(x,y,o_redblockslope) break;
+case(96): case(97): case(98): case(99): case(100):
+    var _slope_objects = [o_redblockslope, o_yellowblockslope, o_greenblockslope, o_blueblockslope, o_whiteblockslope];
+    if (!variable_global_exists("LEBlockSlopeRotation")) global.LEBlockSlopeRotation = 0;
+    timing_create_depth(x, y, -y, _slope_objects[global.LES - 96],
+        {orientation: global.LEBlockSlopeRotation, image_index: global.LEBlockSlopeRotation});
+    break;
 }
 }
 if global.LEBuild = 2 {

@@ -9,3 +9,5 @@ timer = irandom_range(70,100);
 depth = -y;
 
 hidesprites = false
+// Navigation geometry changed; culling alone never invalidates the cache.
+scr_troop_nav_mark_dirty();

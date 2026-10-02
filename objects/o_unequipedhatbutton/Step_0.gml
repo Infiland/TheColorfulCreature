@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 event_inherited()
 if global.hatpage = 1 {
 x = lerp(x,originalx,0.2 * (60 / global.maxfps))

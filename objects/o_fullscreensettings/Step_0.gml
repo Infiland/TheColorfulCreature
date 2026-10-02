@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 event_inherited()
 if (window_get_fullscreen()) { image_index = 0 } else {image_index = 1 }
 if global.choosesettings != 1 { x = lerp(x,camera_get_view_x(view_camera[0])-256,0.2 * (60 / global.maxfps)) }

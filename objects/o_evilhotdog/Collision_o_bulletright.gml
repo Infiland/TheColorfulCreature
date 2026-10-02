@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 rotate = 0
 bosshit1 = 1
 repeat (irandom_range(3,7)) { var star = instance_create(x+16,y+16,o_itemstar);
@@ -21,4 +22,4 @@ scr_saveskins()
 audio_stop_sound(m_hotdogtimephase3)
 }
 littlepause = 1
-alarm[1] = 50 * (global.maxfps / 60) 
+alarm[1] = 50 * (TCC_SIM_HZ / 60)

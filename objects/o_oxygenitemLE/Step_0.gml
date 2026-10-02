@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.workshop = 0 {
 if global.LEMode = 2 {
 image_alpha = 0

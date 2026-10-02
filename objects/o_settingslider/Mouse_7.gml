@@ -1,2 +1,2 @@
-grab = false
-global.soundchange = 0
+grab = false;
+settings_slider_commit();

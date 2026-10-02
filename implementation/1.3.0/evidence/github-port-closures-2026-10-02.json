@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-02",
+  "authorization": "User explicitly authorized closing genuinely completed GitHub issues.",
+  "workingBranch": "1.2.1",
+  "commits": 0,
+  "pushes": 0,
+  "releaseOperations": 0,
+  "closures": [
+    {
+      "number": 77,
+      "title": "Return Android Support",
+      "state": "closed",
+      "stateReason": "completed",
+      "closedAt": "2026-10-01T22:45:27Z",
+      "comment": "https://github.com/Infiland/TheColorfulCreature/issues/77#issuecomment-5942181468",
+      "scope": "Restored replacement upload-key/update-support path; signed Android1.2.1 accepted by Google Play and submitted for review.",
+      "limits": "No claim of completed public rollout or current1.3 hardware/service regression."
+    },
+    {
+      "number": 93,
+      "title": "Add MacOS Support",
+      "state": "closed",
+      "stateReason": "completed",
+      "closedAt": "2026-10-01T22:45:28Z",
+      "comment": "https://github.com/Infiland/TheColorfulCreature/issues/93#issuecomment-5942181830",
+      "scope": "Implemented universal macOS port; signed build1.2.0(4) uploaded, processed and assigned to internal TestFlight.",
+      "limits": "No public distribution or complete current hardware acceptance claimed."
+    },
+    {
+      "number": 121,
+      "title": "Add Android support on Steam",
+      "state": "closed",
+      "stateReason": "completed",
+      "closedAt": "2026-10-01T23:00:42Z",
+      "comment": "https://github.com/Infiland/TheColorfulCreature/issues/121#issuecomment-5942347995",
+      "scope": "Dedicated signed SteamAndroid APK, controller input, local services, ads/auth exclusion and documented Valve packaging",
+      "limits": "Uncommitted/unreleased; store/depot/upload, Steam Frame/Lepton/controller hardware and cloud setup remain release gates; no native Android Steam SDK claim."
+    }
+  ],
+  "disclosure": "All closure comments disclose local, uncommitted, unreleased1.3 changes and remaining release gates.",
+  "sourceEvidence": "docs/release/STATUS.md (existing dirty submodule; unmodified by this audit)",
+  "milestoneAfterClosures": {
+    "number": 2,
+    "closed": 13,
+    "open": 1,
+    "remainingIssue": 31
+  }
+}

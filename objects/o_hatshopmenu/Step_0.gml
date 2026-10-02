@@ -1,20 +1,12 @@
+if (!timing_instance_step()) exit;
 //Hat Shop
 scr_playercontrolsconfig()
 
 RLselectedhat = selectedhat * -1
 
-if !platform_mobile() {
-if interactcontrols = 0 {
-key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (tcc_gamepad_button_check_pressed(0,global.gp_bind_interact))
-} else { key_interact = keyboard_check_pressed(global.controlsinteract) || (tcc_gamepad_button_check_pressed(0,global.gp_bind_interact)) }
+key_interact = player_interact_pressed();
 
-}else {
-key_interact = instance_exists(o_buttoninteractandroid) && o_buttoninteractandroid.image_index == 1;
-key_left = instance_exists(o_buttonleftandroid) && o_buttonleftandroid.image_index == 1;
-key_right = instance_exists(o_buttonrightandroid) && o_buttonrightandroid.image_index == 1;
-}
-
-if keyboard_check_pressed(vk_enter) || key_interact {
+if timing_keyboard_pressed(vk_enter) || key_interact {
 switch(RLselectedhat) {
 //Exit
 case(0): instance_destroy() break;
@@ -151,78 +143,34 @@ case(64): makehatshop(global.hat[67],floor(50 * global.hatmerchantdiscount),67) 
 }
 }
 
-//Pressing/Holding Left
-if !platform_mobile() {
-if RLselectedhat != 0 {
+// Buffered touch taps act once; only keyboard/controller holds repeat.
+var _left = player_menu_direction_held(false);
+var _right = player_menu_direction_held(true);
+var _left_repeat = player_menu_direction_held(false, false);
+var _right_repeat = player_menu_direction_held(true, false);
+var _direction = 0;
+if (_left && !_right) { _direction = 1; }
+if (_right && !_left) { _direction = -1; }
 
-
-if !keyboard_check(vk_right) || tcc_gamepad_button_check(0,gp_padr) {
-if keyboard_check(vk_left) || tcc_gamepad_button_check(0,gp_padl) {
-
-if press = 0 {
-selectedhat += 1
-press = 1
-} else {
-holdcooldown -= 1 * (60 / global.maxfps)
-if holdcooldown < 0 {
-selectedhat += 1
-if !keyboard_check(vk_shift) {
-holdcooldown = 4
-}
-}
+var _repeat_direction = 0;
+if (_direction == 1 && _left_repeat && !_right_repeat) { _repeat_direction = 1; }
+if (_direction == -1 && _right_repeat && !_left_repeat) { _repeat_direction = -1; }
+if (!variable_instance_exists(id, "menu_previous_direction")) { menu_previous_direction = 0; }
+if (_repeat_direction != menu_previous_direction) {
+    press = 0;
+    if (menu_previous_direction != 0 && !timing_keyboard_down(vk_shift)) { holdcooldown = 40; }
 }
 
+if ((_direction == 1 && RLselectedhat != 0) || (_direction == -1 && RLselectedhat != limithat)) {
+    if (press == 0) {
+        selectedhat += _direction;
+        press = (_repeat_direction != 0);
+    } else {
+        holdcooldown -= 1;
+        if (holdcooldown < 0) {
+            selectedhat += _direction;
+            if (!timing_keyboard_down(vk_shift)) { holdcooldown = 4; }
+        }
+    }
 }
-}
-
-
-
-}
-
-if keyboard_check_released(vk_left) || tcc_gamepad_button_check_released(0,gp_padl) {
-press = 0
-if !keyboard_check(vk_shift) {
-holdcooldown = 40
-}
-}
-
-//Pressing/Holding Right
-if RLselectedhat != limithat {
-if !keyboard_check(vk_left) || !tcc_gamepad_button_check(0,gp_padl) {
-if keyboard_check(vk_right) || tcc_gamepad_button_check(0,gp_padr) {
-if press = 0 {
-selectedhat -= 1
-press = 1
-} else {
-holdcooldown -= 1 * (60 / global.maxfps)
-if holdcooldown < 0 {
-selectedhat -= 1
-if !keyboard_check(vk_shift) {
-holdcooldown = 4
-}
-}
-}
-
-}
-}
-}
-
-if keyboard_check_released(vk_right) || tcc_gamepad_button_check_released(0,gp_padr) {
-press = 0
-if !keyboard_check(vk_shift) {
-holdcooldown = 40
-}
-}
-} else {
-
-	if RLselectedhat != 0 {
-	if key_left {
-		selectedhat += 1
-		platform_clear_input()
-	}}
-	if RLselectedhat != limithat {
-	if key_right {
-		selectedhat -= 1
-		platform_clear_input()
-	}}
-}
+menu_previous_direction = _repeat_direction;

@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-02",
+  "status": "PASS_SIX_CAP_NATIVE_RETRY_AND_INDEPENDENT_REVIEW",
+  "sourceSha256": "cc00e83ffd8450c11a2e48f81a78049549e6a2d1631bbec2d6446ba456b52655",
+  "build": "/Users/infi/Library/Caches/TCC130/gameplay-qa-58",
+  "runs": [
+    {
+      "renderCap": 60,
+      "report": "/Users/infi/Library/Caches/TCC130/lunar-retry-native-qa58-01/60/lunar-report.json",
+      "sha256": "1d49729136e5cc662f2558e0ed9505726d9279466ba62262534635135007c245",
+      "status": "observed",
+      "errors": [],
+      "releaseGates": [],
+      "simulationFrames": 2040.0,
+      "deaths": 1.0,
+      "deathFrame": 1880.0,
+      "playerRestoredFrame": 1922.0,
+      "worldReadyFrame": 1923.0,
+      "resetInstanceCount": 3888,
+      "completeResetPassed": true
+    },
+    {
+      "renderCap": 75,
+      "report": "/Users/infi/Library/Caches/TCC130/lunar-retry-native-qa58-01/75/lunar-report.json",
+      "sha256": "c5536c7423ee7836444c2de0eff2b1637e66a2cc9e3988a3d26b19616fcc027a",
+      "status": "observed",
+      "errors": [],
+      "releaseGates": [],
+      "simulationFrames": 2040.0,
+      "deaths": 1.0,
+      "deathFrame": 1880.0,
+      "playerRestoredFrame": 1922.0,
+      "worldReadyFrame": 1923.0,
+      "resetInstanceCount": 3888,
+      "completeResetPassed": true
+    },
+    {
+      "renderCap": 100,
+      "report": "/Users/infi/Library/Caches/TCC130/lunar-retry-native-qa58-01/100/lunar-report.json",
+      "sha256": "e9593235546c43d9e86023518e3fd6e16f61abce2d4906c1c2bcad6817df2973",
+      "status": "observed",
+      "errors": [],
+      "releaseGates": [],
+      "simulationFrames": 2040.0,
+      "deaths": 1.0,
+      "deathFrame": 1880.0,
+      "playerRestoredFrame": 1922.0,
+      "worldReadyFrame": 1923.0,
+      "resetInstanceCount": 3888,
+      "completeResetPassed": true
+    },
+    {
+      "renderCap": 120,
+      "report": "/Users/infi/Library/Caches/TCC130/lunar-retry-native-qa58-01/120/lunar-report.json",
+      "sha256": "30622c8d3730c59793271a9320a28daf951ad64818b383b0088e42454fd38ea3",
+      "status": "observed",
+      "errors": [],
+      "releaseGates": [],
+      "simulationFrames": 2040.0,
+      "deaths": 1.0,
+      "deathFrame": 1880.0,
+      "playerRestoredFrame": 1922.0,
+      "worldReadyFrame": 1923.0,
+      "resetInstanceCount": 3888,
+      "completeResetPassed": true
+    },
+    {
+      "renderCap": 144,
+      "report": "/Users/infi/Library/Caches/TCC130/lunar-retry-native-qa58-01/144/lunar-report.json",
+      "sha256": "3b172a034997211e8b1e866eb64dff25cce8b734d4e5a5408fa4c17810e8bfc7",
+      "status": "observed",
+      "errors": [],
+      "releaseGates": [],
+      "simulationFrames": 2040.0,
+      "deaths": 1.0,
+      "deathFrame": 1880.0,
+      "playerRestoredFrame": 1922.0,
+      "worldReadyFrame": 1923.0,
+      "resetInstanceCount": 3888,
+      "completeResetPassed": true
+    },
+    {
+      "renderCap": 150,
+      "report": "/Users/infi/Library/Caches/TCC130/lunar-retry-native-qa58-01/150/lunar-report.json",
+      "sha256": "f33915976f1ba3eca2df471be44f6f45b44fed27c514f27ab0499717df9f6b88",
+      "status": "observed",
+      "errors": [],
+      "releaseGates": [],
+      "simulationFrames": 2040.0,
+      "deaths": 1.0,
+      "deathFrame": 1880.0,
+      "playerRestoredFrame": 1922.0,
+      "worldReadyFrame": 1923.0,
+      "resetInstanceCount": 3888,
+      "completeResetPassed": true
+    }
+  ],
+  "independent60": "/private/tmp/tcc-qa58-lunar-retry60-independent01.json",
+  "purpose": "Ordinary restart after gun pickup, four shots, defeated troops and damaged breakables; require whole-level restoration with challenge counters preserved.",
+  "launches": "Serial hidden muted isolated; workers exited0 and gateOFF after batch",
+  "limits": [
+    "A restart diagnostic is not a completion run; completion evidence is separate",
+    "Runtime cap is not delivered display rate"
+  ],
+  "independentSixCaps": {
+    "path": "/private/tmp/tcc-qa58-lunar-retry-six-cap-independent01.json",
+    "sha256": "a65371a65f7d68fd3f1e1511c51374a7c4c62ff7e1886e6b125512256076c84c"
+  },
+  "aggregate": {
+    "rootEndRows": 12240,
+    "actualFullPlayerRows": 11994,
+    "playerFields": 38,
+    "exactPlayerTickPairsVs60": 9995,
+    "exactRecoveryGameplayPairsVs60": 10200,
+    "absentPlayerObservations": 252,
+    "resetWorldRowsPerRun": 3888,
+    "rawFilesUnchanged": 96,
+    "floatTolerance": 0,
+    "presentationExclusions": []
+  }
+}

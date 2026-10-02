@@ -1,5 +1,10 @@
 /// @description Free loaded image sprites, data structures, and temp files
 
+// A delegated Back handler must stop before reading these freed maps.
+news_images_closing = true
+// Pending paths stay owned until their real terminal HTTP callback.
+news_images_release(id, news_image_view)
+
 // Delete loaded sprites
 var _key = ds_map_find_first(loaded_images)
 while (!is_undefined(_key)) {

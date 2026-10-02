@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.chooseminigameMU = true { 
 	x = lerp(x,420,0.2 * (60 / global.maxfps)) 
 	instance_deactivate_object(o_skinsselectbuttonMU)

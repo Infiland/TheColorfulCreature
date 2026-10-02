@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if (global.pause != 0) exit;
 
 if (key_interact || (platform_mobile() && key_interact_h)) {

@@ -1,0 +1,10 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_timing_gameplay",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_timing_gameplay",
+  "parent":{"name":"Other","path":"folders/Scripts/Other.yy",},
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

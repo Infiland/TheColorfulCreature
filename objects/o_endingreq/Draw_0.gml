@@ -5,7 +5,3 @@ draw_text(room_width/2,(room_height/2)-200,"That was subtle.\nAre you dissapoint
 } else {
 draw_text(room_width/2,(room_height/2)-200,"You are not ready to know the truth yet.")
 }}
-
-if keyboard_check_pressed(vk_escape) {
-game_restart();
-}

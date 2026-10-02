@@ -9,11 +9,12 @@ function verticalcollision(obj,type=0) {
 			if onGround & !onCelling { coyotetime = coyotetimeMAX }
 		}
 	} else {
-		if (place_meeting(x,y+hsp,obj)) {
-			while (!place_meeting(x,y+sign(hsp),obj)) {
-	        y = y + sign(hsp);
+		if (place_meeting(x,y+vsp,obj)) {
+			while (!place_meeting(x,y+sign(vsp),obj)) {
+	        y = y + sign(vsp);
 			 }
-			hsp = 0;
+			vsp = 0;
+			if onGround & !onCelling { coyotetime = coyotetimeMAX }
 		}
 	}
 }

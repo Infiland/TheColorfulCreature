@@ -1,5 +1,5 @@
 function randomlevel() {
-	randomize()
+	tcc_randomize()
 	switch(global.endlessrunmode) {
 	case(1):
 	switch(global.difficultyER) {
@@ -23,7 +23,12 @@ function randomlevel() {
 	}
 	break;
 	case(3):
-	CERrandomlevel()
+	if (!CERrandomlevel()) {
+		global.endless = 0;
+		hidehud();
+		room_goto(r_endlessrunmenu);
+		return;
+	}
 	break;
 	case(4):
 	workshopERrandomlevel()
@@ -93,12 +98,11 @@ function randomlevel() {
 	}}
 
 	if global.endlessmusicchange < 1 {
+		var _change_music = true;
 		if global.endlessrunmode != 3 {
 	global.chooserandommusic = irandom_range(1,29)
-		} else { CERrandommusic() }
-	randomsong()
-	audio_stop_all()
-	audio_play_sound(global.chosenmusicER,0,1)
+		} else { _change_music = CERrandommusic(); }
+	if (_change_music) randomsong();
 	if global.endlessrunmode != 3 { global.endlessmusicchange = 10 } else { global.endlessmusicchange = global.CERMusicChange }
 	}
 

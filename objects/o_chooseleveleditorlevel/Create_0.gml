@@ -1,25 +1,15 @@
 files = [];
-depth = -20001
-//var dir = working_directory + "/Custom/Player Hats/*"
-var dir = game_save_id + "/LevelEditor Files/*"
-
-var file_name = file_find_first(dir, fa_directory);
-
-while (file_name != "")
-{
-    array_push(files, file_name);
-
-    file_name = file_find_next();
+depth = -20001;
+var _root = level_directory(directory_set("/LevelEditor Files/"));
+var _name = file_find_first(_root + "*", fa_directory);
+while (_name != "") {
+    if (level_editor_name_valid(_name) && level_exists(_root + _name)) array_push(files, _name);
+    _name = file_find_next();
 }
-show_debug_message(files)
-
-file_find_close()
-
-len = array_length(files)
-page = 1
-if len = 0 { maxpage = 1 } else {
-maxpage = 1 + floor((len-1)/15)
-}
-col = c_white
-
-lastlevels = len - (maxpage-1)*15
+file_find_close();
+array_sort(files, true);
+len = array_length(files);
+page = 1;
+maxpage = max(1, ceil(len / 15));
+selection = 0;
+error_text = "";

@@ -1,15 +1,16 @@
+if (!timing_instance_step()) exit;
 /// @description Keys presses
-if keyboard_check(vk_shift) {
-if keyboard_check(vk_right) {
+if timing_keyboard_down(vk_shift) {
+if timing_keyboard_down(vk_right) {
 global.LEDiamondMedalTime += 0.01 * (60 / global.maxfps)
 }
-if keyboard_check(vk_left) {
+if timing_keyboard_down(vk_left) {
 global.LEDiamondMedalTime -= 0.01 * (60 / global.maxfps)
 }} else {
-if keyboard_check(vk_right) {
+if timing_keyboard_down(vk_right) {
 global.LEDiamondMedalTime += 0.1 * (60 / global.maxfps)
 }
-if keyboard_check(vk_left) {
+if timing_keyboard_down(vk_left) {
 global.LEDiamondMedalTime -= 0.1 * (60 / global.maxfps)
 }
 }
@@ -21,7 +22,7 @@ if global.LEDiamondMedalTime > 999 {
 global.LEDiamondMedalTime = 999
 }
 
-if keyboard_check(vk_enter) || keyboard_check_released(vk_escape) {
+if timing_keyboard_down(vk_enter) || timing_keyboard_released(vk_escape) {
 instance_destroy()
 instance_destroy(o_settimertodiamondtimeLE) 
 }

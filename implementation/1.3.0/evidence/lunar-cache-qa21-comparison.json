@@ -1,0 +1,233 @@
+{
+  "comparison": "Current path algorithm, cached geometry versus rebuilding per request",
+  "historicalBaseline": false,
+  "allPairsEquivalent": true,
+  "pairs": [
+    {
+      "repeat": 1,
+      "equivalent": true,
+      "errors": [],
+      "cached": {
+        "path": "/Users/infi/Library/Caches/TCC130/runs/lunar-cache-qa21/pair-01-cached",
+        "mode": "cached",
+        "errors": [],
+        "inputSha256": "fbb816bc9280ff86e463aac7fbf2cfcd86a7bf3633434720a3a35df0927b83e3",
+        "sourceIdentity": {
+          "levelContentSha256": "fb89ec19683d4145bd62f42266a6bc0b49b3e8ed1d764d7318e3be6935726150",
+          "physicsSha256": "65c4c76f08d86a7f027141feaa03b176eb58ca16cd36d394ffc6c8e675a71e5e",
+          "sourceSha256": "d692c165d4349a050db41623639917713898fa3c825cb6b66c54281fd1942f2e",
+          "fileCount": 22677.0,
+          "executableSha256": "bc5342e25e5556ca73ddaef5a0083dbb052f0160951f1e84d25b877af768e389",
+          "artifactSha256": "0437c2b7c53cc9a378e230d1ea830725209af85aeeba93636175cd022e4e2437"
+        },
+        "fps": 60,
+        "seed": 1,
+        "status": "observed",
+        "frames": 2171.0,
+        "deaths": 0.0,
+        "navigation": {
+          "generation": 3593.0,
+          "width": 100.0,
+          "height": 102.0,
+          "builds": 2.0,
+          "cache_hits": 2.0,
+          "build_us": 973209.0,
+          "path_requests": 4.0,
+          "path_us": 973266.0,
+          "search_iterations": 0.0,
+          "max_search_iterations": 0.0,
+          "room_name": "r_challengelevel",
+          "budget_deferrals": 0.0,
+          "cache_mode": "cached"
+        },
+        "performance": {
+          "stepCostMedianUs": 3131.0,
+          "stepCostP95Us": 4004.0,
+          "observedFps": 58.195830040821555,
+          "wallSeconds": 42.04377245900105,
+          "stepCostP99Us": 4500.0,
+          "stepCostMaxUs": 490257.0,
+          "stepCostTotalUs": 7922951.0
+        },
+        "currentPlayableContent": false
+      },
+      "rebuild": {
+        "path": "/Users/infi/Library/Caches/TCC130/runs/lunar-cache-qa21/pair-01-rebuild",
+        "mode": "rebuild",
+        "errors": [],
+        "inputSha256": "fbb816bc9280ff86e463aac7fbf2cfcd86a7bf3633434720a3a35df0927b83e3",
+        "sourceIdentity": {
+          "levelContentSha256": "fb89ec19683d4145bd62f42266a6bc0b49b3e8ed1d764d7318e3be6935726150",
+          "physicsSha256": "65c4c76f08d86a7f027141feaa03b176eb58ca16cd36d394ffc6c8e675a71e5e",
+          "sourceSha256": "d692c165d4349a050db41623639917713898fa3c825cb6b66c54281fd1942f2e",
+          "fileCount": 22677.0,
+          "executableSha256": "bc5342e25e5556ca73ddaef5a0083dbb052f0160951f1e84d25b877af768e389",
+          "artifactSha256": "0437c2b7c53cc9a378e230d1ea830725209af85aeeba93636175cd022e4e2437"
+        },
+        "fps": 60,
+        "seed": 1,
+        "status": "observed",
+        "frames": 2171.0,
+        "deaths": 0.0,
+        "navigation": {
+          "generation": 3593.0,
+          "width": 100.0,
+          "height": 102.0,
+          "builds": 4.0,
+          "cache_hits": 0.0,
+          "build_us": 1986094.0,
+          "path_requests": 4.0,
+          "path_us": 1986153.0,
+          "search_iterations": 0.0,
+          "max_search_iterations": 0.0,
+          "room_name": "r_challengelevel",
+          "budget_deferrals": 0.0,
+          "cache_mode": "rebuild-per-request"
+        },
+        "performance": {
+          "stepCostMedianUs": 3157.0,
+          "stepCostP95Us": 4311.0,
+          "observedFps": 56.71854121793893,
+          "wallSeconds": 43.050040208996506,
+          "stepCostP99Us": 4671.0,
+          "stepCostMaxUs": 509216.0,
+          "stepCostTotalUs": 9040482.0
+        },
+        "currentPlayableContent": false
+      },
+      "avoidedBuilds": 2.0
+    },
+    {
+      "repeat": 2,
+      "equivalent": true,
+      "errors": [],
+      "cached": {
+        "path": "/Users/infi/Library/Caches/TCC130/runs/lunar-cache-qa21/pair-02-cached",
+        "mode": "cached",
+        "errors": [],
+        "inputSha256": "fbb816bc9280ff86e463aac7fbf2cfcd86a7bf3633434720a3a35df0927b83e3",
+        "sourceIdentity": {
+          "levelContentSha256": "fb89ec19683d4145bd62f42266a6bc0b49b3e8ed1d764d7318e3be6935726150",
+          "physicsSha256": "65c4c76f08d86a7f027141feaa03b176eb58ca16cd36d394ffc6c8e675a71e5e",
+          "sourceSha256": "d692c165d4349a050db41623639917713898fa3c825cb6b66c54281fd1942f2e",
+          "fileCount": 22677.0,
+          "executableSha256": "bc5342e25e5556ca73ddaef5a0083dbb052f0160951f1e84d25b877af768e389",
+          "artifactSha256": "0437c2b7c53cc9a378e230d1ea830725209af85aeeba93636175cd022e4e2437"
+        },
+        "fps": 60,
+        "seed": 1,
+        "status": "observed",
+        "frames": 2171.0,
+        "deaths": 0.0,
+        "navigation": {
+          "generation": 3593.0,
+          "width": 100.0,
+          "height": 102.0,
+          "builds": 2.0,
+          "cache_hits": 2.0,
+          "build_us": 972572.0,
+          "path_requests": 4.0,
+          "path_us": 972626.0,
+          "search_iterations": 0.0,
+          "max_search_iterations": 0.0,
+          "room_name": "r_challengelevel",
+          "budget_deferrals": 0.0,
+          "cache_mode": "cached"
+        },
+        "performance": {
+          "stepCostMedianUs": 3047.0,
+          "stepCostP95Us": 4285.0,
+          "observedFps": 58.17695149825087,
+          "wallSeconds": 42.052254084002925,
+          "stepCostP99Us": 4882.0,
+          "stepCostMaxUs": 489662.0,
+          "stepCostTotalUs": 7697217.0
+        },
+        "currentPlayableContent": false
+      },
+      "rebuild": {
+        "path": "/Users/infi/Library/Caches/TCC130/runs/lunar-cache-qa21/pair-02-rebuild",
+        "mode": "rebuild",
+        "errors": [],
+        "inputSha256": "fbb816bc9280ff86e463aac7fbf2cfcd86a7bf3633434720a3a35df0927b83e3",
+        "sourceIdentity": {
+          "levelContentSha256": "fb89ec19683d4145bd62f42266a6bc0b49b3e8ed1d764d7318e3be6935726150",
+          "physicsSha256": "65c4c76f08d86a7f027141feaa03b176eb58ca16cd36d394ffc6c8e675a71e5e",
+          "sourceSha256": "d692c165d4349a050db41623639917713898fa3c825cb6b66c54281fd1942f2e",
+          "fileCount": 22677.0,
+          "executableSha256": "bc5342e25e5556ca73ddaef5a0083dbb052f0160951f1e84d25b877af768e389",
+          "artifactSha256": "0437c2b7c53cc9a378e230d1ea830725209af85aeeba93636175cd022e4e2437"
+        },
+        "fps": 60,
+        "seed": 1,
+        "status": "observed",
+        "frames": 2171.0,
+        "deaths": 0.0,
+        "navigation": {
+          "generation": 3593.0,
+          "width": 100.0,
+          "height": 102.0,
+          "builds": 4.0,
+          "cache_hits": 0.0,
+          "build_us": 1928670.0,
+          "path_requests": 4.0,
+          "path_us": 1928741.0,
+          "search_iterations": 0.0,
+          "max_search_iterations": 0.0,
+          "room_name": "r_challengelevel",
+          "budget_deferrals": 0.0,
+          "cache_mode": "rebuild-per-request"
+        },
+        "performance": {
+          "stepCostMedianUs": 2776.0,
+          "stepCostP95Us": 3687.0,
+          "observedFps": 56.767618327391574,
+          "wallSeconds": 42.96563795799739,
+          "stepCostP99Us": 4395.0,
+          "stepCostMaxUs": 492635.0,
+          "stepCostTotalUs": 8075522.0
+        },
+        "currentPlayableContent": false
+      },
+      "avoidedBuilds": 2.0
+    }
+  ],
+  "medianAcrossRuns": {
+    "stepCostMedianUs": {
+      "cached": 3089.0,
+      "rebuild": 2966.5
+    },
+    "stepCostP95Us": {
+      "cached": 4144.5,
+      "rebuild": 3999.0
+    },
+    "stepCostP99Us": {
+      "cached": 4691.0,
+      "rebuild": 4533.0
+    },
+    "stepCostMaxUs": {
+      "cached": 489959.5,
+      "rebuild": 500925.5
+    },
+    "stepCostTotalUs": {
+      "cached": 7810084.0,
+      "rebuild": 8558002.0
+    },
+    "observedFps": {
+      "cached": 58.18639076953622,
+      "rebuild": 56.743079772665254
+    }
+  },
+  "limitations": [
+    "Frozen diagnostic source does not establish final release performance.",
+    "Configured FPS is separate from observed pacing; wall time includes app bootstrap.",
+    "Compilers were reported idle before dispatch and none were observed in the final process scan. Native games shared the runner lock; OS and unmeasured background CPU activity may contribute timing noise."
+  ],
+  "measurementContext": {
+    "compilerIdleBeforeDispatch": true,
+    "compilerAbsentInFinalProcessScan": true,
+    "continuousCpuSampling": false,
+    "nativeProcessSerialization": true,
+    "scope": "Unchanged4636-instance Lunar map,normal challenge19 start,2171 ordinary replay frames,60FPS,seed1. Four real troop requests obtain geometry and reject nonnavigable midair target cells without A* expansion."
+  }
+}

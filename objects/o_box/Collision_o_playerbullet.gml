@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if room != r_leveleditor {
 	increase_stat("totaldestroyedboxes","QUESTdestroyedboxes",1)
 }

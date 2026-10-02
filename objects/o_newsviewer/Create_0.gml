@@ -19,7 +19,9 @@ image_queue = []
 loading_image = false
 needs_recalc = false
 img_counter = 0
-temp_image_files = []  // track temp files for cleanup
+news_image_view = news_images_open()
+news_images_closing = false
+temp_image_files = []  // completed downloads only; pending receipts have a persistent owner
 
 // Thumbnail loading queue (separate from article images)
 thumb_queue = []
@@ -283,3 +285,4 @@ calculate_blocks_height = function() {
     }
     return _total
 }
+if (TCC_GAMEPLAY_QA || TCC_STEAM_ANDROID) { instance_destroy(); exit; }

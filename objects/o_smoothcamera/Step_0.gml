@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.pause = 1 { exit }
 
 if room != r_leveleditor {
@@ -11,7 +12,7 @@ if room != r_leveleditor {
 	}
 } else {
 	if global.LEMode = 1 {
-		if keyboard_check(vk_control) {
+		if timing_keyboard_down(vk_control) {
 			if mouse_y > 64 {
 				x = lerp(x,mouse_x,(0.05 * (60 / global.maxfps)))
 				y = lerp(y,mouse_y,(0.05 * (60 / global.maxfps)))
@@ -32,7 +33,7 @@ if room != r_leveleditor {
 if holdctrl = 1 {
 txtsize = lerp(txtsize,1,0.1 * (60 / global.maxfps))
 } else {
-	if keyboard_check(vk_control) {
+	if timing_keyboard_down(vk_control) {
 	holdctrl = 1
 	}
 }

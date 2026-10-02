@@ -1,20 +1,16 @@
-var i = 0
-for(i=0;i<checklvl;i++) {
-var lvl = variable_global_get("CERL" + string(i))
-if lvl = 1 { islvl = true }
+var _available = CER_start_availability();
+islvl = _available.levels;
+ismus = _available.music;
+if (!islvl || !ismus) {
+    show_message_async(loc("CER_SELECT_LEVELS_AND_MUSIC"));
+    exit;
 }
+if (!CERrandommusic()) exit;
 
-for(i=0;i<checkmus;i++) {
-var mus = variable_global_get("CERM" + string(i))
-if mus = 1 { ismus = true }
-}
-
-if islvl = true && ismus = true {
 global.endlessrunmode = 3
 global.endless = 1
 if !achievement_earned("YOUR_OWN_ENDLESS_RUN") { achievement_award("YOUR_OWN_ENDLESS_RUN") }
 audio_stop_all()
-CERrandommusic()
 instance_create(x,y,o_levelcounter)
 loadhud()
 global.hardmodelives = global.CERLives
@@ -23,4 +19,3 @@ global.endlessmusicchange = global.CERMusicChange
 global.endless1upchange = global.CER1upChange
 randomlevel()
 randomsong()
-}

@@ -7,38 +7,6 @@ tcc_steam_inventory_request_prices(); //Test
 //Rich presence
 set_rich_presence()
 
-// Cold launch: if game was launched via Steam "Join Game" with +connect_lobby
-if (variable_global_exists("net_launch_lobby") && global.net_launch_lobby != "") {
-	if (global.onlinemultiplayersettings == 1 && tcc_steam_initialised()) {
-		show_debug_message("[NET] Processing cold launch lobby join: " + global.net_launch_lobby)
-		var _cold_lobby_id = int64(global.net_launch_lobby)
-		global.net_launch_lobby = "" // Clear so we don't re-process
-
-		// Set the pending join BEFORE creating the network manager so that
-		// Create_0 sees it and skips auto-hosting (net_init preserves it)
-		global.net_pending_join = _cold_lobby_id
-
-		if (!instance_exists(o_networkmanager)) {
-			instance_create(0, 0, o_networkmanager)
-		}
-
-		global.net_connect_state = 2
-		global.net_connect_timer = 0
-
-		// Start the game
-		scr_loadskins()
-		global.levelselect = 1
-		global.hardmode = 0
-		global.challenges = 0
-		global.endless = 0
-		global.workshop = 0
-		global.dailylevel = 0
-		global.time = 0
-		loadhud()
-		audio_stop_sound(m_mainmenu)
-		room_goto(r_lvl1) // Will be updated when lobby_joined fires
-	}
-}
 
 gamepad_set_vibration(0,0,0)
 
@@ -72,7 +40,7 @@ global.boss2 = 0
 global.boss3 = 0
 global.boss4 = 0
 global.boss5 = 0
-audio_master_gain(global.mastervolume)
+platform_master_gain(global.mastervolume)
 global.boss2health = 6
 global.hardmode = 0
 global.dailylevel = 0
@@ -98,9 +66,8 @@ scr_loadsettings()
 scr_loadskins()
 scr_savestats()
 
-//Set FPS to 60
-global.maxfps = 60
-game_set_speed(global.maxfps,gamespeed_fps)
+// Use the validated saved preference on launch and every return to the title.
+settings_fps_apply_rate();
 
 //Skin unlocks
 if global.skin[12] = 0 {
@@ -149,6 +116,41 @@ if global.world4 = 1 && global.worldProgression < 80 {
 if global.world5 = 1 && global.worldProgression < 100 {
 	global.worldProgression = 100
 }
+
+// Cold launch: if game was launched via Steam "Join Game" with +connect_lobby
+if (variable_global_exists("net_launch_lobby") && global.net_launch_lobby != "") {
+	if (global.onlinemultiplayersettings == 1 && tcc_steam_initialised()) {
+		show_debug_message("[NET] Processing cold launch lobby join: " + global.net_launch_lobby)
+		var _cold_lobby_id = int64(global.net_launch_lobby)
+		global.net_launch_lobby = "" // Clear so we don't re-process
+
+		// Set the pending join BEFORE creating the network manager so that
+		// Create_0 sees it and skips auto-hosting (net_init preserves it)
+		global.net_pending_join = _cold_lobby_id
+
+		if (!instance_exists(o_networkmanager)) {
+			instance_create(0, 0, o_networkmanager)
+		}
+
+		global.net_connect_state = 2
+		global.net_connect_timer = 0
+
+		// Start the game
+		scr_loadskins()
+		global.levelselect = 1
+		global.hardmode = 0
+		global.challenges = 0
+		global.endless = 0
+		global.workshop = 0
+		global.dailylevel = 0
+		global.time = 0
+		loadhud()
+		audio_stop_sound(m_mainmenu)
+		room_goto(r_lvl1) // Will be updated when lobby_joined fires
+		exit; // Gameplay HUD/manager must survive title-only cleanup.
+	}
+}
+
 
 audio_sound_pitch(m_mainmenu,1)
 audio_sound_gain(m_mainmenu,global.musicvolume,1)

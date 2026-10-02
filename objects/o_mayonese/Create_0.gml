@@ -1,5 +1,5 @@
-randomize()
-originalspeed = random_range(4* (60 / global.maxfps) ,6* (60 / global.maxfps) )
+tcc_randomize()
+originalspeed = random_range(4* (60 / TCC_SIM_HZ) ,6* (60 / TCC_SIM_HZ) )
 if global.easy = 1 {
 speed = -1	
 }

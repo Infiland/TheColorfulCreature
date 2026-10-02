@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 event_inherited()
 switch(global.antialiasingsettings) {
 case(0): image_index = 0 break;

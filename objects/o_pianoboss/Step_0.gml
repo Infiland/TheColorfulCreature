@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.pianohealth = 0 {
 if place_meeting(x,y,o_spiketopboss3) {
 instance_create(x,y,o_explosion)

@@ -9,12 +9,6 @@ draw_text(512,300,loc("PRESS_ENTER_WHEN_YOU_ARE_DONE")+".\n"+ loc("HOLD_LEFT_RIG
 draw_set_font(global.deathfont)
 if global.LESavedWinTime != 0 {
 draw_text(512,500,"Your Level Time: " + string(global.LESavedWinTime) + "\n(If you want this reset, just return to playmode again)")
-if !instance_exists(o_settimertodiamondtimeLE) {
-var button = instance_create(398,570,o_settimertodiamondtimeLE) 
-with button {
-image_xscale = 45.8
-image_yscale = 13.8
-}}
 } else {
 draw_text(512,500,loc("BEAT_THE_LEVEL_LEGITIMATELY_TO_KNOW_YOUR_LEVEL_TIME") + "\n"+loc("WHICH_MIGHT_HELP_YOU_WITH_YOUR_DIAMOND_MEDAL_TIME"))
 }

@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.choosesettings = 2 {
 if grab = true {
 	x = mouse_x
@@ -7,7 +8,7 @@ if grab = true {
 	}
 if global.soundchange = 3 {
 image_speed = 1
-audio_master_gain(global.mastervolume)
+platform_master_gain(global.mastervolume)
 }
 if global.soundchange = 0 {
 image_index = 0	
@@ -19,7 +20,7 @@ if tcc_gamepad_button_check_pressed(0,gp_face1) {
 event_perform(ev_mouse,ev_left_press)	
 }}
 
-if device_mouse_check_button_released(0,mb_left) || tcc_gamepad_button_check_released(0,gp_face1) {
+if timing_device_mouse_released(0,mb_left) || tcc_gamepad_button_check_released(0,gp_face1) {
 grab = false
 global.soundchange = 0
 }}

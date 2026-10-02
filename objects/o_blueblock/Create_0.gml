@@ -13,3 +13,5 @@ depth = -y;
 if room = r_leveleditor || room = r_customlevelworkshop {
 if global.LEBlockStyle = 1 { sprite_index = s_blueblockbricks }
 }
+// Navigation geometry changed; culling alone never invalidates the cache.
+scr_troop_nav_mark_dirty();

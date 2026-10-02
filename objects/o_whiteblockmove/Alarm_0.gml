@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if global.whiteblock = 1 {
 if global.pause = 0 {	
 instance_create(x,y,o_whitecircleeffect);

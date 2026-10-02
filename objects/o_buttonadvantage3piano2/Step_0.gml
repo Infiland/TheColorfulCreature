@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 //Collision
 if place_meeting(x,y,o_player) {
 if global.pianohealth = 2 {
@@ -160,7 +161,7 @@ break;
 
 if cooldown >= 0 { 
 if !place_meeting(x,y,o_player) {	
-cooldown -= 1 * (60/global.maxfps)
+cooldown -= 1 * (60/TCC_SIM_HZ)
 }
 image_index = 1
 } else {
@@ -173,7 +174,7 @@ if global.pianobuttonconfirm1 = global.pianobutton1 {
 if global.pianobuttonconfirm2 = global.pianobutton2 {
 if global.pianobuttonconfirm3 = global.pianobutton3 {
 if global.pianobuttonconfirm4 = global.pianobutton4 {
-o_spiketopboss3.y -= (66.66666666666667 + (global.boss3spikespeed * 150)) * (60/global.maxfps)
+o_spiketopboss3.y -= (66.66666666666667 + (global.boss3spikespeed * 150)) * (60/TCC_SIM_HZ)
 global.pianobuttonconfirm1 = 0
 global.pianobuttonconfirm2 = 0
 global.pianobuttonconfirm3 = 0

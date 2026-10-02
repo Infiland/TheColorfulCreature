@@ -59,21 +59,4 @@ if current >= real(needed) { //If requirement is fulfilled, mark quest as comple
 	}
 	draw_set_color(c_white)
 	
-	//Click to get reward
-	if mouse_x > 150 && mouse_x < 924 && mouse_y > yy && mouse_y < yy+150 && completed = true && claimed = false {
-		if mouse_check_button_pressed(mb_left) && alphalerp > 0.5  {
-			if completed = true {
-			global.QUEST[qid] = 1
-			global.totalquests += 1
-			audio_play_sound(snd_newhighscore,10,0)
-			
-			//Anticheat if reward is too high
-			if reward > 500+needed {
-				global.cheats = 1
-			}
-			
-			global.creditscurrency += floor(real(reward) * global.creditsmultiplier)
-			scr_savestats()
-		}}
-	}
 }

@@ -1,33 +1,9 @@
 function draw_challenge(){
-y = lerp(y,ystart - global.challengescroll,0.1 * (60 / global.maxfps))
 
 draw_set_color(c_white)
 draw_set_font(global.deathfont)
 
 draw_sprite_ext(s_challengetemplatebox,0,x,y,image_xscale,image_yscale,0,wincol,1)
-
-if tcc_gamepad_axis_value(0,gp_axisrv) < -0.2 || tcc_gamepad_axis_value(0,gp_axisrv) > 0.2 { global.challengescroll += 2.5 * tcc_gamepad_axis_value(0,gp_axisrv) }
-
-if mouse_wheel_down() {
-global.challengescroll += 12
-}
-if mouse_wheel_up() {
-global.challengescroll -= 12
-}
-
-if global.challengescroll < 0 {
-global.challengescroll = 0
-}
-var _scroll_max = 500
-if variable_global_exists("challenge_scroll_max") { _scroll_max = global.challenge_scroll_max }
-if global.challengescroll > (_scroll_max + 100) {
-	global.challengescroll = _scroll_max
-}
-
-if platform_touch() {
-if mouse_check_button(mb_left) {
-if mouse_y > 512 {global.challengescroll += 1} else { global.challengescroll -= 1 }
-}}
 
 //Text
 draw_text(x-140,y-65,text)

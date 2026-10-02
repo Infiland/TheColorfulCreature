@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if global.pause = 0 {
 firedeath -= 1
 }

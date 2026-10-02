@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 sprite_index = s_buttonadvantage
 if global.pianobutton2 = 1 {
 if button = 1 {
@@ -35,4 +36,4 @@ if button = 6 {
 	instance_create(x+12,y-20,o_exclamationmarkpiano)
 sprite_index = s_buttonadvantage2	
 }}
-alarm[2] = 50 * (global.maxfps/60)
+alarm[2] = 50 * (TCC_SIM_HZ/60)

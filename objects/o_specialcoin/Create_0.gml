@@ -11,7 +11,7 @@ instance_destroy()
 
 chanceofdissapear = 0
 if global.hardmode = 1 {
-randomize();
+tcc_randomize();
 switch(global.hardmodedifficulty) {
 case(2):
 chanceofdissapear = irandom_range(1,8)

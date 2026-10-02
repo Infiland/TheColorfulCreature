@@ -3,7 +3,7 @@ draw_set_font(global.deathfont)
 draw_text_scribble(588,128,"[wave]" + string(version))
 
 if os_is_network_connected() {
-if keyboard_check(vk_control) {
+if timing_keyboard_down(vk_control) {
 if (global.playercount + global.playercountdemo) = 0 {
 	draw_set_color(c_yellow)
 	draw_text(32,712,loc("CURRENT_NUMBER_OF_GAMERS") + ": 0 :(") } else {

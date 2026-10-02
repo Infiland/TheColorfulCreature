@@ -22,5 +22,5 @@ case(3): sprite_index = s_blueparticle break;
 case(4): sprite_index = s_whiteparticle break;
 }
 //direction = random_range(0,360)
-//speed = random_range(0.1 * (60 / global.maxfps),1*(60 / global.maxfps))
+//speed = random_range(0.1 * (60 / TCC_SIM_HZ),1*(60 / TCC_SIM_HZ))
 alarm[0] = 1

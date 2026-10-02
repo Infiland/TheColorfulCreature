@@ -9,6 +9,8 @@ if (variable_global_exists("levelselect_page") && global.levelselect_page >= 0 &
 	current_page = 0;
 }
 
+selected_level = 0;
+keyboard_focus = false;
 spawn_page_buttons();
 
 function spawn_page_buttons() {
@@ -19,6 +21,7 @@ function spawn_page_buttons() {
 
 	if (current_page < 0 || current_page >= total_pages) return;
 
+    selected_level = 0;
 	var _page = pages[current_page];
 	var _levels = _page.levels;
 	var _count = array_length(_levels);
@@ -44,14 +47,10 @@ function spawn_page_buttons() {
 		_btn.levelmusic = _levels[i].levelmusic;
 		_btn.is_challenge = _levels[i].is_challenge;
 		_btn.challenge_id = _levels[i].challenge_id;
+        _btn.catalog_index = i;
+        _btn.level_dir = _levels[i].level_dir;
+        _btn.sequence_index = _levels[i].sequence_index;
+        _btn.locked = levelselect_unlocked(_levels[i]) ? 0 : 1;
 
-		// World gate safety check for campaign levels
-		if (!_levels[i].is_challenge) {
-			var _lvl = _levels[i].level_num;
-			if (_lvl >= 21 && _lvl <= 40 && global.world2 == 0) _btn.locked = 1;
-			else if (_lvl >= 41 && _lvl <= 60 && global.world3 == 0) _btn.locked = 1;
-			else if (_lvl >= 61 && _lvl <= 80 && global.world4 == 0) _btn.locked = 1;
-			else if (_lvl >= 81 && _lvl <= 100 && global.world5 == 0) _btn.locked = 1;
-		}
 	}
 }

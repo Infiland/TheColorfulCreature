@@ -1,4 +1,7 @@
 function scr_back(){
+if (settings_fps_consume_back()) return;
+if (gamepad_remap_consume_back()) return;
+if (room == r_skinmenu && cosmetics_browser_consume_back()) return;
 if !instance_exists(o_settingspausemenu) {
 if global.endless = 1 {
 audio_stop_all()
@@ -196,10 +199,13 @@ if global.endless = 1 {room_goto(r_endlessrunmenu)
 	}
 }
 if room = r_skinmenu {
-if !instance_exists(o_choosecustomhats) && !instance_exists(o_choosecustomskins) {
-room_goto(r_gamemode)
+if (cosmetics_browser_open()) {
+    instance_destroy(o_choosecustomskins);
+    instance_destroy(o_choosecustomhats);
+    instance_destroy(o_choosecustomitems);
+    return;
 }
-if instance_exists(o_choosecustomskins) { instance_destroy(o_choosecustomskins) exit }
+room_goto(r_gamemode)
 }
 if room = r_challenges {
 room_goto(r_funmodemenu)
@@ -239,10 +245,10 @@ else if global.CESConfigure = 1 {
 	o_animatedtext.text = loc("ENDLESS_RUN")
 	}
 	instance_deactivate_object(o_CERSettings)
-	instance_activate_object(o_endlessbutton)
-	instance_activate_object(o_oldendlessbutton)
-	instance_activate_object(o_customendlessbutton)
-	instance_activate_object(o_onlineleaderboardsbutton)
+	timing_activate_object(o_endlessbutton)
+	timing_activate_object(o_oldendlessbutton)
+	timing_activate_object(o_customendlessbutton)
+	timing_activate_object(o_onlineleaderboardsbutton)
 	}
 }
 if room = r_leveleditor {
@@ -252,9 +258,9 @@ instance_create(x,y,o_leveleditorleaveask)
 
 if instance_exists(o_settingspausemenu) {
 if global.choosesettings = 0 {
-instance_activate_object(o_settings)
-instance_activate_object(o_pausescreen)
-instance_activate_object(o_givefeedback)
+timing_activate_object(o_settings)
+timing_activate_object(o_pausescreen)
+timing_activate_object(o_givefeedback)
 if !instance_exists(o_buttonpauseandroid) {
 instance_create(x,y,o_buttonpauseandroid)
 }
@@ -286,6 +292,7 @@ global.boss2health = 6
 global.hardmode = 0
 global.hardmodedifficulty = 0
 global.pause = 0
+timing_sequence_flush();
 global.time = 0
 global.deaths = 0
 global.gunammo = 0

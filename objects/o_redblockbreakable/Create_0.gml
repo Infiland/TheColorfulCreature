@@ -10,6 +10,8 @@ hidesprites = false
 hpbreakablemax = 100
 hpbreakable = hpbreakablemax
 if global.whiteblock > 1 {
-alarm[0] = random_range(1,400*(global.maxfps/60));
+alarm[0] = random_range(1,400*(TCC_SIM_HZ/60));
 }
 depth = -y;
+// Navigation geometry changed; culling alone never invalidates the cache.
+scr_troop_nav_mark_dirty();

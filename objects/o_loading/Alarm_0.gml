@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 //Play Main Menu song
 if room = r_loading {
 if !audio_is_playing(m_mainmenu) {
@@ -8,6 +9,13 @@ audio_sound_gain(m_mainmenu,global.musicvolume,100)
 
 platform_touch_defaults();
 if (platform_mobile()) scr_loadandroid();
+
+if (qa_active()) {
+    switchlang();
+    scr_anticheat();
+    qa_launch();
+    exit;
+}
 
 room_goto(r_mainmenu)
 

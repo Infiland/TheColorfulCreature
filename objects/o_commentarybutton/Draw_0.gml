@@ -1,0 +1,14 @@
+var _hover = point_in_rectangle(mouse_x, mouse_y, x, y, x + button_width, y + button_height);
+draw_set_alpha(1);
+draw_set_color(_hover ? make_color_rgb(35,35,43) : c_black);
+draw_rectangle(x, y, x + button_width, y + button_height, false);
+draw_set_color(c_white);
+draw_rectangle(x, y, x + button_width, y + button_height, true);
+draw_set_font(fnt_death);
+draw_set_halign(fa_center);
+draw_set_valign(fa_top);
+draw_text(x + button_width / 2, y + 8, "Commentary gallery   [C / X]");
+draw_set_color(has_access ? c_lime : c_gray);
+draw_text(x + button_width / 2, y + 34, has_access ? "Development history, artwork and sources" : "Requires commentary DLC on Steam");
+draw_set_halign(fa_left);
+draw_set_color(c_white);

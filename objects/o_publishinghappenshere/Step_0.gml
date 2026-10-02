@@ -1,14 +1,8 @@
-if result = 1 { timer2 -= 1 
-
-if timer < 0 {
-if !instance_exists(o_restartgameLE) {
-var restart = instance_create(416,512,o_restartgameLE)
-with restart {
-	x = 400
-	y = 500
-	image_xscale = 50
-	image_yscale = 20
-}}
-}
-
+if (!timing_instance_step()) exit;
+if (state != "finished") {
+    wait_seconds += 1 / max(1, global.maxfps);
+    if (wait_seconds > 120) { result = 4; state = "finished"; }
+} else {
+    timer = max(0, timer - 60 / max(1, global.maxfps));
+    if (timing_keyboard_pressed(vk_enter) || timing_keyboard_pressed(vk_escape)) instance_destroy();
 }

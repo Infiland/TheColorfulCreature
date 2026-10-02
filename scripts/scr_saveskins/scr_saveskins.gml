@@ -2,10 +2,11 @@ function scr_saveskins() {
 	
 	if global.cheats = 0 {
 	
-	var directory = directory_set("//Save Files/")
+	cosmetics_defaults();
+	var directory = directory_set("//Save Files/");
+	if (!directory_exists(directory)) directory_create(directory);
 	
-	if (file_exists(directory + "Skins.sav")) file_delete(directory + "Skins.sav");
-	ini_open(directory + "Skins.sav");
+	scr_save_begin(directory + "Skins.sav");
 	//Skins
 	ini_write_real("Skins","World 1",global.world1);
 	ini_write_real("Skins","World 2",global.world2);
@@ -66,7 +67,7 @@ function scr_saveskins() {
 	ini_write_real("Skins","Kratos Skin",global.skin[50]);
 	
 	ini_write_string("CustomSkin","Custom Skin",global.CUSTOMskin);
-	ini_close();
+	return scr_save_finish(directory + "Skins.sav");
 
 	}
 }

@@ -1,6 +1,6 @@
-function scr_loadgame() {
+function scr_loadgame(_save_directory = "", _transition = true) {
 
-	var directory = directory_set("//Save Files/")
+	var directory = _save_directory == "" ? directory_set("//Save Files/") : _save_directory;
 
 	scr_save_recover(directory + "SaveFile.sav");
 	if (file_exists(directory + "SaveFile.sav")) {
@@ -9,7 +9,7 @@ function scr_loadgame() {
 	var _room = scr_saved_room(LoadedRoom);
 	if (_room == -1) {
 		ini_close();
-		show_message_async("This save contains an invalid level. Your save has been kept.");
+		if (_transition) show_message_async("This save contains an invalid level. Your save has been kept.");
 		return false;
 	}
 	global.deaths = scr_save_number("SaveFile Information","Deaths",0);
@@ -27,12 +27,14 @@ function scr_loadgame() {
 	global.world4time = scr_save_number("SaveFile Information","World 4 Time",0);
 	global.world5time = scr_save_number("SaveFile Information","World 5 Time",0);
 	ini_close();
+	scr_campaign_reset_context();
+	global.hatmerchantdiscount = 1;
+	// The Check configuration exercises real isolated save/load without moving
+	// the selfcheck room or creating gameplay actors and service managers.
+	if (!_transition) return true;
 
 	room_goto(_room);
-	global.hatmerchantdiscount = 1
-	if _room != r_lvl1 {
-	loadhud()
-	}
+	loadhud();
 
 	// Online Multiplayer - Spawn network manager when loading a game
 	if (global.onlinemultiplayersettings == 1 && tcc_steam_initialised()) {
@@ -40,9 +42,7 @@ function scr_loadgame() {
 			instance_create(0, 0, o_networkmanager)
 		}
 	}
-	} else {
-
+	return true;
 	}
-
-
+	return false;
 }

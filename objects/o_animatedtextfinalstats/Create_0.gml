@@ -27,6 +27,8 @@ x3 = -1000
 x4 = -1000
 
 
+timing_ui_register_target("challenge-result");
+
 //Challanges
 if (global.cheats == 0 && global.levelselect == 0 && (global.workshop == 1 || scr_challenge_run_eligible(global.currentchallenge))) {
 if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1) {

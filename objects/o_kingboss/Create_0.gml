@@ -17,5 +17,5 @@ depth = -99
 
 image_speed = 0
 
-healthbar = instance_create_depth(0, 0, -1000, o_healthbar);
+healthbar = timing_create_depth(0, 0, -1000, o_healthbar);
 healthbar.target = id;

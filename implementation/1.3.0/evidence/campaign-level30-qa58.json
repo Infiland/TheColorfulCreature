@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-02",
+  "status": "PASS_ACTUAL_ROOM30_EXIT_AND_DESTINATION_SAVE",
+  "run": "/Users/infi/Library/Caches/TCC130/campaign-level30-qa58-01",
+  "sourceIdentity": {
+    "identityScheme": "project-runtime-assets-v2",
+    "sourceSha256": "cc00e83ffd8450c11a2e48f81a78049549e6a2d1631bbec2d6446ba456b52655",
+    "levelContentSha256": "199a91699f7b3def201c848bcc31e0c3f0d89ef74287276fe306575d66f9c8fe",
+    "fileCount": 23352.0,
+    "physicsSha256": "7d8eb9addbd5ed405bcf67e2b1144d1163c9c2e95b186729b6a3df3a1a21a610",
+    "executableSha256": "f440355df55021ab165e34838696e35515162c7541b79a69ee051e755eb31c7e",
+    "artifactSha256": "1a2dd917873095503cfcc5208958e4c14c33f7fe6862885528e1712bd9eef771",
+    "identityVersion": 2.0
+  },
+  "independentReview": {
+    "path": "/private/tmp/tcc-room30-qa58-independent-assessment01.json",
+    "sha256": "babb2667db823d040123a4319bde11a20f9136a8a03da3cd2d437fdb306c100d"
+  },
+  "runtimeSha256": "2a224cd4b7f94883b83e4e91a6eecf6d2f237f389706ebaee1649a989d82b257",
+  "save": {
+    "path": "/Users/infi/Library/Caches/TCC130/campaign-level30-qa58-01/saves/Save Files/SaveFile.sav",
+    "sha256": "91b0c3f689c489bbe430435ffafe436557a08db8d66722551e5f3794122708d0",
+    "room": "r_hatmerchantroom"
+  },
+  "actual": {
+    "ticks": 1060,
+    "deaths": 0,
+    "normalRules": true,
+    "muted": true,
+    "exitContactTick": 1059,
+    "endingRoom": "r_hatmerchantroom",
+    "inputEvents": 88,
+    "fullPlayerFields": 38,
+    "unchangedRawFiles": 12
+  },
+  "relatedMerchantTo31Evidence": "campaign-and-lunar-qa57.json",
+  "scope": "Actual room30\u2192merchant and separately observed merchant\u219231 confirm each destination save. Not one continuous session. Numeric labels/save adapters are also covered by Check27.",
+  "limitation": "No inference or automatic recovery of progress already missing from an older save."
+}

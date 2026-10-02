@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 timer += 1
 timer = 10 {
 alarm[0] = 1;

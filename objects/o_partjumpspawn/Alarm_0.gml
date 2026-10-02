@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if part_particles_count(par) = 0 {
 instance_destroy()	
 }

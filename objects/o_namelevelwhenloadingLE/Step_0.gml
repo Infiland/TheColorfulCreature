@@ -1,13 +1,14 @@
+if (!timing_instance_step()) exit;
 /// @description Keys presses
-var directory = directory_set("/LevelEditor Files//" + text + "/")
+
 
 
 if global.naminglevel = true {
-if(keyboard_check(vk_anykey) and string_length(text) < 40) {
+if(timing_keyboard_down(vk_anykey) and string_length(text) < 40) {
 text += string(keyboard_string)
 keyboard_string = "";
 }
-if keyboard_check_pressed(vk_backspace) {
+if timing_keyboard_pressed(vk_backspace) {
 text = string_delete(text,string_length(text),1)
 keyboard_string = "";
 delete_timer = -4 * floor((global.maxfps / 60))
@@ -16,26 +17,11 @@ delete_timer = -4 * floor((global.maxfps / 60))
 if delete_timer != 2 {
 delete_timer += 1;
 }
-if keyboard_check_pressed(vk_enter) {
-instance_destroy()
-instance_destroy(o_allbackgrounds)
-global.levelname = text
-//Load
-if global.levelname != "" {
+if timing_keyboard_pressed(vk_enter) {
+    if (level_editor_open(text)) instance_destroy();
+}
 
-instance_create(x,y,o_levelreloadagain)
-if !achievement_earned("LOAD_LEVEL") { //Load Level
-achievement_award("LOAD_LEVEL") }
-} else {
-	instance_destroy(o_savedandloaded)
-	box = instance_create(x,y,o_savedandloaded)
-	with(box) {
-	image_index = 3
-	}
-
-}}
-
-if keyboard_check_released(vk_escape) {
+if timing_keyboard_released(vk_escape) {
 instance_destroy()
 global.levelname = global.previoustext
 global.naminglevel = false

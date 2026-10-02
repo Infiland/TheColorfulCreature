@@ -149,7 +149,12 @@ case(93): sprite_index = s_whiteblockbreakable
 image_speed = 0.5 break; //White Block Breakable
 case(94): sprite_index = s_zerogravity break; //Zero Gravity
 case(95): sprite_index = s_zerogravitylimit break; //Zero Gravity
-//case(96): sprite_index = s_redblockslope break; //Red Block Slope
+case(96): case(97): case(98): case(99): case(100):
+    if (!variable_global_exists("LEBlockSlopeRotation")) global.LEBlockSlopeRotation = 0;
+    sprite_index = s_redblockslope;
+    image_index = global.LEBlockSlopeRotation;
+    image_speed = 0;
+    break;
 }
 }
 if global.LEBuild = 2 {

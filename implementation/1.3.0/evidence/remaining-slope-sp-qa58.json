@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-02",
+  "status": "PASS_REMAINING_GREEN_BLUE_WHITE_SP96",
+  "source": {
+    "build": "/Users/infi/Library/Caches/TCC130/gameplay-qa-58",
+    "snapshot": "/Users/infi/Library/Caches/TCC130/gameplay-qa-58/source",
+    "source": {
+      "identityVersion": 2,
+      "identityScheme": "project-runtime-assets-v2",
+      "sourceSha256": "cc00e83ffd8450c11a2e48f81a78049549e6a2d1631bbec2d6446ba456b52655",
+      "physicsSha256": "7d8eb9addbd5ed405bcf67e2b1144d1163c9c2e95b186729b6a3df3a1a21a610",
+      "fileCount": 23352
+    },
+    "executableSha256": "f440355df55021ab165e34838696e35515162c7541b79a69ee051e755eb31c7e",
+    "artifact": {
+      "sha256": "1a2dd917873095503cfcc5208958e4c14c33f7fe6862885528e1712bd9eef771",
+      "fileCount": 106
+    },
+    "compilerBackend": "VM",
+    "sourceCoverage": {
+      "identity": {
+        "identityVersion": 2,
+        "identityScheme": "project-runtime-assets-v2",
+        "sourceSha256": "cc00e83ffd8450c11a2e48f81a78049549e6a2d1631bbec2d6446ba456b52655",
+        "physicsSha256": "7d8eb9addbd5ed405bcf67e2b1144d1163c9c2e95b186729b6a3df3a1a21a610",
+        "fileCount": 23352
+      },
+      "identityVersion": 2,
+      "completeProjectRuntimeCoverage": true,
+      "compilerDependenciesBound": false,
+      "currentQualificationPermitted": true,
+      "qualification": "Coverage permission only; native payload/log/state and fresh current source/content bindings still required."
+    }
+  },
+  "batch": {
+    "path": "/Users/infi/Library/Caches/TCC130/remaining-slope-native-qa58-01/batch.json",
+    "sha256": "182b5ab96b67092932a38bf0daab08134aa5becf0a6590b4b41c1581b3509b97"
+  },
+  "independentReviews": [
+    {
+      "path": "/private/tmp/tcc-qa58-green32-independent01.json",
+      "sha256": "fc6da42e9408c83d9f34e2236497021ca0f5c563d855b8d00fa7058c3c3a5bde"
+    },
+    {
+      "path": "/private/tmp/tcc-qa58-blue32-independent01.json",
+      "sha256": "7680483940544f7754210a68638f325831f87c3f3ff2608cee6e5ba51611a9b0"
+    },
+    {
+      "path": "/private/tmp/tcc-qa58-white32-and-remaining96-independent01.json",
+      "sha256": "466153a712f11fd4f245b78b3d5ff58ec22a31c8a2c01864a85adda13748653c"
+    }
+  ],
+  "actual": {
+    "runs": 96,
+    "complete": 68,
+    "expectedMismatchDeaths": 16,
+    "blockedSideObservations": 12,
+    "fullPlayerRows": 10616,
+    "playerFields": 38,
+    "exactPairs": 48,
+    "exactPlayerTickPairs": 5308,
+    "literalStateFields": 19,
+    "geometryErrors": 0,
+    "floatTolerance": 0,
+    "presentationExclusions": [],
+    "unchangedVerifiedRunFiles": 852
+  },
+  "scope": "Five colours/four orientations covered together with earlier red/yellow SP results at60/150 render caps. Native diagnostics, not authored special-level completions.",
+  "limitations": [
+    "Local multiplayer and actor fixtures are separate ongoing regression",
+    "No intermediate-render-cap slope matrix claimed",
+    "QA58 retains consumed prefab copies/compiler log; no historical before/after dependency receipts claimed"
+  ]
+}

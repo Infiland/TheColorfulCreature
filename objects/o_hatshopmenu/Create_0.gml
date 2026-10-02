@@ -12,3 +12,6 @@ change = 0
 
 //Hardcoded lol
 limithat = global.totalhatsAM-3
+
+ui_arrow_yscale = arrowyscale;
+timing_ui_register_target("hat-carousel");

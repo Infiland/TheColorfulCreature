@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 /// @description Keep shader selection in sync with the global setting
 mode = clamp(global.colorblindsettings, 0, modes);
 enabled = (mode > 0);

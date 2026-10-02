@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.multiplayerplayers = 1 { x = lerp(x,originalx,0.2 * (60 / global.maxfps)) } else {
 	if global.chooseminigameMU = false {
 	x = lerp(x,140,0.2 * (60 / global.maxfps))
@@ -12,8 +13,8 @@ case(3): if global.multiplayerplayeritem[global.multiplayerplayerconfigchoose-1]
 }
 
 //Pressing/Holding Left
-if !keyboard_check(vk_right) {
-if keyboard_check(vk_left) {
+if !timing_keyboard_down(vk_right) {
+if timing_keyboard_down(vk_left) {
 if global.chooseminigameMU = false {
 if image_alpha != 0.5 {
 if global.multiplayerplayerconfigchoose != 5 {
@@ -40,7 +41,7 @@ holdcooldown = 4
 }
 }
 
-if keyboard_check_released(vk_left) {
+if timing_keyboard_released(vk_left) {
 press = 0
 holdcooldown = 40
 }

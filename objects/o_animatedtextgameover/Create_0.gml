@@ -26,3 +26,5 @@ x3 = -1000
 x4 = -1000
 
 alarm[0] = 10
+
+timing_ui_register_target("gameover-result");

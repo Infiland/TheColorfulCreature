@@ -1,0 +1,116 @@
+{
+  "passed": true,
+  "claim": "Universal quiet diagnostic packaging preserves 180 native movement states and two captures. AppKit window ordering/activation is the only host policy change. Rendering remains enabled.",
+  "run": "/Users/infi/Library/Caches/TCC130/runs/quiet-policy-probe24-universal",
+  "build": "/Users/infi/Library/Caches/TCC130/gameplay-qa-24",
+  "sourceIdentity": {
+    "executableSha256": "51f32638a51f576803873feeab32f1bfbba7f9be53c38d562c8c9e8764e6fa39",
+    "artifactSha256": "3fb09b7769e04809af70725826b92064d6ccc2881c5a2f6337ca0fa14a8642c0",
+    "sourceSha256": "0973575f6555010c9c73a15b4412c21903342bb626b9e940b5fa771b07504f9b",
+    "levelContentSha256": "04fbea227cdf0acb462936b7ba9d91914ea1a145718cc8bb6019eacacfa55c61",
+    "physicsSha256": "99d1824df9ccecf4c5603ebf0ef12b295e5005127e667c2df748b1107ac44346",
+    "fileCount": 22764.0
+  },
+  "nativeLaunch": {
+    "executableSha256": "51f32638a51f576803873feeab32f1bfbba7f9be53c38d562c8c9e8764e6fa39",
+    "sourceIdentity": {
+      "sourceSha256": "0973575f6555010c9c73a15b4412c21903342bb626b9e940b5fa771b07504f9b",
+      "physicsSha256": "99d1824df9ccecf4c5603ebf0ef12b295e5005127e667c2df748b1107ac44346",
+      "fileCount": 22764
+    },
+    "levelContentSha256": "04fbea227cdf0acb462936b7ba9d91914ea1a145718cc8bb6019eacacfa55c61",
+    "matchesCurrentPlayableContent": true,
+    "compiledPayloadVerified": true,
+    "compilerBackend": "VM",
+    "exitCode": null,
+    "launcherExitCode": 0,
+    "normalRuntimeEnd": true,
+    "timedOut": false,
+    "wallSeconds": 9.026717915956397,
+    "backgroundLaunchRequested": true,
+    "headlessRequested": true,
+    "quietWindowRequested": true,
+    "quietLibrarySha256": "08b48a65eda86c3d689a6281f60446b7830f931400ca7d4b68819df3b0632f05",
+    "matchesCurrentSource": true,
+    "status": "observed",
+    "reason": "Frame limit reached",
+    "frames": 180.0,
+    "deaths": 0.0,
+    "bounds": {
+      "minX": 96.0,
+      "maxX": 456.0,
+      "minY": 6867.0,
+      "maxY": 6972.0
+    },
+    "muted": true,
+    "observedFps": 55.90388778746778,
+    "stepCostMedianUs": 207.0,
+    "stepCostP95Us": 279.0,
+    "qualifiesAsCompletion": false
+  },
+  "quietHost": {
+    "path": "/Users/infi/Library/Caches/TCC130/gameplay-qa-24/DerivedData/Build/Products/Release/The_Colorful_Creature.app/Contents/Frameworks/TCCDiagnosticQuiet.dylib",
+    "sha256": "08b48a65eda86c3d689a6281f60446b7830f931400ca7d4b68819df3b0632f05",
+    "sourceSha256": "42f395536522327baf045a0f11b223f9aadc3819ad9bb5a887840d48311aaf0a",
+    "policy": "Accessory app; suppress host activation/window ordering only"
+  },
+  "traceComparedFields": [
+    "actor",
+    "ammo",
+    "animationFrame",
+    "animationVelocity",
+    "bbox",
+    "breath",
+    "challengeDeaths",
+    "challengePractice",
+    "challengeRunId",
+    "cheats",
+    "color",
+    "direction",
+    "doubleJump",
+    "endlessLevel",
+    "endlessMode",
+    "eyesY",
+    "frame",
+    "gravity",
+    "grounded",
+    "hsp",
+    "keysRemaining",
+    "lives",
+    "motionSpeed",
+    "revealHidden",
+    "room",
+    "seed",
+    "slopeContact",
+    "slopeOverlap",
+    "sprite",
+    "vsp",
+    "walkSpeed",
+    "water",
+    "x",
+    "y",
+    "zeroGravity"
+  ],
+  "captures": [
+    {
+      "name": "frame-000060.png",
+      "identical": true,
+      "sha256": "b225fea14156dc5e62598a4bdd6ee1cd91b528ba983d035a5df1d6342b91f932"
+    },
+    {
+      "name": "frame-000120.png",
+      "identical": true,
+      "sha256": "f888fde7e033e577f93f6c893482b347da4b8d9370bba95640137e0e8e54ccae"
+    }
+  ],
+  "independentObserverPath": "/Users/infi/Library/Caches/TCC130/quiet-launch-observation-qa24.json",
+  "observer": {
+    "ownedProcesses": 12,
+    "checks": 3355,
+    "activeChecks": 0,
+    "visibleWindowChecks": 0,
+    "nonBackgroundChecks": 3355,
+    "observerChangesAppState": false
+  },
+  "observerScope": "All task-owned QA/Check processes sampled during the two-minute QA24 probe interval; 12 native process lifetimes, including serialized QA23 batches."
+}

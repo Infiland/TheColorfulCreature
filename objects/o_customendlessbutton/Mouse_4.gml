@@ -13,7 +13,7 @@ instance_deactivate_object(o_customendlessbutton)
 instance_deactivate_object(o_onlineleaderboardsbutton)
 instance_destroy(o_onlineleaderboardsmini)
 instance_destroy(o_reloadleaderboardsbutton)
-instance_activate_object(o_CERSettings)
+timing_activate_object(o_CERSettings)
 if instance_exists(o_animatedtext) {
 o_animatedtext.text = loc("CUSTOM_ENDLESS_RUN")
 }

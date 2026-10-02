@@ -1,21 +1,146 @@
 /// scr_troop_on_ground() — is the troop standing on a solid block?
 function scr_troop_on_ground() {
-	return place_meeting(x, y+1, o_anyblock);
+	return place_meeting(x, y+1, o_anyblock) || scr_slope_place(x, y+1) != noone;
 }
 
 /// scr_troop_head_clear() — is there space above the troop to jump?
 function scr_troop_head_clear() {
-	return !place_meeting(x, y-32, o_anyblock);
+	return !place_meeting(x, y-32, o_anyblock) && scr_slope_place(x, y-32) == noone;
 }
 
 /// scr_troop_wall_ahead(dx) — is there a solid wall at horizontal offset dx?
 function scr_troop_wall_ahead(dx) {
-	return place_meeting(x + dx, y, o_anyblock);
+	return place_meeting(x + dx, y, o_anyblock) || scr_slope_place(x + dx, y) != noone;
 }
 
 /// scr_troop_ledge_ahead(dx) — is there a block to climb over at offset dx?
 function scr_troop_ledge_ahead(dx) {
-	return place_meeting(x + dx, y - 1, o_anyblock);
+	return place_meeting(x + dx, y - 1, o_anyblock) || scr_slope_place(x + dx, y - 1) != noone;
+}
+
+// One geometry cache per room. Culling changes activation, not geometry; a
+// cache rebuild explicitly activates all navigation geometry before sampling.
+// Create/destroy, editor rotation, and key-block state changes mark it dirty.
+function scr_troop_nav_cache() {
+	if (!variable_global_exists("troop_navigation")) {
+		global.troop_navigation = {
+			room_id: room, grid: -1, generation: 0, built_generation: -1,
+			width: 0, height: 0, builds: 0, cache_hits: 0, build_us: 0,
+			path_requests: 0, path_us: 0, search_iterations: 0, max_search_iterations: 0,
+			budget_time: -1, budget_used: 0, budget_deferrals: 0,
+			geometry_reference_us: 0, geometry_instance_us: 0,
+			geometry_comparisons: 0, geometry_mismatches: 0
+		};
+	}
+	var _cache = global.troop_navigation;
+	if (_cache.room_id != room) {
+		if (ds_exists(_cache.grid, ds_type_grid)) ds_grid_destroy(_cache.grid);
+		_cache.grid = -1;
+		_cache.room_id = room;
+		_cache.generation += 1;
+		_cache.built_generation = -1;
+	}
+	return _cache;
+}
+
+function scr_troop_nav_mark_dirty() {
+	var _cache = scr_troop_nav_cache();
+	_cache.generation += 1;
+}
+
+function scr_troop_nav_grid() {
+	var _cache = scr_troop_nav_cache();
+	var _width = max(1, ceil(room_width / 32));
+	var _height = max(1, ceil(room_height / 32));
+	// Diagnostic comparison only: run this same geometry builder and path
+	// algorithm for every request, keeping the ordinary request budget/inputs.
+	// Shipping builds always reuse the cache. No historical-baseline claim.
+	var _force_rebuild = false;
+	if (TCC_GAMEPLAY_QA && qa_active()) {
+		var _qa_spec = global.tcc_qa.spec;
+		_force_rebuild = variable_struct_exists(_qa_spec, "navMode") && _qa_spec.navMode == "rebuild";
+	}
+	if (!_force_rebuild && ds_exists(_cache.grid, ds_type_grid)
+		&& _cache.built_generation == _cache.generation
+		&& _cache.width == _width && _cache.height == _height) {
+		_cache.cache_hits += 1;
+		return _cache.grid;
+	}
+	var _start = get_timer();
+	// Deactivated instances are absent from collision queries. They must be
+	// included once per geometry revision, then normal camera culling resumes.
+	timing_activate_object(o_anyblock);
+	timing_activate_object(o_ladder);
+	timing_activate_object(o_onewayupblock);
+	timing_activate_object(o_slope);
+	timing_activate_object(o_lockedblock);
+	timing_activate_object(o_unlockedblock);
+	if (ds_exists(_cache.grid, ds_type_grid)) ds_grid_destroy(_cache.grid);
+	_cache.grid = scr_troop_build_grid();
+	_cache.width = _width;
+	_cache.height = _height;
+	_cache.built_generation = _cache.generation;
+	_cache.builds += 1;
+	_cache.build_us += get_timer() - _start;
+	return _cache.grid;
+}
+
+function scr_troop_nav_request_ready() {
+	var _cache = scr_troop_nav_cache();
+	// The persistent controller advances a deterministic step counter. Defer excess
+	// requests to the next step; keep their old path/reactive movement meanwhile.
+	if (!variable_global_exists("troop_nav_step")) global.troop_nav_step = 0;
+	if (_cache.budget_time != global.troop_nav_step) {
+		_cache.budget_time = global.troop_nav_step;
+		_cache.budget_used = 0;
+	}
+	if (_cache.budget_used >= 2) {
+		_cache.budget_deferrals += 1;
+		return false;
+	}
+	_cache.budget_used += 1;
+	return true;
+}
+
+function scr_troop_nav_stats() {
+	var _c = scr_troop_nav_cache();
+	var _mode = "cached";
+	if (TCC_GAMEPLAY_QA && qa_active()) {
+		var _qa_spec = global.tcc_qa.spec;
+		if (variable_struct_exists(_qa_spec, "navMode") && _qa_spec.navMode == "rebuild") _mode = "rebuild-per-request";
+	}
+	return {room_name: room_get_name(room), generation: _c.generation,
+		cache_mode:_mode,
+		builds: _c.builds, cache_hits: _c.cache_hits, build_us: _c.build_us,
+		path_requests: _c.path_requests, path_us: _c.path_us,
+		search_iterations: _c.search_iterations, max_search_iterations: _c.max_search_iterations,
+		budget_deferrals: _c.budget_deferrals, width: _c.width, height: _c.height,
+		geometry_mode:scr_troop_nav_geometry_mode(),
+		geometry_reference_us:_c.geometry_reference_us, geometry_instance_us:_c.geometry_instance_us,
+		geometry_comparisons:_c.geometry_comparisons, geometry_mismatches:_c.geometry_mismatches};
+}
+
+function scr_troop_nav_solid_point(_px, _py, _list) {
+	ds_list_clear(_list);
+	var _count = collision_point_list(_px, _py, o_anyblock, false, true, _list, false);
+	for (var _i = 0; _i < _count; ++_i) {
+		var _block = _list[| _i];
+		// Moving platforms are transient support, not static navigation walls.
+		if (_block.object_index != o_movingplatforms
+			&& !object_is_ancestor(_block.object_index, o_movingplatforms)) return true;
+	}
+	if (scr_slope_rect(_px, _py, _px, _py) != noone) return true;
+	var _lock = instance_position(_px, _py, o_lockedblock);
+	if (_lock != noone && _lock.sprite_index == s_lockedblock) return true;
+	_lock = instance_position(_px, _py, o_unlockedblock);
+	return _lock != noone && _lock.sprite_index == s_lockedblock;
+}
+
+function scr_troop_defeat(_count_kill = false) {
+	if (troop_defeated) return;
+	troop_defeated = true;
+	if (_count_kill && room != r_leveleditor) increase_stat("totalenemykills", "QUESTenemykills", 1);
+	instance_destroy();
 }
 
 // =============================================================
@@ -63,21 +188,22 @@ function scr_troop_find_ladder_column(ladder_inst) {
 
 /// scr_troop_build_grid() — build walkability grid for the room
 /// Returns ds_grid (caller must ds_grid_destroy)
-function scr_troop_build_grid() {
-	var _gw = room_width div 32;
-	var _gh = room_height div 32;
+function scr_troop_build_grid_reference() {
+	var _gw = max(1, ceil(room_width / 32));
+	var _gh = max(1, ceil(room_height / 32));
 	var _grid = ds_grid_create(_gw, _gh);
+	var _points = ds_list_create();
 
 	for (var _gy = 0; _gy < _gh; _gy++) {
 		for (var _gx = 0; _gx < _gw; _gx++) {
 			var _wx = _gx * 32 + 16;
 			var _wy = _gy * 32 + 16;
 
-			if position_meeting(_wx, _wy, o_anyblock) {
+			if scr_troop_nav_solid_point(_wx, _wy, _points) {
 				ds_grid_set(_grid, _gx, _gy, NAV_SOLID);
 			} else if position_meeting(_wx, _wy, o_ladder) {
 				ds_grid_set(_grid, _gx, _gy, NAV_LADDER);
-			} else if _gy < _gh - 1 && (position_meeting(_wx, _wy + 32, o_anyblock) || position_meeting(_wx, _wy + 32, o_onewayupblock)) {
+			} else if _gy < _gh - 1 && (scr_troop_nav_solid_point(_wx, _wy + 32, _points) || position_meeting(_wx, _wy + 32, o_onewayupblock)) {
 				ds_grid_set(_grid, _gx, _gy, NAV_WALKABLE);
 			} else {
 				ds_grid_set(_grid, _gx, _gy, NAV_AIR);
@@ -85,7 +211,164 @@ function scr_troop_build_grid() {
 		}
 	}
 
+	ds_list_destroy(_points);
 	return _grid;
+}
+
+// Bounds only select possible cell centres. Native point tests retain mask,
+// transform, edge rounding, and calling-instance semantics. No authored
+// coordinate/sprite approximation decides occupancy.
+function scr_troop_nav_mark_cells(_grid, _instance, _kind) {
+	var _padding = (_kind == 4) ? 3 : 1;
+	var _x1 = max(0, ceil((_instance.bbox_left - 16 - _padding) / 32));
+	var _x2 = min(ds_grid_width(_grid) - 1, floor((_instance.bbox_right - 16 + _padding) / 32));
+	var _y1 = max(0, ceil((_instance.bbox_top - 16 - _padding) / 32));
+	var _y2 = min(ds_grid_height(_grid) - 1, floor((_instance.bbox_bottom - 16 + _padding) / 32));
+	for (var _gy = _y1; _gy <= _y2; ++_gy) {
+		for (var _gx = _x1; _gx <= _x2; ++_gx) {
+			if (_grid[# _gx, _gy]) continue;
+			var _px = _gx * 32 + 16, _py = _gy * 32 + 16;
+			var _hit = false;
+			switch (_kind) {
+				case 0: _hit = collision_point(_px, _py, _instance, false, true) != noone; break;
+				case 1:
+				case 2: _hit = position_meeting(_px, _py, _instance); break;
+				// Locks retain the original selected-instance query below. A union
+				// of closed masks could disagree when an open mask overlaps one.
+				case 3: _hit = true; break;
+				case 4:
+					_hit = collision_rectangle(_px - 2, _py - 2, _px + 2, _py + 2,
+						_instance, false, true) != noone
+						&& scr_slope_rect_hit(_instance, _px, _py, _px, _py);
+					break;
+			}
+			if (_hit) _grid[# _gx, _gy] = 1;
+		}
+	}
+}
+
+function scr_troop_build_grid_instances() {
+	var _gw = max(1, ceil(room_width / 32));
+	var _gh = max(1, ceil(room_height / 32));
+	var _solid = ds_grid_create(_gw, _gh), _ladder = ds_grid_create(_gw, _gh);
+	var _oneway = ds_grid_create(_gw, _gh), _locks = ds_grid_create(_gw, _gh);
+	var _grid = ds_grid_create(_gw, _gh);
+	ds_grid_clear(_solid, 0); ds_grid_clear(_ladder, 0);
+	ds_grid_clear(_oneway, 0); ds_grid_clear(_locks, 0);
+	try {
+		// These are live, activated instances after the existing cache rebuild
+		// activation. Destroyed boxes and current masks/sprites are respected.
+		for (var _i = 0; _i < instance_number(o_anyblock); ++_i) {
+			var _instance = instance_find(o_anyblock, _i);
+			if (_instance.object_index == o_movingplatforms
+				|| object_is_ancestor(_instance.object_index, o_movingplatforms)) continue;
+			scr_troop_nav_mark_cells(_solid, _instance, 0);
+		}
+		for (var _i = 0; _i < instance_number(o_slope); ++_i) {
+			scr_troop_nav_mark_cells(_solid, instance_find(o_slope, _i), 4);
+		}
+		for (var _i = 0; _i < instance_number(o_ladder); ++_i) {
+			scr_troop_nav_mark_cells(_ladder, instance_find(o_ladder, _i), 1);
+		}
+		for (var _i = 0; _i < instance_number(o_onewayupblock); ++_i) {
+			scr_troop_nav_mark_cells(_oneway, instance_find(o_onewayupblock, _i), 2);
+		}
+		for (var _i = 0; _i < instance_number(o_lockedblock); ++_i) {
+			scr_troop_nav_mark_cells(_locks, instance_find(o_lockedblock, _i), 3);
+		}
+		for (var _i = 0; _i < instance_number(o_unlockedblock); ++_i) {
+			scr_troop_nav_mark_cells(_locks, instance_find(o_unlockedblock, _i), 3);
+		}
+		for (var _gy = 0; _gy < _gh; ++_gy) {
+			for (var _gx = 0; _gx < _gw; ++_gx) {
+				if (!_solid[# _gx, _gy] && _locks[# _gx, _gy]) {
+					var _px = _gx * 32 + 16, _py = _gy * 32 + 16;
+					var _lock = instance_position(_px, _py, o_lockedblock);
+					if (_lock != noone && _lock.sprite_index == s_lockedblock) {
+						_solid[# _gx, _gy] = 1;
+					} else {
+						_lock = instance_position(_px, _py, o_unlockedblock);
+						if (_lock != noone && _lock.sprite_index == s_lockedblock) _solid[# _gx, _gy] = 1;
+					}
+				}
+			}
+		}
+		for (var _gy = 0; _gy < _gh; ++_gy) {
+			for (var _gx = 0; _gx < _gw; ++_gx) {
+				if (_solid[# _gx, _gy]) _grid[# _gx, _gy] = NAV_SOLID;
+				else if (_ladder[# _gx, _gy]) _grid[# _gx, _gy] = NAV_LADDER;
+				else if (_gy < _gh - 1 && (_solid[# _gx, _gy + 1] || _oneway[# _gx, _gy + 1])) {
+					_grid[# _gx, _gy] = NAV_WALKABLE;
+				} else _grid[# _gx, _gy] = NAV_AIR;
+			}
+		}
+	} catch (_error) {
+		ds_grid_destroy(_grid);
+		ds_grid_destroy(_solid); ds_grid_destroy(_ladder);
+		ds_grid_destroy(_oneway); ds_grid_destroy(_locks);
+		throw _error;
+	}
+	ds_grid_destroy(_solid); ds_grid_destroy(_ladder);
+	ds_grid_destroy(_oneway); ds_grid_destroy(_locks);
+	return _grid;
+}
+
+function scr_troop_nav_grid_difference(_reference, _candidate) {
+	var _dimensions = ds_grid_width(_reference) == ds_grid_width(_candidate)
+		&& ds_grid_height(_reference) == ds_grid_height(_candidate);
+	var _mismatches = 0, _samples = [], _cells = 0;
+	for (var _gy = 0; _gy < min(ds_grid_height(_reference), ds_grid_height(_candidate)); ++_gy) {
+		for (var _gx = 0; _gx < min(ds_grid_width(_reference), ds_grid_width(_candidate)); ++_gx) {
+			_cells += 1;
+			if (_reference[# _gx, _gy] != _candidate[# _gx, _gy]) {
+				_mismatches += 1;
+				if (array_length(_samples) < 16) array_push(_samples,
+					{gx:_gx, gy:_gy, reference:_reference[# _gx, _gy], candidate:_candidate[# _gx, _gy]});
+			}
+		}
+	}
+	return {equal:_dimensions && _mismatches == 0, dimensions_equal:_dimensions,
+		cells:_cells, mismatches:_mismatches, samples:_samples};
+}
+
+function scr_troop_nav_geometry_mode() {
+	if (TCC_GAMEPLAY_QA && qa_active()) {
+		var _spec = global.tcc_qa.spec;
+		if (variable_struct_exists(_spec, "navGeometryMode")) {
+			if (_spec.navGeometryMode != "instances" && _spec.navGeometryMode != "reference"
+				&& _spec.navGeometryMode != "compare") throw "Unknown diagnostic navGeometryMode";
+			return _spec.navGeometryMode;
+		}
+	}
+	return "instances";
+}
+
+function scr_troop_build_grid() {
+	var _mode = scr_troop_nav_geometry_mode(), _cache = scr_troop_nav_cache();
+	var _start = get_timer();
+	if (_mode == "reference") {
+		var _reference = scr_troop_build_grid_reference();
+		_cache.geometry_reference_us += get_timer() - _start;
+		return _reference;
+	}
+	var _candidate = scr_troop_build_grid_instances();
+	_cache.geometry_instance_us += get_timer() - _start;
+	if (_mode == "compare") {
+		_start = get_timer();
+		var _reference = scr_troop_build_grid_reference();
+		_cache.geometry_reference_us += get_timer() - _start;
+		var _difference = scr_troop_nav_grid_difference(_reference, _candidate);
+		_cache.geometry_comparisons += 1;
+		_cache.geometry_mismatches += _difference.mismatches + (_difference.dimensions_equal ? 0 : 1);
+		show_debug_message("TCC_NAV_GRID_EQUIVALENCE " + json_stringify({room:room_get_name(room),
+			generation:_cache.generation, comparison:_cache.geometry_comparisons, result:_difference}));
+		ds_grid_destroy(_reference);
+		if (!_difference.equal) {
+			ds_grid_destroy(_candidate);
+			throw "Instance-oriented navigation grid differs from preserved reference";
+		}
+	}
+	return _candidate;
 }
 
 /// _nav_cell(grid, gx, gy, gw, gh) — safe grid read (out of bounds = SOLID)
@@ -208,9 +491,12 @@ function scr_troop_grid_neighbors(grid, gx, gy, gw, gh) {
 /// scr_troop_pathfind(start_x, start_y, end_x, end_y) — A* on walkability grid
 /// Returns array of { gx, gy, action } grid steps, or empty array if no path
 function scr_troop_pathfind(start_x, start_y, end_x, end_y) {
-	var _grid = scr_troop_build_grid();
-	var _gw = room_width div 32;
-	var _gh = room_height div 32;
+	var _started = get_timer();
+	var _grid = scr_troop_nav_grid();
+	var _cache = scr_troop_nav_cache();
+	_cache.path_requests += 1;
+	var _gw = ds_grid_width(_grid);
+	var _gh = ds_grid_height(_grid);
 
 	var _sx = clamp(start_x div 32, 0, _gw - 1);
 	var _sy = clamp(start_y div 32, 0, _gh - 1);
@@ -221,11 +507,11 @@ function scr_troop_pathfind(start_x, start_y, end_x, end_y) {
 	var _sc = _nav_cell(_grid, _sx, _sy, _gw, _gh);
 	var _ec = _nav_cell(_grid, _ex, _ey, _gw, _gh);
 	if _sc == NAV_SOLID || _sc == NAV_AIR {
-		ds_grid_destroy(_grid);
+		_cache.path_us += get_timer() - _started;
 		return [];
 	}
 	if _ec == NAV_SOLID || _ec == NAV_AIR {
-		ds_grid_destroy(_grid);
+		_cache.path_us += get_timer() - _started;
 		return [];
 	}
 
@@ -298,7 +584,9 @@ function scr_troop_pathfind(start_x, start_y, end_x, end_y) {
 	ds_map_destroy(_came_from);
 	ds_map_destroy(_came_action);
 	ds_map_destroy(_closed);
-	ds_grid_destroy(_grid);
+	_cache.search_iterations += _iter;
+	_cache.max_search_iterations = max(_cache.max_search_iterations, _iter);
+	_cache.path_us += get_timer() - _started;
 
 	return _path;
 }
@@ -446,7 +734,9 @@ function scr_troop_follow_path() {
 
 /// scr_troop_jump() — enemy jump with sound handling
 function scr_troop_jump() {
-	if !place_meeting(x, y-32, o_anyblock) {
+	// Path, ledge, high-target and boredom jumps all share this gate.
+	if state == 1 && reactiontime > 0 && noreaction != 1 { return; }
+	if scr_troop_head_clear() {
 		vsp = -10.5
 		onground = 0
 		audio_sound_pitch(snd_enemyjump, random_range(0.6, 0.8))

@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if (mPath == "") {
 	alarm[0] = 10
 	exit

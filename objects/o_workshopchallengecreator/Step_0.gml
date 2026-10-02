@@ -1,8 +1,9 @@
+if (!timing_instance_step()) exit;
 // Modal popup blocks this menu
 if instance_exists(o_popup) { exit }
 
 // Close
-if keyboard_check_pressed(vk_escape) {
+if timing_keyboard_pressed(vk_escape) {
 	with (o_workshopchallengecreatorbg) instance_destroy()
 	with (o_workshopchallengecreatorbutton) instance_destroy()
 	with (o_workshoplevelselectbutton) instance_destroy()
@@ -12,11 +13,11 @@ if keyboard_check_pressed(vk_escape) {
 
 var mx = mouse_x
 var my = mouse_y
-var clicked = mouse_check_button_pressed(mb_left)
+var clicked = timing_mouse_pressed(mb_left)
 
 // Scroll
-if mouse_wheel_up() { global.workshopchallenge_scroll -= 60 }
-if mouse_wheel_down() { global.workshopchallenge_scroll += 60 }
+if timing_mouse_wheel_up() { global.workshopchallenge_scroll -= 60 }
+if timing_mouse_wheel_down() { global.workshopchallenge_scroll += 60 }
 
 // Layout grid + scrollmax (based on filter)
 var list_top_y = 320

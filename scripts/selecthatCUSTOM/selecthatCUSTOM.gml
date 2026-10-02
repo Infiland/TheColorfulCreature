@@ -1,25 +1,7 @@
-function selectlevelCUSTOM(i,text){
-var xcam = camera_get_view_x(view_camera[0])+512
-if mouse_check_button_released(mb_left) {
-if mouse_x > xcam-300 && mouse_x < xcam+300 && mouse_y > 85-(floor(i/15)*600)+i*40 && mouse_y < 115-(floor(i/15)*600)+i*40 {
-global.levelname = text
-instance_destroy(o_leveleditormenusetup)
-instance_destroy(o_allbackgrounds)
-instance_destroy(o_chooseleveleditorlevel)
-//scr_loadleveleditor()
-
-if global.levelname != "" {
-instance_create(x,y,o_levelreloadagain)
-if !achievement_earned("LOAD_LEVEL") { //Load Level
-achievement_award("LOAD_LEVEL") }
-} else {
-	instance_destroy(o_savedandloaded)
-	box = instance_create(x,y,o_savedandloaded)
-	with(box) {
-	image_index = 3
-	}
-
+// Compatibility adapter for older editor callers. New browser input runs in Step.
+function selectlevelCUSTOM(_index, _name) {
+    var _xcam = camera_get_view_x(view_camera[0]) + 512;
+    var _top = 85 + (_index mod 15) * 40;
+    if (timing_mouse_released(mb_left) && point_in_rectangle(mouse_x, mouse_y, _xcam - 300, _top, _xcam + 300, _top + 30)) return level_editor_open(_name);
+    return false;
 }
-
-show_debug_message(text)
-}}}

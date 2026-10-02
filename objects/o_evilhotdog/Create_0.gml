@@ -26,7 +26,7 @@ instance_destroy()
 if global.nostalgia = 1 { sprite_index = s_oldhotdog }
 
 if (room == r_boss1) {
-    healthbar = instance_create_depth(0, 0, -1000, o_healthbar);
+    healthbar = timing_create_depth(0, 0, -1000, o_healthbar);
     healthbar.target = id;
 	healthbar.bar_segments = 3;
 }

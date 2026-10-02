@@ -10,7 +10,7 @@ if global.LEMode = 1 {
 
 if !instance_exists(o_namelevelLE) {
 if !instance_exists(o_chooseleveleditorlevel) {
-instance_create_depth(x,y,-10,o_chooseleveleditorlevel)
+timing_create_depth(x,y,-10,o_chooseleveleditorlevel)
 audio_play_sound(snd_hitboss,0,0)
 keyboard_string = ""
 global.naminglevel = true

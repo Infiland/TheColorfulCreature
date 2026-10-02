@@ -1,4 +1,5 @@
-key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (tcc_gamepad_button_check_pressed(4,gp_shoulderr));
+if (!timing_instance_step()) exit;
+key_interact = player_interact_pressed();
 if instance_exists(o_player) {
 
 if o_player.zerogrv = 0 {
@@ -23,9 +24,9 @@ if global.playermove = -1 {
 	ycord = lerp(ycord,10,0.2)
 	}
 }
-timer += 1* (60 / global.maxfps)
-image_index = lerp(image_index,gunrotation,0.1* (60 / global.maxfps))
-image_angle = lerp(image_angle,0,0.3* (60 / global.maxfps))
+timer += 1* (60 / TCC_SIM_HZ)
+image_index = lerp(image_index,gunrotation,0.1* (60 / TCC_SIM_HZ))
+image_angle = lerp(image_angle,0,0.3* (60 / TCC_SIM_HZ))
 }
 if instance_exists(o_playerdead) {
 image_speed = 2
@@ -36,8 +37,8 @@ instance_destroy()
 }}
 if timer > 30 {
 gunrotation = 30
-xcord = lerp(xcord,9,0.2* (60 / global.maxfps))
-	ycord = lerp(ycord,5,0.2* (60 / global.maxfps))
+xcord = lerp(xcord,9,0.2* (60 / TCC_SIM_HZ))
+	ycord = lerp(ycord,5,0.2* (60 / TCC_SIM_HZ))
 }
 if instance_exists(o_player) {
 if key_interact {

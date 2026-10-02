@@ -20,19 +20,33 @@ function tcc_gamepad_is_connected(_device) {
     return gamepad_is_connected(_device);
 }
 
-function tcc_gamepad_button_check(_device, _button) {
+function tcc_gamepad_button_held_raw(_device, _button) {
     if (TCC_APPSTORE_GAMEPAD && os_type == os_macosx) return tcc_gc_button(_device, tcc_gamepad_button_index(_button), 0) == 1;
     return gamepad_button_check(_device, _button);
 }
 
-function tcc_gamepad_button_check_pressed(_device, _button) {
+function tcc_gamepad_button_check(_device, _button) {
+    var _index = tcc_gamepad_button_index(_button);
+    return tcc_gamepad_button_held_raw(_device, _button) || (variable_global_exists("tcc_timing")
+        && timing_is_tick() && _device >= 0 && _device < 16 && _index >= 0
+        && global.tcc_timing.pads_pressed[_device][_index]);
+}
+
+function tcc_gamepad_button_pressed_raw(_device, _button) {
     if (TCC_APPSTORE_GAMEPAD && os_type == os_macosx) return tcc_gc_button(_device, tcc_gamepad_button_index(_button), 1) == 1;
     return gamepad_button_check_pressed(_device, _button);
 }
 
-function tcc_gamepad_button_check_released(_device, _button) {
+function tcc_gamepad_button_released_raw(_device, _button) {
     if (TCC_APPSTORE_GAMEPAD && os_type == os_macosx) return tcc_gc_button(_device, tcc_gamepad_button_index(_button), 2) == 1;
     return gamepad_button_check_released(_device, _button);
+}
+
+function tcc_gamepad_button_check_pressed(_device, _button) {
+    return timing_pad_pressed(_device, _button);
+}
+function tcc_gamepad_button_check_released(_device, _button) {
+    return timing_pad_released(_device, _button);
 }
 
 function tcc_gamepad_axis_value(_device, _axis) {

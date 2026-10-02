@@ -19,6 +19,7 @@ audio_stop_sound(m_mainmenu);
 
 hsp = 0; //Horizontal
 vsp = 0; //Vertical
+animation_vsp = 0;
 grv = 0.5 //Gravity
 walksp = 4; //Speed
 realwalk = 0 //Total Speed

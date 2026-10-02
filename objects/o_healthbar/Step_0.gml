@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if (target != noone && instance_exists(target)) {
     if (target.hp < prev_hp) {
         flash_alpha = 1;

@@ -1,4 +1,3 @@
-banner_y = lerp(banner_y,150,0.15)
 draw_set_color(c_black)
 draw_set_alpha(0.8)
 draw_rectangle(0,0,2000,2000,false)

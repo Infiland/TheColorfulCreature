@@ -1,65 +1,56 @@
+if (!timing_instance_step()) exit;
 centerx = camera_get_view_x(view_camera[0]) + 512
 propery = camera_get_view_y(view_camera[0])
 
-if keyboard_check_released(vk_escape) {
+if timing_keyboard_released(vk_escape) {
 instance_destroy()	
 }
 
 if sizewidth < 100 {
-if !keyboard_check(vk_control) {
-if keyboard_check(vk_right) {
+if !timing_keyboard_down(vk_control) {
+if timing_keyboard_down(vk_right) {
 sizewidth += 1	
 }} else {
-if keyboard_check_pressed(vk_right) {
+if timing_keyboard_pressed(vk_right) {
 	sizewidth += 1
 }}}
 
 if sizewidth > 32 {
-if !keyboard_check(vk_control) {
-if keyboard_check(vk_left) {
+if !timing_keyboard_down(vk_control) {
+if timing_keyboard_down(vk_left) {
 sizewidth -= 1	
 }} else {
-if keyboard_check_pressed(vk_left) {
+if timing_keyboard_pressed(vk_left) {
 	sizewidth -= 1
 }}}
 
 if  sizeheight > 22 {
-if !keyboard_check(vk_control) {
-if keyboard_check(vk_down) {
+if !timing_keyboard_down(vk_control) {
+if timing_keyboard_down(vk_down) {
  sizeheight -= 1	
 }} else {
-if keyboard_check_pressed(vk_down) {
+if timing_keyboard_pressed(vk_down) {
 	 sizeheight -= 1
 }}}
 
 if  sizeheight < 100 {
-if !keyboard_check(vk_control) {
-if keyboard_check(vk_up) {
+if !timing_keyboard_down(vk_control) {
+if timing_keyboard_down(vk_up) {
  sizeheight += 1	
 }} else {
-if keyboard_check_pressed(vk_up) {
+if timing_keyboard_pressed(vk_up) {
 	 sizeheight += 1
 }}}
 
 
-if keyboard_check_pressed(vk_enter) {
+if timing_keyboard_pressed(vk_enter) {
 if global.levelname != "" {
 global.LELevelWidthBlocks = sizewidth
 global.LELevelHeightBlocks = sizeheight
 room_set_width(r_leveleditor,32*sizewidth)
 room_set_height(r_leveleditor,64+(32*sizeheight))
-scr_saveleveleditor()
+if (!scr_saveleveleditor()) exit;
 
-var directory = directory_set("/LevelEditor Files//" + global.levelname + "/")
-	if (file_exists(directory + "OtherLevelEditor.sav")) {
-	ini_open(directory + "OtherLevelEditor.sav");
-	global.LELevelWidthBlocks = ini_read_real("Other LE","Level Width Blocks",32);
-	global.LELevelHeightBlocks = ini_read_real("Other LE","Level Height Blocks",22);
-	ini_close();
-	}
-	
-	room_set_height(r_leveleditor,64+ (32*global.LELevelHeightBlocks))
-	room_set_width(r_leveleditor,32*global.LELevelWidthBlocks)
 
 room_restart()
 global.LEMode = 1

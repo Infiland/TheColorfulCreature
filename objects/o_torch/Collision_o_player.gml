@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if holding = 0 {
 torchholdcooldown -= 1
 }

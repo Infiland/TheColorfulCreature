@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if room != r_leveleditor {
 if instance_exists(o_player) {
 x = o_player.x+16

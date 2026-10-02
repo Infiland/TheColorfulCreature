@@ -5,6 +5,7 @@ window_set_cursor(cr_default)
 audio_play_sound(m_leveleditor,0,1)
 global.LEBuild = 1
 global.levelname = ""
+global.level_editor_folder = ""
 global.previoustext = ""
 global.leveleditorstring = ""
 global.naminglevel = false

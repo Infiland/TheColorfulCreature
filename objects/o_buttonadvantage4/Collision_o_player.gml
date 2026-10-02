@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if image_index = 0 { audio_play_sound(snd_hitboss,0,0) }
 image_index = 1
 global.lavabuttonconfirm[button] = 1

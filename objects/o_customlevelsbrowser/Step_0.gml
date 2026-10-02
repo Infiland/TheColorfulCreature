@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 /// @description Handle scrolling, clicks, search, tab switching
 
 // Overlay fade in
@@ -8,17 +9,44 @@ scroll = lerp(scroll, scroll_target, 0.2 * (60 / global.maxfps))
 scroll = clamp(scroll, 0, max(0, scroll_max))
 
 // Mouse wheel scrolling
-if mouse_wheel_down() { scroll_target += 60 }
-if mouse_wheel_up() { scroll_target -= 60 }
+if timing_mouse_wheel_down() { scroll_target += 60 }
+if timing_mouse_wheel_up() { scroll_target -= 60 }
 scroll_target = clamp(scroll_target, 0, max(0, scroll_max))
 
 // Gamepad back
-if tcc_gamepad_button_check_pressed(0, gp_face2) {
+if gamepad_ui_pressed(gp_face2) {
 	event_perform(ev_keypress, vk_escape)
 }
 
+// A submitted search replaces the active array before tile hit testing.
+// Its input edge cannot also play/subscribe from the old results.
+var _context_changed = false
+// Search field keyboard input (browse tab)
+if tab = 1 && editing_search {
+	browse_search_text = keyboard_string
+
+	if timing_keyboard_pressed(vk_enter) {
+		_context_changed = true
+		hover_index = -1
+		editing_search = false
+		browse_page = 1
+		browse_levels = []
+		browse_count = 0
+		scroll = 0
+		scroll_target = 0
+		send_browse_query()
+	}
+
+	if timing_keyboard_pressed(vk_escape) {
+		editing_search = false
+		// Don't close the browser, just stop editing
+		exit
+	}
+}
+
 // Recalculate scroll_max based on active tab
-var _active_count = (tab = 0) ? levels_count : browse_count
+var _active_levels = (tab = 0) ? levels : browse_levels
+var _active_count = max(0, min(floor((tab = 0) ? levels_count : browse_count), array_length(_active_levels)))
 var _actual_grid_top = (tab = 1) ? 148 : grid_top_y
 var total_rows = ceil(real(_active_count) / grid_cols)
 var visible_rows = floor((grid_bottom_y - _actual_grid_top) / (tile_h + grid_gap))
@@ -33,8 +61,14 @@ scroll_target = clamp(scroll_target, 0, max(0, scroll_max))
 var _mx = device_mouse_x_to_gui(0)
 var _my = device_mouse_y_to_gui(0)
 
+// Draw never supplies action state. This index is derived from the current
+// pointer, current scroll, and the currently bounded active array each tick.
+hover_index = timing_ui_browser_tile_at(_mx, _my, grid_margin_x, _actual_grid_top,
+	grid_bottom_y, grid_cols, tile_w, tile_h, grid_gap, scroll, _active_count)
+
 // Click handling
-if mouse_check_button_pressed(mb_left) {
+if timing_mouse_pressed(mb_left) && !_context_changed {
+	var _click_consumed = false
 	var _panel_x = grid_margin_x - 20
 	var _panel_w = 1024 - 2 * _panel_x
 
@@ -54,6 +88,8 @@ if mouse_check_button_pressed(mb_left) {
 	var _tab_w = 150
 
 	if (_mx >= _tab1_x && _mx <= _tab1_x + _tab_w && _my >= _tab_y && _my <= _tab_y + _tab_h) {
+		_click_consumed = true
+		hover_index = -1
 		if tab != 0 {
 			tab = 0
 			scroll = 0
@@ -62,6 +98,8 @@ if mouse_check_button_pressed(mb_left) {
 		}
 	}
 	if (_mx >= _tab2_x && _mx <= _tab2_x + _tab_w && _my >= _tab_y && _my <= _tab_y + _tab_h) {
+		_click_consumed = true
+		hover_index = -1
 		if tab != 1 {
 			tab = 1
 			scroll = 0
@@ -82,6 +120,8 @@ if mouse_check_button_pressed(mb_left) {
 		var _search_h = 24
 
 		if (_mx >= _search_x && _mx <= _search_x + _search_w && _my >= _search_y && _my <= _search_y + _search_h) {
+			_click_consumed = true
+			hover_index = -1
 			editing_search = true
 			keyboard_string = browse_search_text
 		} else if editing_search {
@@ -89,9 +129,10 @@ if mouse_check_button_pressed(mb_left) {
 		}
 	}
 
-	// Grid tile click
-	if hover_index >= 0 {
-		var _active_levels = (tab = 0) ? levels : browse_levels
+	// Tab/search clicks are consumed, and no cached index can reach a
+	// replaced or shorter active array. Only a fresh in-range tile is actionable.
+	if (!_click_consumed && hover_index >= 0 && hover_index < _active_count
+		&& hover_index < array_length(_active_levels)) {
 		var _lvl = _active_levels[hover_index]
 
 		if _lvl.banned { /* do nothing */ }
@@ -109,7 +150,7 @@ if mouse_check_button_pressed(mb_left) {
 				if _is_downloading = 1 { _lvl.download_state = "downloading" }
 				else if _is_pending = 1 { _lvl.download_state = "pending" }
 				// Could show popup here
-			} else if file_exists(_lvl.path + "LevelEditor.sav") {
+			} else if level_exists(_lvl.path) {
 				// Safe to play
 				global.deaths = 0
 				global.time = 0
@@ -120,15 +161,7 @@ if mouse_check_button_pressed(mb_left) {
 				var directory = directory_set(_lvl.path, 1)
 				directory = string_replace_all(directory, "\\", "/")
 
-				if file_exists(directory + "OtherLevelEditor.sav") {
-					ini_open(directory + "OtherLevelEditor.sav")
-					global.LELevelWidthBlocks = ini_read_real("Other LE", "Level Width Blocks", 32)
-					global.LELevelHeightBlocks = ini_read_real("Other LE", "Level Height Blocks", 22)
-					ini_close()
-				}
-
-				room_set_width(r_customlevelworkshop, global.LELevelWidthBlocks * 32)
-				room_set_height(r_customlevelworkshop, 64 + (global.LELevelHeightBlocks * 32))
+                if (!level_prepare_room(directory, r_customlevelworkshop, true)) exit;
 
 				// Clean up browser before transitioning
 				instance_create(x, y, o_customlevelworkshopcreate)
@@ -152,34 +185,13 @@ if mouse_check_button_pressed(mb_left) {
 	}
 
 	// Load More button (browse tab)
-	if tab = 1 && browse_state = "loaded" && browse_count < browse_total {
+	if !_click_consumed && tab = 1 && browse_state = "loaded" && browse_count < browse_total {
 		var _lm_row = ceil(real(browse_count) / grid_cols)
 		var _lm_y = _actual_grid_top + _lm_row * (tile_h + grid_gap) - scroll
 		if (_mx >= grid_margin_x && _mx <= 1024 - grid_margin_x && _my >= _lm_y && _my < _lm_y + 40) {
 			browse_page++
 			send_browse_query()
 		}
-	}
-}
-
-// Search field keyboard input (browse tab)
-if tab = 1 && editing_search {
-	browse_search_text = keyboard_string
-
-	if keyboard_check_pressed(vk_enter) {
-		editing_search = false
-		browse_page = 1
-		browse_levels = []
-		browse_count = 0
-		scroll = 0
-		scroll_target = 0
-		send_browse_query()
-	}
-
-	if keyboard_check_pressed(vk_escape) {
-		editing_search = false
-		// Don't close the browser, just stop editing
-		exit
 	}
 }
 
@@ -217,4 +229,3 @@ if download_poll_timer >= 60 {
 		}
 	}
 }
-

@@ -1,4 +1,5 @@
 function death() {
+	qa_observe_death();
 	global.deaths += 1
 	increase_stat("totaldeaths","QUESTdeaths",1)
 

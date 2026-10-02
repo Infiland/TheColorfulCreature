@@ -1,0 +1,10 @@
+image_speed = 0;
+image_angle = 0;
+if (!variable_instance_exists(id, "orientation")) orientation = image_index;
+orientation = scr_slope_orientation(orientation);
+image_index = orientation;
+slope_colour = scr_slope_colour(object_index);
+if (room == r_leveleditor && global.LEMode == 1) mask_index = s_block;
+else mask_index = s_redblockslope;
+depth = -y;
+scr_troop_nav_mark_dirty();

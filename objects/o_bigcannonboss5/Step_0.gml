@@ -1,9 +1,10 @@
+if (!timing_instance_step()) exit;
 if global.pause = 1 { exit }
 
 if cannontroopspawn > 0 {
 if y = 0 {
 
-direction = lerp(direction,dir,0.1 * (60 / global.maxfps))
+direction = lerp(direction,dir,0.1 * (60 / TCC_SIM_HZ))
 
 if global.hardmode = 0 {
 if onplayer = 0 {
@@ -23,8 +24,8 @@ if troopshoot = 0 {
 if onplayer = 1 {
 
 if global.hardmode = 0 { 
-yscale -= 0.01 * (60 / global.maxfps)
-} else { yscale -= 0.02 * (60 / global.maxfps) }	
+yscale -= 0.01 * (60 / TCC_SIM_HZ)
+} else { yscale -= 0.02 * (60 / TCC_SIM_HZ) }
 
 if yscale < 0.8 {
 troopshoot = 1
@@ -58,21 +59,21 @@ troopshoot = 0
 onplayer = 0
 } else {
 if global.hardmode = 0 { 
-yscale += 0.02 * (60 / global.maxfps)
-} else { yscale += 0.04 * (60 / global.maxfps) }	
+yscale += 0.02 * (60 / TCC_SIM_HZ)
+} else { yscale += 0.04 * (60 / TCC_SIM_HZ) }
 }}
 }
 
 if y < 0 {
-y += 1 * (60 / global.maxfps)
+y += 1 * (60 / TCC_SIM_HZ)
 if y > 0 {y = 0	}
 }}
 
 if cannontroopspawn < 1 {
-y -= 1 * (60 / global.maxfps)
+y -= 1 * (60 / TCC_SIM_HZ)
 if y < -200 { instance_destroy() }
 if yscale < 1 {
-	yscale += 0.02 * (60 / global.maxfps)
+	yscale += 0.02 * (60 / TCC_SIM_HZ)
 }
 
 with(o_kingboss) {

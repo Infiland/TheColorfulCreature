@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if !instance_place(x,y,o_ammo) {
 instance_create(x,y,o_ammo)
 }

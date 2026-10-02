@@ -4,13 +4,13 @@ draw_set_font(global.gamemodefont)
 draw_set_alpha(1)
 draw_set_halign(fa_center)
 draw_text(512,100,loc("WHAT_LEVEL_DO_YOU_WANT_TO_LOAD"))
-var directory = directory_set("/LevelEditor Files//" + text + "/")
-if directory_exists(directory) {
+var directory = level_editor_name_valid(text) ? directory_set("/LevelEditor Files/" + text + "/") : "";
+if level_exists(directory) {
 draw_set_color(c_lime)
 } else { draw_set_color(c_red) }
 draw_text(512,200,text)
 
-if !directory_exists(directory) {
+if !level_exists(directory) {
 draw_set_color(c_white)
 draw_set_font(global.deathfont)
 if text != "" {

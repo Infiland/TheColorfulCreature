@@ -1,6 +1,6 @@
 scr_playercontrolsconfig()
 
-randomize()
+tcc_randomize()
 depth = 7
 caninteract = 0
 interacted = 0

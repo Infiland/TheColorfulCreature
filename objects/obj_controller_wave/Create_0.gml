@@ -25,3 +25,6 @@ full_screen_effect = false;
 
 surf = surface_create(camera_get_view_width(1), camera_get_view_height(1));
 view_set_surface_id(0, surf);
+
+// Only the visual phase advances once per actual generated Draw.
+wave_last_draw_frame = -1;

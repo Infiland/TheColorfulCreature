@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 image_yscale = 1.7
 image_xscale = 1.7
 if room = r_leveleditor {

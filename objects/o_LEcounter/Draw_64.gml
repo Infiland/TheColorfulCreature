@@ -15,7 +15,7 @@ if global.LEMode = 1 {
 }
 draw_set_font(global.cool2font)
 if global.LEBuild = 1 {
-draw_text(835,15,string(global.LES + 1) + " / 96")
+draw_text(835,15,string(global.LES + 1) + " / 101")
 switch(global.LES) {
 case(0): draw_text_ext(xtext,ytext,CNT_PLAYER,20,194) break;
 case(1): draw_text_ext(xtext,ytext,CNT_REDBLOCK,20,194) break;

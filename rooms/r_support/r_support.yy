@@ -6,6 +6,7 @@
   "inheritCreationOrder":false,
   "inheritLayers":false,
   "instanceCreationOrder":[
+    {"name":"inst_TCCCOMMENTARYENTRY","path":"rooms/r_support/r_support.yy",},
     {"name":"inst_4500C608","path":"rooms/r_support/r_support.yy",},
     {"name":"inst_734A95D4","path":"rooms/r_support/r_support.yy",},
     {"name":"inst_294A65F1","path":"rooms/r_support/r_support.yy",},
@@ -24,6 +25,7 @@
   "isDnd":false,
   "layers":[
     {"$GMRInstanceLayer":"","%Name":"Instances_1","depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
+        {"$GMRInstance":"v4","%Name":"inst_TCCCOMMENTARYENTRY","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_TCCCOMMENTARYENTRY","objectId":{"name":"o_commentarybutton","path":"objects/o_commentarybutton/o_commentarybutton.yy"},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":334.0,"y":430.0},
         {"$GMRInstance":"v4","%Name":"inst_4500C608","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4500C608","objectId":{"name":"o_evilhotdog","path":"objects/o_evilhotdog/o_evilhotdog.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.0,"scaleY":2.0,"x":512.0,"y":608.0,},
         {"$GMRInstance":"v4","%Name":"inst_734A95D4","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_734A95D4","objectId":{"name":"o_esc","path":"objects/o_esc/o_esc.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":0.0,},
         {"$GMRInstance":"v4","%Name":"inst_294A65F1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_294A65F1","objectId":{"name":"o_youtube","path":"objects/o_youtube/o_youtube.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.5,"scaleY":2.5,"x":864.0,"y":608.0,},

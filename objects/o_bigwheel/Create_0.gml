@@ -1,4 +1,4 @@
-randomize()
+tcc_randomize()
 wheelspeed = 0
 spinned = 0
 rewarded = 0

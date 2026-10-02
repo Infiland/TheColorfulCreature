@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.pause = 1 { 
 	if global.boss4 = 1 { audio_stop_sound(m_lavatime) }
 	exit }
@@ -34,7 +35,7 @@ speedup = y - o_player.y
 var realspeedup = speedup / (650 / (1 + global.hardmode))
 
 if image_yscale < 2.8 {
-image_yscale += (0.024 + realspeedup) * (60 / global.maxfps)
+image_yscale += (0.024 + realspeedup) * (60 / TCC_SIM_HZ)
 }
 
-y -= (0.1 + realspeedup) * (60 / global.maxfps)
+y -= (0.1 + realspeedup) * (60 / TCC_SIM_HZ)

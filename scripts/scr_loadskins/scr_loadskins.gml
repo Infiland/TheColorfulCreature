@@ -1,7 +1,9 @@
 function scr_loadskins() {
 	if global.cheats = 0 {
 
-	var directory = directory_set("//Save Files/")
+	cosmetics_defaults();
+	var directory = directory_set("//Save Files/");
+	scr_save_recover(directory + "Skins.sav");
 
 	if (file_exists(directory + "Skins.sav")) {
 	ini_open(directory + "Skins.sav");
@@ -64,6 +66,8 @@ function scr_loadskins() {
 	global.skin[50] = ini_read_real("Skins","Kratos Skin",0);
 
 	global.CUSTOMskin = ini_read_string("CustomSkin","Custom Skin","")
+	global.skinselected = settings_number(global.skinselected, 0, 0, 49);
+	if (!cosmetics_valid_name(global.CUSTOMskin)) global.CUSTOMskin = "";
 	ini_close();
 	}
 	else {

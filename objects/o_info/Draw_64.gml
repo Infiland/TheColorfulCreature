@@ -212,7 +212,7 @@ if global.skin[48] = 0 {draw_text_ext(32,704,CALENDARSKINUNLOCK,20,820) }
 if global.skin[48] = 1 {draw_text_ext(32,704,loc("REDDIE_S_ON_FIRE"),20,820) }
 break;
 case(49):
-if global.skin[49] = 0 {draw_text_ext(32,704,CALENDARSKINUNLOCK,20,820) }
+if global.skin[49] = 0 {draw_text_ext(32,704,loc("UNLOCK_THIS_BY_BEATING_LUNAR_BASE"),20,820) }
 if global.skin[49] = 1 {draw_text_ext(32,704,loc("BEWARE_OF_THE_CAMERAMEN_BIG_BROTHER_IS_WATCHING"),20,820) }
 break;
 case(50):

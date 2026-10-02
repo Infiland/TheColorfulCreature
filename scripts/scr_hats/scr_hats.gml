@@ -4,7 +4,7 @@ var hat=global.hatselected
 if instance_exists(o_playerMU) {
 	hat=multiplayerplayerhat
 }
-color=c_white
+draw_set_color(c_white)
 
 var col=global.color
 if instance_exists(o_playerMU) {
@@ -16,6 +16,7 @@ if instance_exists(o_playerMU) {
 var xx=16,yy=8,hatspr=s_graduationhat,anim=0,colorhat=c_white,al=1,sx=1;
 if platform_touch() { customhat = 0 }
 if customhat = 0 {
+if hat < 0 { hat = 0 } // Missing custom multiplayer hat falls back to unequipped.
 if hat = 0 { hatspr = s_graduationhat al = 0 }
 switch(hat) {
 case(1): hatspr=s_graduationhat anim=0 xx=15 yy=6   break;

@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 //Music
 if room = r_boss1 {
 if !audio_is_playing(m_hotdogtimephase1) and !audio_is_playing(m_hotdogtimephase2) and !audio_is_playing(m_hotdogtimephase3) {
@@ -13,10 +14,10 @@ if bosshit1 = 0 {
 image_angle += animation
 }
 if direction_animation = 0 {
-animation += 0.04 * (60 / global.maxfps) 
+animation += 0.04 * (60 / TCC_SIM_HZ)
 }
 if direction_animation = 1 {
-animation -= 0.04 * (60 / global.maxfps) 
+animation -= 0.04 * (60 / TCC_SIM_HZ)
 }
 if animation > 1 {
 direction_animation = 1
@@ -36,9 +37,9 @@ image_index = 2
 }
 
 if bosshit1 = 1 {
-rotate += 1 * (60 / global.maxfps) 
+rotate += 1 * (60 / TCC_SIM_HZ)
 if rotate < 19 {
-image_angle += 20 * (60 / global.maxfps) 
+image_angle += 20 * (60 / TCC_SIM_HZ)
 }
 if rotate > 19 {
 bosshit1 = 0
@@ -140,6 +141,6 @@ image_yscale = 1.05;
 alarm[2] = 3
 }}
 if global.pause = 0 {
-timer -= 1 * (60 / global.maxfps)
+timer -= 1 * (60 / TCC_SIM_HZ)
 }
 }

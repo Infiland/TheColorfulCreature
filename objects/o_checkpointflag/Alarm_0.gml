@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if canspawn = 0 {
 if global.casualmode = 0 {
 instance_destroy()	

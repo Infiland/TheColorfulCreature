@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if !instance_exists(o_smoothcamera) {
 x = lerp(x,room_width/2,0.1* (60 / global.maxfps))
 }

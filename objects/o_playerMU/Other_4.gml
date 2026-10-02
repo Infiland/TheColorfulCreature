@@ -47,3 +47,6 @@ case 36: sprite_index = s_arrowplayerskin break;
 case 37: sprite_index = s_spikeplayerskin break;
 case 38: sprite_index = s_splitplayerskin break;
 }
+cosmetics_player_init(multiplayerplayerskin == -1, multiplayerplayerhat == -1, multiplayerplayeritem == -1);
+// Custom visual frames must never alter the gameplay collision box.
+mask_index = s_playerred;

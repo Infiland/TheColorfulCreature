@@ -1,0 +1,232 @@
+{
+  "comparison": "Current path algorithm, cached geometry versus rebuilding per request",
+  "historicalBaseline": false,
+  "allPairsEquivalent": true,
+  "pairs": [
+    {
+      "repeat": 1,
+      "equivalent": true,
+      "errors": [],
+      "cached": {
+        "path": "/Users/infi/Library/Caches/TCC130/runs/troop-cache-jumping-qa17/pair-01-cached",
+        "mode": "cached",
+        "errors": [],
+        "inputSha256": "bbc3c35172dc03cd24c4375f8cdf71597b03833bc88c4d82d577da518da1980a",
+        "sourceIdentity": {
+          "levelContentSha256": "d1e214c152ce58f6523c26c63555d10875a7dcf09b81e71214ec1b623f088846",
+          "sourceSha256": "179c0b33836c80ad3085fc0f6f0e27d0371371655af31a87e2a739b9f849a134",
+          "physicsSha256": "34ee868767580da16ce0af1297f80b828d57e85f4afc579a424eaed170a5e36a",
+          "fileCount": 22638.0,
+          "executableSha256": "30ff40a366b82b4a755fb0bd786fbc4983f6e5ab4ea5f65159552084f4fed45c",
+          "artifactSha256": "e897098d7caccf53f6532bfe895edae4a4555e195b6bc175f519f3f839bef5e6"
+        },
+        "fps": 60,
+        "seed": 1,
+        "status": "observed",
+        "frames": 300.0,
+        "deaths": 0.0,
+        "navigation": {
+          "generation": 200.0,
+          "cache_mode": "cached",
+          "width": 32.0,
+          "height": 24.0,
+          "builds": 1.0,
+          "cache_hits": 1.0,
+          "build_us": 2523.0,
+          "path_requests": 2.0,
+          "path_us": 2547.0,
+          "search_iterations": 0.0,
+          "max_search_iterations": 0.0,
+          "budget_deferrals": 0.0,
+          "room_name": "r_lvl94"
+        },
+        "performance": {
+          "stepCostMedianUs": 187.0,
+          "stepCostP95Us": 328.0,
+          "observedFps": 57.40140205324239,
+          "wallSeconds": 9.625886124995304,
+          "stepCostP99Us": 566.0,
+          "stepCostMaxUs": 2727.0,
+          "stepCostTotalUs": 64822.0
+        },
+        "currentPlayableContent": false
+      },
+      "rebuild": {
+        "path": "/Users/infi/Library/Caches/TCC130/runs/troop-cache-jumping-qa17/pair-01-rebuild",
+        "mode": "rebuild",
+        "errors": [],
+        "inputSha256": "bbc3c35172dc03cd24c4375f8cdf71597b03833bc88c4d82d577da518da1980a",
+        "sourceIdentity": {
+          "levelContentSha256": "d1e214c152ce58f6523c26c63555d10875a7dcf09b81e71214ec1b623f088846",
+          "sourceSha256": "179c0b33836c80ad3085fc0f6f0e27d0371371655af31a87e2a739b9f849a134",
+          "physicsSha256": "34ee868767580da16ce0af1297f80b828d57e85f4afc579a424eaed170a5e36a",
+          "fileCount": 22638.0,
+          "executableSha256": "30ff40a366b82b4a755fb0bd786fbc4983f6e5ab4ea5f65159552084f4fed45c",
+          "artifactSha256": "e897098d7caccf53f6532bfe895edae4a4555e195b6bc175f519f3f839bef5e6"
+        },
+        "fps": 60,
+        "seed": 1,
+        "status": "observed",
+        "frames": 300.0,
+        "deaths": 0.0,
+        "navigation": {
+          "generation": 200.0,
+          "cache_mode": "rebuild-per-request",
+          "width": 32.0,
+          "height": 24.0,
+          "builds": 2.0,
+          "cache_hits": 0.0,
+          "build_us": 5280.0,
+          "path_requests": 2.0,
+          "path_us": 5304.0,
+          "search_iterations": 0.0,
+          "max_search_iterations": 0.0,
+          "budget_deferrals": 0.0,
+          "room_name": "r_lvl94"
+        },
+        "performance": {
+          "stepCostMedianUs": 183.5,
+          "stepCostP95Us": 393.0,
+          "observedFps": 57.40245997378301,
+          "wallSeconds": 9.720314165984746,
+          "stepCostP99Us": 518.0,
+          "stepCostMaxUs": 2898.0,
+          "stepCostTotalUs": 67762.0
+        },
+        "currentPlayableContent": false
+      },
+      "avoidedBuilds": 1.0
+    },
+    {
+      "repeat": 2,
+      "equivalent": true,
+      "errors": [],
+      "cached": {
+        "path": "/Users/infi/Library/Caches/TCC130/runs/troop-cache-jumping-qa17/pair-02-cached",
+        "mode": "cached",
+        "errors": [],
+        "inputSha256": "bbc3c35172dc03cd24c4375f8cdf71597b03833bc88c4d82d577da518da1980a",
+        "sourceIdentity": {
+          "levelContentSha256": "d1e214c152ce58f6523c26c63555d10875a7dcf09b81e71214ec1b623f088846",
+          "sourceSha256": "179c0b33836c80ad3085fc0f6f0e27d0371371655af31a87e2a739b9f849a134",
+          "physicsSha256": "34ee868767580da16ce0af1297f80b828d57e85f4afc579a424eaed170a5e36a",
+          "fileCount": 22638.0,
+          "executableSha256": "30ff40a366b82b4a755fb0bd786fbc4983f6e5ab4ea5f65159552084f4fed45c",
+          "artifactSha256": "e897098d7caccf53f6532bfe895edae4a4555e195b6bc175f519f3f839bef5e6"
+        },
+        "fps": 60,
+        "seed": 1,
+        "status": "observed",
+        "frames": 300.0,
+        "deaths": 0.0,
+        "navigation": {
+          "generation": 200.0,
+          "cache_mode": "cached",
+          "width": 32.0,
+          "height": 24.0,
+          "builds": 1.0,
+          "cache_hits": 1.0,
+          "build_us": 2608.0,
+          "path_requests": 2.0,
+          "path_us": 2629.0,
+          "search_iterations": 0.0,
+          "max_search_iterations": 0.0,
+          "budget_deferrals": 0.0,
+          "room_name": "r_lvl94"
+        },
+        "performance": {
+          "stepCostMedianUs": 182.0,
+          "stepCostP95Us": 347.0,
+          "observedFps": 57.40583235577025,
+          "wallSeconds": 9.59238566699787,
+          "stepCostP99Us": 497.0,
+          "stepCostMaxUs": 2880.0,
+          "stepCostTotalUs": 63786.0
+        },
+        "currentPlayableContent": false
+      },
+      "rebuild": {
+        "path": "/Users/infi/Library/Caches/TCC130/runs/troop-cache-jumping-qa17/pair-02-rebuild",
+        "mode": "rebuild",
+        "errors": [],
+        "inputSha256": "bbc3c35172dc03cd24c4375f8cdf71597b03833bc88c4d82d577da518da1980a",
+        "sourceIdentity": {
+          "levelContentSha256": "d1e214c152ce58f6523c26c63555d10875a7dcf09b81e71214ec1b623f088846",
+          "sourceSha256": "179c0b33836c80ad3085fc0f6f0e27d0371371655af31a87e2a739b9f849a134",
+          "physicsSha256": "34ee868767580da16ce0af1297f80b828d57e85f4afc579a424eaed170a5e36a",
+          "fileCount": 22638.0,
+          "executableSha256": "30ff40a366b82b4a755fb0bd786fbc4983f6e5ab4ea5f65159552084f4fed45c",
+          "artifactSha256": "e897098d7caccf53f6532bfe895edae4a4555e195b6bc175f519f3f839bef5e6"
+        },
+        "fps": 60,
+        "seed": 1,
+        "status": "observed",
+        "frames": 300.0,
+        "deaths": 0.0,
+        "navigation": {
+          "generation": 200.0,
+          "cache_mode": "rebuild-per-request",
+          "width": 32.0,
+          "height": 24.0,
+          "builds": 2.0,
+          "cache_hits": 0.0,
+          "build_us": 5093.0,
+          "path_requests": 2.0,
+          "path_us": 5113.0,
+          "search_iterations": 0.0,
+          "max_search_iterations": 0.0,
+          "budget_deferrals": 0.0,
+          "room_name": "r_lvl94"
+        },
+        "performance": {
+          "stepCostMedianUs": 191.0,
+          "stepCostP95Us": 353.0,
+          "observedFps": 57.39424007530738,
+          "wallSeconds": 9.57840783399297,
+          "stepCostP99Us": 473.0,
+          "stepCostMaxUs": 2861.0,
+          "stepCostTotalUs": 69066.0
+        },
+        "currentPlayableContent": false
+      },
+      "avoidedBuilds": 1.0
+    }
+  ],
+  "medianAcrossRuns": {
+    "stepCostMedianUs": {
+      "cached": 184.5,
+      "rebuild": 187.25
+    },
+    "stepCostP95Us": {
+      "cached": 337.5,
+      "rebuild": 373.0
+    },
+    "stepCostP99Us": {
+      "cached": 531.5,
+      "rebuild": 495.5
+    },
+    "stepCostMaxUs": {
+      "cached": 2803.5,
+      "rebuild": 2879.5
+    },
+    "stepCostTotalUs": {
+      "cached": 64304.0,
+      "rebuild": 68414.0
+    },
+    "observedFps": {
+      "cached": 57.40361720450632,
+      "rebuild": 57.398350024545195
+    }
+  },
+  "limitations": [
+    "Frozen diagnostic source does not establish final release performance.",
+    "Configured FPS is separate from observed pacing; wall time includes app bootstrap.",
+    "Compilers were reported idle before these four runs and none were observed in the final process scan; native game processes were serialized. Background OS scheduling and unmeasured CPU activity may contribute noise."
+  ],
+  "measurementContext": {
+    "compilerIdle": true,
+    "nativeProcessSerialization": true,
+    "verifiedContext": "Root reported SteamAndroid18 and QA20 compilers idle before dispatch. A process scan after all four runs found no Igor,clang,xcodebuild,Gradle or Javac process. Continuous CPU sampling was not recorded.",
+    "scope": "Original r_lvl94, one upper-corridor troop chase with two normal jumps,300frames,60FPS,seed1. Two real requests reject nonnavigable midair target cells after obtaining the geometry grid; this comparison isolates caching rather than A* expansion cost."
+  }
+}

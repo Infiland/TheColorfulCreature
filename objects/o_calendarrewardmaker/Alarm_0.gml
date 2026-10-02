@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 scr_checkcalendarrewardsinmenu()
 
 if rewarded1 = 1 {

@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 scr_playercontrolsconfig()
 
 if global.pickup = 0 {
@@ -9,24 +10,13 @@ shake = 1.5
 
 controls_key_display(global.controlsskiplevel)
 
-// Skip uses the same keyboard/controller binding on both desktop editions.
-// Always clear it when the touch button is absent (menus, challenges or pause).
-key_skip = false;
-if (!platform_mobile()) {
-    var _key = is_real(global.controlsskiplevel) ? global.controlsskiplevel : ord(global.controlsskiplevel);
-    if (global.skiplevelholdsettings == 0)
-        key_skip = keyboard_check_pressed(_key) || tcc_gamepad_button_check_pressed(0, global.gp_bind_skip);
-    else
-        key_skip = keyboard_check(_key) || tcc_gamepad_button_check(0, global.gp_bind_skip);
-} else if (instance_exists(o_buttonskipandroid)) {
-    key_skip = o_buttonskipandroid.image_index == 1;
-}
+key_skip = player_skip_input(global.skiplevelholdsettings == 0);
 
 if (global.pause == 0) {
     if (global.special >= reqcoin) {
         if (skip != "You can't skip\nthis level") {
             if (global.skiplevelholdsettings == 0) timer = -0.1;
-            else if (key_skip) timer -= 1 / room_speed;
+            else if (key_skip) timer -= 1 / TCC_SIM_HZ;
             else timer = 0.7;
         }
     } else if (key_skip && !achievement_earned("UH_OH")) {

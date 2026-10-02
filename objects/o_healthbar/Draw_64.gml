@@ -10,8 +10,8 @@ if (target != noone && instance_exists(target)) {
     if (should_draw && target_hp > 0) {
         var current_width = (target_hp / target_maxhp) * bar_width;
         
-        var shake_x = bar_x + random_range(-shake, shake);
-        var shake_y = bar_y + random_range(-shake, shake);
+        var shake_x = bar_x + timing_visual_random_range(-shake, shake);
+        var shake_y = bar_y + timing_visual_random_range(-shake, shake);
         
         draw_set_alpha(0.7);
         draw_set_color(c_black);

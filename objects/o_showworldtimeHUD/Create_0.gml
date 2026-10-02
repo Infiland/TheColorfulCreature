@@ -11,3 +11,7 @@ case(r_lvl81): text = global.world4time break;
 case(r_theend): text = global.world5time break;
 }
 alarm[0] = 1
+
+// Cache the pre-fade sample for repeated views of one generated Draw.
+hud_last_draw_frame = -1;
+hud_draw_alpha = image_alpha;

@@ -40,7 +40,7 @@ for (var i = 0; i < ds_list_size(steam_list); i++) {
 
 	var path_norm = string_replace_all(string(path_to_file),"\\","/");
 	if (string_copy(path_norm, string_length(path_norm), 1) != "/") { path_norm += "/" }
-	if !file_exists(path_norm + "LevelEditor.sav") { continue; }
+	if !level_exists(path_norm) { continue; }
 
 	var is_selected = 0
 	if (is_array(preselect)) {

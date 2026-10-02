@@ -7,3 +7,4 @@ depth = -20000
 
 xx = -500
 xxx = 100
+global.LEsetup_error = "";

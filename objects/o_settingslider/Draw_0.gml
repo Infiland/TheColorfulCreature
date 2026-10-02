@@ -7,7 +7,7 @@ draw_set_font(global.coolfont)
 draw_set_color(c_white)
 draw_set_halign(fa_left)
 draw_set_valign(fa_center)
-draw_text(beginx - 80, y + 8, slider_label)
+draw_text(beginx - 80, y + 8, settings_text(slider_label))
 
 // Draw slider track
 var _track_y = y + 8
@@ -23,7 +23,7 @@ draw_set_color(c_white)
 draw_rectangle(x - 4, y, x + 4, y + 16, false)
 
 // Draw value text when grabbing
-if grab = true {
+if grab || global.soundchange == slider_soundchange_id {
 	draw_set_font(global.coolfont)
 	draw_set_color(c_white)
 	if slider_integer {
@@ -37,3 +37,5 @@ if grab = true {
 		if _vol = 1 { draw_text(x - 20, y + 20, "LOUD") }
 	}
 }
+
+draw_set_valign(fa_top);

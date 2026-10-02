@@ -1,7 +1,9 @@
 function scr_loadhats() {
 if global.cheats = 0 {
 
-	var directory = directory_set("//Save Files/")
+	cosmetics_defaults();
+	var directory = directory_set("//Save Files/");
+	scr_save_recover(directory + "Hats.sav");
 
 	if (file_exists(directory + "Hats.sav")) {
 	ini_open(directory + "Hats.sav");
@@ -76,6 +78,8 @@ if global.cheats = 0 {
 	global.hat[67] = ini_read_real("Hats","Portuguese Hat",0) //Flag
 
 	global.CUSTOMhat = ini_read_string("CustomHat","Custom Hat","")
+	global.hatselected = settings_number(global.hatselected, 0, 0, 67);
+	if (!cosmetics_valid_name(global.CUSTOMhat)) global.CUSTOMhat = "";
 	ini_close();
 	var totalflag = 0
 	if global.hat[47] = 1 { totalflag += 1 }

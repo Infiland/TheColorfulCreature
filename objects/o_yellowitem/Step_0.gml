@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.pause = 1 { image_speed = 0 } else { image_speed = 1 }
 if room = r_leveleditor {
 	if global.LES = 6 || 7 || 8 || 9 || 10 || 29 || 30 || 31 || 32 || 33 { //Wtf

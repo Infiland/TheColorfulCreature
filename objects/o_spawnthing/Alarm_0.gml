@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 scr_loadleveleditor()
 
 if !instance_exists(o_LEcounter) { instance_create(x,y,o_LEcounter) }

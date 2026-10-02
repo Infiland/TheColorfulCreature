@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 switch(room) {
 case(r_lvl21): text = global.world1time break;
 case(r_lvl41): text = global.world2time break;

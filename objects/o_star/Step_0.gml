@@ -1,6 +1,7 @@
+if (!timing_instance_step()) exit;
 if global.pause = 1{ speed = 0 }
 if global.pause = 0{ previousspeed = speed 
-randomize()
+tcc_randomize()
 speed -= random_range(0.2 * (60 / global.maxfps),0.6 * (60 / global.maxfps))
 image_angle += 2
 }

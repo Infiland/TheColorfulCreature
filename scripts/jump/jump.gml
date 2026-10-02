@@ -36,6 +36,7 @@ function jump() {
 	}
 	if inwater = 2 {
 	switch(global.maxfps) {
+	default: vsp = -8 break;
 	case(60): vsp = -8 break;
 	case(75): vsp = -8.02 break;
 	case(100): vsp = -8.015 break;

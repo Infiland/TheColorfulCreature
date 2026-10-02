@@ -3,7 +3,6 @@ draw_rectangle_color(0,0,2000,2000,c_black,c_black,c_black,c_black,false)
 draw_set_alpha(1)
 
 draw_set_color(c_white)
-dis = lerp(dis,selectedhat,0.1 * (144 / global.maxfps))
 
 draw_set_font(fnt_secret1)
 var col1 = c_orange
@@ -144,11 +143,4 @@ drawhatshop(s_romanianhaticon,63+dis,floor(50 * global.hatmerchantdiscount),glob
 drawhatshop(s_portuguesehaticon,64+dis,floor(50 * global.hatmerchantdiscount),global.hat[67],500)
 
 //Arrow
-draw_sprite_ext(s_liquidarrow,0,490,620,1,arrowyscale,0,c_white,1)
-if arrowyscale > 1 {
-	change = 0
-	}
-	if arrowyscale < 0.9 {
-	change = 1
-	}
-	if change = 0 { arrowyscale = lerp(arrowyscale,0.89,0.1 * (60 / global.maxfps)) } else { arrowyscale = lerp(arrowyscale,1.01,0.1 * (60 / global.maxfps)) }
+draw_sprite_ext(s_liquidarrow,0,490,620,1,ui_arrow_yscale,0,c_white,1)

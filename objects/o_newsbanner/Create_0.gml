@@ -37,3 +37,5 @@ sprite_index = s_moddedbanner
 } else {
 if req <= global.gamenews { instance_destroy() }	
 }
+
+timing_ui_register_target("news-banner");

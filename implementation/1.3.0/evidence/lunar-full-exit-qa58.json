@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-02",
+  "status": "PASS_CURRENT_FIXED60_LUNAR_FULL_EXIT_CAP60",
+  "source": {
+    "identityVersion": 2,
+    "identityScheme": "project-runtime-assets-v2",
+    "sourceSha256": "cc00e83ffd8450c11a2e48f81a78049549e6a2d1631bbec2d6446ba456b52655",
+    "physicsSha256": "7d8eb9addbd5ed405bcf67e2b1144d1163c9c2e95b186729b6a3df3a1a21a610",
+    "fileCount": 23352
+  },
+  "build": "/Users/infi/Library/Caches/TCC130/gameplay-qa-58",
+  "executableSha256": "f440355df55021ab165e34838696e35515162c7541b79a69ee051e755eb31c7e",
+  "nativeRun": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-uncompressed-volley01",
+  "runtime": {
+    "path": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-uncompressed-volley01/runtime.json",
+    "sha256": "e5f2e187dc4baf41a489162a77420dc45db2fc2efc9a8357a706f4478ba9707d"
+  },
+  "originalStaleMapReport": {
+    "path": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-uncompressed-volley01/lunar-report.json",
+    "sha256": "a9663e18a8f2f73a14ebfb5f7a912ccc8f57858df16f22cfc2b28fa0caa7cb23"
+  },
+  "currentMapReport": {
+    "path": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-uncompressed-volley01/lunar-report-current-map.json",
+    "sha256": "e138eb49a94345f58461655580a7b0e599f4ab547ae76037c91bb5fdb54c0970"
+  },
+  "independentReview": {
+    "path": "/private/tmp/tcc-lunar-qa58-exact-other-caps-01/independent-report.json",
+    "sha256": "adfd1d57f12dc02b5b5332e0f344244771829da5d452c37647dd4bf900f049d9"
+  },
+  "actual": {
+    "requestedRenderCap": 60,
+    "observedRenderFps": 48.8657973730999,
+    "simulationHz": 60,
+    "ticks": 10871.0,
+    "playerRows": 10871,
+    "playerFields": 38,
+    "troopRows": 434840,
+    "deaths": 0,
+    "keysRemaining": 0,
+    "ammoRemaining": 0,
+    "challengeTime": 181.18333333336966,
+    "endingRoom": "r_lunarbasewin",
+    "normalRules": true,
+    "normalRuntimeEnd": true,
+    "isolatedSaves": true,
+    "muted": true,
+    "inputEvents": 786,
+    "firePresses": 40
+  },
+  "localRewardSaves": {
+    "ChallengeDeaths.sav": {
+      "path": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-uncompressed-volley01/saves/Save Files/ChallengeDeaths.sav",
+      "sha256": "f1c7e7a74d946c425ea46bf3e7b9931f1ff03539dd4e26c782b316b24323b5a9"
+    },
+    "ChallengeTime.sav": {
+      "path": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-uncompressed-volley01/saves/Save Files/ChallengeTime.sav",
+      "sha256": "36e280a65757799c65d2baa7b49082e00cc04222b13c358794405c1e50be4db6"
+    },
+    "Skins.sav": {
+      "path": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-uncompressed-volley01/saves/Save Files/Skins.sav",
+      "sha256": "169c754df95fe5bb8af64af5f9e9a67a5bb6dbc83c154c721e977bdd1ad9053f"
+    },
+    "Stats.sav": {
+      "path": "/Users/infi/Library/Caches/TCC130/lunar-native-qa58-uncompressed-volley01/saves/Save Files/Stats.sav",
+      "sha256": "87b5bd1b42489ddc3de50e0fa472e57d6659a80f853e8f0f24031c5b4c2bc799"
+    }
+  },
+  "saveObservations": {
+    "LunarTime": 181.183333,
+    "LunarDeaths": 0,
+    "ToiletSkin49": 1
+  },
+  "acceptance": {
+    "qualifiesAsLunarCompletion": true,
+    "errors": [],
+    "independentFullSourceArtifactAndRawIntegrityPassed": true
+  },
+  "authoringMapRepair": "Reviewed exact retained4636instance map; only historical tile686relocation differs from original. Updated sectionJlandmark/map/inventory. Original stale-map report and native evidence remain unchanged. No gameplay bytes changed.",
+  "limitations": [
+    "This route exceeds130seconds; medal target unchanged",
+    "Other five rendering-cap replays currently running; no claim until native results reviewed",
+    "Dynamic seed/timing and current progressed-restart comparisons remain pending",
+    "Requested render cap is distinct from observed renderer delivery; diagnostic telemetry overhead included",
+    "No independent OS window observer in this batch; verified quiet helper and headless/background launch requested"
+  ]
+}

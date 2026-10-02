@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if item > 1 {
 if sprite_index = s_playerred {
 instance_destroy()

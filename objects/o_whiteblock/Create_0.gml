@@ -7,8 +7,10 @@ vdepth = 0;
 depth = -y;
 hidesprites = false
 spawnchance = irandom_range(0,10);
-alarm[0] = random_range(20* (global.maxfps / 60),80* (global.maxfps / 60));
+alarm[0] = random_range(20* (TCC_SIM_HZ / 60),80* (TCC_SIM_HZ / 60));
 
 if room = r_leveleditor || room = r_customlevelworkshop {
 if global.LEBlockStyle = 1 { sprite_index = s_whiteblockbricks }
 }
+// Navigation geometry changed; culling alone never invalidates the cache.
+scr_troop_nav_mark_dirty();

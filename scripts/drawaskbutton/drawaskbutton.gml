@@ -16,23 +16,15 @@ draw_set_font(global.deathfont)
 draw_set_halign(fa_center)
 draw_set_valign(fa_middle)
 draw_text_scribble_ext(512,y+25,text,1000)
-y = lerp(y,384,0.2 * (60 / global.maxfps))
 draw_set_halign(fa_left)
 draw_set_valign(fa_top)
-
-if delay < 0 {
-if tcc_gamepad_button_check_pressed(0,gp_face1) {
-event_perform(ev_keypress,ord("Y"))
-}
-if tcc_gamepad_button_check_pressed(0,gp_face2) {
-event_perform(ev_keypress,ord("N"))
-}} else {
-delay -= 1
-}
-
 }
 
 function mobile_confirmation_init() {
+    // Desktop and touch dialogs share one logical-tick action owner.
+    timing_confirmation_dialog = true;
+    timing_confirmation_last_tick = -1;
+    timing_confirmation_pending = 0;
     if (!platform_touch()) return;
     global.mobile_confirmation = id;
     confirmation_ready = false;
@@ -64,7 +56,7 @@ function mobile_confirmation_step() {
         if (mobile_confirmation_hit(device_mouse_x_to_gui(confirmation_touch), device_mouse_y_to_gui(confirmation_touch)) != _choice) _choice = 0;
         confirmation_touch = -1;
         confirmation_choice = 0;
-        // Dispatch the dialog's own action, after consuming the touch.
+        // Capture only. The end-of-tick helper owns the dialog action.
         if (_choice != 0) {
             mobile_confirmation_submit(_choice);
             return;
@@ -72,16 +64,53 @@ function mobile_confirmation_step() {
     }
     // Modal input must not reach the menu underneath the dialog.
     mouse_clear(mb_any);
-    if (confirmation_ready) {
-        if (tcc_gamepad_button_check_pressed(0, gp_face1)) mobile_confirmation_submit(ord("Y"));
-        else if (tcc_gamepad_button_check_pressed(0, gp_face2)) mobile_confirmation_submit(ord("N"));
-    }
 }
 
 function mobile_confirmation_submit(_choice) {
     if (_choice != ord("Y") && _choice != ord("N")) return;
+    if (timing_confirmation_pending == 0) timing_confirmation_pending = _choice;
     platform_clear_input();
-    event_perform(ev_keypress, _choice);
+}
+
+function confirmation_tick_update() {
+    if (!timing_is_tick() || !timing_confirmation_dialog) return;
+    var _tick = timing_tick_id();
+    if (timing_confirmation_last_tick == _tick) return;
+    timing_confirmation_last_tick = _tick;
+    var _choice = timing_confirmation_pending;
+    timing_confirmation_pending = 0;
+    var _pad_ready;
+    if (platform_touch()) {
+        _pad_ready = confirmation_ready;
+    } else {
+        y = lerp(y, 384, 0.2);
+        _pad_ready = delay < 0;
+        if (!_pad_ready) delay -= 1;
+    }
+    // Keyboard confirmation was immediate; the controller keeps its original
+    // opening delay. A queued touch release survives render-only frames.
+    if (_choice == 0) {
+        if (timing_keyboard_pressed(ord("Y"))) _choice = ord("Y");
+        else if (timing_keyboard_pressed(ord("N"))) _choice = ord("N");
+        else if (_pad_ready && gamepad_ui_pressed(gp_face1)) _choice = ord("Y");
+        else if (_pad_ready && gamepad_ui_pressed(gp_face2)) _choice = ord("N");
+    }
+    if (_choice != 0) timing_confirmation_dispatch(_choice);
+}
+
+function timing_confirmation_dispatch(_choice) {
+    if (!timing_is_tick() || (_choice != ord("Y") && _choice != ord("N"))) return;
+    platform_clear_input();
+    // Native KeyPress events are guarded. Only this tick dispatch can invoke
+    // their existing callbacks, including callbacks which destroy the dialog.
+    global.timing_confirmation_dispatch_active = true;
+    try {
+        event_perform(ev_keypress, _choice);
+    } catch (_error) {
+        global.timing_confirmation_dispatch_active = false;
+        throw _error;
+    }
+    global.timing_confirmation_dispatch_active = false;
 }
 
 function draw_mobile_confirmation() {

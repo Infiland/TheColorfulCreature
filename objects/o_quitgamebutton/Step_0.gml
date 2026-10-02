@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if onmouse = 1 {
 	scale = 1.5
 } else {
@@ -5,7 +6,7 @@ if onmouse = 1 {
 }
 
 if onmouse = 1 {
-if tcc_gamepad_button_check_released(0,gp_face1) {
+if gamepad_ui_released(gp_face1) {
 event_perform(ev_mouse,ev_left_press)	
 }}
 

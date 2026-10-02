@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if global.boss2health = 5 {
 	instance_create(384,608,o_spike)
 	instance_create(480,608,o_spike)

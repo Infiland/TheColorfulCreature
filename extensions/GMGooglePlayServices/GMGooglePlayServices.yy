@@ -1,5 +1,6 @@
 {
   "$GMExtension": "",
+  "ConfigValues":{"SteamAndroid":{"copyToTargets":"0"}},
   "%Name": "GMGooglePlayServices",
   "androidactivityinject": null,
   "androidclassname": "GMGooglePlayServices",

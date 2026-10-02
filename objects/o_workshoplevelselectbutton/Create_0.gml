@@ -25,3 +25,5 @@ thumb_loaded = 0
 owner_id = 0
 
 alarm[0] = 1
+
+timing_ui_register_target("workshop-sequence-tile");

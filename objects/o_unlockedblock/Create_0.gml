@@ -6,3 +6,5 @@ factor = 50
 hdepth = 0;
 vdepth = 0;
 depth = -y;
+// Navigation geometry changed; culling alone never invalidates the cache.
+scr_troop_nav_mark_dirty();

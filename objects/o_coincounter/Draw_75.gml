@@ -23,15 +23,15 @@ draw_set_color(c_yellow)
 draw_set_font(global.deathfont)
 if room != r_tale {
 if !platform_mobile() {
-draw_sprite_ext(s_coinhud,0,16+random_range(shake,-shake),653+random_range(shake,-shake),0.38,0.38,0,c_white,1)
-draw_text(64+random_range(-shake,shake),661+random_range(-shake,shake),string_hash_to_newline(string(global.special)))
+draw_sprite_ext(s_coinhud,0,16+timing_visual_random_range(shake,-shake),653+timing_visual_random_range(shake,-shake),0.38,0.38,0,c_white,1)
+draw_text(64+timing_visual_random_range(-shake,shake),661+timing_visual_random_range(-shake,shake),string_hash_to_newline(string(global.special)))
 } else {
 if instance_exists(o_buttonskipandroid) {
 var _bounds = platform_touch_bounds();
 var _hudx = clamp(o_buttonskipandroid.gui_x - 64, _bounds[0] + 12, _bounds[2] - 60 - string_width(string(global.special)));
 var _hudy = max(_bounds[1] + 12, o_buttonskipandroid.gui_y - 129);
-draw_sprite_ext(s_coinhud,0,_hudx+random_range(shake,-shake),_hudy+random_range(shake,-shake),0.38,0.38,0,c_white,1)
-draw_text(_hudx+48+random_range(-shake,shake),_hudy+8+random_range(-shake,shake),string_hash_to_newline(string(global.special)))
+draw_sprite_ext(s_coinhud,0,_hudx+timing_visual_random_range(shake,-shake),_hudy+timing_visual_random_range(shake,-shake),0.38,0.38,0,c_white,1)
+draw_text(_hudx+48+timing_visual_random_range(-shake,shake),_hudy+8+timing_visual_random_range(-shake,shake),string_hash_to_newline(string(global.special)))
 }}}
 
 if key_skip {

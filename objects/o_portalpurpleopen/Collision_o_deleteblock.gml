@@ -1,5 +1,6 @@
+if (!timing_is_tick()) exit;
 if global.LEBuild = 1 {
-randomize();
+tcc_randomize();
 repeat (irandom_range(3,7)) { var star = instance_create(x+16,y+16,o_itemstar);
 	with star { image_blend = c_fuchsia }
 }

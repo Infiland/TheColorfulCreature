@@ -1,4 +1,5 @@
-randomise();
+if (!timing_is_tick()) exit;
+tcc_randomize();
 audio_sound_pitch(snd_zerogravity,random_range(0.9,1.1));
 audio_play_sound(snd_zerogravity,10,0)
 instance_destroy()

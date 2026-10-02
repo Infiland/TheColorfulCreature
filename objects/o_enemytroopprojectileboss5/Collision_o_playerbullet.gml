@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 hpproj -= 1
 if hpproj < 1 {
 instance_destroy()

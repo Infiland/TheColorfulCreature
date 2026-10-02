@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if global.pause = 0 {
 l += 0.5 * (60 / global.maxfps);
 if room = r_boss1prepare { l -= 0.3 * (60 / global.maxfps) }

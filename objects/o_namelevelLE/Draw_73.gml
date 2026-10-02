@@ -10,11 +10,12 @@ draw_set_font(global.gamemodefont)
 draw_set_alpha(1)
 draw_set_halign(fa_center)
 draw_text(camx+512,camy+100,loc("NAME_YOUR_LEVEL"))
-var directory = directory_set("/LevelEditor Files//" + text + "/")
+var directory = level_editor_name_valid(text) ? directory_set("/LevelEditor Files/" + text + "/") : "";
 if !directory_exists(directory) {
 draw_set_color(c_lime)
 } else { draw_set_color(c_yellow) }
 draw_text(camx+512,camy+200,text)
+if (!level_editor_name_valid(text) && text != "") { draw_set_font(global.deathfont); draw_set_color(c_red); draw_text(camx+512,camy+240,"Use a name without / \\ : * ? or reserved filename characters."); }
 if directory_exists(directory) {
 draw_set_color(c_white)
 draw_set_font(global.deathfont)

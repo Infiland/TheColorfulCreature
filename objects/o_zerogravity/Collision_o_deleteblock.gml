@@ -1,5 +1,6 @@
+if (!timing_is_tick()) exit;
 if global.LEBuild = 1 {
-	randomize();
+	tcc_randomize();
 audio_sound_pitch(snd_zerogravity,random_range(0.9,1.1));
 audio_play_sound(snd_zerogravity,10,0)
 

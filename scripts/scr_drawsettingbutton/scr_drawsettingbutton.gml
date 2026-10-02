@@ -13,29 +13,7 @@ function scr_drawsettingbutton() {
 	draw_set_alpha(1)
 	var a = 1 / image_alpha
 
-	// Animate text jitter
-	timer -= 1 * (60 / global.maxfps)
-	if timer < 0 {
-		textchange += 1
-		if textchange > 3 { textchange = 0 }
-		timer = 60
-	}
-
-	switch(textchange) {
-		case(0): changex = lerp(changex, 1, textspeed); changey = lerp(changey, -1, textspeed); break;
-		case(1): changex = lerp(changex, -1, textspeed); changey = lerp(changey, -1, textspeed); break;
-		case(2): changex = lerp(changex, -1, textspeed); changey = lerp(changey, 1, textspeed); break;
-		case(3): changex = lerp(changex, 1, textspeed); changey = lerp(changey, 1, textspeed); break;
-	}
-
-	// Hover color/distance lerp
-	if mouseon = false {
-		col = lerp(col, 0, 0.2 * (60 / global.maxfps))
-		dist = lerp(dist, 0, 0.2 * (60 / global.maxfps))
-	} else {
-		col = lerp(col, 50, 0.2 * (60 / global.maxfps))
-		dist = lerp(dist, 1, 0.2 * (60 / global.maxfps))
-	}
+	// The existing registered logical button update owns jitter/hover state.
 
 	// Draw background rectangle
 	backcolor = make_color_rgb((col / 5) / a, (col / 5) / a, (col / 5) / a)
@@ -50,9 +28,9 @@ function scr_drawsettingbutton() {
 	var _display_text = ""
 	if variable_struct_exists(self, "setting_label") {
 		if variable_struct_exists(self, "use_loc") && use_loc {
-			_display_text = loc(setting_label)
+			_display_text = settings_text(setting_label)
 		} else {
-			_display_text = setting_label
+			_display_text = settings_text(setting_label)
 		}
 	} else {
 		_display_text = text
@@ -120,7 +98,7 @@ function scr_drawsettingbutton() {
 								case 4: _idx = 2; break;
 								case 8: _idx = 3; break;
 							}
-						} else if setting_gvar = "maxfps" {
+						} else if setting_gvar = "renderfps" {
 							switch (_val) {
 								case 60:  _idx = 0; break;
 								case 75:  _idx = 1; break;
@@ -128,7 +106,7 @@ function scr_drawsettingbutton() {
 								case 120: _idx = 3; break;
 								case 144: _idx = 4; break;
 								case 150: _idx = 5; break;
-								default:  _idx = 0; break;
+								default:  _idx = -1; break;
 							}
 						} else {
 							_idx = _val
@@ -136,6 +114,7 @@ function scr_drawsettingbutton() {
 						if _idx >= 0 && _idx < array_length(setting_options) {
 							_option_text = setting_options[_idx]
 						}
+						if (setting_gvar == "renderfps") _option_text = string(_val);
 					} else {
 						if _val >= 0 && _val < array_length(setting_options) {
 							_option_text = setting_options[_val]
@@ -159,9 +138,8 @@ function scr_drawsettingbutton() {
 					_icon_val = _idx
 					_max = array_length(setting_options) - 1
 				}
-				if _icon_val = 0 { _frame = 0 }
-				else if _icon_val >= _max { _frame = 2 }
-				else { _frame = 1 }
+				_frame = settings_indicator_frame(_icon_val, _max)
+				if (setting_gvar == "renderfps" && _idx < 0) _frame = 1;
 				draw_sprite(s_settingsindicators, _frame, _icon_x, _icon_y)
 				break
 
@@ -192,10 +170,4 @@ function scr_drawsettingbutton() {
 	draw_set_valign(fa_left)
 	draw_set_color(c_white)
 
-	// Controller support
-	if mouseon = true {
-		if tcc_gamepad_button_check_pressed(0, gp_face1) {
-			event_perform(ev_mouse, ev_left_press)
-		}
-	}
 }

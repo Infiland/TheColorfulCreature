@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-02",
+  "scope": "Normal signed SteamAndroid21 APK emulator smoke; not a diagnostic derivative",
+  "binding": {
+    "build": "/Users/infi/Library/Caches/TCC130/steamandroid-current-21",
+    "source": {
+      "fileCount": 23352,
+      "identityScheme": "project-runtime-assets-v2",
+      "identityVersion": 2,
+      "physicsSha256": "7d8eb9addbd5ed405bcf67e2b1144d1163c9c2e95b186729b6a3df3a1a21a610",
+      "sourceSha256": "cc00e83ffd8450c11a2e48f81a78049549e6a2d1631bbec2d6446ba456b52655"
+    },
+    "apkSha256": "db65fed39c24462f3e538f7064867dacf665454ef3914e02188f8c9f635350fb",
+    "pid": "4335",
+    "serial": "emulator-5666",
+    "ownedDevice": "TCCRoot-current-20",
+    "preservedProfile": true,
+    "diagnosticDerivative": false
+  },
+  "buildEvidence": {
+    "path": "/Users/infi/Library/Caches/TCC130/steamandroid-current-21/local-platform-result.json",
+    "sha256": "b79c3b860bb1f48f422bf593f97cc5c5e02b21968424531d8020503bfc3caf09"
+  },
+  "apkInspection": {
+    "path": "/Users/infi/Library/Caches/TCC130/steamandroid-current-21/apk-inspection.json",
+    "sha256": "843038653c8aefe7991cc057d05e7795517d221b042f575b8921f093f60b38a6"
+  },
+  "device": {
+    "name": "TCCRoot-current-20",
+    "serial": "emulator-5666",
+    "pageSize": 16384,
+    "systemImage": "android-37.0/google_apis_playstore_ps16k/arm64-v8a",
+    "hostWindow": false,
+    "hostAudio": false,
+    "network": "wifi/data disabled, no connected network",
+    "accounts": 0
+  },
+  "observedPasses": [
+    "Actual campaign Continue enters level1, player falls, tutorial advances, HUD and pause manager present",
+    "Right touch moves the player",
+    "Touch opens pause overlay with touch-specific resume prompt",
+    "Paused captures one second apart have identical complete pixels and clock56.02",
+    "Touch resumes gameplay",
+    "Background return retains PID4335 and reports successful1378ms hot return",
+    "Settled background return shows pause overlay and touch prompt; touch resumes, clock56.85 to57.40"
+  ],
+  "retainedTransient": "background-resume.png captures an early partial repaint; background-settled.png shows completed scene",
+  "screenshots": {
+    "background-resume.png": {
+      "path": "/Users/infi/Library/Caches/TCC130/android-smoke-current-21/background-resume.png",
+      "sha256": "bcaaa733f0ca199366a08177f761d72d38cc4235e7c0370a911d52911ee1aa4f"
+    },
+    "background-resumed-by-touch.png": {
+      "path": "/Users/infi/Library/Caches/TCC130/android-smoke-current-21/background-resumed-by-touch.png",
+      "sha256": "6d8fe3f7fcefc52662120ea50c2a40af7f65a96e978d437e8652449242dea983"
+    },
+    "background-settled.png": {
+      "path": "/Users/infi/Library/Caches/TCC130/android-smoke-current-21/background-settled.png",
+      "sha256": "bcaaa733f0ca199366a08177f761d72d38cc4235e7c0370a911d52911ee1aa4f"
+    },
+    "continue.png": {
+      "path": "/Users/infi/Library/Caches/TCC130/android-smoke-current-21/continue.png",
+      "sha256": "7c93541e1d083c675670d956aa1b6cfa1fbaca84024fcddbe28c73ff9781cb5d"
+    },
+    "menu.png": {
+      "path": "/Users/infi/Library/Caches/TCC130/android-smoke-current-21/menu.png",
+      "sha256": "03339f76812421f8e46b6d9e63e13e1b12d3d77b24a57944a9dd803dd59482f8"
+    },
+    "paused-after-1s.png": {
+      "path": "/Users/infi/Library/Caches/TCC130/android-smoke-current-21/paused-after-1s.png",
+      "sha256": "abdff2f95a64bf4cfacd991abe52584cfb1346ebffa329b94e88783a9779e187"
+    },
+    "paused.png": {
+      "path": "/Users/infi/Library/Caches/TCC130/android-smoke-current-21/paused.png",
+      "sha256": "abdff2f95a64bf4cfacd991abe52584cfb1346ebffa329b94e88783a9779e187"
+    },
+    "resumed.png": {
+      "path": "/Users/infi/Library/Caches/TCC130/android-smoke-current-21/resumed.png",
+      "sha256": "b979ed08a75a6096c082ebf0db1b7b2607ba773d81dc5ddef10e6994a0b3fc56"
+    },
+    "right-input.png": {
+      "path": "/Users/infi/Library/Caches/TCC130/android-smoke-current-21/right-input.png",
+      "sha256": "e0ba8d8fd65fcf0622d50c129579a0635ea5bd2ecdd3a41d846efd7780466062"
+    }
+  },
+  "logs": {
+    "background-resume.log": {
+      "path": "/Users/infi/Library/Caches/TCC130/android-smoke-current-21/background-resume.log",
+      "sha256": "edd74b92754eeb0901e1f9c615026652d62bacd84476c6e0d9a73cb483adfb35"
+    },
+    "install.log": {
+      "path": "/Users/infi/Library/Caches/TCC130/android-smoke-current-21/install.log",
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    "launch.log": {
+      "path": "/Users/infi/Library/Caches/TCC130/android-smoke-current-21/launch.log",
+      "sha256": "c4fd0027b87145d87f6564001b3e681669bcb206935ca3d2c1e7c7fc8be476e5"
+    }
+  },
+  "terminalLog": {
+    "path": "/Users/infi/Library/Caches/TCC130/android-smoke-current-21/terminal-logcat.raw",
+    "sha256": "58f536a20621d7dbc98d952a7bcdc45e30659bd18242ccb78b9006958b5bb0da"
+  },
+  "cleanup": {
+    "serial": "emulator-5666",
+    "ownedAvd": "TCCRoot-current-20",
+    "packageAlreadyStopped": true,
+    "explicitOwnedEmulatorKillCode": 0
+  },
+  "limits": [
+    "No physical controller/hot-plug, Steam Frame/Lepton, hardware performance or Steam SDK acceptance",
+    "No store upload or release",
+    "Emulator smoke is not full campaign route or all-room acceptance"
+  ]
+}

@@ -26,6 +26,6 @@ instance_deactivate_object(o_settings)
 instance_deactivate_object(o_givefeedback)
 instance_deactivate_object(o_pausescreen)
 
-if global.challenges = 1 {
+if (global.challenges == 1) {
 	instance_deactivate_object(o_restartchallengebutton)
 }

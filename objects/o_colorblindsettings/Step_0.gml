@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 event_inherited()
 image_index = global.colorblindsettings
 if global.choosesettings != 1 { x = lerp(x,camera_get_view_x(view_camera[0])-256,0.2 * (60 / global.maxfps)) }

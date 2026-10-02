@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 //Collision
 if place_meeting(x,y,o_player) {
 if global.pianohealth = 1 {
@@ -243,7 +244,7 @@ break;
 
 if cooldown >= 0 { 
 if !place_meeting(x,y,o_player) {	
-cooldown -= 1 * (60/global.maxfps)
+cooldown -= 1 * (60/TCC_SIM_HZ)
 }
 image_index = 1
 } else {

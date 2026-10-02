@@ -1,0 +1,9 @@
+camera_qa_sample("post-draw-before-restore");
+camera_follow_qa_sample("post-draw-before-restore");
+timing_after_draw();
+credits_windblown_qa_observe("post-draw");
+camera_qa_sample("post-draw-restored");
+camera_follow_qa_sample("post-draw-restored");
+timing_qa_layers_sample("root-after-draw");
+sequence_qa_sample("post-draw");
+sequence_probe_qa_sample("post-draw");

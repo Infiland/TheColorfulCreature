@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if global.challenges = 0 {
 if room != r_leveleditor {
 if global.hardmode = 0 {

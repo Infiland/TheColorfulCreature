@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if room = r_dailylevelwin {
 numerical = 1	
 }

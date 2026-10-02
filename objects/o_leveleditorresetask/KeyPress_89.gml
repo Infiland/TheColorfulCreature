@@ -1,3 +1,4 @@
+if (!variable_global_exists("timing_confirmation_dispatch_active") || !global.timing_confirmation_dispatch_active) exit;
 if global.levelname = "" {
 room_set_width(r_leveleditor,1024)
 room_set_height(r_leveleditor,768)
@@ -6,6 +7,7 @@ instance_create(x,y,o_leveleditormenusetup)
 keyboard_string = ""
 global.LEBuild = 1
 global.levelname = ""
+global.level_editor_folder = ""
 global.previoustext = ""
 global.leveleditorstring = ""
 global.naminglevel = false

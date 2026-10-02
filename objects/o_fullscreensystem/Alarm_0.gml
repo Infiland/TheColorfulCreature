@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if global.pause = 0 {
 if global.stars > 0 {instance_create(x,y,o_star)}
 }

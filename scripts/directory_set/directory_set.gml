@@ -1,4 +1,5 @@
 function directory_set(dir,save=0){
+if (save == 0 && qa_active()) return global.tcc_qa.save_root + dir;
 var directory = ""
 if (!variable_global_exists("moddedGameDir")) { global.moddedGameDir = "" }
 if room = r_logointro { global.moddedGameDir = "" }

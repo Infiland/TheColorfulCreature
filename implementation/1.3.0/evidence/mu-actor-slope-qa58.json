@@ -1,0 +1,162 @@
+{
+  "format": "tcc.qa58-mu-actor-slope-acceptance",
+  "claim": "QA58 diagnostic native slope acceptance at the recorded source/build binding only; no authored-content or physical-hardware claim.",
+  "passed": true,
+  "build": "/Users/infi/Library/Caches/TCC130/gameplay-qa-58",
+  "source": {
+    "identityVersion": 2,
+    "identityScheme": "project-runtime-assets-v2",
+    "sourceSha256": "cc00e83ffd8450c11a2e48f81a78049549e6a2d1631bbec2d6446ba456b52655",
+    "physicsSha256": "7d8eb9addbd5ed405bcf67e2b1144d1163c9c2e95b186729b6a3df3a1a21a610",
+    "fileCount": 23352
+  },
+  "executableSha256": "f440355df55021ab165e34838696e35515162c7541b79a69ee051e755eb31c7e",
+  "artifact": {
+    "sha256": "1a2dd917873095503cfcc5208958e4c14c33f7fe6862885528e1712bd9eef771",
+    "fileCount": 106
+  },
+  "compilerBackend": "VM",
+  "manifest": {
+    "path": "/private/tmp/tcc-mu-slope-regression-qa58-01/manifest.json",
+    "sha256": "3878185becc70237984e6f36faadb1bf36c73b1519db0ef42b2f30f268f1cc81"
+  },
+  "terminalBatch": {
+    "path": "/Users/infi/Library/Caches/TCC130/mu-actor-slope-native-qa58-01/batch.json",
+    "sha256": "1d752f2c3bd0dd09898189e999d5a04f6fd7c21840f4cbdb910bffe1da06b62b",
+    "passed": true
+  },
+  "independentAssessment": {
+    "path": "/private/tmp/tcc-qa58-mu-actor54-independent03.json",
+    "sha256": "49f2f18cb89da863b6f2e4a18a19fb0857df110c9d9b095dc1a7d756cdd92253"
+  },
+  "multiplayer": {
+    "runs": 36,
+    "statusCounts": {
+      "observed": 28,
+      "death": 8
+    },
+    "deaths": 8,
+    "playerRows": 3796,
+    "doorContacts": 24,
+    "initialActors": 0,
+    "actorLifetimeRows": 0,
+    "absentActorRows": 0
+  },
+  "actors": {
+    "runs": 18,
+    "statusCounts": {
+      "observed": 18
+    },
+    "deaths": 0,
+    "playerRows": 768,
+    "doorContacts": 0,
+    "initialActors": 564,
+    "actorLifetimeRows": 7320,
+    "absentActorRows": 3562
+  },
+  "aggregate": {
+    "runs": 54,
+    "statusCounts": {
+      "observed": 46,
+      "death": 8
+    },
+    "deaths": 8,
+    "playerRows": 4564,
+    "doorContacts": 24,
+    "initialActors": 564,
+    "actorLifetimeRows": 7320,
+    "absentActorRows": 3562
+  },
+  "pairs": {
+    "pairs": 27,
+    "multiplayerPairs": 18,
+    "actorPairs": 9,
+    "exactPlayerTickPairs": 2282,
+    "exactActorLifetimePairs": 3660,
+    "stateFields": [
+      "status",
+      "deaths",
+      "frames",
+      "simulationFrames",
+      "normalRules",
+      "diagnosticOnly",
+      "initial",
+      "final",
+      "completion",
+      "bounds",
+      "trace",
+      "events",
+      "initialNativeActors",
+      "nativeActors",
+      "endingContext",
+      "practiceObservation",
+      "specialObservationVersion",
+      "traceSchemaVersion",
+      "traceBoundaries"
+    ],
+    "playerFields": [
+      "actor",
+      "ammo",
+      "animationFrame",
+      "animationVelocity",
+      "bbox",
+      "breath",
+      "challengeDeaths",
+      "challengePractice",
+      "challengeRunId",
+      "challengeTime",
+      "cheats",
+      "color",
+      "direction",
+      "doubleJump",
+      "endlessLevel",
+      "endlessMode",
+      "eyesY",
+      "frame",
+      "gravity",
+      "grounded",
+      "hsp",
+      "keysRemaining",
+      "lives",
+      "motionSpeed",
+      "observationPhase",
+      "paused",
+      "revealHidden",
+      "room",
+      "seed",
+      "slopeContact",
+      "slopeOverlap",
+      "sprite",
+      "vsp",
+      "walkSpeed",
+      "water",
+      "x",
+      "y",
+      "zeroGravity"
+    ],
+    "floatTolerance": 0,
+    "presentationExclusions": []
+  },
+  "integrity": {
+    "unchangedRawFiles": 432,
+    "rawHashesDigest": "89afd9fb2e7dfccd0cc45d98cbc79a0bba5904f8ee7a7ba5e76b3f9e6f75a47e",
+    "unchangedTerminalMetadataFiles": 138,
+    "terminalMetadataDigest": "709cf48f927d497d67c5eaac5d700f1974bfe2040cbeeaecf24ceccc785db5df"
+  },
+  "launchFacts": {
+    "normallyEndedMutedIsolatedRecords": 54,
+    "serialRecordedLaunchIntervals": 54,
+    "quietLibrarySha256": "9267ad93767fcae436a5ca835e2b89bec5a8b249764417170c2036257e8ba8a1",
+    "osWindowObserverRead": false
+  },
+  "scopeLimits": [
+    "Native diagnostic slope fixtures only; local-player door callbacks are observed contacts, not actual campaign exits.",
+    "Distributed MU coverage does not exhaust all colours by geometry or physical multiplayer/controller hardware.",
+    "560 projectile initial placements and troop AI/support are genuine native actor observations; absence rows retain no pose.",
+    "Requested caps do not guarantee delivered rates; native/render/wall time differences remain retained.",
+    "Muted/quiet launch bindings and serial native launch clocks checked; no independent OS focus/window observer claim.",
+    "QA58 compilerDependenciesBound false remains; absent before/after prefab receipts cannot be promoted.",
+    "Manifest candidacy flags remain preparation-only; qualification here comes from terminal actual records.",
+    "No authored/special-level completion or hardware/service release claim."
+  ]
+}

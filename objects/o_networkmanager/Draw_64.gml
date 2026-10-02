@@ -3,7 +3,6 @@
 // --- Connection overlay (always visible during connecting/result) ---
 if (global.net_connect_state == 1 || global.net_connect_state == 2) {
 	// Actively connecting: show animated bar at bottom
-	global.net_connect_timer += 1 * (60 / global.maxfps)
 	
 	// Dark bar across the bottom
 	draw_set_alpha(0.7)
@@ -33,7 +32,6 @@ if (global.net_connect_state == 1 || global.net_connect_state == 2) {
 
 if (global.net_connect_state == 3 || global.net_connect_state == 4) {
 	// Success or failure flash
-	global.net_connect_flash -= 1 * (60 / global.maxfps)
 	
 	var _flash_alpha = clamp(global.net_connect_flash / 60, 0, 1)
 	
@@ -58,9 +56,6 @@ if (global.net_connect_state == 3 || global.net_connect_state == 4) {
 		draw_set_halign(fa_left)
 		draw_set_valign(fa_top)
 		draw_set_alpha(1)
-	} else {
-		// Flash done, return to idle
-		global.net_connect_state = 0
 	}
 }
 

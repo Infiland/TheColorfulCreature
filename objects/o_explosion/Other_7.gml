@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 hp -= 1
 if hp = 0 {
 	if room = r_boss1 {

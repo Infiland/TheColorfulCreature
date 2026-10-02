@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 /// @description Handle scrolling, clicks, image queue
 
 // Overlay fade in
@@ -15,13 +16,14 @@ scroll = lerp(scroll, scroll_target, 0.2 * (60 / global.maxfps))
 scroll = clamp(scroll, 0, max(0, scroll_max))
 
 // Mouse wheel scrolling
-if (mouse_wheel_down()) scroll_target += 60
-if (mouse_wheel_up()) scroll_target -= 60
+if (timing_mouse_wheel_down()) scroll_target += 60
+if (timing_mouse_wheel_up()) scroll_target -= 60
 scroll_target = clamp(scroll_target, 0, max(0, scroll_max))
 
 // Gamepad back
-if (tcc_gamepad_button_check_pressed(0, gp_face2)) {
+if (gamepad_ui_pressed(gp_face2)) {
     event_perform(ev_keypress, vk_escape)
+    if (news_images_closing) exit
 }
 
 // Image/thumbnail queue processing — download via http_get_file
@@ -41,11 +43,18 @@ if (!loading_image) {
 
     if (_next_url != "" && !ds_map_exists(loaded_images, _next_url)) {
         img_counter++
-        var _filename = "news_img_" + string(img_counter) + ".png"
+        var _filename = "news_img_" + string(news_image_view) + "_" + string(img_counter) + ".png"
+        // A previous process may have left a completed file. Never reuse its path.
+        while (file_exists(_filename)) {
+            img_counter++
+            _filename = "news_img_" + string(news_image_view) + "_" + string(img_counter) + ".png"
+        }
         var _req = http_get_file(_next_url, _filename)
-        ds_map_add(pending_image_reqs, _req, { url: _next_url, filename: _filename })
-        array_push(temp_image_files, _filename)
-        loading_image = true
+        if (_req >= 0) {
+            ds_map_add(pending_image_reqs, _req, { url: _next_url, filename: _filename })
+            news_images_track(_req, id, news_image_view, _filename)
+            loading_image = true
+        }
     }
 }
 
@@ -63,7 +72,7 @@ var _mx = device_mouse_x_to_gui(0)
 var _my = device_mouse_y_to_gui(0)
 
 // X button click (top-right corner) — close viewer from any state
-if (mouse_check_button_pressed(mb_left)) {
+if (timing_mouse_pressed(mb_left)) {
     if (_mx >= margin_x + content_w - 30 && _mx <= margin_x + content_w + 10
      && _my >= margin_y - 10 && _my <= margin_y + header_h) {
         instance_destroy()
@@ -72,7 +81,7 @@ if (mouse_check_button_pressed(mb_left)) {
 }
 
 // List view - click detection
-if (state == "list" && mouse_check_button_pressed(mb_left)) {
+if (state == "list" && timing_mouse_pressed(mb_left)) {
     // Check "Load More" button
     if (can_load_more && !loading_more) {
         var _load_more_y = view_top + array_length(articles) * row_h - scroll
@@ -122,7 +131,7 @@ if (state == "list" && mouse_check_button_pressed(mb_left)) {
 }
 
 // Article view - back button click + link clicks
-if (state == "article" && mouse_check_button_pressed(mb_left)) {
+if (state == "article" && timing_mouse_pressed(mb_left)) {
     if (_mx >= margin_x && _mx <= margin_x + 120 && _my >= margin_y + 4 && _my <= margin_y + header_h) {
         event_perform(ev_keypress, vk_escape)
     } else {

@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 /// @description Poll download state and handle timeout
 
 // Only poll when actively waiting for a download
@@ -40,7 +41,7 @@ if is_installed = 1 {
 	folder = string_replace_all(string(folder), "\\", "/")
 	if (string_copy(folder, string_length(folder), 1) != "/") { folder += "/" }
 
-	if file_exists(folder + "LevelEditor.sav") {
+	if level_exists(folder) {
 		state = "idle"
 		global.workshopER_loading = false
 		workshopER_goto_level(target_file_id)

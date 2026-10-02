@@ -1,0 +1,689 @@
+{
+  "format": "tcc.commentary",
+  "schemaVersion": 1,
+  "title": "The making of The Colorful Creature",
+  "chapters": [
+    {
+      "id": "beginnings-2018",
+      "date": "2018-01-01",
+      "displayDate": "2018 / the beginning",
+      "title": "A creature, a color, a rule",
+      "body": "The repository history says Infiland began working on The Colorful Creature in 2018, returning to it over the following years. The game was shared on Game Jolt and itch.io before arriving on Steam. Its central rule is easy to describe: collect a color, then use the blocks that match it. That small rule supports puzzles about the route ahead as well as the ground beneath your feet.\n\nThe earliest chapter here is dated to the year recorded in the README. The artwork is from the current game; it is not presented as a surviving 2018 screenshot.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_playerred",
+            "frame": 0
+          },
+          {
+            "name": "s_redblock",
+            "frame": 0
+          },
+          {
+            "name": "s_blueblock",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Project history in the README",
+          "url": "https://github.com/Infiland/TheColorfulCreature/blob/8db1415408293ad8fd81700b41fd74ae3a0f1521/README.md#info",
+          "note": "The developer dates the project to 2018 and describes the Game Jolt, itch.io and Steam path."
+        },
+        {
+          "title": "Original itch.io game page",
+          "url": "https://infiland.itch.io/the-colorful-creature",
+          "note": "The older game page explains the matching-color platform rule."
+        }
+      ]
+    },
+    {
+      "id": "beta-15-water",
+      "date": "2020-09-24",
+      "displayDate": "24 September 2020 / Beta 1.5",
+      "title": "Learning to swim, playing together",
+      "body": "Beta 1.5 brought water and an oxygen meter into the level vocabulary. The devlog explains that both the player and projectiles slow down underwater, so the same space can demand a different route and rhythm when it is flooded. Liquids also joined the editor palette, alongside a Water Challenge.\n\nThis update described local multiplayer for two, three or four people on one computer, including Survival and Race modes. These were shared-machine modes. Meanwhile, saving editor levels gained support for object scale and animation frames: visual placement had started to become persistent level data.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_water",
+            "frame": 0
+          },
+          {
+            "name": "s_playerred",
+            "frame": 0
+          },
+          {
+            "name": "s_communitycustomizableicon",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Beta 1.5 development log",
+          "url": "https://infiland.itch.io/the-colorful-creature/devlog/181283/tcc-beta-15",
+          "note": "Published by Infiland on 24 September 2020; water, local multiplayer and editor changes."
+        }
+      ]
+    },
+    {
+      "id": "beta-1511-ice",
+      "date": "2020-11-01",
+      "displayDate": "1 November 2020 / Beta 1.5.11",
+      "title": "A slippery lesson in timing",
+      "body": "A small patch can reveal a large design constraint. The Beta 1.5.11 notes report a fix for ice behavior at different refresh rates. They also mention a hazardous-skin problem in local multiplayer and a correction to shooting boxes.\n\nIce is meant to change how a player moves, but a display setting should not be the puzzle. The historical patch is a useful reminder that movement, rendering and collision have needed careful checking throughout this game's life. This chapter documents that earlier fix; it does not claim every later movement change was solved by it.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_iceblock",
+            "frame": 0
+          },
+          {
+            "name": "s_playerred",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Beta 1.5.11 development log",
+          "url": "https://infiland.itch.io/the-colorful-creature/devlog/192288/the-colorful-creature-beta-1511",
+          "note": "Published on 1 November 2020; includes the refresh-rate-dependent ice fix."
+        }
+      ]
+    },
+    {
+      "id": "beta-160-editor",
+      "date": "2021-01-05",
+      "displayDate": "5 January 2021 / Beta 1.6.0",
+      "title": "The editor becomes a workspace",
+      "body": "Beta 1.6.0 described a more practical editor: levels could be named, saved and loaded separately, and building was separated from playing. Moving hazards and enemies no longer needed to run while a creator arranged a level. Gravity and speed pickups also received clearer arrow artwork.\n\nThese details matter because authoring a puzzle means revisiting it many times. A creator needs to see the starting state, save an experiment and test the result. The same devlog announced a Linux version and a new title screen, extending both the places the game could run and the tools used to build it.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_communitycustomizableicon",
+            "frame": 0
+          },
+          {
+            "name": "s_enemyidle",
+            "frame": 0
+          },
+          {
+            "name": "s_key",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Beta 1.6.0 development log",
+          "url": "https://infiland.itch.io/the-colorful-creature/devlog/210471/the-colorful-creature-beta-160",
+          "note": "Published on 5 January 2021; named editor saves, build/play modes and Linux support."
+        }
+      ]
+    },
+    {
+      "id": "beta-160-hats",
+      "date": "2021-01-05",
+      "displayDate": "5 January 2021 / Beta 1.6.0",
+      "title": "Why the game has credits",
+      "body": "The same update introduced credits as a second currency and explained the reason: ordinary coins could reset or be spent on skipping levels. Cosmetic purchases needed a different counter. The hat merchant arrived with more than fifteen hats, while the difficulty options expanded with Yeah GL and Eternal Suffering.\n\nThe update also described clearer challenge results, with time, deaths and ratings shown together. Hats and results served different kinds of progress: one let a player change their appearance, while the other made a completed attempt easier to compare with the next.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_hatmerchant",
+            "frame": 0
+          },
+          {
+            "name": "s_creditscurrency",
+            "frame": 0
+          },
+          {
+            "name": "s_playerred",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Beta 1.6.0 development log",
+          "url": "https://infiland.itch.io/the-colorful-creature/devlog/210471/the-colorful-creature-beta-160",
+          "note": "The developer explains the second currency, hats, difficulty additions and challenge results."
+        }
+      ]
+    },
+    {
+      "id": "beta-161-endless",
+      "date": "2021-03-20",
+      "displayDate": "20 March 2021 / Beta 1.6.1",
+      "title": "Endless Run finds its pace",
+      "body": "The Beta 1.6.1 devlog describes an Endless Run adjustment that raised difficulty after wins and reduced it after deaths. Its example is concrete: an easy opening should not immediately be followed by a Kaizo level. An Old School variant remained available alongside the changing mode.\n\nThe update also listed an eight-level Community Challenge, challenge perfection statistics, horizontal moving spikes and settings available from the pause menu. Community-made levels and longer repeatable runs were becoming more visible parts of the game, so choosing what came next mattered as much as creating one difficult room.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_calendarhardAIcon",
+            "frame": 0
+          },
+          {
+            "name": "s_communitycustomizableicon",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Beta 1.6.1 development log",
+          "url": "https://infiland.itch.io/the-colorful-creature/devlog/233698/the-colorful-creature-beta-161",
+          "note": "Published on 20 March 2021; Endless difficulty changes and the Community Challenge."
+        }
+      ]
+    },
+    {
+      "id": "beta-1611-reddy",
+      "date": "2021-03-24",
+      "displayDate": "24 March 2021 / Beta 1.6.1.1",
+      "title": "A bug becomes a skin",
+      "body": "According to the Beta 1.6.1.1 notes, the invisible Reddy skin began as a bug in the preceding version. The patch turned that accident into an intentional option, including support for local multiplayer. It is an unusually direct example of a defect becoming a cosmetic idea.\n\nThe less playful fixes were just as specific: resetting the editor prompted the player to save, the hat merchant was reworked, and troops were prevented from seeing through blocks unless they were already chasing. The patch mixed an unexpected visual identity with safeguards for creators and clearer enemy behavior.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_playerred",
+            "frame": 0
+          },
+          {
+            "name": "s_enemyidle",
+            "frame": 0
+          },
+          {
+            "name": "s_hatmerchant",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Beta 1.6.1.1 development log",
+          "url": "https://infiland.itch.io/the-colorful-creature/devlog/235378/the-colorful-creature-beta-1611",
+          "note": "Published on 24 March 2021; the developer explicitly describes the invisible-skin accident."
+        }
+      ]
+    },
+    {
+      "id": "beta-162-custom-endless",
+      "date": "2021-04-07",
+      "displayDate": "7 April 2021 / Beta 1.6.2",
+      "title": "Choosing the shape of a run",
+      "body": "The Beta 1.6.2 notes laid out Custom Endless Run controls for level groups, starting lives, extra-life spacing and music. Players could choose whether the soundtrack changed during a run, and custom runs carried reduced credit rewards. Wider key-binding choices and a feedback button were also described.\n\nA mode made of existing levels can still ask a new question: which combinations make a satisfying session? These controls made that choice visible to the player. They also show why a random-level system needs more than a long list of rooms: its filters, rewards and pacing are part of the experience.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_calendarhardAIcon",
+            "frame": 0
+          },
+          {
+            "name": "s_creditscurrency",
+            "frame": 0
+          },
+          {
+            "name": "s_nscontrollerscheme",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Beta 1.6.2 development log",
+          "url": "https://infiland.itch.io/the-colorful-creature/devlog/240124/the-colorful-creature-beta-162",
+          "note": "Published on 7 April 2021; Custom Endless Run settings, rewards and key bindings."
+        }
+      ]
+    },
+    {
+      "id": "steam-early-access",
+      "date": "2021-08-31",
+      "displayDate": "31 August 2021 / Steam Early Access",
+      "title": "The Steam chapter begins",
+      "body": "The official Steam page dates Early Access to 31 August 2021. This is the 2021 Steam arrival mentioned in the repository README; the full release came later. Keeping those dates separate helps make sense of the game's long development history.\n\nThe earlier itch.io page remains an older version and points players toward Steam for later updates. Together, the pages preserve a trail from public beta downloads to a store version that continued to grow. The Steam-themed skin shown here is current artwork, used to mark that change of platform.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_steamplayerskin",
+            "frame": 0
+          },
+          {
+            "name": "s_playerred",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Official Steam store page",
+          "url": "https://store.steampowered.com/app/1651680/The_Colorful_Creature/",
+          "note": "The store lists 31 August 2021 as the Early Access release date."
+        },
+        {
+          "title": "Older itch.io edition",
+          "url": "https://infiland.itch.io/the-colorful-creature",
+          "note": "The developer labels this an old version and directs readers to Steam."
+        }
+      ]
+    },
+    {
+      "id": "steam-full-release",
+      "date": "2023-08-28",
+      "displayDate": "28 August 2023 / full release",
+      "title": "A release, not an ending",
+      "body": "The official store records 28 August 2023 as the full release date. By this point the game had moved well beyond its original color-matching rule into an assortment of challenges, an editor, customization and repeatable modes.\n\nA release date is a useful landmark, but the repository documents substantial work afterward: controller changes, quests, localization, Workshop systems and ports. The chapters that follow use dated source commits, so their dates describe changes recorded in the project rather than claiming each commit was published to every store that day.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_playerred",
+            "frame": 0
+          },
+          {
+            "name": "s_communitycustomizableicon",
+            "frame": 0
+          },
+          {
+            "name": "s_hatmerchant",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Official Steam store page",
+          "url": "https://store.steampowered.com/app/1651680/The_Colorful_Creature/",
+          "note": "The full-release date is 28 August 2023; the page describes the expanded game features."
+        }
+      ]
+    },
+    {
+      "id": "source-upload-2023",
+      "date": "2023-12-09",
+      "displayDate": "9 December 2023 / version 1.0.5 source",
+      "title": "The project enters this archive",
+      "body": "The repository contains a December 2023 commit titled Upload TCC v1.0.5. It records a large, already-developed GameMaker project, with rooms, objects, scripts, sounds and artwork. It should not be mistaken for the day development began: the earlier devlogs document several years before this source snapshot.\n\nThe picture beside this text is an actual title-screen artwork file extracted from that commit. It is an archival asset, not a recreated screenshot. That distinction lets the gallery show a piece of the recorded project while remaining clear about what the image can tell us.",
+      "art": {
+        "kind": "file",
+        "path": "Commentary/archive-2023-title.png",
+        "caption": "Archival title-screen artwork from the 9 December 2023 source upload, commit d33a9cf8. Original asset; not a screenshot."
+      },
+      "sources": [
+        {
+          "title": "Upload TCC v1.0.5",
+          "url": "https://github.com/Infiland/TheColorfulCreature/commit/d33a9cf83a420a05a9f661c29366aa0e3735fe34",
+          "note": "Repository commit d33a9cf8; this dates the source change, not a store release."
+        },
+        {
+          "title": "Original artwork file",
+          "url": "https://github.com/Infiland/TheColorfulCreature/blob/d33a9cf83a420a05a9f661c29366aa0e3735fe34/sprites/s_mainmenu/db8ec59f-8893-4418-8d8c-bf1a8771a8f0.png",
+          "note": "This gallery includes the original PNG bytes from the archived sprite frame."
+        }
+      ]
+    },
+    {
+      "id": "controller-2024",
+      "date": "2024-01-08",
+      "displayDate": "8 January 2024 / release 1.1 work",
+      "title": "Controllers beyond the jump button",
+      "body": "The release 1.1 commit expanded controller support across the surrounding menus. Its notes list vibration settings, level skipping, scrolling through achievements and changing settings with a controller. The same change added levels to Endless Run.\n\nSupporting a controller reaches beyond movement inside a room. A player also needs to start a session, adjust a setting and read what they have earned. This commit makes that broader scope visible in the history: controller work touched many menu objects as well as the game itself.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_nscontrollerscheme",
+            "frame": 0
+          },
+          {
+            "name": "s_playerred",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Further controller support and release 1.1",
+          "url": "https://github.com/Infiland/TheColorfulCreature/commit/9bd0a980c8c94607d908e673188af90416a6c9e1",
+          "note": "Repository commit 9bd0a980; this dates the source change, not a store release."
+        }
+      ]
+    },
+    {
+      "id": "customization-2024",
+      "date": "2024-01-21",
+      "displayDate": "21 January 2024 / customization",
+      "title": "An appearance system grows up",
+      "body": "A January commit explicitly overhauled customization logic, removed duplicate files and translated more text. Its small summary captures a kind of work that is easy to miss in a list of new levels: existing features also need a structure that can keep growing.\n\nSkins, hats and the menus that display them are connected to saving, selection and how the player is drawn. The source history records this as a restructuring of customization. The current sprites beside the text illustrate those systems; they are not presented as the exact appearance of that January build.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_steamplayerskin",
+            "frame": 0
+          },
+          {
+            "name": "s_hatmerchant",
+            "frame": 0
+          },
+          {
+            "name": "s_playerred",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Overhauled customization logic",
+          "url": "https://github.com/Infiland/TheColorfulCreature/commit/bb92043a19819d4dfead9e502161fbde775257e2",
+          "note": "Repository commit bb92043a; this dates the source change, not a store release."
+        }
+      ]
+    },
+    {
+      "id": "open-source-2024",
+      "date": "2024-04-19",
+      "displayDate": "19 April 2024 / Freedom",
+      "title": "Opening the development door",
+      "body": "The README dates the decision to open-source the game to 2024, with the hope that more people could contribute. The April commit named Freedom made that direction visible inside the game: the feedback button was redirected toward GitHub issues, and a development-form link became a repository link.\n\nThe banner shown here is the original artwork from that commit. Its Open Source message sits over a view of the issue tracker. The image marks a change in how development could be discussed and shared, while the repository became a place where requests and implementation history could be followed together.",
+      "art": {
+        "kind": "file",
+        "path": "Commentary/archive-2024-freedom.png",
+        "caption": "Archival news banner from 19 April 2024, commit 66c4246f. Original image from the repository."
+      },
+      "sources": [
+        {
+          "title": "Freedom: repository links and news banner",
+          "url": "https://github.com/Infiland/TheColorfulCreature/commit/66c4246fb2fd1e2d43788b08ef3a02b346d35751",
+          "note": "Repository commit 66c4246f; this dates the source change, not a store release."
+        },
+        {
+          "title": "README account of open sourcing",
+          "url": "https://github.com/Infiland/TheColorfulCreature/blob/8db1415408293ad8fd81700b41fd74ae3a0f1521/README.md#info",
+          "note": "The developer dates the open-source decision to 2024 and describes the goal of community contributions."
+        }
+      ]
+    },
+    {
+      "id": "quests-2024",
+      "date": "2024-04-21",
+      "displayDate": "21 April 2024 / release 1.1.8 work",
+      "title": "Forty reasons to try something else",
+      "body": "Two days after Freedom, the repository recorded Added Quests - R1.1.8. The commit notes specify forty quests and link the work to issue 6. Quests gave the project another way to organize goals alongside campaign progress, challenge results and cosmetic collecting.\n\nThe timing is a compact example of the new public workflow: a requested feature could be connected directly to a dated implementation. This chapter uses the commit as evidence of that source change, rather than guessing how many players completed the quests or how they were received.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_key",
+            "frame": 0
+          },
+          {
+            "name": "s_creditscurrency",
+            "frame": 0
+          },
+          {
+            "name": "s_playerred",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Added forty quests",
+          "url": "https://github.com/Infiland/TheColorfulCreature/commit/499ecb1bf3aaec39ed472e2997f3011dd3bbb014",
+          "note": "Repository commit 499ecb1b; this dates the source change, not a store release."
+        }
+      ]
+    },
+    {
+      "id": "languages-2024",
+      "date": "2024-05-07",
+      "displayDate": "7 May 2024 / first-launch languages",
+      "title": "Meeting the player in their language",
+      "body": "The May language update added automatic language selection on first launch and translated quest keywords. Its notes also described a Steam launcher correction, quieter distant breakable blocks and changes to the editor and Workshop camera.\n\nThese are small points of contact with the game: the language of the first menu, a sound from an object far away, and the camera used to inspect a large creation. The commit shows localization arriving alongside other practical polish, rather than as a separate layer added only after gameplay was complete.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_communitycustomizableicon",
+            "frame": 0
+          },
+          {
+            "name": "s_playerred",
+            "frame": 0
+          },
+          {
+            "name": "s_whiteblock",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Auto-detect languages on first launch",
+          "url": "https://github.com/Infiland/TheColorfulCreature/commit/cf2b1261c412ab4e0af921ccdfcf9df00d621c87",
+          "note": "Repository commit cf2b1261; this dates the source change, not a store release."
+        }
+      ]
+    },
+    {
+      "id": "browser-2025",
+      "date": "2025-02-23",
+      "displayDate": "23 February 2025 / browser support",
+      "title": "A different place to play",
+      "body": "A February 2025 commit added browser support. The change reached menu choices, profile images, controls, editor behavior and the platform checks used around Steam features. This was source-level support for another environment; a commit alone is not proof of a particular public browser deployment.\n\nA game can share rooms and sprites across platforms while needing different rules for accounts, files and services. The breadth of this change is a useful part of the development story: moving the game requires attention to the menus and surrounding systems as well as the player on screen.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_playerred",
+            "frame": 0
+          },
+          {
+            "name": "s_communitycustomizableicon",
+            "frame": 0
+          },
+          {
+            "name": "s_steamplayerskin",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Add browser support",
+          "url": "https://github.com/Infiland/TheColorfulCreature/commit/336252fe380b7117edad916407dc4d53f1c43a35",
+          "note": "Repository commit 336252fe; this dates the source change, not a store release."
+        }
+      ]
+    },
+    {
+      "id": "colorblind-2025",
+      "date": "2025-10-21",
+      "displayDate": "21 October 2025 / visual options",
+      "title": "Returning to color accessibility",
+      "body": "The October commit reintroduced colorblind options and closed issue 60. The recorded changes included the colorblindness simulation object, its drawing events and the settings control, along with related project resources.\n\nColor is both the game's visual identity and one of its rules. That makes the way colors are displayed a recurring part of the project, not simply a decorative preference. This chapter documents the return of those options in the source. The colored blocks shown here are the current standard artwork, so they do not simulate or certify a particular accessibility mode.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_redblock",
+            "frame": 0
+          },
+          {
+            "name": "s_greenblock",
+            "frame": 0
+          },
+          {
+            "name": "s_blueblock",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Reintroduce colorblind options",
+          "url": "https://github.com/Infiland/TheColorfulCreature/commit/16f7a61b027b8b970d4c4419680d44d7f3b71e3a",
+          "note": "Repository commit 16f7a61b; this dates the source change, not a store release."
+        }
+      ]
+    },
+    {
+      "id": "challenge-data-2025",
+      "date": "2025-12-28",
+      "displayDate": "28 December 2025 / challenge data",
+      "title": "Challenges become data",
+      "body": "The December challenge update moved challenge definitions into JSON and explicitly described future Workshop use. It also changed the statistics screen, added leaderboard avatars, corrected the position of a collected key and fixed liquid placement behavior in the editor.\n\nThe same commit included a Lunar Base challenge definition. A definition records such things as the challenge identity and how it is launched; its presence does not establish that every route or result screen was finished. The important historical change is that challenge structure could now be described in data, reducing how much each new challenge needed its own menu logic.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_key",
+            "frame": 0
+          },
+          {
+            "name": "s_communitycustomizableicon",
+            "frame": 0
+          },
+          {
+            "name": "s_enemyidle",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Custom challenges and JSON definitions",
+          "url": "https://github.com/Infiland/TheColorfulCreature/commit/21812caa4e8d1b33b475364339d1e43b017725ea",
+          "note": "Repository commit 21812caa; this dates the source change, not a store release."
+        }
+      ]
+    },
+    {
+      "id": "online-workshop-2026",
+      "date": "2026-03-15",
+      "displayDate": "15 March 2026 / connected systems",
+      "title": "Sharing levels and seeing other players",
+      "body": "The March source update registered Workshop challenge tools, online multiplayer resources and a broad set of challenge definitions. The recorded files include a network manager, online settings, publishing dialogs and the Workshop challenge creator.\n\nThe repository history shows these systems joining existing rooms and menus, rather than replacing the game's color-matching foundation. It also shows why a feature name alone is not a complete description: publishing needs dialogs and callbacks, while online presence needs its own lifecycle and drawing. The current sprites here illustrate the connected systems, not a historical multiplayer session.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_steamplayerskin",
+            "frame": 0
+          },
+          {
+            "name": "s_playerred",
+            "frame": 0
+          },
+          {
+            "name": "s_communitycustomizableicon",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Workshop, online multiplayer and challenge resources",
+          "url": "https://github.com/Infiland/TheColorfulCreature/commit/d8d0edff472ed772cf292c5c1689d0c30e7166d8",
+          "note": "Repository commit d8d0edff; this dates the source change, not a store release."
+        }
+      ]
+    },
+    {
+      "id": "workshop-endless-2026",
+      "date": "2026-04-05",
+      "displayDate": "5 April 2026 / Workshop Endless Run",
+      "title": "Community creations enter the run",
+      "body": "The April source commit added Workshop Endless Run support together with translations and project resources. It followed the earlier work on custom Endless settings and Workshop challenge creation, bringing those two strands of the project closer together.\n\nEndless play depends on selecting the next level, while Workshop content depends on discovering and loading someone else's creation. Combining them gives those loading and selection systems a shared responsibility. The chapter marks the recorded integration work; it does not imply that every published Workshop level has identical difficulty or can be completed with every run setting.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_calendarhardAIcon",
+            "frame": 0
+          },
+          {
+            "name": "s_communitycustomizableicon",
+            "frame": 0
+          },
+          {
+            "name": "s_steamplayerskin",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Workshop Endless Run, translations and resources",
+          "url": "https://github.com/Infiland/TheColorfulCreature/commit/e3a49008f61aa82634e2cdda4a03141249347837",
+          "note": "Repository commit e3a49008; this dates the source change, not a store release."
+        }
+      ]
+    },
+    {
+      "id": "apple-ports-2026",
+      "date": "2026-09-27",
+      "displayDate": "27 September 2026 / Apple port work",
+      "title": "The same game, more kinds of input",
+      "body": "The latest historical snapshot in this gallery is the repository's Apple-platform port work. The commit covers platform service wrappers, touch controls, save handling, controller support and build tools. Its title also calls out mobile touch responsiveness.\n\nThese are implementation records, not a claim that a particular device or store release has been certified. They show how much of a long-running game lives around the levels: input, persistence, services and packaging all affect whether the same content can be played elsewhere. The story remains open for later chapters, with this gallery stopping at the dated source evidence available here.",
+      "art": {
+        "kind": "sprites",
+        "sprites": [
+          {
+            "name": "s_nscontrollerscheme",
+            "frame": 0
+          },
+          {
+            "name": "s_playerred",
+            "frame": 0
+          },
+          {
+            "name": "s_communitycustomizableicon",
+            "frame": 0
+          }
+        ],
+        "caption": "Current game artwork. Representative illustration of this chapter."
+      },
+      "sources": [
+        {
+          "title": "Apple platforms and mobile touch responsiveness",
+          "url": "https://github.com/Infiland/TheColorfulCreature/commit/ee8051fdac4894085283a10576b41b1ae898be1c",
+          "note": "Repository commit ee8051fd; this dates the source change, not a store release."
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-randomize()
+tcc_randomize()
 depth = 1
 x = round(x)
 originaly = 0

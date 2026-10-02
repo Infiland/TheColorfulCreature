@@ -1,0 +1,118 @@
+{
+  "schema": "tcc-final-release-check-v1",
+  "date": "2026-10-02",
+  "specialLevelsExcluded": true,
+  "build": "/Users/infi/Library/Caches/TCC130/release-check-130-03",
+  "configuration": "Check",
+  "compilerBackend": "VM",
+  "IDE": "2026.0.0.16",
+  "runtime": "2026.0.0.23",
+  "xcode": "Xcode 26.6\nBuild version 17F113",
+  "source": {
+    "identityVersion": 2,
+    "identityScheme": "project-runtime-assets-v2",
+    "sourceSha256": "bded534e25b744d54d7551b81ae3fc93ef7fd7f546906c0641f012fcb2096f05",
+    "physicsSha256": "5961c03c333ca115db409232a330fec447e0e8b704691c62f0be5e7d1783019b",
+    "fileCount": 23132
+  },
+  "frozenSourceMatchesCurrent": true,
+  "artifact": {
+    "sha256": "b7deb4cb043281ec97490e9981d520870aaad8a2f01d0b7235d6e9f80ae343ad",
+    "fileCount": 105
+  },
+  "executableSha256": "1e2bc70eeec44cf1c09e0c9e0f939e93c56d004d0e155e55b8e77aa68507f20a",
+  "nativeProcess": {
+    "exitCode": null,
+    "launcherExitCode": 0,
+    "normalRuntimeEnd": true,
+    "timedOut": false,
+    "wallSeconds": 6.978990999981761,
+    "backgroundLaunchRequested": true,
+    "headlessRequested": true,
+    "quietWindowRequested": true,
+    "quietLibrarySha256": "6735cf8f31dc5285d96ca5dbd3caad6ab15fc5dd8b73f1dbed3a1418f0cbfc32",
+    "nativeSlotWaitSeconds": 0.0004344999906606972,
+    "nativeLaunchStartedMonotonic": 464381.837505208,
+    "nativeLaunchEndedMonotonic": 464388.849203375
+  },
+  "mutedByCheckConfiguration": true,
+  "isolatedSaveId": "com.infiland.tcc.check",
+  "passMarkers": [
+    "TCC_LEVEL_DOCUMENT_SELF_CHECK_PASS",
+    "TCC_LEVEL_SELECT_SELF_CHECK_PASS",
+    "TCC_COMMENTARY_SELF_CHECK_PASS",
+    "TCC_CER_SELECTION_SELF_CHECK_PASS",
+    "TCC_CUSTOM_FPS_VALIDATION_PASS",
+    "TCC_KEYBOARD_CLASSIFIER_PASS",
+    "TCC_SETTINGS_PASS",
+    "TCC_COSMETICS_PASS",
+    "TCC_DEMO_FPS_RESTORE_PASS",
+    "TCC_CUSTOM_FPS_PERSISTENCE_PASS",
+    "TCC_COSMETICS_DECODE_CACHE_PASS",
+    "TCC_SETTINGS_PERSISTENCE_PASS",
+    "TCC_TRADEUP_SELF_CHECK_PASS",
+    "TCC_ONLINE_COSMETICS_SELF_CHECK_PASS",
+    "TCC_PORT_SELF_CHECK_PASS"
+  ],
+  "navigation": {
+    "passed": true,
+    "requests": 40.0,
+    "builds": 4.0,
+    "cacheHits": 41.0,
+    "invalidationChecks": 3.0,
+    "cullingStable": true,
+    "freshMeanUs": 398.15,
+    "cachedWarmMeanUs": 0.7,
+    "warmToFreshRatio": 0.0017581313575285697
+  },
+  "navigationGeometryComparisons": 35.0,
+  "expectedNegativeFixture": {
+    "caught": true,
+    "errorBlocks": 1,
+    "message": "JSON parse error : quoted object property name expected",
+    "fixture": "LevelDocumentSelfCheck/Legacy/level.json",
+    "scope": "Malformed-file rejection; execution continued through all suites and normal game end"
+  },
+  "staticChecks": {
+    "configuration": true,
+    "registeredResources": 2669,
+    "includedFiles": 89,
+    "resourceEventValidation": true,
+    "pythonToolCompilation": true,
+    "diffCheck": true,
+    "originalLevel42Exact": true,
+    "originalDocsDirtyPatchExact": true,
+    "prefabFilesUnchanged": 16,
+    "requiredLunarRouteFixtureRestored": true
+  },
+  "rawBindings": {
+    "evidence.json": {
+      "path": "/Users/infi/Library/Caches/TCC130/release-check-130-03/evidence.json",
+      "sha256": "1773a8f03a5059e1b1adef667a431c2e48275d2ccac3c025ac29edc4d4dcea5c"
+    },
+    "self-check.log": {
+      "path": "/Users/infi/Library/Caches/TCC130/release-check-130-03/self-check.log",
+      "sha256": "efb0ffaaefb1810d87edcd52532285b85dd02fae0f55040b1ff2b91dee83d20f"
+    },
+    "compile.log": {
+      "path": "/Users/infi/Library/Caches/TCC130/release-check-130-03/compile.log",
+      "sha256": "7be5fce1ca01ff5e9602ace1b72991844202cc82593aab359abdd860c560583a"
+    },
+    "prefabs-before.json": {
+      "path": "/Users/infi/Library/Caches/TCC130/release-check-130-03/prefabs-before.json",
+      "sha256": "22c1c2f7781e298a073b3d708aa8198fe8bea9ee7d50f4970afd4fd6bc2c8e61"
+    }
+  },
+  "limits": [
+    "Local self-check fixtures, not full current-tree gameplay replays or physical-device acceptance.",
+    "Historical gameplay/platform evidence retains its original build scope.",
+    "No special levels included; native launch gate disabled after this run.",
+    "No store upload, merge or release publishing performed."
+  ],
+  "independentReview": {
+    "resourcesAndCleanup": "passed; missing Lunar fixture restored",
+    "controllerAndCursor": "passed; transition-only fix retained in frozen source",
+    "nativeCheck02": "passed; exact log/negative fixture reviewed independently",
+    "formattingAfterCheck02": "19173 tokens and 497 literals unchanged; final Check03 rerun"
+  }
+}

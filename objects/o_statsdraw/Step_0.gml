@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 stats_ach_tick += 1
 if stats_ach_tick >= stats_ach_update_rate {
 	stats_refresh_achievements()
@@ -51,13 +52,13 @@ if change = 5 {
 
 color = make_color_rgb(red, green, blue)
 
-key_down = keyboard_check(vk_up) || keyboard_check(ord("W"))
-key_up = keyboard_check(vk_down) || keyboard_check(ord("S"))
-if mouse_wheel_up() { yscrollreal -= 4000 * (delta_time / 1000000) }
-if mouse_wheel_down() { yscrollreal += 4000 * (delta_time / 1000000) }
+key_down = timing_keyboard_down(vk_up) || timing_keyboard_down(ord("W"))
+key_up = timing_keyboard_down(vk_down) || timing_keyboard_down(ord("S"))
+if timing_mouse_wheel_up() { yscrollreal -= 4000 * timing_tick_seconds() }
+if timing_mouse_wheel_down() { yscrollreal += 4000 * timing_tick_seconds() }
 
 if platform_touch() {
-	if mouse_check_button(mb_left) {
+	if timing_mouse_down(mb_left) {
 		if mouse_y < 512 { key_down = true } else { key_up = true }
 	} else {
 		key_up = false
@@ -65,8 +66,8 @@ if platform_touch() {
 	}
 }
 
-if key_down { yscrollreal -= 500 * (delta_time / 1000000) }
-if key_up { yscrollreal += 500 * (delta_time / 1000000) }
+if key_down { yscrollreal -= 500 * timing_tick_seconds() }
+if key_up { yscrollreal += 500 * timing_tick_seconds() }
 
 if yscrollreal < 0 { yscrollreal = 0 }
 if yscrollreal > stats_scroll_max { yscrollreal = stats_scroll_max }

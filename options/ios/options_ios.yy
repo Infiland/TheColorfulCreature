@@ -3,7 +3,7 @@
   "%Name":"iOS",
   "ConfigValues":{"iOSCheck":{"option_ios_bundle_name":"com.infiland.tcc.qa",}},
   "name":"iOS",
-  "option_ios_build_number":3,
+  "option_ios_build_number":5,
   "option_ios_bundle_name":"com.infiland.tcc",
   "option_ios_defer_home_indicator":false,
   "option_ios_devices":2,
@@ -44,7 +44,7 @@
   "option_ios_splashscreen_background_colour":4278190080,
   "option_ios_team_id":"6YSTRH2665",
   "option_ios_texture_page":"2048x2048",
-  "option_ios_version":"1.2.0",
+  "option_ios_version":"1.3.0",
   "resourceType":"GMiOSOptions",
   "resourceVersion":"2.0",
 }

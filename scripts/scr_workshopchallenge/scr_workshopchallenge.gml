@@ -29,6 +29,9 @@ function scr_workshopchallenge_save_progress() {
 }
 
 function scr_workshopchallenge_abort() {
+	// Abort is only meaningful for an active sequence. A stale caller must not
+	// clear an unrelated packaged challenge or standalone Workshop run.
+	if (!variable_global_exists("workshopchallenge") || global.workshopchallenge != 1) return false;
 	global.workshopchallenge = 0
 	global.workshopchallenge_title = ""
 	global.workshopchallenge_levels = []
@@ -41,6 +44,18 @@ function scr_workshopchallenge_abort() {
 	global.workshopfolder = ""
 	global.workshop = 0
 	global.challenges = 0
+	global.challenge_run_id = -1
+	global.level_document_context = ""
+	return true;
+}
+
+/// A load failure after start/restart/advance must leave the old completed room.
+/// Pre-start validation uses its own popup and never calls this recovery path.
+function scr_workshopchallenge_load_failure(_message) {
+	if (!variable_global_exists("workshopchallenge") || global.workshopchallenge != 1) return false;
+	level_error(_message);
+	level_load_failure();
+	return false;
 }
 
 function scr_workshopchallenge_restart() {
@@ -79,8 +94,12 @@ function scr_workshopchallenge_complete() {
 
 function scr_workshopchallenge_goto_level(_index) {
 	if (!variable_global_exists("workshopchallenge") || global.workshopchallenge != 1) return;
-	if (_index < 0 || _index >= array_length(global.workshopchallenge_levels)) return;
-	if (!global.steam_api) return;
+	if (_index < 0 || _index >= array_length(global.workshopchallenge_levels)) {
+		return scr_workshopchallenge_load_failure("The Workshop challenge level is no longer available.");
+	}
+	if (!global.steam_api) {
+		return scr_workshopchallenge_load_failure("Steam is unavailable; the Workshop challenge could not continue.");
+	}
 
 	var _level = global.workshopchallenge_levels[_index];
 	var _level_id = _level;
@@ -98,16 +117,7 @@ function scr_workshopchallenge_goto_level(_index) {
 
 	_folder = string_replace_all(string(_folder), "\\", "/");
 	if (_folder == "") {
-		if !instance_exists(o_popup) {
-			global.popup_config = {
-				title: "Workshop Challenge",
-				message: "Missing subscribed workshop level:\n" + string(_level_id),
-				mode: 0
-			}
-			instance_create(0, 0, o_popup)
-		}
-		scr_workshopchallenge_abort();
-		return;
+		return scr_workshopchallenge_load_failure("Missing subscribed workshop level: " + string(_level_id));
 	}
 	if (string_copy(_folder, string_length(_folder), 1) != "/") _folder += "/"
 
@@ -115,15 +125,10 @@ function scr_workshopchallenge_goto_level(_index) {
 	global.Publish_ID = _level_id
 	global.levelname = _level_title
 
-	// Resize room based on workshop level metadata
-	if (file_exists(_folder + "OtherLevelEditor.sav")) {
-		ini_open(_folder + "OtherLevelEditor.sav");
-		global.LELevelWidthBlocks = ini_read_real("Other LE","Level Width Blocks",32);
-		global.LELevelHeightBlocks = ini_read_real("Other LE","Level Height Blocks",22);
-		ini_close();
-	}
-	room_set_width(r_customlevelworkshop,global.LELevelWidthBlocks*32)
-	room_set_height(r_customlevelworkshop,64+(global.LELevelHeightBlocks*32))
+	if (!level_prepare_room(_folder, r_customlevelworkshop, true)) {
+        return scr_workshopchallenge_load_failure(global.level_last_error);
+    }
+    scr_leveleditormusic(_folder);
 
 	loadhud()
 	if !instance_exists(o_narrator) { instance_create(0,0,o_narrator) }
@@ -157,7 +162,7 @@ function scr_workshopchallenge_validate_levels(_challenge) {
 		_folder = string_replace_all(string(_folder), "\\", "/");
 		if (_folder != "" && string_copy(_folder, string_length(_folder), 1) != "/") _folder += "/";
 
-		if (_folder == "" || !file_exists(_folder + "LevelEditor.sav")) {
+		if (_folder == "" || is_undefined(level_read(_folder))) {
 			_result.valid = false;
 			array_push(_result.missing, { id: _level_id, title: _level_title });
 		}

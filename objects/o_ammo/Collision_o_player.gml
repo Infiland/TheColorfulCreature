@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 instance_destroy()
 global.gunammo += containsammo
 if room != r_leveleditor {

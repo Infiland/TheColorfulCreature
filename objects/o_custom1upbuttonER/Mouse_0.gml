@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 timer -= 1
 if timer < 0 {
 if global.CER1upChange != 9999 {

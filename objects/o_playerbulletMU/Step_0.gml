@@ -1,3 +1,5 @@
+if (!timing_instance_step()) exit;
+var _slope_from_x = x, _slope_from_y = y;
 if playerbullet = 0 {
 image_xscale += 0.2
 image_yscale += 0.2
@@ -10,8 +12,8 @@ instance_destroy()
 }
 if place_meeting(x,y,o_water) { inwater = 2 } else { inwater = 1 }
 if place_meeting(x,y,o_lava) { inwater = 2 } else { inwater = 1 }
-if playerbullet = 1 { x += (7 * (60 / global.maxfps) / inwater) }
-if playerbullet = 2 { x -= (7 * (60 / global.maxfps) / inwater) }
+if playerbullet = 1 { x += (7 * (60 / TCC_SIM_HZ) / inwater) }
+if playerbullet = 2 { x -= (7 * (60 / TCC_SIM_HZ) / inwater) }
 if room = r_leveleditor {
 if !instance_exists(o_player) {
 instance_destroy();
@@ -40,3 +42,5 @@ if place_meeting(x,y,o_onewayleftblock) {instance_destroy()}
 if playerbullet = 2 {
 if place_meeting(x,y,o_onewayrightblock) {instance_destroy()}
 }
+// A slope blocks only its filled triangle.
+if (scr_slope_projectile_sweep(_slope_from_x, _slope_from_y, x, y)) { instance_destroy(); exit; }

@@ -89,7 +89,7 @@ break;
 
 global.newcalendarseed = string(global.calendarday1)+string(global.calendarday2)+string(global.calendarday3)+string(global.calendarday4)+string(global.calendarday5)+string(global.calendarday6)+string(global.calendarday7)
 
-draw_text(1020,740,"Seed: " + string(global.newcalendarseed))
+// Seed display belongs to o_newcalendarreward Draw; selection can run without Draw.
 
 /*draw_text(mouse_x,mouse_y,global.calendarday1)
 draw_text(mouse_x,mouse_y+20,global.calendarday2)

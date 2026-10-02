@@ -1,4 +1,4 @@
-if (!platform_mobile()) { instance_destroy(); exit; }
+if (!platform_admob()) { instance_destroy(); exit; }
 ready = false;
 initializing = false;
 consent_done = false;

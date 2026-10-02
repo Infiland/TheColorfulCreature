@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if image_index = image_number - 2 {
 	audio_sound_gain(m_trueending,0,8000)
 }

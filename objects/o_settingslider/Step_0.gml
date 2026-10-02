@@ -1,77 +1,52 @@
-if global.choosesettings = slider_menu {
-	// Manual click detection over full track area (sprite mask is too small)
-	var _mx = mouse_x
-	var _my = mouse_y
-	var _in_track = (_mx >= beginx - 8 && _mx <= endx + 8 && _my >= y - 4 && _my <= y + 20)
-
-	if _in_track {
-		global.infosettings = slider_info_id
-		if device_mouse_check_button_pressed(0, mb_left) {
-			grab = true
-			global.soundchange = slider_soundchange_id
-		}
-	} else if !grab {
-		// Only clear hover if not currently dragging
-		if global.infosettings = slider_info_id {
-			global.infosettings = 0
-		}
-	}
-
-	// Drag logic
-	if grab = true {
-		x = mouse_x
-		var _normalized = (x - beginx) / 146
-		if _normalized < 0 { _normalized = 0 }
-		if _normalized > 1 { _normalized = 1 }
-		var _val = slider_min + _normalized * (slider_max - slider_min)
-		if slider_integer { _val = round(_val) }
-		variable_global_set(slider_gvar, _val)
-	}
-
-	// Keyboard/D-pad adjustment
-	var _key_left = keyboard_check(vk_left) || (tcc_gamepad_button_check(4, gp_padl)) || keyboard_check(ord("A"))
-	var _key_right = keyboard_check(vk_right) || (tcc_gamepad_button_check(4, gp_padr)) || keyboard_check(ord("D"))
-	if global.soundchange = slider_soundchange_id {
-		var _cur = variable_global_get(slider_gvar)
-		var _step = slider_integer ? max(1, ceil((slider_max - slider_min) / 100)) : 0.01
-		if _key_left {
-			variable_global_set(slider_gvar, max(_cur - _step, slider_min))
-		}
-		if _key_right {
-			variable_global_set(slider_gvar, min(_cur + _step, slider_max))
-		}
-		if slider_integer { variable_global_set(slider_gvar, round(variable_global_get(slider_gvar))) }
-	}
-	if keyboard_check_released(vk_left) or tcc_gamepad_button_check_released(0, gp_padl) or keyboard_check_released(ord("A")) or keyboard_check_released(vk_right) or tcc_gamepad_button_check_released(0, gp_padr) or keyboard_check_released(ord("D")) {
-		scr_savesettings()
-	}
-
-	// Real-time audio updates
-	if slider_gvar = "musicvolume" {
-		audio_sound_gain(m_mainmenu, global.musicvolume, 1)
-	}
-	if slider_gvar = "mastervolume" {
-		audio_master_gain(global.mastervolume)
-	}
-
-	// Gamepad support
-	if global.infosettings = slider_info_id {
-		if tcc_gamepad_button_check_pressed(0, gp_face1) {
-			event_perform(ev_mouse, ev_left_press)
-		}
-	}
-
-	// Release drag
-	if device_mouse_check_button_released(0, mb_left) || tcc_gamepad_button_check_released(0, gp_face1) {
-		grab = false
-		global.soundchange = 0
-	}
-
-	// Snap position to value (normalized)
-	var _normalized = (slider_max != slider_min) ? (variable_global_get(slider_gvar) - slider_min) / (slider_max - slider_min) : 0
-	x = beginx + (_normalized * 146)
+if (!timing_instance_step()) exit;
+if (settings_fps_input_blocked()) { grab = false; slider_adjusting = false; exit; }
+beginx = camera_get_view_x(view_camera[0]) + slider_beginx_offset;
+endx = beginx + 146;
+if (global.choosesettings != slider_menu) {
+    settings_slider_commit();
+    grab = false;
+    slider_adjusting = false;
+    if (global.soundchange == slider_soundchange_id) global.soundchange = 0;
+    x = lerp(x, camera_get_view_x(view_camera[0]) - 256, 0.2 * (60 / global.maxfps));
+    exit;
 }
-
-if global.choosesettings != slider_menu {
-	x = lerp(x, camera_get_view_x(view_camera[0]) - 256, 0.2 * (60 / global.maxfps))
+var _device = gamepad_remap_active_device(true);
+var _hover = point_in_rectangle(mouse_x, mouse_y, beginx - 8, y - 4, endx + 8, y + 20);
+if (_hover) {
+    global.infosettings = slider_info_id;
+    if (timing_device_mouse_pressed(0, mb_left)) {
+        grab = true;
+        global.soundchange = slider_soundchange_id;
+    }
+    if (_device >= 0 && tcc_gamepad_button_check_pressed(_device, gp_face1)) global.soundchange = slider_soundchange_id;
+} else if (!grab && global.infosettings == slider_info_id) global.infosettings = 0;
+var _old = variable_global_get(slider_gvar);
+var _value = _old;
+if (grab) {
+    _value = slider_min + clamp((mouse_x - beginx) / 146, 0, 1) * (slider_max - slider_min);
 }
+var _left = timing_keyboard_down(vk_left) || timing_keyboard_down(ord("A")) || (_device >= 0 && tcc_gamepad_button_check(_device, gp_padl));
+var _right = timing_keyboard_down(vk_right) || timing_keyboard_down(ord("D")) || (_device >= 0 && tcc_gamepad_button_check(_device, gp_padr));
+var _adjust = !grab && global.soundchange == slider_soundchange_id && (_left != _right);
+if (_adjust) {
+    slider_repeat -= 60 / global.maxfps;
+    if (!slider_adjusting || slider_repeat <= 0) {
+        var _step = slider_integer ? max(1, ceil((slider_max - slider_min) / 100)) : 0.01;
+        _value += (_right ? 1 : -1) * _step;
+        slider_repeat = slider_adjusting ? 4 : 20;
+    }
+}
+_value = clamp(_value, slider_min, slider_max);
+if (slider_integer) _value = round(_value);
+if (_value != _old) {
+    variable_global_set(slider_gvar, _value);
+    slider_dirty = true;
+    if (slider_gvar == "musicvolume") audio_sound_gain(m_mainmenu, global.musicvolume, 1);
+    if (slider_gvar == "mastervolume") platform_master_gain(global.mastervolume);
+}
+if ((grab && !timing_device_mouse_down(0, mb_left)) || (slider_adjusting && !_adjust)) {
+    grab = false;
+    settings_slider_commit();
+}
+slider_adjusting = _adjust;
+x = beginx + clamp((_value - slider_min) / max(0.0001, slider_max - slider_min), 0, 1) * 146;

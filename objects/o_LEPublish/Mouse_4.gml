@@ -9,7 +9,7 @@ if global.LEMode = 1 {
 
 if global.autothumbnailsettings = 1 {
 if global.levelname != "" {
-var directory = directory_set("/LevelEditor Files/" + "/" + global.levelname + "/")
+var directory = level_editor_directory()
 screen_save(directory + "/thumb.jpg")
 }}
 

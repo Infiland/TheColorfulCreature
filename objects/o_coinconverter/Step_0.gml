@@ -1,16 +1,10 @@
+if (!timing_instance_step()) exit;
 key_interact = false;
 scr_playercontrolsconfig()
 
 if global.levelselect = 0 {
 
-if !platform_mobile() {
-if interactcontrols = 0 {
-key_interact = keyboard_check_pressed(ord(global.controlsinteract))
-} else { key_interact = keyboard_check_pressed(global.controlsinteract) }} else {
-	if instance_exists(o_buttoninteractandroid) {
-	key_interact = o_buttoninteractandroid.image_index = 1;
-	}
-}
+key_interact = player_interact_pressed();
 
 if instance_place(x,y,o_player) {
 if !instance_exists(o_creditscounter) {

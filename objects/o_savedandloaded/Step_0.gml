@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 var camy = camera_get_view_y(view_camera[0])
 
 if timer > 0 {

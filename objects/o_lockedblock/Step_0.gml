@@ -1,3 +1,5 @@
+if (!timing_instance_step()) exit;
+var _nav_previous_sprite = sprite_index;
 if instance_exists(o_player) {
 if distance_to_object(o_player) > 1300 {
 exit
@@ -32,3 +34,4 @@ if (vdepth < -max_depth/2) {
 }
 if instance_exists(o_key) { sprite_index = s_unlockedblock }
 if !instance_exists(o_key) { sprite_index = s_lockedblock }
+if (_nav_previous_sprite != sprite_index) scr_troop_nav_mark_dirty();

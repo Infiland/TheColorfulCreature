@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 //Get Player Input
 
 /*if !audio_is_playing(snd_troopattack6) {
@@ -8,55 +9,15 @@ if global.pause = 1{
 	scr_playercontrolsconfig()
 	speed = 0
 	exit }
-if !platform_mobile() {
-//Left
-if leftcontrols = 0 {
-key_left = (tcc_gamepad_axis_value(0,gp_axislh) < -0.2 || tcc_gamepad_button_check(0,global.gp_bind_moveleft)) || keyboard_check(ord(global.controlsmoveleft))
-}
-if leftcontrols = 1 {
-key_left = (tcc_gamepad_axis_value(0,gp_axislh) < -0.2 || tcc_gamepad_button_check(0,global.gp_bind_moveleft)) || keyboard_check(global.controlsmoveleft)
-}
-//Right
-if rightcontrols = 0 {
-key_right = (tcc_gamepad_axis_value(0,gp_axislh) > 0.2 || tcc_gamepad_button_check(0,global.gp_bind_moveright)) || keyboard_check(ord(global.controlsmoveright));
-}
-if rightcontrols = 1 {
-key_right = (tcc_gamepad_axis_value(0,gp_axislh) > 0.2 || tcc_gamepad_button_check(0,global.gp_bind_moveright)) || keyboard_check(global.controlsmoveright);
-}
-//Jump
-if doublejump = 0 {
-if jumpcontrols = 0 { key_jump = (tcc_gamepad_button_check(0,global.gp_bind_jump)) || keyboard_check(ord(global.controlsjump)) }
-else { key_jump = (tcc_gamepad_button_check(0,global.gp_bind_jump)) || keyboard_check(global.controlsjump) }
-} else {
-if jumpcontrols = 0 { key_jump = (tcc_gamepad_button_check_pressed(0,global.gp_bind_jump)) || keyboard_check_pressed(ord(global.controlsjump)) }
-else { key_jump = tcc_gamepad_button_check_pressed(0,global.gp_bind_jump) || keyboard_check_pressed(global.controlsjump) }
-}
+scr_player_input();
 
-
-//Interact
-if interactcontrols = 0 {
-key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (tcc_gamepad_button_check_pressed(0,global.gp_bind_interact)) //|| keyboard_check_pressed(ord("S"));
-} else { key_interact = keyboard_check_pressed(global.controlsinteract) || (tcc_gamepad_button_check_pressed(0,global.gp_bind_interact)) }
-//Interact Hold
-if interactcontrols = 0 {
-key_interact_h = keyboard_check(ord(global.controlsinteract)) || (tcc_gamepad_button_check(0,global.gp_bind_interact)) //|| keyboard_check_pressed(ord("S"));
-} else { key_interact_h = keyboard_check(global.controlsinteract) || (tcc_gamepad_button_check(0,global.gp_bind_interact)) }
-//Restart
-if restartcontrols = 0 { key_restart = keyboard_check(ord(global.controlsrestart)) || (tcc_gamepad_button_check(0,global.gp_bind_restart)) } else { key_restart = keyboard_check(global.controlsrestart) || (tcc_gamepad_button_check(0,global.gp_bind_restart)) }
-} else {
-key_left = instance_exists(o_buttonleftandroid) && o_buttonleftandroid.pressed;
-key_right = instance_exists(o_buttonrightandroid) && o_buttonrightandroid.pressed;
-key_jump = instance_exists(o_buttonjumpandroid) && (o_buttonjumpandroid.press || (doublejump == 0 && o_buttonjumpandroid.pressed));
-key_interact = instance_exists(o_buttoninteractandroid) && o_buttoninteractandroid.press == 1;
-key_interact_h = instance_exists(o_buttoninteractandroid) && o_buttoninteractandroid.pressed;
-key_restart = instance_exists(o_buttonrestartandroid) && o_buttonrestartandroid.press == 1;
-}
+qa_player_input();
 
 if global.noclip = 1 {
-if keyboard_check(vk_right) || keyboard_check(ord("D")) { x += walksp * (60 / global.maxfps) }
-if keyboard_check(vk_left) || keyboard_check(ord("A")) { x -= walksp * (60 / global.maxfps) }
-if keyboard_check(vk_up) || keyboard_check(ord("W")) { y -= walksp * (60 / global.maxfps) }
-if keyboard_check(vk_down) || keyboard_check(ord("S")) { y += walksp * (60 / global.maxfps) }
+if timing_keyboard_down(vk_right) || timing_keyboard_down(ord("D")) { x += walksp * (60 / global.maxfps) }
+if timing_keyboard_down(vk_left) || timing_keyboard_down(ord("A")) { x -= walksp * (60 / global.maxfps) }
+if timing_keyboard_down(vk_up) || timing_keyboard_down(ord("W")) { y -= walksp * (60 / global.maxfps) }
+if timing_keyboard_down(vk_down) || timing_keyboard_down(ord("S")) { y += walksp * (60 / global.maxfps) }
 }
 
 
@@ -74,8 +35,8 @@ death()
 }}}}
 
 //Restart Challenge
-if keyboard_check(vk_control) {
-	if keyboard_check_pressed(ord(global.controlsrestart)) { //Not using key_restart
+if timing_keyboard_down(vk_control) {
+	if timing_keyboard_pressed(settings_keyboard_code(global.controlsrestart)) { //Not using key_restart
 		if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1) {
 			scr_workshopchallenge_restart();
 		} else {
@@ -155,6 +116,8 @@ vsp = (vsp + ((grv * (60 / global.maxfps))/inwater))
 
 onGround = false
 onCelling = false
+if (scr_slope_place(x,y+1) != noone) { onice = false; onGround = true; }
+if (scr_slope_place(x,y-1) != noone) { onice = false; onCelling = true; }
 if place_meeting(x,y+1,o_anyblock) {onice = false onGround = true}
 if place_meeting(x,y+1,o_iceblock) {onice = true onGround = true}
 if place_meeting(x,y+1,o_redblockmove) {onice = false onGround = true}
@@ -204,7 +167,8 @@ par_walktimer = 10
 }
 
 if global.managablejump = 1 {
-if (tcc_gamepad_button_check_released(0,global.gp_bind_jump)) || keyboard_check_released(ord(global.controlsjump)) &&  vsp <= 0 {
+var _jump_device = gamepad_remap_active_device();
+if (vsp <= 0 && ((_jump_device >= 0 && tcc_gamepad_button_check_released(_jump_device,global.gp_bind_jump)) || timing_keyboard_released(settings_keyboard_code(global.controlsjump)))) {
 //vsp = lerp(vsp,0,0.15)
 vsp = 0
 }}
@@ -212,7 +176,7 @@ vsp = 0
 //Jumps
 if coyotetime > 0 and (key_jump) and vsp > 0 and !onGround and !onCelling { jump() }
 if (place_meeting(x,y+1,o_anyblock)) and (key_jump) {jump()}
-if (place_meeting(x,y+2,o_redblockslope)) and (key_jump) {jump()}
+if (scr_slope_place(x,y+1) != noone) and (key_jump) {jump()}
 if (place_meeting(x,y+1,o_redblockmove)) and (key_jump) {jump()}
 if (place_meeting(x,y+1,o_yellowblockmove)) and (key_jump) {jump()}
 if (place_meeting(x,y+1,o_greenblockmove)) and (key_jump) {jump()}
@@ -264,6 +228,11 @@ horizontalcollision()
 x = x + hsp
 
 //Vertical Collision
+// Square collision helpers may move y and clear vsp. Sweep from the original
+// position so a square underneath a ramp cannot move us through its diagonal.
+var _vertical_start_y = y;
+var _vertical_direction = sign(vsp);
+var _slope_vertical = scr_slope_resolve_vertical(vsp);
 
 /*
 	if (place_meeting(x,y+vsp,o_redblockslope)) { //Test
@@ -273,27 +242,13 @@ x = x + hsp
 	    }
 	    vsp = 0;
 	}*/
-verticalcollision(o_redblockslope)
 verticalcollision(o_anyblock)
 verticalcollision(o_movingplatforms,1)
 verticalcollision(o_shooter)
 verticalcollision(o_shooterright)
 verticalcollision(o_rocketlauncher)
 verticalcollision(o_rocketlauncherright)
-if vsp > 0 {
-    if place_meeting(x, y+vsp, o_onewayupblock) {
-        var platform = instance_place(x, y+vsp, o_onewayupblock);
-        if platform != noone {
-            if bbox_bottom <= platform.bbox_top {
-                while (!place_meeting(x, y+sign(vsp), o_onewayupblock)) {
-                    y = y + sign(vsp);
-                }
-                vsp = 0;
-                if onGround & !onCelling { coyotetime = coyotetimeMAX }
-            }
-        }
-    }
-}
+player_oneway_landing();
 
 if vsp < 0 {
 verticalcollision(o_onewaydownblock)
@@ -301,6 +256,12 @@ verticalcollision(o_onewaydownblock)
 
 verticalcollision(o_playerMU)
 
+if (_slope_vertical.blocked && _vertical_direction * (y - _vertical_start_y + vsp)
+    >= _vertical_direction * _slope_vertical.dy) {
+    if (_vertical_direction > 0) { onGround = true; coyotetime = coyotetimeMAX; }
+    y = _vertical_start_y + _slope_vertical.dy;
+    vsp = 0;
+}
 coyotetime -= 0.03
 
 y = y + vsp
@@ -311,23 +272,27 @@ if vsp > 30 * (global.maxfps / 60) { vsp = 30 * (global.maxfps / 60) }
 }
 
 //Animation
+animation_vsp = player_animation_velocity();
+if (animation_vsp == 0 && vsp >= 0 && !key_left && !key_right
+    && scr_slope_place(x,y+1) != noone) image_index = 0;
 if global.skinselected != 23 {
-if vsp < -0.3 and !hsp  { image_index = 6 } //Jump
-if vsp > 0.3 and !hsp  { image_index = 3 } //Fall
-if key_right and vsp = 0 { image_index = 1 } //Moving right without jumping
-if key_right and vsp < -0.3 { image_index = 7 } //Jumping right
-if key_right and vsp > 0.3 { image_index = 4 } //Falling right
-if key_left and vsp = 0 { image_index = 2 } //Moving left without jumpin
-if key_left and vsp < -0.3 { image_index = 8 } //Jumping left
-if key_left and vsp > 0.3 { image_index = 5 } //Falling left
-if key_right and key_left and vsp > 0.3 { image_index = 3 } //Falling while pressing left and right
-if key_right and key_left and vsp < -0.3 { image_index = 6 } //Jumping while pressing left and right
-if key_right and key_left and vsp = 0 { image_index = 0 } //Pressing left and right
+if animation_vsp < -0.3 and !hsp  { image_index = 6 } //Jump
+if animation_vsp > 0.3 and !hsp  { image_index = 3 } //Fall
+if key_right and animation_vsp = 0 { image_index = 1 } //Moving right without jumping
+if key_right and animation_vsp < -0.3 { image_index = 7 } //Jumping right
+if key_right and animation_vsp > 0.3 { image_index = 4 } //Falling right
+if key_left and animation_vsp = 0 { image_index = 2 } //Moving left without jumpin
+if key_left and animation_vsp < -0.3 { image_index = 8 } //Jumping left
+if key_left and animation_vsp > 0.3 { image_index = 5 } //Falling left
+if key_right and key_left and animation_vsp > 0.3 { image_index = 3 } //Falling while pressing left and right
+if key_right and key_left and animation_vsp < -0.3 { image_index = 6 } //Jumping while pressing left and right
+if key_right and key_left and animation_vsp = 0 { image_index = 0 } //Pressing left and right
 }
 if key_right { global.playermove = 1 }
 if key_left { global.playermove = -1 }
 
 } else { //ZERO GRAVITY
+timing_restore_polar_motion();
 image_index = 6
 
 if key_right { direction -= 3 * (60 / global.maxfps) }
@@ -349,9 +314,11 @@ if (col > -1) {
     y += lengthdir_y(speed*2, dir);
 }
 image_angle = direction - 90 //EXIT ZERO G
+slopecollision_zero_gravity();
 //vsp = (vspeed * speed) * (global.maxfps / 144)
 //hspzerogrv = (hspeed * speed) * (global.maxfps / 144)
 vsp = vspeed * (global.maxfps / 60)
+animation_vsp = vsp
 hspzerogrv = hspeed * (global.maxfps / 60)
 }
 
@@ -363,7 +330,7 @@ if y > room_height - 30 {
 //Jumps (Optimized Code)
 
 	if instance_exists(o_buttonjumpandroid) {
-if o_buttonjumpandroid.press = 1 and (doublejump = 1) and (key_jump) {
+if (doublejump == 1) && key_jump {
 jump()
 }} else {
 	if (doublejump > 0) and (key_jump) {
@@ -406,13 +373,13 @@ scr_playerrbgnormal()
 break;
 case 21:
 scr_playerrbg()
-if vsp = 0 {
+if animation_vsp = 0 {
 eyesY = lerp(eyesY,0,0.2 * (60 / global.maxfps))
 }
-if vsp < 0 {
+if animation_vsp < 0 {
 eyesY = lerp(eyesY,-7,0.2 * (60 / global.maxfps))
 }
-if vsp > 0 {
+if animation_vsp > 0 {
 eyesY = lerp(eyesY,7,0.2 * (60 / global.maxfps))
 }
 if hsp != 0 {
@@ -469,19 +436,19 @@ case 30:
 scr_playerrbgnormal()
 scr_animatedeyes()
 
-if vsp < -0.3 and !hsp  { googlyeyesrot = 0 } //Jump
-if vsp > 0.3 and !hsp  { googlyeyesrot = 180 } //Fall
-if key_right and vsp = 0 { googlyeyesrot = 270 } //Moving right without jumping
-if key_right and vsp < -0.3 { googlyeyesrot = 315 } //Jumping right
-if key_right and vsp > 0.3 { googlyeyesrot = 225 } //Falling right
-if key_left and vsp = 0 { googlyeyesrot = 90 } //Moving left without jumpin
-if key_left and vsp < -0.3 { googlyeyesrot = 35 } //Jumping left
-if key_left and vsp > 0.3 { googlyeyesrot = 135 } //Falling left
-if key_right and key_left and vsp > 0.3 { googlyeyesrot = 180 } //Falling while pressing left and right
-if key_right and key_left and vsp < -0.3 { googlyeyesrot = 0 } //Jumping while pressing left and right
-if key_right and key_left and vsp = 0 { googlyeyesrot = 0 } //Pressing left and right
+if animation_vsp < -0.3 and !hsp  { googlyeyesrot = 0 } //Jump
+if animation_vsp > 0.3 and !hsp  { googlyeyesrot = 180 } //Fall
+if key_right and animation_vsp = 0 { googlyeyesrot = 270 } //Moving right without jumping
+if key_right and animation_vsp < -0.3 { googlyeyesrot = 315 } //Jumping right
+if key_right and animation_vsp > 0.3 { googlyeyesrot = 225 } //Falling right
+if key_left and animation_vsp = 0 { googlyeyesrot = 90 } //Moving left without jumpin
+if key_left and animation_vsp < -0.3 { googlyeyesrot = 35 } //Jumping left
+if key_left and animation_vsp > 0.3 { googlyeyesrot = 135 } //Falling left
+if key_right and key_left and animation_vsp > 0.3 { googlyeyesrot = 180 } //Falling while pressing left and right
+if key_right and key_left and animation_vsp < -0.3 { googlyeyesrot = 0 } //Jumping while pressing left and right
+if key_right and key_left and animation_vsp = 0 { googlyeyesrot = 0 } //Pressing left and right
 googlyeyesrotreal = lerp(googlyeyesrotreal,googlyeyesrot,0.25 * (60 / global.maxfps))
-if keyboard_check_pressed(vk_anykey) {
+if timing_keyboard_pressed(vk_anykey) {
 randomeeyerotationR = lerp(randomeeyerotationR,random_range(-360,360),0.2 * (60 / global.maxfps))
 randomeeyerotationL = lerp(randomeeyerotationL,random_range(-360,360),0.2 * (60 / global.maxfps))
 }
@@ -575,9 +542,6 @@ increase_stat("totalportal","QUESTportal",1)
 //Gun
 if place_meeting(x,y,o_gunequipped) {
 if key_interact {
-if instance_exists(o_buttoninteractandroid) {
-if o_buttoninteractandroid.press = 0 { exit }
-}
 if inwater = 1 {
 if global.gunammo > 0 {
 instance_destroy(o_lastshotplayer)
@@ -611,6 +575,7 @@ if key_left { o_gunequipped.timer = 0 }
 //Death Triggers
 if global.easy = 0 {
 if global.color != 4 {
+if (scr_slope_harmful_contact(global.color)) { blockdeath(); exit; }
 
 //RED DEATH
 if global.color != 0 {
@@ -739,7 +704,8 @@ if walksp != 8.5 {
 
 //Next Level
 if room != r_leveleditor {
-if place_meeting(x,y+3,o_door) {
+if place_meeting(x,y+3,o_door) && !instance_exists(o_key) {
+	qa_observe_exit();
 	if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1 && room == r_customlevelworkshop) {
 		scr_workshopchallenge_advance();
 		exit;
@@ -782,7 +748,9 @@ if global.hardmodedifficulty = 7 {
 	}
 if global.hardmode = 0 {
 if global.challenges = 0 {
-scr_savegame()
+// Room changes execute after this event. Save the actual destination now,
+// including the merchant between levels 30 and 31, rather than the old room.
+scr_savegame(room_next(room));
 }
 }
 } else {
@@ -962,17 +930,17 @@ instance_destroy() }}}
 
 //Debug
 if debug_mode{
-	if keyboard_check_pressed(ord("N")) {
+	if timing_keyboard_pressed(ord("N")) {
 	if global.endless = 0 {
 room_goto_next()
 	} else { randomlevel() }
 	}
-		if keyboard_check_pressed(ord("P")) {
+		if timing_keyboard_pressed(ord("P")) {
 	if global.endless = 0 {
 room_goto_previous()
 	} else { randomlevel() }
 	}
-		if keyboard_check_pressed(ord("M")) {
+		if timing_keyboard_pressed(ord("M")) {
 audio_stop_all()
 	}
 }
@@ -980,4 +948,4 @@ audio_stop_all()
 if global.biglevelperfsettings < 1 { exit }
 
 //show_debug_message("lol")
-instance_activate_region(x-150,y-150,x+150,y+150,true)
+timing_activate_region(x-150,y-150,300,300,true)

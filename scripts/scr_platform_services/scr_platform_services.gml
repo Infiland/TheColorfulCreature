@@ -128,12 +128,30 @@ function platform_services_account(_owner) {
     global.service_next_attempt = 0;
 }
 
-function platform_google_auth_result(_result, _authenticated = false) {
+function platform_google_auth_begin(_interactive = false) {
+    // The native dispatcher keeps this bound struct alive after the caller's room exits.
+    global.service_google_auth_generation = variable_global_exists("service_google_auth_generation")
+        ? global.service_google_auth_generation + 1 : 1;
     global.service_authenticated = false;
-    if (!_result.success || !_authenticated) return;
-    play_services_player_current_id(function(_result, _id = undefined) {
-        if (_result.success && is_string(_id)) platform_services_account("google:" + _id);
+    var _attempt = {generation:global.service_google_auth_generation, phase:"auth"};
+    var _callback = method(_attempt, function(_result, _authenticated = false) {
+        if (generation != global.service_google_auth_generation || phase != "auth") return;
+        phase = "done";
+        if (!_result.success || !_authenticated) return;
+        phase = "id";
+        var _id_callback = method(self, function(_result, _id = undefined) {
+            if (generation != global.service_google_auth_generation || phase != "id") return;
+            phase = "done";
+            if (_result.success && is_string(_id) && _id != "")
+                platform_services_account("google:" + _id);
+        });
+        var _error = play_services_player_current_id(_id_callback);
+        if (is_undefined(_error) || _error != PlayServicesError.Ok) phase = "done";
     });
+    var _error = _interactive ? play_services_sign_in(_callback)
+        : play_services_is_authenticated(_callback);
+    if (is_undefined(_error) || _error != PlayServicesError.Ok) _attempt.phase = "done";
+    return _error;
 }
 
 function platform_services_init() {
@@ -155,7 +173,7 @@ function platform_services_init() {
                 platform_services_account("apple:" + _result.player.game_player_id);
         });
     } else if (platform_google_play()) {
-        play_services_is_authenticated(platform_google_auth_result);
+        platform_google_auth_begin();
     }
 }
 
@@ -265,7 +283,7 @@ function platform_show_achievements() {
         gamecenter_access_point_present_with_state(GameCenterViewState.Achievements, function() {});
     } else if (platform_google_play()) {
         platform_interrupt();
-        if (!global.service_authenticated) play_services_sign_in(platform_google_auth_result);
+        if (!global.service_authenticated) platform_google_auth_begin(true);
         else play_services_achievements_show();
     } else if (platform_steam()) room_goto(r_achievements);
 }
@@ -276,7 +294,7 @@ function platform_show_leaderboards() {
         gamecenter_access_point_present_with_state(GameCenterViewState.Leaderboards, function() {});
     } else if (platform_google_play()) {
         platform_interrupt();
-        if (!global.service_authenticated) play_services_sign_in(platform_google_auth_result);
+        if (!global.service_authenticated) platform_google_auth_begin(true);
         else play_services_leaderboard_show_all();
     } else if (platform_steam()) room_goto(r_onlineleaderboard);
 }

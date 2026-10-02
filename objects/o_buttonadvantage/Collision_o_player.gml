@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if appear = 1 {
 image_index = 1
 image_alpha = 1

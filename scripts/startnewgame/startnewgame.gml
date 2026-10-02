@@ -1,4 +1,5 @@
 function startnewgame(){
+scr_campaign_reset_context();
 scr_loadskins()
 room_goto(r_lvl1); //Change if you want to change levels.
 loadhud()

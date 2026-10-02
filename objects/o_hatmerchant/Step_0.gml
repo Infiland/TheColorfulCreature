@@ -1,13 +1,5 @@
-key_interact = false;
-if !platform_mobile() {
-if interactcontrols = 0 {
-key_interact = keyboard_check_pressed(ord(global.controlsinteract)) || (tcc_gamepad_button_check_pressed(0,global.gp_bind_interact)) //|| keyboard_check_pressed(ord("S"));
-} else { key_interact = keyboard_check_pressed(global.controlsinteract) }
-} else {
-if instance_exists(o_buttoninteractandroid) {
-key_interact = o_buttoninteractandroid.image_index = 1;
-}
-}
+if (!timing_instance_step()) exit;
+key_interact = player_interact_pressed();
 
 if instance_exists(o_player) {
 if distance_to_object(o_player) < 70 {

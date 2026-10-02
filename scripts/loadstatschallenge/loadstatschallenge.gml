@@ -190,9 +190,9 @@ function scr_challenges_load_defs() {
 	if (is_undefined(_custom_data)) return undefined;
 				var _custom_def = scr_challenge_def_from_map(_custom_data, true);
 			if (_custom_def.level_dir == "") {
-				if (file_exists(_base_dir + _dir + "/1/LevelEditor.sav")) {
+				if (level_exists(_base_dir + _dir + "/1/")) {
 					_custom_def.level_dir = _dir + "/1";
-				} else if (file_exists(_base_dir + _dir + "/LevelEditor.sav")) {
+				} else if (level_exists(_base_dir + _dir + "/")) {
 					_custom_def.level_dir = _dir;
 				}
 			}
@@ -363,6 +363,7 @@ function loadstatschallenge(){
 
 function scr_challenge_button_setup(_id) {
 	challenge = _id;
+	timing_ui_register_target("challenge");
 	text = "Challenge " + string(_id);
 	difficulty = 1;
 	diamondtime = 9999;
@@ -417,52 +418,37 @@ function scr_challenge_button_refresh() {
 }
 
 function scr_challenge_play_music(_def) {
-	if (_def.music_mode == "leveleditor") {
-		var _music_path = "";
-		if (variable_global_exists("challenge_level_dir") && global.challenge_level_dir != "") {
-			var _base_dir = "";
-			if (variable_global_exists("challenge_base_dir")) _base_dir = global.challenge_base_dir;
-			if (_base_dir == "") _base_dir = scr_challenge_get_base_dir();
-			_music_path = _base_dir + global.challenge_level_dir + "/Music.ogg";
-		}
-		if (_music_path != "" && file_exists(_music_path)) {
-			var _mus = audio_create_stream(_music_path);
-			audio_play_sound(_mus, 0, 1);
-			audio_sound_gain(_mus, global.musicvolume, 1);
-		} else {
-			scr_leveleditormusic();
-		}
-		return;
-	}
-	if (_def.music != "") {
-		var _sound = asset_get_index(_def.music);
-		if (_sound != -1) {
-			audio_play_sound(_sound, 0, 1);
-			audio_sound_gain(_sound, global.musicvolume, 1);
-		}
-	}
+    level_music_release();
+    global.level_music_directory = "";
+    if (_def.music_mode == "leveleditor") {
+        var _directory = "";
+        if (variable_global_exists("challenge_level_dir") && global.challenge_level_dir != "") {
+            var _base = variable_global_exists("challenge_base_dir") ? global.challenge_base_dir : "";
+            if (_base == "") _base = scr_challenge_get_base_dir();
+            _directory = level_directory(_base) + global.challenge_level_dir;
+        }
+        scr_leveleditormusic(_directory);
+        return;
+    }
+    if (_def.music != "") {
+        var _sound = asset_get_index(_def.music);
+        if (_sound != -1 && asset_get_type(_sound) == asset_sound) {
+            audio_play_sound(_sound, 0, 1);
+            audio_sound_gain(_sound, global.musicvolume, 1);
+        }
+    }
 }
 
-	function scr_challenge_prepare_custom_level(_def, _level_dir) {
-		var _dir = _def.level_dir;
-		if (!is_undefined(_level_dir) && _level_dir != "") _dir = _level_dir;
-		global.challenge_level_dir = _dir;
-		global.LEMode = 2;
-		var _base_dir = "";
-		if (variable_global_exists("challenge_base_dir")) _base_dir = global.challenge_base_dir;
-		if (_base_dir == "") _base_dir = scr_challenge_get_base_dir();
-	_base_dir += _dir + "/";
-	if (file_exists(_base_dir + "OtherLevelEditor.sav")) {
-		ini_open(_base_dir + "OtherLevelEditor.sav");
-		global.LELevelWidthBlocks = ini_read_real("Other LE", "Level Width Blocks", 32);
-		global.LELevelHeightBlocks = ini_read_real("Other LE", "Level Height Blocks", 22);
-		global.LEDiamondMedalTime = ini_read_real("Other LE", "Diamond Medal Time", 35);
-		global.leveleditormusic = ini_read_real("Other LE", "Music", 0);
-		ini_close();
-	}
-	global.DiamondMedalTimeChallenge = global.LEDiamondMedalTime;
-	room_set_width(r_challengelevel, global.LELevelWidthBlocks * 32);
-	room_set_height(r_challengelevel, 64 + (global.LELevelHeightBlocks * 32));
+function scr_challenge_prepare_custom_level(_def, _level_dir = "") {
+    var _dir = _level_dir != "" ? _level_dir : _def.level_dir;
+    var _base = variable_global_exists("challenge_base_dir") ? global.challenge_base_dir : "";
+    if (_base == "") _base = scr_challenge_get_base_dir();
+    if (!level_prepare_room(level_directory(_base) + _dir, r_challengelevel)) return false;
+    global.challenge_level_dir = _dir;
+    global.LEMode = 2;
+    // Challenge definition controls its target, regardless of individual level medals.
+    global.DiamondMedalTimeChallenge = _def.diamond_time;
+    return true;
 }
 
 function scr_challenge_start(_id) {
@@ -475,6 +461,12 @@ function scr_challenge_start(_id) {
 		return;
 	}
 
+	// A validated packaged start owns a fresh run; no prior Workshop sequence
+	// may keep its completion flag and suppress this challenge's results.
+	scr_workshopchallenge_abort();
+	global.workshopchallenge = 0;
+	scr_resetcheckpointdata();
+	global.pickup = 0;
 	global.levelselect = 0;
 	global.challenge_run_id = _def.id;
 	global.time = 0;
@@ -489,7 +481,7 @@ function scr_challenge_start(_id) {
 		global.challenge_room_index = 0;
 
 		if (array_length(_def.level_dirs) > 0) {
-			scr_challenge_prepare_custom_level(_def, _def.level_dirs[0]);
+			if (!scr_challenge_prepare_custom_level(_def, _def.level_dirs[0])) { level_load_failure(); return; }
 			room_goto(r_challengelevel);
 		} else if (array_length(_def.rooms) > 0) {
 			var _start_index = 0;
@@ -552,7 +544,7 @@ function scr_challenge_advance() {
 		var _next = _current + 1;
 		if (_next < array_length(_def.level_dirs)) {
 			global.challenge_level_index = _next;
-			scr_challenge_prepare_custom_level(_def, _def.level_dirs[_next]);
+			if (!scr_challenge_prepare_custom_level(_def, _def.level_dirs[_next])) { level_load_failure(); return true; }
 			room_goto(r_challengelevel);
 			return true;
 		}

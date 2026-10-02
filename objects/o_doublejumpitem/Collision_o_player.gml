@@ -1,4 +1,5 @@
-randomize();
+if (!timing_is_tick()) exit;
+tcc_randomize();
 
 if global.itempar = 1 { 
 	repeat (irandom_range(3,7)) {

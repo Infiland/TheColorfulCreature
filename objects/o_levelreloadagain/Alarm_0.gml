@@ -1,7 +1,9 @@
+if (!timing_is_tick()) exit;
 show_debug_message("Level Reloading")
 
-var directory = directory_set("/LevelEditor Files//" + global.levelname + "/")
-scr_loadleveleditor()
+var directory = level_editor_directory()
+if (!level_apply(pending_document, "editor")) { instance_destroy(); exit; }
+if (!achievement_earned("LOAD_LEVEL")) achievement_award("LOAD_LEVEL");
 global.LEBuild = 1
 global.LES = 0
 scr_LEChangeScenery()

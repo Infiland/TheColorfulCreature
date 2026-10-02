@@ -73,7 +73,7 @@ if global.steam_api = true {
 
 		var path_norm = string_replace_all(string(path_to_file), "\\", "/")
 		if (string_copy(path_norm, string_length(path_norm), 1) != "/") { path_norm += "/" }
-		if !file_exists(path_norm + "LevelEditor.sav") { continue }
+		if !level_exists(path_norm) { continue }
 
 		// Build level struct
 		var lvl = {}
@@ -95,12 +95,9 @@ if global.steam_api = true {
 		lvl.medal_required = 999999
 		lvl.download_state = "unknown"
 
-		// Load diamond medal time from level metadata
-		if file_exists(path_norm + "OtherLevelEditor.sav") {
-			ini_open(path_norm + "OtherLevelEditor.sav")
-			lvl.medal_required = ini_read_real("Other LE", "Diamond Medal Time", 999999)
-			ini_close()
-		}
+		var _metadata = level_metadata(path_norm);
+        if (is_undefined(_metadata)) continue;
+        lvl.medal_required = _metadata.diamondTime;
 
 		// Load medal progress
 		var medal_dir = directory_set("/Custom/Workshop/Medals/" + string(file_id) + "/")

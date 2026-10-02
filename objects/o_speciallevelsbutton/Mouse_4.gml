@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if locked = 0 {
 if !instance_exists(o_quitask) {
 room_goto(r_donolvl1);

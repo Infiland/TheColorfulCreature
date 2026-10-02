@@ -1,3 +1,4 @@
+if (!timing_is_tick()) exit;
 if room != r_customlevelworkshop {
 room_goto(r_customlevelworkshop)
 }

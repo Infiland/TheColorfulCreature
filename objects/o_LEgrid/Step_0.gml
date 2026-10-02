@@ -1,4 +1,5 @@
-key_grid = keyboard_check_pressed(ord("G"))
+if (!timing_instance_step()) exit;
+key_grid = timing_keyboard_pressed(ord("G"))
 if instance_exists(o_leveleditorleaveask) { exit }
 if instance_exists(o_namelevelLE) { exit }
 if instance_exists(o_inputtext) { exit }

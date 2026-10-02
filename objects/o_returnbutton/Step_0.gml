@@ -1,3 +1,4 @@
+if (!timing_instance_step()) exit;
 if ingame = true {
 if instance_exists(o_settingspausemenu) {
 x = lerp(x,vx + 896,0.2)

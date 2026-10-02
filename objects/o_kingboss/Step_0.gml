@@ -1,4 +1,5 @@
-randomize()
+if (!timing_instance_step()) exit;
+tcc_randomize()
 
 if global.pause = 1{ exit }
 
@@ -29,7 +30,7 @@ audio_play_sound(m_kingsthrone,0,1)
 }
 break;
 case(1):
-x -= 5 * (60 / global.maxfps)
+x -= 5 * (60 / TCC_SIM_HZ)
 if x < 1800 {
 if global.berserk = 1 {
 hp = 0	
@@ -49,7 +50,7 @@ if x > 1929 {
 hsp = -5
 }}
 
-timerjump -= 1 * (60 / global.maxfps)
+timerjump -= 1 * (60 / TCC_SIM_HZ)
 
 if timerjump < 0 {
 vsp = -15
@@ -89,7 +90,7 @@ image_index = 0
 
 //Collision
 if state != 0 {
-vsp = vsp + (grv * (60 / global.maxfps))
+vsp = vsp + (grv * (60 / TCC_SIM_HZ))
 
 if state != 1 {
 if state != 3 {
@@ -110,9 +111,9 @@ if state != 3 {
 	}*/
 }}
 
-if vsp > 30 * (global.maxfps / 60) { vsp = 30 * (global.maxfps / 60) }
+if vsp > 30 * (TCC_SIM_HZ / 60) { vsp = 30 * (TCC_SIM_HZ / 60) }
 	    if y > -200 {
-		x = x + hsp * (60 / global.maxfps)
-		y = y + vsp * (60 / global.maxfps)
+		x = x + hsp * (60 / TCC_SIM_HZ)
+		y = y + vsp * (60 / TCC_SIM_HZ)
 		}
 }

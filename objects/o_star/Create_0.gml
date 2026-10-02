@@ -1,6 +1,6 @@
 //SPAWNED BY o_fullscreensystem
 
-randomize();
+tcc_randomize();
 var sw = choose(0,1)
 previousspeed = speed
 distance = 0

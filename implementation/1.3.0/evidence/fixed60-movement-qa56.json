@@ -1,0 +1,109 @@
+{
+  "status": "FULL84_CURRENT_NATIVE_RECORD_SCOPE_PASS_ORIGINAL_BATCH_REJECTION_RETAINED",
+  "scope": "14 calibration fixtures, six actual rendering caps; separately declared canonical motion and ordinary pause-save derivatives",
+  "binding": {
+    "build": "/Users/infi/Library/Caches/TCC130/gameplay-qa-56",
+    "snapshot": "/Users/infi/Library/Caches/TCC130/gameplay-qa-56/source",
+    "source": {
+      "identityVersion": 2,
+      "identityScheme": "project-runtime-assets-v2",
+      "sourceSha256": "4db206c4f6a2fbfbb30e6420a74d14fcdf7c317bdae1cfea050c859e72da8217",
+      "physicsSha256": "d902c7264bc94017999b15119b1c7fae713f97ebc2f3f7da5aa676374a9a4957",
+      "fileCount": 23352
+    },
+    "executableSha256": "f4acd208f3129ab98db92960eda9d482bfb4400753ab7d21cb0534a667655a22",
+    "artifact": {
+      "sha256": "df86bf7510849ac6c2c2597eddb5bb025bdb65c62e829c62496c2534532dd4b0",
+      "fileCount": 106
+    },
+    "compilerBackend": "VM"
+  },
+  "renderingCaps": [
+    60,
+    75,
+    100,
+    120,
+    144,
+    150
+  ],
+  "mechanics": [
+    "default",
+    "gravity01",
+    "gravity05",
+    "gravity15",
+    "gravity25",
+    "speed5",
+    "speed7",
+    "speed10",
+    "speed15",
+    "water",
+    "ice",
+    "ladder",
+    "doublejump",
+    "zerogravity"
+  ],
+  "canonicalRecords": 72,
+  "ordinaryPauseSaveDerivativeRecords": 12,
+  "normalZeroDeathRecords": 84,
+  "fullPlayerFields": 38,
+  "fullPlayerTraceRows": 24480,
+  "fullStateComparisonsAgainstActual60": 70,
+  "exactFullPlayerTickPairs": 20400,
+  "rawStateFieldCount": 19,
+  "floatTolerance": 0,
+  "presentationExclusions": [],
+  "actualSavedPickupCounterCount": 12,
+  "actualSavedPickupCountersAllEqualOne": true,
+  "initialCounterTelemetryPresent": false,
+  "unchangedRawRunFiles": 696,
+  "batches": [
+    {
+      "stage": 1,
+      "batch": "/Users/infi/Library/Caches/TCC130/motion-native-qa56-stage1-01/batch.json",
+      "batchSha256": "18c65831fc528e76df29ef5f1b781ed94327ad75d68f250a1192baf835150a5e",
+      "actualNativeRecords": 28,
+      "actualObserver": {
+        "ownedProcesses": 29,
+        "checks": 8365,
+        "activeChecks": 0,
+        "visibleWindowChecks": 0,
+        "nonBackgroundChecks": 8365,
+        "maximumConcurrentOwnedProcesses": 1,
+        "observerChangesAppState": false
+      }
+    },
+    {
+      "stage": 2,
+      "batch": "/Users/infi/Library/Caches/TCC130/motion-native-qa56-stage2-01/batch.json",
+      "batchSha256": "6460679f7821b2537937624648e003a8f5c54050557390eb1b0cc0896bd04f47",
+      "actualNativeRecords": 56,
+      "actualObserver": {
+        "ownedProcesses": 56,
+        "checks": 16402,
+        "activeChecks": 0,
+        "visibleWindowChecks": 0,
+        "nonBackgroundChecks": 16402,
+        "maximumConcurrentOwnedProcesses": 1,
+        "observerChangesAppState": false
+      }
+    }
+  ],
+  "independentReport": "/Users/infi/Library/Caches/TCC130/requests/qa56-motion-independent-full84-assessment01/report.json",
+  "independentReportSha256": "29c8ccc11486991d8f8dc69730ad28761a5d10209d0643cd1385918e9c1b7cc5",
+  "independentFreezeSha256": "87e97baa96e5caada1f69d5ee974cb958697cce80a786c317ccda7fa4f889679",
+  "originalFrozenBatchReaderAccepted": false,
+  "originalReaderRejection": "Stage1 aggregate observer seen-processIdentifier count29 versus28; unchanged and unwaived",
+  "extraStage1ObserverIdentityAttributed": false,
+  "originalRejectionWaived": false,
+  "limits": [
+    "No whole-game, level, release, hardware or service acceptance.",
+    "Original frozen batch reader rejects stage1 observer identities29 versus28; no fictitious attribution or waived failure.",
+    "Final isolated Stats counter1 is observed; bootstrap0 is source-only, not native counter transition telemetry.",
+    "Full logical-state equality does not require equal render-frame counts or elapsed wall time.",
+    "Historical same-cap QA55 observations are excluded from this current-source assessment.",
+    "Stage2 aggregate-count gate passes56, but neither aggregate observer provides per-PID/path/lifetime telemetry.",
+    "Exact logical-state comparisons do not assert identical native render/elapsed-wall measurements.",
+    "Compiled source-only settings/controller guards are bound but hardware/UI interaction is not established.",
+    "v2 complete project runtime coverage is bound; complete compiler/environment dependencies are not claimed."
+  ]
+}

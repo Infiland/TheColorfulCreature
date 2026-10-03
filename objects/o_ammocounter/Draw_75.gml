@@ -10,8 +10,6 @@ draw_set_alpha(image_alpha)
 
 if instance_exists(o_gunequipped) {
 depth = -10000
-if global.pause = 1 { image_speed = 0 }
-if global.pause = 0 { image_speed = 0.2 * (60 / global.maxfps) }
 if room != r_tale {
 draw_set_font(global.deathfont)
 draw_set_color(c_white)

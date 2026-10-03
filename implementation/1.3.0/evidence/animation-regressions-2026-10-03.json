@@ -1,0 +1,409 @@
+{
+  "schema": "tcc-animation-regressions-v1",
+  "date": "2026-10-03",
+  "build": "/Users/infi/Library/Caches/TCC130/animation-fix-qa-03",
+  "configuration": "QA",
+  "compilerBackend": "VM",
+  "IDE": "2026.0.0.16",
+  "runtime": "2026.0.0.23",
+  "source": {
+    "identityVersion": 2,
+    "identityScheme": "project-runtime-assets-v2",
+    "sourceSha256": "9794cc786541ff2e747aff440dbd9a23bf23491e2da6887f4934c232f98b6bef",
+    "physicsSha256": "f3532faa341c752e5a57226577b76604e12a9f0b28445d577f73b49c0c4b93e6",
+    "fileCount": 23133
+  },
+  "artifact": {
+    "sha256": "ac778632946265479c56f098bf7350aed107ad68068836e60b7112949eb84bc4",
+    "fileCount": 105
+  },
+  "executableSha256": "ce08143bcde9de8f8f1b5cd53c59a88e060470e87f822334225e234ea0fee8f9",
+  "inspector": "tools/animation_qa.py",
+  "inspectorSha256": "fca6adfb30c51c4694d49f53cbf473cebc22b1400bcf4ed5a9ace18527f7df78",
+  "simulationHz": 60,
+  "requestedSinglePlayerCaps": [
+    60,
+    75,
+    100,
+    120,
+    144,
+    150
+  ],
+  "requestedMultiplayerCaps": [
+    60,
+    150
+  ],
+  "passedRuns": 8,
+  "failedRuns": 0,
+  "nativeTailChecks": 20292,
+  "observedRatesPerActiveTick": {
+    "oneWayBlocks": 1,
+    "clock": 0.4,
+    "ammoWithGun": 0.2,
+    "ammoWithoutGun": 0
+  },
+  "crossCapSinglePlayerTrace": {
+    "fields": [
+      "x",
+      "y",
+      "hsp",
+      "vsp",
+      "direction",
+      "motionSpeed",
+      "gravity",
+      "walkSpeed",
+      "zeroGravity",
+      "doubleJump",
+      "water",
+      "breath",
+      "ammo",
+      "color",
+      "grounded",
+      "animationFrame",
+      "animationVelocity"
+    ],
+    "comparisons": 28560,
+    "maximumAbsoluteDifference": 0,
+    "passed": true
+  },
+  "runs": [
+    {
+      "fps": 150,
+      "actor": "o_player",
+      "drawSamples": 620,
+      "poseSamples": {
+        "0.0": 128,
+        "1.0": 145,
+        "2.0": 80,
+        "7.0": 45,
+        "4.0": 46,
+        "8.0": 43,
+        "5.0": 45
+      },
+      "renderOnlySamples": 347,
+      "renderOnlyMovementSamples": 125,
+      "observedRenderFps": 128.71594511918076,
+      "coverageGaps": [],
+      "passed": true,
+      "currentSourceVerified": true,
+      "fullyCovered": true,
+      "minimumNativeTailChecksPerActor": 613,
+      "minimumActiveRateChecksPerActor": 530,
+      "minimumAnimationHoldChecksPerActor": 346,
+      "minimumPausedFreezeChecksPerActor": 80,
+      "normalRuntimeEnd": true,
+      "muted": true,
+      "headlessRequested": true,
+      "rawDirectory": "/Users/infi/Library/Caches/TCC130/animation-fix-native-04/single-player-150",
+      "rawHashes": {
+        "spec.json": "88295777965408901bced26643f6467a7d0a461faa9e300803beb327b10056c1",
+        "runtime.json": "0f8f671ccc63a41d05e06018b8507ab35bdfa4cb1e0a798c05a7586cdb91c219",
+        "summary.json": "4eb23e3d2463648a5c63018000dca8475e4e1738da744d5a5cae780424d3eaff",
+        "runtime.log": "52e96f26acf0b4bf83568468582f1979e3586736af27c93d3aa07358cf1dad02"
+      }
+    },
+    {
+      "fps": 60,
+      "actor": "o_player",
+      "drawSamples": 278,
+      "poseSamples": {
+        "0.0": 59,
+        "1.0": 59,
+        "2.0": 35,
+        "7.0": 21,
+        "4.0": 20,
+        "8.0": 19,
+        "5.0": 21
+      },
+      "renderOnlySamples": 38,
+      "renderOnlyMovementSamples": 6,
+      "observedRenderFps": 56.6220973765163,
+      "coverageGaps": [],
+      "passed": true,
+      "currentSourceVerified": true,
+      "fullyCovered": true,
+      "minimumNativeTailChecksPerActor": 240,
+      "minimumActiveRateChecksPerActor": 232,
+      "minimumAnimationHoldChecksPerActor": 38,
+      "minimumPausedFreezeChecksPerActor": 39,
+      "normalRuntimeEnd": true,
+      "muted": true,
+      "headlessRequested": true,
+      "rawDirectory": "/Users/infi/Library/Caches/TCC130/animation-fix-native-04/single-player-60",
+      "rawHashes": {
+        "spec.json": "a348cd3e8f8f011dd31e98fb51d29106e6ef1b65121567592cd97590b56bee84",
+        "runtime.json": "82d25776facb369301bffd593bf9ba3aa14ecbb7b22130d3ecf320e06c97c714",
+        "summary.json": "6f235dea15fcea8cc22061a67e3586cd074fa14eff6229323ad3276696a4ac4a",
+        "runtime.log": "f48b0b4480d8a9f9cf273b80d42d3d6827997145a0d7053d55f07ba52c0a5adc"
+      }
+    },
+    {
+      "fps": 75,
+      "actor": "o_player",
+      "drawSamples": 335,
+      "poseSamples": {
+        "0.0": 68,
+        "1.0": 76,
+        "2.0": 40,
+        "7.0": 23,
+        "4.0": 23,
+        "8.0": 23,
+        "5.0": 23
+      },
+      "renderOnlySamples": 63,
+      "renderOnlyMovementSamples": 16,
+      "observedRenderFps": 66.79199831860143,
+      "coverageGaps": [],
+      "passed": true,
+      "currentSourceVerified": true,
+      "fullyCovered": true,
+      "minimumNativeTailChecksPerActor": 327,
+      "minimumActiveRateChecksPerActor": 274,
+      "minimumAnimationHoldChecksPerActor": 63,
+      "minimumPausedFreezeChecksPerActor": 53,
+      "normalRuntimeEnd": true,
+      "muted": true,
+      "headlessRequested": true,
+      "rawDirectory": "/Users/infi/Library/Caches/TCC130/animation-fix-native-04/single-player-75",
+      "rawHashes": {
+        "spec.json": "9b3b3f573379df8e7d388819beaa478607e525b4dc600bc45e3aaf97ff1c601c",
+        "runtime.json": "82770491d19ea06c1f9ca9f53f9612b8211927ceb5945624f47c36eb8215a4d3",
+        "summary.json": "8a5198d7a2b87208553b0adaf5f52feb7c5d309a95a5ce1a45750f7805a91085",
+        "runtime.log": "ff190f4ca45f56e8bf3da605b888320be49e7a61a12df1cceff318849fa70834"
+      }
+    },
+    {
+      "fps": 100,
+      "actor": "o_player",
+      "drawSamples": 424,
+      "poseSamples": {
+        "0.0": 91,
+        "1.0": 99,
+        "2.0": 53,
+        "7.0": 31,
+        "4.0": 32,
+        "8.0": 30,
+        "5.0": 29
+      },
+      "renderOnlySamples": 150,
+      "renderOnlyMovementSamples": 52,
+      "observedRenderFps": 87.97608215260625,
+      "coverageGaps": [],
+      "passed": true,
+      "currentSourceVerified": true,
+      "fullyCovered": true,
+      "minimumNativeTailChecksPerActor": 418,
+      "minimumActiveRateChecksPerActor": 363,
+      "minimumAnimationHoldChecksPerActor": 149,
+      "minimumPausedFreezeChecksPerActor": 53,
+      "normalRuntimeEnd": true,
+      "muted": true,
+      "headlessRequested": true,
+      "rawDirectory": "/Users/infi/Library/Caches/TCC130/animation-fix-native-04/single-player-100",
+      "rawHashes": {
+        "spec.json": "d30b433132bde495181a98b4ca3e90e4f00b1cb930906abe0c0058bcf145509e",
+        "runtime.json": "d93c748a6155ba3dfc1f23962f47cd5175604682c1475f35b5921138cfa16eec",
+        "summary.json": "86033c26dcd38f37d639d9e15da80fd769532c9839b7f96baaa431cb3bad3b50",
+        "runtime.log": "fb13f38445b3421fab6bbd80c5262c25f7f4f507a4a91ade2cdf0fad347e0323"
+      }
+    },
+    {
+      "fps": 120,
+      "actor": "o_player",
+      "drawSamples": 451,
+      "poseSamples": {
+        "0.0": 95,
+        "1.0": 103,
+        "2.0": 57,
+        "7.0": 34,
+        "4.0": 33,
+        "8.0": 33,
+        "5.0": 35
+      },
+      "renderOnlySamples": 182,
+      "renderOnlyMovementSamples": 61,
+      "observedRenderFps": 93.98392206602558,
+      "coverageGaps": [],
+      "passed": true,
+      "currentSourceVerified": true,
+      "fullyCovered": true,
+      "minimumNativeTailChecksPerActor": 343,
+      "minimumActiveRateChecksPerActor": 388,
+      "minimumAnimationHoldChecksPerActor": 179,
+      "minimumPausedFreezeChecksPerActor": 54,
+      "normalRuntimeEnd": true,
+      "muted": true,
+      "headlessRequested": true,
+      "rawDirectory": "/Users/infi/Library/Caches/TCC130/animation-fix-native-04/single-player-120",
+      "rawHashes": {
+        "spec.json": "7fdd3046bce834cbf007f9ce6ba3bbe81d6918e3142e7228ed601c7740ab71a9",
+        "runtime.json": "bc587fe38f438cc27c5cc12f8d25b5a55078a75ebe9a861be6c92e215f276a0a",
+        "summary.json": "34c16c317780e540086d75f37505550118284c966d902ec25aaa2553b95de7a5",
+        "runtime.log": "7212141462791df11f3197889165cdaff35d7d41e620aeff6e69f27979d9edb5"
+      }
+    },
+    {
+      "fps": 144,
+      "actor": "o_player",
+      "drawSamples": 612,
+      "poseSamples": {
+        "0.0": 128,
+        "1.0": 141,
+        "2.0": 76,
+        "7.0": 45,
+        "4.0": 45,
+        "8.0": 44,
+        "5.0": 44
+      },
+      "renderOnlySamples": 338,
+      "renderOnlyMovementSamples": 117,
+      "observedRenderFps": 126.86020980727007,
+      "coverageGaps": [],
+      "passed": true,
+      "currentSourceVerified": true,
+      "fullyCovered": true,
+      "minimumNativeTailChecksPerActor": 606,
+      "minimumActiveRateChecksPerActor": 521,
+      "minimumAnimationHoldChecksPerActor": 337,
+      "minimumPausedFreezeChecksPerActor": 80,
+      "normalRuntimeEnd": true,
+      "muted": true,
+      "headlessRequested": true,
+      "rawDirectory": "/Users/infi/Library/Caches/TCC130/animation-fix-native-04/single-player-144",
+      "rawHashes": {
+        "spec.json": "b5e5f441e5e2856e277dbd9edb8eb7f2ab6a2fdb0a05c00b33edbffe7d3b40ae",
+        "runtime.json": "6c8769fbd32c216a87253b8601a0036341a650133f4f2a608ca1d909a1b02339",
+        "summary.json": "3c5650fcf36fe874932a1909124106ddf659cb5240c362d765177a7701c9f6c1",
+        "runtime.log": "d5489d2ba72ac0ed15ae38c0cbea42a374bee1c6d3e16619692ec73e3751dad2"
+      }
+    },
+    {
+      "fps": 60,
+      "actor": "o_playerMU",
+      "drawSamples": 254,
+      "poseSamples": {
+        "0.0": 62,
+        "1.0": 86,
+        "2.0": 33,
+        "7.0": 18,
+        "4.0": 17,
+        "8.0": 20,
+        "5.0": 18
+      },
+      "renderOnlySamples": 0,
+      "renderOnlyMovementSamples": 0,
+      "observedRenderFps": 54.5059626937924,
+      "coverageGaps": [],
+      "passed": true,
+      "currentSourceVerified": true,
+      "fullyCovered": true,
+      "minimumNativeTailChecksPerActor": 229,
+      "minimumActiveRateChecksPerActor": 253,
+      "minimumAnimationHoldChecksPerActor": 0,
+      "minimumPausedFreezeChecksPerActor": 0,
+      "normalRuntimeEnd": true,
+      "muted": true,
+      "headlessRequested": true,
+      "rawDirectory": "/Users/infi/Library/Caches/TCC130/animation-fix-native-04/local-multiplayer-60",
+      "rawHashes": {
+        "spec.json": "defc78b63c99c14306b009c03e3bf4350b0b80132bbc9cc242e93938c2963b0c",
+        "runtime.json": "cd298ca6b677f6060d4e1513fc6ece9f83e8a57414e8092cf9e02234ed205a3a",
+        "summary.json": "c7f0261d687ec2b9e3c585a3468c1ca46abb30136ffb77e8eb64313ed5cbb942",
+        "runtime.log": "5ae0fe80c1b415120150a718c406b208dff1d20f5d0345af94a7edd382a04806"
+      }
+    },
+    {
+      "fps": 150,
+      "actor": "o_playerMU",
+      "drawSamples": 610,
+      "poseSamples": {
+        "0.0": 141,
+        "1.0": 211,
+        "2.0": 78,
+        "7.0": 45,
+        "4.0": 46,
+        "8.0": 44,
+        "5.0": 45
+      },
+      "renderOnlySamples": 334,
+      "renderOnlyMovementSamples": 159,
+      "observedRenderFps": 131.08233326553213,
+      "coverageGaps": [],
+      "passed": true,
+      "currentSourceVerified": true,
+      "fullyCovered": true,
+      "minimumNativeTailChecksPerActor": 606,
+      "minimumActiveRateChecksPerActor": 609,
+      "minimumAnimationHoldChecksPerActor": 333,
+      "minimumPausedFreezeChecksPerActor": 0,
+      "normalRuntimeEnd": true,
+      "muted": true,
+      "headlessRequested": true,
+      "rawDirectory": "/Users/infi/Library/Caches/TCC130/animation-fix-native-04/local-multiplayer-150",
+      "rawHashes": {
+        "spec.json": "8f3132cb3b0802986de54b029b2c8ecadb1903f29d52108357c5768d86c6b656",
+        "runtime.json": "c4559fb1e95394ee87de4746ffec796326eb469f28d105dd3bc1f809262b27a3",
+        "summary.json": "cfdab8aad868f8824e76b651e90ac1e98b672b0ea6acc1a9588966c6dca426cc",
+        "runtime.log": "b5f5ec569b9b670a1f3de2c278ea01c2d0369de387329f0a6a22f51db3c7cec1"
+      }
+    }
+  ],
+  "editorIcons": {
+    "validation": "static mapping and independent code review; compiled into this native build",
+    "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "orientations": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "menu": "objects/o_itemmenuselectLE/Draw_73.gml",
+    "toolbar": "objects/o_leveleditorselect/Draw_75.gml",
+    "renderer": "scr_slope_draw",
+    "screenCapturePerformed": false
+  },
+  "staticChecks": {
+    "configuration": true,
+    "resourceEventValidation": true,
+    "pythonToolSyntax": true,
+    "canonicalRequests": 12,
+    "diffCheck": true,
+    "originalDocsDirtyPatchExact": true,
+    "prefabFilesUnchanged": 16
+  },
+  "independentReview": "Production scope and raw native animation tails approved; paused samples excluded from active directional hold coverage.",
+  "rawBindings": {
+    "evidence.json": {
+      "path": "/Users/infi/Library/Caches/TCC130/animation-fix-qa-03/evidence.json",
+      "sha256": "8d7ec8647678dfb365252dd29ed56190c396b4726de96aaee390bd945c7fbc20"
+    },
+    "compile.log": {
+      "path": "/Users/infi/Library/Caches/TCC130/animation-fix-qa-03/compile.log",
+      "sha256": "0c487be6c8e024657637cbe6c0067f350f46b1eecfe75bf1df8ea19b44ffba86"
+    },
+    "prefabs-before.json": {
+      "path": "/Users/infi/Library/Caches/TCC130/animation-fix-qa-03/prefabs-before.json",
+      "sha256": "2742483c15f2e608710cb7bb6ad2bbfd492a564a1a89537f29b55efc34243391"
+    },
+    "batch.json": {
+      "path": "/Users/infi/Library/Caches/TCC130/animation-fix-native-04/batch.json",
+      "sha256": "ee5bd0c1e8280fe53a105e97b1723f7e64d70c204198612e18db009866c25f71"
+    },
+    "cross-cap-physics.json": {
+      "path": "/Users/infi/Library/Caches/TCC130/animation-fix-native-04/cross-cap-physics.json",
+      "sha256": "5587633bf71e37ad9cb4c531ff11010c6e6a0dcdc2c5bccba4b1ae6eba37cd25"
+    }
+  },
+  "limits": [
+    "Configured render caps do not establish sustained high-FPS performance; actual observed FPS is recorded per run.",
+    "Diagnostic flat-room observations, not full campaign completion or every skin/controller/device combination.",
+    "Editor icon dispatch was validated statically and compiled; no current full-editor screenshot acceptance was performed.",
+    "Native launches were serial, hidden and muted with isolated QA saves; launch gate disabled afterward."
+  ]
+}

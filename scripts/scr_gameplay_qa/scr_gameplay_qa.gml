@@ -620,6 +620,7 @@ function qa_finish(_status, _reason) {
         nativeCaptures:_q.captures, nativeCapturesTruncated:_q.captures_truncated,
         troopNavigation:scr_troop_nav_stats(),
         nativeActors:qa_value(_q, "native_actor_trace", []),
+        animationDraws:qa_value(_q, "animation_draws", []),
         initialNativeActors:qa_value(_q, "native_actor_initial", []),
         muted:true, drawEventsEnabled:_q.draw_calls > 0, drawCalls:_q.draw_calls,
         inputMode:_q.mode,
@@ -677,6 +678,13 @@ function qa_calibration_room() {
     if (_fixture == "ladder") timing_create_depth(96, 6200, -1, o_ladder, {image_yscale:25});
     if (_fixture == "zerogravity_cycle") timing_create_depth(320, 6970, 0, o_gravity15);
     timing_create_depth(96, _fixture == "ice" ? 6940 : 6972, 1, qa_player_object());
+    if (qa_value(global.tcc_qa.spec, "animationObservation", false)) {
+        // Real custom-drawn objects, away from the player's movement route.
+        var _oneways = [o_onewayupblock, o_onewaydownblock, o_onewayleftblock, o_onewayrightblock];
+        for (var _w = 0; _w < array_length(_oneways); ++_w)
+            timing_create_depth(512 + _w * 64, 6500, 2, _oneways[_w]);
+        if (!qa_local_multiplayer()) timing_create_depth(96, 6972, 0, o_gun);
+    }
     sequence_qa_setup(global.tcc_qa.spec);
     sequence_probe_qa_setup();
 }
@@ -709,6 +717,33 @@ function qa_draw_art_preview() {
     if (_path != "") surface_save(_target, _path);
     surface_free(_target);
     _q.art_saved = true;
+}
+
+// Observe the presented pose after ordinary input callbacks and Step/End.
+// Post-Step traces alone miss a pose reset during a render-only frame.
+function qa_animation_draw_observe() {
+    if (!qa_active() || !qa_value(global.tcc_qa.spec, "animationObservation", false)) return;
+    var _q = global.tcc_qa;
+    if (!_q.started || _q.finished) return;
+    if (!variable_struct_exists(_q, "animation_draws")) _q.animation_draws = [];
+    if (array_length(_q.animation_draws) >= 4096) return;
+    var _player_object = qa_player_object();
+    if (!instance_exists(_player_object)) return;
+    var _p = instance_find(_player_object, 0), _animations = [];
+    var _objects = [o_onewayupblock, o_onewaydownblock, o_onewayleftblock,
+        o_onewayrightblock, o_timecounter, o_ammocounter];
+    for (var _i = 0; _i < array_length(_objects); ++_i) {
+        if (!instance_exists(_objects[_i])) continue;
+        var _a = instance_find(_objects[_i], 0);
+        array_push(_animations, {object:object_get_name(_a.object_index),
+            phase:_a.image_index, speed:_a.image_speed,
+            tracked:variable_instance_exists(_a, "timing_native")});
+    }
+    array_push(_q.animation_draws, {tickId:timing_tick_id(), outerId:timing_render_id(),
+        tick:timing_is_tick(), frame:_q.frame, paused:global.pause != 0,
+        actor:object_get_name(_p.object_index), pose:_p.image_index,
+        velocity:_p.animation_vsp, left:_p.key_left, right:_p.key_right,
+        animations:_animations});
 }
 
 function qa_capture_frames() {

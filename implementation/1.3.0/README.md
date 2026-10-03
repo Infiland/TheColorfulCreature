@@ -34,6 +34,25 @@ to imply validation of the final cleaned tree. They cover actual movement,
 slopes, W5-L4, Lunar completion/recovery, save transitions and mobile smoke
 tests. Raw logs, inputs, outputs and frozen builds remain outside the checkout.
 
+## Animation regression follow-up
+
+The follow-up fixes player left/right poses being cleared by the native No Key
+callback between simulation ticks. One-way blocks and the clock/ammo icons now
+participate in the fixed-clock animation holds despite using custom Draw events
+without an assigned sprite. Ammo speed is set by the simulation rather than Draw;
+paused settings also freeze the clock. Editor slope menu and toolbar icons use the
+selected color and rotation through the existing block-material renderer.
+
+`evidence/animation-regressions-2026-10-03.json` records the current-source native
+Draw observations, rendered player poses, animation rates, pause checks and any
+render-only coverage gaps. Configured render caps are recorded separately from
+actual observed frame rates. All eight runs pass: single player at all six caps
+and local multiplayer at 60/150. The single-player traces match exactly across
+28,560 position, motion and pose comparisons. These runs do not prove sustained
+high-FPS rendering
+on the hidden test host. The earlier cleaned-source packet retains its original
+binding and scope.
+
 ## Release gates
 
 - Final signed release exports, physical devices/controllers and live Steam,

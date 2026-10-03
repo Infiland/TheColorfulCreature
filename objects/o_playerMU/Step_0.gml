@@ -186,6 +186,7 @@ animation_vsp = player_animation_velocity();
 if (animation_vsp == 0 && vsp >= 0 && !key_left && !key_right
     && scr_slope_place(x,y+1) != noone) image_index = 0;
 if multiplayerplayerskin != 23 {
+if animation_vsp = 0 and !key_left and !key_right { image_index = 0 } //Grounded idle from merged input
 if animation_vsp < -0.1 and !hsp  { image_index = 6 } //Jump
 if animation_vsp > 0.1 and !hsp  { image_index = 3 } //Fall
 if key_right and animation_vsp = 0 { image_index = 1 } //Moving right without jumping

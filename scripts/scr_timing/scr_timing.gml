@@ -244,6 +244,9 @@ function timing_native_active() {
     // These helpers move by ordinary Step assignments, with no native speed.
     // Their pose history still belongs to the same presentation timeline.
     if (object_index == o_smoothcamera || object_index == o_smoothcameraboss5) return true;
+    // Custom Draw can animate image_index without an assigned sprite. Opt in
+    // explicitly so these phases are held too, without tracking every marker.
+    if (variable_instance_exists(id, "timing_manual_animation") && timing_manual_animation) return true;
     if (speed != 0 || gravity != 0 || friction != 0 || path_index != -1) return true;
     if (sprite_exists(sprite_index) && sprite_get_number(sprite_index) > 1 && image_speed != 0) return true;
     if (variable_instance_exists(id, "hsp") || variable_instance_exists(id, "vsp")) return true;

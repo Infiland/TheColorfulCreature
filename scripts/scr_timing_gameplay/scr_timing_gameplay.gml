@@ -203,12 +203,21 @@ function timing_gameplay_end_step() {
     with (o_questsmenu) {
         if (visible) timing_quest_menu_update();
     }
+    // Pause can change after a block's Step. Publish animation speed only
+    // after all ordinary input callbacks, alongside the HUD's tick ownership.
+    with (o_onewayupblock) image_speed = global.pause == 1 ? 0 : 1;
+    with (o_onewaydownblock) image_speed = global.pause == 1 ? 0 : 1;
+    with (o_onewayleftblock) image_speed = global.pause == 1 ? 0 : 1;
+    with (o_onewayrightblock) image_speed = global.pause == 1 ? 0 : 1;
     with (o_timecounter) {
+        image_speed = global.pause == 1 ? 0 : 0.4;
         if (!instance_exists(o_settingspausemenu)) {
-            image_speed = global.pause == 1 ? 0 : 0.4;
             if (room != r_tale && global.hardmodedifficulty > 5)
                 dynamictimeindex = lerp(dynamictimeindex, global.timeleftHM - global.time, 0.05);
         }
+    }
+    with (o_ammocounter) {
+        image_speed = global.pause == 1 || !instance_exists(o_gunequipped) ? 0 : 0.2;
     }
     if (!instance_exists(o_settingspausemenu) && room != r_tale) {
         if (instance_exists(o_timecounter) && o_timecounter.visible && global.hardmodedifficulty > 5 && global.time > global.timeleftHM) {

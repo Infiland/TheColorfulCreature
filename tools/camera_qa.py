@@ -86,8 +86,16 @@ def interpolation_source_errors(source):
         audit.require(tracked is not None and compact('if (object_index == o_smoothcamera || '
                       'object_index == o_smoothcameraboss5) return true;') in compact(tracked[1]),
                       'explicit interpolated smooth helpers lack source native timing registration')
-    for token in ('if (global.renderfps <= TCC_SIM_HZ) return;',
-                  'var _alpha = clamp(_t.accumulator_us * TCC_SIM_HZ / 1000000, 0, 1);',
+    before_draw = re.search(r'function\s+timing_before_draw\(\)\s*\{(.*?)\n\}', stripped, flags=re.S)
+    return_branches = ('if (global.renderfps <= TCC_SIM_HZ) return;',
+                       'if (global.renderfps <= TCC_SIM_HZ) { '
+                       'if (TCC_GAMEPLAY_QA) qa_performance_mark("drawPrepare"); return; }')
+    # The opt-in wall-work marker adds no production state or interpolation.
+    # Accept only these exact <=60 early-return bodies; runtime Draw/restoration
+    # checks still assess the unchanged native recording independently.
+    audit.require(before_draw is not None and any(compact(branch) in compact(before_draw[1])
+                  for branch in return_branches), 'compiled interpolation clock/teleport/lerp contract differs')
+    for token in ('var _alpha = clamp(_t.accumulator_us * TCC_SIM_HZ / 1000000, 0, 1);',
                   'if (point_distance(_n.previous_x, _n.previous_y, x, y) > 64) continue;',
                   'x = lerp(_n.previous_x, _n.current_x, _alpha);',
                   'y = lerp(_n.previous_y, _n.current_y, _alpha);'):
@@ -1249,13 +1257,21 @@ def selfcheck():
         source = ('function timing_interpolates_instance() {\n' + predicate + '\n}\n'
                   'function timing_native_active() {\n'
                   'if (object_index == o_smoothcamera || object_index == o_smoothcameraboss5) return true;\n}\n'
+                  'function timing_before_draw() {\n'
                   'if (global.renderfps <= TCC_SIM_HZ) return;\n'
                   'var _alpha = clamp(_t.accumulator_us * TCC_SIM_HZ / 1000000, 0, 1);\n'
                   'if (point_distance(_n.previous_x, _n.previous_y, x, y) > 64) continue;\n'
                   'x = lerp(_n.previous_x, _n.current_x, _alpha);\n'
-                  'y = lerp(_n.previous_y, _n.current_y, _alpha);\n')
+                  'y = lerp(_n.previous_y, _n.current_y, _alpha);\n}\n')
         checks, model = interpolation_source_errors(source)
         assert checks.count == 0 and model == profile; count += 1
+        instrumented = source.replace('if (global.renderfps <= TCC_SIM_HZ) return;',
+            'if (global.renderfps <= TCC_SIM_HZ) { '
+            'if (TCC_GAMEPLAY_QA) qa_performance_mark("drawPrepare"); return; }')
+        assert interpolation_source_errors(instrumented)[0].count == 0; count += 1
+        for before, after in (('if (TCC_GAMEPLAY_QA)', 'if (true)'),
+                              ('"drawPrepare"', '"otherPhase"'), ('return; }', 'x += 1; return; }')):
+            assert interpolation_source_errors(instrumented.replace(before, after))[0].count > 0; count += 1
         for before, after in (('speed != 0', 'speed != 1'), ('> 64', '> 65'),
                               ('global.renderfps <= TCC_SIM_HZ', 'global.renderfps < TCC_SIM_HZ'),
                               ('lerp(_n.previous_x, _n.current_x, _alpha)', 'lerp(x, _n.current_x, _alpha)')):

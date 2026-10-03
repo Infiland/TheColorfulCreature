@@ -88,6 +88,8 @@ function qa_boot() {
         }
         if (variable_struct_exists(_spec, "manualCameraCandidate")
             && !is_bool(_spec.manualCameraCandidate)) throw "Manual camera selection must be boolean";
+        if (variable_struct_exists(_spec, "performanceObservation")
+            && !is_bool(_spec.performanceObservation)) throw "Performance observation must be boolean";
         var _sequence_probe_validation = sequence_probe_qa_validate(_spec);
         if (!_sequence_probe_validation.valid) throw _sequence_probe_validation.error;
         var _credits_validation = credits_presentation_qa_validate(_spec);
@@ -184,6 +186,7 @@ function qa_launch() {
     if (!qa_active()) return;
     var _q = global.tcc_qa;
     qa_apply_fps();
+    global.tcc_timing.performance_enabled = qa_value(_q.spec, "performanceObservation", false);
     global.pause = 0;
     global.cheats = 0;
     global.noclip = 0;
@@ -594,6 +597,7 @@ function qa_end_step() {
 function qa_finish(_status, _reason) {
     if (!qa_active() || global.tcc_qa.finished) return;
     var _q = global.tcc_qa;
+    if (global.tcc_timing.performance_enabled) qa_performance_store(false);
     _q.finished = true;
     var _practice = qa_value(_q, "practice_observation", undefined);
     if (is_struct(_practice)) {
@@ -621,6 +625,9 @@ function qa_finish(_status, _reason) {
         troopNavigation:scr_troop_nav_stats(),
         nativeActors:qa_value(_q, "native_actor_trace", []),
         animationDraws:qa_value(_q, "animation_draws", []),
+        performanceObservation:{measurement:"native wall-work spans; not process CPU time",
+            rows:qa_value(_q, "performance_rows", []),
+            truncated:qa_value(_q, "performance_truncated", false)},
         initialNativeActors:qa_value(_q, "native_actor_initial", []),
         muted:true, drawEventsEnabled:_q.draw_calls > 0, drawCalls:_q.draw_calls,
         inputMode:_q.mode,
@@ -744,6 +751,52 @@ function qa_animation_draw_observe() {
         actor:object_get_name(_p.object_index), pose:_p.image_index,
         velocity:_p.animation_vsp, left:_p.key_left, right:_p.key_right,
         animations:_animations});
+}
+
+// Opt-in timers do not alter player, hazards, input, random state or services.
+// Begin-to-End and Draw spans exclude unobserved engine/driver/presentation work.
+function qa_performance_snapshot() {
+    var _q = global.tcc_qa, _t = global.tcc_timing, _row = _q.performance_row;
+    _row.outerId = timing_render_id(); _row.tickId = timing_tick_id();
+    _row.tick = timing_is_tick(); _row.drawn = _t.draw_frame;
+    _row.instanceCount = instance_number(all); _row.trackedCount = array_length(_t.tracked);
+    _row.counters = {registerChecks:_t.performance_register_checks,
+        alarmChecks:_t.performance_alarm_checks, activationScans:_t.performance_activation_scans,
+        pendingChecks:_t.performance_pending_checks};
+}
+function qa_performance_store(_complete = true) {
+    if (!qa_active()) return;
+    var _q = global.tcc_qa;
+    if (!is_struct(qa_value(_q, "performance_row", undefined))) return;
+    qa_performance_snapshot();
+    _q.performance_row.complete = _complete;
+    if (array_length(_q.performance_rows) < 4096) array_push(_q.performance_rows, _q.performance_row);
+    else _q.performance_truncated = true;
+    _q.performance_row = undefined;
+}
+function qa_performance_begin() {
+    if (!qa_active()) return;
+    var _q = global.tcc_qa, _t = global.tcc_timing;
+    if (!_t.performance_enabled || !_q.started || !_q.running || _q.finished) return;
+    if (!variable_struct_exists(_q, "performance_rows")) {
+        _q.performance_rows = []; _q.performance_truncated = false;
+    }
+    qa_performance_store();
+    _t.performance_register_checks = 0; _t.performance_alarm_checks = 0;
+    _t.performance_activation_scans = 0; _t.performance_pending_checks = 0;
+    if (array_length(_q.performance_rows) >= 4096) { _q.performance_truncated = true; return; }
+    _q.performance_row = {frame:_q.frame, phasesUs:{}, complete:false};
+    _q.performance_last_us = get_timer();
+}
+function qa_performance_mark(_phase) {
+    if (!qa_active()) return;
+    var _q = global.tcc_qa;
+    if (!global.tcc_timing.performance_enabled || !_q.running || _q.finished
+        || !is_struct(qa_value(_q, "performance_row", undefined))) return;
+    var _now = get_timer();
+    variable_struct_set(_q.performance_row.phasesUs, _phase, _now - _q.performance_last_us);
+    qa_performance_snapshot();
+    _q.performance_last_us = get_timer();
 }
 
 function qa_capture_frames() {

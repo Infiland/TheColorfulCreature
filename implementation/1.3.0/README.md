@@ -53,6 +53,39 @@ high-FPS rendering
 on the hidden test host. The earlier cleaned-source packet retains its original
 binding and scope.
 
+## Large-level performance follow-up
+
+The timing registry now reuses successful registration checks within each
+engine frame and room generation. Drawing restores only the instances actually
+interpolated, and empty pending queues avoid allocation. Input handling skips
+clearing unused keyboard latches and repeatedly absent controller slots. Native
+motion, alarm ownership, simulation frequency and gameplay rules are unchanged.
+
+The opt-in QA profiler measures native event wall-work spans and bookkeeping
+counts. `tools/performance_qa.py` binds the build, source, inputs and native output,
+then compares exact recorded gameplay states with only declared run/clock fields
+excluded. It also accepts explicitly unprofiled gameplay comparisons.
+
+Four profiled workloads (Lunar Base, dense level 54, troop level 94 and level 1)
+match across all 2,100 recorded ticks per build. Lunar's registration checks fell
+from 5,828 to 3,114 per frame; median Draw restoration fell from 3.32 ms to 0.26 ms.
+The host was heavily loaded, so observed FPS changes do not establish sustained
+high-FPS performance on players' devices. Full inputs, logs and frozen builds
+remain outside the checkout.
+
+The two unprofiled before/after pairs and the profiler-on/off comparison retain
+identical gameplay states. Alternating Lunar repeats do not establish a reliable
+overall FPS gain. Four camera checks and their cross-cap comparison pass; all
+three player/HUD/one-way animation checks pass with render-only coverage. Five
+native timing trials pass individual state checks. Their combined lifecycle
+acceptance remains unmet because reactivation never landed on a render-only
+frame; the original failed comparisons are retained, not relabeled as passes.
+`evidence/performance-2026-10-03.json` binds these observations and their scope.
+
+The camera verifier accepts the exact QA-only profiling marker before its existing
+60 Hz early return. Independent mutation checks still reject changes to the guard,
+threshold, camera interpolation and restoration contracts.
+
 ## Release gates
 
 - Final signed release exports, physical devices/controllers and live Steam,

@@ -16,7 +16,7 @@ function timing_boot() {
         drawn_frames:0, last_draw_us:0, draw_seconds:1 / TCC_SIM_HZ,
         native_rate:TCC_SIM_HZ, room_id:noone, room_generation:0,
         activation_dirty:false, alarm_phase_passed:false, tracked:[], tracked_set:ds_map_create(),
-        pending:[], restored_render:0, ended_render:0,
+        pending:[], draw_interpolated:[], restored_render:0, ended_render:0,
         moving_layers:[], layer_room_id:noone, cameras:[],
         pause_clock:false, resume_boundary:false, interrupt_pending:false,
         clock_pause_applied:false, clock_resume_applied:false, clock_background_applied:false,
@@ -28,6 +28,8 @@ function timing_boot() {
         wheel_up:false, wheel_down:false,
         pads_pressed:[], pads_released:[],
         pads_connected:array_create(16, false), pads_generation:array_create(16, 0),
+        performance_enabled:false, performance_register_checks:0, performance_alarm_checks:0,
+        performance_activation_scans:0, performance_pending_checks:0,
         visual_seed:246813579
     };
     global.timing_confirmation_dispatch_active = false;
@@ -93,9 +95,12 @@ function timing_visual_irandom_range(_low, _high) {
 function timing_input_clear() {
     if (!variable_global_exists("tcc_timing")) return;
     var _t = global.tcc_timing;
-    for (var _key = 0; _key < 256; ++_key) {
-        _t.keyboard_pressed[_key] = false;
-        _t.keyboard_released[_key] = false;
+    // Per-key latches are written only after capture sets an any-key flag.
+    if (_t.keyboard_any_pressed || _t.keyboard_any_released) {
+        for (var _key = 0; _key < 256; ++_key) {
+            _t.keyboard_pressed[_key] = false;
+            _t.keyboard_released[_key] = false;
+        }
     }
     for (var _button = 0; _button < 3; ++_button) {
         _t.mouse_pressed[_button] = false;
@@ -149,11 +154,15 @@ function timing_input_capture() {
     for (var _pad = 0; _pad < 16; ++_pad) {
         var _connected = _pad < _pads && tcc_gamepad_is_connected(_pad);
         if (!_connected) {
-            if (_t.pads_connected[_pad]) _t.pads_generation[_pad] += 1;
-            _t.pads_connected[_pad] = false;
-            for (var _clear = 0; _clear < 16; ++_clear) {
-                _t.pads_pressed[_pad][_clear] = false;
-                _t.pads_released[_pad][_clear] = false;
+            // Disconnected slots cannot capture edges; clear their last
+            // connection once so no stale input survives a later reconnect.
+            if (_t.pads_connected[_pad]) {
+                _t.pads_generation[_pad] += 1;
+                _t.pads_connected[_pad] = false;
+                for (var _clear = 0; _clear < 16; ++_clear) {
+                    _t.pads_pressed[_pad][_clear] = false;
+                    _t.pads_released[_pad][_clear] = false;
+                }
             }
             continue;
         }
@@ -248,14 +257,19 @@ function timing_native_active() {
     // explicitly so these phases are held too, without tracking every marker.
     if (variable_instance_exists(id, "timing_manual_animation") && timing_manual_animation) return true;
     if (speed != 0 || gravity != 0 || friction != 0 || path_index != -1) return true;
-    if (sprite_exists(sprite_index) && sprite_get_number(sprite_index) > 1 && image_speed != 0) return true;
+    if (image_speed != 0 && sprite_exists(sprite_index) && sprite_get_number(sprite_index) > 1) return true;
     if (variable_instance_exists(id, "hsp") || variable_instance_exists(id, "vsp")) return true;
-    for (var _a = 0; _a < 12; ++_a) if (alarm[_a] > 0) return true;
+    for (var _a = 0; _a < 12; ++_a) if (alarm[_a] > 0) {
+        if (TCC_GAMEPLAY_QA && global.tcc_timing.performance_enabled) global.tcc_timing.performance_alarm_checks += _a + 1;
+        return true;
+    }
+    if (TCC_GAMEPLAY_QA && global.tcc_timing.performance_enabled) global.tcc_timing.performance_alarm_checks += 12;
     return false;
 }
 
 function timing_instance_register_now() {
     if (!variable_global_exists("tcc_timing") || object_index == o_deltatime) return;
+    if (TCC_GAMEPLAY_QA && global.tcc_timing.performance_enabled) global.tcc_timing.performance_register_checks += 1;
     if (!variable_instance_exists(id, "timing_native")) {
         if (!timing_native_active()) return;
         timing_normalize_sprite(sprite_index);
@@ -264,6 +278,7 @@ function timing_instance_register_now() {
             speed:speed, direction:direction, gravity:gravity, friction:friction,
             hspeed:hspeed, vspeed:vspeed,
             path_speed:path_speed, image_speed:image_speed, alarm_render:-1,
+            registered_render:-1, registered_generation:-1,
             resume_tick_id:-1, resume_speed:0, resume_direction:0,
             resume_hspeed:0, resume_vspeed:0};
     }
@@ -271,6 +286,8 @@ function timing_instance_register_now() {
         global.tcc_timing.tracked_set[? id] = true;
         array_push(global.tcc_timing.tracked, id);
     }
+    timing_native.registered_render = global.tcc_timing.render_id;
+    timing_native.registered_generation = global.tcc_timing.room_generation;
 }
 
 function timing_register_instance(_id) {
@@ -325,6 +342,7 @@ function timing_room_start() {
     // room must not resolve to fresh instances without their timing state.
     // Persistent instances retain their own state and rejoin the active scan.
     _t.tracked = [];
+    _t.draw_interpolated = [];
     ds_map_clear(_t.tracked_set);
     _t.pending = [];
     _t.room_id = noone;
@@ -356,6 +374,7 @@ function timing_refresh_active(_settled = false) {
     // Activation/deactivation is deferred to the end of its native event.
     // The following phase discovers actual active instances, including ones
     // without Step events. Frequent region calls coalesce into this scan.
+    if (TCC_GAMEPLAY_QA && _t.performance_enabled) _t.performance_activation_scans += 1;
     with (all) {
         timing_instance_register_now();
         if (variable_instance_exists(id, "timing_native")) {
@@ -473,8 +492,13 @@ function timing_restore_polar_motion() {
 
 function timing_instance_step() {
     if (!variable_global_exists("tcc_timing")) return true;
-    global.tcc_timing.alarm_phase_passed = true;
-    timing_instance_register_now();
+    var _t = global.tcc_timing;
+    _t.alarm_phase_passed = true;
+    // Begin already visited live tracked actors. Recheck only new/reactivated
+    // instances, or persistent actors entering a fresh room generation.
+    if (!variable_instance_exists(id, "timing_native")
+        || timing_native.registered_render != _t.render_id
+        || timing_native.registered_generation != _t.room_generation) timing_instance_register_now();
     if (!variable_instance_exists(id, "timing_native")) {
         // A previously stationary actor can start native motion or an alarm
         // inside this Step. Discover those final fields at the End boundary,
@@ -488,7 +512,9 @@ function timing_instance_step() {
 
 function timing_flush_pending() {
     var _t = global.tcc_timing;
+    if (array_length(_t.pending) == 0) return;
     var _pending = _t.pending;
+    if (TCC_GAMEPLAY_QA && _t.performance_enabled) _t.performance_pending_checks += array_length(_pending);
     _t.pending = [];
     for (var _i = 0; _i < array_length(_pending); ++_i) {
         if (!instance_exists(_pending[_i])) continue;
@@ -505,6 +531,7 @@ function timing_begin_step() {
     timing_boot();
     var _t = global.tcc_timing;
     if (!_t.begin_pending) return;
+    if (TCC_GAMEPLAY_QA) qa_performance_begin();
     _t.begin_pending = false;
     timing_camera_restore();
     _t.alarm_phase_passed = false;
@@ -581,6 +608,7 @@ function timing_begin_step() {
     timing_layers_step();
     timing_refresh_active(true);
     timing_flush_pending();
+    if (TCC_GAMEPLAY_QA) qa_performance_mark("beginRegistry");
     var _live = [];
     for (var _i = 0; _i < array_length(_t.tracked); ++_i) {
         var _id = _t.tracked[_i];
@@ -590,6 +618,8 @@ function timing_begin_step() {
         }
         array_push(_live, _id);
         with (_id) {
+            timing_native.registered_render = _t.render_id;
+            timing_native.registered_generation = _t.room_generation;
             if (_t.tick) {
                 timing_instance_resume();
                 timing_native.start_x = x; timing_native.start_y = y;
@@ -597,7 +627,9 @@ function timing_begin_step() {
         }
     }
     _t.tracked = _live;
+    if (TCC_GAMEPLAY_QA) qa_performance_mark("beginTracked");
     timing_input_capture();
+    if (TCC_GAMEPLAY_QA) qa_performance_mark("beginInput");
     _t.draw_accumulator_us += _t.elapsed_us;
     var _draw_us = 1000000 / global.renderfps;
     _t.draw_frame = _t.draw_accumulator_us + 0.0001 >= _draw_us;
@@ -626,6 +658,7 @@ function timing_begin_step() {
     sequence_qa_sample("root-begin");
     sequence_probe_qa_sample("root-begin");
     credits_windblown_qa_observe("root-begin");
+    if (TCC_GAMEPLAY_QA) qa_performance_mark("beginFinish");
 }
 
 function timing_end_step() {
@@ -633,13 +666,16 @@ function timing_end_step() {
     var _t = global.tcc_timing;
     if (_t.ended_render == _t.render_id) return;
     _t.ended_render = _t.render_id;
+    if (TCC_GAMEPLAY_QA) qa_performance_mark("nativeEvents");
     _t.alarm_phase_passed = true;
     timing_refresh_active(true);
     timing_flush_pending();
+    if (TCC_GAMEPLAY_QA) qa_performance_mark("endRegistry");
     timing_gameplay_end_step();
     if (_t.tick) timing_buttons_end_step();
     // Controls created by UI modals cannot consume the edge that opened them.
     if (_t.tick) timing_ui_end_step();
+    if (TCC_GAMEPLAY_QA) qa_performance_mark("endGameplay");
     if (_t.tick) {
         for (var _i = 0; _i < array_length(_t.tracked); ++_i) {
             if (!instance_exists(_t.tracked[_i])) continue;
@@ -665,6 +701,7 @@ function timing_end_step() {
     credits_windblown_qa_observe("root-end");
     credits_presentation_qa_end();
     _t.begin_pending = true;
+    if (TCC_GAMEPLAY_QA) qa_performance_mark("endFinish");
 }
 
 function timing_interpolates_instance() {
@@ -677,8 +714,10 @@ function timing_interpolates_instance() {
 }
 
 function timing_before_draw() {
+    if (TCC_GAMEPLAY_QA) qa_performance_mark("beforeDrawGap");
     if (!variable_global_exists("tcc_timing")) return;
     var _t = global.tcc_timing;
+    _t.draw_interpolated = [];
     _t.drawn_frames += 1;
     var _now = get_timer();
     _t.draw_seconds = _t.last_draw_us == 0 ? 1 / global.renderfps : min(0.1, (_now - _t.last_draw_us) / 1000000);
@@ -689,7 +728,10 @@ function timing_before_draw() {
         array_push(_q.render_frame_deltas, _now - _q.render_us);
         _q.render_us = _now;
     }
-    if (global.renderfps <= TCC_SIM_HZ) return;
+    if (global.renderfps <= TCC_SIM_HZ) {
+        if (TCC_GAMEPLAY_QA) qa_performance_mark("drawPrepare");
+        return;
+    }
     var _alpha = clamp(_t.accumulator_us * TCC_SIM_HZ / 1000000, 0, 1);
     for (var _i = 0; _i < array_length(_t.tracked); ++_i) {
         if (!instance_exists(_t.tracked[_i])) continue;
@@ -700,24 +742,29 @@ function timing_before_draw() {
             // Teleports and scene transitions must not smear through walls.
             if (point_distance(_n.previous_x, _n.previous_y, x, y) > 64) continue;
             _n.draw_x = x; _n.draw_y = y; _n.interpolated = true;
+            array_push(_t.draw_interpolated, id);
             x = lerp(_n.previous_x, _n.current_x, _alpha);
             y = lerp(_n.previous_y, _n.current_y, _alpha);
         }
     }
     timing_camera_before_draw(_alpha);
+    if (TCC_GAMEPLAY_QA) qa_performance_mark("drawPrepare");
 }
 
 function timing_after_draw() {
+    if (TCC_GAMEPLAY_QA) qa_performance_mark("drawWorld");
     timing_camera_restore();
     if (!variable_global_exists("tcc_timing")) return;
     var _t = global.tcc_timing;
-    for (var _i = 0; _i < array_length(_t.tracked); ++_i) {
-        if (!instance_exists(_t.tracked[_i])) continue;
-        with (_t.tracked[_i]) {
+    for (var _i = 0; _i < array_length(_t.draw_interpolated); ++_i) {
+        if (!instance_exists(_t.draw_interpolated[_i])) continue;
+        with (_t.draw_interpolated[_i]) {
             if (!variable_instance_exists(id, "timing_native")) continue;
             var _n = timing_native;
             if (!_n.interpolated) continue;
             x = _n.draw_x; y = _n.draw_y; _n.interpolated = false;
         }
     }
+    _t.draw_interpolated = [];
+    if (TCC_GAMEPLAY_QA) qa_performance_mark("drawRestore");
 }

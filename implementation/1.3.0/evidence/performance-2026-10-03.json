@@ -1,0 +1,1127 @@
+{
+  "schema": "tcc-large-level-performance-v1",
+  "date": "2026-10-03",
+  "simulationHz": 60,
+  "scope": "Reduced timing/draw bookkeeping; unchanged authored levels and movement. Native QA/VM event wall-work measurements, not production CPU/GPU or sustained display-FPS claims.",
+  "builds": {
+    "baseline": {
+      "path": "/Users/infi/Library/Caches/TCC130/perf-baseline-01",
+      "configuration": "QA",
+      "IDE": "2026.0.0.16",
+      "runtime": "2026.0.0.23",
+      "compiler_backend": "VM",
+      "source_identity": {
+        "identityVersion": 2,
+        "identityScheme": "project-runtime-assets-v2",
+        "sourceSha256": "aed78b3e96b073bb3d7888a3e6d44c31652409510cc5df4a1fdef4ece0087666",
+        "physicsSha256": "69b4cf6b36caa15f01b98cb6992787c67c5d6f9d85137e7e1b0e8109bfc8fac7",
+        "fileCount": 23134
+      },
+      "artifact_identity": {
+        "sha256": "a579cac624fe62649c73fe5aa016ecbae7e40cd122adb67dc7f10886b1f460fc",
+        "fileCount": 105
+      },
+      "executable_sha256": "7a68990c9f2b830380a2cb2ffd443e3f1123e53e986b9e05ae8c8f6a87682bf7",
+      "compile.log": {
+        "exit_code": 0,
+        "fatal_log_error": false
+      },
+      "evidence": {
+        "path": "/Users/infi/Library/Caches/TCC130/perf-baseline-01/evidence.json",
+        "sha256": "217188c1eb3e25d4331c01e665841de3e77e43baf79d7a3b7bd0ae58f79d3f0c"
+      }
+    },
+    "candidate": {
+      "path": "/Users/infi/Library/Caches/TCC130/perf-candidate-01",
+      "configuration": "QA",
+      "IDE": "2026.0.0.16",
+      "runtime": "2026.0.0.23",
+      "compiler_backend": "VM",
+      "source_identity": {
+        "identityVersion": 2,
+        "identityScheme": "project-runtime-assets-v2",
+        "sourceSha256": "b28db724240b869365fe331cd29bbccee4f371075496bfe5fc52000b26e4f6db",
+        "physicsSha256": "5a21d0a691af06f51dce2df830a0427086ca517d27c6fc56590ac97b59b29ef2",
+        "fileCount": 23134
+      },
+      "artifact_identity": {
+        "sha256": "e6bd14aaa2099fc7157044fb70186102ac2921ad454e87546a574dad1d7e41e1",
+        "fileCount": 105
+      },
+      "executable_sha256": "55dec5367070d9b99ab48a75da7cf725551ec3b82f84289ad8f3de5afde9ad99",
+      "compile.log": {
+        "exit_code": 0,
+        "fatal_log_error": false
+      },
+      "evidence": {
+        "path": "/Users/infi/Library/Caches/TCC130/perf-candidate-01/evidence.json",
+        "sha256": "d44c534b583b88b7e5fa00b67f88fd98d17723872e0f8ace2ca166a83571ff29"
+      }
+    }
+  },
+  "changes": [
+    "Cache successful instance registrations by engine frame and room generation",
+    "Restore only instances actually interpolated for Draw",
+    "Avoid allocating empty pending queues",
+    "Skip sprite metadata lookup when image_speed is zero",
+    "Clear keyboard latches only when edges were captured",
+    "Clear disconnected controller slots once per disconnect"
+  ],
+  "inspectors": {
+    "performance_qa.py": "dc18ff3406bfe22b9f01ffc62773ee682c6ef3244b5d4994eec1052817063ea8",
+    "timing_qa.py": "e746e5d3883857ffab43da39a757d0ddc7dc9b022c9e8034617b8db47d4927eb",
+    "camera_qa.py": "83b44faeaf7ea5e707ca039450145d66025a72715ce8f4ac1d20deabab77a9b7",
+    "animation_qa.py": "fca6adfb30c51c4694d49f53cbf473cebc22b1400bcf4ed5a9ace18527f7df78"
+  },
+  "profileComparisons": [
+    {
+      "case": "lunar",
+      "passed": true,
+      "ticksPerBuild": 600.0,
+      "comparisonExclusions": [
+        "player.challengeRunId",
+        "events[].world.nativeClock.nativeElapsedUs",
+        "events[].world.nativeClock.outerId"
+      ],
+      "report": {
+        "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/lunar.json",
+        "sha256": "c99fa4d186a838e7dabf254a7f2a6d63773fb25a0f3af84bb101492296defd60"
+      },
+      "baseline": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-baseline-runs-01/lunar",
+        "rawHashes": {
+          "spec.json": "8c04fbc29b14022ee89496c2266a4bc7868d65e6c13ae216ceaf7d3aa2eaec59",
+          "runtime.json": "1b4762411abf034f0a84c41cd9327b7b07a0a5446f653a8aa3494564e6a5103b",
+          "summary.json": "c79bc03749b25f009c40975bdb89567505aa5642380d03d82852a92a94a370c4",
+          "runtime.log": "4cd8e565d0358e44b2ecb9356a2d87cc53172f4c5a2addabfd7c9cd6fe3788ef"
+        },
+        "observedRenderFps": 13.441671406654054,
+        "matchesCurrentPlayableContent": false,
+        "coverageGaps": [
+          "Native host produced no complete post-warmup skipped tick rows"
+        ],
+        "profile": {
+          "warmupSimulationTicks": 120,
+          "tickRows": 479,
+          "skippedRows": 0,
+          "tickCountersMean": {
+            "registerChecks": 5827.987473903967,
+            "alarmChecks": 37362.643006263046,
+            "activationScans": 0.0,
+            "pendingChecks": 1562.0960334029228
+          },
+          "tickPhaseMedianUs": {
+            "beginRegistry": 25.0,
+            "beginTracked": 4723.0,
+            "beginInput": 97.0,
+            "beginFinish": 50.0,
+            "nativeEvents": 26970.0,
+            "endRegistry": 6512.0,
+            "endGameplay": 49.0,
+            "endFinish": 3712.0,
+            "beforeDrawGap": 430.0,
+            "drawPrepare": 7239.0,
+            "drawWorld": 4590.0,
+            "drawRestore": 3320.0,
+            "drawGui": 730.0
+          },
+          "drawPhaseMedianUs": {
+            "drawPrepare": 7239.0,
+            "drawWorld": 4590.0,
+            "drawRestore": 3320.0,
+            "drawGui": 730.0
+          }
+        }
+      },
+      "candidate": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-candidate-runs-01/lunar",
+        "rawHashes": {
+          "spec.json": "b35666fb4e390c4f577aa92a2be1d68628aa25261488600ff6bde0c3a30b6e5e",
+          "runtime.json": "38f2cab8c0bd0a29fc5883bc3d2bfe6888245755c71f6df5a243ad2aaa7e3994",
+          "summary.json": "0de269c0140bb76f61096a833ac5cd7adc69d132c3b814d5bdd694174e352433",
+          "runtime.log": "29ac31d09e94a86ab26ec90c741f21ab078d8111f559b7a3c1c307a7d6923b11"
+        },
+        "observedRenderFps": 16.957025481390247,
+        "matchesCurrentPlayableContent": true,
+        "coverageGaps": [
+          "Native host produced no complete post-warmup skipped tick rows"
+        ],
+        "profile": {
+          "warmupSimulationTicks": 120,
+          "tickRows": 479,
+          "skippedRows": 0,
+          "tickCountersMean": {
+            "registerChecks": 3114.131524008351,
+            "alarmChecks": 37362.643006263046,
+            "activationScans": 0.0,
+            "pendingChecks": 1562.0960334029228
+          },
+          "tickPhaseMedianUs": {
+            "beginRegistry": 22.0,
+            "beginTracked": 4820.0,
+            "beginInput": 32.0,
+            "beginFinish": 45.0,
+            "nativeEvents": 24194.0,
+            "endRegistry": 6223.0,
+            "endGameplay": 44.0,
+            "endFinish": 3465.0,
+            "beforeDrawGap": 394.0,
+            "drawPrepare": 6868.0,
+            "drawWorld": 4248.0,
+            "drawRestore": 259.0,
+            "drawGui": 614.0
+          },
+          "drawPhaseMedianUs": {
+            "drawPrepare": 6868.0,
+            "drawWorld": 4248.0,
+            "drawRestore": 259.0,
+            "drawGui": 614.0
+          }
+        }
+      }
+    },
+    {
+      "case": "dense",
+      "passed": true,
+      "ticksPerBuild": 600.0,
+      "comparisonExclusions": [
+        "player.challengeRunId",
+        "events[].world.nativeClock.nativeElapsedUs",
+        "events[].world.nativeClock.outerId"
+      ],
+      "report": {
+        "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/dense.json",
+        "sha256": "3fbc1d11b8a4e0dcbc5b6e903af76324c185070cd9f1977d5d99ebdf5a59a8e5"
+      },
+      "baseline": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-baseline-runs-01/dense",
+        "rawHashes": {
+          "spec.json": "76e52ef99cfde94f6c680c9f4684dbd00a9c972a0f1ea9365c2153d95dbc12cd",
+          "runtime.json": "7a5664102932e740e2b2ba92371aa59d185eed9601fa9f6966acc0c5ea8d523e",
+          "summary.json": "65bc7c4cd161b462fa979acce31ca8203f164ea9f42c959958087eab76c89a9b",
+          "runtime.log": "04cbb62740c37b0d33286d644aed823a61eed0ad3bae4630555cb926da5af4d3"
+        },
+        "observedRenderFps": 31.086375782403273,
+        "matchesCurrentPlayableContent": false,
+        "coverageGaps": [
+          "Native host produced no complete post-warmup skipped tick rows"
+        ],
+        "profile": {
+          "warmupSimulationTicks": 120,
+          "tickRows": 479,
+          "skippedRows": 0,
+          "tickCountersMean": {
+            "registerChecks": 449.58246346555325,
+            "alarmChecks": 2844.150313152401,
+            "activationScans": 0.0,
+            "pendingChecks": 119.05427974947808
+          },
+          "tickPhaseMedianUs": {
+            "beginRegistry": 24.0,
+            "beginTracked": 400.0,
+            "beginInput": 100.0,
+            "beginFinish": 47.0,
+            "nativeEvents": 2099.0,
+            "endRegistry": 477.0,
+            "endGameplay": 41.0,
+            "endFinish": 497.0,
+            "beforeDrawGap": 157.0,
+            "drawPrepare": 571.0,
+            "drawWorld": 604.0,
+            "drawRestore": 246.0,
+            "drawGui": 263.0
+          },
+          "drawPhaseMedianUs": {
+            "drawPrepare": 571.0,
+            "drawWorld": 604.0,
+            "drawRestore": 246.0,
+            "drawGui": 263.0
+          }
+        }
+      },
+      "candidate": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-candidate-runs-01/dense",
+        "rawHashes": {
+          "spec.json": "3664e0caca296673f1b0f366edf720be3aed110aec8a28791f6fbc218b84326d",
+          "runtime.json": "0c10df38a1445487e862effc00b0972e82ab0a64b613c44260fee0df2776fc2d",
+          "summary.json": "fbbcc523ef2f09474133574d3ab8e9692abd4c87ff40c28878af0cad560c95a7",
+          "runtime.log": "1e2affeb36c8dc5cf298a3b5262c75a889732827a9bac8eefec24fa5af117532"
+        },
+        "observedRenderFps": 87.13052121999173,
+        "matchesCurrentPlayableContent": true,
+        "coverageGaps": [],
+        "profile": {
+          "warmupSimulationTicks": 120,
+          "tickRows": 479,
+          "skippedRows": 271,
+          "tickCountersMean": {
+            "registerChecks": 237.16701461377872,
+            "alarmChecks": 2844.150313152401,
+            "activationScans": 0.0,
+            "pendingChecks": 119.05010438413362
+          },
+          "tickPhaseMedianUs": {
+            "beginRegistry": 16.0,
+            "beginTracked": 506.0,
+            "beginInput": 23.0,
+            "beginFinish": 35.0,
+            "nativeEvents": 1651.0,
+            "endRegistry": 381.0,
+            "endGameplay": 30.0,
+            "endFinish": 324.0,
+            "beforeDrawGap": 122.0,
+            "drawPrepare": 419.0,
+            "drawWorld": 405.0,
+            "drawRestore": 32.0,
+            "drawGui": 143.0
+          },
+          "drawPhaseMedianUs": {
+            "drawPrepare": 425.0,
+            "drawWorld": 400.5,
+            "drawRestore": 32.0,
+            "drawGui": 142.0
+          }
+        }
+      }
+    },
+    {
+      "case": "troops",
+      "passed": true,
+      "ticksPerBuild": 300.0,
+      "comparisonExclusions": [
+        "player.challengeRunId",
+        "events[].world.nativeClock.nativeElapsedUs",
+        "events[].world.nativeClock.outerId"
+      ],
+      "report": {
+        "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/troops.json",
+        "sha256": "68176986601cb4159976fafedfbdf29be84ca823facd0b39b8e0313cf6b65575"
+      },
+      "baseline": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-baseline-runs-01/troops",
+        "rawHashes": {
+          "spec.json": "8b25544a40b68e9d0a3573fa8324494f8c44663fd26142eb0c7710156de4155c",
+          "runtime.json": "6f82a9108459edf9dfc240b0af1afc8193481238cbbac05c0de41c1575b39938",
+          "summary.json": "dbd6cc3242a164ea48b6f1ae1f511aff782b93008342f0e910adae51ff307a9f",
+          "runtime.log": "e8cb60c9721ab69aa5078f6be7190c82120b4c662f3cf7df01c8e0291693e907"
+        },
+        "observedRenderFps": 20.44091744873754,
+        "matchesCurrentPlayableContent": false,
+        "coverageGaps": [
+          "Native host produced no complete post-warmup skipped tick rows"
+        ],
+        "profile": {
+          "warmupSimulationTicks": 120,
+          "tickRows": 179,
+          "skippedRows": 0,
+          "tickCountersMean": {
+            "registerChecks": 436.1340782122905,
+            "alarmChecks": 4745.832402234637,
+            "activationScans": 0.00558659217877095,
+            "pendingChecks": 197.1340782122905
+          },
+          "tickPhaseMedianUs": {
+            "beginRegistry": 27.0,
+            "beginTracked": 155.0,
+            "beginInput": 101.0,
+            "beginFinish": 48.0,
+            "nativeEvents": 2212.0,
+            "endRegistry": 762.0,
+            "endGameplay": 46.0,
+            "endFinish": 290.0,
+            "beforeDrawGap": 154.0,
+            "drawPrepare": 195.0,
+            "drawWorld": 535.0,
+            "drawRestore": 91.0,
+            "drawGui": 236.0
+          },
+          "drawPhaseMedianUs": {
+            "drawPrepare": 195.0,
+            "drawWorld": 535.0,
+            "drawRestore": 91.0,
+            "drawGui": 236.0
+          }
+        }
+      },
+      "candidate": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-candidate-runs-01/troops",
+        "rawHashes": {
+          "spec.json": "c63c5397834aa1eb731a12e2b2230c42dfa85e3fd36480e91fa7893379936c22",
+          "runtime.json": "60c58cf0047295bfdbd62c2c32dba942f2e76cf234dc05fecfd2086a1ed14e1e",
+          "summary.json": "56284d56c53d0f27e492987a6c904490a227260dd2c77772b78501f0690fa1a8",
+          "runtime.log": "05a103de1e02ff9fb729605335300cbd007959826eb954b3f5e41e9a053ba098"
+        },
+        "observedRenderFps": 89.4211551118691,
+        "matchesCurrentPlayableContent": true,
+        "coverageGaps": [],
+        "profile": {
+          "warmupSimulationTicks": 120,
+          "tickRows": 179,
+          "skippedRows": 111,
+          "tickCountersMean": {
+            "registerChecks": 395.9664804469274,
+            "alarmChecks": 4745.832402234637,
+            "activationScans": 0.00558659217877095,
+            "pendingChecks": 197.12290502793297
+          },
+          "tickPhaseMedianUs": {
+            "beginRegistry": 19.0,
+            "beginTracked": 178.0,
+            "beginInput": 24.0,
+            "beginFinish": 37.0,
+            "nativeEvents": 2120.0,
+            "endRegistry": 826.0,
+            "endGameplay": 33.0,
+            "endFinish": 206.0,
+            "beforeDrawGap": 127.0,
+            "drawPrepare": 174.0,
+            "drawWorld": 385.0,
+            "drawRestore": 37.0,
+            "drawGui": 150.0
+          },
+          "drawPhaseMedianUs": {
+            "drawPrepare": 175.5,
+            "drawWorld": 385.5,
+            "drawRestore": 39.0,
+            "drawGui": 157.0
+          }
+        }
+      }
+    },
+    {
+      "case": "simple",
+      "passed": true,
+      "ticksPerBuild": 600.0,
+      "comparisonExclusions": [
+        "player.challengeRunId",
+        "events[].world.nativeClock.nativeElapsedUs",
+        "events[].world.nativeClock.outerId"
+      ],
+      "report": {
+        "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/simple.json",
+        "sha256": "9f5be217abb0d80af02f0bc0aa1dfad20335fcac43a396b7dccea1877b614b95"
+      },
+      "baseline": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-baseline-runs-01/simple",
+        "rawHashes": {
+          "spec.json": "c1b17c9f5825b11d5b9d3ed7df9f3a296da753f878a5a8a278e2fd65bd233b73",
+          "runtime.json": "51c823888e149daf3b87da21ead38847b0efbcd4a811cb851cc672def2995d7d",
+          "summary.json": "9eeaade0f4a82074b780c372c9fd56bdcc706390557c13f67b3455e30c99acc2",
+          "runtime.log": "52881eb88392e8dc7249b2d3691ac41cd9961131ac268b1e5ac8f7f3a8d52e9c"
+        },
+        "observedRenderFps": 33.667372217684445,
+        "matchesCurrentPlayableContent": false,
+        "coverageGaps": [
+          "Native host produced no complete post-warmup skipped tick rows"
+        ],
+        "profile": {
+          "warmupSimulationTicks": 120,
+          "tickRows": 479,
+          "skippedRows": 0,
+          "tickCountersMean": {
+            "registerChecks": 326.1649269311065,
+            "alarmChecks": 3480.0,
+            "activationScans": 0.0,
+            "pendingChecks": 145.10855949895617
+          },
+          "tickPhaseMedianUs": {
+            "beginRegistry": 27.0,
+            "beginTracked": 126.0,
+            "beginInput": 103.0,
+            "beginFinish": 49.0,
+            "nativeEvents": 1961.0,
+            "endRegistry": 672.0,
+            "endGameplay": 45.0,
+            "endFinish": 323.0,
+            "beforeDrawGap": 159.0,
+            "drawPrepare": 177.0,
+            "drawWorld": 469.0,
+            "drawRestore": 83.0,
+            "drawGui": 245.0
+          },
+          "drawPhaseMedianUs": {
+            "drawPrepare": 177.0,
+            "drawWorld": 469.0,
+            "drawRestore": 83.0,
+            "drawGui": 245.0
+          }
+        }
+      },
+      "candidate": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-candidate-runs-01/simple",
+        "rawHashes": {
+          "spec.json": "d4baa62cfa2f39de4300d858c1f87e23fd99b73b65f167720af4c5ee470eb247",
+          "runtime.json": "32d9fa16469764ccd3d0b83dd2b157e466b9bdfa83151480368e0d9709018e7f",
+          "summary.json": "28067b3db87f271dfcde18bcc7d4e58d1bcb605190dd846ae2fdb20175de5195",
+          "runtime.log": "1f3db07425719bc3c66b05b1c92dcdd3ecf07980305a4323730801cdd96f6887"
+        },
+        "observedRenderFps": 90.61474789102695,
+        "matchesCurrentPlayableContent": true,
+        "coverageGaps": [],
+        "profile": {
+          "warmupSimulationTicks": 120,
+          "tickRows": 479,
+          "skippedRows": 301,
+          "tickCountersMean": {
+            "registerChecks": 290.10229645093943,
+            "alarmChecks": 3480.0,
+            "activationScans": 0.0,
+            "pendingChecks": 145.10229645093946
+          },
+          "tickPhaseMedianUs": {
+            "beginRegistry": 19.0,
+            "beginTracked": 134.0,
+            "beginInput": 23.0,
+            "beginFinish": 36.0,
+            "nativeEvents": 1497.0,
+            "endRegistry": 582.0,
+            "endGameplay": 32.0,
+            "endFinish": 187.0,
+            "beforeDrawGap": 119.0,
+            "drawPrepare": 130.0,
+            "drawWorld": 319.0,
+            "drawRestore": 41.0,
+            "drawGui": 139.0
+          },
+          "drawPhaseMedianUs": {
+            "drawPrepare": 135.0,
+            "drawWorld": 319.0,
+            "drawRestore": 42.0,
+            "drawGui": 145.0
+          }
+        }
+      }
+    }
+  ],
+  "plainComparisons": [
+    {
+      "case": "plain-a",
+      "passed": true,
+      "ticksPerBuild": 600.0,
+      "comparisonExclusions": [
+        "player.challengeRunId",
+        "events[].world.nativeClock.nativeElapsedUs",
+        "events[].world.nativeClock.outerId"
+      ],
+      "report": {
+        "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/plain-a.json",
+        "sha256": "5eb1599b9733fe08d2ba71d8f9501a1a84e22d92807e4a597b6649b400cb6021"
+      },
+      "baseline": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-plain-runs-01/baseline-a",
+        "rawHashes": {
+          "spec.json": "abd78a26367307e8b2d83a1f683aa0f082e582ecdc800a7d4c9cc833ad7b3cdd",
+          "runtime.json": "cba9f4d71adeb81d39b81f206b7b85d27f81bd3ccd7fc81a77caf7bf1e0356a0",
+          "summary.json": "fa355b5acfdbebb7a5d0049f0860c6decc1ab8a2f5707b057290cac329f9762e",
+          "runtime.log": "fd62f9a52fb0b37efe860fee82fdb7e4888e9f0d5a26336653c10b533727ad90"
+        },
+        "observedRenderFps": 12.377812311920124,
+        "matchesCurrentPlayableContent": false,
+        "coverageGaps": [
+          "Performance observation is explicitly disabled; gameplay-only audit has no wall-work spans"
+        ]
+      },
+      "candidate": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-plain-runs-01/candidate-a",
+        "rawHashes": {
+          "spec.json": "0ba1ea39f2938630778de574efce3eabb5bf5eec6193c33e4d0481629151e3af",
+          "runtime.json": "802af1520878d6244c213486588a5d224a5d38839b8622930ffa9fc37b251db6",
+          "summary.json": "37ec7f0f8323e36479dc7d57f37da558a07451727f090365852b12a2fc51006d",
+          "runtime.log": "184cd8527f7efda671fe7ad4c465c04c8c35b75a048d55595ba95d29f5c34eb7"
+        },
+        "observedRenderFps": 13.038879955850964,
+        "matchesCurrentPlayableContent": true,
+        "coverageGaps": [
+          "Performance observation is explicitly disabled; gameplay-only audit has no wall-work spans"
+        ]
+      }
+    },
+    {
+      "case": "plain-b",
+      "passed": true,
+      "ticksPerBuild": 600.0,
+      "comparisonExclusions": [
+        "player.challengeRunId",
+        "events[].world.nativeClock.nativeElapsedUs",
+        "events[].world.nativeClock.outerId"
+      ],
+      "report": {
+        "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/plain-b.json",
+        "sha256": "b39e0a20f36ce0b475943dc9178533c9b249b2100471923a4c5e016bb5ab068d"
+      },
+      "baseline": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-plain-runs-01/baseline-b",
+        "rawHashes": {
+          "spec.json": "0a06e9d3161b363f4e70a48a92b1bf5ad8ca496905d8670568a7f7feda6e5159",
+          "runtime.json": "0433ce32980e63f9ebed596156332f4ae09d1057ee7dc14930d31e574c33d5cd",
+          "summary.json": "95db83d060ff88f0a76a5c806d1d98cd3ff828b38dcbc4f9ec276494cc43237c",
+          "runtime.log": "a3c2ea7c91c4a672d7a8b210f7bd9c6e60eb86d66097fcfc6fc8f104c2182d65"
+        },
+        "observedRenderFps": 13.193143607103417,
+        "matchesCurrentPlayableContent": false,
+        "coverageGaps": [
+          "Performance observation is explicitly disabled; gameplay-only audit has no wall-work spans"
+        ]
+      },
+      "candidate": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-plain-runs-01/candidate-b",
+        "rawHashes": {
+          "spec.json": "4c8ab7faf91be26b9230704b0c6298c9b78110a49939ebed958830a026fd6d6d",
+          "runtime.json": "d99bbe78dcc3c41225754aafa7a682bde8dee47c077bf7c21b42a89661503737",
+          "summary.json": "ba45149d9c21881e5f030fa93604b27a8b860457b3c5b80e72dfc8e2727428e8",
+          "runtime.log": "56ee51af087fc48e83089d7027939e80434be8053b9f627241065ac0f82ed500"
+        },
+        "observedRenderFps": 13.064131537715788,
+        "matchesCurrentPlayableContent": true,
+        "coverageGaps": [
+          "Performance observation is explicitly disabled; gameplay-only audit has no wall-work spans"
+        ]
+      }
+    },
+    {
+      "case": "profiler-vs-plain",
+      "passed": true,
+      "ticksPerBuild": 600.0,
+      "comparisonExclusions": [
+        "player.challengeRunId",
+        "events[].world.nativeClock.nativeElapsedUs",
+        "events[].world.nativeClock.outerId"
+      ],
+      "report": {
+        "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/profiler-vs-plain.json",
+        "sha256": "393682c8c47497378fcd0f894c6ca7f602e0af1edeb3a9c99c3f0635d83419ff"
+      },
+      "baseline": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-candidate-runs-01/lunar",
+        "rawHashes": {
+          "spec.json": "b35666fb4e390c4f577aa92a2be1d68628aa25261488600ff6bde0c3a30b6e5e",
+          "runtime.json": "38f2cab8c0bd0a29fc5883bc3d2bfe6888245755c71f6df5a243ad2aaa7e3994",
+          "summary.json": "0de269c0140bb76f61096a833ac5cd7adc69d132c3b814d5bdd694174e352433",
+          "runtime.log": "29ac31d09e94a86ab26ec90c741f21ab078d8111f559b7a3c1c307a7d6923b11"
+        },
+        "observedRenderFps": 16.957025481390247,
+        "matchesCurrentPlayableContent": true,
+        "coverageGaps": [
+          "Native host produced no complete post-warmup skipped tick rows"
+        ],
+        "profile": {
+          "warmupSimulationTicks": 120,
+          "tickRows": 479,
+          "skippedRows": 0,
+          "tickCountersMean": {
+            "registerChecks": 3114.131524008351,
+            "alarmChecks": 37362.643006263046,
+            "activationScans": 0.0,
+            "pendingChecks": 1562.0960334029228
+          },
+          "tickPhaseMedianUs": {
+            "beginRegistry": 22.0,
+            "beginTracked": 4820.0,
+            "beginInput": 32.0,
+            "beginFinish": 45.0,
+            "nativeEvents": 24194.0,
+            "endRegistry": 6223.0,
+            "endGameplay": 44.0,
+            "endFinish": 3465.0,
+            "beforeDrawGap": 394.0,
+            "drawPrepare": 6868.0,
+            "drawWorld": 4248.0,
+            "drawRestore": 259.0,
+            "drawGui": 614.0
+          },
+          "drawPhaseMedianUs": {
+            "drawPrepare": 6868.0,
+            "drawWorld": 4248.0,
+            "drawRestore": 259.0,
+            "drawGui": 614.0
+          }
+        }
+      },
+      "candidate": {
+        "run": "/Users/infi/Library/Caches/TCC130/perf-plain-runs-01/candidate-a",
+        "rawHashes": {
+          "spec.json": "0ba1ea39f2938630778de574efce3eabb5bf5eec6193c33e4d0481629151e3af",
+          "runtime.json": "802af1520878d6244c213486588a5d224a5d38839b8622930ffa9fc37b251db6",
+          "summary.json": "37ec7f0f8323e36479dc7d57f37da558a07451727f090365852b12a2fc51006d",
+          "runtime.log": "184cd8527f7efda671fe7ad4c465c04c8c35b75a048d55595ba95d29f5c34eb7"
+        },
+        "observedRenderFps": 13.038879955850964,
+        "matchesCurrentPlayableContent": true,
+        "coverageGaps": [
+          "Performance observation is explicitly disabled; gameplay-only audit has no wall-work spans"
+        ]
+      }
+    }
+  ],
+  "primaryGameplayTicksComparedPerBuild": 2100.0,
+  "plainRunOrder": [
+    "baseline-a",
+    "candidate-a",
+    "candidate-b",
+    "baseline-b"
+  ],
+  "plainPerformanceConclusion": "Overall FPS improvement is not established: host load varied; baseline repeats span both sides of the candidate observations. Phase/counter reductions are reported separately.",
+  "regressions": {
+    "timing": [
+      {
+        "passed": true,
+        "errors": [],
+        "errorCount": 0,
+        "fps": 1000,
+        "lateCreatedOnSkippedFrame": false,
+        "noStepReactivatedOnSkippedFrame": false,
+        "skippedOuterFrames": 55,
+        "rawHashes": {
+          "spec.json": "2535af08f9d40b61bc6d5735fd0be4ddb037661c21a349d19ac7192961ce47cd",
+          "runtime.json": "aedf8ff8082f8c9a3c176dd5d55f0735c909d0ccb4d397b3a1fbab41af014cd3",
+          "summary.json": "2a36bcc575f9d887b775bb033b390ad2578b5e643e5636f0188d3a9d11bb80fd",
+          "runtime.log": "c4579d4633d39fedd5b67de2322ae791433a7a53320c4e2a610a6981104ebf8f"
+        },
+        "run": "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/timing-1000",
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/timing-1000-strict.json",
+          "sha256": "ace9234c2301d4e2dade651dec20d09447e3f2146d100d2dae32703152f12310"
+        }
+      },
+      {
+        "passed": true,
+        "errors": [],
+        "errorCount": 0,
+        "fps": 120,
+        "lateCreatedOnSkippedFrame": true,
+        "noStepReactivatedOnSkippedFrame": false,
+        "skippedOuterFrames": 63,
+        "rawHashes": {
+          "spec.json": "9668ce51f0d326c34345ba0baebef717556c756e283c989055274ce4d67e915e",
+          "runtime.json": "c820d49e2ff79bdd30cac59fd3d780f0373ffe2a9b9c62f03ebb16991bd8fc0d",
+          "summary.json": "aecc73e936a89cea960bedaeaf786d4558320a82c7b0411dd9365cd71ca322b0",
+          "runtime.log": "2c02d56922b3992691b3d1e48c1da11f02380e51baf4615160aa5da2f6110f97"
+        },
+        "run": "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/timing-120",
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/timing-120-strict.json",
+          "sha256": "6c6428683765f3067483e98987311e08441e9d4738f8bef8b987fc98f89c3e13"
+        }
+      },
+      {
+        "passed": true,
+        "errors": [],
+        "errorCount": 0,
+        "fps": 150,
+        "lateCreatedOnSkippedFrame": true,
+        "noStepReactivatedOnSkippedFrame": false,
+        "skippedOuterFrames": 53,
+        "rawHashes": {
+          "spec.json": "25f9b129fe108b2f498cc3e3600c7e09d8e4705d21ada6d8adbada814443cbdd",
+          "runtime.json": "a5b4db3bc54dec88540925b857cadbb8da1c6f23f615c9e125e13752578f0c15",
+          "summary.json": "70934f89118434069ccca87845a4148a6a074e18c8b31065269a2f79fbce9770",
+          "runtime.log": "b652326268531a489491f9db12e73567de1b7b8ee9dda234509c8404716c3e39"
+        },
+        "run": "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/timing-150",
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/timing-150-strict.json",
+          "sha256": "5a192a8712a4a22d406dcaca37b33d7cc2549f4796c425da4ddf182074b00dcd"
+        }
+      },
+      {
+        "passed": true,
+        "errors": [],
+        "errorCount": 0,
+        "fps": 237,
+        "lateCreatedOnSkippedFrame": false,
+        "noStepReactivatedOnSkippedFrame": false,
+        "skippedOuterFrames": 45,
+        "rawHashes": {
+          "spec.json": "c9eded325117dcea53af20fcf5bf3d145a9bd2561c649a2f560642fb1b090b86",
+          "runtime.json": "e1fe820ed81777fb7ba6ba8db8a75aa23a2d91d3ec3af8ca30d8f4bc74003ab0",
+          "summary.json": "e0efb25b09122b3666138231fe6bfcb7209088f742670de6123a46346c5daaa5",
+          "runtime.log": "3615c2218ee21496c1e567b2cb06f43fa2553d243c6e13a6e042873859c4c6b4"
+        },
+        "run": "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/timing-237",
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/timing-237-strict.json",
+          "sha256": "bb4cfd8535ae3e0bedb6a07dffcf65ffb953399be1b83feae69953f862538d34"
+        }
+      },
+      {
+        "passed": true,
+        "errors": [],
+        "errorCount": 0,
+        "fps": 60,
+        "lateCreatedOnSkippedFrame": false,
+        "noStepReactivatedOnSkippedFrame": false,
+        "skippedOuterFrames": 10,
+        "rawHashes": {
+          "spec.json": "abbb4f76e5c32c78b3c21a42abdd6da87ea351fb79142e910925194df0e95dcf",
+          "runtime.json": "32c85fec1097ec621a3b4ea243e06798d21135588f85e0221f245f77507b64ec",
+          "summary.json": "a8ca018c6575d36bfff7ca74d266a3e8c2ce0e42a968d7df19fd66e75a1c4e33",
+          "runtime.log": "897eec4bfe46ebffa361c4555929a7b0d31f16d9b6bd470560433ec067322e62"
+        },
+        "run": "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/timing-60",
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/timing-60-strict.json",
+          "sha256": "8cd005c01e2dd25e4062c87048ccb065dda17143b3efe5643e2ed594dbc0ae4e"
+        }
+      }
+    ],
+    "camera": [
+      {
+        "passed": true,
+        "errors": [],
+        "errorCount": 0,
+        "fps": 150,
+        "follow": "direct",
+        "completeDrawWindows": 309,
+        "skippedRootSpatialChecks": 84,
+        "configuredDrawRestorationChecks": 309,
+        "nextBeginCameraRestorationChecks": 323,
+        "rawHashes": {
+          "spec.json": "73ce80b497677d2bc3a1058d9ea51a2dc0de6ef0310ce0837bab0604d2e3d355",
+          "runtime.json": "79cc5f55bc2b79146b9cc1147ae6a4855ca3e57a85b53545a9ad01e38863f12a",
+          "summary.json": "8239da247089d81aa92580777a8acecca8a48ac6d838355e799096911c5ea5b5",
+          "runtime.log": "e2536d56dbb8b9a0eb91897aad78788601db02e5365e980db436605a52d86131"
+        },
+        "run": "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/camera-direct-150",
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/camera-direct-150-strict.json",
+          "sha256": "7d83db15b567c17afe70bea546b3e74581b2c9f958325bbcb45985198dd2bdc2"
+        }
+      },
+      {
+        "passed": true,
+        "errors": [],
+        "errorCount": 0,
+        "fps": 60,
+        "follow": "direct",
+        "completeDrawWindows": 186,
+        "skippedRootSpatialChecks": 4,
+        "configuredDrawRestorationChecks": 186,
+        "nextBeginCameraRestorationChecks": 243,
+        "rawHashes": {
+          "spec.json": "84564462e1d7de6a0a0e1aa43b71d42e76b707dfb05c0ad7cf1dbbc7990024de",
+          "runtime.json": "5ca2270c4102f6666a4ea51d032e8d1796529961ce3e7b3ce8dbfeecbb9460b6",
+          "summary.json": "93039d6333c8f9a6987e0bc0fa0b7d0e1c67b53b563e9fb45363a8b4e157fae4",
+          "runtime.log": "26778b2bfa4be12d2652886be758909940761c6d9a20865574efc9b7d7ec604d"
+        },
+        "run": "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/camera-direct-60",
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/camera-direct-60-strict.json",
+          "sha256": "7ceacb35bd102bafe77d7581e2bb752ab94a55d90d09db1caafae8675b8f7e48"
+        }
+      },
+      {
+        "passed": true,
+        "errors": [],
+        "errorCount": 0,
+        "fps": 150,
+        "follow": "smooth",
+        "completeDrawWindows": 305,
+        "skippedRootSpatialChecks": 76,
+        "configuredDrawRestorationChecks": 305,
+        "nextBeginCameraRestorationChecks": 315,
+        "rawHashes": {
+          "spec.json": "c725c01682155639a2588fcd479dd629ad6d67c1c19ac5444bf8d71a2e11efff",
+          "runtime.json": "5f055a46705d53f2a53c6b03811799c21677a0335b933a12b1fa6732ddfe6e53",
+          "summary.json": "ddff53483e09453fb195ed30eed05667696a867d65b2a67e60c6eea48a63e114",
+          "runtime.log": "8e0aaaabcd74b6bda5b4e2de80a013826627e8d9de1920c70720908f62f24b87"
+        },
+        "run": "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/camera-smooth-150",
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/camera-smooth-150-strict.json",
+          "sha256": "cd021b0593f279231cc9c405ef081c0f48e67815ab0331766e3bbf1cab308c34"
+        }
+      },
+      {
+        "passed": true,
+        "errors": [],
+        "errorCount": 0,
+        "fps": 60,
+        "follow": "smooth",
+        "completeDrawWindows": 202,
+        "skippedRootSpatialChecks": 8,
+        "configuredDrawRestorationChecks": 202,
+        "nextBeginCameraRestorationChecks": 247,
+        "rawHashes": {
+          "spec.json": "66d8de015a783bbc237eff604686fc7d54f77d437e582ab39d996384a19fa3df",
+          "runtime.json": "6ced5014d94ccaf7ee2403d2f41ab315da0ec91694778a6fb4d27ec0a109790a",
+          "summary.json": "575656f3222b7f3a1a83b56311b875c042ae58df306405b59605633903593cfc",
+          "runtime.log": "d92df9c99b538dcc628bc6d54c3a642760573e2b8da5c67bc579f6143dcb1717"
+        },
+        "run": "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/camera-smooth-60",
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/camera-smooth-60-strict.json",
+          "sha256": "4cda6930691950e048c48c2c8e91d3497087dd95906ca4e193d61dddcb830b9c"
+        }
+      }
+    ],
+    "animation": [
+      {
+        "passed": true,
+        "errors": [],
+        "fps": 150,
+        "actor": "o_playerMU",
+        "fullyCovered": true,
+        "coverageGaps": [],
+        "drawSamples": 443,
+        "renderOnlySamples": 171,
+        "renderOnlyMovementSamples": 83,
+        "nativeTailChecks": {
+          "o_onewayleftblock": 435,
+          "o_onewaydownblock": 435,
+          "o_onewayrightblock": 435,
+          "o_timecounter": 435,
+          "o_ammocounter": 435,
+          "o_onewayupblock": 435
+        },
+        "animationHolds": {
+          "o_onewayleftblock": 170,
+          "o_onewaydownblock": 170,
+          "o_onewayrightblock": 170,
+          "o_timecounter": 170,
+          "o_ammocounter": 170,
+          "o_onewayupblock": 170
+        },
+        "pausedFreezeChecks": {},
+        "matchesCurrentPlayableContent": true,
+        "rawHashes": {
+          "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-local-multiplayer-150/spec.json": "e36fc88b19530c8723de402e8ad24e1684aca25d4b67e9dee7872a83a555b4dc",
+          "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-local-multiplayer-150/runtime.json": "616cda45efe4adf07e36d669efbda2c7361716232c81c027fe01ba101ffaec63",
+          "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-local-multiplayer-150/summary.json": "8bb74a1e0503947fe4ce7b0dea15ac93e545ac7114d549f7d1e8d31b15b77110",
+          "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-local-multiplayer-150/runtime.log": "d88807fb4e005494562bd89e4da911f724450d9c8c26a616b83cccd6136a6933"
+        },
+        "run": "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-local-multiplayer-150",
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/animation-local-multiplayer-150-strict.json",
+          "sha256": "81fb6919565a024c79fcc4a33f450ace2f961d4d71175501ed55223b60182179"
+        }
+      },
+      {
+        "passed": true,
+        "errors": [],
+        "fps": 150,
+        "actor": "o_player",
+        "fullyCovered": true,
+        "coverageGaps": [],
+        "drawSamples": 423,
+        "renderOnlySamples": 159,
+        "renderOnlyMovementSamples": 29,
+        "nativeTailChecks": {
+          "o_onewayleftblock": 407,
+          "o_onewaydownblock": 407,
+          "o_onewayrightblock": 407,
+          "o_timecounter": 407,
+          "o_ammocounter": 407,
+          "o_onewayupblock": 407
+        },
+        "animationHolds": {
+          "o_onewayleftblock": 159,
+          "o_onewaydownblock": 159,
+          "o_onewayrightblock": 159,
+          "o_timecounter": 159,
+          "o_ammocounter": 159,
+          "o_onewayupblock": 159
+        },
+        "pausedFreezeChecks": {
+          "o_onewayleftblock": 56,
+          "o_onewaydownblock": 56,
+          "o_onewayrightblock": 56,
+          "o_timecounter": 56,
+          "o_ammocounter": 56,
+          "o_onewayupblock": 56
+        },
+        "matchesCurrentPlayableContent": true,
+        "rawHashes": {
+          "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-single-player-150/spec.json": "34074d5ed8bf72ac649f9761c272d4221c461b4584dd5ec3b614893115a60c35",
+          "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-single-player-150/runtime.json": "b71fb0e697700548b84c174be8488d3534b1727c0b79a7731da91a7012a27d89",
+          "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-single-player-150/summary.json": "9b78e1fd05b70a530cb534d6619de1c0a8bd0dfef01e4a805bfc3b8aa457720f",
+          "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-single-player-150/runtime.log": "e19e5767014abecffdd0d8b8f1c8914b27e3097a05f2d4f56e0470c74f743dfc"
+        },
+        "run": "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-single-player-150",
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/animation-single-player-150-strict.json",
+          "sha256": "4f048b52d6f29f9ca01e272e3ac7871eeb7b739a4239bbb6613370b8d61c9e0d"
+        }
+      },
+      {
+        "passed": true,
+        "errors": [],
+        "fps": 60,
+        "actor": "o_player",
+        "fullyCovered": true,
+        "coverageGaps": [],
+        "drawSamples": 235,
+        "renderOnlySamples": 16,
+        "renderOnlyMovementSamples": 2,
+        "nativeTailChecks": {
+          "o_onewayleftblock": 179,
+          "o_onewaydownblock": 179,
+          "o_onewayrightblock": 179,
+          "o_timecounter": 179,
+          "o_ammocounter": 179,
+          "o_onewayupblock": 179
+        },
+        "animationHolds": {
+          "o_onewayleftblock": 16,
+          "o_onewaydownblock": 16,
+          "o_onewayrightblock": 16,
+          "o_timecounter": 16,
+          "o_ammocounter": 16,
+          "o_onewayupblock": 16
+        },
+        "pausedFreezeChecks": {
+          "o_onewayleftblock": 37,
+          "o_onewaydownblock": 37,
+          "o_onewayrightblock": 37,
+          "o_timecounter": 37,
+          "o_ammocounter": 37,
+          "o_onewayupblock": 37
+        },
+        "matchesCurrentPlayableContent": true,
+        "rawHashes": {
+          "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-single-player-60/spec.json": "68a528a585b5b1bcca41e683722e55c659b83fe0ac28a32483738b501694b5e8",
+          "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-single-player-60/runtime.json": "2f20f54d5321dd1481c58c07dcf5f856c9727df9d86a99bbbda876d8f4499dba",
+          "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-single-player-60/summary.json": "4d31b317309792cf2b3fefeaa784c0473cea82741128b0cbcb48c8306d5c49f0",
+          "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-single-player-60/runtime.log": "3c5e9daa32c7436ab69ab4bef2169d9a279f73741e491d53c1ad6f9a5d0e5b87"
+        },
+        "run": "/Users/infi/Library/Caches/TCC130/perf-regression-runs-01/animation-single-player-60",
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/animation-single-player-60-strict.json",
+          "sha256": "cb7ab379e6f5af85e4990e148bd0d08df2d2a2de5292276c8b1897d70e6fc9b9"
+        }
+      }
+    ],
+    "cameraCrossCap": {
+      "passed": true,
+      "errors": [],
+      "errorCount": 0,
+      "configuredCameraRootEndComparison": [
+        {
+          "follow": "direct",
+          "equal": true,
+          "differingLogicalTicks": 0,
+          "maximumViewOriginDeltaPixels": 0,
+          "examples": [],
+          "largestDifference": null,
+          "interpretation": "Actual manual fixed60 configured camera at authoritative root End; render caps must retain the same rectangles. Complete Draw restoration remains separately checked; no visual acceptance."
+        },
+        {
+          "follow": "smooth",
+          "equal": true,
+          "differingLogicalTicks": 0,
+          "maximumViewOriginDeltaPixels": 0,
+          "examples": [],
+          "largestDifference": null,
+          "interpretation": "Actual manual fixed60 configured camera at authoritative root End; render caps must retain the same rectangles. Complete Draw restoration remains separately checked; no visual acceptance."
+        }
+      ],
+      "pending": [
+        "human/native pixel appearance and occlusion/clipping review",
+        "death/retry/third-torch fire and portal/wrap lifecycle",
+        "other rendering caps, original campaign and Lunar camera contexts"
+      ],
+      "visualAcceptance": false,
+      "report": {
+        "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/camera-cross-cap.json",
+        "sha256": "06d3d30548fcaa08afafb12df8e0414c54a16c021626587959b0f8ed7e7e9fbf"
+      }
+    },
+    "timingCrossCap": [
+      {
+        "passed": false,
+        "errors": [
+          "comparison lacks a strictly accepted native skipped creation/reactivation trial"
+        ],
+        "errorCount": 1,
+        "limitations": [
+          "Delivered display FPS is not inferred from requested cap.",
+          "Supplementary instance Begin/End counts and raw resource/instance IDs are excluded.",
+          "Resources compare through declared animations and fixed-mask names when typed native refs provide them; numeric refs use peer relationships.",
+          "No hardware/service tests, campaign restart or special-draft quality/completion claim."
+        ],
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/timing-cross-cap-60-237-native.json",
+          "sha256": "bec48ece0cdf66fbcfd42cac2d16299905bfd34a39dd4ad2bed61580bae30bd0"
+        }
+      },
+      {
+        "passed": false,
+        "errors": [
+          "comparison lacks a strictly accepted native skipped creation/reactivation trial"
+        ],
+        "errorCount": 1,
+        "limitations": [
+          "Delivered display FPS is not inferred from requested cap.",
+          "Supplementary instance Begin/End counts and raw resource/instance IDs are excluded.",
+          "Resources compare through declared animations and fixed-mask names when typed native refs provide them; numeric refs use peer relationships.",
+          "No hardware/service tests, campaign restart or special-draft quality/completion claim."
+        ],
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/timing-cross-cap-60-150-native.json",
+          "sha256": "9410cde22aa1fc8106a81f00225ff2329a397d507c91f112ffe9c7c9f1ddce7a"
+        }
+      },
+      {
+        "passed": false,
+        "errors": [
+          "comparison lacks a strictly accepted native skipped creation/reactivation trial"
+        ],
+        "errorCount": 1,
+        "limitations": [
+          "Delivered display FPS is not inferred from requested cap.",
+          "Supplementary instance Begin/End counts and raw resource/instance IDs are excluded.",
+          "Resources compare through declared animations and fixed-mask names when typed native refs provide them; numeric refs use peer relationships.",
+          "No hardware/service tests, campaign restart or special-draft quality/completion claim."
+        ],
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/timing-cross-cap-60-1000-native.json",
+          "sha256": "2c5d4c86f66ad0fcc68385260a60d3f02eed29b86abe6ca43a4698aee6a9d136"
+        }
+      },
+      {
+        "passed": false,
+        "errors": [
+          "comparison lacks a strictly accepted native skipped creation/reactivation trial"
+        ],
+        "errorCount": 1,
+        "limitations": [
+          "Delivered display FPS is not inferred from requested cap.",
+          "Supplementary instance Begin/End counts and raw resource/instance IDs are excluded.",
+          "Resources compare through declared animations and fixed-mask names when typed native refs provide them; numeric refs use peer relationships.",
+          "No hardware/service tests, campaign restart or special-draft quality/completion claim."
+        ],
+        "report": {
+          "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/timing-cross-cap-60-120-native.json",
+          "sha256": "ba4c401bcc734d177033b65c6b044b58f52bad37f5ab1b330b84e068da2048d3"
+        }
+      }
+    ]
+  },
+  "verifierCorrection": {
+    "change": "Accept exact QA-gated drawPrepare marker before the existing <=60 return; native camera logic and measurements unchanged. Initial source-pattern rejection retained.",
+    "initialFailure": {
+      "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/camera-initial-binding-failure.json",
+      "sha256": "dee847b1167e7b382a6fb38c4852dc633f05e87ce20a4554d98e4a60b9bf395b"
+    },
+    "offlineCameraChecks": 149,
+    "independentMutationReview": "Exact marker accepted; altered guard, threshold, phase, extra mutation and lerp/teleport contracts rejected."
+  },
+  "independentRegressionSummary": {
+    "path": "/Users/infi/Library/Caches/TCC130/perf-compare-01/independent-regression-summary.json",
+    "sha256": "28f7f9432e3798a7e8374a6131657bb253cbc500298747536bfdc47cd8d737e4"
+  },
+  "validation": {
+    "staticConfiguration": "passed",
+    "projectEventsAndResources": "validated in successful candidate build",
+    "pythonToolSyntax": "passed",
+    "diffWhitespace": "passed",
+    "independentSourceReview": "No actionable correctness regressions found; production hold/resume/polar motion bodies unchanged.",
+    "physicalKeyboardControllerHotplug": "Not exercised by replay; unchanged sampling reviewed and latch reductions checked offline."
+  },
+  "limitations": [
+    "Heavy CPU/memory pressure and hidden QA/VM host prevent a reliable overall FPS or production GPU-time claim.",
+    "Timing per-run state checks pass, but no-step reactivation did not land on a render-only frame; combined cross-cap lifecycle acceptance remains unmet.",
+    "Native camera observations are not human pixel/occlusion review or full campaign camera lifecycle coverage.",
+    "Workload frame budgets are not new level-completion proofs.",
+    "Physical devices/controllers, stores/services and final signed exports retain the release gates in README."
+  ]
+}

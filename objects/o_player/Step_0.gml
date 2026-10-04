@@ -711,6 +711,8 @@ if place_meeting(x,y+3,o_door) && !instance_exists(o_key) {
 		scr_workshopchallenge_advance();
 		exit;
 	}
+	// Online shared levels (a friend's editor or custom challenge level) replay.
+	if (net_door_override()) exit;
 	if global.wheelmultiplier < 3 {
 	global.wheelmultiplier += 0.01
 	}

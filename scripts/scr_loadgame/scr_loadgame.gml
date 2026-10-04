@@ -35,13 +35,6 @@ function scr_loadgame(_save_directory = "", _transition = true) {
 
 	room_goto(_room);
 	loadhud();
-
-	// Online Multiplayer - Spawn network manager when loading a game
-	if (global.onlinemultiplayersettings == 1 && tcc_steam_initialised()) {
-		if (!instance_exists(o_networkmanager)) {
-			instance_create(0, 0, o_networkmanager)
-		}
-	}
 	return true;
 	}
 	return false;

@@ -93,9 +93,15 @@ function workshopER_query_catalog() {
 }
 
 /// Core level selection for Workshop Endless Run
-function workshopERrandomlevel() {
+/// _retry replaces a level that failed to load; it keeps the same level number.
+function workshopERrandomlevel(_retry = false) {
 	tcc_randomize()
 
+	// Online: everyone in the same run plays the first pick of each level number.
+	var _party_pick = net_er_resolve_workshop(_retry)
+	if _party_pick != 0 {
+		net_er_goto_workshop(_party_pick)
+	} else {
 	// Decide: pick from subscribed pool or from catalog (non-subscribed)
 	var use_catalog = false
 	if global.workshopER_catalog_scan_done && array_length(global.workshopER_catalog_ids) > 0 {
@@ -110,6 +116,8 @@ function workshopERrandomlevel() {
 		workshopER_pick_catalog_level()
 	} else {
 		workshopER_pick_pool_level()
+	}
+	net_er_record_workshop(global.workshopER_current_file_id, !_retry)
 	}
 
 	// 1-up logic
@@ -273,7 +281,7 @@ function workshopER_skip_level() {
 
 	// Try again
 	if global.workshopER_pool_count > 0 || array_length(global.workshopER_catalog_ids) > 0 {
-		workshopERrandomlevel()
+		workshopERrandomlevel(true)
 	} else {
 		workshopER_game_over()
 	}

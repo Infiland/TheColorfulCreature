@@ -407,6 +407,8 @@ global.workshopER_catalog_ids = []
 net_init()  // Initialize Steam networking globals
 
 // Check for Steam cold-launch: +connect_lobby <lobby_id>
+// Once per process: globals survive game_restart, which must not re-join it.
+if (!variable_global_exists("net_launch_lobby")) {
 global.net_launch_lobby = ""
 var _pcount = parameter_count()
 for (var _pi = 1; _pi <= _pcount; _pi++) {
@@ -415,6 +417,7 @@ for (var _pi = 1; _pi <= _pcount; _pi++) {
 		show_debug_message("[NET] Cold launch detected, lobby ID: " + global.net_launch_lobby)
 		break;
 	}
+}
 }
 
 //Local Multiplayer

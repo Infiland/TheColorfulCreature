@@ -93,6 +93,8 @@ function net_avatars_free() {
         _key = ds_map_find_next(global.net_avatars, _key);
     }
     ds_map_destroy(global.net_avatars);
+    // game_restart keeps globals: never leave a stale map index behind.
+    global.net_avatars = ds_map_create();
 }
 
 function net_draw_avatar(_id, _x, _y, _size, _alpha) {

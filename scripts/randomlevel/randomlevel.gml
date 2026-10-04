@@ -64,6 +64,8 @@ function randomlevel() {
 	case(26): scr_ERBreakable() break;
 	case(27): scr_ERSpecialW1() break;
 	}
+	// Online: everyone in the same run plays the first pick of each level number.
+	global.chosenlevelER = net_er_resolve_room(global.chosenlevelER)
 	room_goto(global.chosenlevelER)
 
 	//Difficulty

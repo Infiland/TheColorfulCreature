@@ -11,6 +11,7 @@ instance_create(x,y,obj_controller_wave)
 instance_create(x,y,o_getcalendartime)
 instance_create(x,y,o_checkplayercount)
 instance_create(x,y,o_fullscreensystem)
+net_ensure_manager() //Online multiplayer sessions, joinable from the Steam overlay in any room
 instance_create(x,y,Obj_AdMob)
 instance_create(x,y,o_localization)
 instance_create(x,y,o_getallinventoryitems) //Load all items from steam inventory

@@ -3,6 +3,42 @@ function tcc_steam_activate_overlay(_a0) {
     if (platform_steam() && steam_initialised()) return steam_activate_overlay(_a0);
     return false;
 }
+function tcc_steam_activate_overlay_user(_a0, _a1) {
+    if (platform_steam() && steam_initialised()) return steam_activate_overlay_user(_a0, _a1);
+    return false;
+}
+function tcc_steam_get_friend_rich_presence(_a0, _a1) {
+    if (platform_steam() && steam_initialised()) return steam_get_friend_rich_presence(_a0, _a1);
+    return "";
+}
+function tcc_steam_get_friends_game_info() {
+    if (platform_steam() && steam_initialised()) return steam_get_friends_game_info();
+    return [];
+}
+function tcc_steam_get_user_persona_name_sync(_a0) {
+    if (platform_steam() && steam_initialised()) return steam_get_user_persona_name_sync(_a0);
+    return "";
+}
+function tcc_steam_is_overlay_enabled() {
+    if (platform_steam() && steam_initialised()) return steam_is_overlay_enabled();
+    return false;
+}
+function tcc_steam_lobby_activate_invite_overlay() {
+    if (platform_steam() && steam_initialised()) return steam_lobby_activate_invite_overlay();
+    return false;
+}
+function tcc_steam_lobby_get_owner_id() {
+    if (platform_steam() && steam_initialised()) return steam_lobby_get_owner_id();
+    return int64(0);
+}
+function tcc_steam_lobby_set_joinable(_a0) {
+    if (platform_steam() && steam_initialised()) return steam_lobby_set_joinable(_a0);
+    return false;
+}
+function tcc_steam_user_set_played_with(_a0) {
+    if (platform_steam() && steam_initialised()) return steam_user_set_played_with(_a0);
+    return false;
+}
 function tcc_steam_activate_overlay_browser(_a0) {
     if (platform_steam() && steam_initialised()) return steam_activate_overlay_browser(_a0);
     return false;

@@ -325,6 +325,8 @@ function workshopER_cleanup() {
 	global.workshopER_catalog_scan_done = false
 	global.workshopER_loading = false
 	global.workshopER_query_id = -1
+	// A run that ended inside a pick has no next level to share online.
+	global.workshopER_current_file_id = 0
 	global.workshop = 0
 
 	// Destroy persistent async handler

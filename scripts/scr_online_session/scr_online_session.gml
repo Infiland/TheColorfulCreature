@@ -38,7 +38,11 @@ function net_session_init() {
     global.net_follow_quiet_until = 0;
     global.net_follow_waiting_notice = false;
     global.net_follow_job = undefined;
+    global.net_follow_entered_tick = -1;
+    global.net_follow_pending_sid = "";
+    global.net_follow_pending_own = "";
     global.net_er_index = 0;
+    global.net_er_diff_borrowed = false;
     global.net_er_picks = ds_map_create();
     global.net_ugc_subscribed = [];
 }
@@ -139,6 +143,8 @@ function net_session_update() {
     var _class = net_room_class(room);
     if (_class == NET_ROOM_MENU) {
         global.net_session_in_menu = true;
+        // A follow that ended back in a menu was never entered: never reuse its sid.
+        global.net_session_adopt = "";
         global.net_shared_md5 = "";
         global.net_challenge_share_path = "";
         global.net_challenge_md5 = "";
@@ -188,6 +194,16 @@ function net_editor_playmode(_playing) {
     }
     // Each play-test is a fresh session, so followers come along to the new version.
     if (global.net_editor_md5 != "") global.net_session_sid = net_new_sid();
+}
+
+/// True on the tick a follow entry reset the mode and issued its room change.
+function net_follow_entered_this_tick() {
+    return variable_global_exists("net_follow_entered_tick") && global.net_follow_entered_tick == timing_tick_id();
+}
+
+/// randomlevel() hook: difficulty 10 rewards are not granted for a borrowed difficulty.
+function net_er_difficulty_reward_allowed() {
+    return !(variable_global_exists("net_er_diff_borrowed") && global.net_er_diff_borrowed);
 }
 
 /// o_player door hook. Shared levels have no rewards or next level: replay them.
@@ -329,9 +345,17 @@ function net_session_publish(_force) {
     var _desc = net_session_capture();
     _desc.name = net_clean_name(tcc_steam_get_persona_name());
     var _json = json_stringify(_desc);
+    // Steam lobby values hold at most 8 KB: long Workshop challenges drop level titles.
+    if (string_byte_length(_json) > 8000 && variable_struct_exists(_desc, "levels")) {
+        for (var _i = 0; _i < array_length(_desc.levels); ++_i) _desc.levels[_i].title = "";
+        _json = json_stringify(_desc);
+    }
+    if (string_byte_length(_json) > 8000) {
+        _desc = {v:NET_PROTOCOL, sid:_desc.sid, mode:"menu", joinable:false, room:_desc.room, key:"", title:"", name:_desc.name};
+        _json = json_stringify(_desc);
+    }
     if (!_force && _json == global.net_published_json) return;
-    global.net_published_json = _json;
-    net_lobby_set("session", _json);
+    if (net_lobby_set("session", _json)) global.net_published_json = _json;
     net_lobby_set("current_room", _desc.room);
 }
 
@@ -376,16 +400,27 @@ function net_follow_poll() {
     var _desc = net_session_host_desc();
     if (is_undefined(_desc) || _desc.sid == global.net_host_sid_seen) return;
     var _first = global.net_follow_waiting_notice;
-    global.net_host_sid_seen = _desc.sid;
-    if (!global.net_follow_host || current_time < global.net_follow_quiet_until) return;
+    if (!global.net_follow_host || current_time < global.net_follow_quiet_until) {
+        global.net_host_sid_seen = _desc.sid;
+        return;
+    }
     if (!_desc.joinable) {
+        // Leave it unseen: follow once the host reaches a level of this session
+        // (e.g. after the merchant or a boss intro, or a save loaded into one).
+        if (global.net_follow_pending_sid != _desc.sid) {
+            global.net_follow_pending_sid = _desc.sid;
+            global.net_follow_pending_own = global.net_session_sid;
+        }
         if (_first) {
             global.net_follow_waiting_notice = false;
             net_notice(string_replace(loc("NET_WAITING_FOR_HOST"), "{NAME}", _desc.name));
         }
         return;
     }
+    global.net_host_sid_seen = _desc.sid;
     global.net_follow_waiting_notice = false;
+    // While we waited for this session to become joinable the player started their own.
+    if (global.net_follow_pending_sid == _desc.sid && global.net_follow_pending_own != global.net_session_sid) return;
     if (_desc.sid == global.net_session_sid && !_first) return;
     net_follow_start(_desc, false);
 }
@@ -431,14 +466,20 @@ function net_follow_job_tick() {
         net_follow_cancel();
         return;
     }
-    if (!net_follow_can_enter()) return;
-    if (_job.timer > 0) { _job.timer -= 1; return; }
-    // The host may have moved on within the same session: enter where they are now.
+    // The host left that session (menu, editor or a newer session): never enter it.
     var _latest = net_session_host_desc();
-    if (is_struct(_latest) && _latest.sid == _job.sid) {
-        if (!_latest.joinable) return;
+    if (is_struct(_latest)) {
+        if (_latest.sid != _job.sid) {
+            net_follow_cancel();
+            net_ugc_release(global.net_session_sid);
+            return;
+        }
+        // The host may have moved on within the same session: enter where they are now.
         _job.desc = _latest;
     }
+    if (!net_follow_can_enter()) return;
+    if (_job.timer > 0) { _job.timer -= 1; return; }
+    if (!_job.desc.joinable) return;	// same session, host between levels: hold
     var _result = "fail";
     try { _result = net_session_enter(_job.desc); }
     catch (_error) {
@@ -477,6 +518,9 @@ function net_session_enter(_desc) {
 
 /// Leave whatever this player was doing, as quitting to the menu would.
 function net_enter_begin() {
+    // o_player's door must not override this tick's room change (net_follow_entered_this_tick).
+    global.net_follow_entered_tick = timing_tick_id();
+    global.net_er_diff_borrowed = false;
     if (variable_global_exists("endless") && global.endless == 1 && global.endlessrunmode == 4) workshopER_cleanup();
     if (instance_exists(o_workshopERloading)) instance_destroy(o_workshopERloading);
     if (instance_exists(o_popup)) instance_destroy(o_popup);
@@ -612,6 +656,8 @@ function net_enter_endless(_desc) {
     if (_mode == 1) {
         global.difficultyER = clamp(round(net_number(net_field(_desc, "diff", 1), 1)), 1, 10);
         global.difficultyincreaseER = irandom_range(4, 7);
+        // Difficulty rewards belong to players who climbed there themselves.
+        global.net_er_diff_borrowed = global.difficultyER > 1;
     }
     instance_create(0, 0, o_levelcounter);
     loadhud();
@@ -806,7 +852,10 @@ function net_er_reset_picks() {
 // Level numbers within the run; a run started from the Endless menu begins at 1.
 function net_er_begin_pick() {
     if (!variable_global_exists("net_ready") || !global.net_ready) return 0;
-    if (room == r_endlessrunmenu) net_er_reset_picks();
+    if (room == r_endlessrunmenu) {
+        net_er_reset_picks();
+        global.net_er_diff_borrowed = false;
+    }
     global.net_er_index += 1;
     return global.net_er_index;
 }

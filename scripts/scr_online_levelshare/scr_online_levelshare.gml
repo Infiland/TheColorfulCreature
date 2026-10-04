@@ -3,13 +3,13 @@
 //
 // Editor play-tests and custom challenge levels exist only on their author's
 // machine. Their level.json text is identified by its MD5. A follower requests
-// it from the lobby owner, who sends it zlib-compressed in reliable chunks. The
-// receiver verifies size, hash and level schema before caching it under
+// it from the lobby owner, who sends it in reliable chunks. It is not compressed:
+// zlib output cannot be bounded in GML, so the receiver allocates only the size it
+// validated. The receiver verifies size, hash and level schema before caching it under
 // "Online Levels/<md5>/", where it is played like a Workshop level.
 // =============================================================================
 
 #macro NET_SHARE_HEADER			44			// type + md5 + NUL + total + offset + length
-#macro NET_SHARE_MAX_COMPRESSED	8388608
 #macro NET_SHARE_MAX_TEXT		16777216
 #macro NET_SHARE_TIMEOUT_MS		30000
 #macro NET_SHARE_CHUNKS_PER_TICK	8
@@ -129,16 +129,10 @@ function net_levelshare_serve(_peer, _md5) {
     var _text = array_length(global.net_share_out) < 8 ? net_levelshare_text(_md5) : undefined;
     if (is_undefined(_text)) { net_levelshare_send_deny(_peer, _md5); return; }
     var _length = string_byte_length(_text);
-    var _raw = buffer_create(max(1, _length), buffer_fixed, 1);
+    if (_length < 1 || _length > NET_SHARE_MAX_TEXT) { net_levelshare_send_deny(_peer, _md5); return; }
+    var _raw = buffer_create(_length, buffer_fixed, 1);
     buffer_write(_raw, buffer_text, _text);
-    var _compressed = buffer_compress(_raw, 0, _length);
-    buffer_delete(_raw);
-    if (_compressed < 0 || buffer_get_size(_compressed) > NET_SHARE_MAX_COMPRESSED) {
-        if (_compressed >= 0) buffer_delete(_compressed);
-        net_levelshare_send_deny(_peer, _md5);
-        return;
-    }
-    array_push(global.net_share_out, {peer:_peer, md5:_md5, buffer:_compressed, size:buffer_get_size(_compressed), offset:0});
+    array_push(global.net_share_out, {peer:_peer, md5:_md5, buffer:_raw, size:_length, offset:0});
 }
 
 /// Pump outgoing chunks and expire a stalled download.
@@ -198,7 +192,7 @@ function net_levelshare_receive(_sender, _type, _buffer, _size) {
             var _length = buffer_peek(_buffer, 42, buffer_u16);
             // Reliable P2P delivery is ordered: anything else is a broken stream.
             if (_length > NET_CHUNK_DATA_SIZE || NET_SHARE_HEADER + _length != _size || _total < 1
-                || _total > NET_SHARE_MAX_COMPRESSED || _offset != _in.received || _offset + _length > _total
+                || _total > NET_SHARE_MAX_TEXT || _offset != _in.received || _offset + _length > _total
                 || (_in.buffer != -1 && _total != _in.total)) {
                 global.net_share_denied[? _md5] = current_time;
                 net_levelshare_in_clear();
@@ -220,7 +214,8 @@ function net_levelshare_receive(_sender, _type, _buffer, _size) {
 function net_levelshare_finish() {
     var _in = global.net_share_in;
     var _md5 = _in.md5;
-    var _raw = buffer_decompress(_in.buffer);
+    var _raw = _in.buffer;
+    _in.buffer = -1;	// take ownership before clearing the transfer
     net_levelshare_in_clear();
     var _ok = false;
     if (_raw >= 0) {

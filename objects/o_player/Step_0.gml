@@ -706,6 +706,8 @@ if walksp != 8.5 {
 //Next Level
 if room != r_leveleditor {
 if place_meeting(x,y+3,o_door) && !instance_exists(o_key) {
+	// An online follow already reset the mode and chose this tick's room.
+	if (net_follow_entered_this_tick()) exit;
 	qa_observe_exit();
 	if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1 && room == r_customlevelworkshop) {
 		scr_workshopchallenge_advance();

@@ -79,7 +79,7 @@ function randomlevel() {
 		var maxdiff = round(7 + (global.difficultyER / 3))
 		global.difficultyincreaseER = irandom_range(mindiff,maxdiff)
 		}
-	} else {
+	} else if net_er_difficulty_reward_allowed() {
 	if global.cheats = 0 {
 	if !achievement_earned("ABSOLUTE_ENDLESS_HELL") { achievement_award("ABSOLUTE_ENDLESS_HELL") }
 	}

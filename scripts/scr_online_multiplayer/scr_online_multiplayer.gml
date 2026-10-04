@@ -295,6 +295,7 @@ function net_init() {
 
 	global.net_players = ds_map_create();
 	global.net_members = ds_map_create();
+	if (!variable_global_exists("net_avatars")) global.net_avatars = ds_map_create();
 	global.net_member_list = [];
 	global.net_lobby_data = ds_map_create();
 	global.net_recv_buffer = buffer_create(1024, buffer_grow, 1);
@@ -454,8 +455,10 @@ function net_discard_lobby_reply(_success) {
 
 function net_lobby_set(_key,_value) {
     _value = string(_value);
-    if (global.net_lobby_data[? _key] == _value) return;
-    if (tcc_steam_lobby_set_data(_key,_value)) global.net_lobby_data[? _key] = _value;
+    if (global.net_lobby_data[? _key] == _value) return true;
+    if (!tcc_steam_lobby_set_data(_key,_value)) return false;
+    global.net_lobby_data[? _key] = _value;
+    return true;
 }
 
 // Called whenever we start owning the lobby (creation or migration).
@@ -520,6 +523,7 @@ function net_tick() {
 
     if (!net_enabled()) {
         if (global.net_active) net_leave_lobby(false);
+        if (global.net_connect_state == 2) global.net_connect_state = 0;
         global.net_pending_join = -1;
         global.net_host_intent = false;
         return;
@@ -689,9 +693,10 @@ function net_receive_packets() {
             case NET_PACKET_HELLO:
                 var _hello = net_decode_hello(_buf,_size);
                 if (is_undefined(_hello)) break;
-                net_register_player(_sender,_hello.username,_hello.join_time,_hello.skin,_hello.hat);
+                // join_time is this machine's clock (first seen), so the host can rank members.
+                net_register_player(_sender,_hello.username,current_time,_hello.skin,_hello.hat);
                 var _peer = global.net_players[? _key];
-                _peer.username = _hello.username; _peer.join_time = _hello.join_time;
+                _peer.username = _hello.username;
                 _peer.skin = _hello.skin; _peer.hat = _hello.hat; _peer.last_update = current_time;
                 // Only answer an announcement: replying to replies caused endless ping-pong.
                 if (!_hello.reply) {

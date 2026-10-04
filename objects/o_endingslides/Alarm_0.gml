@@ -25,7 +25,7 @@ instance_destroy()
 if image_index = image_number - 1 {
 if !instance_exists(o_endingslides) {
 if !achievement_earned("THE_CROWN") { achievement_award("THE_CROWN") }
-game_restart()
+net_game_restart()
 }}
 }
 alarm[0] = 5

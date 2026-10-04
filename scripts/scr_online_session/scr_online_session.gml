@@ -46,11 +46,14 @@ function net_session_init() {
     global.net_practice_borrowed = false;
     global.net_er_picks = ds_map_create();
     global.net_ugc_subscribed = [];
+    global.net_ugc_failed = ds_map_create();
+    global.net_cer_own = undefined;
 }
 
 function net_session_cleanup() {
     net_ugc_release("");
     if (ds_exists(global.net_er_picks, ds_type_map)) ds_map_destroy(global.net_er_picks);
+    if (ds_exists(global.net_ugc_failed, ds_type_map)) ds_map_destroy(global.net_ugc_failed);
 }
 
 // Lobby left or lost: forget the old host, keep our own session.
@@ -59,7 +62,8 @@ function net_session_lobby_reset() {
     global.net_host_desc_json = "";
     global.net_host_sid_seen = "";
     global.net_published_json = "";
-    global.net_follow_job = undefined;
+    net_follow_cancel();
+    ds_map_clear(global.net_ugc_failed);
     global.net_follow_waiting_notice = false;
     global.net_follow_pending_sid = "";
     global.net_follow_pending_own = "";
@@ -148,6 +152,10 @@ function net_session_update() {
         global.net_session_in_menu = true;
         // A follow that ended back in a menu was never entered: never reuse its sid.
         global.net_session_adopt = "";
+        if (!is_undefined(global.net_cer_own)) {
+            net_cer_apply(global.net_cer_own, true);
+            global.net_cer_own = undefined;
+        }
         global.net_shared_md5 = "";
         global.net_challenge_share_path = "";
         global.net_challenge_md5 = "";
@@ -205,14 +213,15 @@ function net_follow_entered_this_tick() {
     return variable_global_exists("net_follow_entered_tick") && global.net_follow_entered_tick == timing_tick_id();
 }
 
-/// Campaign level whose unlock a room requires (0 when it is not a campaign room).
+/// worldProgression needed to reach a room yourself (0 when it is not a campaign room).
+/// Rooms after level N need level N beaten, i.e. worldProgression N + 1.
 function net_campaign_room_level(_room) {
     switch (_room) {
-        case r_boss1: return 20;
-        case r_boss2: return 40;
-        case r_boss3: return 60;
-        case r_boss4: return 80;
-        case r_truelvl100_p1: case r_truelvl100_p2: case r_boss5: return 100;
+        case r_boss1: return 21;
+        case r_boss2: return 41;
+        case r_boss3: return 61;
+        case r_boss4: return 81;
+        case r_truelvl100_p1: case r_truelvl100_p2: case r_boss5: return 101;
     }
     var _name = room_get_name(_room);
     var _number = string_delete(_name, 1, 5);
@@ -254,11 +263,12 @@ function net_cer_capture() {
     for (var _i = 1; _i <= 29; ++_i) _music += (variable_global_exists("CERM" + string(_i)) && variable_global_get("CERM" + string(_i)) != 0) ? "1" : "0";
     return {l:_levels, m:_music, lives:global.CERLives, mc:global.CERMusicChange, up:global.CER1upChange};
 }
-function net_cer_apply(_cer) {
+/// _restore writes the player's own snapshot back even if nothing was selected.
+function net_cer_apply(_cer, _restore = false) {
     var _levels = string(net_field(_cer, "l", ""));
     var _music = string(net_field(_cer, "m", ""));
     if (string_length(_levels) != 26 || string_length(_music) != 29) return false;
-    if (string_pos("1", _levels) == 0 || string_pos("1", _music) == 0) return false;
+    if (!_restore && (string_pos("1", _levels) == 0 || string_pos("1", _music) == 0)) return false;
     for (var _i = 1; _i <= 26; ++_i) variable_global_set("CERL" + string(_i), string_char_at(_levels, _i) == "1" ? 1 : 0);
     for (var _i = 1; _i <= 29; ++_i) variable_global_set("CERM" + string(_i), string_char_at(_music, _i) == "1" ? 1 : 0);
     global.CERLives = clamp(round(net_number(net_field(_cer, "lives", 5), 5)), 1, 9999);
@@ -415,7 +425,9 @@ function net_session_joined_lobby() {
 // migration never teleports anyone. Their next new session is followed as usual.
 function net_session_owner_changed() {
     global.net_follow_quiet_until = current_time + 4000;
-    global.net_follow_job = undefined;
+    net_follow_cancel();
+    // Levels are only requested from the owner: the old owner's transfer cannot finish.
+    net_levelshare_in_clear();
 }
 
 function net_follow_poll() {
@@ -472,12 +484,18 @@ function net_follow_start(_desc, _immediate) {
 
 function net_follow_cancel() {
     global.net_follow_job = undefined;
+    // Workshop items fetched only for that follow; the current session keeps its own.
+    net_ugc_release(global.net_session_sid);
 }
 
 /// A follower is only moved where nothing can be lost or corrupted.
 function net_follow_can_enter() {
     if (variable_global_exists("pause") && global.pause != 0) return false;
     if (instance_exists(o_settingspausemenu) || instance_exists(o_leveleditorleaveask)) return false;
+    // Let a death restart, dialog, trade or Workshop challenge upload finish first.
+    if (instance_exists(o_playerdead) || instance_exists(o_popup) || instance_exists(o_tradeup_menu)
+        || instance_exists(o_bigwheel) || instance_exists(o_publishworkshopchallenge)
+        || instance_exists(o_workshopchallengecreator)) return false;
     if (room == r_loading || room == r_logointro) return false;
     var _class = net_room_class(room);
     return _class != NET_ROOM_EDITOR && _class != NET_ROOM_LOCAL;
@@ -553,7 +571,11 @@ function net_enter_begin() {
     global.net_follow_entered_tick = timing_tick_id();
     global.net_er_diff_borrowed = false;
     global.net_practice_borrowed = false;
-    if (variable_global_exists("endless") && global.endless == 1 && global.endlessrunmode == 4) workshopER_cleanup();
+    if (variable_global_exists("endless") && global.endless == 1) {
+        // A live run is banked as quitting would; a game over has already settled it.
+        if (instance_exists(o_levelcounter) && global.infinitelivessettings == 0) scr_endless_settle_run();
+        else if (global.endlessrunmode == 4) workshopER_cleanup();
+    }
     if (instance_exists(o_workshopERloading)) instance_destroy(o_workshopERloading);
     if (instance_exists(o_popup)) instance_destroy(o_popup);
     hidehud();
@@ -567,6 +589,11 @@ function net_enter_begin() {
     global.deaths = 0;
     global.pickup = 0;
     global.LEMode = 0;
+    global.boss1 = 0;
+    global.boss2 = 0;
+    global.boss3 = 0;
+    global.boss4 = 0;
+    global.boss5 = 0;
     global.boss2health = 6;
     global.net_shared_md5 = "";
     window_set_cursor(cr_default);
@@ -667,7 +694,11 @@ function net_enter_endless(_desc) {
     if (_mode < 1 || _mode > 3) return "fail";
     var _room = net_room_asset(_desc.room);
     if (_room == -1 || net_room_class(_room) != NET_ROOM_PLAY || _room == r_customlevelworkshop) return "fail";
-    if (_mode == 3 && !net_cer_apply(net_field(_desc, "cer", undefined))) return "fail";
+    if (_mode == 3) {
+        var _own = net_cer_capture();
+        if (!net_cer_apply(net_field(_desc, "cer", undefined))) return "fail";
+        if (is_undefined(global.net_cer_own)) global.net_cer_own = _own;
+    }
     net_enter_begin();
     global.endlessrunmode = _mode;
     global.endless = 1;
@@ -845,7 +876,7 @@ function net_ugc_folder(_file) {
 /// Subscribe to an item a host's session needs (once per item). Items we
 /// subscribed only for that session are released when we move on to another.
 function net_ugc_request(_file, _sid) {
-    if (!global.steam_api) return false;
+    if (!global.steam_api || ds_map_exists(global.net_ugc_failed, string(_file))) return false;
     for (var _i = 0; _i < array_length(global.net_ugc_subscribed); ++_i) {
         if (global.net_ugc_subscribed[_i].file == _file) {
             global.net_ugc_subscribed[_i].sid = _sid;
@@ -1001,7 +1032,9 @@ function net_er_receive_picks(_buffer, _size) {
 /// A party member just entered our run: share the picks around and ahead of us.
 function net_er_peer_joined_run(_peer, _sid) {
     if (_sid == "" || _sid != global.net_session_sid || !variable_global_exists("endless") || global.endless != 1) return;
-    net_er_send_picks(_peer, global.net_er_index - 2, global.net_er_index + 30);
+    var _last = global.net_er_index;
+    while (ds_map_exists(global.net_er_picks, string(_last + 1)) && _last < global.net_er_index + 1000) _last += 1;
+    for (var _from = max(1, global.net_er_index - 2); _from <= _last; _from += 24) net_er_send_picks(_peer, _from, min(_from + 23, _last));
 }
 
 // -----------------------------------------------------------------------------

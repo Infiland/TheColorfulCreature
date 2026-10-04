@@ -103,7 +103,7 @@ function net_levelshare_request(_md5, _peer) {
     if (!global.net_active || !net_levelshare_md5_valid(_md5)) return false;
     if (ds_map_exists(global.net_share_denied, _md5) && current_time - global.net_share_denied[? _md5] < 60000) return false;
     var _in = global.net_share_in;
-    if (is_struct(_in) && _in.md5 == _md5) return true;
+    if (is_struct(_in) && _in.md5 == _md5 && _in.peer == _peer) return true;
     if (_peer == 0 || _peer == global.net_my_steam_id || !net_lobby_member(_peer)) return false;
     net_levelshare_in_clear();
     // A request may queue behind other followers' downloads before its first chunk.
@@ -125,11 +125,16 @@ function net_levelshare_send_deny(_peer, _md5) {
 }
 
 function net_levelshare_serve(_peer, _md5) {
-    for (var _i = 0; _i < array_length(global.net_share_out); ++_i) {
+    // A follower downloads one level at a time: its new request replaces the old one,
+    // and repeating a request restarts that transfer from the beginning.
+    for (var _i = array_length(global.net_share_out) - 1; _i >= 0; --_i) {
         var _out = global.net_share_out[_i];
-        if (_out.peer == _peer && _out.md5 == _md5) return;	// already queued or sending
+        if (_out.peer != _peer) continue;
+        if (_out.md5 == _md5) { _out.offset = 0; return; }
+        if (_out.buffer != -1 && buffer_exists(_out.buffer)) buffer_delete(_out.buffer);
+        array_delete(global.net_share_out, _i, 1);
     }
-    if (is_undefined(net_levelshare_text(_md5)) || array_length(global.net_share_out) >= 64) {
+    if (is_undefined(net_levelshare_text(_md5)) || array_length(global.net_share_out) >= NET_MAX_LOBBY) {
         net_levelshare_send_deny(_peer, _md5);
         return;
     }
@@ -207,6 +212,13 @@ function net_levelshare_receive(_sender, _type, _buffer, _size) {
             var _total = buffer_peek(_buffer, 34, buffer_u32);
             var _offset = buffer_peek(_buffer, 38, buffer_u32);
             var _length = buffer_peek(_buffer, 42, buffer_u16);
+            // Reliable delivery is ordered, but the host restarts a repeated request.
+            if (_offset == 0 && _in.buffer != -1) {
+                buffer_delete(_in.buffer);
+                _in.buffer = -1;
+                _in.received = 0;
+            }
+            if (_in.buffer == -1 && _offset != 0) break;	// tail of a superseded stream
             // Reliable P2P delivery is ordered: anything else is a broken stream.
             if (_length > NET_CHUNK_DATA_SIZE || NET_SHARE_HEADER + _length != _size || _total < 1
                 || _total > NET_SHARE_MAX_TEXT || _offset != _in.received || _offset + _length > _total

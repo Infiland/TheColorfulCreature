@@ -12,7 +12,8 @@
 #macro NET_SHARE_HEADER			44			// type + md5 + NUL + total + offset + length
 #macro NET_SHARE_MAX_TEXT		16777216
 #macro NET_SHARE_TIMEOUT_MS		30000
-#macro NET_SHARE_CHUNKS_PER_TICK	8
+#macro NET_SHARE_CHUNKS_PER_TICK	16			// shared by all active transfers
+#macro NET_SHARE_ACTIVE			8
 
 function net_levelshare_init() {
     global.net_share_texts = ds_map_create();	// md5 -> level.json text we can serve
@@ -31,7 +32,8 @@ function net_levelshare_cleanup() {
 // Transfers belong to the lobby they were requested in.
 function net_levelshare_lobby_reset() {
     for (var _i = 0; _i < array_length(global.net_share_out); ++_i) {
-        if (buffer_exists(global.net_share_out[_i].buffer)) buffer_delete(global.net_share_out[_i].buffer);
+        var _queued = global.net_share_out[_i].buffer;
+        if (_queued != -1 && buffer_exists(_queued)) buffer_delete(_queued);
     }
     global.net_share_out = [];
     net_levelshare_in_clear();
@@ -104,7 +106,8 @@ function net_levelshare_request(_md5, _peer) {
     if (is_struct(_in) && _in.md5 == _md5) return true;
     if (_peer == 0 || _peer == global.net_my_steam_id || !net_lobby_member(_peer)) return false;
     net_levelshare_in_clear();
-    global.net_share_in = {md5:_md5, peer:_peer, total:0, received:0, buffer:-1, deadline:current_time + NET_SHARE_TIMEOUT_MS};
+    // A request may queue behind other followers' downloads before its first chunk.
+    global.net_share_in = {md5:_md5, peer:_peer, total:0, received:0, buffer:-1, deadline:current_time + 2 * NET_SHARE_TIMEOUT_MS};
     var _buffer = global.net_send_buffer;
     buffer_seek(_buffer, buffer_seek_start, 0);
     buffer_write(_buffer, buffer_u8, NET_PACKET_LEVEL_REQUEST);
@@ -124,23 +127,37 @@ function net_levelshare_send_deny(_peer, _md5) {
 function net_levelshare_serve(_peer, _md5) {
     for (var _i = 0; _i < array_length(global.net_share_out); ++_i) {
         var _out = global.net_share_out[_i];
-        if (_out.peer == _peer && _out.md5 == _md5) return;	// already sending
+        if (_out.peer == _peer && _out.md5 == _md5) return;	// already queued or sending
     }
-    var _text = array_length(global.net_share_out) < 8 ? net_levelshare_text(_md5) : undefined;
-    if (is_undefined(_text)) { net_levelshare_send_deny(_peer, _md5); return; }
-    var _length = string_byte_length(_text);
-    if (_length < 1 || _length > NET_SHARE_MAX_TEXT) { net_levelshare_send_deny(_peer, _md5); return; }
-    var _raw = buffer_create(_length, buffer_fixed, 1);
-    buffer_write(_raw, buffer_text, _text);
-    array_push(global.net_share_out, {peer:_peer, md5:_md5, buffer:_raw, size:_length, offset:0});
+    if (is_undefined(net_levelshare_text(_md5)) || array_length(global.net_share_out) >= 64) {
+        net_levelshare_send_deny(_peer, _md5);
+        return;
+    }
+    // Queued: the data buffer is created only when the transfer becomes active.
+    array_push(global.net_share_out, {peer:_peer, md5:_md5, buffer:-1, size:0, offset:0});
 }
 
-/// Pump outgoing chunks and expire a stalled download.
+/// Pump outgoing chunks and expire a stalled download. At most eight transfers
+/// are active at once and they share one per-tick chunk budget.
 function net_levelshare_tick() {
-    for (var _i = array_length(global.net_share_out) - 1; _i >= 0; --_i) {
+    var _active = min(NET_SHARE_ACTIVE, array_length(global.net_share_out));
+    var _per_transfer = _active > 0 ? max(1, NET_SHARE_CHUNKS_PER_TICK div _active) : 0;
+    for (var _i = _active - 1; _i >= 0; --_i) {
         var _out = global.net_share_out[_i];
         var _done = !net_lobby_member(_out.peer);
-        for (var _n = 0; _n < NET_SHARE_CHUNKS_PER_TICK && !_done; ++_n) {
+        if (!_done && _out.buffer == -1) {
+            var _text = net_levelshare_text(_out.md5);
+            var _bytes = is_undefined(_text) ? 0 : string_byte_length(_text);
+            if (_bytes < 1 || _bytes > NET_SHARE_MAX_TEXT) {
+                net_levelshare_send_deny(_out.peer, _out.md5);
+                _done = true;
+            } else {
+                _out.buffer = buffer_create(_bytes, buffer_fixed, 1);
+                buffer_write(_out.buffer, buffer_text, _text);
+                _out.size = _bytes;
+            }
+        }
+        for (var _n = 0; _n < _per_transfer && !_done; ++_n) {
             var _length = min(NET_CHUNK_DATA_SIZE, _out.size - _out.offset);
             var _buffer = global.net_send_buffer;
             if (buffer_get_size(_buffer) < NET_SHARE_HEADER + _length) buffer_resize(_buffer, NET_SHARE_HEADER + _length);
@@ -157,7 +174,7 @@ function net_levelshare_tick() {
             if (_out.offset >= _out.size) _done = true;
         }
         if (_done) {
-            if (buffer_exists(_out.buffer)) buffer_delete(_out.buffer);
+            if (_out.buffer != -1 && buffer_exists(_out.buffer)) buffer_delete(_out.buffer);
             array_delete(global.net_share_out, _i, 1);
         }
     }

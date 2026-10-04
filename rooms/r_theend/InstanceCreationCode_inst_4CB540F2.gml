@@ -1,4 +1,4 @@
-if global.hardmodeunlock = 0 { 
+if global.hardmodeunlock = 0 && net_campaign_reward_allowed() {
 	global.hardmodeunlock = 1 
 	scr_savehardmode()
 }

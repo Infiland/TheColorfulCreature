@@ -56,10 +56,12 @@ if global.boss2health = 5 {
 	instance_destroy();
 	instance_create(x,y-60,o_explosion)
 	instance_create(832,576,o_door)
+	if (net_campaign_reward_allowed()) {
 	global.world1 = 1
 	global.world2 = 1
 	global.skin[6] = 1
 	scr_saveskins()
+	}
 	scr_savegame()
 	scr_checkachievements()
 	}

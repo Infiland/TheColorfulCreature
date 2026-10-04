@@ -408,7 +408,7 @@ function net_request_join(_lobby_id) {
         if (!global.net_is_host) { global.net_follow_host = true; net_follow_now(); }
         return true;
     }
-    if (global.net_pending_join == _lobby_id || global.net_join_pending_id == _lobby_id) return true;
+    if (global.net_pending_join == _lobby_id) return true;
     net_queue_join(_lobby_id);
     global.net_follow_host = true;
     global.net_join_announced = false;
@@ -465,6 +465,10 @@ function net_lobby_set(_key,_value) {
 function net_become_host() {
     global.net_is_host = true;
     global.net_follow_host = false;
+    if (is_struct(global.net_follow_job)) {
+        net_follow_cancel();
+        net_ugc_release(global.net_session_sid);
+    }
     ds_map_clear(global.net_lobby_data);
     net_lobby_set("game_name",NET_GAME_NAME);
     net_lobby_set("proto",NET_PROTOCOL);

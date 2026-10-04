@@ -43,6 +43,7 @@ function net_session_init() {
     global.net_follow_pending_own = "";
     global.net_er_index = 0;
     global.net_er_diff_borrowed = false;
+    global.net_practice_borrowed = false;
     global.net_er_picks = ds_map_create();
     global.net_ugc_subscribed = [];
 }
@@ -60,6 +61,8 @@ function net_session_lobby_reset() {
     global.net_published_json = "";
     global.net_follow_job = undefined;
     global.net_follow_waiting_notice = false;
+    global.net_follow_pending_sid = "";
+    global.net_follow_pending_own = "";
 }
 
 function net_field(_struct, _key, _default) {
@@ -153,6 +156,7 @@ function net_session_update() {
         // following a host into theirs.
         global.net_session_in_menu = false;
         var _previous = global.net_session_sid;
+        if (global.net_session_adopt == "") global.net_practice_borrowed = false;	// the player's own session
         global.net_session_sid = global.net_session_adopt != "" ? global.net_session_adopt : net_new_sid();
         global.net_session_adopt = "";
         if (_previous != global.net_session_sid) net_ugc_release(global.net_session_sid);
@@ -199,6 +203,26 @@ function net_editor_playmode(_playing) {
 /// True on the tick a follow entry reset the mode and issued its room change.
 function net_follow_entered_this_tick() {
     return variable_global_exists("net_follow_entered_tick") && global.net_follow_entered_tick == timing_tick_id();
+}
+
+/// Campaign level whose unlock a room requires (0 when it is not a campaign room).
+function net_campaign_room_level(_room) {
+    switch (_room) {
+        case r_boss1: return 20;
+        case r_boss2: return 40;
+        case r_boss3: return 60;
+        case r_boss4: return 80;
+        case r_truelvl100_p1: case r_truelvl100_p2: case r_boss5: return 100;
+    }
+    var _name = room_get_name(_room);
+    var _number = string_delete(_name, 1, 5);
+    return (string_pos("r_lvl", _name) == 1 && _number != "" && string_digits(_number) == _number) ? real(_number) : 0;
+}
+
+/// Boss and ending hooks: following a friend past your own progress is practice,
+/// so it never unlocks worlds, skins or Hard Mode.
+function net_campaign_reward_allowed() {
+    return !(variable_global_exists("net_practice_borrowed") && global.net_practice_borrowed);
 }
 
 /// randomlevel() hook: difficulty 10 rewards are not granted for a borrowed difficulty.
@@ -383,6 +407,8 @@ function net_session_joined_lobby() {
     global.net_follow_quiet_until = 0;
     global.net_follow_waiting_notice = true;
     global.net_follow_job = undefined;
+    global.net_follow_pending_sid = "";
+    global.net_follow_pending_own = "";
 }
 
 // Ownership moved to another member: adopt their session as already seen so a
@@ -469,7 +495,8 @@ function net_follow_job_tick() {
     // The host left that session (menu, editor or a newer session): never enter it.
     var _latest = net_session_host_desc();
     if (is_struct(_latest)) {
-        if (_latest.sid != _job.sid) {
+        // A play-test keeps its sid in build mode but never becomes joinable again.
+        if (_latest.sid != _job.sid || _latest.mode == "editor") {
             net_follow_cancel();
             net_ugc_release(global.net_session_sid);
             return;
@@ -478,8 +505,12 @@ function net_follow_job_tick() {
         _job.desc = _latest;
     }
     if (!net_follow_can_enter()) return;
+    if (!_job.desc.joinable) {
+        // Same session, host between levels: hold, then warn again before moving.
+        if (_job.state == "countdown") _job.timer = (net_room_class(room) == NET_ROOM_PLAY) ? NET_FOLLOW_COUNTDOWN : 0;
+        return;
+    }
     if (_job.timer > 0) { _job.timer -= 1; return; }
-    if (!_job.desc.joinable) return;	// same session, host between levels: hold
     var _result = "fail";
     try { _result = net_session_enter(_job.desc); }
     catch (_error) {
@@ -521,6 +552,7 @@ function net_enter_begin() {
     // o_player's door must not override this tick's room change (net_follow_entered_this_tick).
     global.net_follow_entered_tick = timing_tick_id();
     global.net_er_diff_borrowed = false;
+    global.net_practice_borrowed = false;
     if (variable_global_exists("endless") && global.endless == 1 && global.endlessrunmode == 4) workshopER_cleanup();
     if (instance_exists(o_workshopERloading)) instance_destroy(o_workshopERloading);
     if (instance_exists(o_popup)) instance_destroy(o_popup);
@@ -572,6 +604,7 @@ function net_enter_room(_desc) {
         || _room == r_challengelevel) return "fail";
     net_enter_begin();
     global.levelselect = 1;
+    global.net_practice_borrowed = global.worldProgression < net_campaign_room_level(_room);
     global.challenge_run_id = -1;
     global.currentchallenge = -1;
     global.hatmerchantdiscount = 1.3333333333333;
@@ -899,9 +932,15 @@ function net_er_goto_workshop(_file) {
         workshopER_goto_level(_file);
         return;
     }
+    // Only items the player had not subscribed to are released when the run ends.
     var _owned = false;
-    for (var _i = 0; _i < global.workshopER_pool_count; ++_i) if (global.workshopER_pool[_i].file_id == _file) _owned = true;
     for (var _i = 0; _i < array_length(global.workshopER_auto_subscribed); ++_i) if (global.workshopER_auto_subscribed[_i] == _file) _owned = true;
+    if (!_owned) {
+        var _list = ds_list_create();
+        tcc_steam_ugc_get_subscribed_items(_list);
+        for (var _i = 0; _i < ds_list_size(_list); ++_i) if (_list[| _i] == _file) _owned = true;
+        ds_list_destroy(_list);
+    }
     tcc_steam_ugc_subscribe_item(_file);
     if (!_owned) array_push(global.workshopER_auto_subscribed, _file);
     global.workshopER_loading = true;

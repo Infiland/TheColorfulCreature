@@ -15,7 +15,7 @@ function credits_entry_action() {
     }
     // Preserve reward eligibility and the prior after-load save order. This is
     // independent of the progress dialog's navigation guard, as before.
-    if (_ending && global.hardmodeunlock == 0) {
+    if (_ending && global.hardmodeunlock == 0 && net_campaign_reward_allowed()) {
         global.hardmodeunlock = 1;
         scr_savehardmode();
     }

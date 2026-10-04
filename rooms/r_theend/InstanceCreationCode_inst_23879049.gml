@@ -23,7 +23,7 @@ instance_destroy(o_coincounter)
 instance_destroy(o_ammocounter)
 instance_destroy(o_timecounter)
 instance_destroy(o_deathcounter)
-if global.cheats = 0 {
+if global.cheats = 0 && net_campaign_reward_allowed() {
 
 if global.hardmode = 1 {
 if global.hardmodelives > 120 {

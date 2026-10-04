@@ -1,2 +1,2 @@
 if (!timing_is_tick()) exit;
-game_restart()
+net_game_restart()

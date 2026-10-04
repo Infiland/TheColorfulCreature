@@ -308,7 +308,7 @@ function timing_ui_end_step() {
         if (visible) _ending_open = true;
     }
     if (_ending_open && timing_keyboard_pressed(vk_escape)) {
-        game_restart();
+        net_game_restart();
         return;
     }
 

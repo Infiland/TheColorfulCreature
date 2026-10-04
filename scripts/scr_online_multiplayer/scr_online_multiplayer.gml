@@ -222,7 +222,7 @@ function net_write_ping(_buffer) {
     buffer_write(_buffer,buffer_u32,current_time & $FFFFFFFF);
     buffer_write(_buffer,buffer_string,room_get_name(room));
     buffer_write(_buffer,buffer_string,global.net_level_key);
-    buffer_write(_buffer,buffer_string,global.net_session_sid);
+    buffer_write(_buffer,buffer_string,global.net_session_in_menu ? "" : global.net_session_sid);
     return buffer_tell(_buffer);
 }
 function net_decode_ping(_buffer,_size) {
@@ -315,6 +315,13 @@ function net_ensure_manager() {
 function net_enabled() {
 	return variable_global_exists("onlinemultiplayersettings") && global.onlinemultiplayersettings == 1
 		&& platform_steam() && tcc_steam_initialised() && !TCC_GAMEPLAY_QA;
+}
+
+/// The ending restarts the game. Globals, maps, buffers and the Steam lobby survive
+/// game_restart, so the session continues instead of breaking up the party.
+function net_game_restart() {
+    global.net_restarting = true;
+    game_restart();
 }
 
 /// @function		net_cleanup()
@@ -1113,6 +1120,16 @@ function net_handle_async_steam(_map) {
 
 		case "avatar_image_loaded":
 			net_friends_avatar_loaded(_map);
+			break;
+
+		case "ugc_subscribe_item":
+			// A private or removed item can never download: fail that follow at once.
+			if (_map[? "result"] != ugc_result_success) {
+				var _file = _map[? "published_file_id"];
+				for (var _i = 0; _i < array_length(global.net_ugc_subscribed); ++_i) {
+					if (global.net_ugc_subscribed[_i].file == _file) global.net_ugc_failed[? string(_file)] = true;
+				}
+			}
 			break;
 	}
 }

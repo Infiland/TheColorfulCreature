@@ -24,6 +24,8 @@ if (is_struct(_job)) {
 		_bar_text = string_replace(loc("NET_DOWNLOADING_LEVEL"), "{NAME}", _host) + _dots;
 	} else if (!net_follow_can_enter()) {
 		_bar_text = string_replace(string_replace(loc("NET_FOLLOW_BLOCKED"), "{NAME}", _host), "{MODE}", _mode);
+	} else if (!net_field(_job.desc, "joinable", false)) {
+		_bar_text = string_replace(loc("NET_WAITING_FOR_HOST"), "{NAME}", _host);
 	} else {
 		_bar_text = string_replace(string_replace(string_replace(loc("NET_FOLLOW_COUNTDOWN"), "{NAME}", _host), "{MODE}", _mode),
 			"{SECONDS}", string(ceil(_job.timer / 60)));

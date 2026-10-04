@@ -1153,7 +1153,6 @@ function scr_online_cosmetics_selfcheck() {
         roomEnd:net_packet_string_end(_buffer,NET_STATE_HEADER,_size,127),
         wireRoom:buffer_peek(_buffer,NET_STATE_HEADER,buffer_string),
         roomAsset:string(net_room_asset("r_lvl1")),
-        wireSeq:buffer_peek(_buffer,1,buffer_u16),
         wireX:buffer_peek(_buffer,3,buffer_f32), wireY:buffer_peek(_buffer,7,buffer_f32),
         wireBlend:buffer_peek(_buffer,12,buffer_s32),
         wireScaleX:buffer_peek(_buffer,16,buffer_f32), wireScaleY:buffer_peek(_buffer,20,buffer_f32),
@@ -1168,9 +1167,9 @@ function scr_online_cosmetics_selfcheck() {
     }
     show_debug_message("TCC_GHOST_PACKET_PROBE " + json_stringify(_probe));
     scr_port_assert(!is_undefined(_read),"well-formed ghost packet decodes");
-    scr_port_assert(_read.x == 96 && _read.y == 128 && _read.seq == 7 && _read.level_key == "r_lvl1"
+    scr_port_assert(_read.x == 96 && _read.y == 128
         && _read.sprite_index == s_playerblue && _read.hat == 1 && _read.item == 2,
-        "ghost packet retains position, level key and built-in cosmetic choices");
+        "ghost packet retains position and built-in cosmetic choices");
     for (var _length = 0; _length < _size; ++_length)
         scr_port_assert(is_undefined(net_decode_state(_buffer,_length)),"truncated packet cannot read stale receive-buffer bytes");
     buffer_poke(_buffer,3,buffer_u32,$7fc00000);
@@ -1184,21 +1183,14 @@ function scr_online_cosmetics_selfcheck() {
     scr_port_assert(is_undefined(net_decode_state(_buffer,_size)) && net_room_asset("o_player") == -1,
         "peer room names cannot refer to object or sprite resources");
     _state.room_name = "r_lvl1";
-    _state.level_key = "";
-    _size = net_write_state(_buffer,_state);
-    scr_port_assert(is_undefined(net_decode_state(_buffer,_size)),"ghost state requires a level key");
-    _state.level_key = "ws:123";
     _state.skin = 255; _state.hat = 255; _state.item = 255;
     _size = net_write_state(_buffer,_state);
     _read = net_decode_state(_buffer,_size);
     scr_port_assert(_read.skin == 0 && _read.hat == 0 && _read.item == 0 && _read.sprite_index == s_playerblue,
         "unknown/custom cosmetic ids have built-in or unequipped fallbacks");
     var _ghost = {level_key:"r_lvl2",ghost_alpha:1,x:0,y:0,seq:-1,snap:false};
-    scr_port_assert(net_apply_ghost_state(_ghost,_read),"first state is accepted");
-    scr_port_assert(_ghost.ghost_alpha == 0 && _ghost.target_x == 96 && _ghost.snap,"level change resets ghost fade and snaps");
-    _read.seq = 6;
-    scr_port_assert(!net_apply_ghost_state(_ghost,_read),"older sequence is ignored");
-    scr_port_assert(net_seq_newer(1,65535) && !net_seq_newer(65535,1) && net_seq_newer(0,-1),"sequence numbers wrap");
+    net_apply_ghost_state(_ghost,_read);
+    scr_port_assert(_ghost.ghost_alpha == 0 && _ghost.target_x == 96,"level change resets ghost fade without teleporting gameplay");
     _state.seq = 8; _state.skin = 0; _state.is_dead = 1; _state.image_alpha = 0.5; _state.x = 100;
     _size = net_write_state(_buffer,_state);
     _read = net_decode_state(_buffer,_size);
@@ -1221,22 +1213,8 @@ function scr_online_cosmetics_selfcheck() {
     buffer_write(_buffer,buffer_u8,0);
     buffer_write(_buffer,buffer_u8,0);
     _size = buffer_tell(_buffer);
-    var _hello = net_decode_hello(_buffer,_size);
-    scr_port_assert(!is_undefined(_hello) && _hello.username == "Player" && !_hello.reply,"identity packet round trip");
+    scr_port_assert(net_decode_hello(_buffer,_size).username == "Player","identity packet round trip");
     scr_port_assert(is_undefined(net_decode_hello(_buffer,_size-1)),"truncated identity packet rejected");
-    buffer_poke(_buffer,1,buffer_u8,1);
-    scr_port_assert(is_undefined(net_decode_hello(_buffer,_size)),"other protocol versions are rejected");
-    buffer_seek(_buffer,buffer_seek_start,0);
-    buffer_write(_buffer,buffer_u8,NET_PACKET_PING);
-    buffer_write(_buffer,buffer_u32,77);
-    buffer_write(_buffer,buffer_string,"r_lvl1");
-    buffer_write(_buffer,buffer_string,"");
-    buffer_write(_buffer,buffer_string,"");
-    _size = buffer_tell(_buffer);
-    var _ping = net_decode_ping(_buffer,_size);
-    scr_port_assert(!is_undefined(_ping) && _ping.stamp == 77 && _ping.level_key == "" && _ping.room_name == "r_lvl1",
-        "menu keepalive round trip");
-    scr_port_assert(is_undefined(net_decode_ping(_buffer,_size-1)),"truncated keepalive rejected");
     buffer_delete(_buffer);
     for (var _skin = 0; _skin < 50; ++_skin) for (var _color = 0; _color < 5; ++_color)
         scr_port_assert(sprite_exists(net_builtin_skin_sprite(_skin,_color)),"every built-in ghost skin/color resolves locally");

@@ -1,4 +1,8 @@
 if (!timing_instance_step()) exit;
+if (consent_gathering && tcc_consent_form_state() != 1) {
+    consent_gathering = false;
+    consent_finished();
+}
 if (privacy_open && tcc_privacy_options_state() != 1) {
     privacy_open = false;
     next_load = current_time + 1000;

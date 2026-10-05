@@ -2,6 +2,7 @@ if (!platform_admob()) { instance_destroy(); exit; }
 ready = false;
 initializing = false;
 consent_done = false;
+consent_gathering = false;
 privacy_open = false;
 reward_handle = -1;
 interstitial_handle = -1;
@@ -46,6 +47,7 @@ load_ads = function() {
 };
 
 consent_finished = function() {
+    if (consent_gathering) return;
     consent_done = true;
     if (!tcc_consent_can_request_ads() || ready || initializing) return;
     initializing = true;
@@ -100,7 +102,12 @@ show_interstitial = function() {
 admob_targeting_max_ad_content_rating(AdMobMaxAdContentRating.General);
 // UMP first. A failed request never implies permission to load an ad.
 var _request = admob_consent_request_info_update(AdMobConsentDebugGeography.Disabled, function(_result) {
-    if (_result.success && admob_consent_get_status() == AdMobConsentStatus.Required) {
+    if (_result.success && os_type == os_ios) {
+        // UMP also owns IDFA forms outside regions requiring GDPR consent.
+        // Wait for its completion before initializing or requesting an ad.
+        consent_gathering = tcc_consent_present_if_required() == 1;
+        if (consent_gathering) platform_interrupt(); else consent_finished();
+    } else if (_result.success && admob_consent_get_status() == AdMobConsentStatus.Required) {
         var _load = admob_consent_load(function(_result) {
             if (!_result.success) { consent_finished(); return; }
             platform_interrupt();

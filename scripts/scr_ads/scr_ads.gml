@@ -42,7 +42,7 @@ function ads_hide_banner() {
 function ads_privacy_options() {
     if (!platform_admob() || !instance_exists(Obj_AdMob) || !tcc_privacy_options_required()) return;
     with (Obj_AdMob) {
-        if (showing || privacy_open) exit;
+        if (showing || privacy_open || consent_gathering) exit;
         ad_generation += 1;
         reward_loading = false;
         interstitial_loading = false;

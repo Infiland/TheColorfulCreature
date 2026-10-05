@@ -20,6 +20,47 @@ RUNTIME = '2026.0.0.23'
 IDE = '2026.0.0.16'
 
 
+def set_android_version_code(manifest, version_code):
+    """Revise store packaging without changing the visible game version."""
+    if type(version_code) is not int or not 1 <= version_code <= 2100000000:
+        raise ValueError('Android version code must be between 1 and 2100000000')
+    source = manifest.read_text()
+    revised, count = re.subn(r'(<manifest\b[^>]*\bandroid:versionCode=")[0-9]+(")',
+        lambda match: match.group(1) + str(version_code) + match.group(2), source, count=1)
+    if count != 1:
+        raise RuntimeError('Expected one generated Android manifest version code')
+    manifest.write_text(revised)
+
+
+def validate_ios_export(extension_options, info, project, configuration):
+    """Reject test ads in production and incomplete UMP tracking configuration."""
+    expected_ads = {
+        'iOS': {
+            'iOS_AppID': 'ca-app-pub-7108130195717311~6079606966',
+            'iOS_REWARDED': 'ca-app-pub-7108130195717311/6260579523',
+        },
+        'iOSCheck': {
+            'iOS_AppID': 'ca-app-pub-3940256099942544~1458002511',
+            'iOS_REWARDED': 'ca-app-pub-3940256099942544/1712485313',
+        },
+    }[configuration]
+    admob = next((e['Options'] for e in extension_options.get('Extensions', []) if e['Name'] == 'GMAdMob'), {})
+    for name, value in expected_ads.items():
+        if admob.get(name, {}).get('Value') != value:
+            raise RuntimeError(f'{configuration} has the wrong {name} ad identifier')
+    if info.get('GADApplicationIdentifier') != expected_ads['iOS_AppID']:
+        raise RuntimeError(f'{configuration} generated plist has the wrong AdMob app identifier')
+    tracking_description = info.get('NSUserTrackingUsageDescription', '')
+    if not isinstance(tracking_description, str) or not tracking_description.strip():
+        raise RuntimeError('iOS generated plist is missing tracking-permission text')
+    if 'AppTrackingTransparency.framework' not in project:
+        raise RuntimeError('iOS generated project is missing AppTrackingTransparency.framework')
+    return {'ad_identifiers': expected_ads, 'production_ads': configuration == 'iOS',
+            'tracking_usage_description': tracking_description,
+            'tracking_framework': 'AppTrackingTransparency.framework',
+            'consent_forms': 'UMP loadAndPresentIfRequired; AdMob server messages require store verification'}
+
+
 def normalize_included_file_destinations(project):
     """Match YYC's native resource copies to GameMaker's virtual file names.
 
@@ -65,7 +106,14 @@ def main():
     parser.add_argument('--clean', action='store_true', help='Discard generated compiler caches before export')
     parser.add_argument('--snapshot', action='store_true',
         help='Compile an immutable copy in the output directory while other work continues')
+    parser.add_argument('--android-version-code', type=int,
+        help='Override the generated Android store version code while preserving the visible version')
     args = parser.parse_args()
+    if args.android_version_code is not None:
+        if args.configuration not in ['Android', 'AndroidRelease', 'SteamAndroid']:
+            parser.error('--android-version-code requires an Android configuration')
+        if not 1 <= args.android_version_code <= 2100000000:
+            parser.error('--android-version-code must be between 1 and 2100000000')
     if args.runtime == 'VM' and args.configuration not in ['Check', 'QA']:
         parser.error('VM iteration is limited to Check and QA diagnostics')
     output = args.output.expanduser().absolute()
@@ -202,7 +250,10 @@ def main():
         android_options.update(android_options.get('ConfigValues', {}).get(args.configuration, {}))
         package_name = '.'.join(android_options['option_android_package_' + key] for key in ['domain', 'company', 'product'])
         module = gradle_root / package_name
-    if target == 'android' and (recovered_android_signing or steam_android):
+        if args.android_version_code is not None:
+            set_android_version_code(module / 'src/main/AndroidManifest.xml', args.android_version_code)
+            evidence['android_version_code_override'] = args.android_version_code
+    if target == 'android' and (recovered_android_signing or steam_android or args.android_version_code is not None):
         # Igor leaves the CLI keystore settings blank in Gradle. Complete the already
         # compiled project using environment-backed signing; never write the password.
         gradle = module / 'build.gradle'
@@ -238,7 +289,8 @@ def main():
         bundles = list((module / f'build/outputs/{artifact_folder}/release').glob('*.' + suffix))
         if len(bundles) != 1:
             raise RuntimeError(f'Expected one signed {suffix.upper()}, found {bundles}')
-        artifact = product_dir / f'TCC-{args.configuration}-{android_version}.{suffix}'
+        revision = '' if args.android_version_code is None else '-' + str(args.android_version_code)
+        artifact = product_dir / f'TCC-{args.configuration}-{android_version}{revision}.{suffix}'
         shutil.copy2(bundles[0], artifact)
         evidence['android_' + suffix] = {'path': str(artifact), 'package': package_name,
             'sha256': hashlib.sha256(artifact.read_bytes()).hexdigest()}
@@ -348,6 +400,9 @@ def main():
             (output / 'evidence.json').write_text(json.dumps(evidence, indent=2) + '\n')
     if target == 'ios':
         project = project_dir / 'The_Colorful_Creature.xcodeproj/project.pbxproj'
+        info = plistlib.loads((project_dir / 'The_Colorful_Creature/Supporting Files/The_Colorful_Creature-Info.plist').read_bytes())
+        evidence['ios_privacy_configuration'] = validate_ios_export(
+            json.loads((output / 'cache/ExtensionOptions.json').read_text()), info, project.read_text(), args.configuration)
         # The legacy linker asserts under Xcode 26.6 and is absent in Xcode 27.
         project.write_text(project.read_text().replace('"-ld64",', ''))
         frameworks = project_dir / 'Fw'

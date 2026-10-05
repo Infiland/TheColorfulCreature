@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "version": "1.3.0",
+  "recordedDate": "2026-10-05",
+  "gitBase": "fc8d6d7e3b68bb75b181e02b0f46f2d8960bb07a",
+  "sourceIdentity": {
+    "identityVersion": 2,
+    "identityScheme": "project-runtime-assets-v2",
+    "sourceSha256": "5c666c81b1283364e2373f08582c256de088f40381669b196a2e3018a651f5d4",
+    "physicsSha256": "09c2bf131a169f60e72fa8510b45d0ede9a1f6bccc380efc446c7d23d7bf89b7",
+    "fileCount": 23134
+  },
+  "sourceScope": "Frozen release snapshot including iOS production consent/ad configuration and Linux version metadata; Android adds the packaging revision documented below. Later touch-layout, colorblind and other edits in the live checkout are excluded.",
+  "toolchain": {
+    "GameMakerIDE": "2026.0.0.16",
+    "GameMakerRuntime": "2026.0.0.23",
+    "compiler": "YYC",
+    "SteamSDK": "1.61",
+    "Xcode": "26.6",
+    "iOSSDK": "26.5"
+  },
+  "platforms": {
+    "Android": {
+      "artifact": {
+        "file": "TCC-AndroidRelease-1.3.0-1003001.aab",
+        "sha256": "0e170facb20fd49bf57a2623fa2d9ef90a4eef56c1a890fcb35a10051adaf1e5",
+        "bytes": 157413505
+      },
+      "package": "com.infiland.tcc",
+      "versionCode": 1003001,
+      "minSDK": 23,
+      "targetSDK": 36,
+      "compileSDK": 36,
+      "architectures": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86_64"
+      ],
+      "validation": {
+        "bundletool": true,
+        "signature": true,
+        "matchesUploadCertificate": true,
+        "zipIntegrity": true,
+        "requests16kZipAlignment": true,
+        "allBundled64bitLoadAndRELRO16kChecks": true,
+        "bluetoothHardwareOptional": true,
+        "independentRevisionReview": true
+      },
+      "buildNote": "Initial empty signing configuration was repaired; final Gradle production packaging succeeded.",
+      "store": {
+        "destination": "Google Play production",
+        "uploadSubmitted": true,
+        "productionLive": false,
+        "status": "Changes in review; automated quick checks running before review",
+        "reviewSubmitted": true,
+        "rolloutPercent": 100,
+        "deviceCoverageRestored": true,
+        "previouslyExcludedDevicesRestored": 17,
+        "warnings": [
+          "Optional native debug symbols not uploaded; browser file picker did not accept the verified ZIP"
+        ],
+        "managedPublishing": false,
+        "verifiedAt": "2026-10-05T13:00:43.791168+02:00"
+      },
+      "runtimeGaps": [
+        "No device smoke test performed for this release artifact."
+      ],
+      "packagingRevision": {
+        "revision": 1,
+        "sourceIdentity": {
+          "identityVersion": 2,
+          "identityScheme": "project-runtime-assets-v2",
+          "sourceSha256": "66a9f6fb020ab2e2832bf44a92ed649d90ed4cf33c8e025202c5f1943e52625e",
+          "physicsSha256": "19ddd7353973e238ec3bcb5c6f6ffeabed8680340371aa6d0fd93c467f1b2399",
+          "fileCount": 23134
+        },
+        "nativeSourceIdentity": {
+          "identityVersion": 2,
+          "identityScheme": "project-runtime-assets-v2",
+          "sourceSha256": "5c666c81b1283364e2373f08582c256de088f40381669b196a2e3018a651f5d4",
+          "physicsSha256": "09c2bf131a169f60e72fa8510b45d0ede9a1f6bccc380efc446c7d23d7bf89b7",
+          "fileCount": 23134
+        },
+        "sourceScope": "Native game and assets reuse original frozen build bytes; revised snapshot differs only in TCCPrivacy manifest injection and androidProps. VersionCode1003001 is a generated packaging override. No current unrelated checkout edits included.",
+        "manifestDelta": {
+          "versionCode": {
+            "from": 1003000,
+            "to": 1003001
+          },
+          "addedOptionalFeature": "android.hardware.bluetooth",
+          "visibleVersionUnchanged": "1.3.0"
+        },
+        "nativeAndAssetPayloadUnchanged": true,
+        "changedBundleMembers": [
+          "META-INF/MANIFEST.MF",
+          "META-INF/TCC-UPLO.RSA",
+          "META-INF/TCC-UPLO.SF",
+          "base/manifest/AndroidManifest.xml"
+        ]
+      },
+      "symbols": {
+        "file": "TCC-AndroidRelease-1.3.0-1003001-native-symbols.zip",
+        "sha256": "0c0acc20cfeb0bae3ffa7cfff207f589f3b47c67ac707500dfd21328db9b7174",
+        "bytes": 121673447,
+        "all3BuildIDsMatchShippedLibraries": true,
+        "uploaded": false,
+        "uploadStatus": "Verified archive retained locally; browser file picker did not accept the upload"
+      }
+    },
+    "iOS": {
+      "artifact": {
+        "file": "The_Colorful_Creature.ipa",
+        "sha256": "644a1ec8bd45f4c5c0f580342dbb462f0afcc1dc0d541cdcb6a02664773c0362",
+        "bytes": 137770389
+      },
+      "symbols": {
+        "file": "TCC-1.3.0-5-symbols.zip",
+        "sha256": "2ca01bd93f4e29c86c631d0c4c45ef6b70259f87148465b4ab127c82db55aae0",
+        "bytes": 35249883
+      },
+      "bundleIdentifier": "com.infiland.tcc",
+      "build": 5,
+      "architectures": [
+        "arm64"
+      ],
+      "minimumOS": "15.0",
+      "deviceFamilies": [
+        "iPhone",
+        "iPad"
+      ],
+      "validation": {
+        "appStoreSignature": true,
+        "distributionProfile": true,
+        "symbolUUIDMatches": true,
+        "embeddedPrivacyManifests": 3,
+        "processingComplete": true
+      },
+      "uploadArtifactScope": "Xcode uploaded a new export of the same verified archive; the retained IPA hash identifies the separate local signed export, not the exact uploaded bytes.",
+      "testflight": {
+        "externalGroup": "TCC External Testing",
+        "assignedBuild": "1.3.0 (5)",
+        "betaReviewSubmitted": true,
+        "status": "Waiting for Review",
+        "automaticallyNotifyTesters": true,
+        "availableToExternalTesters": false,
+        "verifiedAt": "2026-10-05T13:01:16.380288+02:00"
+      },
+      "store": {
+        "destination": "App Store production",
+        "reviewSubmitted": false,
+        "productionLive": false,
+        "status": "Pending production submission and resolution of mobile-layout release scope"
+      },
+      "runtimeGaps": [
+        "No physical-device smoke or runtime consent-modal test performed for build 5.",
+        "Prior App Store rejection concerned crowded controls and iPad layout; later touch-layout edits are not part of this artifact."
+      ]
+    },
+    "macOS": {
+      "artifact": {
+        "file": "TCC-macOS-1.3.0-Steam.zip",
+        "sha256": "8df0617e4550a5cd77a025be4a850d495eeed8217a347f86908ab9c1810af302",
+        "bytes": 135923324
+      },
+      "build": 5,
+      "architectures": [
+        "x86_64",
+        "arm64"
+      ],
+      "minimumOS": "12.0",
+      "validation": {
+        "developerIDSignature": true,
+        "notarized": true,
+        "stapled": true,
+        "gatekeeperAccepted": true,
+        "reextractedZIPSignatureAndStaple": true
+      },
+      "steamEntitlements": [
+        "disable-library-validation",
+        "allow-dyld-environment-variables"
+      ],
+      "runtimeGaps": [
+        "No production Steam runtime smoke performed; no game window launched."
+      ]
+    },
+    "Linux": {
+      "artifact": {
+        "file": "TCC.zip",
+        "sha256": "ca5029959d3126fec03f87700eef3eed066bcc578af10dfc0eefbdce89d0f0ad",
+        "bytes": 125598643
+      },
+      "architecture": "x86_64",
+      "executable": "The_Colorful_Creature",
+      "executableSHA256": "2d0db157cdd4d627077e6498da9e02f5bb4707b4bb0bd5df495b23ce176ee134",
+      "zipExecutableMode": "100755",
+      "builder": "Ubuntu 24.04.5 amd64 under OrbStack Rosetta; Steam Scout clang 3.8.0",
+      "validation": {
+        "compileSucceeded": true,
+        "translationUnits": 5448,
+        "packageFiles": 127,
+        "SteamSDKLibraryMatches": true,
+        "appidFileAbsent": true
+      },
+      "runtimeSmoke": "Muted isolated Xvfb launch loaded game.unx, then exited at the Steam restart guard because no Steam client was present. Menu and gameplay completion are not verified.",
+      "runtimeGaps": [
+        "Steam-authenticated launch, overlay, controller and physical Linux hardware smoke remain untested.",
+        "Bare Ubuntu 24 requires Steam Scout OpenSSL 1.0 libraries supplied by the Steam runtime."
+      ]
+    },
+    "Windows": {
+      "status": "New Windows build deferred by user; no Windows build worker available.",
+      "previousBetaManifestPreserved": true
+    }
+  },
+  "steam": {
+    "appId": 1651680,
+    "branch": "beta",
+    "buildId": 25724870,
+    "status": "Live on beta",
+    "defaultBuildIdUnchanged": 22593731,
+    "publicSupportedOSFlagsChanged": false,
+    "manifests": {
+      "Windows": {
+        "depot": 1651681,
+        "manifest": "4899904672008842394",
+        "newBuild": false
+      },
+      "Linux": {
+        "depot": 1651682,
+        "manifest": "121086915422399627",
+        "newBuild": true
+      },
+      "macOS": {
+        "depot": 1651684,
+        "manifest": "4886564330619953418",
+        "newBuild": true
+      }
+    },
+    "macOSLaunchEntry": "The_Colorful_Creature.app; restricted to beta branch",
+    "macOSDepotPackageAssignmentVerified": true,
+    "macOSDepotPackages": [
+      586993,
+      586994,
+      586995,
+      589550,
+      637145
+    ]
+  },
+  "evidenceSources": [
+    "release-status-20261005.json",
+    "release-android-130-20261005/android-verification.json",
+    "release-ios-130-20261005/ipa-verification.json",
+    "release-ios-130-20261005/asc-upload-result.json",
+    "release-mac-130-20261005/mac-distribution-verification.json",
+    "release-linux-130-20261005/linux-release-evidence.json",
+    "release-android-130-20261005-r1/evidence.json",
+    "release-android-130-20261005-r1/independent-revision-review.json"
+  ],
+  "evidenceLocation": "Platform reports and signed artifacts are retained outside the repository under the TCC130 build cache; store states were verified in the authenticated publishing UIs."
+}

@@ -12,6 +12,14 @@
     },
     "b19aeb11-226a-4d31-a7b2-1960aa422c5d": {
       "AndroidRelease": {"value": "ca-app-pub-7108130195717311/8981703993"}
+    },
+    "538faebe-f399-430a-b961-576a73233bed": {
+      "iOS": {"value": "ca-app-pub-7108130195717311~6079606966"},
+      "iOSCheck": {"value": "ca-app-pub-3940256099942544~1458002511"}
+    },
+    "f6d2fbcb-0a33-4b9b-9914-1e6afbc5b0f9": {
+      "iOS": {"value": "ca-app-pub-7108130195717311/6260579523"},
+      "iOSCheck": {"value": "ca-app-pub-3940256099942544/1712485313"}
     }
   }
 }

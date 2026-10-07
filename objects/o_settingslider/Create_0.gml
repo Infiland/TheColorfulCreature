@@ -24,3 +24,10 @@ beginx = xcam + slider_beginx_offset
 endx = beginx + 146
 var _normalized = (slider_max != slider_min) ? (variable_global_get(slider_gvar) - slider_min) / (slider_max - slider_min) : 0
 x = beginx + (_normalized * 146) - 200
+
+mobile_settings_slot = -1;
+mobile_card_x = 0;
+
+mobile_card_width = 464;
+mobile_card_height = 108;
+if (platform_mobile()) visible = false; // First Step assigns the active page and hit area.

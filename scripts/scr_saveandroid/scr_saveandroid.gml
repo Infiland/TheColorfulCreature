@@ -3,7 +3,7 @@ function scr_saveandroid() {
 	var directory = directory_set("//Save Files/")
 	
 	scr_save_begin(directory + "Android.sav");
-	ini_write_real("Android", "Layout", 2);
+	ini_write_real("Android", "Layout", 3);
 	ini_write_real("Android", "Button Size", global.androidbuttonsize);
 	//Android
 	ini_write_real("Android","Left X",global.androidleftx);

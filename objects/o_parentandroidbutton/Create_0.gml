@@ -19,6 +19,7 @@ switch (object_index) {
     case o_buttoninteractandroid: touch_name = "interact"; break;
     case o_buttonrestartandroid: touch_name = "restart"; image_xscale = 0.75; break;
     case o_buttonskipandroid: touch_name = "skip"; image_xscale = 0.75; break;
+    case o_buttonpauseandroid: image_xscale = 1.5; break;
 }
 image_yscale = image_xscale;
 touch_base_scale = image_xscale;

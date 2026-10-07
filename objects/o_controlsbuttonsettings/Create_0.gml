@@ -13,3 +13,7 @@ capture_device_generation = 0;
 depth = -1000000000;
 
 capture_hint = "";
+
+mobile_card_width = 464;
+mobile_card_height = 108;
+if (platform_mobile()) visible = false; // First Step assigns the active page and hit area.

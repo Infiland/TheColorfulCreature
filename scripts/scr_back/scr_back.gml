@@ -1,6 +1,7 @@
 function scr_back(){
 if (settings_fps_consume_back()) return;
 if (gamepad_remap_consume_back()) return;
+if (settings_mobile_back()) return;
 if (room == r_skinmenu && cosmetics_browser_consume_back()) return;
 if !instance_exists(o_settingspausemenu) {
 if global.endless = 1 {

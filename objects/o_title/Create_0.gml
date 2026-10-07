@@ -18,12 +18,7 @@ if (tcc_steam_initialised()) instance_create(930,352,o_profilepicture)
 
 //Hide Android control on main menu
 if platform_touch() {
-instance_destroy(o_buttoninteractandroid)
-instance_destroy(o_buttonjumpandroid)
-instance_destroy(o_buttonpauseandroid)
-instance_destroy(o_buttonleftandroid)
-instance_destroy(o_buttonrightandroid)
-instance_destroy(o_buttonrestartandroid)
+hideandroidbuttons()
 }
 
 if tcc_steam_initialised()

@@ -1,3 +1,10 @@
+if (platform_mobile()) {
+    var _mobile_labels = ["MOVE_RIGHT", "MOVE_LEFT", "JUMP", "INTERACT", "SKIP_LEVEL", "RESTART"];
+    var _mobile_device = gamepad_remap_active_device();
+    var _binding = ischanging ? "..." : (_mobile_device >= 0 ? gamepad_button_display_name(gamepad_remap_get(controls)) : settings_keyboard_display(controlschoose));
+    settings_mobile_draw_card(settings_text(_mobile_labels[controls]), _binding);
+    exit;
+}
 draw_self();
 draw_set_color(ischanging ? c_yellow : c_white);
 draw_set_font(global.coolfont);

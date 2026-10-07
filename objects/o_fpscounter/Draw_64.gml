@@ -8,6 +8,9 @@ if (_elapsed >= 250000) {
     fps_count_frames = 0;
     fps_count_started_at = _now;
 }
+// Mobile menus reserve this corner for Return; keep the optional counter in play.
+if (platform_mobile() && (global.pause != 0 || instance_exists(o_settingspausemenu)
+    || (!instance_exists(o_player) && !instance_exists(o_playerMU)))) exit;
 if (global.fpssettings == 2) { y2 = lerp(y2,140,timing_ui_draw_lerp_weight(0.5)); } else { y2 = lerp(y2,120,timing_ui_draw_lerp_weight(0.5)); }
 if (room != r_tale) {
     draw_set_font(global.coolfont);

@@ -1,4 +1,4 @@
-if (settings_fps_input_blocked() || gamepad_remap_input_blocked() || global.choosesettings != 3 || !visible) exit;
+if (settings_fps_input_blocked() || gamepad_remap_input_blocked() || global.choosesettings != (platform_mobile() ? 6 : 3) || !visible) exit;
 gamepad_remap_cancel();
 editcontrols = controls;
 global.gp_remap_listening = controls;

@@ -1,9 +1,14 @@
 if (!timing_instance_step()) exit;
 if (settings_fps_input_blocked()) exit;
 var _device = gamepad_remap_active_device(true);
-visible = !platform_touch() || _device >= 0;
-var _visible = global.choosesettings == 3 && visible;
-x = lerp(x, camera_get_view_x(view_camera[0]) + (_visible ? 32 : -256), 0.2 * (60 / global.maxfps));
+var _visible;
+if (platform_mobile()) {
+    _visible = settings_mobile_layout(6, mobile_settings_slot);
+} else {
+    visible = !platform_touch() || _device >= 0;
+    _visible = global.choosesettings == 3 && visible;
+    x = lerp(x, camera_get_view_x(view_camera[0]) + (_visible ? 32 : -256), 0.2 * (60 / global.maxfps));
+}
 var _names = settings_keyboard_names();
 controlschoose = variable_global_get(_names[controls]);
 ischanging = _visible && editcontrols == controls;

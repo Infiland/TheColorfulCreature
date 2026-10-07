@@ -2,14 +2,7 @@ depth = -100
 instance_create(x, y, o_info)
 
 // Delete Android Buttons while in settings
-if platform_touch() {
-	instance_destroy(o_buttoninteractandroid)
-	instance_destroy(o_buttonjumpandroid)
-	instance_destroy(o_buttonpauseandroid)
-	instance_destroy(o_buttonleftandroid)
-	instance_destroy(o_buttonrightandroid)
-	instance_destroy(o_buttonrestartandroid)
-}
+if platform_touch() hideandroidbuttons();
 
 // Spawn all data-driven settings buttons
 scr_spawn_settings_buttons()

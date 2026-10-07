@@ -3,7 +3,7 @@
   "%Name":"iOS",
   "ConfigValues":{"iOSCheck":{"option_ios_bundle_name":"com.infiland.tcc.qa",}},
   "name":"iOS",
-  "option_ios_build_number":5,
+  "option_ios_build_number":7,
   "option_ios_bundle_name":"com.infiland.tcc",
   "option_ios_defer_home_indicator":false,
   "option_ios_devices":2,

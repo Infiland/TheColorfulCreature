@@ -113,9 +113,16 @@ function scr_mobile_touch_selfcheck() {
     var _bounds = platform_touch_bounds();
     platform_touch_defaults();
     scr_port_assert(global.androidrightx - global.androidleftx >= 192, "default movement controls do not overlap");
+    for (var _size = 0; _size <= 2; ++_size) {
+        global.androidbuttonsize = _size;
+        scr_port_assert(platform_touch_layout_clear(platform_touch_layout().defaults, platform_touch_scale()), "default touch controls stay beside the playfield");
+        scr_port_assert(platform_touch_at_defaults(platform_touch_layout().defaults), "default touch controls follow button size");
+    }
+    global.androidbuttonsize = 0;
     with (o_parentandroidbutton) {
         for (var _size = 0; _size <= 2; ++_size) {
             global.androidbuttonsize = _size;
+            _bounds = platform_touch_bounds();
             platform_touch_position(-9999, -9999);
             scr_port_assert(abs(gui_x - sprite_width / 2 - _bounds[0] - 12) < 0.01, "whole scaled button stays inside left edge");
             scr_port_assert(abs(gui_y - sprite_height / 2 - _bounds[1] - 12) < 0.01, "whole scaled button stays inside top edge");
@@ -125,6 +132,7 @@ function scr_mobile_touch_selfcheck() {
         }
     }
     global.androidbuttonsize = 0;
+    _bounds = platform_touch_bounds();
     with (o_buttonleftandroid) {
         platform_touch_position(512, 384);
         scr_port_assert(platform_touch_claim(0, 500, 380), "first button captures finger");
@@ -164,9 +172,16 @@ function scr_mobile_smoke_step() {
         if (room != r_mainmenu) return;
         global.mobile_smoke_stage = 0;
         global.mobile_smoke_frames = 0;
+        global.mobile_smoke_view = "main_menu";
     }
     if (global.mobile_smoke_stage < 0) return;
-    if (++global.mobile_smoke_frames < 90) return;
+    ++global.mobile_smoke_frames;
+    // Capture an already-rendered, settled view rather than a transition frame.
+    if (global.mobile_smoke_frames == 45 && global.mobile_smoke_view != "") {
+        show_debug_message("TCC_MOBILE_VIEW " + global.mobile_smoke_view);
+        global.mobile_smoke_view = "";
+    }
+    if (global.mobile_smoke_frames < 225) return;
     global.mobile_smoke_frames = 0;
     show_debug_message("TCC_MOBILE_SMOKE_STAGE " + string(global.mobile_smoke_stage));
     switch (global.mobile_smoke_stage++) {
@@ -202,14 +217,33 @@ function scr_mobile_smoke_step() {
                 if (setting_type == STYPE.CATEGORY && setting_target_menu == 3)
                     event_perform(ev_mouse, ev_left_press);
             }
+            global.mobile_smoke_view = "settings_controls";
             break;
         case 8:
             scr_port_assert(global.choosesettings == 3, "controls category opens");
+            with (o_settingbutton) {
+                if (setting_type == STYPE.CATEGORY && setting_target_menu == 7)
+                    event_perform(ev_mouse, ev_left_press);
+            }
+            scr_port_assert(global.choosesettings == 7, "touch layout editor opens");
             scr_port_assert(instance_exists(o_buttonleftandroid) && instance_exists(o_buttonjumpandroid), "touch controls created");
             scr_mobile_touch_selfcheck();
+            global.fpssettings = 1;
+            if (!instance_exists(o_fpscounter)) instance_create(0, 0, o_fpscounter);
             hideandroidbuttons(); global.choosesettings = 0; room_goto(r_gamemode);
+            global.mobile_smoke_view = "gamemode";
             break;
         case 9:
+            scr_port_assert(room == r_gamemode && instance_exists(o_creditscounter) && instance_exists(o_returnbutton), "game mode menu has credits and Return");
+            var _credits = instance_find(o_creditscounter, 0), _return = instance_find(o_returnbutton, 0);
+            var _return_x = _return.x - camera_get_view_x(view_camera[0]);
+            var _return_y = _return.y - camera_get_view_y(view_camera[0]);
+            scr_port_assert(_credits.p2 + 12 <= _return_x || _credits.p1 >= _return_x + _return.sprite_width + 12
+                || _credits.p4 + 12 <= _return_y || _credits.p3 >= _return_y + _return.sprite_height + 12,
+                "credits counter stays clear of Return");
+            scr_port_assert(instance_exists(o_fpscounter), "game mode capture exercises the enabled FPS overlay");
+            global.fpssettings = 0;
+            instance_destroy(o_fpscounter);
             instance_create(0, 0, o_progressask);
             break;
         case 10:
@@ -233,10 +267,135 @@ function scr_mobile_smoke_step() {
             scr_port_assert(room == r_lvl1 && instance_exists(o_player), "Yes starts campaign without URL action");
             scr_port_assert(!instance_exists(o_buttonandroidyes) && !instance_exists(o_buttonandroidno), "no orphan confirmation controls");
             scr_mobile_input_selfcheck();
+            show_debug_message("TCC_TOUCH_VIEW " + json_stringify({window: [window_get_width(), window_get_height()],
+                wanted: platform_touch_composite_wanted(), composited: platform_touch_composited(),
+                surface: platform_app_surface_rect(), gui: platform_touch_gui_rect(), position: application_get_position(),
+                fraction: platform_touch_layout().fraction, bounds: platform_touch_layout().bounds}));
+            global.mobile_smoke_view = "gameplay_100";
+            break;
+        case 13:
+            scr_mobile_layout_probe();
+            global.androidbuttonsize = 1;
+            platform_touch_layout();
+            global.mobile_smoke_view = "gameplay_125";
+            break;
+        case 14:
+            scr_mobile_layout_probe();
+            global.androidbuttonsize = 2;
+            platform_touch_layout();
+            global.mobile_smoke_view = "gameplay_150";
+            break;
+        case 15:
+            scr_mobile_layout_probe();
+            platform_touch_defaults();
+            platform_touch_begin();
+            global.mobile_smoke_pause_position = scr_mobile_pause_position();
+            scr_mobile_pause_probe();
+            global.mobile_smoke_view = "pause_touch";
+            break;
+        case 16:
+            scr_port_assert(global.pause == 1 && instance_exists(o_pausescreen), "touch pause opens menu");
+            scr_mobile_pause_position_check();
+            scr_mobile_pause_probe();
+            break;
+        case 17:
+            scr_port_assert(global.pause == 0 && instance_exists(o_buttonskipandroid), "resume restores all gameplay controls");
+            scr_mobile_pause_position_check();
+            global.special = 123456;
+            platform_interrupt();
+            global.mobile_smoke_view = "pause_background";
+            break;
+        case 18:
+            scr_port_assert(global.pause == 1, "background interruption pauses");
+            scr_port_assert(instance_number(o_parentandroidbutton) == 1, "background pause shows only the resume control");
+            scr_mobile_pause_position_check();
+            with (o_settings) event_perform(ev_mouse, ev_left_press);
+            global.mobile_smoke_view = "settings_general";
+            break;
+        case 19:
+            scr_port_assert(instance_exists(o_settingspausemenu), "pause settings opens");
+            scr_port_assert(instance_number(o_parentandroidbutton) == 0, "pause settings removes every gameplay control");
+            with (o_settingbutton) {
+                if (setting_type == STYPE.CATEGORY && setting_target_menu == 2)
+                    event_perform(ev_mouse, ev_left_press);
+            }
+            global.mobile_smoke_view = "settings_audio";
+            break;
+        case 20:
+            scr_port_assert(global.choosesettings == 2, "audio category opens");
+            scr_back();
+            break;
+        case 21:
+            with (o_settingbutton) {
+                if (setting_type == STYPE.CATEGORY && setting_target_menu == 3)
+                    event_perform(ev_mouse, ev_left_press);
+            }
+            global.mobile_smoke_view = "settings_controls_paused";
+            break;
+        case 22:
+            scr_port_assert(global.choosesettings == 3 && !instance_exists(o_buttonleftandroid), "controls settings do not overlap touch controls");
+            with (o_settingbutton) {
+                if (setting_type == STYPE.CATEGORY && setting_target_menu == 7)
+                    event_perform(ev_mouse, ev_left_press);
+            }
+            global.mobile_smoke_view = "settings_touch_layout";
+            break;
+        case 23:
+            scr_port_assert(global.choosesettings == 7 && instance_exists(o_buttonleftandroid), "pause touch layout is editable");
+            scr_back();
+            scr_port_assert(global.choosesettings == 3 && !instance_exists(o_buttonleftandroid), "touch layout returns to controls settings");
+            scr_back();
+            with (o_settingspausemenu) event_perform(ev_keyrelease, vk_escape);
+            break;
+        case 24:
+            scr_port_assert(!instance_exists(o_settingspausemenu) && global.pause == 1, "settings returns to pause");
+            scr_port_assert(instance_exists(o_buttonpauseandroid), "keyboard settings exit restores touch resume");
+            scr_mobile_pause_probe();
+            global.mobile_smoke_view = "gameplay_large_balance";
+            break;
+        case 25:
+            scr_port_assert(global.pause == 0, "gameplay resumes after settings");
+            scr_mobile_layout_probe();
             show_debug_message("TCC_MOBILE_SMOKE_PASS");
-            global.mobile_smoke_stage = -1; // Leave gameplay open for touch/layout inspection.
+            global.mobile_smoke_stage = -1;
             break;
     }
+}
+
+function scr_mobile_pause_position() {
+    var _p = instance_find(o_buttonpauseandroid, 0);
+    scr_port_assert(instance_exists(_p), "pause control exists");
+    var _g = platform_touch_to_gui(_p.gui_x, _p.gui_y), _r = platform_touch_gui_rect();
+    return [_r[0] + _g[0] * _r[2], _r[1] + _g[1] * _r[3]];
+}
+
+function scr_mobile_pause_position_check() {
+    var _p = scr_mobile_pause_position(), _before = global.mobile_smoke_pause_position;
+    scr_port_assert(point_distance(_p[0], _p[1], _before[0], _before[1]) < 1, "pause control keeps its screen position");
+}
+
+function scr_mobile_pause_probe() {
+    global.touch_blocked = false;
+    platform_touch_begin();
+    var _p = instance_find(o_buttonpauseandroid, 0);
+    var _g = platform_touch_to_gui(_p.gui_x + _p.sprite_width / 2, _p.gui_y + _p.sprite_height / 2);
+    var _point = platform_touch_from_gui(_g[0], _g[1]);
+    platform_touch_sample(0, _point[0], _point[1], true, false);
+    scr_port_assert(_p.press, "rendered pause target reaches input routing");
+    with (_p) event_perform(ev_step, ev_step_normal);
+}
+
+function scr_mobile_layout_probe() {
+    scr_port_assert(platform_touch_layout_clear(platform_touch_layout().defaults, platform_touch_scale()), "active layout leaves gameplay unobstructed");
+    var _buttons = [];
+    with (o_parentandroidbutton) {
+        var _g = platform_touch_to_gui(gui_x, gui_y);
+        var _point = platform_touch_from_gui(_g[0], _g[1]);
+        scr_port_assert(point_distance(_point[0], _point[1], gui_x, gui_y) < 0.01, "rendered controls map back to touch positions");
+        array_push(_buttons, {name: object_get_name(object_index), x: gui_x, y: gui_y, width: sprite_width, height: sprite_height});
+    }
+    show_debug_message("TCC_MOBILE_LAYOUT " + json_stringify({size: global.androidbuttonsize, window: [window_get_width(), window_get_height()],
+        rect: platform_touch_layout().rect, gui: platform_touch_gui_rect(), buttons: _buttons}));
 }
 
 // Deterministic contact-frame regression checks in the isolated iOSCheck app.

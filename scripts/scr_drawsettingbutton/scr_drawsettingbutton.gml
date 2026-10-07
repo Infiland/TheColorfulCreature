@@ -1,6 +1,7 @@
 /// @function scr_drawsettingbutton()
 /// @description Draws a code-based settings button with state indicator icons
 function scr_drawsettingbutton() {
+    if (platform_mobile()) { settings_mobile_draw_setting(); return; }
 	var xx = (x + 5 * image_xscale)
 	var yy = (y + 5 * image_yscale)
 	var xtxt = (x + xx) / 2

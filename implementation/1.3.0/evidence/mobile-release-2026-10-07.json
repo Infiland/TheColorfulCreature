@@ -1,0 +1,445 @@
+{
+  "schema_version": 2,
+  "status": "iOS production and external review submitted; Android validated, upload waiting for native picker assistance",
+  "prepared_at_utc": "2026-10-07T10:24:13.906095+00:00",
+  "release": {
+    "version": "1.3.0",
+    "ios_build": "7",
+    "android_next_version_code": 1003002,
+    "source_identity": {
+      "identityVersion": 2,
+      "identityScheme": "project-runtime-assets-v2",
+      "sourceSha256": "5d6f029bcc4e3fccedf180147aa5b3f6133fd9e6df4800a736d3135205d94bc0",
+      "physicsSha256": "50feab7f8118e41d41089fe79a991b0986419dc0e13af41d90a1f6b9460f86eb",
+      "fileCount": 23153
+    }
+  },
+  "fixes": [
+    "Reflowed mobile main-menu actions and social controls; desktop-only Quit hidden on mobile and controller hints shown only for active controller input.",
+    "Enlarged mobile Return and settings controls, paginated settings and controller bindings, and separated touch placement from settings cards.",
+    "Preserved gameplay space with size-aware touch placement; aligned coin/skip HUD transforms and constrained large balances to their reserved HUD area.",
+    "Unified touch/background pause cleanup; restored the touch Resume control after hardware-keyboard Escape closes pause settings.",
+    "Moved mobile credits and the proportionally enlarged optional ad control clear of Return; hid the optional FPS counter in mobile menus and pause."
+  ],
+  "lineage": {
+    "new_mobile_snapshots": "Frozen R2 includes branch online-session changes through 20a22600. Layout checks do not establish live online-service validation.",
+    "historical_2026_10_05": "Android 1003001 was subsequently verified active; iOS beta build 5 review was withdrawn October 7. Steam beta 25724870 remains the macOS/Linux release; Windows rebuild deferred. These artifacts exclude later mobile composition/layout and online-session changes.",
+    "local_signed_export_vs_upload": "Xcode uploaded a re-export of the validated archive. The local signed IPA SHA-256 is not a claimed hash of Apple-processed content."
+  },
+  "ios_production": {
+    "version": "1.3.0",
+    "build": "7",
+    "bundle_id": "com.infiland.tcc",
+    "configuration": "iOS",
+    "backend": "YYC",
+    "ipa": {
+      "path": "/Users/infi/Library/Caches/TCC130/release-ios-130-20261007-r2/signed-export/The_Colorful_Creature.ipa",
+      "bytes": 138323313,
+      "sha256": "2ae57669986ddf3c07ae1cab88fc3be5f7458c77dc920e391673abde51b671e9"
+    },
+    "symbols": {
+      "path": "/Users/infi/Library/Caches/TCC130/release-ios-130-20261007-r2/signed-export/TCC-1.3.0-7-symbols.zip",
+      "bytes": 35950689,
+      "sha256": "d5eff86722c5cd43e4b20d9f89e0ed44405626f305405519710f43ae644291ed",
+      "uuid_matches": true
+    },
+    "archive_path": "/Users/infi/Library/Caches/TCC130/release-ios-130-20261007-r2/TCC-1.3.0-7.xcarchive",
+    "validation": {
+      "signature_verified": true,
+      "profile": "App Store distribution; get-task-allow false; Game Center enabled",
+      "architecture": "arm64",
+      "minimum_os": "15.0",
+      "device_families": [
+        1,
+        2
+      ],
+      "privacy_manifests": [
+        "GoogleMobileAdsResources.bundle/PrivacyInfo.xcprivacy",
+        "PrivacyInfo.xcprivacy",
+        "UserMessagingPlatformResources.bundle/PrivacyInfo.xcprivacy"
+      ],
+      "production_admob_ids": {
+        "iOS_AppID": "ca-app-pub-7108130195717311~6079606966",
+        "iOS_REWARDED": "ca-app-pub-7108130195717311/6260579523"
+      },
+      "dsym_uuid_matches": true,
+      "executable_uuids": [
+        [
+          "821553B9-1B94-3628-8DCD-B35E0F4A5BE5",
+          "arm64"
+        ]
+      ]
+    },
+    "evidence": {
+      "path": "/Users/infi/Library/Caches/TCC130/release-ios-130-20261007-r2/ipa-verification.json",
+      "sha256": "a6e39cd6158512bcc2b6ab95c94c52f63767bdc523d379b7e53470fb3de80cea"
+    },
+    "privacy_evidence": {
+      "path": "/Users/infi/Library/Caches/TCC130/release-ios-130-20261007-r2/ipa-privacy-manifests.json",
+      "sha256": "0e7c1fdeaec59125fcff41f064b67e49c5d31e942baf8ba4e0179ad8d5ab6b55"
+    },
+    "upload_evidence": {
+      "path": "/Users/infi/Library/Caches/TCC130/release-ios-130-20261007-r2/asc-upload-result.json",
+      "sha256": "562a3b0916778b8a5c86d4ff212cd31a33b8db0ce722cd31c121375805a9b4b3"
+    },
+    "app_store": {
+      "status": "Waiting for Review",
+      "submitted": true,
+      "live": false,
+      "submission_id": "1d051aed-9999-4d6f-9b93-e53db7bcba53",
+      "release_mode": "Automatically release this version",
+      "verified_at_utc": "2026-10-07T10:19:11.855078+00:00"
+    },
+    "external_testing": {
+      "status": "Waiting for Review",
+      "submitted": true,
+      "group": "TCC External Testing",
+      "group_id": "09ffe2bd-2cdf-4993-9771-091dbf87d6d9",
+      "automatically_notify_testers": true,
+      "verified_at_utc": "2026-10-07T10:08:45.920979+00:00",
+      "available_to_testers": false
+    },
+    "review_attachment": {
+      "uploaded": false,
+      "reason": "Optional PDF could not be attached because the browser file picker kept Open disabled; detailed review notes were saved. Reviewed local packet retained."
+    }
+  },
+  "ios_r2_simulators": {
+    "configuration": "iOSCheck",
+    "artifact_identity": {
+      "sha256": "198c3b0f826c3969f1d47360fe041881336c7f7126ded350bebce81b8e83323f",
+      "fileCount": 152
+    },
+    "executable_sha256": "b955cbe3e6dbdac63b2a3d660cb9a683ffcea9a057e49cd8805e17d91e3d2aa6",
+    "build_evidence": {
+      "path": "/Users/infi/Library/Caches/TCC130/ioscheck-layout-20261007-r2/evidence.json",
+      "sha256": "c9c025a7550633bcb039d4d84de5e0eb3a8ac83a974d7df053457ea0d062f79b"
+    },
+    "runs": [
+      {
+        "device": "iPhone-SE-3rd-generation",
+        "runtime": "iOS-18-5",
+        "configuration": "iOSCheck",
+        "passed": true,
+        "layout_pass": true,
+        "input_pass": true,
+        "stages": 26,
+        "captures": 14,
+        "settled_view_captures": 13,
+        "transition_overlaps": 0,
+        "clean_termination": true,
+        "evidence": {
+          "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/r2-smoke-iphone-se/evidence.json",
+          "sha256": "e8d39ab0b207036cf734b3ae3d4e8072174a6883dc51d9467f471f537ad32a78"
+        }
+      },
+      {
+        "device": "iPad-Pro-13-inch-M4-8GB",
+        "runtime": "iOS-18-5",
+        "configuration": "iOSCheck",
+        "passed": true,
+        "layout_pass": true,
+        "input_pass": true,
+        "stages": 26,
+        "captures": 14,
+        "settled_view_captures": 13,
+        "transition_overlaps": 0,
+        "clean_termination": true,
+        "evidence": {
+          "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/r2-smoke-ipad13-1200s/evidence.json",
+          "sha256": "8e29664697039d0b84c8b544e09a1d87fd4957afad72acfb420d7696b1be1f22"
+        }
+      }
+    ],
+    "scope": "Muted diagnostic artifacts and isolated saves on iOS 18.5; layout/input/26-stage flow checks plus visual review. Not the signed production IPA."
+  },
+  "review_packet": {
+    "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/TCC-1.3.0-7-mobile-layout-review.pdf",
+    "sha256": "bb257505d929c61517f7d292b154c04946f578e50400deb9c745e0f3d42a88ce",
+    "bytes": 1294518,
+    "pages": 8,
+    "visual_review_passed": true,
+    "uploaded_to_apple": false,
+    "capture_manifest": {
+      "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/review-packet-manifest.json",
+      "sha256": "c04b7a6625e158b19dc1766f21d2559def53160ce123ac964f4caa45fc2638b5"
+    },
+    "visual_review": {
+      "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/review-packet-visual-review.json",
+      "sha256": "5e996f6cda0615654e31f59c653e2edaec00477727cd6eae176bcb6e8a9651cc"
+    }
+  },
+  "android": {
+    "version": "1.3.0",
+    "version_code": 1003002,
+    "artifact": {
+      "status": "validated",
+      "configuration": "AndroidRelease / YYC",
+      "path": "/Users/infi/Library/Caches/TCC130/release-android-130-20261007-r2/TCC-AndroidRelease-1.3.0-1003002.aab",
+      "sha256": "de37a4d94266b1cbde58f9ceca4c4946895ba810a079cf40965fd1d5c1f82193",
+      "bytes": 402736947,
+      "source_identity": {
+        "identityVersion": 2,
+        "identityScheme": "project-runtime-assets-v2",
+        "sourceSha256": "5d6f029bcc4e3fccedf180147aa5b3f6133fd9e6df4800a736d3135205d94bc0",
+        "physicsSha256": "50feab7f8118e41d41089fe79a991b0986419dc0e13af41d90a1f6b9460f86eb",
+        "fileCount": 23153
+      },
+      "signature_verified": true,
+      "signer_matches": true,
+      "bundletool_validated": true,
+      "manifest": {
+        "package": "com.infiland.tcc",
+        "versionName": "1.3.0",
+        "versionCode": "1003002",
+        "minSdk": "23",
+        "targetSdk": "36",
+        "compileSdk": "36"
+      },
+      "abis": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86_64"
+      ],
+      "optional_hardware_features": {
+        "android.hardware.bluetooth": "false",
+        "android.software.leanback": "false",
+        "android.hardware.touchscreen": "false"
+      },
+      "alignment_64bit_16kb": true,
+      "full_symbols_embedded": true,
+      "all_symbol_build_ids_match": true,
+      "native_libraries": [
+        {
+          "abi": "arm64-v8a",
+          "buildID": "f87c09d7790337e02ee86dff4b76b90f0a11676b",
+          "shippedSHA256": "9a6b17592dafbaa9f20d0a09a1d67fb02a7b42259498e7c040bd73de8722ce4d",
+          "symbolSHA256": "7f880c695a56891bc3c4926cddc5179430079f0eac33deb87b8f6ea432c3b81c"
+        },
+        {
+          "abi": "armeabi-v7a",
+          "buildID": "02cd3fcb07e223ce50e1d61bc53360350f05a449",
+          "shippedSHA256": "a9b54bbc453cbf82c49a83f42869c183762aa357655f1c4dcd7f17dcbebc25c8",
+          "symbolSHA256": "3842b353943dfcbdc823134e0788da645879049c78a9942cb476d6a53761d32a"
+        },
+        {
+          "abi": "x86_64",
+          "buildID": "dab1539094573c510aa1e631cb332f7d783d2cdd",
+          "shippedSHA256": "d490d70c71a68ac25bc962816ab264fe11950931605783488dedfefe2e7369d1",
+          "symbolSHA256": "48e694e830a1c537cafa1a09ad5cb1c696da297effa18dee4f6cbaa3f6458f5f"
+        }
+      ],
+      "verification": {
+        "path": "/Users/infi/Library/Caches/TCC130/release-android-130-20261007-r2/android-verification.json",
+        "sha256": "24f15fe5d60f50fadf4125c28a576e35281a9362ea8ffb937e4793f55cdf5c39"
+      },
+      "symbols_verification": {
+        "path": "/Users/infi/Library/Caches/TCC130/release-android-130-20261007-r2/symbols-verification.json",
+        "sha256": "de8ab2b1867e7ed1b704473c3ef975d3388d63584447611cb765e9b499b04ec9"
+      },
+      "native_rebuild_verification": {
+        "path": "/Users/infi/Library/Caches/TCC130/release-android-130-20261007-r2/native-rebuild-verification.json",
+        "sha256": "432b462490266cf0a5e4ea8a1201d063b20aade68780cc64ed2c455f0b5e16a7"
+      },
+      "packaging_recovery": "Regenerated GML with --ignorecache and normal native dependency handling; all three native ABIs rebuilt. Generated Gradle NDK pinned to the actual NDK30 to extract embedded FULL symbols. Superseded/stale attempts retained outside the upload handoff."
+    },
+    "diagnostic_run": {
+      "status": "passed_with_visual_capture_exclusion",
+      "configuration": "VM diagnostic derivative; not for upload",
+      "passed": true,
+      "stages": 26,
+      "named_captures": 13,
+      "page_size": 16384,
+      "offline": true,
+      "accounts": 0,
+      "no_window": true,
+      "no_audio": true,
+      "apk_sha256": "7f7a91b97235b9fb1374a6ac337bca2eba43d5e09051258b2d3930f0e947f152",
+      "parent_identity": {
+        "identityVersion": 2,
+        "identityScheme": "project-runtime-assets-v2",
+        "sourceSha256": "5d6f029bcc4e3fccedf180147aa5b3f6133fd9e6df4800a736d3135205d94bc0",
+        "physicsSha256": "50feab7f8118e41d41089fe79a991b0986419dc0e13af41d90a1f6b9460f86eb",
+        "fileCount": 23153
+      },
+      "derivative_identity": {
+        "identityVersion": 2,
+        "identityScheme": "project-runtime-assets-v2",
+        "sourceSha256": "35a97d1d940ed51eb00c06a0a8d5fb4289e9b237e168d43437cab24ef09bc920",
+        "physicsSha256": "d8286b97fb31f064bc419333d5065c3fe539eedc5fc7b0017414427213663495",
+        "fileCount": 23153
+      },
+      "derivative_change": "AndroidRelease:TCC_MOBILE_SMOKE true; production runtime source otherwise unchanged",
+      "visual_exclusions": [
+        {
+          "capture": "main_menu.png",
+          "reason": "Android System UI ANR dialog obscures this capture; not accepted as a complete main-menu visual check."
+        }
+      ],
+      "independent_visual_review": {
+        "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/independent-android-visual-review.json",
+        "sha256": "be87b37719efda98914a0bd973b052e7d3e1c3adec860c497fef0c918088ab99"
+      },
+      "root_visual_review": {
+        "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/root-android-visual-review.json",
+        "sha256": "16cf484662401c5b9330a8c3991e494783b233ab1011205f207cb2a2d4f29838"
+      },
+      "clean_termination": true,
+      "evidence": {
+        "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/r2-smoke-android-vm-1200s/evidence.json",
+        "sha256": "29efeb35b04de4ea44db6b4dec6a7500d8c70e13c77dc4dc2ca883e1f38bb53c"
+      }
+    },
+    "google_play": {
+      "atUtc": "2026-10-07T10:29:49.276958+00:00",
+      "version": "1.3.0",
+      "versionCode": 1003002,
+      "draftRelease": "38",
+      "releaseName": "1.3.0 \u2014 mobile layout update",
+      "artifactSha256": "de37a4d94266b1cbde58f9ceca4c4946895ba810a079cf40965fd1d5c1f82193",
+      "artifactValidated": true,
+      "artifactUploaded": false,
+      "productionReviewSubmitted": false,
+      "status": "awaiting_manual_file_selection",
+      "pickerIssue": "Exact AAB selected; Open remains disabled through Go to path, All Files filter, row reselect, Return and double-click. User requested to complete file selection.",
+      "existingLiveVersionCode": 1003001
+    },
+    "generated_code_independent_review": {
+      "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/android-r2-cache-recovery-independent-review.json",
+      "sha256": "a1085f2f6e3094f0e18894f68946533b6dbe6ff202a7fa4f437d6155da3a52e9"
+    },
+    "production_startup": {
+      "status": "passed",
+      "backend": "YYC",
+      "aab_sha256": "de37a4d94266b1cbde58f9ceca4c4946895ba810a079cf40965fd1d5c1f82193",
+      "derived_apk_sha256": "2ab8427859070ed8243da10f0249f4538021d768031d957402fafd4790f36069",
+      "native_libraries_identical_to_aab": true,
+      "observation_seconds": 120,
+      "page_size": 16384,
+      "offline": true,
+      "accounts": 0,
+      "no_window": true,
+      "no_audio": true,
+      "unobstructed_main_menu": true,
+      "root_visual_review": "Complete main menu with all six action cards, settings/trophy/quest/social controls, no system dialog or overlap.",
+      "screenshot": {
+        "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/r2-native-android-startup/startup.png",
+        "sha256": "d8b1b389ea45706b121db01a0b3906a7d2bfbb817b94220ea441c3043bde5604"
+      },
+      "clean_termination": true,
+      "evidence": {
+        "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/r2-native-android-startup/evidence.json",
+        "sha256": "3235727b6aefde42f70b68d0b0568380a0878b9a2c2d2034136c68f9d151a82a"
+      }
+    }
+  },
+  "historical_references": {
+    "r1_binding": {
+      "source_identity": {
+        "identityVersion": 2,
+        "identityScheme": "project-runtime-assets-v2",
+        "sourceSha256": "60cffa0095a8a5ed40d7e5b4b602826a70ac5289a441c428215ecc4688ff2a23",
+        "physicsSha256": "2b5d34bd182cf2a1cf077400515a81c8c17a564461c47f1d292d167abf1a0b8b",
+        "fileCount": 23153
+      },
+      "artifact_identity": {
+        "sha256": "8d0165c70a9a214e52f369726000a1d8c0d10a04a41eb49e801352a96252b986",
+        "fileCount": 152
+      },
+      "scope": "Historical iOS 18.5 diagnostic passes; subsequent visual review found overlaps corrected in R2. Not final R2 acceptance."
+    },
+    "r1_runs": [
+      {
+        "device": "iPhone-SE-3rd-generation",
+        "runtime": "iOS-18-5",
+        "evidence": {
+          "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/final-smoke-iphone-se/evidence.json",
+          "sha256": "c9b1f636d934f1fbd8316cfa5b1e2eccc155d7d8812348cc170423191c118348"
+        }
+      },
+      {
+        "device": "iPhone-16-Pro-Max",
+        "runtime": "iOS-18-5",
+        "evidence": {
+          "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/final-smoke-iphone16promax/evidence.json",
+          "sha256": "ebe80467300632395db5c5a01c18483530dbceab33d267a98ceae87ac920c4c3"
+        }
+      },
+      {
+        "device": "iPad-Pro-11-inch-M4-8GB",
+        "runtime": "iOS-18-5",
+        "evidence": {
+          "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/final-smoke-ipad11/evidence.json",
+          "sha256": "76587a34f370eb07a2822274ad6bf170fce558d882c4c9de1d91e9bdfc237e52"
+        }
+      }
+    ],
+    "ios_26_5_fault": {
+      "revision": "R1",
+      "device": "iPhone 17 Pro Max",
+      "passed": false,
+      "first_gml_marker_reached": false,
+      "observation": "Allocator abort with libLLVMContainer and libGLVMPlugin frames; root cause not established by this evidence.",
+      "crash_evidence": {
+        "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/final-smoke-iphone17promax/native-crash-summary.json",
+        "sha256": "7cabb60b52e06bf04490d517f06ff4ea595e23cdb307d5313d8af32f351782ba"
+      }
+    },
+    "superseded_attempts": [
+      {
+        "kind": "iOS archive cache retry",
+        "result": "Only cloned R2 ModuleCache removed after old absolute-path failure; unchanged source/export subsequently archived successfully.",
+        "evidence": {
+          "path": "/Users/infi/Library/Caches/TCC130/release-ios-130-20261007-r2/archive-relocated-cache-failure.log",
+          "sha256": "4172fbae4dcbfea93b108ae405edc0aee6c5b4dfd5b27ca182d39b209c77bcec"
+        }
+      },
+      {
+        "kind": "iPad 13-inch initial deadline",
+        "result": "Incomplete 420-second run replaced by separately bound complete 1200-second run.",
+        "evidence": {
+          "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/r2-smoke-ipad13/evidence.json",
+          "sha256": "a7997d15f85e6dc43f20222758117d1c22c226e30b5f2fb177a839173eafe96d"
+        }
+      },
+      {
+        "kind": "Android VM initial attempt",
+        "result": "Not passed; launch-guard interruption. Diagnostic derivative is never upload eligible.",
+        "evidence": {
+          "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/r2-smoke-android-vm/evidence.json",
+          "sha256": "531fc700c388f0f488de0ba4fb3fa2489f19cc6b07fa49ee8f6da434f22e9654"
+        }
+      }
+    ]
+  },
+  "independent_source_review": {
+    "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/independent-review.json",
+    "sha256": "0eebc08922c3a5dc1cab5c249518a6912886ba03f4ec7165455ed356f4cfe52c"
+  },
+  "cleanup": {
+    "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/cleanup-result.json",
+    "sha256": "da7a1a9b87af78c57d29a0a0ccf4aaf6d5e7c717327dcd51570d2ce740957719"
+  },
+  "limits": [
+    "Apple production and external beta are Waiting for Review, not approved or available; automatic release/notification applies after approval.",
+    "No physical-device, live rewarded-ad/consent, account-service or controller-device validation is claimed.",
+    "iOS 26.5 simulator startup fault remains unresolved; no iOS 26.5 compatibility pass is claimed.",
+    "Historical retries retain original source/artifact bindings; earlier passes are not final R2 acceptance.",
+    "Android diagnostic VM source is a separately identified derivative and must not be equated with the production YYC AAB.",
+    "Raw snapshots, packages, screenshots and logs remain outside the repository; compact references do not replace original evidence.",
+    "Google Play1003002 is not uploaded or submitted: the native browser file picker is awaiting manual assistance. Existing1003001 remains live."
+  ],
+  "updated_at_utc": "2026-10-07T10:32:10.506362+00:00",
+  "owned_device_cleanup": {
+    "path": "/Users/infi/Library/Caches/TCC130/mobile-layout-20261007/owned-device-cleanup.json",
+    "sha256": "a27b778879ac825b3612f21e2cb0533ba6e9c10ac628aa4187c7a2ced96b0240",
+    "ios_instances_removed": 7,
+    "android_avds_removed": 1,
+    "launch_guard_enabled": false
+  },
+  "static_checks": {
+    "configuration": "passed;97Appleachievementcandidates",
+    "git_diff_check": "passed",
+    "current_source_matches_frozen_identity": true
+  }
+}

@@ -24,3 +24,11 @@ use_loc = false
 // Button sizing
 image_xscale = 50
 image_yscale = 10
+
+mobile_settings_slot = -1;
+mobile_page_direction = 0;
+mobile_language = -1;
+
+mobile_card_width = 464;
+mobile_card_height = 108;
+if (platform_mobile()) visible = false; // First Step assigns the active page and hit area.

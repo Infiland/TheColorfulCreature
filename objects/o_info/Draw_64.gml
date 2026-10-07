@@ -2,7 +2,13 @@ draw_set_font(global.deathfont)
 draw_set_color(c_white)
 //Settings
 if room = r_settings || instance_exists(o_settingspausemenu) {
-	draw_text_ext(32,704,SETTING[global.infosettings],20,960)
+	if (platform_mobile()) {
+        draw_set_halign(fa_center);
+        var _hint = global.choosesettings == 7 ? "Drag the buttons to place them." : "Tap an option to change it.";
+        if (global.choosesettings == 6) _hint = gamepad_remap_capture_active() ? "Press a controller button. Back cancels." : (gamepad_remap_active_device() >= 0 ? "Tap an action to change its controller button." : "Connect a controller to customize its buttons.");
+        draw_text_ext_transformed(512, global.choosesettings == 7 ? 180 : 648, _hint, 28, 820, 1.2, 1.2, 0);
+        draw_set_halign(fa_left);
+    } else draw_text_ext(32,704,SETTING[global.infosettings],20,960)
 }
 
 //Skins

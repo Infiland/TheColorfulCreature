@@ -9,6 +9,7 @@ function scr_settings_definitions() {
 		{ type: STYPE.CATEGORY, menu: 0, col: 32,  row: 1, label: "CHANGE_AUDIO",     use_loc: true, target_menu: 2, info: 22, header_label: "CHANGE_AUDIO" },
 		{ type: STYPE.CATEGORY, menu: 0, col: 32,  row: 2, label: "CHANGE_CONTROLS",  use_loc: true, target_menu: 3, info: 23, header_label: "CHANGE_CONTROLS",
 		  callback: function() {
+            if (platform_mobile()) { hideandroidbuttons(); return; }
 			if platform_touch() {
 				// This callback belongs to the settings definition, which has no x/y.
 				if !instance_exists(o_buttonleftandroid) { instance_create(0,0,o_buttonleftandroid) }
@@ -213,7 +214,9 @@ function scr_settings_definitions() {
 
 		// ===== CONTROLS (choosesettings = 3) =====
         { type: STYPE.MULTI, menu: 3, col: 426, row: 1, gvar: "androidbuttonsize", label: "Button Size", info: -1,
-          mobile_only: true, max_val: 2, options: ["100%", "125%", "150%"], callback: scr_saveandroid },
+          mobile_only: true, max_val: 2, options: ["100%", "125%", "150%"],
+          // Re-solve first so a default arrangement is saved at the new size.
+          callback: function() { platform_touch_layout(); scr_saveandroid(); } },
 		{ type: STYPE.TOGGLE,  menu: 3, col: 170, row: 0, gvar: "skiplevelholdsettings", label: "Skip Level Hold", info: 32 },
 		{ type: STYPE.TOGGLE,  menu: 3, col: 426, row: 0, gvar: "controllervibrationsettings", label: "Controller Vibration", info: 49 },
 	]

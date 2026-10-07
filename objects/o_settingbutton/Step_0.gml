@@ -1,12 +1,19 @@
 if (!timing_instance_step()) exit;
-// Animate x position based on which submenu is active
-var _cam_x = camera_get_view_x(view_camera[0])
-var _lerp_speed = 0.2 * (60 / global.maxfps)
-
-if global.choosesettings != setting_menu {
-	x = lerp(x, _cam_x - 256, _lerp_speed)
+if (platform_mobile()) {
+    if (mobile_page_direction != 0) {
+        settings_mobile_layout(global.choosesettings, 0);
+        visible = settings_mobile_page_count() > 1;
+        x = camera_get_view_x(view_camera[0]) + (visible ? (mobile_page_direction < 0 ? 256 : 552) : -2000);
+        y = camera_get_view_y(view_camera[0]) + 522;
+        image_xscale = 43.2; image_yscale = 21.6;
+        mobile_card_width = 216; mobile_card_height = 108;
+        setting_menu = global.choosesettings;
+        if (!visible) mouseon = false;
+    } else settings_mobile_layout(setting_menu, mobile_settings_slot);
 } else {
-	x = lerp(x, _cam_x + setting_col, _lerp_speed)
+    var _cam_x = camera_get_view_x(view_camera[0]);
+    var _lerp_speed = 0.2 * (60 / global.maxfps);
+    x = lerp(x, _cam_x + (global.choosesettings == setting_menu ? setting_col : -256), _lerp_speed);
 }
 
 image_alpha = 1;

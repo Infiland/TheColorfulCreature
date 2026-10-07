@@ -86,13 +86,40 @@ The camera verifier accepts the exact QA-only profiling marker before its existi
 60 Hz early return. Independent mutation checks still reject changes to the guard,
 threshold, camera interpolation and restoration contracts.
 
+## Mobile layout follow-up — 2026-10-07
+
+Larger mobile menus, paginated settings and wider audio controls address Apple's
+Guideline 4 feedback. Adjustable touch controls leave gameplay space clear, HUD
+and Return labels no longer overlap, and touch/background pause restores controls
+consistently. Existing button-size preferences survive save migration.
+
+iOS 1.3.0 (7) is **Waiting for Review** for both App Store production and the
+existing external TestFlight group, with automatic release/notification after
+approval. Signed archive, profile, privacy configuration and matching symbols
+passed validation. Final-source diagnostic runs on iPhone SE and iPad Pro 13-inch
+(iOS 18.5) each passed all 26 stages. These are simulator checks, not physical-device
+or live-service validation.
+
+Android 1.3.0 (1003002) passed signed-bundle, three-ABI, 64-bit 16 KB and embedded
+native-symbol checks. Its diagnostic derivative passed 26 stages; one main-menu
+capture obscured by a System UI dialog is excluded. An APK derived from the exact
+production bundle passed a separate 120-second offline startup check with an
+unobstructed main menu. Google Play upload is awaiting manual file-picker
+assistance; 1003002 has not been submitted and existing 1003001 remains live.
+
+`evidence/mobile-release-2026-10-07.json` records exact source/artifact identities,
+store states and limitations. Raw builds, captures and the reviewed eight-page
+PDF remain outside Git. The optional PDF was not attached to Apple because the
+browser picker did not accept it; detailed review notes were submitted.
+
 ## Release gates
 
-- Final signed release exports, physical devices/controllers and live Steam,
-  Workshop, Google Play and Game Center services still require release checks.
+- Signed mobile exports and store submissions are recorded in the dated release
+  evidence. Physical devices/controllers and live Steam, Workshop, Google Play
+  and Game Center services still require release checks.
 - iPhone/iPad iOS 18.5 simulator smoke checks passed on their recorded builds.
-  iOS 26.5 hit an Apple OpenGL shader compiler crash before GML startup; physical
-  iOS compatibility remains a gate.
+  The iOS 26.5 simulator aborted in allocator/LLVM/OpenGL runtime frames before
+  GML startup; its cause and physical-device compatibility remain unverified.
 - SteamAndroid has a local signed APK/emulator smoke result. The installed
   Steam extension has no Android implementation. Native Steam services and
   Steam Frame hardware compatibility are not established by that APK result.

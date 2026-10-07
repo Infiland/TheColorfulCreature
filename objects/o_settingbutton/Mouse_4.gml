@@ -1,3 +1,16 @@
+if (platform_mobile()) {
+    if (!visible || settings_fps_input_blocked()) exit;
+    if (mobile_page_direction != 0) {
+        global.mobile_settings_page = clamp(global.mobile_settings_page + mobile_page_direction, 0, settings_mobile_page_count() - 1);
+        global.infosettings = 0;
+        exit;
+    }
+    if (mobile_language >= 0) {
+        global.language = mobile_language; switchlang(); scr_savesettings();
+        if (instance_exists(o_animatedtext)) o_animatedtext.text = loc("CHANGE_LANGUAGES");
+        exit;
+    }
+}
 if (settings_fps_input_blocked() || global.choosesettings != setting_menu) { exit }
 if (image_alpha = 0.5 && setting_type != STYPE.ACTION) { exit }
 

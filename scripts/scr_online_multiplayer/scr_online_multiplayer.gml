@@ -1124,11 +1124,13 @@ function net_handle_async_steam(_map) {
 
 		case "ugc_subscribe_item":
 			// A private or removed item can never download: fail that follow at once.
+			var _file = _map[? "published_file_id"];
 			if (_map[? "result"] != ugc_result_success) {
-				var _file = _map[? "published_file_id"];
 				for (var _i = 0; _i < array_length(global.net_ugc_subscribed); ++_i) {
-					if (global.net_ugc_subscribed[_i].file == _file) global.net_ugc_failed[? string(_file)] = true;
+					if (global.net_ugc_subscribed[_i].file == _file) global.net_ugc_failed[? string(_file)] = current_time;
 				}
+			} else {
+				ds_map_delete(global.net_ugc_failed, string(_file));
 			}
 			break;
 	}

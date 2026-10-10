@@ -272,8 +272,8 @@ function net_cer_apply(_cer, _restore = false) {
     for (var _i = 1; _i <= 26; ++_i) variable_global_set("CERL" + string(_i), string_char_at(_levels, _i) == "1" ? 1 : 0);
     for (var _i = 1; _i <= 29; ++_i) variable_global_set("CERM" + string(_i), string_char_at(_music, _i) == "1" ? 1 : 0);
     global.CERLives = clamp(round(net_number(net_field(_cer, "lives", 5), 5)), 1, 9999);
-    global.CERMusicChange = clamp(round(net_number(net_field(_cer, "mc", 10), 10)), 1, 1000);
-    global.CER1upChange = clamp(round(net_number(net_field(_cer, "up", 10), 10)), 1, 1000);
+    global.CERMusicChange = clamp(round(net_number(net_field(_cer, "mc", 10), 10)), 1, 9999);
+    global.CER1upChange = clamp(round(net_number(net_field(_cer, "up", 10), 10)), 1, 9999);
     return true;
 }
 
@@ -726,7 +726,8 @@ function net_enter_endless(_desc) {
     instance_create(0, 0, o_levelcounter);
     loadhud();
     if (_mode == 1) instance_create(0, 0, o_difficultycounter);
-    net_er_reset_picks();
+    // Re-entering the same run (overlay Join from inside it) keeps the picks we know.
+    if (global.net_session_sid != _desc.sid) net_er_reset_picks();
     global.net_er_index = _index;
     global.net_er_picks[? string(_index)] = _desc.room;
     net_enter_adopt(_desc);
@@ -761,7 +762,7 @@ function net_enter_endless_workshop(_desc, _index) {
     global.workshopER_catalog_ids = [];
     global.workshopER_query_page = 1;
     workshopER_query_catalog();
-    net_er_reset_picks();
+    if (global.net_session_sid != _desc.sid) net_er_reset_picks();
     global.net_er_index = _index;
     global.net_er_picks[? string(_index)] = "ws:" + string(_file);
     global.workshopER_current_file_id = _file;
@@ -876,10 +877,17 @@ function net_ugc_folder(_file) {
 /// Subscribe to an item a host's session needs (once per item). Items we
 /// subscribed only for that session are released when we move on to another.
 function net_ugc_request(_file, _sid) {
-    if (!global.steam_api || ds_map_exists(global.net_ugc_failed, string(_file))) return false;
+    if (!global.steam_api) return false;
+    // A failed subscribe blocks the item for a minute, then it is tried again.
+    var _failed = global.net_ugc_failed[? string(_file)];
+    if (!is_undefined(_failed)) {
+        if (current_time - _failed < 60000) return false;
+        ds_map_delete(global.net_ugc_failed, string(_file));
+    }
     for (var _i = 0; _i < array_length(global.net_ugc_subscribed); ++_i) {
         if (global.net_ugc_subscribed[_i].file == _file) {
             global.net_ugc_subscribed[_i].sid = _sid;
+            if (!is_undefined(_failed)) tcc_steam_ugc_subscribe_item(_file);
             return true;
         }
     }

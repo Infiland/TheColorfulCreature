@@ -26,6 +26,8 @@ function timing_ui_register_target(_kind) {
 // check. No save, upload, or scene transition is performed by these helpers.
 function timing_ui_publish_status() {
     var _actors = instance_exists(o_playerspawner) && instance_exists(o_door);
+    // Only the creator publishes a level built together.
+    if (net_coop_is_guest()) return TCC_UI_PUBLISH_NO_NAME;
     if (global.LEVerified != 1) return _actors ? TCC_UI_PUBLISH_UNVERIFIED : TCC_UI_PUBLISH_MISSING_ACTORS;
     if (global.cheats != 0) return TCC_UI_PUBLISH_CHEATS;
     if (global.steam_api != true) return TCC_UI_PUBLISH_NO_STEAM;
@@ -158,6 +160,10 @@ function timing_ui_editor_toolbar_update() {
             break;
         case o_LEThumbnail:
             x = _camx + 371; y = _camy + 9;
+            alpha = global.LEMode == 1 ? 1 : 0.5;
+            break;
+        case o_LEInvite:
+            x = _camx + 477; y = _camy + 9;
             alpha = global.LEMode == 1 ? 1 : 0.5;
             break;
         case o_LEDiamondMedal: _page_x = 265; break;

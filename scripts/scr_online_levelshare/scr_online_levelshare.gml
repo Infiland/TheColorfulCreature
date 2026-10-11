@@ -6,7 +6,8 @@
 // it from the lobby owner, who sends it in reliable chunks. It is not compressed:
 // zlib output cannot be bounded in GML, so the receiver allocates only the size it
 // validated. The receiver verifies size, hash and level schema before caching it under
-// "Online Levels/<md5>/", where it is played like a Workshop level.
+// "Online Levels/<md5>/", where it is played like a Workshop level. Co-op editor
+// snapshots are private to one guest and are kept in memory, never on disk.
 // =============================================================================
 
 #macro NET_SHARE_HEADER			44			// type + md5 + NUL + total + offset + length
@@ -21,12 +22,15 @@ function net_levelshare_init() {
     global.net_share_out = [];					// outgoing transfers
     global.net_share_in = undefined;			// the one incoming transfer
     global.net_share_denied = ds_map_create();	// md5 -> time a request failed
+    global.net_share_private = ds_map_create();	// md5 -> the only peer allowed to download it
+    global.net_share_memory = undefined;		// {md5, text}: the last in-memory download
 }
 
 function net_levelshare_cleanup() {
     net_levelshare_lobby_reset();
     if (ds_exists(global.net_share_texts, ds_type_map)) ds_map_destroy(global.net_share_texts);
     if (ds_exists(global.net_share_denied, ds_type_map)) ds_map_destroy(global.net_share_denied);
+    if (ds_exists(global.net_share_private, ds_type_map)) ds_map_destroy(global.net_share_private);
 }
 
 // Transfers belong to the lobby they were requested in.
@@ -37,6 +41,7 @@ function net_levelshare_lobby_reset() {
     }
     global.net_share_out = [];
     net_levelshare_in_clear();
+    global.net_share_memory = undefined;
 }
 
 function net_levelshare_in_clear() {
@@ -58,14 +63,17 @@ function net_levelshare_ready(_md5) {
 }
 
 /// Make a level.json text available to followers. Returns its MD5.
-function net_levelshare_offer(_text) {
+/// With _only_peer, nobody else may download it (co-op editor snapshots).
+function net_levelshare_offer(_text, _only_peer = 0) {
     var _md5 = md5_string_utf8(_text);
+    if (_only_peer != 0) global.net_share_private[? _md5] = _only_peer;
     if (!ds_map_exists(global.net_share_texts, _md5)) {
         global.net_share_texts[? _md5] = _text;
         array_push(global.net_share_order, _md5);
         // Keep the few most recent levels; older ones are still served from disk cache.
         while (array_length(global.net_share_order) > 4) {
             ds_map_delete(global.net_share_texts, global.net_share_order[0]);
+            ds_map_delete(global.net_share_private, global.net_share_order[0]);
             array_delete(global.net_share_order, 0, 1);
         }
     }
@@ -99,15 +107,17 @@ function net_levelshare_text(_md5) {
 }
 
 /// Ask a peer for a level. Returns false when it cannot be requested.
-function net_levelshare_request(_md5, _peer) {
+/// A _memory download is handed over in global.net_share_memory and never cached.
+function net_levelshare_request(_md5, _peer, _memory = false) {
     if (!global.net_active || !net_levelshare_md5_valid(_md5)) return false;
     if (ds_map_exists(global.net_share_denied, _md5) && current_time - global.net_share_denied[? _md5] < 60000) return false;
     var _in = global.net_share_in;
-    if (is_struct(_in) && _in.md5 == _md5 && _in.peer == _peer) return true;
+    if (is_struct(_in) && _in.md5 == _md5 && _in.peer == _peer && _in.memory == _memory) return true;
     if (_peer == 0 || _peer == global.net_my_steam_id || !net_lobby_member(_peer)) return false;
     net_levelshare_in_clear();
     // A request may queue behind other followers' downloads before its first chunk.
-    global.net_share_in = {md5:_md5, peer:_peer, total:0, received:0, buffer:-1, deadline:current_time + 2 * NET_SHARE_TIMEOUT_MS};
+    global.net_share_in = {md5:_md5, peer:_peer, total:0, received:0, buffer:-1, memory:_memory,
+        deadline:current_time + 2 * NET_SHARE_TIMEOUT_MS};
     var _buffer = global.net_send_buffer;
     buffer_seek(_buffer, buffer_seek_start, 0);
     buffer_write(_buffer, buffer_u8, NET_PACKET_LEVEL_REQUEST);
@@ -134,7 +144,9 @@ function net_levelshare_serve(_peer, _md5) {
         if (_out.buffer != -1 && buffer_exists(_out.buffer)) buffer_delete(_out.buffer);
         array_delete(global.net_share_out, _i, 1);
     }
-    if (is_undefined(net_levelshare_text(_md5)) || array_length(global.net_share_out) >= NET_MAX_LOBBY) {
+    var _only = global.net_share_private[? _md5];
+    if ((!is_undefined(_only) && _only != _peer)
+        || is_undefined(net_levelshare_text(_md5)) || array_length(global.net_share_out) >= NET_MAX_LOBBY) {
         net_levelshare_send_deny(_peer, _md5);
         return;
     }
@@ -244,9 +256,24 @@ function net_levelshare_finish() {
     var _in = global.net_share_in;
     var _md5 = _in.md5;
     var _raw = _in.buffer;
+    var _memory = _in.memory;
     _in.buffer = -1;	// take ownership before clearing the transfer
     net_levelshare_in_clear();
     var _ok = false;
+    if (_raw >= 0 && _memory) {
+        var _size = buffer_get_size(_raw);
+        if (_size > 0 && _size <= NET_SHARE_MAX_TEXT && buffer_md5(_raw, 0, _size) == _md5) {
+            // buffer_string needs a terminator the sender never includes.
+            var _terminated = buffer_create(_size + 1, buffer_fixed, 1);
+            buffer_copy(_raw, 0, _size, _terminated, 0);
+            buffer_poke(_terminated, _size, buffer_u8, 0);
+            global.net_share_memory = {md5:_md5, text:buffer_peek(_terminated, 0, buffer_string)};
+            buffer_delete(_terminated);
+            _ok = true;
+        }
+        buffer_delete(_raw);
+        _raw = -1;
+    }
     if (_raw >= 0) {
         var _size = buffer_get_size(_raw);
         if (_size > 0 && _size <= NET_SHARE_MAX_TEXT && buffer_md5(_raw, 0, _size) == _md5) {

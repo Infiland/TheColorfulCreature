@@ -304,6 +304,7 @@ function net_init() {
 
 	net_session_init();
 	net_levelshare_init();
+	net_coop_init();
 }
 
 /// The manager is persistent and created once at boot. Anything that might run
@@ -331,6 +332,7 @@ function net_cleanup() {
     if (!variable_global_exists("net_ready") || !global.net_ready) return;
     net_leave_lobby(false);
     net_levelshare_cleanup();
+    net_coop_cleanup();
     net_session_cleanup();
     net_avatars_free();
     if (ds_exists(global.net_players,ds_type_map)) ds_map_destroy(global.net_players);
@@ -695,6 +697,13 @@ function net_receive_packets() {
         var _sender = tcc_steam_net_packet_get_sender_id();
         var _size = tcc_steam_net_packet_get_size();
         if (!net_finite(_size) || _size < 1 || _size > NET_CHUNK_MAX_SIZE) continue;
+        tcc_steam_net_packet_get_data(_buf);
+        if (_size > buffer_get_size(_buf)) continue;
+        // A co-op editor invitation comes from a friend whose lobby we have not joined yet.
+        if (buffer_peek(_buf,0,buffer_u8) == NET_PACKET_COOP_INVITE) {
+            net_coop_receive_invite(_sender,_buf,_size);
+            continue;
+        }
         if (!net_lobby_member(_sender)) {
             // A newcomer's first packet can beat Steam's membership callback.
             if (global.net_refresh_forced_tick == timing_tick_id()) continue;
@@ -702,8 +711,6 @@ function net_receive_packets() {
             net_refresh_members();
             if (!net_lobby_member(_sender)) continue;
         }
-        tcc_steam_net_packet_get_data(_buf);
-        if (_size > buffer_get_size(_buf)) continue;
         var _type = buffer_peek(_buf,0,buffer_u8);
         var _key = string(_sender);
         switch (_type) {
@@ -767,6 +774,17 @@ function net_receive_packets() {
             case NET_PACKET_LEVEL_CHUNK:
             case NET_PACKET_LEVEL_DENY:
                 net_levelshare_receive(_sender,_type,_buf,_size);
+                break;
+            case NET_PACKET_COOP_JOIN:
+            case NET_PACKET_COOP_WELCOME:
+            case NET_PACKET_COOP_DENY:
+            case NET_PACKET_COOP_OPS:
+            case NET_PACKET_COOP_EDIT:
+            case NET_PACKET_COOP_CURSOR:
+            case NET_PACKET_COOP_END:
+            case NET_PACKET_COOP_LEAVE:
+            case NET_PACKET_COOP_RESYNC:
+                net_coop_receive(_sender,_type,_buf,_size);
                 break;
         }
     }

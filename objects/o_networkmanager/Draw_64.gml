@@ -33,6 +33,12 @@ if (is_struct(_job)) {
 	_bar_color = c_white;
 	_bar_alpha = 1;
 }
+var _coop = net_coop_banner();
+if (_coop != "") {
+	_bar_text = _coop;
+	_bar_color = c_white;
+	_bar_alpha = 1;
+}
 if (_bar_alpha > 0 && _bar_text != "") {
 	draw_set_alpha(0.7 * _bar_alpha);
 	draw_set_color(c_black);
@@ -71,6 +77,9 @@ for (var _i = 0; _i < array_length(global.net_notices); ++_i) {
 	draw_text(1020, _notice_y, _notice.text);
 	_notice_y += 14;
 }
+
+// --- Co-op editor invitation ---
+net_coop_draw_offer();
 
 draw_set_alpha(1);
 draw_set_color(c_white);

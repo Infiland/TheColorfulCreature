@@ -1,3 +1,5 @@
+// Only the level's creator publishes a level built together.
+if (net_coop_is_guest()) { instance_destroy(); exit; }
 result = 0;
 state = "initializing";
 timer = 180;

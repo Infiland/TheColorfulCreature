@@ -925,7 +925,8 @@ scr_savenewcalendar()
 if place_meeting(x,y+3,o_door) {
 if !instance_exists(o_key) {
 global.LEMode = 1
-global.LEVerified = 1
+// Building together: the run proves the level only if nobody changed it meanwhile.
+global.LEVerified = (!variable_instance_exists(id, "net_coop_mark") || net_coop_mark == net_coop_edit_count()) ? 1 : 0
 
 instance_destroy(o_time)
 instance_destroy(o_timecounter)

@@ -469,7 +469,34 @@ function level_prepare_room(_directory, _room, _keep_publish_id = false) {
     return true;
 }
 
-function level_apply(_document, _context = "editor") {
+/// Create one document entry the way a level load does. Coordinates and transforms
+/// exist before Create, including child spawn effects. _uid tags co-op editor objects.
+function level_spawn_entry(_entry, _layer, _context, _order = undefined, _uid = undefined) {
+    var _previous_rotation = variable_global_exists("LEBlockBackgroundRotation") ? global.LEBlockBackgroundRotation : 0;
+    if (level_is_slope(_entry.obj)) global.LEBlockBackgroundRotation = _entry.orientation;
+    var _properties = {
+        image_index: _entry.imageindex, image_xscale: _entry.xscale, image_yscale: _entry.yscale,
+        orientation: _entry.orientation, level_document_context: _context
+    };
+    if (!is_undefined(_order)) _properties.level_document_order = _order;
+    if (!is_undefined(_uid)) _properties.net_uid = _uid;
+    var _instance = timing_create_layer(_entry.x, _entry.y, _layer, level_object(_entry.obj), _properties);
+    if (instance_exists(_instance)) {
+        // Older palette Create events reset the animation frame; preserve the authored one.
+        _instance.image_index = level_is_slope(_entry.obj) ? _entry.orientation : _entry.imageindex;
+    }
+    global.LEBlockBackgroundRotation = _previous_rotation;
+    return _instance;
+}
+
+function level_document_layer() {
+    var _layer = layer_get_id("TCC_LevelDocument");
+    if (_layer == -1) _layer = layer_create(-100, "TCC_LevelDocument");
+    return _layer;
+}
+
+/// _uids (co-op editor only) tags each created entry with its network id.
+function level_apply(_document, _context = "editor", _uids = undefined) {
     var _validation = level_validate(_document);
     if (!_validation.valid) { level_error(_validation.error); return false; }
     // Validate every entry before changing the current room or editor contents.
@@ -486,24 +513,10 @@ function level_apply(_document, _context = "editor") {
     global.level_document_context = _context;
 
     global.color = _document.metadata.startingColor;
-    var _layer = layer_get_id("TCC_LevelDocument");
-    if (_layer == -1) _layer = layer_create(-100, "TCC_LevelDocument");
-    var _previous_rotation = variable_global_exists("LEBlockBackgroundRotation") ? global.LEBlockBackgroundRotation : 0;
+    var _layer = level_document_layer();
     for (var _i = 0; _i < array_length(_document.instances); ++_i) {
-        var _entry = _document.instances[_i];
-        if (level_is_slope(_entry.obj)) global.LEBlockBackgroundRotation = _entry.orientation;
-        var _properties = {
-            image_index: _entry.imageindex, image_xscale: _entry.xscale, image_yscale: _entry.yscale,
-            orientation: _entry.orientation, level_document_order: _i, level_document_context: _context
-        };
-        // Coordinates and transforms exist before Create, including child spawn effects.
-        var _instance = timing_create_layer(_entry.x, _entry.y, _layer, level_object(_entry.obj), _properties);
-        if (instance_exists(_instance)) {
-            // Older palette Create events reset the animation frame; preserve the authored one.
-            _instance.image_index = level_is_slope(_entry.obj) ? _entry.orientation : _entry.imageindex;
-        }
+        level_spawn_entry(_document.instances[_i], _layer, _context, _i, is_array(_uids) ? _uids[_i] : undefined);
     }
-    global.LEBlockBackgroundRotation = _previous_rotation;
     scr_troop_nav_mark_dirty();
     if (_context != "editor") {
         scr_LEChangeScenery();
@@ -531,6 +544,8 @@ function level_editor_name_valid(_name) {
 }
 
 function level_editor_choose_name(_name) {
+    // A co-op guest edits the creator's level in memory only: it never gets a folder.
+    if (net_coop_is_guest()) { level_error("Only the level's creator can save it."); return false; }
     if (!level_editor_name_valid(_name)) { level_error("Choose a level name without path separators or reserved filename characters."); return false; }
     global.level_editor_folder = _name;
     global.level_editor_root = level_directory(directory_set("/LevelEditor Files/"));
@@ -538,6 +553,7 @@ function level_editor_choose_name(_name) {
 }
 
 function level_editor_directory() {
+    if (net_coop_is_guest()) return "";
     var _root = level_directory(directory_set("/LevelEditor Files/"));
     if (variable_global_exists("level_editor_root") && global.level_editor_root == _root
         && variable_global_exists("level_editor_folder") && level_editor_name_valid(global.level_editor_folder)) {
@@ -548,7 +564,7 @@ function level_editor_directory() {
 }
 
 function level_editor_open(_name) {
-    if (!level_editor_name_valid(_name)) return false;
+    if (net_coop_is_guest() || !level_editor_name_valid(_name)) return false;
     var _directory = level_directory(directory_set("/LevelEditor Files/")) + _name + "/";
     if (is_undefined(level_read(_directory))) return false;
     if (!level_editor_choose_name(_name)) return false;

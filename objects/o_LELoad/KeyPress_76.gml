@@ -1,3 +1,5 @@
+// Only the level's creator saves, loads and publishes a level built together.
+if (net_coop_is_guest()) exit;
 if timing_keyboard_down(vk_control) {
 
 instance_destroy(o_leveleditormenusetup)

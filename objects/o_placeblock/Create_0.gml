@@ -45,6 +45,8 @@ check_canchange = function() {
 
 // Destroy the existing block for canchange replacement at current x,y
 do_canchange_destroy = function() {
+	// Replacing belongs to placing: never while play-testing or over the toolbar band.
+	if (global.LEMode != 1 || instance_exists(o_namelevelLE) || y < 64 + camera_get_view_y(view_camera[0])) return;
 	var _inst;
 	if (global.LEBuild == 1) {
 		if (global.LES >= 6 && global.LES <= 10) {

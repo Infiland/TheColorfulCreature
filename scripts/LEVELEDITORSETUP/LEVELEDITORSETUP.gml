@@ -1,5 +1,6 @@
 function LEVELEDITORSETUP(_restart = 0) {
     if (_restart == 1) {
+        if (net_coop_is_guest()) return false;
         if (!scr_saveleveleditor()) {
             global.LEsetup_error = variable_global_exists("level_last_error") ? global.level_last_error : "The level could not be saved.";
             return false;

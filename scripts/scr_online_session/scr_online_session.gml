@@ -26,7 +26,6 @@ function net_session_init() {
     global.net_sid_counter = 0;
     global.net_level_key = "";
     global.net_shared_md5 = "";
-    global.net_editor_md5 = "";
     global.net_challenge_md5 = "";
     global.net_challenge_share_path = "";
     global.net_publish_tick = 0;
@@ -71,6 +70,7 @@ function net_session_lobby_reset() {
     global.net_follow_pending_own = "";
     // Picks made outside this lobby were never shared with it.
     global.net_er_keep_sid = "";
+    net_coop_lobby_reset();
 }
 
 function net_field(_struct, _key, _default) {
@@ -130,10 +130,8 @@ function net_challenge_def_current() {
 function net_level_key_compute() {
     var _class = net_room_class(room);
     if (_class == NET_ROOM_MENU || _class == NET_ROOM_LOCAL) return "";
-    if (_class == NET_ROOM_EDITOR) {
-        if (room == r_leveleditor && global.LEMode == 2 && global.net_editor_md5 != "") return "lv:" + global.net_editor_md5;
-        return "";
-    }
+    // The editor is private: only a co-op session's builders share it.
+    if (_class == NET_ROOM_EDITOR) return net_coop_level_key();
     if (room == r_customlevelworkshop) {
         if (global.net_shared_md5 != "") return "lv:" + global.net_shared_md5;
         var _publish = variable_global_exists("Publish_ID") ? int64(net_number(global.Publish_ID, 0)) : int64(0);
@@ -174,7 +172,6 @@ function net_session_update() {
         global.net_session_adopt = "";
         if (_previous != global.net_session_sid) net_ugc_release(global.net_session_sid);
     }
-    if (_class != NET_ROOM_EDITOR) global.net_editor_md5 = "";
     if (net_enabled()) net_challenge_share_update();
     var _key = net_level_key_compute();
     if (_key != global.net_level_key) {
@@ -196,21 +193,6 @@ function net_challenge_share_update() {
     global.net_challenge_share_path = _path;
     var _document = level_read(_path);
     global.net_challenge_md5 = is_undefined(_document) ? "" : net_levelshare_offer(json_stringify(_document));
-}
-
-/// PLAYMODELE hook: a play-test of the editor level becomes a joinable session.
-function net_editor_playmode(_playing) {
-    global.net_editor_md5 = "";
-    if (!_playing || !variable_global_exists("net_ready") || !global.net_ready || !net_enabled()) return;
-    try {
-        var _document = level_capture();
-        if (level_validate(_document).valid) global.net_editor_md5 = net_levelshare_offer(json_stringify(_document));
-    } catch (_error) {
-        global.net_editor_md5 = "";
-        show_debug_message("[NET] Could not share the editor level: " + string(_error));
-    }
-    // Each play-test is a fresh session, so followers come along to the new version.
-    if (global.net_editor_md5 != "") global.net_session_sid = net_new_sid();
 }
 
 /// True on the tick a follow entry reset the mode and issued its room change.
@@ -297,13 +279,8 @@ function net_session_capture() {
     if (_class == NET_ROOM_MENU) { _desc.sid = ""; return _desc; }
     if (_class == NET_ROOM_LOCAL) { _desc.mode = "local"; return _desc; }
     if (_class == NET_ROOM_EDITOR) {
+        // Builders enter only by the creator's invitation, never by following.
         _desc.mode = "editor";
-        if (global.net_level_key != "") {
-            _desc.mode = "shared";
-            _desc.md5 = global.net_editor_md5;
-            _desc.title = net_clean_name(variable_global_exists("levelname") ? global.levelname : "");
-            _desc.joinable = true;
-        }
         return _desc;
     }
     _desc.joinable = (_class == NET_ROOM_PLAY);
@@ -444,6 +421,11 @@ function net_session_owner_changed() {
 
 function net_follow_poll() {
     if (!global.net_active || global.net_is_host) return;
+    // Building together (or on the way there): the lobby owner's sessions wait.
+    if (net_coop_busy()) {
+        if (is_struct(global.net_follow_job)) net_follow_cancel();
+        return;
+    }
     net_follow_job_tick();
     if (timing_tick_id() < global.net_follow_poll_tick) return;
     global.net_follow_poll_tick = timing_tick_id() + 15;

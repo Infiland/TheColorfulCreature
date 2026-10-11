@@ -1,4 +1,4 @@
-if room = r_leveleditor {
+if room = r_leveleditor && global.LEMode = 1 {
 if global.LEBuild = 1 {
 if global.LES = 6{ instance_change(o_invisibleredblock,1)}
 if global.LES = 7{ instance_change(o_invisibleyellowblock,1)}

@@ -1,4 +1,4 @@
-if room = r_leveleditor {
+if room = r_leveleditor && global.LEMode = 1 {
 if global.LEBuild = 1 {
 switch(global.LES) {
 case(6): 

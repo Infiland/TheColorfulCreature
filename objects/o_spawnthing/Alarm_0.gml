@@ -1,18 +1,26 @@
 if (!timing_is_tick()) exit;
-scr_loadleveleditor()
+// A co-op guest already holds the creator's level, which exists only in memory.
+var _guest = net_coop_is_guest()
+if (!_guest) scr_loadleveleditor()
 
 if !instance_exists(o_LEcounter) { instance_create(x,y,o_LEcounter) }
 if !instance_exists(o_leveleditorselect) { instance_create(x,y,o_leveleditorselect) }
 if !instance_exists(o_placeblock) { instance_create(x,y,o_placeblock) }
 if !instance_exists(o_animatedLEicon) { instance_create(x,y,o_animatedLEicon) }
 if !instance_exists(o_returnbutton) { instance_create(15,9,o_returnbutton) } //53
+if (!_guest) {
 if !instance_exists(o_LESave) { instance_create(80,9,o_LESave) } 
 if !instance_exists(o_LELoad) { instance_create(133,9,o_LELoad) }
 if !instance_exists(o_LESettings) { instance_create(186,9,o_LESettings) }
+}
 if !instance_exists(o_LEItemMenu) { instance_create(239,9,o_LEItemMenu) }
 if !instance_exists(o_LEMode) { instance_create(603,9,o_LEMode) }
+if (!_guest) {
 if !instance_exists(o_LEThumbnail) { instance_create(371,9,o_LEThumbnail) }
 if !instance_exists(o_LEPublish) { instance_create(424,9,o_LEPublish) }
+}
+// Build together: invite friends (creator) or see who is building (guest).
+if (platform_steam() && tcc_steam_get_app_id() != 1749610 && !instance_exists(o_LEInvite)) { instance_create(477,9,o_LEInvite) }
 
 //Camera
 if global.LELevelHeightBlocks > 22 || global.LELevelWidthBlocks > 32 {

@@ -1,3 +1,5 @@
+// Only the level's creator saves, loads and publishes a level built together.
+if (net_coop_is_guest()) exit;
 var _modal = instance_find(o_publishlevelLE, 0);
 if (!instance_exists(_modal) || !_modal.visible || !timing_ui_publish_eligible()) exit;
 if (!scr_saveleveleditor()) exit;

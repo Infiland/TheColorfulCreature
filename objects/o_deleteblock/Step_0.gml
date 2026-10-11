@@ -1,4 +1,10 @@
 if (!timing_instance_step()) exit;
+// The eraser outlived build mode (P pressed while erasing): stop erasing.
+if (global.LEMode != 1) {
+	instance_create(x,y,o_placeblock)
+	instance_destroy()
+	exit
+}
 // Store previous position for interpolation
 var _prev_x = prev_mx;
 var _prev_y = prev_my;

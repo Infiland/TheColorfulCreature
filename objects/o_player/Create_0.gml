@@ -78,6 +78,7 @@ rot1 = 0
 rot2 = -180
 
 if room = r_leveleditor || room = r_customlevelworkshop || room = r_challengelevel {
+net_coop_mark = net_coop_edit_count()
 global.LESavedWinTime = 0
 global.color = global.defaultcolorLE
 } else {

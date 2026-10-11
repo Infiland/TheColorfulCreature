@@ -8,8 +8,6 @@ audio_play_sound(snd_hitboss,0,0)
 instance_destroy(o_waterleveleditorline)
 
 if global.LEMode = 1 { 
-	// Online: capture the level so friends can join this play-test.
-	net_editor_playmode(true)
 	global.LEMode = 2
 	global.time = 0
 	global.deaths = 0
@@ -34,7 +32,6 @@ if global.LEMode = 1 {
 		instance_destroy(o_bulletright)
 		instance_destroy(o_bulletleft)
 		instance_destroy(o_playerbullet)
-		net_editor_playmode(false)
 		global.LEMode = 1
 		}
 image_index = global.LEMode - 1

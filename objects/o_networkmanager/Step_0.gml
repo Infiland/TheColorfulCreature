@@ -10,6 +10,7 @@ if (instance_exists(o_player)) {
 
 net_session_update();
 net_tick();
+net_coop_tick();
 
 for (var _i = array_length(global.net_notices) - 1; _i >= 0; --_i) {
 	global.net_notices[_i].timer -= 1;

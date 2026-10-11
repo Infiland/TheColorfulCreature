@@ -141,7 +141,10 @@ function net_friends_panel_layout() {
         array_push(buttons, net_friends_button(_x, _by, _x + 170, _by + 30, loc("NET_STEAM_FRIENDS"), "overlay", undefined, tcc_steam_is_overlay_enabled()));
         _x += 182;
         if (global.net_active && !global.net_is_host) {
-            array_push(buttons, net_friends_button(_x, _by, _x + 170, _by + 30, loc("NET_GO_TO_HOST"), "gotohost"));
+            // Notices are hidden behind the panel: only offer it when there is somewhere to go.
+            var _host_desc = net_session_host_desc();
+            array_push(buttons, net_friends_button(_x, _by, _x + 170, _by + 30, loc("NET_GO_TO_HOST"), "gotohost", undefined,
+                is_struct(_host_desc) && net_field(_host_desc, "joinable", false)));
             _x += 182;
         }
         if (global.net_active && (!global.net_is_host || net_member_count() > 1)) {

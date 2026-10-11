@@ -42,8 +42,10 @@ function net_session_init() {
     global.net_follow_pending_sid = "";
     global.net_follow_pending_own = "";
     global.net_er_index = 0;
+    global.net_er_keep_sid = "";	// the run whose picks survive re-entering it
     global.net_er_diff_borrowed = false;
     global.net_practice_borrowed = false;
+    global.net_room_followed = false;	// in a room entered by following the host's "room" session
     global.net_er_picks = ds_map_create();
     global.net_ugc_subscribed = [];
     global.net_ugc_failed = ds_map_create();
@@ -67,6 +69,8 @@ function net_session_lobby_reset() {
     global.net_follow_waiting_notice = false;
     global.net_follow_pending_sid = "";
     global.net_follow_pending_own = "";
+    // Picks made outside this lobby were never shared with it.
+    global.net_er_keep_sid = "";
 }
 
 function net_field(_struct, _key, _default) {
@@ -150,6 +154,7 @@ function net_session_update() {
     var _class = net_room_class(room);
     if (_class == NET_ROOM_MENU) {
         global.net_session_in_menu = true;
+        global.net_room_followed = false;
         // A follow that ended back in a menu was never entered: never reuse its sid.
         global.net_session_adopt = "";
         if (!is_undefined(global.net_cer_own)) {
@@ -242,6 +247,13 @@ function net_er_difficulty_reward_allowed() {
 /// o_player door hook. Shared levels have no rewards or next level: replay them.
 function net_door_override() {
     if (!variable_global_exists("net_ready") || !global.net_ready) return false;
+    // A followed calendar or daily room is played as practice, but outside the
+    // campaign the room order leads into other modes' rooms and result screens.
+    if (global.net_room_followed && global.levelselect == 1 && net_campaign_room_level(room) == 0) {
+        level_music_release();
+        kickoutofcalendar();
+        return true;
+    }
     if (room != r_customlevelworkshop || global.net_shared_md5 == "") return false;
     if (variable_global_exists("workshopchallenge") && global.workshopchallenge == 1) return false;
     net_notice(loc("NET_SHARED_LEVEL_COMPLETE"));
@@ -571,6 +583,7 @@ function net_enter_begin() {
     global.net_follow_entered_tick = timing_tick_id();
     global.net_er_diff_borrowed = false;
     global.net_practice_borrowed = false;
+    global.net_room_followed = false;
     if (variable_global_exists("endless") && global.endless == 1) {
         // A live run is banked as quitting would; a game over has already settled it.
         if (instance_exists(o_levelcounter) && global.infinitelivessettings == 0) scr_endless_settle_run();
@@ -632,6 +645,7 @@ function net_enter_room(_desc) {
     net_enter_begin();
     global.levelselect = 1;
     global.net_practice_borrowed = global.worldProgression < net_campaign_room_level(_room);
+    global.net_room_followed = true;
     global.challenge_run_id = -1;
     global.currentchallenge = -1;
     global.hatmerchantdiscount = 1.3333333333333;
@@ -726,8 +740,9 @@ function net_enter_endless(_desc) {
     instance_create(0, 0, o_levelcounter);
     loadhud();
     if (_mode == 1) instance_create(0, 0, o_difficultycounter);
-    // Re-entering the same run (overlay Join from inside it) keeps the picks we know.
-    if (global.net_session_sid != _desc.sid) net_er_reset_picks();
+    // Re-entering the same run without leaving its lobby keeps the picks we know.
+    if (global.net_session_sid != _desc.sid || global.net_er_keep_sid != _desc.sid) net_er_reset_picks();
+    global.net_er_keep_sid = _desc.sid;
     global.net_er_index = _index;
     global.net_er_picks[? string(_index)] = _desc.room;
     net_enter_adopt(_desc);
@@ -762,7 +777,8 @@ function net_enter_endless_workshop(_desc, _index) {
     global.workshopER_catalog_ids = [];
     global.workshopER_query_page = 1;
     workshopER_query_catalog();
-    if (global.net_session_sid != _desc.sid) net_er_reset_picks();
+    if (global.net_session_sid != _desc.sid || global.net_er_keep_sid != _desc.sid) net_er_reset_picks();
+    global.net_er_keep_sid = _desc.sid;
     global.net_er_index = _index;
     global.net_er_picks[? string(_index)] = "ws:" + string(_file);
     global.workshopER_current_file_id = _file;

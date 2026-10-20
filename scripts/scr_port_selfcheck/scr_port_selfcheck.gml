@@ -8,6 +8,7 @@ function scr_port_selfcheck() {
     scr_port_assert(mobile_confirmation_hit(688, 472) == ord("Y"), "confirmation Yes hit target");
     scr_port_assert(mobile_confirmation_hit(512, 472) == 0, "confirmation gap ignores taps");
     scr_port_assert(mobile_confirmation_hit(688, 550) == 0, "confirmation outside ignores taps");
+    scr_confirmation_modal_selfcheck();
     platform_touch_defaults();
     scr_port_assert(global.androidrightx - global.androidleftx >= 192, "movement button spacing");
     scr_port_assert(point_distance(global.androidjumpx, global.androidjumpy, global.androidinteractx, global.androidinteracty) > 190, "action button spacing");
@@ -107,6 +108,54 @@ function scr_port_selfcheck() {
     scr_online_cosmetics_selfcheck();
     show_debug_message("TCC_PORT_SELF_CHECK_PASS");
     game_end();
+}
+
+function scr_confirmation_modal_selfcheck() {
+    timing_boot();
+    platform_clear_input();
+    global.calendarcurrentyear = 2026;
+    global.calendarcurrentmonth = 10;
+    global.calendarcurrentday = 20;
+    var _clock = global.tcc_timing;
+    // Reopening exercises the same production Create events and News cleanup.
+    for (var _pass = 0; _pass < 2; ++_pass) {
+        var _quests = instance_create(320, 256, o_questsmenu);
+        var _news = instance_create(0, 0, o_newsviewer);
+        var _confirm = instance_create(0, 0, o_progressask);
+        scr_port_assert(instance_exists(_quests) && _quests.maxquests > 0, "quest menu loads bundled quests");
+        scr_port_assert(instance_exists(_news), "news viewer opens");
+        scr_port_assert(!variable_instance_exists(_quests, "timing_confirmation_dialog")
+            && !variable_instance_exists(_news, "timing_confirmation_dialog"), "menus exercise absent confirmation state");
+
+        _clock.tick = false;
+        with (o_progressask) confirmation_tick_update();
+        scr_port_assert(_confirm.y == -64, "confirmation waits through render-only frames");
+        _clock.tick = true;
+        _clock.tick_id += 1;
+        // Exercise the production parent traversal that previously crashed.
+        timing_gameplay_end_step();
+        scr_port_assert(instance_exists(_quests) && _quests.y == 256, "quest menu survives confirmation traversal");
+        scr_port_assert(array_length(_quests.timing_quest_indices) == 3 && _quests.alphalerp > 0, "quest menu continues its own update");
+        scr_port_assert(instance_exists(_news) && _news.y == 0 && _news.state == "loading", "news viewer survives confirmation traversal");
+        scr_port_assert(_confirm.y > -64 && _confirm.timing_confirmation_last_tick == _clock.tick_id, "real confirmation still updates");
+        var _confirm_y = _confirm.y;
+        with (_confirm) confirmation_tick_update();
+        scr_port_assert(_confirm.y == _confirm_y, "confirmation updates only once per tick");
+
+        with (_confirm) mobile_confirmation_submit(ord("N"));
+        _clock.tick_id += 1;
+        timing_gameplay_end_step();
+        scr_port_assert(!instance_exists(_confirm), "No still dismisses a real confirmation");
+        scr_port_assert(instance_exists(_quests) && instance_exists(_news), "confirmation input leaves other menus open");
+        // An explicit opt-out must remain supported alongside an absent flag.
+        with (_news) {
+            timing_confirmation_dialog = false;
+            confirmation_tick_update();
+        }
+        instance_destroy(_quests);
+        instance_destroy(_news);
+    }
+    show_debug_message("TCC_CONFIRMATION_MODAL_SELF_CHECK_PASS");
 }
 
 function scr_mobile_touch_selfcheck() {

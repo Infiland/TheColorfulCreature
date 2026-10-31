@@ -22,19 +22,37 @@ Done in this branch:
   (`Other_69.gml` plus their `.yy` event entries) removed, and the multiplayer rewritten on Networking Messages.
   See `wrapper-contract.md` and `netcode-design-final.md` for the design these follow.
 
-Still to do (check the PR description for the latest state):
+Also in the branch: Steam-free transport tests (`scripts/scr_net_mock`, `scripts/scr_online_transport_selfcheck`, wired into
+`scr_port_selfcheck` for the `Check` configuration) and new gates in `tools/check_port.py`. The new scripts are registered
+in the `.yyp`. Static checks pass: `python3 -I tools/check_port.py` and
+`python3 -I implementation/steamworks-3.0/tools/check_steam_names.py` (0 errors).
 
-1. New scripts created by the port (for example the transport mock and transport self-check) must be listed in
-   `The Colorful Creature.yyp` and the `.resource_order` file, otherwise GameMaker ignores them.
-2. Put **Steamworks SDK 1.65** at `../../sdk` (or set `TCC_STEAM_SDK`). The 3.0 build step fails the build when the SDK
+Still to do:
+
+1. Put **Steamworks SDK 1.65** at `../../sdk` (or set `TCC_STEAM_SDK`). The 3.0 build step fails the build when the SDK
    hash does not match 1.65. The download needs a Steamworks partner login.
-3. Compile and run the `Check` configuration with the self-checks (`tools/build.py`).
-4. Decide the extension's **Debug** option per configuration. 2.x treated an IDE launch as debug; 3.0 only does with
-   `Enabled`, otherwise a game started outside Steam is relaunched through Steam. Never ship with `Enabled`.
-5. Runtime tests that need Steam: one account on one machine, then two accounts on two machines for the multiplayer
+2. Compile and run the `Check` configuration with the self-checks (`tools/build.py Check ...`). The self-checks print
+   `TCC_STEAM_WRAPPER_SELF_CHECK_PASS`, `TCC_ONLINE_TRANSPORT_SELF_CHECK_PASS` and then `TCC_PORT_SELF_CHECK_PASS`.
+   Expect compile fixes: nothing has been run through the GameMaker compiler.
+3. Decide the extension's **Debug** option per configuration. 2.x treated an IDE launch as debug; 3.0 only does with
+   `Enabled`, otherwise a game started outside Steam is relaunched through Steam. Never ship with `Enabled`
+   (`check_port.py` allows it only for the Check, QA and iOSCheck configurations).
+4. Runtime tests that need Steam: one account on one machine, then two accounts on two machines for the multiplayer
    (section 10 of `netcode-design-final.md`).
+5. Windows only, blocking before a release: Steam must accept the raw Workshop content/preview paths used when publishing
+   levels and challenges (2.x passed them through GameMaker's SaveFileName first). The fallback hook is
+   `tcc_steam_ugc_path()` in `scr_steam_safe.gml`.
 6. Update `docs/` (a submodule): `docs/release/STATUS.md`, `docs/docs/getting-started.md` and `README` still mention
    extension 2.1.6 and SDK 1.61.
+
+Assumptions that only a real run can confirm (each has a log line or self-check assertion that trips first):
+
+- Typed result structs reach the relay (`instanceof` returns the constructor name); otherwise `unrouted` counts up.
+- `buffer_read(buffer_u64)` and `int64(string)` keep all 64 bits of a Steam id.
+- `game_restart()` does not run the extension's shutdown (otherwise the lobby is lost after the ending sequence).
+- The overlay dialog strings `"friends"` / `"achievements"` (`TCC_OVERLAY_*`) open the overlay; if not, use TitleCase.
+- Leaderboard results that arrive while their owner (for example `o_settings`) is deactivated are dropped, because
+  `instance_exists` is false for deactivated instances.
 
 ## Files
 

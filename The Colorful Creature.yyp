@@ -523,6 +523,8 @@
     {"id":{"name":"scr_online_session","path":"scripts/scr_online_session/scr_online_session.yy",},},
     {"id":{"name":"scr_online_levelshare","path":"scripts/scr_online_levelshare/scr_online_levelshare.yy",},},
     {"id":{"name":"scr_online_friends","path":"scripts/scr_online_friends/scr_online_friends.yy",},},
+    {"id":{"name":"scr_net_mock","path":"scripts/scr_net_mock/scr_net_mock.yy",},},
+    {"id":{"name":"scr_online_transport_selfcheck","path":"scripts/scr_online_transport_selfcheck/scr_online_transport_selfcheck.yy",},},
     {"id":{"name":"scr_credits_entry","path":"scripts/scr_credits_entry/scr_credits_entry.yy",},},
     {"id":{"name":"scr_credits_presentation_qa","path":"scripts/scr_credits_presentation_qa/scr_credits_presentation_qa.yy",},},
     {"id":{"name":"scr_timing_sequences","path":"scripts/scr_timing_sequences/scr_timing_sequences.yy"}},

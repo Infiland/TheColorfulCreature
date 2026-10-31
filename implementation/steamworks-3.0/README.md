@@ -9,7 +9,9 @@ results arrive in GML callbacks instead of the Steam Async Event, and the legacy
 
 ## Status
 
-This is a snapshot of work in progress. It has not been compiled, run in GameMaker, or tested against Steam.
+This is a snapshot of work in progress. The `Check` configuration compiles through the GameMaker compiler (Igor), and an
+independent review of the port has been done and its confirmed findings fixed. Nothing has been run yet: not the self-checks,
+and not against Steam.
 
 Done in this branch:
 
@@ -31,9 +33,9 @@ Still to do:
 
 1. Put **Steamworks SDK 1.65** at `../../sdk` (or set `TCC_STEAM_SDK`). The 3.0 build step fails the build when the SDK
    hash does not match 1.65. The download needs a Steamworks partner login.
-2. Compile and run the `Check` configuration with the self-checks (`tools/build.py Check ...`). The self-checks print
+2. Run the `Check` configuration with the self-checks (`tools/build.py Check --output DIR --native-diagnostic --runtime VM
+   --self-check --headless --snapshot`). It already compiles; the launch step is what is still untested. The self-checks print
    `TCC_STEAM_WRAPPER_SELF_CHECK_PASS`, `TCC_ONLINE_TRANSPORT_SELF_CHECK_PASS` and then `TCC_PORT_SELF_CHECK_PASS`.
-   Expect compile fixes: nothing has been run through the GameMaker compiler.
 3. Decide the extension's **Debug** option per configuration. 2.x treated an IDE launch as debug; 3.0 only does with
    `Enabled`, otherwise a game started outside Steam is relaunched through Steam. Never ship with `Enabled`
    (`check_port.py` allows it only for the Check, QA and iOSCheck configurations).
@@ -53,6 +55,12 @@ Assumptions that only a real run can confirm (each has a log line or self-check 
 - The overlay dialog strings `"friends"` / `"achievements"` (`TCC_OVERLAY_*`) open the overlay; if not, use TitleCase.
 - Leaderboard results that arrive while their owner (for example `o_settings`) is deactivated are dropped, because
   `instance_exists` is false for deactivated instances.
+- The extension writes every result into one shared return buffer (8192 bytes by default) and aborts the game when a result
+  does not fit. `__tcc_steam_grow_return_buffer()` grows it to 256 KB once Steam is ready; if a crash shows up in
+  `steam_inventory_get_result_items`, `steam_ugc_get_query_ugc_result` or `steam_ugc_get_subscribed_items`, look there first.
+
+Known limitation (rare, no fix): a leaderboard answer that arrives more than 20 s late, after the wrapper's watchdog gave up on
+its job, can be applied to the next queued job, because Steam's answers carry no request id.
 
 ## Files
 

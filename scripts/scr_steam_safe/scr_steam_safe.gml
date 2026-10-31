@@ -5,6 +5,8 @@
 // Steam only ever receives tcc_steam_relay. Callers' callbacks are invoked by __tcc_steam_deliver, never by Steam.
 
 #macro TCC_STEAM_SLOT_TTL_MS        180000   // single-flight / keyed entry lifetime (longer than every caller deadline, 120 s)
+#macro TCC_STEAM_PUBLISH_SLOT_TTL_MS 125000  // ugc_create / ugc_submit: just past the publish screens' 120 s deadline, so a retry is not refused for a minute
+#macro TCC_STEAM_RETURN_BUFFER_BYTES 262144  // the extension writes results into one shared return buffer (8192 bytes by default) and aborts the game on overflow
 #macro TCC_STEAM_LB_WATCHDOG_MS      20000   // one leaderboard job; Steam gives no callback on IO failure
 #macro TCC_STEAM_PLAYERS_TTL_MS      30000
 #macro TCC_STEAM_PERSONA_RETRY_MS     5000   // per id, persona and avatar fetch requests
@@ -215,6 +217,12 @@ function tcc_steam_register_callbacks(_force = false) {
     return true;
 }
 
+/// Grows the extension's shared return buffer once. The native writes whole result structs and arrays (an inventory snapshot, a Workshop
+/// query result, the subscribed item list) into it and aborts the game when one does not fit in the default 8192 bytes.
+function __tcc_steam_grow_return_buffer() {
+    if (buffer_get_size(__ext_core_get_ret_buffer()) < TCC_STEAM_RETURN_BUFFER_BYTES) __ext_core_get_ret_buffer(TCC_STEAM_RETURN_BUFFER_BYTES);
+}
+
 /// The only pump: called every simulation tick from o_fullscreensystem. Nobody else calls steam_api_run_callbacks().
 function tcc_steam_update() {
     if (!platform_steam()) return false;
@@ -223,7 +231,7 @@ function tcc_steam_update() {
     var _ready = tcc_steam_ready();
     if (_ready != _s.was_ready) {                       // Steam came up, or went away (shutdown / restart)
         _s.was_ready = _ready;
-        if (_ready) { _s.diag_done = false; tcc_steam_register_callbacks(true); }
+        if (_ready) { _s.diag_done = false; __tcc_steam_grow_return_buffer(); tcc_steam_register_callbacks(true); }
         else __tcc_steam_on_lost();
     }
     if (!_ready) return false;
@@ -736,8 +744,17 @@ function tcc_steam_create_leaderboard(_name, _sort, _display) {
     __tcc_steam_lb_enqueue({ kind: "create", board: string(_name), sort: _sort, display: _display, step: "", handle: 0, deadline: 0 });
     return true;
 }
+/// A newer download from the same instance replaces its queued ones (2.x let stale answers be dropped by the caller's token; here the
+/// serial queue would run every one of them, so quickly paging through boards would wait for all of them). The dropped jobs get no callback.
+function __tcc_steam_lb_drop_queued_downloads(_owner) {
+    if (_owner == noone) return;
+    var _queue = __tcc_steam_state().lb.queue;
+    for (var _i = array_length(_queue) - 1; _i >= 0; --_i)
+        if (_queue[_i].kind == "download" && _queue[_i].owner == _owner) array_delete(_queue, _i, 1);
+}
 function __tcc_steam_lb_download(_board, _request, _a, _b, _callback, _owner) {
     if (!is_callable(_callback) || !__tcc_steam_lb_available()) return false;
+    __tcc_steam_lb_drop_queued_downloads(_owner);
     __tcc_steam_lb_enqueue({ kind: "download", board: string(_board), request: _request, range_a: _a, range_b: _b, cb: _callback, owner: _owner, step: "", handle: 0, deadline: 0 });
     return true;
 }
@@ -946,7 +963,7 @@ function tcc_steam_ugc_create_item(_app_id, _file_type, _callback, _owner = noon
     if (!tcc_steam_ready() || !is_callable(_callback) || !is_numeric(_file_type)) return false;
     var _app = __tcc_steam_ugc_app_id(_app_id);
     if (_app <= 0) return false;
-    if (!__tcc_steam_slot_take("ugc_create", _callback, _owner)) return false;     // taken last: an early return after it would block the slot
+    if (!__tcc_steam_slot_take("ugc_create", _callback, _owner, TCC_STEAM_PUBLISH_SLOT_TTL_MS)) return false;     // taken last: an early return after it would block the slot
     steam_ugc_create_item(_app, _file_type, tcc_steam_relay);
     return true;
 }
@@ -992,7 +1009,7 @@ function tcc_steam_ugc_set_item_content(_h, _path) {
 /// Returns true = attempted. _callback(_r), _r = SteamUgcSubmitItemUpdateResult {result, legal_agreement_required}.
 function tcc_steam_ugc_submit_item_update(_h, _note, _callback, _owner = noone) {
     if (!tcc_steam_ready() || !tcc_steam_ugc_handle_valid(_h) || !is_callable(_callback)) return false;
-    if (!__tcc_steam_slot_take("ugc_submit", _callback, _owner)) return false;
+    if (!__tcc_steam_slot_take("ugc_submit", _callback, _owner, TCC_STEAM_PUBLISH_SLOT_TTL_MS)) return false;
     steam_ugc_submit_item_update(_h, string(_note), tcc_steam_relay);
     return true;
 }
@@ -1309,6 +1326,17 @@ function __tcc_steam_sc_leaderboards() {
     scr_port_assert(__tcc_steam_sc_get("rows:undefined") == 3 && !is_struct(_lb.cur) && array_length(_lb.queue) == 0, "leaderboard: running and queued jobs fail once each, uploads silently");
     __tcc_steam_lb_fail_all();
     scr_port_assert(__tcc_steam_sc_get("rows:undefined") == 3, "leaderboard: nothing left to fail");
+    var _a = { kind: "download", board: "a", cb: __tcc_steam_sc_rows, owner: id, step: "", handle: 0, deadline: 0 };
+    var _b = { kind: "download", board: "b", cb: __tcc_steam_sc_rows, owner: noone, step: "", handle: 0, deadline: 0 };
+    var _c = { kind: "upload", board: "a", value: 1, how: SteamLeaderboardUploadScoreMethod.KeepBest, step: "", handle: 0, deadline: 0 };
+    array_push(_lb.queue, _a, _b, _c);
+    __tcc_steam_lb_drop_queued_downloads(noone);
+    scr_port_assert(array_length(_lb.queue) == 3, "leaderboard: owner-less downloads are never superseded");
+    __tcc_steam_lb_drop_queued_downloads(id);
+    scr_port_assert(array_length(_lb.queue) == 2 && _lb.queue[0] == _b && _lb.queue[1] == _c, "leaderboard: a newer download replaces the owner's queued ones only");
+    _lb.queue = [];
+    __tcc_steam_grow_return_buffer();
+    scr_port_assert(buffer_get_size(__ext_core_get_ret_buffer()) >= TCC_STEAM_RETURN_BUFFER_BYTES, "return buffer: grown past the 8192-byte default");
 }
 
 /// S-6: ids stay int64.

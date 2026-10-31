@@ -568,6 +568,7 @@ function net_tick() {
             global.net_create_pending = false; global.net_join_pending_id = -1; global.net_pending_join = -1;
             global.net_host_intent = false; global.net_follow_host = false;
         }
+        if (global.net_connect_state == 2) global.net_connect_state = 0;
         if (global.net_active) { net_reset_lobby_state(); net_notice(loc("NET_DISCONNECTED")); }
         return;
     }

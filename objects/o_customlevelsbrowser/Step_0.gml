@@ -229,3 +229,22 @@ if download_poll_timer >= 60 {
 		}
 	}
 }
+
+// A browse answer can be lost without any signal: stop showing LOADING after the deadline
+if browse_state = "loading" && current_time > browse_deadline {
+	browse_state = "error"
+}
+
+// Owner names of the active tab: Steam fills its name cache after a request, so ask again
+// every 30 frames until the name is known (never from Draw)
+owner_name_timer++
+if owner_name_timer >= 30 {
+	owner_name_timer = 0
+	for (var i = 0; i < _active_count; i++) {
+		var _lvl = _active_levels[i]
+		if _lvl.owner_name = "Unknown" && tcc_steam_id_valid(_lvl.owner_id) {
+			var _owner_name = tcc_steam_get_user_persona_name_sync(_lvl.owner_id)
+			if _owner_name != "" { _lvl.owner_name = _owner_name }
+		}
+	}
+}

@@ -1733,7 +1733,7 @@
     {"name":"selectlevelCUSTOM","order":2,"path":"scripts/selectlevelCUSTOM/selectlevelCUSTOM.yy",},
     {"name":"setLanguageDependingOnRegion","order":1,"path":"scripts/setLanguageDependingOnRegion/setLanguageDependingOnRegion.yy",},
     {"name":"skincustomizelogic","order":2,"path":"scripts/skincustomizelogic/skincustomizelogic.yy",},
-    {"name":"Steamworks_Definitions","order":1,"path":"scripts/Steamworks_Definitions/Steamworks_Definitions.yy",},
+    {"name":"Steamworks_API","order":1,"path":"scripts/Steamworks_API/Steamworks_API.yy",},
     {"name":"string_height_scribble_ext","order":3,"path":"scripts/string_height_scribble_ext/string_height_scribble_ext.yy",},
     {"name":"string_height_scribble","order":2,"path":"scripts/string_height_scribble/string_height_scribble.yy",},
     {"name":"string_length_scribble","order":4,"path":"scripts/string_length_scribble/string_length_scribble.yy",},

@@ -1,0 +1,791 @@
+{
+ "identifiers": {
+  "steam_activate_overlay": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_activate_overlay_browser": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_activate_overlay_store": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_activate_overlay_user": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_api": {
+   "class": "project-local",
+   "total": 26,
+   "files": [
+    "objects/o_customlevelsbrowser/Create_0.gml",
+    "objects/o_customlevelsplay/Mouse_4.gml",
+    "objects/o_publishworkshopchallenge/Create_0.gml",
+    "objects/o_title/Create_0.gml",
+    "objects/o_tradeup_button/Mouse_4.gml",
+    "objects/o_workshopERbutton/Create_0.gml",
+    "objects/o_workshopERbutton/Mouse_4.gml",
+    "objects/o_workshopchallengesbutton/Mouse_4.gml",
+    "objects/o_workshopchallengescreate/Mouse_4.gml",
+    "objects/o_workshopchallengesplay/Mouse_4.gml",
+    "rooms/r_workshopchallengemenu/InstanceCreationCode_inst_BB2B2B2B.gml",
+    "scripts/scr_loading/scr_loading.gml",
+    "scripts/scr_online_session/scr_online_session.gml",
+    "scripts/scr_timing_ui/scr_timing_ui.gml",
+    "scripts/scr_workshopER/scr_workshopER.gml",
+    "scripts/scr_workshopchallenge/scr_workshopchallenge.gml"
+   ]
+  },
+  "steam_create_leaderboard": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_details": {
+   "class": "project-local",
+   "total": 10,
+   "files": [
+    "objects/o_customlevelworkshopbuttonplay/Alarm_0.gml",
+    "objects/o_customlevelworkshopbuttonplay/Create_0.gml",
+    "objects/o_customlevelworkshopbuttonplay/Other_10.gml",
+    "objects/o_customlevelworkshopbuttonplay/Other_69.gml",
+    "objects/o_playmostrecentlevelCL/Mouse_4.gml",
+    "objects/o_workshoplevelselectbutton/Alarm_0.gml",
+    "objects/o_workshoplevelselectbutton/Create_0.gml",
+    "objects/o_workshoplevelselectbutton/Other_69.gml"
+   ]
+  },
+  "steam_display": {
+   "class": "unknown",
+   "total": 54,
+   "files": [
+    "scripts/scr_online_friends/scr_online_friends.gml",
+    "scripts/scr_rich_presence/scr_rich_presence.gml"
+   ]
+  },
+  "steam_download_friends_scores": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_download_scores": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_download_scores_around_user": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_get_achievement": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_platform_services/scr_platform_services.gml"
+   ]
+  },
+  "steam_get_app_id": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_get_friend_rich_presence": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_get_friends_game_info": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_get_number_of_current_players": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_get_persona_name": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_get_user_avatar": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_get_user_persona_name": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_get_user_persona_name_sync": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_get_user_steam_id": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_id": {
+   "class": "unknown",
+   "total": 5,
+   "files": [
+    "scripts/scr_online_multiplayer/scr_online_multiplayer.gml"
+   ]
+  },
+  "steam_id_owner": {
+   "class": "unknown",
+   "total": 5,
+   "files": [
+    "objects/o_customlevelsbrowser/Other_69.gml",
+    "objects/o_customlevelworkshopbuttonplay/Other_69.gml",
+    "objects/o_playmostrecentlevelCL/Mouse_4.gml",
+    "objects/o_workshoplevelselectbutton/Other_69.gml"
+   ]
+  },
+  "steam_image_create_sprite": {
+   "class": "project-local",
+   "total": 8,
+   "files": [
+    "objects/o_onlineleaderboards/Create_0.gml",
+    "objects/o_onlineleaderboards/Other_69.gml",
+    "objects/o_onlineleaderboardsmini/Create_0.gml",
+    "objects/o_onlineleaderboardsmini/Other_69.gml",
+    "objects/o_profilepicture/Create_0.gml"
+   ]
+  },
+  "steam_image_get_rgba": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_image_get_size": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_init": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_initialised": {
+   "class": "old-only",
+   "total": 78,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_inventory_exchange_items": {
+   "class": "both",
+   "total": 2,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml",
+    "scripts/scr_tradeup/scr_tradeup.gml"
+   ]
+  },
+  "steam_inventory_get_all_items": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_inventory_get_item_price": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_inventory_request_prices": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_inventory_result_destroy": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_inventory_result_get_item_property": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_inventory_result_get_items": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_inventory_result_get_status": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_inventory_result_get_unix_timestamp": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_inventory_trigger_item_drop": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_is_available": {
+   "class": "project-local",
+   "total": 6,
+   "files": [
+    "objects/o_checkplayercount/Alarm_0.gml",
+    "objects/o_checkplayercount/Create_0.gml",
+    "objects/o_version/Create_0.gml"
+   ]
+  },
+  "steam_is_overlay_enabled": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_is_user_logged_on": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_list": {
+   "class": "project-local",
+   "total": 24,
+   "files": [
+    "objects/o_customlevelsbrowser/Create_0.gml",
+    "objects/o_showsubscribedlevels/Draw_73.gml",
+    "objects/o_workshopchallengecreator/Create_0.gml",
+    "objects/o_workshopchallengesplay/Mouse_4.gml",
+    "scripts/scr_workshopER/scr_workshopER.gml"
+   ]
+  },
+  "steam_lobby_activate_invite_overlay": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_lobby_create": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_lobby_get_data": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_lobby_get_member_count": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_lobby_get_member_id": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_lobby_get_owner_id": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_lobby_is_owner": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_lobby_join_id": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_lobby_leave": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_lobby_set_data": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_lobby_set_joinable": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_lobby_set_owner_id": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_lobby_type_friends_only": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_online_multiplayer/scr_online_multiplayer.gml"
+   ]
+  },
+  "steam_name": {
+   "class": "unknown",
+   "total": 22,
+   "files": [
+    "objects/o_onlineleaderboardCH/Create_0.gml",
+    "objects/o_onlineleaderboardCH/Draw_0.gml",
+    "objects/o_onlineleaderboardCH/Other_69.gml",
+    "objects/o_onlineleaderboards/Draw_0.gml",
+    "objects/o_onlineleaderboards/Other_69.gml",
+    "objects/o_onlineleaderboardsmini/Draw_0.gml",
+    "objects/o_onlineleaderboardsmini/Other_69.gml",
+    "objects/o_settings/Alarm_0.gml",
+    "objects/o_settings/Create_0.gml",
+    "objects/o_settings/Other_69.gml",
+    "scripts/reloadleaderboards/reloadleaderboards.gml",
+    "scripts/reloadleaderboardsmini/reloadleaderboardsmini.gml"
+   ]
+  },
+  "steam_net_close_p2p_session": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_net_packet_get_data": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_net_packet_get_sender_id": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_net_packet_get_size": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_net_packet_receive": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_net_packet_send": {
+   "class": "old-only",
+   "total": 2,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_net_packet_type_reliable": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_online_multiplayer/scr_online_multiplayer.gml"
+   ]
+  },
+  "steam_net_packet_type_unreliable": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_online_multiplayer/scr_online_multiplayer.gml"
+   ]
+  },
+  "steam_net_set_auto_accept_p2p_sessions": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_player_group": {
+   "class": "unknown",
+   "total": 2,
+   "files": [
+    "scripts/scr_online_multiplayer/scr_online_multiplayer.gml"
+   ]
+  },
+  "steam_player_group_size": {
+   "class": "unknown",
+   "total": 2,
+   "files": [
+    "scripts/scr_online_multiplayer/scr_online_multiplayer.gml"
+   ]
+  },
+  "steam_rank": {
+   "class": "unknown",
+   "total": 27,
+   "files": [
+    "objects/o_onlineleaderboardCH/Create_0.gml",
+    "objects/o_onlineleaderboardCH/Draw_0.gml",
+    "objects/o_onlineleaderboardCH/Other_69.gml",
+    "objects/o_onlineleaderboards/Draw_0.gml",
+    "objects/o_onlineleaderboards/Other_69.gml",
+    "objects/o_onlineleaderboardsmini/Draw_0.gml",
+    "objects/o_onlineleaderboardsmini/Other_69.gml",
+    "objects/o_settings/Create_0.gml",
+    "objects/o_settings/Other_69.gml",
+    "scripts/reloadleaderboards/reloadleaderboards.gml",
+    "scripts/reloadleaderboardsmini/reloadleaderboardsmini.gml"
+   ]
+  },
+  "steam_reset_all_stats_achievements": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_score": {
+   "class": "unknown",
+   "total": 19,
+   "files": [
+    "objects/o_onlineleaderboardCH/Create_0.gml",
+    "objects/o_onlineleaderboardCH/Draw_0.gml",
+    "objects/o_onlineleaderboardCH/Other_69.gml",
+    "objects/o_onlineleaderboards/Draw_0.gml",
+    "objects/o_onlineleaderboards/Other_69.gml",
+    "objects/o_onlineleaderboardsmini/Draw_0.gml",
+    "objects/o_onlineleaderboardsmini/Other_69.gml",
+    "objects/o_settings/Create_0.gml",
+    "objects/o_settings/Other_69.gml",
+    "scripts/reloadleaderboards/reloadleaderboards.gml",
+    "scripts/reloadleaderboardsmini/reloadleaderboardsmini.gml"
+   ]
+  },
+  "steam_send_screenshot": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_set_achievement": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_platform_services/scr_platform_services.gml"
+   ]
+  },
+  "steam_set_rich_presence": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_create_item": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_create_query_all": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_get_item_install_info": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_get_item_update_info": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_get_item_update_progress": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_get_subscribed_items": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_num_subscribed_items": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_query_set_search_text": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_request_item_details": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_send_query": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_set_item_content": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_set_item_description": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_set_item_preview": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_set_item_tags": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_set_item_title": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_set_item_visibility": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_start_item_update": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_submit_item_update": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_subscribe_item": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_ugc_unsubscribe_item": {
+   "class": "both",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_update": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_upload_score_ext": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_platform_services/scr_platform_services.gml"
+   ]
+  },
+  "steam_user_avatar_size_medium": {
+   "class": "old-only",
+   "total": 3,
+   "files": [
+    "objects/o_profilepicture/Create_0.gml",
+    "objects/o_version/Draw_0.gml",
+    "scripts/scr_online_friends/scr_online_friends.gml"
+   ]
+  },
+  "steam_user_avatar_size_small": {
+   "class": "old-only",
+   "total": 2,
+   "files": [
+    "objects/o_onlineleaderboards/Create_0.gml",
+    "objects/o_onlineleaderboardsmini/Create_0.gml"
+   ]
+  },
+  "steam_user_installed_dlc": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_user_owns_dlc": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_user_set_played_with": {
+   "class": "old-only",
+   "total": 1,
+   "files": [
+    "scripts/scr_steam_safe/scr_steam_safe.gml"
+   ]
+  },
+  "steam_userid": {
+   "class": "project-local",
+   "total": 10,
+   "files": [
+    "objects/o_onlineleaderboards/Create_0.gml",
+    "objects/o_onlineleaderboards/Draw_0.gml",
+    "objects/o_onlineleaderboards/Other_69.gml",
+    "objects/o_onlineleaderboardsmini/Create_0.gml",
+    "objects/o_onlineleaderboardsmini/Draw_0.gml",
+    "objects/o_onlineleaderboardsmini/Other_69.gml",
+    "scripts/reloadleaderboards/reloadleaderboards.gml",
+    "scripts/reloadleaderboardsmini/reloadleaderboardsmini.gml"
+   ]
+  }
+ },
+ "old_count": 486,
+ "new_count": 929
+}

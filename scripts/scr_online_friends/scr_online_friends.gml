@@ -48,40 +48,30 @@ function net_presence_text(_id) {
 // -----------------------------------------------------------------------------
 // Avatars: sprite >= 0, -2 while Steam is still loading it, -1 when there is none
 // -----------------------------------------------------------------------------
-function net_avatar_from_image(_image) {
-    var _size = tcc_steam_image_get_size(_image);
-    if (!is_array(_size) || array_length(_size) < 2 || _size[0] <= 0 || _size[1] <= 0 || _size[0] > 512 || _size[1] > 512) return -1;
-    var _bytes = _size[0] * _size[1] * 4;
-    var _buffer = buffer_create(_bytes, buffer_fixed, 1);
-    var _sprite = -1;
-    if (tcc_steam_image_get_rgba(_image, _buffer, _bytes)) {
-        var _surface = surface_create(_size[0], _size[1]);
-        buffer_set_surface(_buffer, _surface, 0);
-        _sprite = sprite_create_from_surface(_surface, 0, 0, _size[0], _size[1], false, false, 0, 0);
-        surface_free(_surface);
-    }
-    buffer_delete(_buffer);
-    return _sprite;
-}
-
 function net_avatar_sprite(_id) {
     if (!variable_global_exists("net_avatars")) global.net_avatars = ds_map_create();
+    if (!variable_global_exists("net_avatar_retry")) global.net_avatar_retry = {};
     var _key = string(_id);
-    if (ds_map_exists(global.net_avatars, _key)) return global.net_avatars[? _key];
-    var _image = tcc_steam_get_user_avatar(_id, steam_user_avatar_size_medium);
+    var _cached = global.net_avatars[? _key];
+    if (!is_undefined(_cached) && _cached != -2) return _cached;
+    // Steam may still be fetching the picture: ask again, a bounded number of times, spaced out.
+    var _retry = global.net_avatar_retry[$ _key];
+    if (is_undefined(_retry)) {
+        _retry = {tries:0, next:0};
+        global.net_avatar_retry[$ _key] = _retry;
+    } else if (current_time < _retry.next) {
+        return -2;
+    }
+    var _image = tcc_steam_get_user_avatar(_id, TCC_STEAM_AVATAR_MEDIUM);
     var _sprite = -1;
-    if (net_finite(_image) && _image > 0) _sprite = net_avatar_from_image(_image);
-    else if (_image == -1) _sprite = -2;	// arrives with "avatar_image_loaded"
+    if (_image > 0) _sprite = tcc_steam_image_to_sprite(_image);
+    else if (_image == TCC_AVATAR_PENDING && _retry.tries < TCC_AVATAR_RETRY_MAX) {
+        ++_retry.tries;
+        _retry.next = current_time + TCC_AVATAR_RETRY_MS;
+        _sprite = -2;
+    }
     global.net_avatars[? _key] = _sprite;
     return _sprite;
-}
-
-function net_friends_avatar_loaded(_map) {
-    if (!variable_global_exists("net_avatars")) return;
-    var _key = string(_map[? "user_id"]);
-    if (!ds_map_exists(global.net_avatars, _key) || global.net_avatars[? _key] != -2) return;
-    var _image = _map[? "image"];
-    global.net_avatars[? _key] = (net_finite(_image) && _image > 0) ? net_avatar_from_image(_image) : -1;
 }
 
 function net_avatars_free() {
@@ -95,6 +85,7 @@ function net_avatars_free() {
     ds_map_destroy(global.net_avatars);
     // game_restart keeps globals: never leave a stale map index behind.
     global.net_avatars = ds_map_create();
+    global.net_avatar_retry = {};
 }
 
 function net_draw_avatar(_id, _x, _y, _size, _alpha) {
@@ -121,7 +112,7 @@ function net_friends_session_text() {
     if (global.net_connect_state == 2 || global.net_pending_join != -1 || global.net_join_pending_id != -1) return loc("NET_CONNECTING");
     if (!global.net_active) return loc("NET_SESSION_STARTING");
     if (global.net_is_host) return string_replace(loc("NET_SESSION_HOSTING"), "{COUNT}", string(net_member_count()));
-    return string_replace(string_replace(loc("NET_SESSION_JOINED"), "{NAME}", net_clean_name(tcc_steam_lobby_get_data("host_name"))),
+    return string_replace(string_replace(loc("NET_SESSION_JOINED"), "{NAME}", global.net_host_name),
         "{COUNT}", string(net_member_count()));
 }
 
@@ -193,7 +184,7 @@ function net_friends_panel_action(_button) {
             scr_savesettings();
             break;
         case "invite": tcc_steam_lobby_activate_invite_overlay(); break;
-        case "overlay": tcc_steam_activate_overlay(ov_friends); break;
+        case "overlay": tcc_steam_activate_overlay(TCC_OVERLAY_FRIENDS); break;
         case "profile": tcc_steam_activate_overlay_user("steamid", _button.arg); break;
         case "gotohost":
             if (net_follow_now()) close_requested = true;

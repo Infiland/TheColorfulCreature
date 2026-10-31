@@ -1,4 +1,4 @@
-steam_details = tcc_steam_ugc_request_item_details(level, 30);
+request_details()
 
 /*if mTags != "" {
 if mFeatured = false {

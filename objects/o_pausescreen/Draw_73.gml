@@ -23,7 +23,7 @@ if (global.onlinemultiplayersettings == 1 && variable_global_exists("net_ready")
 		if (global.net_is_host) {
 			_online_text = string_replace(loc("NET_PAUSE_HOSTING"), "{COUNT}", string(net_member_count()))
 		} else {
-			_online_text = string_replace(loc("NET_PAUSE_JOINED"), "{NAME}", net_clean_name(tcc_steam_lobby_get_data("host_name")))
+			_online_text = string_replace(loc("NET_PAUSE_JOINED"), "{NAME}", global.net_host_name)
 		}
 	}
 	draw_set_font(fnt_multiplayerfont)

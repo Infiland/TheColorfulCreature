@@ -114,7 +114,8 @@ if global.world5 = 1 && global.worldProgression < 100 {
 
 // Online Multiplayer: the persistent manager keeps the player's session alive
 // across every room, including this one. A Steam cold launch ("+connect_lobby")
-// is joined by the manager once this menu is up.
+// is joined by the manager once this menu is up, and Steam overlay joins reach it
+// through the lobby callbacks it registers (tcc_steam_set_lobby_callbacks).
 net_ensure_manager()
 
 

@@ -274,6 +274,7 @@ function net_init() {
 	global.net_p2p_accept = false;
 	global.net_host_retry_at = 0;
 	global.net_presence_group = "";
+	global.net_lobby_joinable = -1;	// unknown: the member limit is applied on the next refresh
 
 	// Connection banner: 0 idle, 1 creating, 2 joining, 3 success, 4 failure.
 	global.net_connect_state = 0;
@@ -363,6 +364,7 @@ function net_reset_lobby_state() {
     global.net_is_host = false;
     global.net_owner_id = int64(0);
     global.net_follow_host = false;
+    global.net_lobby_joinable = -1;
     global.net_join_defer_tick = timing_tick_id();
     net_session_lobby_reset();
     net_levelshare_lobby_reset();
@@ -430,7 +432,9 @@ function net_host_lobby() {
 	if (global.net_create_pending || global.net_join_pending_id != -1) return;
 	global.net_my_steam_id = tcc_steam_get_user_steam_id();
 	global.net_create_pending = true;
-	if (!tcc_steam_lobby_create(steam_lobby_type_friends_only, clamp(round(global.netmaxplayers), 2, NET_MAX_LOBBY))) {
+	// Steam fixes a lobby's size at creation, but the lobby now lives for the whole
+	// game: create it at the hard cap and let the owner enforce Max Players.
+	if (!tcc_steam_lobby_create(steam_lobby_type_friends_only, NET_MAX_LOBBY)) {
 		global.net_create_pending = false; global.net_host_intent = false;
 		global.net_host_retry_at = current_time + 15000;
 	}
@@ -481,6 +485,15 @@ function net_become_host() {
     net_lobby_set("proto",NET_PROTOCOL);
     net_lobby_set("host_name",net_clean_name(tcc_steam_get_persona_name()));
     net_session_publish(true);
+    global.net_lobby_joinable = -1;
+    net_apply_member_limit();
+}
+
+/// Close the lobby to new joins while it holds Max Players (the setting can change at any time).
+function net_apply_member_limit() {
+    if (!global.net_active || !global.net_is_host) return;
+    var _open = net_member_count() < clamp(round(global.netmaxplayers), 2, NET_MAX_LOBBY);
+    if (global.net_lobby_joinable != _open && tcc_steam_lobby_set_joinable(_open)) global.net_lobby_joinable = _open;
 }
 
 function net_refresh_members() {
@@ -572,6 +585,7 @@ function net_tick() {
                 net_session_owner_changed();
             }
         }
+        net_apply_member_limit();
         net_presence_update(false);
     }
 
@@ -1124,11 +1138,13 @@ function net_handle_async_steam(_map) {
 
 		case "ugc_subscribe_item":
 			// A private or removed item can never download: fail that follow at once.
+			var _file = _map[? "published_file_id"];
 			if (_map[? "result"] != ugc_result_success) {
-				var _file = _map[? "published_file_id"];
 				for (var _i = 0; _i < array_length(global.net_ugc_subscribed); ++_i) {
-					if (global.net_ugc_subscribed[_i].file == _file) global.net_ugc_failed[? string(_file)] = true;
+					if (global.net_ugc_subscribed[_i].file == _file) global.net_ugc_failed[? string(_file)] = current_time;
 				}
+			} else {
+				ds_map_delete(global.net_ugc_failed, string(_file));
 			}
 			break;
 	}

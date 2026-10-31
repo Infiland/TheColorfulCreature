@@ -73,7 +73,11 @@ function mobile_confirmation_submit(_choice) {
 }
 
 function confirmation_tick_update() {
-    if (!timing_is_tick() || !timing_confirmation_dialog) return;
+    if (!timing_is_tick()) return;
+    // The modal parent also includes screens (Quests, News) whose Create
+    // events do not opt into the Yes/No confirmation controls.
+    if (!variable_instance_exists(id, "timing_confirmation_dialog")) return;
+    if (!timing_confirmation_dialog) return;
     var _tick = timing_tick_id();
     if (timing_confirmation_last_tick == _tick) return;
     timing_confirmation_last_tick = _tick;

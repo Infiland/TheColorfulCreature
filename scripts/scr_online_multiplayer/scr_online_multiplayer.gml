@@ -1,5 +1,5 @@
 // =============================================================================
-// ONLINE MULTIPLAYER - Steam lobbies + P2P ghost players (protocol 2)
+// ONLINE MULTIPLAYER - Steam lobbies + peer-to-peer ghost players (protocol 3)
 //
 // Every Steam player owns a friends-only lobby ("session") while online
 // multiplayer is enabled, so friends can always join from the Steam overlay,
@@ -9,14 +9,17 @@
 // mode, run or level from a menu, followers are taken along (see
 // scr_online_session). Local levels are transferred peer to peer
 // (scr_online_levelshare). The manager object is created once at boot.
+// Packets travel as Steam Networking Messages on one channel; only lobby
+// members are ever sent to, accepted or processed.
 // =============================================================================
 
-#macro NET_PROTOCOL				2
+#macro NET_PROTOCOL				3
 #macro NET_GAME_NAME			"TheColorfulCreature"
 #macro NET_MAX_LOBBY			250
 
-// Protocol 2 packet ids. Protocol 1 used 1-7; those are ignored, and protocol
-// 1 clients ignore these, so mixed versions can never misread each other.
+// Protocol 3 packet ids (the layout is unchanged since protocol 2; only the
+// transport moved). Protocol 1 used 1-7; those are ignored, and protocol 1
+// clients ignore these, so mixed versions can never misread each other.
 #macro NET_PACKET_STATE			16	// unreliable ghost state
 #macro NET_PACKET_HELLO			17	// reliable identity
 #macro NET_PACKET_BYE			18	// reliable leave
@@ -34,6 +37,13 @@
 #macro NET_PEER_TIMEOUT_MS		10000
 #macro NET_PING_INTERVAL_MS		2000
 #macro NET_REFRESH_TICKS		30
+#macro NET_RECV_BUFFER_BYTES		524288	// one received message always fits (Steam's own receive bound)
+#macro NET_SESSION_REQUEST_MAX		32		// pending session requesters kept
+#macro NET_SESSION_REQUEST_TTL_MS	10000	// how long an unknown requester may wait for membership
+#macro NET_SESSION_FRESH_MS		1000	// an unknown requester younger than this may force a membership refresh
+#macro NET_SESSION_IGNORE_MS		30000	// after expiry the same requester is dropped at the door
+#macro NET_OUTBOX_MAX			16		// small reliable packets kept for a retry
+#macro NET_OUTBOX_AGE_MS		30000
 
 // Only stable built-in cosmetic choices cross the wire. Runtime sprite handles,
 // imported PNG paths and cache references always remain local to their owner.
@@ -271,7 +281,14 @@ function net_init() {
 	global.net_join_time = 0;
 	global.net_refresh_tick = 0;
 	global.net_refresh_forced_tick = -1;
-	global.net_p2p_accept = false;
+	global.net_session_requests = [];	// [{user, first}] session requesters waiting to be accepted
+	global.net_session_ignored = {};	// string(id) -> ignore-until (current_time)
+	global.net_session_stats = {requests:0, accepted:0, failed:0, rx:0, rx_dropped:0, last_failure:undefined, failure_logged_at:-10000};
+	global.net_send_stats = {failed:0, limit:0, limit_by_type:{}, last_result:0, logged_at:-10000, outbox_pushed:0, outbox_sent:0, outbox_dropped:0, stalled:0};
+	global.net_outbox = [];				// [{user, size, buffer, at}] small reliable packets refused with LimitExceeded
+	global.net_host_name = "";			// cleaned host name, refreshed with the member refresh
+	global.net_ids_checked = false;
+	global.net_boot_logged = false;
 	global.net_host_retry_at = 0;
 	global.net_presence_group = "";
 	global.net_lobby_joinable = -1;	// unknown: the member limit is applied on the next refresh
@@ -288,6 +305,8 @@ function net_init() {
 	global.net_create_pending = false;
 	global.net_join_pending_id = -1;
 	global.net_join_defer_tick = -1;
+	global.net_create_started_at = 0;
+	global.net_join_started_at = 0;
 	global.net_host_intent = false;
 	global.net_join_announced = false;
 
@@ -299,7 +318,7 @@ function net_init() {
 	if (!variable_global_exists("net_avatars")) global.net_avatars = ds_map_create();
 	global.net_member_list = [];
 	global.net_lobby_data = ds_map_create();
-	global.net_recv_buffer = buffer_create(1024, buffer_grow, 1);
+	global.net_recv_buffer = buffer_create(NET_RECV_BUFFER_BYTES, buffer_fixed, 1);
 	global.net_send_buffer = buffer_create(1024, buffer_grow, 1);
 
 	net_session_init();
@@ -322,6 +341,10 @@ function net_enabled() {
 /// game_restart, so the session continues instead of breaking up the party.
 function net_game_restart() {
     global.net_restarting = true;
+    if (variable_global_exists("net_ready") && global.net_ready) {
+        global.net_boot_logged = false;		// the first net_tick after the restart logs again
+        net_log_transport("restart");
+    }
     game_restart();
 }
 
@@ -333,6 +356,7 @@ function net_cleanup() {
     net_levelshare_cleanup();
     net_session_cleanup();
     net_avatars_free();
+    net_outbox_clear();
     if (ds_exists(global.net_players,ds_type_map)) ds_map_destroy(global.net_players);
     if (ds_exists(global.net_members,ds_type_map)) ds_map_destroy(global.net_members);
     if (ds_exists(global.net_lobby_data,ds_type_map)) ds_map_destroy(global.net_lobby_data);
@@ -366,6 +390,10 @@ function net_reset_lobby_state() {
     global.net_follow_host = false;
     global.net_lobby_joinable = -1;
     global.net_join_defer_tick = timing_tick_id();
+    global.net_session_requests = [];
+    global.net_session_ignored = {};
+    global.net_host_name = "";
+    net_outbox_clear();
     net_session_lobby_reset();
     net_levelshare_lobby_reset();
     net_presence_update(true);
@@ -391,7 +419,7 @@ function net_leave_lobby(_announce = true) {
     if (_announce) net_notice(loc("NET_LEFT_SESSION"));
 }
 
-// Copy the requested ID while async_load is live; never retain its DS map.
+// Leave the current lobby and remember the requested ID; the join itself is issued on a later tick.
 function net_queue_join(_lobby_id) {
     global.net_host_intent = false;
     net_leave_lobby(false);
@@ -434,9 +462,11 @@ function net_host_lobby() {
 	global.net_create_pending = true;
 	// Steam fixes a lobby's size at creation, but the lobby now lives for the whole
 	// game: create it at the hard cap and let the owner enforce Max Players.
-	if (!tcc_steam_lobby_create(steam_lobby_type_friends_only, NET_MAX_LOBBY)) {
+	if (!tcc_steam_lobby_create(SteamMatchmakingLobbyType.FriendsOnly, NET_MAX_LOBBY, net_on_lobby_created)) {
 		global.net_create_pending = false; global.net_host_intent = false;
 		global.net_host_retry_at = current_time + 15000;
+	} else {
+		global.net_create_started_at = current_time;
 	}
 }
 
@@ -450,18 +480,21 @@ function net_join_lobby(_lobby_id) {
 	global.net_my_steam_id = tcc_steam_get_user_steam_id();
 	global.net_connect_state = 2; global.net_connect_timer = 0;
 	global.net_join_pending_id = _lobby_id;
-	if (!tcc_steam_lobby_join_id(_lobby_id)) {
+	global.net_join_started_at = current_time;
+	if (!tcc_steam_lobby_join_id(_lobby_id, net_on_lobby_entered)) {
 		global.net_join_pending_id = -1; global.net_pending_join = -1;
 		global.net_follow_host = false;
 		net_flash(false,loc("NET_JOIN_FAILED"));
 	}
 }
 
-// Even an unexplained native success has changed the extension's current lobby.
-// Fail closed: leave it and clear active state without consuming another reply.
-function net_discard_lobby_reply(_success) {
-    if (_success) tcc_steam_lobby_leave();
-    net_reset_lobby_state();
+// A reply we did not ask for (or no longer want) may still have put us in that lobby.
+// Fail closed: leave exactly the lobby the reply is about, even when a different lobby is
+// already active (a late reply after the watchdog gave up), and only wipe the session
+// state when no live session exists.
+function net_discard_lobby_reply(_lobby_id, _success) {
+    if (_success && _lobby_id != 0 && _lobby_id != global.net_lobby_id) tcc_steam_lobby_leave(_lobby_id);
+    if (!global.net_active) net_reset_lobby_state();
 }
 
 function net_lobby_set(_key,_value) {
@@ -527,13 +560,28 @@ function net_member_count() {
 /// Lobby lifecycle, run every simulation tick by the persistent manager.
 function net_tick() {
     if (!variable_global_exists("net_ready") || !global.net_ready) return;
-    if (!platform_steam() || !tcc_steam_initialised()) return;
-    if (global.net_my_steam_id == 0) global.net_my_steam_id = tcc_steam_get_user_steam_id();
-    if (!global.net_p2p_accept) {
-        // P2P packets are accepted only from current lobby members (net_lobby_member).
-        tcc_steam_net_set_auto_accept_p2p_sessions(true);
-        global.net_p2p_accept = true;
+    if (!platform_steam()) return;
+    if (!tcc_steam_initialised()) {
+        // Steam is gone (never started, or shut down after game_restart): the lobby and every
+        // pending native reply are gone with it, and no callback can arrive any more.
+        if (global.net_create_pending || global.net_join_pending_id != -1 || global.net_pending_join != -1) {
+            global.net_create_pending = false; global.net_join_pending_id = -1; global.net_pending_join = -1;
+            global.net_host_intent = false; global.net_follow_host = false;
+        }
+        if (global.net_active) { net_reset_lobby_state(); net_notice(loc("NET_DISCONNECTED")); }
+        return;
     }
+    if (!global.net_boot_logged) { global.net_boot_logged = true; net_log_transport("first tick"); }
+    // Create and join replies can be lost after the call was issued: never wait for them forever.
+    if (global.net_create_pending && current_time - global.net_create_started_at > 20000) {
+        global.net_create_pending = false; global.net_host_intent = false;
+        global.net_host_retry_at = current_time + 30000;
+    }
+    if (global.net_join_pending_id != -1 && current_time - global.net_join_started_at > 20000) {
+        global.net_join_pending_id = -1; global.net_pending_join = -1; global.net_follow_host = false;
+        net_flash(false, loc("NET_JOIN_FAILED"));
+    }
+    if (global.net_my_steam_id == 0) global.net_my_steam_id = tcc_steam_get_user_steam_id();
 
     // Cold launch from Steam ("+connect_lobby <id>") once the menu is up.
     if (variable_global_exists("net_launch_lobby") && global.net_launch_lobby != ""
@@ -587,11 +635,16 @@ function net_tick() {
         }
         net_apply_member_limit();
         net_presence_update(false);
+        net_cache_host_name();
     }
+
+    // Accept members' session requests before any send of this tick.
+    net_accept_pending_sessions();
 
     if (global.net_is_host) net_session_publish(false);
     else net_follow_poll();
 
+    net_outbox_pump();
     net_send_player_state();
     net_send_ping();
     net_receive_packets();
@@ -600,12 +653,200 @@ function net_tick() {
 }
 
 // -----------------------------------------------------------------------------
+// Sessions: Steam asks before it delivers messages from someone new. Only lobby
+// members are accepted. These callbacks run from the extension's own tick with a
+// shared empty self, outside net_tick, so they only touch globals and record the
+// requester; net_accept_pending_sessions decides from inside net_tick.
+// -----------------------------------------------------------------------------
+
+/// Registered by net_register_steam_callbacks(). Records the requester only.
+function net_on_session_request(_request) {
+    if (!variable_global_exists("net_ready") || !global.net_ready) return;
+    if (!is_struct(_request) || instanceof(_request) != "SteamNetworkingMessagesSessionRequest") return;
+    net_session_request_add(_request.steam_id_remote,current_time);
+}
+
+/// Returns true when a new entry was queued.
+function net_session_request_add(_id,_now) {
+    if (!is_numeric(_id) || _id <= 0 || _id == global.net_my_steam_id) return false;
+    var _queue = global.net_session_requests;
+    // Steam repeats a request while the peer keeps sending: a repeat keeps the original time so the entry can expire.
+    for (var _i = 0; _i < array_length(_queue); ++_i) if (_queue[_i].user == _id) return false;
+    if (!net_lobby_member(_id)) {
+        var _until = global.net_session_ignored[$ string(_id)];
+        if (is_numeric(_until) && _now < _until) return false;
+    }
+    if (array_length(global.net_session_requests) >= NET_SESSION_REQUEST_MAX) array_delete(global.net_session_requests,0,1);
+    array_push(global.net_session_requests,{user:_id,first:_now});
+    global.net_session_stats.requests += 1;
+    return true;
+}
+
+/// Diagnostics only: membership stays lobby-driven, a failed session changes nothing.
+function net_on_session_failed(_failed) {
+    if (!variable_global_exists("net_ready") || !global.net_ready) return;
+    if (!is_struct(_failed) || instanceof(_failed) != "SteamNetworkingMessagesSessionFailed") return;
+    var _stats = global.net_session_stats;
+    _stats.failed += 1;
+    _stats.last_failure = {user:string(_failed.steam_id_remote),reason:_failed.end_reason,text:string_copy(string(_failed.debug_msg),1,128),at:current_time};
+    if (current_time - _stats.failure_logged_at < 5000) return;
+    _stats.failure_logged_at = current_time;
+    show_debug_message("[NET] session failed: " + json_stringify(_stats.last_failure));
+}
+
+/// Run by net_tick right after the member refresh and before any send. Accepts members, expires strangers.
+/// At most ONE forced net_refresh_members() per tick, and only while an unknown requester is still fresh (a
+/// newcomer can beat the membership cache). The budget is shared with the receive loop through
+/// net_refresh_forced_tick, so the loop does not refresh again on a tick where this function already did.
+function net_accept_pending_sessions(_now = current_time) {
+    if (!global.net_active || array_length(global.net_session_requests) == 0) return;	// entries wait (and expire) only while we are in a lobby
+    var _fresh_unknown = false;
+    for (var _i = 0; _i < array_length(global.net_session_requests); ++_i) {
+        var _entry = global.net_session_requests[_i];
+        if (!net_lobby_member(_entry.user) && _now - _entry.first <= NET_SESSION_FRESH_MS) _fresh_unknown = true;
+    }
+    if (_fresh_unknown && global.net_refresh_forced_tick != timing_tick_id()) {
+        global.net_refresh_forced_tick = timing_tick_id();
+        net_refresh_members();
+    }
+    for (var _j = array_length(global.net_session_requests) - 1; _j >= 0; --_j) {
+        var _req = global.net_session_requests[_j];
+        if (net_lobby_member(_req.user)) {
+            // false = nothing pending (our own send already accepted it)
+            if (tcc_steam_net_accept_session(_req.user)) global.net_session_stats.accepted += 1;
+            array_delete(global.net_session_requests,_j,1);
+        } else if (_now - _req.first > NET_SESSION_REQUEST_TTL_MS) {
+            if (variable_struct_names_count(global.net_session_ignored) >= 128) global.net_session_ignored = {};
+            global.net_session_ignored[$ string(_req.user)] = _now + NET_SESSION_IGNORE_MS;
+            array_delete(global.net_session_requests,_j,1);
+        }
+    }
+}
+
+/// The one place the project registers its Steam callbacks. Called by the manager's Create event after net_init();
+/// registering again is harmless.
+function net_register_steam_callbacks() {
+    tcc_steam_set_lobby_callbacks(net_on_lobby_chat_update,net_on_lobby_join_requested);
+    tcc_steam_net_set_session_request_callback(net_on_session_request);
+    tcc_steam_net_set_session_failed_callback(net_on_session_failed);
+}
+
+/// Host name shown to followers (pause screen, Friends panel). Refreshed with the member refresh instead of being
+/// read from the lobby on every Draw. Owners show the hosting text, not this.
+function net_cache_host_name() {
+    if (!global.net_active || global.net_is_host) return;
+    var _name = tcc_steam_lobby_get_data("host_name");
+    global.net_host_name = net_clean_name(is_string(_name) ? _name : "");
+}
+
+/// One-time, log only: remote ids must be 17 digit int64 values or string() keys and == comparisons lose precision.
+function net_check_ids(_id) {
+    global.net_ids_checked = true;
+    if (!is_int64(_id) || string_length(string(_id)) != 17)
+        show_debug_message("[NET] WARNING: remote ids are " + typeof(_id) + " (" + string(_id) + "), expected a 17 digit int64");
+}
+
+function net_log_transport(_tag) {
+    var _stats = global.net_session_stats;
+    show_debug_message("[NET] " + _tag + ": ready=" + string(tcc_steam_ready()) + " active=" + string(global.net_active)
+        + " req=" + string(_stats.requests) + " accepted=" + string(_stats.accepted) + " session_failed=" + string(_stats.failed)
+        + " rx=" + string(_stats.rx) + " rx_dropped=" + string(_stats.rx_dropped) + " tx_failed=" + string(global.net_send_stats.failed)
+        + " tx_limit=" + string(global.net_send_stats.limit) + " outbox=" + string(array_length(global.net_outbox)));
+}
+
+// -----------------------------------------------------------------------------
 // Sending
 // -----------------------------------------------------------------------------
+/// Sends the first _size bytes of net_send_buffer. Returns true only when Steam queued the message.
+/// Sending to a user also accepts any pending session from it, so the target must be a lobby member
+/// (net_lobby_member also rejects our own id).
 function net_send_to(_member,_size,_reliable) {
-    return tcc_steam_net_packet_send(_member,global.net_send_buffer,_size,
-        _reliable ? steam_net_packet_type_reliable : steam_net_packet_type_unreliable);
+    if (!net_lobby_member(_member)) return false;
+    var _type = buffer_peek(global.net_send_buffer,0,buffer_u8);
+    var _sent = tcc_steam_net_packet_send(_member,global.net_send_buffer,_size,
+        _reliable ? TCC_NET_SEND_RELIABLE : TCC_NET_SEND_UNRELIABLE);
+    if (_sent) return true;
+    var _result = tcc_steam_net_last_send_result();
+    net_note_send_failure(_member,_type,_result);
+    if (_result == SteamApiResult.LimitExceeded && _reliable && net_outbox_eligible(_type)) net_outbox_push(_member,_size);
+    return false;
 }
+
+/// Small reliable control packets that are worth retrying when the peer's send queue is full.
+/// Level chunks have their own retry (net_levelshare_tick) and BYE must not reopen a closing session.
+function net_outbox_eligible(_type) {
+    return _type == NET_PACKET_HELLO || _type == NET_PACKET_ER_PICKS
+        || _type == NET_PACKET_LEVEL_REQUEST || _type == NET_PACKET_LEVEL_DENY;
+}
+
+function net_note_send_failure(_member,_type,_result) {
+    var _stats = global.net_send_stats;
+    _stats.failed += 1;
+    if (_result == SteamApiResult.LimitExceeded) {
+        // Normal back-pressure: counted per packet type, never logged.
+        _stats.limit += 1;
+        var _name = string(_type);
+        _stats.limit_by_type[$ _name] = variable_struct_exists(_stats.limit_by_type,_name) ? _stats.limit_by_type[$ _name] + 1 : 1;
+        return;
+    }
+    _stats.last_result = _result;
+    if (current_time - _stats.logged_at < 5000) return;
+    _stats.logged_at = current_time;
+    show_debug_message("[NET] send failed: result " + string(_result) + " type " + string(_type) + " to " + string(_member));
+}
+
+/// Copy the packet currently in net_send_buffer into the outbox. Bounded: the oldest entry is dropped first.
+function net_outbox_push(_member,_size,_now = current_time) {
+    if (array_length(global.net_outbox) >= NET_OUTBOX_MAX) {
+        buffer_delete(global.net_outbox[0].buffer);
+        array_delete(global.net_outbox,0,1);
+        global.net_send_stats.outbox_dropped += 1;
+    }
+    var _copy = buffer_create(_size,buffer_fixed,1);
+    buffer_copy(global.net_send_buffer,0,_size,_copy,0);
+    array_push(global.net_outbox,{user:_member,size:_size,buffer:_copy,at:_now});
+    global.net_send_stats.outbox_pushed += 1;
+}
+
+/// First thing of the send phase of net_tick. Retries in insertion order; a peer whose queue is still full keeps its
+/// order (later entries for it wait). Entries die when the peer left the lobby, after NET_OUTBOX_AGE_MS, or on any
+/// failure other than a full queue. Calls the wrapper directly, so a refused retry cannot queue itself again.
+function net_outbox_pump(_now = current_time) {
+    if (array_length(global.net_outbox) == 0) return;
+    var _blocked = {};
+    var _i = 0;
+    while (_i < array_length(global.net_outbox)) {
+        var _entry = global.net_outbox[_i];
+        var _key = string(_entry.user);
+        var _drop = !net_lobby_member(_entry.user) || _now - _entry.at > NET_OUTBOX_AGE_MS;
+        if (!_drop && !variable_struct_exists(_blocked,_key)) {
+            if (tcc_steam_net_packet_send(_entry.user,_entry.buffer,_entry.size,TCC_NET_SEND_RELIABLE)) {
+                _drop = true;
+                global.net_send_stats.outbox_sent += 1;
+            } else if (tcc_steam_net_last_send_result() == SteamApiResult.LimitExceeded) {
+                _blocked[$ _key] = true;
+            } else {
+                _drop = true;
+                global.net_send_stats.outbox_dropped += 1;
+            }
+        }
+        if (_drop) {
+            buffer_delete(_entry.buffer);
+            array_delete(global.net_outbox,_i,1);
+        } else {
+            ++_i;
+        }
+    }
+}
+
+function net_outbox_clear() {
+    for (var _i = 0; _i < array_length(global.net_outbox); ++_i) {
+        var _buffer = global.net_outbox[_i].buffer;
+        if (buffer_exists(_buffer)) buffer_delete(_buffer);
+    }
+    global.net_outbox = [];
+}
+
 function net_broadcast(_size,_reliable) {
     for (var _i = 0; _i < array_length(global.net_member_list); ++_i) net_send_to(global.net_member_list[_i],_size,_reliable);
 }
@@ -685,25 +926,40 @@ function net_send_ping() {
 // -----------------------------------------------------------------------------
 
 /// @function		net_receive_packets()
-/// @description	Poll and process incoming P2P packets from lobby members only.
+/// @description	Poll and process incoming packets from lobby members only. Each message
+///					is received on its own, so its payload always starts at offset 0 of the
+///					receive buffer and one oversized message can never take others with it.
 function net_receive_packets() {
     if (!global.net_active) return;
     var _buf = global.net_recv_buffer;
     var _processed = 0;
-    while (_processed < 128 && tcc_steam_net_packet_receive()) {
-        ++_processed;
-        var _sender = tcc_steam_net_packet_get_sender_id();
-        var _size = tcc_steam_net_packet_get_size();
+    while (_processed < 128) {
+        var _message = tcc_steam_net_packet_receive(_buf);
+        if (is_undefined(_message)) break;					// nothing left (or Steam not ready)
+        ++_processed;										// every dequeued message counts against the budget
+        if (!is_struct(_message)) {
+            // The message did not fit the buffer and was discarded: keep reading.
+            global.net_session_stats.rx_dropped += 1;
+            continue;
+        }
+        var _sender = _message.steam_id_remote;
+        var _size = _message.size;
+        if (!global.net_ids_checked) net_check_ids(_sender);
+        // A sender that is not a user id cannot be a lobby member; the payload is expected at offset 0.
+        if (!is_numeric(_sender) || _sender <= 0 || _message.offset != 0) {
+            global.net_session_stats.rx_dropped += 1;
+            continue;
+        }
         if (!net_finite(_size) || _size < 1 || _size > NET_CHUNK_MAX_SIZE) continue;
         if (!net_lobby_member(_sender)) {
-            // A newcomer's first packet can beat Steam's membership callback.
+            // A newcomer's first packet can beat Steam's membership callback. One forced refresh per
+            // tick, shared with net_accept_pending_sessions (which may already have used it).
             if (global.net_refresh_forced_tick == timing_tick_id()) continue;
             global.net_refresh_forced_tick = timing_tick_id();
             net_refresh_members();
             if (!net_lobby_member(_sender)) continue;
         }
-        tcc_steam_net_packet_get_data(_buf);
-        if (_size > buffer_get_size(_buf)) continue;
+        global.net_session_stats.rx += 1;
         var _type = buffer_peek(_buf,0,buffer_u8);
         var _key = string(_sender);
         switch (_type) {
@@ -1009,145 +1265,135 @@ function net_draw_ghost_item(_data, _gx, _gy) {
 }
 
 // -----------------------------------------------------------------------------
-// Steam async events (lobby management). The manager receives these in every room.
+// Lobby replies and events. Steam calls these from the extension's own tick, in any
+// room and with no instance as self, so they are global functions that touch only
+// globals. net_on_lobby_created / net_on_lobby_entered are passed with each call;
+// the other two are registered once by net_register_steam_callbacks().
 // -----------------------------------------------------------------------------
 
-/// @function		net_handle_async_steam(async_map)
-/// @description	Handle Steam async events for lobby management
-function net_handle_async_steam(_map) {
+/// Reply to the lobby we asked Steam to create.
+function net_on_lobby_created(_result) {
 	if (!variable_global_exists("net_ready") || !global.net_ready) return;
-	var _event_type = _map[? "event_type"];
-
-	switch (_event_type) {
-		case "lobby_created":
-			var _create_owned = global.net_create_pending;
-			global.net_create_pending = false;
-			var _host_wanted = global.net_host_intent;
-			global.net_host_intent = false;
-			if (!_create_owned || !_host_wanted || global.net_pending_join != -1
-				|| global.net_active || !net_enabled()) {
-				// The extension has already selected this created lobby. Leave it
-				// before issuing the desired join on a later logical tick.
-				if (!global.net_active) net_discard_lobby_reply(_map[? "success"]);
-				break;
-			}
-			if (_map[? "success"]) {
-				global.net_lobby_id = _map[? "lobby_id"];
-				global.net_active = true;
-				global.net_join_time = current_time;
-				global.net_owner_id = global.net_my_steam_id;
-				global.net_refresh_tick = 0;
-				net_refresh_members();
-				net_become_host();
-				show_debug_message("[NET] Lobby created! ID: " + string(global.net_lobby_id));
-			} else {
-				// Hosting is automatic and silent; retry later instead of nagging.
-				global.net_host_retry_at = current_time + 30000;
-				show_debug_message("[NET] Failed to create lobby");
-			}
-			break;
-
-		case "lobby_joined":
-			var _reply_id = _map[? "lobby_id"];
-			var _expected_id = global.net_join_pending_id;
-			if (_expected_id == -1) {
-				// No unexplained response can activate the manager or move rooms.
-				if (!global.net_active) net_discard_lobby_reply(_map[? "success"]);
-				break;
-			}
-			global.net_join_pending_id = -1;
-			if (global.net_pending_join != _expected_id) {
-				// A newer invite replaced this one: settle this reply first.
-				net_discard_lobby_reply(_map[? "success"]);
-				break;
-			}
-			global.net_pending_join = -1;
-			if (!_map[? "success"]) {
-				tcc_steam_lobby_leave();
-				net_reset_lobby_state();
-				net_flash(false, loc("NET_JOIN_FAILED"));
-				show_debug_message("[NET] Failed to join lobby");
-				break;
-			}
-			// Steam reports IO success even for a full or vanished lobby, and it may
-			// change the instance bits of the ID: validate the lobby we actually entered.
-			global.net_lobby_id = _reply_id;
-			global.net_my_steam_id = tcc_steam_get_user_steam_id();
-			var _members = net_refresh_members();
-			var _game = tcc_steam_lobby_get_data("game_name");
-			var _proto = tcc_steam_lobby_get_data("proto");
-			if (_members <= 0) {
-				tcc_steam_lobby_leave();
-				net_reset_lobby_state();
-				net_flash(false, loc("NET_SESSION_UNAVAILABLE"));
-				break;
-			}
-			if (_game != NET_GAME_NAME || _proto != string(NET_PROTOCOL)) {
-				tcc_steam_lobby_leave();
-				net_reset_lobby_state();
-				net_flash(false, loc("NET_VERSION_MISMATCH"));
-				break;
-			}
-			global.net_active = true;
-			global.net_join_time = current_time;
-			global.net_refresh_tick = 0;
-			global.net_owner_id = tcc_steam_lobby_get_owner_id();
-			global.net_is_host = (global.net_owner_id == global.net_my_steam_id);
-			global.net_follow_host = !global.net_is_host;
-			net_send_hello(-1, false);
-			global.net_ping_at = 0;
-			if (global.net_is_host) {
-				net_become_host();
-			} else {
-				net_session_joined_lobby();
-			}
-			var _host = tcc_steam_lobby_get_data("host_name");
-			net_flash(true, string_replace(loc("NET_JOINED_SESSION"), "{NAME}", net_clean_name(_host)));
-			net_presence_update(true);
-			show_debug_message("[NET] Joined lobby! Host: " + string(global.net_is_host));
-			break;
-
-		case "lobby_chat_update":
-			if (!global.net_active || _map[? "lobby_id"] != global.net_lobby_id) break;
-			var _flags = _map[? "change_flags"];
-			var _uid = _map[? "user_id"];
-			// Left, disconnected, kicked or banned.
-			if (_flags & (2 | 4 | 8 | 16)) {
-				if (_uid == global.net_my_steam_id) {
-					net_reset_lobby_state();
-					net_notice(loc("NET_DISCONNECTED"));
-					break;
-				}
-				net_remove_player(_uid, true);
-			}
-			// Membership and ownership are re-read on the next tick.
-			global.net_refresh_tick = 0;
-			break;
-
-		case "lobby_join_requested":
-			// Someone accepted our invite or clicked "Join Game" in the Steam overlay,
-			// in any room or mode.
-			var _lobby_id = _map[? "lobby_id"];
-			show_debug_message("[NET] Join request received for lobby: " + string(_lobby_id));
-			net_request_join(_lobby_id);
-			break;
-
-		case "avatar_image_loaded":
-			net_friends_avatar_loaded(_map);
-			break;
-
-		case "ugc_subscribe_item":
-			// A private or removed item can never download: fail that follow at once.
-			var _file = _map[? "published_file_id"];
-			if (_map[? "result"] != ugc_result_success) {
-				for (var _i = 0; _i < array_length(global.net_ugc_subscribed); ++_i) {
-					if (global.net_ugc_subscribed[_i].file == _file) global.net_ugc_failed[? string(_file)] = current_time;
-				}
-			} else {
-				ds_map_delete(global.net_ugc_failed, string(_file));
-			}
-			break;
+	var _ok = (_result.result == SteamApiResult.Ok && _result.lobby_id != 0);
+	var _create_owned = global.net_create_pending;
+	global.net_create_pending = false;
+	var _host_wanted = global.net_host_intent;
+	global.net_host_intent = false;
+	if (!_create_owned || !_host_wanted || global.net_pending_join != -1
+		|| global.net_active || !net_enabled()) {
+		// Steam has already put us in this created lobby. Leave it before the desired
+		// join is issued on a later logical tick.
+		net_discard_lobby_reply(_result.lobby_id, _ok);
+		return;
 	}
+	if (_ok) {
+		global.net_lobby_id = _result.lobby_id;
+		global.net_active = true;
+		global.net_join_time = current_time;
+		global.net_owner_id = global.net_my_steam_id;
+		global.net_refresh_tick = 0;
+		net_refresh_members();
+		net_become_host();
+		show_debug_message("[NET] Lobby created! ID: " + string(global.net_lobby_id));
+	} else {
+		// Hosting is automatic and silent; retry later instead of nagging.
+		global.net_host_retry_at = current_time + 30000;
+		show_debug_message("[NET] Failed to create lobby");
+	}
+}
+
+/// Reply to the lobby we asked Steam to join.
+function net_on_lobby_entered(_result) {
+	if (!variable_global_exists("net_ready") || !global.net_ready) return;
+	var _reply_id = _result.lobby_id;
+	var _ok = (_result.response == SteamMatchmakingChatRoomEnterResponse.Success);
+	var _expected_id = global.net_join_pending_id;
+	if (_expected_id == -1) {
+		// No unexplained response can activate the manager or move rooms.
+		net_discard_lobby_reply(_reply_id, _ok);
+		return;
+	}
+	global.net_join_pending_id = -1;
+	if (global.net_pending_join != _expected_id) {
+		// A newer invite replaced this one: settle this reply first.
+		net_discard_lobby_reply(_reply_id, _ok);
+		return;
+	}
+	global.net_pending_join = -1;
+	if (!_ok) {
+		// We never entered, so there is nothing to leave.
+		net_reset_lobby_state();
+		var _unavailable = (_result.response == SteamMatchmakingChatRoomEnterResponse.DoesntExist
+			|| _result.response == SteamMatchmakingChatRoomEnterResponse.Full
+			|| _result.response == SteamMatchmakingChatRoomEnterResponse.NotAllowed);
+		net_flash(false, loc(_unavailable ? "NET_SESSION_UNAVAILABLE" : "NET_JOIN_FAILED"));
+		show_debug_message("[NET] Failed to join lobby");
+		return;
+	}
+	// Steam may change the instance bits of the ID: validate the lobby we actually entered.
+	global.net_lobby_id = _reply_id;
+	global.net_my_steam_id = tcc_steam_get_user_steam_id();
+	var _members = net_refresh_members();
+	var _game = tcc_steam_lobby_get_data("game_name");
+	var _proto = tcc_steam_lobby_get_data("proto");
+	if (_members <= 0) {
+		tcc_steam_lobby_leave(_reply_id);
+		net_reset_lobby_state();
+		net_flash(false, loc("NET_SESSION_UNAVAILABLE"));
+		return;
+	}
+	if (_game != NET_GAME_NAME || _proto != string(NET_PROTOCOL)) {
+		tcc_steam_lobby_leave(_reply_id);
+		net_reset_lobby_state();
+		net_flash(false, loc("NET_VERSION_MISMATCH"));
+		return;
+	}
+	global.net_active = true;
+	global.net_join_time = current_time;
+	global.net_refresh_tick = 0;
+	global.net_owner_id = tcc_steam_lobby_get_owner_id();
+	global.net_is_host = (global.net_owner_id == global.net_my_steam_id);
+	global.net_follow_host = !global.net_is_host;
+	net_send_hello(-1, false);
+	global.net_ping_at = 0;
+	if (global.net_is_host) {
+		net_become_host();
+	} else {
+		net_session_joined_lobby();
+	}
+	var _host = tcc_steam_lobby_get_data("host_name");
+	global.net_host_name = net_clean_name(_host);
+	net_flash(true, string_replace(loc("NET_JOINED_SESSION"), "{NAME}", global.net_host_name));
+	net_presence_update(true);
+	show_debug_message("[NET] Joined lobby! Host: " + string(global.net_is_host));
+}
+
+/// A member of our lobby entered, left, disconnected or was removed.
+function net_on_lobby_chat_update(_result) {
+	if (!variable_global_exists("net_ready") || !global.net_ready) return;
+	if (!global.net_active || _result.lobby_id != global.net_lobby_id) return;
+	var _flags = _result.chat_member_state_change;
+	var _uid = _result.user_changed_id;
+	// Left, disconnected, kicked or banned.
+	if (_flags & (SteamMatchmakingChatMemberStateChange.Left | SteamMatchmakingChatMemberStateChange.Disconnected
+		| SteamMatchmakingChatMemberStateChange.Kicked | SteamMatchmakingChatMemberStateChange.Banned)) {
+		if (_uid == global.net_my_steam_id) {
+			net_reset_lobby_state();
+			net_notice(loc("NET_DISCONNECTED"));
+			return;
+		}
+		net_remove_player(_uid, true);
+	}
+	// Membership and ownership are re-read on the next tick.
+	global.net_refresh_tick = 0;
+}
+
+/// Someone accepted our invite or clicked "Join Game" in the Steam overlay, in any room or mode.
+function net_on_lobby_join_requested(_result) {
+	if (!variable_global_exists("net_ready") || !global.net_ready) return;
+	var _lobby_id = _result.steam_id_lobby;
+	show_debug_message("[NET] Join request received for lobby: " + string(_lobby_id));
+	net_request_join(_lobby_id);
 }
 
 /// @function		net_is_main_game()

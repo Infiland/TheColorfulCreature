@@ -21,7 +21,7 @@ def main():
     steam = yy('extensions/Steamworks/Steamworks.yy')
     assert steam['ConfigValues']['Apple']['copyToTargets'] == '0'
     assert steam['ConfigValues']['Mobile']['copyToTargets'] == '0'
-    assert steam['extensionVersion'] == '2.1.6'
+    assert steam['extensionVersion'] == '3.0.0'
     for extension, version in [('GMAdMob','2.0.2'),('GMGameCenter','2.0.2'),('GMGooglePlayServices','3.0.2')]:
         assert yy(f'extensions/{extension}/{extension}.yy')['extensionVersion'] == version
     android_release = next(c for c in project['configs']['children'] if c['name'] == 'Mobile')

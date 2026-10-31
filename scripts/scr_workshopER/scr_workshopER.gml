@@ -58,7 +58,7 @@ function workshopER_start() {
 		return
 	}
 
-	// Create persistent async handler (also acts as loading screen when downloading)
+	// Create persistent loading controller (also acts as loading screen when downloading)
 	if !instance_exists(o_workshopERloading) {
 		instance_create(0, 0, o_workshopERloading)
 	}
@@ -80,13 +80,14 @@ function workshopER_query_catalog() {
 		global.workshopER_catalog_scan_done = true
 		return
 	}
-	var qh = tcc_steam_ugc_create_query_all(ugc_query_RankedByPublicationDate, ugc_match_Items, global.workshopER_query_page)
-	if qh == 0 || qh == -1 {
+	var qh = tcc_steam_ugc_create_query_all(SteamUgcQuery.RankedByPublicationDate, SteamUgcMatchingUgcType.Items, global.workshopER_query_page)
+	if !tcc_steam_ugc_handle_valid(qh) {
 		global.workshopER_catalog_scan_done = true
 		return
 	}
-	global.workshopER_query_id = tcc_steam_ugc_send_query(qh)
-	if global.workshopER_query_id <= 0 {
+	// The page is recognised by its query handle when the answer arrives
+	global.workshopER_query_id = qh
+	if !tcc_steam_ugc_send_query(qh, workshopER_on_catalog) {
 		global.workshopER_query_id = -1
 		global.workshopER_catalog_scan_done = true
 	}
@@ -329,37 +330,35 @@ function workshopER_cleanup() {
 	global.workshopER_current_file_id = 0
 	global.workshop = 0
 
-	// Destroy persistent async handler
+	// Destroy persistent loading controller
 	if instance_exists(o_workshopERloading) {
 		instance_destroy(o_workshopERloading)
 	}
 }
 
-/// Decode the extension's list-of-maps schema without retaining async-owned DS
-/// handles. Steam releases the query itself before delivering this callback.
-function workshopER_catalog_callback(_event, _request) {
+/// Decode one finished catalog page without touching any global. _request is the
+/// query handle of the page the scan is waiting for; any other page is not matched.
+/// The query wrapper has already released the Steam query handle by now.
+function workshopER_catalog_callback(_ok, _items, _completed, _request) {
 	var _response = {matched:false, ok:false, count:0, total:0, ids:[]}
-	if !level_finite(_request) || _request <= 0 { return _response }
-	if !(is_real(_event) || is_handle(_event)) || !ds_exists(_event, ds_type_map) { return _response }
-	if !ds_map_exists(_event, "event_type") || !ds_map_exists(_event, "id") { return _response }
-	if _event[? "event_type"] != "ugc_query" || _event[? "id"] != _request { return _response }
+	if !tcc_steam_ugc_handle_valid(_request) { return _response }
+	if !is_struct(_completed) || !variable_struct_exists(_completed, "query_handle") { return _response }
+	if !is_numeric(_completed.query_handle) || _completed.query_handle != _request { return _response }
 	_response.matched = true
-	if !ds_map_exists(_event, "result") || _event[? "result"] != ugc_result_success { return _response }
-	if !ds_map_exists(_event, "num_results") || !ds_map_exists(_event, "total_matching") { return _response }
-	var _count = _event[? "num_results"]
-	var _total = _event[? "total_matching"]
-	if !level_finite(_count) || _count < 0 || _count > 50 || floor(_count) != _count { return _response }
+	if !_ok { return _response }
+	if !variable_struct_exists(_completed, "num_results_returned") || !variable_struct_exists(_completed, "total_matching_results") { return _response }
+	var _count = _completed.num_results_returned
+	var _total = _completed.total_matching_results
+	if !level_finite(_count) || _count < 0 || _count > STEAM_UGC_NUM_RESULTS_PER_PAGE || floor(_count) != _count { return _response }
 	if !level_finite(_total) || _total < _count || floor(_total) != _total { return _response }
 	if _count > 0 {
-		if !ds_map_exists(_event, "results_list") { return _response }
-		var _results = _event[? "results_list"]
-		if !(is_real(_results) || is_handle(_results)) || !ds_exists(_results, ds_type_list) { return _response }
-		for (var _i = 0; _i < min(_count, ds_list_size(_results)); ++_i) {
-			var _item = _results[| _i]
-			if !(is_real(_item) || is_handle(_item)) || !ds_exists(_item, ds_type_map) { continue }
-			if !ds_map_exists(_item, "result") || _item[? "result"] != ugc_result_success { continue }
-			if !ds_map_exists(_item, "published_file_id") { continue }
-			var _fid = _item[? "published_file_id"]
+		if !is_array(_items) { return _response }
+		for (var _i = 0; _i < min(_count, array_length(_items)); ++_i) {
+			var _item = _items[_i]
+			if !is_struct(_item) { continue }
+			if !variable_struct_exists(_item, "result") || _item.result != SteamApiResult.Ok { continue }
+			if !variable_struct_exists(_item, "published_file_id") { continue }
+			var _fid = _item.published_file_id
 			if !is_numeric(_fid) || _fid <= 0 { continue }
 			if !is_int64(_fid) && (!level_finite(_fid) || floor(_fid) != _fid) { continue }
 			array_push(_response.ids, _fid)
@@ -371,13 +370,14 @@ function workshopER_catalog_callback(_event, _request) {
 	return _response
 }
 
-/// Processes only the active Workshop Endless catalog request. A completed or
-/// failed request is consumed once; failed scans fall back to installed levels.
-function workshopER_handle_async_catalog(_async_load) {
+/// Callback of every catalog page query. Processes only the active Workshop Endless
+/// catalog request. A completed or failed request is consumed once; failed scans
+/// fall back to installed levels.
+function workshopER_on_catalog(_ok, _items, _completed) {
 	if !variable_global_exists("endless") || global.endless != 1 { return false }
 	if !variable_global_exists("endlessrunmode") || global.endlessrunmode != 4 { return false }
 	if global.workshopER_catalog_scan_done { return false }
-	var _response = workshopER_catalog_callback(_async_load, global.workshopER_query_id)
+	var _response = workshopER_catalog_callback(_ok, _items, _completed, global.workshopER_query_id)
 	if !_response.matched { return false }
 	global.workshopER_query_id = -1
 	if !_response.ok {
@@ -405,7 +405,7 @@ function workshopER_handle_async_catalog(_async_load) {
 	ds_map_destroy(_seen)
 
 	// An empty page is terminal even if Steam's total changed during the scan.
-	if _response.count > 0 && global.workshopER_query_page * 50 < _response.total {
+	if _response.count > 0 && global.workshopER_query_page * STEAM_UGC_NUM_RESULTS_PER_PAGE < _response.total {
 		global.workshopER_query_page++
 		workshopER_query_catalog()
 	} else {
@@ -414,8 +414,8 @@ function workshopER_handle_async_catalog(_async_load) {
 	return true
 }
 
-/// Synthetic extension callbacks exercise production parsing/consumption. This
-/// check neither calls Steam nor navigates; every touched global is restored.
+/// Synthetic query results exercise production parsing/consumption. This check
+/// neither calls Steam nor navigates; every touched global is restored.
 function workshopER_catalog_selfcheck() {
 	var _assert = function(_ok, _why) { if !_ok { throw "Workshop catalog self-check failed: " + _why } }
 	var _names = ["endless", "endlessrunmode", "steam_api", "workshopER_query_id", "workshopER_query_page",
@@ -436,61 +436,52 @@ function workshopER_catalog_selfcheck() {
 	var _a = int64("9007199254740993")
 	var _b = int64("9007199254740994")
 	var _ids = [int64(100), int64(200), _a, _a, _b, int64(0), int64(300)]
-	var _event = ds_map_create()
-	var _results = ds_list_create()
-	ds_map_add_list(_event, "results_list", _results)
+	var _items = []
 	for (var _i = 0; _i < array_length(_ids); ++_i) {
-		var _item = ds_map_create()
-		_item[? "published_file_id"] = _ids[_i]
-		_item[? "result"] = (_i == 6) ? 0 : ugc_result_success
-		ds_list_add(_results, _item)
-		ds_list_mark_as_map(_results, _i)
+		var _item = new SteamUgcQueryResult()
+		_item.published_file_id = _ids[_i]
+		_item.result = (_i == 6) ? SteamApiResult.Fail : SteamApiResult.Ok
+		array_push(_items, _item)
 	}
-	_event[? "id"] = 9
-	_event[? "event_type"] = "ugc_query"
-	_event[? "result"] = ugc_result_success
-	_event[? "num_results"] = array_length(_ids)
-	_event[? "total_matching"] = 125
-	var _response = workshopER_catalog_callback(_event, 9)
-	_assert(_response.ok && _response.total == 125 && array_length(_response.ids) == 5, "actual nested schema and total_matching; failed/invalid items excluded")
-	_assert(!workshopER_catalog_callback(_event, -1).matched, "no active request")
-	_assert(!workshopER_catalog_callback(undefined, 9).matched, "malformed event ignored")
-	_event[? "total_matching"] = array_length(_ids)
-	_event[? "event_type"] = "ugc_download_item"
-	_assert(!workshopER_handle_async_catalog(_event) && global.workshopER_query_id == 9, "wrong event cannot consume query")
-	_event[? "event_type"] = "ugc_query"
-	_event[? "id"] = 8
-	_assert(!workshopER_handle_async_catalog(_event) && global.workshopER_query_id == 9, "stale request ignored")
-	_event[? "id"] = 9
-	_assert(workshopER_handle_async_catalog(_event), "matching query consumed")
+	var _completed = new SteamUgcQueryCompleted()
+	_completed.query_handle = 9
+	_completed.result = SteamApiResult.Ok
+	_completed.num_results_returned = array_length(_ids)
+	_completed.total_matching_results = 125
+	var _response = workshopER_catalog_callback(true, _items, _completed, 9)
+	_assert(_response.ok && _response.total == 125 && array_length(_response.ids) == 5, "actual result structs and total_matching_results; failed/invalid items excluded")
+	_assert(!workshopER_catalog_callback(true, _items, _completed, -1).matched, "no active request")
+	_assert(!workshopER_catalog_callback(true, _items, undefined, 9).matched, "malformed completion ignored")
+	_completed.total_matching_results = array_length(_ids)
+	_assert(!workshopER_on_catalog(true, _items, {}) && global.workshopER_query_id == 9, "completion without a query handle cannot consume query")
+	_completed.query_handle = 8
+	_assert(!workshopER_on_catalog(true, _items, _completed) && global.workshopER_query_id == 9, "stale request ignored")
+	_completed.query_handle = 9
+	_assert(workshopER_on_catalog(true, _items, _completed), "matching query consumed")
 	_assert(array_length(global.workshopER_catalog_ids) == 3, "subscribed and repeated catalog IDs excluded")
 	_assert(is_int64(global.workshopER_catalog_ids[1]) && string(global.workshopER_catalog_ids[1]) == string(_a)
 		&& string(global.workshopER_catalog_ids[2]) == string(_b), "adjacent large Int64 IDs remain distinct")
 	_assert(global.workshopER_query_id == -1 && global.workshopER_catalog_scan_done, "last page closes request")
-	_assert(!workshopER_handle_async_catalog(_event) && array_length(global.workshopER_catalog_ids) == 3, "duplicate completion ignored")
+	_assert(!workshopER_on_catalog(true, _items, _completed) && array_length(global.workshopER_catalog_ids) == 3, "duplicate completion ignored")
 	global.workshopER_query_id = 10
 	global.workshopER_catalog_scan_done = false
-	_event[? "id"] = 10
-	_event[? "result"] = 0
-	_assert(!workshopER_handle_async_catalog(_event) && array_length(global.workshopER_catalog_ids) == 3
+	_completed.query_handle = 10
+	_assert(!workshopER_on_catalog(false, [], _completed) && array_length(global.workshopER_catalog_ids) == 3
 		&& global.workshopER_query_id == -1 && global.workshopER_catalog_scan_done, "failed request cannot mutate catalog or continue scan")
-	ds_map_destroy(_event)
-	_event = ds_map_create()
-	_event[? "id"] = 11
-	_event[? "event_type"] = "ugc_query"
-	_event[? "result"] = ugc_result_success
-	_event[? "num_results"] = 1
-	_event[? "total_matching"] = 1
-	_assert(workshopER_catalog_callback(_event, 11).matched && !workshopER_catalog_callback(_event, 11).ok, "nonempty response requires results_list")
-	_event[? "num_results"] = 0
-	_event[? "total_matching"] = 0
+	_completed = new SteamUgcQueryCompleted()
+	_completed.query_handle = 11
+	_completed.result = SteamApiResult.Ok
+	_completed.num_results_returned = 1
+	_completed.total_matching_results = 1
+	_assert(workshopER_catalog_callback(true, undefined, _completed, 11).matched && !workshopER_catalog_callback(true, undefined, _completed, 11).ok, "nonempty response requires the result array")
+	_completed.num_results_returned = 0
+	_completed.total_matching_results = 0
 	global.workshopER_query_id = 11
 	global.workshopER_catalog_scan_done = false
 	global.endless = 0
-	_assert(!workshopER_handle_async_catalog(_event) && global.workshopER_query_id == 11, "callback after leaving Endless ignored")
+	_assert(!workshopER_on_catalog(true, undefined, _completed) && global.workshopER_query_id == 11, "callback after leaving Endless ignored")
 	global.endless = 1
-	_assert(workshopER_handle_async_catalog(_event) && global.workshopER_catalog_scan_done, "successful empty page needs no results_list")
-	ds_map_destroy(_event)
+	_assert(workshopER_on_catalog(true, undefined, _completed) && global.workshopER_catalog_scan_done, "successful empty page needs no result array")
 	global.workshopER_catalog_scan_done = false
 	workshopER_query_catalog()
 	_assert(global.workshopER_query_id == -1 && global.workshopER_catalog_scan_done, "unavailable Steam stops scan without sending")

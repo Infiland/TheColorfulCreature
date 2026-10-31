@@ -1,196 +1,1582 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>Timeline - GMEXT-Steamworks</title>
-    <link rel="stylesheet" href="css/theme.css" />
-    <link rel="stylesheet" href="css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-        <link href="assets/css/gmext_style.css" rel="stylesheet" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Timeline";
-        var mkdocs_page_input_path = "timeline.md";
-        var mkdocs_page_url = null;
-      </script>
-    
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
-      <script>hljs.highlightAll();</script> 
-</head>
 
-<body class="wy-body-for-nav" role="document">
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="screenshots.html">
+      
+      
+        <link rel="next" href="ugc.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Timeline - GMEXT-Steamworks</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="." class="icon icon-home"> GMEXT-Steamworks
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    
+      <link rel="stylesheet" href="assets/css/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script>(function(){try{var w=["--gm-nav-width","--gm-toc-width"],i,v;for(i=0;i<w.length;i++){v=localStorage.getItem(w[i]);if(v)document.documentElement.style.setProperty(w[i],v)}}catch(e){}})()</script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#timeline" class="md-skip">
+          Skip to content
         </a>
-      </div>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="home.html">Steamworks Extension</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="guides.html">Setup Guide (IDE/Runtime 2022.6+)</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="management.html">Management</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="general.html">General</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="overlay.html">Overlay</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="leaderboards.html">Leaderboards</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="lobbies.html">Lobbies and Matchmaking</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="achievements.html">Stats and Achievements</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="cloud.html">Cloud</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="dlc.html">DLC</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="ugc.html">UGC</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="social.html">Social</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="inventory.html">Inventory</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="networking.html">Networking</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="input.html">Input</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="music.html">Music</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Timeline</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
-    </li>
-    </ul>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a>
-                </li>
-              </ul>
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="home.html" title="GMEXT-Steamworks" class="md-header__button md-logo" aria-label="GMEXT-Steamworks" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GMEXT-Steamworks
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Timeline
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href=".">GMEXT-Steamworks</a>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/YoYoGames/GMEXT-Steamworks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Timeline</li>
-    <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/YoYoGames/GMEXT-Steamworks/edit/master/docs/timeline.md" class="icon icon-github"> Edit on GitHub</a>
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <p><a id="top"></a></p>
-<h1 id="timeline"><strong>Timeline</strong></h1>
-<p>Functions that allow the game to add events to the timeline that is displayed alongside recorded video.</p>
-<p>Due to the experimental nature of Steam Timeline (currently), all extension functions return a boolean.
-If it's true, it means that the Steam Timeline API is available and the call was made.
-If it's false, it means that the Steam Timeline API is not available, the Steam Client is probably too old or not a Beta.</p>
-<p>The (A), (B) and (C) marks in the function documentation refer to the parts of the Diagram image below.</p>
-<p>Diagrams:
-<img alt="" src="assets/steam_timeline_diagram.png" /></p>
-<h2 id="functions">Functions</h2>
-<p>The following functions can be used to access Steam Timeline from within GameMaker:</p>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="home.html" title="GMEXT-Steamworks" class="md-nav__button md-logo" aria-label="GMEXT-Steamworks" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    GMEXT-Steamworks
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/YoYoGames/GMEXT-Steamworks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="home.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Steamworks Extension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="getting_started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extension_options.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extension Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Modules
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="apps.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="friends.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Friends
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="input.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Input
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="inventory.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="matchmaking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matchmaking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="music.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Music
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="networking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="parties.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parties
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="remote_storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="screenshots.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Screenshots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Timeline
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="timeline.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Timeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Timeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_set_timeline_tooltip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_set_timeline_tooltip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_clear_timeline_tooltip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_clear_timeline_tooltip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_add_instantaneous_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_add_instantaneous_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_add_range_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_add_range_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_start_range_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_start_range_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_update_range_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_update_range_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_end_range_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_end_range_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_remove_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_remove_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_does_event_recording_exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_does_event_recording_exist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_start_game_phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_start_game_phase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_end_game_phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_end_game_phase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_set_game_phase_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_set_game_phase_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_does_game_phase_recording_exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_does_game_phase_recording_exist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_add_game_phase_tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_add_game_phase_tag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_set_game_phase_attribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_set_game_phase_attribute
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_set_timeline_game_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_set_timeline_game_mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_open_overlay_to_game_phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_open_overlay_to_game_phase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_open_overlay_to_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_open_overlay_to_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steamtimelinegamemode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SteamTimelineGameMode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steamtimelineeventclippriority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SteamTimelineEventClipPriority
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steamtimelinegamephaserecordingexists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SteamTimelineGamePhaseRecordingExists
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steamtimelineeventrecordingexists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SteamTimelineEventRecordingExists
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ugc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UGC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="userstats.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UserStats
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utils.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Utils
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timeline
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Timeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_set_timeline_tooltip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_set_timeline_tooltip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_clear_timeline_tooltip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_clear_timeline_tooltip
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_add_instantaneous_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_add_instantaneous_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_add_range_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_add_range_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_start_range_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_start_range_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_update_range_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_update_range_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_end_range_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_end_range_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_remove_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_remove_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_does_event_recording_exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_does_event_recording_exist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_start_game_phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_start_game_phase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_end_game_phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_end_game_phase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_set_game_phase_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_set_game_phase_id
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_does_game_phase_recording_exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_does_game_phase_recording_exist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_add_game_phase_tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_add_game_phase_tag
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_set_game_phase_attribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_set_game_phase_attribute
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_set_timeline_game_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_set_timeline_game_mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_open_overlay_to_game_phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_open_overlay_to_game_phase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steam_timeline_open_overlay_to_timeline_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        steam_timeline_open_overlay_to_timeline_event
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steamtimelinegamemode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SteamTimelineGameMode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steamtimelineeventclippriority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SteamTimelineEventClipPriority
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steamtimelinegamephaserecordingexists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SteamTimelineGamePhaseRecordingExists
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steamtimelineeventrecordingexists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SteamTimelineEventRecordingExists
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<p><a id="top"></a></p>
+<h1 id="timeline"><strong>Timeline</strong><a class="headerlink" href="#timeline" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Interface</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline">ISteamTimeline</a></p>
+</blockquote>
+<p>This module contains functions that allow the game to add events to the timeline that is displayed alongside recorded video.</p>
+<p>See <a href="https://partner.steamgames.com/doc/features/timeline">Steam Timelines</a> and diagram at the bottom of page for more information.</p>
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
+<p>These are the functions of the Timeline module:</p>
 <ul>
-<li><a href="timeline.html#steam_timeline_set_state_description">steam_timeline_set_state_description</a></li>
-<li><a href="timeline.html#steam_timeline_clear_state_description">steam_timeline_clear_state_description</a></li>
-<li><a href="timeline.html#steam_timeline_add_event">steam_timeline_add_event</a></li>
-<li><a href="timeline.html#steam_timeline_start_event">steam_timeline_start_event</a></li>
-<li><a href="timeline.html#steam_timeline_update_event">steam_timeline_update_event</a></li>
-<li><a href="timeline.html#steam_timeline_end_event">steam_timeline_end_event</a></li>
-<li><a href="timeline.html#steam_timeline_remove_event">steam_timeline_remove_event</a></li>
-<li><a href="timeline.html#steam_timeline_event_recording_exists">steam_timeline_event_recording_exists</a></li>
-<li><a href="timeline.html#steam_timeline_game_phase_start">steam_timeline_game_phase_start</a></li>
-<li><a href="timeline.html#steam_timeline_game_phase_end">steam_timeline_game_phase_end</a></li>
-<li><a href="timeline.html#steam_timeline_game_phase_set_id">steam_timeline_game_phase_set_id</a></li>
-<li><a href="timeline.html#steam_timeline_game_phase_add_tag">steam_timeline_game_phase_add_tag</a></li>
-<li><a href="timeline.html#steam_timeline_game_phase_set_attribute">steam_timeline_game_phase_set_attribute</a></li>
-<li><a href="timeline.html#steam_timeline_game_phase_open_overlay">steam_timeline_game_phase_open_overlay</a></li>
-<li><a href="timeline.html#steam_timeline_game_phase_recording_exists">steam_timeline_game_phase_recording_exists</a></li>
-<li><a href="timeline.html#steam_timeline_set_game_mode">steam_timeline_set_game_mode</a></li>
+<li><a href="timeline.html#steam_timeline_set_timeline_tooltip">steam_timeline_set_timeline_tooltip</a></li>
+<li><a href="timeline.html#steam_timeline_clear_timeline_tooltip">steam_timeline_clear_timeline_tooltip</a></li>
+<li><a href="timeline.html#steam_timeline_add_instantaneous_timeline_event">steam_timeline_add_instantaneous_timeline_event</a></li>
+<li><a href="timeline.html#steam_timeline_add_range_timeline_event">steam_timeline_add_range_timeline_event</a></li>
+<li><a href="timeline.html#steam_timeline_start_range_timeline_event">steam_timeline_start_range_timeline_event</a></li>
+<li><a href="timeline.html#steam_timeline_update_range_timeline_event">steam_timeline_update_range_timeline_event</a></li>
+<li><a href="timeline.html#steam_timeline_end_range_timeline_event">steam_timeline_end_range_timeline_event</a></li>
+<li><a href="timeline.html#steam_timeline_remove_timeline_event">steam_timeline_remove_timeline_event</a></li>
+<li><a href="timeline.html#steam_timeline_does_event_recording_exist">steam_timeline_does_event_recording_exist</a></li>
+<li><a href="timeline.html#steam_timeline_start_game_phase">steam_timeline_start_game_phase</a></li>
+<li><a href="timeline.html#steam_timeline_end_game_phase">steam_timeline_end_game_phase</a></li>
+<li><a href="timeline.html#steam_timeline_set_game_phase_id">steam_timeline_set_game_phase_id</a></li>
+<li><a href="timeline.html#steam_timeline_does_game_phase_recording_exist">steam_timeline_does_game_phase_recording_exist</a></li>
+<li><a href="timeline.html#steam_timeline_add_game_phase_tag">steam_timeline_add_game_phase_tag</a></li>
+<li><a href="timeline.html#steam_timeline_set_game_phase_attribute">steam_timeline_set_game_phase_attribute</a></li>
+<li><a href="timeline.html#steam_timeline_set_timeline_game_mode">steam_timeline_set_timeline_game_mode</a></li>
+<li><a href="timeline.html#steam_timeline_open_overlay_to_game_phase">steam_timeline_open_overlay_to_game_phase</a></li>
+<li><a href="timeline.html#steam_timeline_open_overlay_to_timeline_event">steam_timeline_open_overlay_to_timeline_event</a></li>
 </ul>
-<h2 id="constants">Constants</h2>
-<p>This section also provides the following constants to use with the functions:</p>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
+<p>These are the constants and enums of the Timeline module:</p>
 <ul>
-<li><a href="timeline.html#timelinegamemode">TimelineGameMode</a></li>
-<li><a href="timeline.html#timelineeventclippriority">TimelineEventClipPriority</a></li>
-<li><a href="timeline.html#timelinemaxpriority">TimelineMaxPriority</a></li>
-<li><a href="timeline.html#timelinemaxeventduration">TimelineMaxEventDuration</a></li>
+<li><a href="timeline.html#steamtimelinegamemode">SteamTimelineGameMode</a></li>
+<li><a href="timeline.html#steamtimelineeventclippriority">SteamTimelineEventClipPriority</a></li>
+</ul>
+<h2 id="structs">Structs<a class="headerlink" href="#structs" title="Permanent link">&para;</a></h2>
+<p>These are the structs of the Timeline module:</p>
+<ul>
+<li><a href="timeline.html#steamtimelinegamephaserecordingexists">SteamTimelineGamePhaseRecordingExists</a></li>
+<li><a href="timeline.html#steamtimelineeventrecordingexists">SteamTimelineEventRecordingExists</a></li>
 </ul>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="steam_timeline_set_state_description">steam_timeline_set_state_description</h1>
-<p>Sets a description (B) for the current game state in the timeline. These help the user to find specific moments in the timeline when saving clips. Setting a new state description replaces any previous description.</p>
-<p>Examples could include:
-- Where the user is in the world in a single player game
-- Which round is happening in a multiplayer game
-- The current score for a sports game</p>
+<h1 id="steam_timeline_set_timeline_tooltip">steam_timeline_set_timeline_tooltip<a class="headerlink" href="#steam_timeline_set_timeline_tooltip" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#SetTimelineTooltip">ISteamTimeline::SetTimelineTooltip</a></p>
+</blockquote>
+<p>This function sets a description for the current game state in the timeline. These help the user to find specific moments in the timeline when saving clips. Setting a new state description replaces any previous description.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_set_state_description(description, timeDelta)</code></pre>
+<pre class="highlight"><code class="language-gml">steam_timeline_set_timeline_tooltip(description, time_delta_seconds)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -204,37 +1590,33 @@ If it's false, it means that the Steam Timeline API is not available, the Steam 
 <tr>
 <td>description</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>A localized string in the game language</td>
+<td>A localised string in the language returned by the <a href="utils.html#steam_utils_get_steam_ui_language">steam_utils_get_steam_ui_language</a> call.</td>
 </tr>
 <tr>
-<td>timeDelta</td>
+<td>time_delta_seconds</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The time offset in seconds to apply to this state change. Negative times indicate an event that happened in the past.</td>
+<td>The number of seconds ago that this state change occurred; negative values mark events in the past.</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p>N/A</p>
 </blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">steam_timeline_set_state_description("Earned x10 points as Cirno", -seconds);</code></pre>
-This sets some description for an event that happened <code>seconds</code> seconds ago.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="steam_timeline_clear_state_description">steam_timeline_clear_state_description</h1>
-<p>Clears the previous set game state in the timeline.</p>
+<h1 id="steam_timeline_clear_timeline_tooltip">steam_timeline_clear_timeline_tooltip<a class="headerlink" href="#steam_timeline_clear_timeline_tooltip" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#ClearTimelineTooltip">ISteamTimeline::ClearTimelineTooltip</a></p>
+</blockquote>
+<p>This function clears the previously set game state in the timeline.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_clear_state_description(timeDelta)</code></pre>
+<pre class="highlight"><code class="language-gml">steam_timeline_clear_timeline_tooltip(time_delta_seconds)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -246,34 +1628,30 @@ This sets some description for an event that happened <code>seconds</code> secon
 </thead>
 <tbody>
 <tr>
-<td>timeDelta</td>
+<td>time_delta_seconds</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The time offset in seconds to apply to this state change. Negative times indicate an event that happened in the past.</td>
+<td>The number of seconds ago that this state change occurred; negative values mark events in the past.</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p>N/A</p>
 </blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">steam_timeline_clear_state_description(-seconds);</code></pre>
-This clears description for an event that happened <code>seconds</code> seconds ago.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="steam_timeline_add_event">steam_timeline_add_event</h1>
-<p>Use this to mark an event (A) on the Timeline. The event can be instantaneous or take some amount of time to complete, depending on the value passed in durationSeconds.</p>
+<h1 id="steam_timeline_add_instantaneous_timeline_event">steam_timeline_add_instantaneous_timeline_event<a class="headerlink" href="#steam_timeline_add_instantaneous_timeline_event" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#AddInstantaneousTimelineEvent">ISteamTimeline::AddInstantaneousTimelineEvent</a></p>
+</blockquote>
+<p>This function is used to mark an event on the Timeline. This event will be instantaneous. (See <a href="timeline.html#steam_timeline_add_range_timeline_event">steam_timeline_add_range_timeline_event</a> to add events that happened over time.)</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_add_event(icon, title, description, priority, startOffsetSeconds, durationSeconds, possibleClip)</code></pre>
+<pre class="highlight"><code class="language-gml">steam_timeline_add_instantaneous_timeline_event(title, description, icon, priority, start_offset_seconds, possible_clip)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -284,269 +1662,123 @@ This clears description for an event that happened <code>seconds</code> seconds 
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>icon</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The name of the icon to show at the timeline at this point. This can be one of the icons uploaded through the Steamworks partner Site for your title, or one of the provided icons that start with steam_. The Steam Timelines overview includes a list of available icons.</td>
-</tr>
 <tr>
 <td>title</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Title-provided localized string in the game language</td>
+<td>A title-provided localised string in the UI language.</td>
 </tr>
 <tr>
 <td>description</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Title-provided localized string in the game language</td>
-</tr>
-<tr>
-<td>priority</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="timeline.html#timelinemaxpriority">TimelineMaxPriority</a></td>
-<td>Provide the priority to use when the UI is deciding which icons to display in crowded parts of the timeline. Events with larger priority values will be displayed more prominently than events with smaller priority values. This value must be between 0 and <a href="timeline.html#timelinemaxpriority">TimelineMaxPriority</a>.</td>
-</tr>
-<tr>
-<td>startOffsetSeconds</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="timeline.html#timelinemaxeventduration">TimelineMaxEventDuration</a></td>
-<td>The time offset in seconds to apply to the start of the event. Negative times indicate an event that happened in the past. One use of this parameter is to handle events whose significance is not clear until after the fact. For instance if the player starts a damage over time effect on another player, which kills them 3.5 seconds later, the game could pass -3.5 as the start offset and cause the event to appear in the timeline where the effect started.</td>
-</tr>
-<tr>
-<td>durationSeconds</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="timeline.html#timelinemaxeventduration">TimelineMaxEventDuration</a></td>
-<td>The duration of the event, in seconds. Pass 0 for instantaneous events. The final duration of the event cannot be larger than <a href="timeline.html#timelinemaxeventduration">TimelineMaxEventDuration</a>.</td>
-</tr>
-<tr>
-<td>possibleClip</td>
-<td><a href="timeline.html#timelineeventclippriority">TimelineEventClipPriority</a></td>
-<td>Allows the game to describe events that should be suggested to the user as possible video clips.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<p><br></p>
-<p><br></p>
-<p><strong>Returns:</strong></p>
-<blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
-</blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">steam_timeline_add_event(
-    "steam_achievement",                   // default steam_ icon name
-    "Rensenware",                          // this should be in the user's preferred language
-    "Scored 0.2 bln pts. in LUNATIC mode", // this should be in the user's preferred language
-    100,                                   // between 0 and steam_timeline_max_timeline_priority inclusive
-    -1.0,                                  // this event happened one second in the past
-    10.0,                                  // this event took 10 seconds
-    steam_timeline_clip_priority_standard  // you might want to clip this awesome event
-);</code></pre>
-This example demonstrates how to add a timeline event.</p>
-<p><br></p>
-<p><br></p>
-<hr />
-<p align="right"><a href="#top">Back To Top</a></p>
-
-<h1 id="steam_timeline_start_event">steam_timeline_start_event</h1>
-<p>Use this to mark the start of an event (A) on the Timeline that takes some amount of time to complete. The duration of the event is determined by a matching call to EndRangeTimelineEvent. If the game wants to cancel an event in progress, they can do that with a call to <a href="timeline.html#steam_timeline_remove_event">steam_timeline_remove_event</a>.</p>
-<p>The event in progress can be updated any number of times with <a href="timeline.html#steam_timeline_update_event">steam_timeline_update_event</a>.</p>
-<p><br></p>
-<p><strong>Syntax:</strong></p>
-<blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_start_event(icon, title, description, priority, startOffsetSeconds, possibleClip)</code></pre>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>icon</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The name of the icon to show at the timeline at this point. This can be one of the icons uploaded through the Steamworks partner Site for your title, or one of the provided icons that start with steam_. The Steam Timelines overview includes a list of available icons.</td>
-</tr>
-<tr>
-<td>title</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Title-provided localized string in the game language</td>
-</tr>
-<tr>
-<td>description</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Title-provided localized string in the game language</td>
-</tr>
-<tr>
-<td>priority</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="timeline.html#timelinemaxpriority">TimelineMaxPriority</a></td>
-<td>Provide the priority to use when the UI is deciding which icons to display in crowded parts of the timeline. Events with larger priority values will be displayed more prominently than events with smaller priority values. This value must be between 0 and <a href="timeline.html#timelinemaxpriority">TimelineMaxPriority</a>.</td>
-</tr>
-<tr>
-<td>startOffsetSeconds</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="timeline.html#timelinemaxeventduration">TimelineMaxEventDuration</a></td>
-<td>The time offset in seconds to apply to the start of the event. Negative times indicate an event that happened in the past. One use of this parameter is to handle events whose significance is not clear until after the fact. For instance if the player starts a damage over time effect on another player, which kills them 3.5 seconds later, the game could pass -3.5 as the start offset and cause the event to appear in the timeline where the effect started.</td>
-</tr>
-<tr>
-<td>possibleClip</td>
-<td><a href="timeline.html#timelineeventclippriority">TimelineEventClipPriority</a></td>
-<td>Allows the game to describe events that should be suggested to the user as possible video clips.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<p><br></p>
-<p><br></p>
-<p><strong>Returns:</strong></p>
-<blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
-</blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">event_handle = steam_timeline_start_event(
-    "steam_achievement",                   // default steam_ icon name
-    "Rensenware",                          // this should be in the user's preferred language
-    "Scored 0.2 bln pts. in LUNATIC mode", // this should be in the user's preferred language
-    100,                                   // between 0 and steam_timeline_max_timeline_priority inclusive
-    -1.0,                                  // this event started one second in the past
-    steam_timeline_clip_priority_standard  // you might want to clip this awesome event
-);</code></pre>
-This example demonstrates how to start a timeline event (where the duration is unknown).</p>
-<p><br></p>
-<p><br></p>
-<hr />
-<p align="right"><a href="#top">Back To Top</a></p>
-
-<h1 id="steam_timeline_update_event">steam_timeline_update_event</h1>
-<p>Use this to update the details of an event that was started with <a href="timeline.html#steam_timeline_start_event">steam_timeline_start_event</a>.</p>
-<p><br></p>
-<p><strong>Syntax:</strong></p>
-<blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_update_event(handle, icon, title, description, priority, startOffsetSeconds, possibleClip)</code></pre>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>handle</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The handle for a previously created event.</td>
+<td>A title-provided localised string in the UI language.</td>
 </tr>
 <tr>
 <td>icon</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The name of the icon to show at the timeline at this point. This can be one of the icons uploaded through the Steamworks partner Site for your title, or one of the provided icons that start with steam_. The Steam Timelines overview includes a list of available icons.</td>
+<td>The name of the icon to display; this can be a title-uploaded icon or one of the provided icons whose name begins with <code>"steam_"</code>.</td>
 </tr>
+<tr>
+<td>priority</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The priority used to decide which icons to show in crowded areas; higher priority events are shown more prominently, and the value must be between 0 and <code>STEAM_TIMELINE_MAX_TIMELINE_PRIORITY</code>.</td>
+</tr>
+<tr>
+<td>start_offset_seconds</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of seconds before the current time that the event started; negative values indicate the past, which is useful for events whose significance only becomes apparent later.</td>
+</tr>
+<tr>
+<td>possible_clip</td>
+<td><a href="timeline.html#steamtimelineeventclippriority">SteamTimelineEventClipPriority</a></td>
+<td>Lets the game flag the event as a suggested video clip.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p>Timeline event handle that can be used with <a href="timeline.html#steam_timeline_remove_timeline_event">steam_timeline_remove_timeline_event</a> or the overlay functions <a href="timeline.html#steam_timeline_does_event_recording_exist">steam_timeline_does_event_recording_exist</a> and <a href="timeline.html#steam_timeline_open_overlay_to_timeline_event">steam_timeline_open_overlay_to_timeline_event</a>.</p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="steam_timeline_add_range_timeline_event">steam_timeline_add_range_timeline_event<a class="headerlink" href="#steam_timeline_add_range_timeline_event" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#AddRangeTimelineEvent">ISteamTimeline::AddRangeTimelineEvent</a></p>
+</blockquote>
+<p>This function is used to mark an event on the Timeline that takes some amount of time to complete.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">steam_timeline_add_range_timeline_event(title, description, icon, priority, start_offset_seconds, duration_seconds, possible_clip)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td>title</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Title-provided localized string in the game language</td>
+<td>A title-provided localised string in the UI language.</td>
 </tr>
 <tr>
 <td>description</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Title-provided localized string in the game language</td>
+<td>A title-provided localised string in the UI language.</td>
+</tr>
+<tr>
+<td>icon</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the icon to display; this can be a title-uploaded icon or one of the provided icons whose name begins with <code>"steam_"</code>.</td>
 </tr>
 <tr>
 <td>priority</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="timeline.html#timelinemaxpriority">TimelineMaxPriority</a></td>
-<td>Provide the priority to use when the UI is deciding which icons to display in crowded parts of the timeline. Events with larger priority values will be displayed more prominently than events with smaller priority values. This value must be between 0 and <a href="timeline.html#timelinemaxpriority">TimelineMaxPriority</a>.</td>
-</tr>
-<tr>
-<td>startOffsetSeconds</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="timeline.html#timelinemaxeventduration">TimelineMaxEventDuration</a></td>
-<td>The time offset in seconds to apply to the start of the event. Negative times indicate an event that happened in the past. One use of this parameter is to handle events whose significance is not clear until after the fact. For instance if the player starts a damage over time effect on another player, which kills them 3.5 seconds later, the game could pass -3.5 as the start offset and cause the event to appear in the timeline where the effect started.</td>
-</tr>
-<tr>
-<td>possibleClip</td>
-<td><a href="timeline.html#timelineeventclippriority">TimelineEventClipPriority</a></td>
-<td>Allows the game to describe events that should be suggested to the user as possible video clips.</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<p><br></p>
-<p><br></p>
-<p><strong>Returns:</strong></p>
-<blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
-</blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">steam_timeline_update_event(
-    event_handle,                          // handle to a previously created event
-    "steam_achievement",                   // default steam_ icon name
-    "Rensenware",                          // this should be in the user's preferred language
-    "Scored 0.2 bln pts. in LUNATIC mode", // this should be in the user's preferred language
-    100,                                   // between 0 and steam_timeline_max_timeline_priority inclusive
-    -1.0,                                  // this event happened one second in the past
-    steam_timeline_clip_priority_standard  // you might want to clip this awesome event
-);</code></pre>
-This example demonstrates how to add a timeline event.</p>
-<p><br></p>
-<p><br></p>
-<hr />
-<p align="right"><a href="#top">Back To Top</a></p>
-
-<h1 id="steam_timeline_end_event">steam_timeline_end_event</h1>
-<p>Use this to identify the end of an event that was started with <a href="timeline.html#steam_timeline_start_event">steam_timeline_start_event</a>.</p>
-<p><br></p>
-<p><strong>Syntax:</strong></p>
-<blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_end_event(handle, endOffsetSeconds)</code></pre>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>handle</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The handle for a previously created event.</td>
+<td>The priority used to decide which icons to show in crowded areas; higher priority events are shown more prominently, and the value must be between 0 and <code>STEAM_TIMELINE_MAX_TIMELINE_PRIORITY</code>.</td>
 </tr>
 <tr>
-<td>endOffsetSeconds</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="timeline.html#timelinemaxeventduration">TimelineMaxEventDuration</a></td>
-<td>The time offset in seconds to apply to the start of the event. Negative times indicate an event that happened in the past. One use of this parameter is to handle events whose significance is not clear until after the fact. For instance if the player starts a damage over time effect on another player, which kills them 3.5 seconds later, the game could pass -3.5 as the start offset and cause the event to appear in the timeline where the effect started.</td>
+<td>start_offset_seconds</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of seconds before the current time that the event started; negative values indicate the past, which is useful for retroactively significant events.</td>
+</tr>
+<tr>
+<td>duration_seconds</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The length of the event in seconds; use 0 for instantaneous events.</td>
+</tr>
+<tr>
+<td>possible_clip</td>
+<td><a href="timeline.html#steamtimelineeventclippriority">SteamTimelineEventClipPriority</a></td>
+<td>Lets the game flag the event as a suggested video clip.</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
 </blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">steam_timeline_end_event(
-    event_handle,                          // handle to a previously created event
-    -2.0,                                  // this event ended 2 seconds ago
-);</code></pre>
-This example demonstrates how to add a timeline event.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="steam_timeline_remove_event">steam_timeline_remove_event</h1>
-<p>Use this to remove a previously created event from the timeline.</p>
+<h1 id="steam_timeline_start_range_timeline_event">steam_timeline_start_range_timeline_event<a class="headerlink" href="#steam_timeline_start_range_timeline_event" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#StartRangeTimelineEvent">ISteamTimeline::StartRangeTimelineEvent</a></p>
+</blockquote>
+<p>This function is used to mark the start of an event on the Timeline that takes some amount of time to complete. The duration of the event is determined by a matching call to <a href="timeline.html#steam_timeline_end_range_timeline_event">steam_timeline_end_range_timeline_event</a>. If the game wants to cancel an event in progress, they can do that with a call to <a href="timeline.html#steam_timeline_remove_timeline_event">steam_timeline_remove_timeline_event</a>.</p>
+<p>The event in progress can be updated any number of times with <a href="timeline.html#steam_timeline_update_range_timeline_event">steam_timeline_update_range_timeline_event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_remove_event(handle)</code></pre>
+<pre class="highlight"><code class="language-gml">steam_timeline_start_range_timeline_event(title, description, icon, priority, start_offset_seconds, possible_clip)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -558,31 +1790,55 @@ This example demonstrates how to add a timeline event.</p>
 </thead>
 <tbody>
 <tr>
-<td>handle</td>
+<td>title</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The handle for a previously created event.</td>
+<td>A title-provided localised string in the UI language.</td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A title-provided localised string in the UI language.</td>
+</tr>
+<tr>
+<td>icon</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the icon to display; this can be a title-uploaded icon or one of the provided icons whose name begins with <code>"steam_"</code>.</td>
+</tr>
+<tr>
+<td>priority</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The priority used to decide which icons to show in crowded areas; higher priority events are shown more prominently, and the value must be between 0 and <code>STEAM_TIMELINE_MAX_TIMELINE_PRIORITY</code>.</td>
+</tr>
+<tr>
+<td>start_offset_seconds</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of seconds before the current time that the event started; negative values indicate the past, which is useful for retroactively significant events.</td>
+</tr>
+<tr>
+<td>possible_clip</td>
+<td><a href="timeline.html#steamtimelineeventclippriority">SteamTimelineEventClipPriority</a></td>
+<td>Lets the game flag the event as a suggested video clip.</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
 </blockquote>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="steam_timeline_event_recording_exists">steam_timeline_event_recording_exists</h1>
-<p>Use this to determine if video recordings exist for the specified game phase. This can be useful when the game needs to decide whether or not to show a control that will call <a href="timeline.html#steam_timeline_game_phase_open_overlay">steam_timeline_game_phase_open_overlay</a>.</p>
-<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Steam.htm">Steam Async Event</a>.</p>
+<h1 id="steam_timeline_update_range_timeline_event">steam_timeline_update_range_timeline_event<a class="headerlink" href="#steam_timeline_update_range_timeline_event" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#UpdateRangeTimelineEvent">ISteamTimeline::UpdateRangeTimelineEvent</a></p>
+</blockquote>
+<p>This function is used to update the details of an event that was started with <a href="timeline.html#steam_timeline_start_range_timeline_event">steam_timeline_start_range_timeline_event</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_event_recording_exists(event_handle)</code></pre>
+<pre class="highlight"><code class="language-gml">steam_timeline_update_range_timeline_event(event_handle, title, description, icon, priority, possible_clip)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -595,23 +1851,164 @@ This example demonstrates how to add a timeline event.</p>
 <tbody>
 <tr>
 <td>event_handle</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The handle of the event to update.</td>
+</tr>
+<tr>
+<td>title</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Handle of the event to check for recordings.</td>
+<td>A title-provided localised string in the UI language.</td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A title-provided localised string in the UI language.</td>
+</tr>
+<tr>
+<td>icon</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the icon to display; this can be a title-uploaded icon or one of the provided icons whose name begins with <code>"steam_"</code>.</td>
+</tr>
+<tr>
+<td>priority</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The priority used to decide which icons to show in crowded areas; higher priority events are shown more prominently, and the value must be between 0 and <code>STEAM_TIMELINE_MAX_TIMELINE_PRIORITY</code>.</td>
+</tr>
+<tr>
+<td>possible_clip</td>
+<td><a href="timeline.html#steamtimelineeventclippriority">SteamTimelineEventClipPriority</a></td>
+<td>Lets the game flag the event as a suggested video clip.</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
 <p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="steam_timeline_end_range_timeline_event">steam_timeline_end_range_timeline_event<a class="headerlink" href="#steam_timeline_end_range_timeline_event" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#EndRangeTimelineEvent">ISteamTimeline::EndRangeTimelineEvent</a></p>
+</blockquote>
+<p>This function is used to end an event that was started with <a href="timeline.html#steam_timeline_start_range_timeline_event">steam_timeline_start_range_timeline_event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">steam_timeline_end_range_timeline_event(event_handle, end_offset_seconds)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event_handle</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The handle of the event to end.</td>
+</tr>
+<tr>
+<td>end_offset_seconds</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of seconds before the current time that the event ended; negative values indicate the past.</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="steam_timeline_remove_timeline_event">steam_timeline_remove_timeline_event<a class="headerlink" href="#steam_timeline_remove_timeline_event" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#RemoveTimelineEvent">ISteamTimeline::RemoveTimelineEvent</a></p>
+</blockquote>
+<p>This function is used to remove an event that was added with <a href="timeline.html#steam_timeline_add_instantaneous_timeline_event">steam_timeline_add_instantaneous_timeline_event</a> or <a href="timeline.html#steam_timeline_add_range_timeline_event">steam_timeline_add_range_timeline_event</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">steam_timeline_remove_timeline_event(event_handle)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event_handle</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The handle of the event to remove.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="steam_timeline_does_event_recording_exist">steam_timeline_does_event_recording_exist<a class="headerlink" href="#steam_timeline_does_event_recording_exist" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#DoesEventRecordingExist">ISteamTimeline::DoesEventRecordingExist</a></p>
+</blockquote>
+<p>This function is used to determine if video recordings exist for the specified event. Steam will sent a <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#SteamTimelineEventRecordingExists_t">SteamTimelineEventRecordingExists_t</a> callback with the result. This can be useful when the game needs to decide whether or not to show a control that will call <a href="timeline.html#steam_timeline_open_overlay_to_timeline_event">steam_timeline_open_overlay_to_timeline_event</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">steam_timeline_does_event_recording_exist(event_handle, callback)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event_handle</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The handle of the event to check for recordings.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>The function to call with the result.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
 </blockquote>
 <p><br></p>
 <p><strong>Triggers:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Steam.htm">Steam Async Event</a></p>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+<p><strong>Steamworks Callback</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#SteamTimelineEventRecordingExists_t">ISteamTimeline::SteamTimelineEventRecordingExists_t</a></p>
 </blockquote>
+<p>Called when asking if recordings exist for an event handle.</p>
 <table>
 <thead>
 <tr>
@@ -622,85 +2019,65 @@ This example demonstrates how to add a timeline event.</p>
 </thead>
 <tbody>
 <tr>
-<td>event_type</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"steam_timeline_event_recording_exists"</code></td>
-</tr>
-<tr>
-<td>success</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
-<td>Whether or not the current task succeeded.</td>
-</tr>
-<tr>
-<td>recording_exists</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>This is true if recording exists for the requested event handle.</td>
-</tr>
-<tr>
-<td>event_id</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The handle of the event that was asked about.</td>
+<td>result</td>
+<td><a href="timeline.html#steamtimelineeventrecordingexists">SteamTimelineEventRecordingExists</a></td>
+<td>The result of the operation.</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="steam_timeline_game_phase_start">steam_timeline_game_phase_start</h1>
-<p>Use this to start a game phase. Game phases allow the user to navigate their background recordings and clips. Exactly what a game phase means will vary game to game, but the game phase should be a section of gameplay that is usually between 10 minutes and a few hours in length, and should be the main way a user would think to divide up the game. These are presented to the user in a UI that shows the date the game was played, with one row per game slice. Game phases should be used to mark sections of gameplay that the user might be interested in watching.</p>
-<p>Game phases are started with <code>steam_timeline_game_phase_start</code>, and while a phase is still happening, they can have tags and attributes added to them with <a href="timeline.html#steam_timeline_game_phase_add_tag">steam_timeline_game_phase_add_tag</a> or <a href="timeline.html#steam_timeline_game_phase_set_attribute">steam_timeline_game_phase_set_attribute</a>. Only one game phase can be active at a time.</p>
+<h1 id="steam_timeline_start_game_phase">steam_timeline_start_game_phase<a class="headerlink" href="#steam_timeline_start_game_phase" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#StartGamePhase">ISteamTimeline::StartGamePhase</a></p>
+</blockquote>
+<p>This function is used to start a game phase.</p>
+<p>Game phases allow the user to navigate their background recordings and clips. Exactly what a game phase means will vary game to game, but the game phase should be a section of gameplay that is usually between 10 minutes and a few hours in length, and should be the main way a user would think to divide up the game.</p>
+<p>Game phases are started with <a href="timeline.html#steam_timeline_start_game_phase">steam_timeline_start_game_phase</a>, and while a phase is still happening, they can have tags and attributes added to them with <a href="timeline.html#steam_timeline_add_game_phase_tag">steam_timeline_add_game_phase_tag</a> or <a href="timeline.html#steam_timeline_set_game_phase_attribute">steam_timeline_set_game_phase_attribute</a>. Only one game phase can be active at a time.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_game_phase_start()</code></pre>
+<pre class="highlight"><code class="language-gml">steam_timeline_start_game_phase()</code></pre>
 </blockquote>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p>N/A</p>
 </blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">steam_timeline_game_phase_start();</code></pre>
-This call will start a new game phase.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="steam_timeline_game_phase_end">steam_timeline_game_phase_end</h1>
-<p>Use this to end a game phase that was started with <a href="timeline.html#steam_timeline_game_phase_start">steam_timeline_game_phase_start</a>.</p>
+<h1 id="steam_timeline_end_game_phase">steam_timeline_end_game_phase<a class="headerlink" href="#steam_timeline_end_game_phase" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#EndGamePhase">ISteamTimeline::EndGamePhase</a></p>
+</blockquote>
+<p>This function is used to end a game phase that was started with <a href="timeline.html#steam_timeline_start_game_phase">steam_timeline_start_game_phase</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_game_phase_end()</code></pre>
+<pre class="highlight"><code class="language-gml">steam_timeline_end_game_phase()</code></pre>
 </blockquote>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p>N/A</p>
 </blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">steam_timeline_game_phase_end();</code></pre>
-This call will end a current active phase.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="steam_timeline_game_phase_set_id">steam_timeline_game_phase_set_id</h1>
-<p>The phase ID is used to let the game identify which phase it is referring to in calls to <a href="timeline.html#steam_timeline_game_phase_recording_exists">steam_timeline_game_phase_recording_exists</a> or <a href="timeline.html#steam_timeline_game_phase_open_overlay">steam_timeline_game_phase_open_overlay</a>. It may also be used to associated multiple phases with each other.</p>
+<h1 id="steam_timeline_set_game_phase_id">steam_timeline_set_game_phase_id<a class="headerlink" href="#steam_timeline_set_game_phase_id" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#SetGamePhaseID">ISteamTimeline::SetGamePhaseID</a></p>
+</blockquote>
+<p>This function sets a phase ID that is used to let the game identify which phase it is referring to in calls to <a href="timeline.html#steam_timeline_does_game_phase_recording_exist">steam_timeline_does_game_phase_recording_exist</a> or <a href="timeline.html#steam_timeline_open_overlay_to_game_phase">steam_timeline_open_overlay_to_game_phase</a>. It may also be used to associate multiple phases with each other.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_game_phase_set_id(phase_id)</code></pre>
+<pre class="highlight"><code class="language-gml">steam_timeline_set_game_phase_id(phase_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -714,33 +2091,29 @@ This call will end a current active phase.</p>
 <tr>
 <td>phase_id</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>A game-provided persistent ID for a game phase. This could be a the match ID in a multiplayer game, a chapter name in a single player game, the ID of a character, etc.</td>
+<td>A game-provided persistent ID for a game phase, such as the match ID in a multiplayer game, a chapter name in a single player game, the ID of a character, etc.</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p>N/A</p>
 </blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">steam_timeline_game_phase_set_id("Chapter I");</code></pre>
-This call will set the current phase id to "Chapter I".</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="steam_timeline_game_phase_recording_exists">steam_timeline_game_phase_recording_exists</h1>
-<p>Use this to determine if video recordings exist for the specified game phase. This can be useful when the game needs to decide whether or not to show a control that will call <a href="timeline.html#steam_timeline_game_phase_open_overlay">steam_timeline_game_phase_open_overlay</a>.</p>
-<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Steam.htm">Steam Async Event</a>.</p>
+<h1 id="steam_timeline_does_game_phase_recording_exist">steam_timeline_does_game_phase_recording_exist<a class="headerlink" href="#steam_timeline_does_game_phase_recording_exist" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#DoesGamePhaseRecordingExist">ISteamTimeline::DoesGamePhaseRecordingExist</a></p>
+</blockquote>
+<p>This function is used to determine if video recordings exist for the specified game phase. Steam will sent a <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#SteamTimelineGamePhaseRecordingExists_t">SteamTimelineGamePhaseRecordingExists_t</a> callback with the result. This can be useful when the game needs to decide whether or not to show a control that will call <a href="timeline.html#steam_timeline_open_overlay_to_game_phase">steam_timeline_open_overlay_to_game_phase</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a>.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_game_phase_recording_exists(phase_id)</code></pre>
+<pre class="highlight"><code class="language-gml">steam_timeline_does_game_phase_recording_exist(phase_id, callback)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -756,20 +2129,25 @@ This call will set the current phase id to "Chapter I".</p>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
 <td>A game-provided persistent ID for a game phase.</td>
 </tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>The function to call with the result.</td>
+</tr>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p>N/A</p>
 </blockquote>
 <p><br></p>
 <p><strong>Triggers:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Async_Events/Steam.htm">Steam Async Event</a></p>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Callback</a></p>
+<p><strong>Steamworks Callback</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#SteamTimelineGamePhaseRecordingExists_t">ISteamTimeline::SteamTimelineGamePhaseRecordingExists_t</a></p>
 </blockquote>
+<p>Called when asking if recordings exist for an event handle.</p>
 <table>
 <thead>
 <tr>
@@ -780,53 +2158,25 @@ This call will set the current phase id to "Chapter I".</p>
 </thead>
 <tbody>
 <tr>
-<td>event_type</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The string <code>"steam_timeline_game_phase_recording_exists"</code></td>
-</tr>
-<tr>
-<td>success</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
-<td>Whether or not the current task succeeded.</td>
-</tr>
-<tr>
-<td>phase_id</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The phase ID that this result corresponds with.</td>
-</tr>
-<tr>
-<td>longest_clip_ms</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The total length of the longest clip in this phase in milliseconds.</td>
-</tr>
-<tr>
-<td>recording_ms</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The total length of the recordings in this phase in milliseconds.</td>
-</tr>
-<tr>
-<td>clip_count</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The number of clips that include video from this phase.</td>
-</tr>
-<tr>
-<td>screenshot_count</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
-<td>The number of screenshots the user has from this phase.</td>
+<td>result</td>
+<td><a href="timeline.html#steamtimelinegamephaserecordingexists">SteamTimelineGamePhaseRecordingExists</a></td>
+<td>The result of the operation.</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="steam_timeline_game_phase_add_tag">steam_timeline_game_phase_add_tag</h1>
-<p>Use this to add a game phase tag (F). Phase tags represent data with a well defined set of options, which could be data such as match resolution, hero played, game mode, etc. Tags can have an icon in addition to a text name. Multiple tags within the same group may be added per phase and all will be remembered. For example, <code>steam_timeline_game_phase_add_tag</code> may be called multiple times for a "Bosses Defeated" group, with different names and icons for each boss defeated during the phase, all of which will be shown to the user.</p>
+<h1 id="steam_timeline_add_game_phase_tag">steam_timeline_add_game_phase_tag<a class="headerlink" href="#steam_timeline_add_game_phase_tag" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#AddGamePhaseTag">ISteamTimeline::AddGamePhaseTag</a></p>
+</blockquote>
+<p>This function is used to add a game phase tag.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_game_phase_add_tag(name, icon, group, priority)</code></pre>
+<pre class="highlight"><code class="language-gml">steam_timeline_add_game_phase_tag(tag_name, tag_icon, tag_group, priority)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -838,50 +2188,45 @@ This call will set the current phase id to "Chapter I".</p>
 </thead>
 <tbody>
 <tr>
-<td>name</td>
+<td>tag_name</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Title-provided localized string in the game language.</td>
+<td>A title-provided localised string in the language returned by <a href="utils.html#steam_utils_get_steam_ui_language">steam_utils_get_steam_ui_language</a>.</td>
 </tr>
 <tr>
-<td>icon</td>
+<td>tag_icon</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>The name of the icon to show at the timeline at this point. This can be one of the icons uploaded through the Steamworks partner Site for your title, or one of the provided icons that start with steam_. The Steam Timelines overview includes a list of available icons.</td>
+<td>The name of the icon to show when the tag is displayed in the UI; this can be a title-uploaded icon or one of the provided icons whose name begins with <code>"steam_"</code>.</td>
 </tr>
 <tr>
-<td>group</td>
+<td>tag_group</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Title-provided localized string in the game language. Tags within the same group will be shown together in the UI.</td>
+<td>A title-provided localised string; tags within the same group will be shown together in the UI.</td>
 </tr>
 <tr>
 <td>priority</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="timeline.html#timelinemaxpriority">TimelineMaxPriority</a></td>
-<td>Provide the priority to use when the UI is deciding which attributes to display. Attributes with larger priority values will be displayed more prominently than attributes with smaller priority values. This value must be between 0 and <a href="timeline.html#timelinemaxpriority">TimelineMaxPriority</a>.</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The priority used to decide which icons to show; tags with larger priority values are displayed more prominently, and the value must be between 0 and <code>STEAM_TIMELINE_MAX_TIMELINE_PRIORITY</code>.</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p>N/A</p>
 </blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">steam_timeline_game_phase_set_attribute("My attribute", "0/0/0", 0.3);</code></pre>
-This call will set an attribute on the currently active game phase.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="steam_timeline_game_phase_set_attribute">steam_timeline_game_phase_set_attribute</h1>
-<p>Use this to add a game phase attribute (E). Phase attributes represent generic text fields that can be updated throughout the duration of the phase.
-They are meant to be used for phase metadata that is not part of a well defined set of options. For example, a KDA attribute that starts with the value "0/0/0" and updates as the phase progresses, or something like a played-entered character name. Attributes can be set as many times as the game likes with <code>steam_timeline_game_phase_set_attribute</code>, and only the last value will be shown to the user.</p>
+<h1 id="steam_timeline_set_game_phase_attribute">steam_timeline_set_game_phase_attribute<a class="headerlink" href="#steam_timeline_set_game_phase_attribute" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#SetGamePhaseAttribute">ISteamTimeline::SetGamePhaseAttribute</a></p>
+</blockquote>
+<p>This function is used to add a game phase attribute. Phase tags represent data with a well defined set of options, which could be data such as match resolution, hero played, game mode, etc. Tags can have an icon in addition to a text name. Multiple tags within the same group may be added per phase and all will be remembered.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_game_phase_set_attribute(attribute_group, attribute_value, priority)</code></pre>
+<pre class="highlight"><code class="language-gml">steam_timeline_set_game_phase_attribute(attribute_group, attribute_value, priority)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -895,42 +2240,73 @@ They are meant to be used for phase metadata that is not part of a well defined 
 <tr>
 <td>attribute_group</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Title-provided localized string in the game language.</td>
+<td>A title-provided localised string in the language returned by <a href="utils.html#steam_utils_get_steam_ui_language">steam_utils_get_steam_ui_language</a>.</td>
 </tr>
 <tr>
 <td>attribute_value</td>
 <td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
-<td>Title-provided localized string in the game language.</td>
+<td>A title-provided localised string in the language returned by <a href="utils.html#steam_utils_get_steam_ui_language">steam_utils_get_steam_ui_language</a>.</td>
 </tr>
 <tr>
 <td>priority</td>
-<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="timeline.html#timelinemaxpriority">TimelineMaxPriority</a></td>
-<td>Provide the priority to use when the UI is deciding which attributes to display. Attributes with larger priority values will be displayed more prominently than attributes with smaller priority values. This value must be between 0 and <a href="timeline.html#timelinemaxpriority">TimelineMaxPriority</a>.</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The priority used to decide which attributes to show; attributes with larger priority values are displayed more prominently, and the value must be between 0 and <code>STEAM_TIMELINE_MAX_TIMELINE_PRIORITY</code>.</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p>N/A</p>
 </blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">steam_timeline_game_phase_set_attribute("My attribute", "0/0/0", 0.3);</code></pre>
-This call will set an attribute on the currently active game phase.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="steam_timeline_game_phase_open_overlay">steam_timeline_game_phase_open_overlay</h1>
-<p>Opens the Steam overlay to the section of the timeline represented by the game phase.</p>
+<h1 id="steam_timeline_set_timeline_game_mode">steam_timeline_set_timeline_game_mode<a class="headerlink" href="#steam_timeline_set_timeline_game_mode" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#SetTimelineGameMode">ISteamTimeline::SetTimelineGameMode</a></p>
+</blockquote>
+<p>This function changes the colour of the timeline bar.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_game_phase_open_overlay(phase_id)</code></pre>
+<pre class="highlight"><code class="language-gml">steam_timeline_set_timeline_game_mode(mode)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mode</td>
+<td><a href="timeline.html#steamtimelinegamemode">SteamTimelineGameMode</a></td>
+<td>The mode that the game is in.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="steam_timeline_open_overlay_to_game_phase">steam_timeline_open_overlay_to_game_phase<a class="headerlink" href="#steam_timeline_open_overlay_to_game_phase" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#OpenOverlayToGamePhase">ISteamTimeline::OpenOverlayToGamePhase</a></p>
+</blockquote>
+<p>This function opens the Steam overlay to the section of the timeline represented by the game phase.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">steam_timeline_open_overlay_to_game_phase(phase_id)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -949,27 +2325,23 @@ This call will set an attribute on the currently active game phase.</p>
 </tbody>
 </table>
 <p><br></p>
-<p><br></p>
-<p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p>N/A</p>
 </blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">steam_timeline_game_phase_open_overlay("Chapter I");</code></pre>
-This call will open the steam overlay showing the requested phase.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="steam_timeline_set_game_mode">steam_timeline_set_game_mode</h1>
-<p>Changes the color of the timeline bar (C). See <a href="timeline.html#timelinegamemode">TimelineGameMode</a> for how to use each value.</p>
+<h1 id="steam_timeline_open_overlay_to_timeline_event">steam_timeline_open_overlay_to_timeline_event<a class="headerlink" href="#steam_timeline_open_overlay_to_timeline_event" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Function</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#OpenOverlayToTimelineEvent">ISteamTimeline::OpenOverlayToTimelineEvent</a></p>
+</blockquote>
+<p>This function opens the Steam overlay to the section of the timeline represented by the timeline event. This event must be in the current game session, since <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#TimelineEventHandle_t">TimelineEventHandle_t</a> values are not valid for future runs of the game.</p>
 <p><br></p>
 <p><strong>Syntax:</strong></p>
 <blockquote>
-<pre class="highlight"><code class="language-gml">steam_timeline_set_game_mode(mode)</code></pre>
+<pre class="highlight"><code class="language-gml">steam_timeline_open_overlay_to_timeline_event(event_handle)</code></pre>
 </blockquote>
 <table>
 <thead>
@@ -981,33 +2353,29 @@ This call will open the steam overlay showing the requested phase.</p>
 </thead>
 <tbody>
 <tr>
-<td>mode</td>
-<td><a href="timeline.html#timelinegamemode">TimelineGameMode</a></td>
-<td>The mode that the game is in.</td>
+<td>event_handle</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The handle of the event to show in the overlay.</td>
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<p><br></p>
 <p><br></p>
 <p><strong>Returns:</strong></p>
 <blockquote>
-<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></p>
+<p>N/A</p>
 </blockquote>
-<p><br></p>
-<p><strong>Example:</strong></p>
-<p><pre class="highlight"><code class="language-gml">steam_timeline_set_game_mode(steam_timeline_game_mode_playing);</code></pre>
-This call will change the current game mode to Playing.</p>
-<p><br></p>
 <p><br></p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="timelinegamemode">TimelineGameMode</h1>
-<p>Represents the possible game mode tags a timeline can have (influences the color scheme).</p>
+<h1 id="steamtimelinegamemode">SteamTimelineGameMode<a class="headerlink" href="#steamtimelinegamemode" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Enum</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#ETimelineGameMode">ISteamTimeline::ETimelineGameMode</a></p>
+</blockquote>
+<p>This enum controls the colour of the timeline bar segments.</p>
 <p>These constants are referenced by the following functions:</p>
 <ul>
-<li><a href="timeline.html#steam_timeline_set_game_mode">steam_timeline_set_game_mode</a></li>
+<li><a href="timeline.html#steam_timeline_set_timeline_game_mode">steam_timeline_set_timeline_game_mode</a></li>
 </ul>
 <p><br></p>
 <table>
@@ -1019,28 +2387,24 @@ This call will change the current game mode to Playing.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>steam_timeline_game_mode_invalid</code></td>
-<td>Invalid dummy value.</td>
+<td><code>Invalid</code></td>
+<td></td>
 </tr>
 <tr>
-<td><code>steam_timeline_game_mode_playing</code></td>
-<td>Used when the player is fully loaded into the game and playing - for example inside the dungeon fighting monsters.</td>
+<td><code>Playing</code></td>
+<td>The player is fully loaded into the game and playing.</td>
 </tr>
 <tr>
-<td><code>steam_timeline_game_mode_staging</code></td>
-<td>Used when some loading action is happening ingame - for example player is in a multiplayer lobby or for when a dungeon is loading.</td>
+<td><code>Staging</code></td>
+<td>The player is in a multiplayer lobby.</td>
 </tr>
 <tr>
-<td><code>steam_timeline_game_mode_menus</code></td>
-<td>Used when inside menus - for example the player adjusting settings or in a town buying items</td>
+<td><code>Menus</code></td>
+<td>The player is in the game's main menu or a pause menu.</td>
 </tr>
 <tr>
-<td><code>steam_timeline_game_mode_loading_screen</code></td>
-<td>Used for loading screens.</td>
-</tr>
-<tr>
-<td><code>steam_timeline_game_mode_max</code></td>
-<td>One past the last valid value.</td>
+<td><code>LoadingScreen</code></td>
+<td>The player is waiting for a loading screen.</td>
 </tr>
 </tbody>
 </table>
@@ -1048,13 +2412,17 @@ This call will change the current game mode to Playing.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="timelineeventclippriority">TimelineEventClipPriority</h1>
-<p>Represents the possible priority a timeline event can have. Where 'steam_timeline_clip_priority_featured' is higher than 'steam_timeline_clip_priority_standard'.</p>
+<h1 id="steamtimelineeventclippriority">SteamTimelineEventClipPriority<a class="headerlink" href="#steamtimelineeventclippriority" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Enum</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#ETimelineEventClipPriority">ISteamTimeline::ETimelineEventClipPriority</a></p>
+</blockquote>
+<p>This enum is used in <a href="timeline.html#steam_timeline_add_instantaneous_timeline_event">steam_timeline_add_instantaneous_timeline_event</a> and <a href="timeline.html#steam_timeline_add_range_timeline_event">steam_timeline_add_range_timeline_event</a>, where Featured events will be offered before Standard events.</p>
 <p>These constants are referenced by the following functions:</p>
 <ul>
-<li><a href="timeline.html#steam_timeline_add_event">steam_timeline_add_event</a></li>
-<li><a href="timeline.html#steam_timeline_start_event">steam_timeline_start_event</a></li>
-<li><a href="timeline.html#steam_timeline_update_event">steam_timeline_update_event</a></li>
+<li><a href="timeline.html#steam_timeline_add_instantaneous_timeline_event">steam_timeline_add_instantaneous_timeline_event</a></li>
+<li><a href="timeline.html#steam_timeline_add_range_timeline_event">steam_timeline_add_range_timeline_event</a></li>
+<li><a href="timeline.html#steam_timeline_start_range_timeline_event">steam_timeline_start_range_timeline_event</a></li>
+<li><a href="timeline.html#steam_timeline_update_range_timeline_event">steam_timeline_update_range_timeline_event</a></li>
 </ul>
 <p><br></p>
 <table>
@@ -1066,20 +2434,20 @@ This call will change the current game mode to Playing.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>steam_timeline_clip_priority_invalid</code></td>
-<td>Invalid dummy value.</td>
+<td><code>Invalid</code></td>
+<td></td>
 </tr>
 <tr>
-<td><code>steam_timeline_clip_priority_none</code></td>
+<td><code>None</code></td>
 <td>This event is not appropriate as a clip.</td>
 </tr>
 <tr>
-<td><code>steam_timeline_clip_priority_standard</code></td>
+<td><code>Standard</code></td>
 <td>The user may want to make a clip around this event.</td>
 </tr>
 <tr>
-<td><code>steam_timeline_clip_priority_featured</code></td>
-<td>The player will be likely to want a clip around event, and those clips should be promoted more prominently.</td>
+<td><code>Featured</code></td>
+<td>The player will be likely to want a clip around event, and those clips should be promoted more prominently than clips with the <code>SteamTimelineEventClipPriority.Standard</code> priority.</td>
 </tr>
 </tbody>
 </table>
@@ -1087,28 +2455,49 @@ This call will change the current game mode to Playing.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="timelinemaxpriority">TimelineMaxPriority</h1>
-<p>Represents the maximum possible priority a timeline event can have.</p>
-<p>These constants are referenced by the following functions:</p>
+<h1 id="steamtimelinegamephaserecordingexists">SteamTimelineGamePhaseRecordingExists<a class="headerlink" href="#steamtimelinegamephaserecordingexists" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Struct</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#SteamTimelineGamePhaseRecordingExists_t">ISteamTimeline::SteamTimelineGamePhaseRecordingExists_t</a></p>
+</blockquote>
+<p>This struct holds the result when asking if recordings exist for an event handle.</p>
+<p>This struct is referenced by the following functions:</p>
 <ul>
-<li><a href="timeline.html#steam_timeline_add_event">steam_timeline_add_event</a></li>
-<li><a href="timeline.html#steam_timeline_start_event">steam_timeline_start_event</a></li>
-<li><a href="timeline.html#steam_timeline_update_event">steam_timeline_update_event</a></li>
-<li><a href="timeline.html#steam_timeline_game_phase_add_tag">steam_timeline_game_phase_add_tag</a></li>
-<li><a href="timeline.html#steam_timeline_game_phase_set_attribute">steam_timeline_game_phase_set_attribute</a></li>
+<li><a href="timeline.html#steam_timeline_does_game_phase_recording_exist">steam_timeline_does_game_phase_recording_exist</a></li>
 </ul>
 <p><br></p>
 <table>
 <thead>
 <tr>
 <th>Member</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>steam_timeline_max_timeline_priority</code></td>
-<td>Maximum timeline event priority value.</td>
+<td>phase_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The phase ID that this result corresponds with.</td>
+</tr>
+<tr>
+<td>recording_ms</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The total length of the recordings in this phase in milliseconds.</td>
+</tr>
+<tr>
+<td>longest_clip_ms</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The total length of the longest clip in this phase in milliseconds.</td>
+</tr>
+<tr>
+<td>clip_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of clips that include video from this phase.</td>
+</tr>
+<tr>
+<td>screenshot_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of screenshots the user has from this phase.</td>
 </tr>
 </tbody>
 </table>
@@ -1116,82 +2505,106 @@ This call will change the current game mode to Playing.</p>
 <hr />
 <p align="right"><a href="#top">Back To Top</a></p>
 
-<h1 id="timelinemaxeventduration">TimelineMaxEventDuration</h1>
-<p>Represents the maximum possible duration a timeline event can have.</p>
-<p>These constants are referenced by the following functions:</p>
+<h1 id="steamtimelineeventrecordingexists">SteamTimelineEventRecordingExists<a class="headerlink" href="#steamtimelineeventrecordingexists" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Steamworks Struct</strong>: <a href="https://partner.steamgames.com/doc/api/ISteamTimeline#SteamTimelineEventRecordingExists_t">ISteamTimeline::SteamTimelineEventRecordingExists_t</a></p>
+</blockquote>
+<p>This struct holds the result when asking if recordings exist for an event handle.</p>
+<p>This struct is referenced by the following functions:</p>
 <ul>
-<li><a href="timeline.html#steam_timeline_add_event">steam_timeline_add_event</a></li>
-<li><a href="timeline.html#steam_timeline_start_event">steam_timeline_start_event</a></li>
-<li><a href="timeline.html#steam_timeline_update_event">steam_timeline_update_event</a></li>
-<li><a href="timeline.html#steam_timeline_end_event">steam_timeline_end_event</a></li>
+<li><a href="timeline.html#steam_timeline_does_event_recording_exist">steam_timeline_does_event_recording_exist</a></li>
 </ul>
 <p><br></p>
 <table>
 <thead>
 <tr>
 <th>Member</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>steam_timeline_max_timeline_event_duration</code></td>
-<td>Maximum timeline event duration value.</td>
+<td>event_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The handle of the event that was asked about.</td>
+</tr>
+<tr>
+<td>recording_exists</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>This is <code>true</code> if a recording exists for the requested event handle.</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-              
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="music.html" class="btn btn-neutral float-left" title="Music"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="utilities.html" class="btn btn-neutral float-right" title="Utilities">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-      <p><p align="center">GameMaker 2025</p></p>
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
           
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-        <span>
-          <a href="https://github.com/YoYoGames/GMEXT-Steamworks" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
-    
-    
-      <span><a href="music.html" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="utilities.html" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <p align="center">GameMaker 2026</p>
+    </div>
+  
+  
 </div>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = ".";</script>
-    <script src="js/theme_extra.js"></script>
-    <script src="js/theme.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
-      <script src="assets/js/gmext_script.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
-
-</body>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.top", "navigation.tracking", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      
+        <script src="assets/js/hljs-init.js"></script>
+      
+        <script src="assets/js/resize-columns.js"></script>
+      
+    
+  </body>
 </html>

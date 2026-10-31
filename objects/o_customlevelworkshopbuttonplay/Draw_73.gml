@@ -1,4 +1,3 @@
-//var owner = tcc_steam_get_user_persona_name(mOwner)
 //var directory = global.workshopfolder + "\\"
 if y < -90 {
 exit;

@@ -756,23 +756,21 @@ function level_workshop_failure_selfcheck() {
     return true;
 }
 
-/// Filter by both event type and request id. Other Steam callbacks cannot submit
-/// another update or grant a publish reward.
-function level_publish_callback(_event, _state, _create_request, _update_request) {
+/// Filter by result type and publish state. A create result can only complete the
+/// "creating" step and an update result only the "submitting" step, so a late,
+/// duplicate or foreign Steam result cannot submit another update or grant a publish reward.
+function level_publish_callback(_result, _state) {
     var _response = {matched: false, ok: false, legal: false, publishedId: int64(0)};
-    if (!(is_real(_event) || is_handle(_event)) || !ds_exists(_event, ds_type_map)) return _response;
-    if (!ds_map_exists(_event, "id") || !ds_map_exists(_event, "event_type")) return _response;
-    var _type = _event[? "event_type"];
-    var _request = _event[? "id"];
-    if (_state == "creating" && _type == "ugc_create_item" && _request == _create_request) {
+    if (!is_struct(_result)) return _response;
+    if (_state == "creating" && is_instanceof(_result, SteamUgcCreateItemResult)) {
         _response.matched = true;
-        if (ds_map_exists(_event, "published_file_id")) _response.publishedId = _event[? "published_file_id"];
-    } else if (_state == "submitting" && _type == "ugc_update_item" && _request == _update_request) {
+        if (is_numeric(_result.published_file_id)) _response.publishedId = int64(_result.published_file_id);
+    } else if (_state == "submitting" && is_instanceof(_result, SteamUgcSubmitItemUpdateResult)) {
         _response.matched = true;
     }
     if (!_response.matched) return _response;
-    _response.legal = ds_map_exists(_event, "legal_agreement_required") && _event[? "legal_agreement_required"] == 1;
-    _response.ok = ds_map_exists(_event, "result") && _event[? "result"] == ugc_result_success;
+    _response.legal = (_result.legal_agreement_required == true);
+    _response.ok = (_result.result == SteamApiResult.Ok);
     if (_state == "creating" && _response.publishedId <= 0) _response.ok = false;
     return _response;
 }
@@ -920,20 +918,24 @@ function level_selfcheck(_directory = "") {
             _assert(level_validate(_slope).valid && _slope.instances[0].orientation == _orientation, "slope palette orientation " + string(_color) + "/" + string(_orientation));
         }
     }
-    var _event = ds_map_create();
-    _event[? "id"] = 7; _event[? "event_type"] = "ugc_create_item";
-    _event[? "result"] = ugc_result_success; _event[? "published_file_id"] = int64(100);
-    _assert(!level_publish_callback(_event, "creating", 8, 9).matched, "unrelated Steam request ignored");
-    _assert(level_publish_callback(_event, "creating", 7, 9).ok, "matching create callback accepted");
-    _assert(!level_publish_callback(_event, "submitting", 7, 9).matched, "create callback cannot complete upload");
-    _event[? "id"] = 9; _event[? "event_type"] = "ugc_update_item";
-    _assert(level_publish_callback(_event, "submitting", 7, 9).ok, "matching update completes upload");
-    _assert(!level_publish_callback(_event, "finished", 7, 9).matched, "duplicate completion callback ignored");
-    _event[? "legal_agreement_required"] = 1;
-    _assert(level_publish_callback(_event, "submitting", 7, 9).legal, "Workshop legal requirement preserved");
-    _event[? "result"] = 0;
-    _assert(!level_publish_callback(_event, "submitting", 7, 9).ok, "failed upload cannot grant reward");
-    ds_map_destroy(_event);
+    var _created = new SteamUgcCreateItemResult();
+    _created.result = SteamApiResult.Ok; _created.published_file_id = int64(100); _created.legal_agreement_required = false;
+    var _updated = new SteamUgcSubmitItemUpdateResult();
+    _updated.result = SteamApiResult.Ok; _updated.legal_agreement_required = false;
+    _assert(!level_publish_callback(_updated, "creating").matched, "update result cannot complete creation");
+    _assert(!level_publish_callback({result: SteamApiResult.Ok}, "creating").matched, "unrelated Steam result ignored");
+    _assert(level_publish_callback(_created, "creating").ok, "matching create callback accepted");
+    _assert(level_publish_callback(_created, "creating").publishedId == 100, "created Workshop id preserved");
+    _created.published_file_id = int64(0);
+    _assert(!level_publish_callback(_created, "creating").ok, "create callback without an item id rejected");
+    _created.published_file_id = int64(100);
+    _assert(!level_publish_callback(_created, "submitting").matched, "create callback cannot complete upload");
+    _assert(level_publish_callback(_updated, "submitting").ok, "matching update completes upload");
+    _assert(!level_publish_callback(_updated, "finished").matched, "duplicate completion callback ignored");
+    _updated.legal_agreement_required = true;
+    _assert(level_publish_callback(_updated, "submitting").legal, "Workshop legal requirement preserved");
+    _updated.result = SteamApiResult.Fail;
+    _assert(!level_publish_callback(_updated, "submitting").ok, "failed upload cannot grant reward");
     _assert(workshopER_catalog_selfcheck(), "Workshop catalog callback fixtures");
     _assert(level_workshop_failure_selfcheck(), "Workshop failure recovery fixtures");
 

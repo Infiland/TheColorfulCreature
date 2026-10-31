@@ -18,7 +18,6 @@ loaded = 0
 diamond_time = 0
 difficulty = 0
 
-steam_details = -1
 thumb_spr = -1
 thumb_loaded = 0
 

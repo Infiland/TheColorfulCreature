@@ -18,3 +18,6 @@ controllermode = 0
 ingame = 0
 
 alarm[0] = 10
+
+// This object is recreated after every game_restart: reinstall the persistent Steam listeners.
+tcc_steam_register_callbacks(true);

@@ -19,7 +19,7 @@ draw_text(32,732,loc("NOT_CONNECTED_TO_THE_INTERNET"))
 draw_set_color(c_white)
 if !platform_mobile() {
 var userid = tcc_steam_get_user_steam_id();
-var name = tcc_steam_get_persona_name() //tcc_steam_get_user_persona_name(test)
+var name = tcc_steam_get_persona_name()
 draw_set_halign(fa_right)
 draw_text(1000,416,string(name))
 
@@ -33,7 +33,7 @@ draw_tooltip_box(loc("THIS_IS_ME_D"),c_lime,c_orange)
 }}}}
 
 // Steam Avatar display would go here if needed
-// tcc_steam_get_user_avatar(userid,steam_user_avatar_size_medium);
+// tcc_steam_get_user_avatar(userid, TCC_STEAM_AVATAR_MEDIUM);
 }
 
 draw_set_halign(fa_left)

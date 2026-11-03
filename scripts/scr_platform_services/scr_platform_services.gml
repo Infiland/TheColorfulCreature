@@ -178,14 +178,14 @@ function platform_services_init() {
 }
 
 function achievement_earned(_id) {
-    if (tcc_steam_initialised()) return steam_get_achievement(_id);
+    if (tcc_steam_initialised()) return tcc_steam_get_achievement(_id);
     if (!variable_global_exists("service_achievements")) return false;
     return variable_struct_exists(global.service_achievements, _id);
 }
 
 function achievement_award(_id) {
     if (variable_global_exists("cheats") && global.cheats != 0) return false;
-    if (tcc_steam_initialised()) return steam_set_achievement(_id);
+    if (tcc_steam_initialised()) return tcc_steam_set_achievement(_id);
     if (platform_achievement_id(_id) == "" || !variable_global_exists("service_achievements")) return false;
     if (!variable_struct_exists(global.service_achievements, _id)) {
         variable_struct_set(global.service_achievements, _id, 0);
@@ -202,7 +202,7 @@ function platform_submit_score_ext(_board, _score, _force) {
     if (!is_real(_score) || is_nan(_score) || is_infinity(_score) || _score < 0 || global.cheats != 0) return false;
     // A challenge record can only originate from a complete eligible run.
     if (global.challenges == 1 && global.workshop == 0 && !scr_challenge_run_eligible(global.currentchallenge)) return false;
-    if (tcc_steam_initialised()) return steam_upload_score_ext(_board, _score, _force);
+    if (tcc_steam_initialised()) return tcc_steam_upload_score(_board, _score, _force);
     if (!platform_apple() || !variable_global_exists("service_scores")) return false;
     var _id = platform_apple_board(_board);
     if (_id == "") return false;

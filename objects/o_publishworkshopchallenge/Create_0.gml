@@ -4,8 +4,6 @@ result = 0
 timer = 0
 
 published_file_id = 0
-create_request = 0
-submit_request = 0
 update_handle = 0
 
 content_dir = ""
@@ -172,6 +170,85 @@ for (var i = 0; i < array_length(levels_arr); i++) {
 	challenge_desc += "- " + string(lvl_title) + " (" + string(lvl_id) + ")\n"
 }
 
+// Steam sends no reply when an upload silently fails, so every stage gets a deadline.
+// The timer is bound to a plain struct because Escape can destroy this instance at any time.
+start_deadline = function() {
+	call_later(120, time_source_units_seconds, method({inst: id, phase: result}, function() {
+		if (!instance_exists(inst) || inst.result != phase) return;
+		inst.result = 4;
+		inst.timer = 600;
+	}));
+};
+
+// Reply to the item creation: build the update and submit it
+on_create_result = function(_r) {
+	if (result != 0.1) return;
+	if (_r.legal_agreement_required == true) {
+		result = 2;
+		timer = 600;
+		return;
+	}
+	if (_r.result != SteamApiResult.Ok) {
+		result = 4;
+		timer = 600;
+		return;
+	}
+	published_file_id = _r.published_file_id;
+
+	update_handle = tcc_steam_ugc_start_item_update(global.appid, published_file_id);
+	if (!tcc_steam_ugc_handle_valid(update_handle)) {
+		result = 4;
+		timer = 600;
+		return;
+	}
+	var _ok = tcc_steam_ugc_set_item_title(update_handle, challenge_title);
+	_ok = tcc_steam_ugc_set_item_description(update_handle, challenge_desc) && _ok;
+	_ok = tcc_steam_ugc_set_item_visibility(update_handle, SteamRemoteStoragePublishedFileVisibility.Public) && _ok;
+	_ok = tcc_steam_ugc_set_item_tags(update_handle, ["Challenges"]) && _ok;
+	_ok = tcc_steam_ugc_set_item_content(update_handle, content_dir) && _ok;
+	if (!_ok) {
+		result = 4;
+		timer = 600;
+		return;
+	}
+	if (file_exists(preview_path)) {
+		tcc_steam_ugc_set_item_preview(update_handle, preview_path);
+	}
+
+	result = 0.5;
+	if (!tcc_steam_ugc_submit_item_update(update_handle, "Initial upload", on_submit_result, id)) {
+		result = 4;
+		timer = 600;
+		return;
+	}
+	start_deadline();
+};
+
+// Reply to the update submit
+on_submit_result = function(_r) {
+	if (result != 0.5) return;
+	if (_r.legal_agreement_required == true) {
+		result = 2;
+		timer = 600;
+		return;
+	}
+	if (_r.result == SteamApiResult.Ok) {
+		result = 1;
+		timer = 900;
+		// Clear beat gate after successful upload
+		global.workshopchallenge_beaten_signature = "";
+		scr_workshopchallenge_save_progress();
+	} else {
+		result = 4;
+		timer = 600;
+	}
+};
+
 // Create workshop item
-create_request = tcc_steam_ugc_create_item(global.appid, ugc_filetype_community);
-result = 0.1
+result = 0.1;
+if (!tcc_steam_ugc_create_item(global.appid, SteamRemoteStorageWorkshopFileType.Community, on_create_result, id)) {
+	result = 4;
+	timer = 600;
+} else {
+	start_deadline();
+}

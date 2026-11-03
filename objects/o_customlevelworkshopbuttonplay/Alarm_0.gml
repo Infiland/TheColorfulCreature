@@ -1,6 +1,13 @@
 if (!timing_is_tick()) exit;
-steam_details = tcc_steam_ugc_request_item_details(level, 30);
-requestname = tcc_steam_get_user_persona_name(mOwner);
+// The details are asked again only until they have arrived (user event 0 refreshes them)
+if loaded = 0 {
+	request_details()
+}
+// No event announces the owner name: ask again every cycle until Steam knows it
+if tcc_steam_id_valid(mOwner) {
+	var _owner_name = tcc_steam_get_user_persona_name_sync(mOwner)
+	if _owner_name != "" { ownername = _owner_name }
+}
 
 if loaded = 1 {
 	var bruh = string_count( "Level of the Week",  string(mTags));
@@ -34,33 +41,3 @@ if impossible = 1 { difficulty = 6 }
 
 
 alarm[0] = 30
-
-
-/*steam_details = tcc_steam_ugc_request_item_details(level, 30);
-/*if canrequest = 1 {
-if mName = "" {
-request_name = tcc_steam_get_user_persona_name(mOwner);
-}}
-if mTags != "" {
-if mFeatured = false {
-checkfeatured = string_count( "Level of the Week", mTags );
-if checkfeatured > 0 {
-mFeatured = true
-}
-}
-
-if mFeatured = true {
-	checkfeatured = string_count( "Level of the Week", mTags );
-}
-if checkfeatured < 0 {
-mFeatured = false
-}
-}
-
-	var directory = working_directory + "/Custom/Workshop/Medals/" + string(level) + "/"
-	if !directory_exists(directory) {
-	directory_create(directory)
-	}
-	scr_loadworkshopmedals()
-
-alarm[0] = 20

@@ -130,7 +130,7 @@ function net_levelshare_serve(_peer, _md5) {
     for (var _i = array_length(global.net_share_out) - 1; _i >= 0; --_i) {
         var _out = global.net_share_out[_i];
         if (_out.peer != _peer) continue;
-        if (_out.md5 == _md5) { _out.offset = 0; return; }
+        if (_out.md5 == _md5) { _out.offset = 0; _out.progress_at = current_time; return; }
         if (_out.buffer != -1 && buffer_exists(_out.buffer)) buffer_delete(_out.buffer);
         array_delete(global.net_share_out, _i, 1);
     }
@@ -139,7 +139,7 @@ function net_levelshare_serve(_peer, _md5) {
         return;
     }
     // Queued: the data buffer is created only when the transfer becomes active.
-    array_push(global.net_share_out, {peer:_peer, md5:_md5, buffer:-1, size:0, offset:0});
+    array_push(global.net_share_out, {peer:_peer, md5:_md5, buffer:-1, size:0, offset:0, progress_at:current_time});
 }
 
 /// Pump outgoing chunks and expire a stalled download. At most eight transfers
@@ -160,6 +160,7 @@ function net_levelshare_tick() {
                 _out.buffer = buffer_create(_bytes, buffer_fixed, 1);
                 buffer_write(_out.buffer, buffer_text, _text);
                 _out.size = _bytes;
+                _out.progress_at = current_time;	// the stall clock starts when the transfer becomes active
             }
         }
         for (var _n = 0; _n < _per_transfer && !_done; ++_n) {
@@ -176,7 +177,13 @@ function net_levelshare_tick() {
             // A full reliable queue refuses the chunk: resend the same one next tick.
             if (!net_send_to(_out.peer, NET_SHARE_HEADER + _length, true)) break;
             _out.offset += _length;
+            _out.progress_at = current_time;
             if (_out.offset >= _out.size) _done = true;
+        }
+        // No chunk accepted for twice the receiver's own deadline: drop the transfer and free its buffer.
+        if (!_done && current_time - _out.progress_at > 2 * NET_SHARE_TIMEOUT_MS) {
+            _done = true;
+            global.net_send_stats.stalled += 1;
         }
         if (_done) {
             if (_out.buffer != -1 && buffer_exists(_out.buffer)) buffer_delete(_out.buffer);

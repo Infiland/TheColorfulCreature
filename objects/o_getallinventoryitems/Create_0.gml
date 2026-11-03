@@ -7,4 +7,6 @@ if (instance_number(o_getallinventoryitems) > 1) {
     exit;
 }
 owns_inventory = true;
+// One owner only: results of the inventory request reach this single listener (cleared in CleanUp).
+tcc_steam_inventory_set_callback_result_ready(tradeup_inventory_event);
 tradeup_request_inventory();

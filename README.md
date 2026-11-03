@@ -54,7 +54,7 @@ git clone https://github.com/Infiland/TheColorfulCreature.git
 ```
 
 3. Open the project in GameMaker from where you cloned it.
-4. The game requires [Steamworks SDK 1.61](https://partner.steamgames.com/?goto=%2Fdownloads%2Flist), put the sdk folder in to
+4. The game requires [Steamworks SDK 1.65](https://partner.steamgames.com/?goto=%2Fdownloads%2Flist), put the sdk folder in to
 
 ```bash
 C:\Users\User\Documents\sdk

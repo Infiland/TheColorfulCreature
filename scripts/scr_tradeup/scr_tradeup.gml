@@ -18,7 +18,7 @@ function tradeup_item_id_valid(_value) {
 }
 
 function tradeup_handle_valid(_handle) {
-	return tradeup_integer(_handle, 0, 2147483647);
+	return tradeup_integer(_handle, 1, 2147483647);
 }
 
 /// Sum distinct stacks and reject ambiguous duplicate IDs before publishing a snapshot.
@@ -69,10 +69,17 @@ function tradeup_plan(_skin, _tier, _entries) {
 		create:[{item_def:scr_get_item_def_for_tier(_skin,_tier+1),quantity:1}], destroy:_destroy};
 }
 
-function tradeup_result_matches(_event,_handle) {
-	return tradeup_handle_valid(_handle) && (is_real(_event) || is_handle(_event)) && ds_exists(_event,ds_type_map)
-		&& ds_map_exists(_event,"event_type") && _event[? "event_type"] == "inventory_result_ready"
-		&& ds_map_exists(_event,"handle") && _event[? "handle"] == _handle;
+/// True only for a result-ready struct (both members) that carries the given live handle.
+function tradeup_result_matches(_result,_handle) {
+	return tradeup_handle_valid(_handle) && is_struct(_result)
+		&& variable_struct_exists(_result,"result_handle") && variable_struct_exists(_result,"result")
+		&& is_numeric(_result.result_handle) && _result.result_handle == _handle;
+}
+
+/// Success is exactly the Ok code. A failure code is still a non-zero number, so never test truthiness.
+function tradeup_result_ok(_result) {
+	return is_struct(_result) && variable_struct_exists(_result,"result")
+		&& is_numeric(_result.result) && _result.result == SteamApiResult.Ok;
 }
 
 function tradeup_request_inventory() {
@@ -92,11 +99,12 @@ function tradeup_request_inventory() {
 }
 
 /// The persistent inventory controller owns both handles, even after a menu closes.
-function tradeup_inventory_event(_event) {
+/// Receives the result-ready struct, for the inventory request and for the exchange.
+function tradeup_inventory_event(_result) {
 	tradeup_defaults();
 	var _state = global.tradeup_state;
-	if (tradeup_result_matches(_event,_state.trade_handle)) {
-		var _success = ds_map_exists(_event,"success") && _event[? "success"];
+	if (tradeup_result_matches(_result,_state.trade_handle)) {
+		var _success = tradeup_result_ok(_result);
 		tcc_steam_inventory_result_destroy(_state.trade_handle);
 		_state.trade_handle = -1;
 		_state.ready = false;
@@ -106,8 +114,8 @@ function tradeup_inventory_event(_event) {
 		tradeup_request_inventory();
 		return true;
 	}
-	if (!tradeup_result_matches(_event,_state.inventory_handle)) return false;
-	var _success = ds_map_exists(_event,"success") && _event[? "success"];
+	if (!tradeup_result_matches(_result,_state.inventory_handle)) return false;
+	var _success = tradeup_result_ok(_result);
 	var _snapshot = _success ? tradeup_inventory_snapshot(tcc_steam_inventory_result_get_items(_state.inventory_handle)) : {ok:false};
 	tcc_steam_inventory_result_destroy(_state.inventory_handle);
 	_state.inventory_handle = -1;
@@ -162,12 +170,13 @@ function scr_can_trade_up(skin_id, current_tier) {
 }
 
 /// Executes a trade-up: consumes 5 items of current_tier, creates 1 of current_tier+1
-/// Returns the async handle from steam_inventory_exchange_items
+/// Returns the exchange result handle, or undefined when the trade could not start.
+/// Completion arrives later in tradeup_inventory_event as a result-ready struct.
 function scr_execute_trade_up(skin_id, current_tier) {
 	if (!tcc_steam_initialised() || !scr_can_trade_up(skin_id,current_tier)) return undefined;
 	var source_def = scr_get_item_def_for_tier(skin_id, current_tier);
 	var _plan = tradeup_plan(skin_id,current_tier,global.item_ids[source_def]);
-	var _handle = tcc_steam_inventory_exchange_items(_plan.create,_plan.destroy);
+	var _handle = tcc_steam_inventory_exchange_items(_plan.create,_plan.destroy,tradeup_inventory_event);
 	if (!tradeup_handle_valid(_handle)) { global.tradeup_state.message = "Steam could not start the trade."; return undefined; }
 	var _state = global.tradeup_state;
 	_state.trade_handle = _handle; _state.phase = "exchanging"; _state.ready = false;
@@ -321,13 +330,21 @@ function scr_tradeup_selfcheck() {
                 && _recipe.create[0].item_def == _recipe.source_def-1,"all supported recipes retain the five-to-one economy");
         }
     }
-    var _event = ds_map_create();
-    _event[? "event_type"] = "inventory_result_ready"; _event[? "handle"] = 5;
+    var _event = new SteamInventoryResultReady();
+    _event.result_handle = 5; _event.result = SteamApiResult.Ok;
     scr_port_assert(tradeup_result_matches(_event,5) && !tradeup_result_matches(_event,6)
         && !tradeup_result_matches(_event,-1),"only matching live inventory result is accepted");
-    _event[? "event_type"] = "inventory_full_update";
-    scr_port_assert(!tradeup_result_matches(_event,5),"unrelated inventory event cannot complete a trade");
-    ds_map_destroy(_event);
-    scr_port_assert(!tradeup_handle_valid(undefined) && !tradeup_handle_valid(-1),"failed exchange handle is never treated as pending");
+    var _full = new SteamInventoryFullUpdate();
+    _full.result_handle = 5;
+    scr_port_assert(!tradeup_result_matches(_full,5) && !tradeup_result_matches({result_handle:5},5)
+        && !tradeup_result_matches({},5) && !tradeup_result_matches(undefined,5),
+        "unrelated inventory callback payload cannot complete a trade");
+    var _failed = new SteamInventoryResultReady();
+    _failed.result_handle = 5; _failed.result = SteamApiResult.Fail;
+    scr_port_assert(tradeup_result_ok(_event) && !tradeup_result_ok(_failed) && !tradeup_result_ok(_full)
+        && !tradeup_result_ok(undefined),"only the Ok code is success; Fail is non-zero but not success");
+    scr_port_assert(tradeup_result_matches(_failed,5),"a failed result for the live handle still completes it");
+    scr_port_assert(!tradeup_handle_valid(undefined) && !tradeup_handle_valid(-1) && !tradeup_handle_valid(0),
+        "failed exchange handle is never treated as pending");
     show_debug_message("TCC_TRADEUP_SELF_CHECK_PASS");
 }

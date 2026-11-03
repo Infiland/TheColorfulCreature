@@ -12,7 +12,3 @@ for (var i = 0; i < browse_count; i++) {
 		sprite_delete(browse_levels[i].thumb_spr)
 	}
 }
-
-// Destroy async tracking maps
-ds_map_destroy(async_details)
-ds_map_destroy(async_names)

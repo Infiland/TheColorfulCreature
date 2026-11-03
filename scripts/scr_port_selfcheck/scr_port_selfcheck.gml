@@ -106,6 +106,8 @@ function scr_port_selfcheck() {
     scr_cosmetics_runtime_selfcheck();
     scr_tradeup_selfcheck();
     scr_online_cosmetics_selfcheck();
+    tcc_steam_selfcheck();
+    scr_online_transport_selfcheck();
     show_debug_message("TCC_PORT_SELF_CHECK_PASS");
     game_end();
 }

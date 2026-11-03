@@ -16,7 +16,7 @@ if global.cheats = 0 {
 	ini_open(directory + "MedalData.sav");
 	ini_write_real("Medal Data","Required Time",global.LEDiamondMedalTime);
 	if previoustime > global.time {
-	tcc_steam_create_leaderboard("CL_" + string(global.Publish_ID),lb_sort_ascending,lb_disp_time_ms)
+	tcc_steam_create_leaderboard("CL_" + string(global.Publish_ID),SteamLeaderboardSortMethod.Ascending,SteamLeaderboardDisplayType.TimeMilliSeconds)
 	platform_submit_score("CL_" + string(global.Publish_ID),global.time*1000)
 	ini_write_real("Medal Data","Time",global.time);
 	global.creditscurrency += floor(1 * global.creditsmultiplier)

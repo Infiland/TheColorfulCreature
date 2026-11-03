@@ -32,7 +32,18 @@ steam_name[i] = ""
 steam_score[i] = 0
 steam_rank[i] = 0
 		}
-score_get = tcc_steam_download_scores("Cog Distance", 1, 10);
+tcc_steam_download_scores("Cog Distance", 1, 10, method({inst: id}, function(_rows) {
+	if (is_undefined(_rows)) return;
+	var _count = min(array_length(_rows), 11);
+	with (inst) {
+		for(var i = 0; i < _count; i++;)
+		{
+			steam_name[i] = _rows[i].name
+			steam_score[i] = _rows[i].score
+			steam_rank[i] = _rows[i].rank
+		}
+	}
+}), id);
 
 
 foundrank = 0

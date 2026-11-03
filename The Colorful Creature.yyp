@@ -1374,7 +1374,6 @@
     {"id":{"name":"o_witchhatbutton","path":"objects/o_witchhatbutton/o_witchhatbutton.yy",},},
     {"id":{"name":"o_workshopchallengecreator","path":"objects/o_workshopchallengecreator/o_workshopchallengecreator.yy",},},
     {"id":{"name":"o_workshopchallengecreatorbg","path":"objects/o_workshopchallengecreatorbg/o_workshopchallengecreatorbg.yy",},},
-    {"id":{"name":"o_workshopchallengecreatorbutton","path":"objects/o_workshopchallengecreatorbutton/o_workshopchallengecreatorbutton.yy",},},
     {"id":{"name":"o_workshopchallengeitembutton","path":"objects/o_workshopchallengeitembutton/o_workshopchallengeitembutton.yy",},},
     {"id":{"name":"o_workshopchallengesbutton","path":"objects/o_workshopchallengesbutton/o_workshopchallengesbutton.yy",},},
     {"id":{"name":"o_workshopchallengescreate","path":"objects/o_workshopchallengescreate/o_workshopchallengescreate.yy",},},

@@ -17,12 +17,8 @@ var _back_device = gamepad_remap_active_device(true);
 if gamepad_remap_back_input(timing_keyboard_pressed(vk_escape),
     _back_device >= 0 && tcc_gamepad_button_check_pressed(_back_device,gp_face2), gamepad_remap_capture_active()) {
 		if room == r_workshopchallengemenu {
-			if instance_exists(o_workshopchallengecreator) {
-				with (o_workshopchallengecreatorbg) instance_destroy()
-				with (o_workshoplevelselectbutton) instance_destroy()
-				instance_destroy(o_workshopchallengecreator)
-				exit
-		}
+			// The creator handles Esc/B itself: it leaves a text field first, then closes
+			if instance_exists(o_workshopchallengecreator) { exit }
 		if instance_exists(o_showsubscribedchallenges) {
 			with (o_workshopchallengeitembutton) instance_destroy()
 			instance_destroy(o_showsubscribedchallenges)

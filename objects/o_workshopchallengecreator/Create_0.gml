@@ -4,17 +4,44 @@ if !instance_exists(o_workshopchallengecreatorbg) {
 	instance_create(0,0,o_workshopchallengecreatorbg)
 }
 
-editing_title = 0
-title = global.workshopchallenge_draft_title
+L = scr_workshopchallenge_layout()
+
+editing = 0 // 0 = none, 1 = title field, 2 = search field
+title = string(global.workshopchallenge_draft_title)
+search = ""
 keyboard_string = ""
+
+filter_mode = 0 // 0 = subscribed, 1 = my levels
+level_buttons = []
+selection = [] // picked level tiles, in play order
+draft_ids = [] // level ids of the selection, kept for CleanUp
+
+seq_first = 0 // first visible row of the sequence list
+sb_drag = 0
+sb_drag_off = 0
+sb_thumb_y = 0
+sb_thumb_h = 0
+input_hold = 3 // ignore input for a few ticks so the click that opened us is not reused
 
 selected_count = 0
 diamond_sum = 0
 difficulty_avg = 0
 signature_current = ""
+total_count = 0
+visible_count = 0
+owned_count = 0
+unloaded_count = 0
+all_shown_picked = 0
+ok_title = 0
+ok_levels = 0
+ok_cheats = 1
+ok_beaten = 0
 
-filter_mode = 0 // 0 = subscribed, 1 = my levels
-level_buttons = []
+hot = ""
+hot_i = -1
+hot_j = -1
+hover_tile = noone
+hv = { close: 0, tab0: 0, tab1: 0, search: 0, selall: 0, title: 0, clear: 0, play: 0, upload: 0 }
 
 global.workshopchallenge_scroll = 0
 global.workshopchallenge_scrollmax = 0
@@ -23,14 +50,7 @@ global.workshopchallenge_scrollmax = 0
 steam_list = ds_list_create();
 tcc_steam_ugc_get_subscribed_items(steam_list);
 
-var preselect = global.workshopchallenge_draft_level_ids
 var j = 0
-var _grid_x1 = 110 // Left column x
-var _grid_x2 = 520 // Right column x
-var _grid_y = 320 // Starting y
-var _tile_h = 140 // Tile height + gap
-var _cols = 2
-
 for (var i = 0; i < ds_list_size(steam_list); i++) {
 	var file_id = steam_list[| i];
 	var file_info = ds_map_create();
@@ -42,68 +62,28 @@ for (var i = 0; i < ds_list_size(steam_list); i++) {
 	if (string_copy(path_norm, string_length(path_norm), 1) != "/") { path_norm += "/" }
 	if !level_exists(path_norm) { continue; }
 
-	var is_selected = 0
-	if (is_array(preselect)) {
-		for (var k = 0; k < array_length(preselect); k++) {
-			if preselect[k] == file_id { is_selected = 1 break; }
-		}
-	}
-
-	var _col = j mod _cols
-	var _row = j div _cols
-	var _bx = (_col == 0) ? _grid_x1 : _grid_x2
-	var _by = _grid_y + (_row * _tile_h)
-
-	var button = instance_create(_bx, _by, o_workshoplevelselectbutton)
+	// Position, visibility and selection are driven by the Step event
+	var button = instance_create(L.list[0], L.list[1], o_workshoplevelselectbutton)
 	level_buttons[j] = button
 	with(button) {
 		level = file_id
 		mPath = path_norm
-		selected = is_selected
-		base_x = _bx
-		base_y = _by
-		grid_col = _col
 	}
-	var _visible_rows = 2
-	if _row >= _visible_rows { global.workshopchallenge_scrollmax = (_row - _visible_rows + 1) * _tile_h }
 	j += 1
 }
 
 ds_list_destroy(steam_list)
 
-// UI buttons (custom style)
-var btn_sub = instance_create(160, 260, o_workshopchallengecreatorbutton)
-with (btn_sub) {
-	creator = other.id
-	kind = 0
-	text = "Subscribed"
-	image_xscale = 66
-	image_yscale = 6
-}
-
-var btn_my = instance_create(534, 260, o_workshopchallengecreatorbutton)
-with (btn_my) {
-	creator = other.id
-	kind = 1
-	text = "My Levels"
-	image_xscale = 66
-	image_yscale = 6
-}
-
-var btn_play = instance_create(140, 680, o_workshopchallengecreatorbutton)
-with (btn_play) {
-	creator = other.id
-	kind = 2
-	text = "Play Challenge"
-	image_xscale = 60
-	image_yscale = 12
-}
-
-var btn_upload = instance_create(584, 680, o_workshopchallengecreatorbutton)
-with (btn_upload) {
-	creator = other.id
-	kind = 3
-	text = "Upload\nChallenge"
-	image_xscale = 60
-	image_yscale = 12
+// Restore the previous draft, keeping its level order
+var preselect = global.workshopchallenge_draft_level_ids
+if (is_array(preselect)) {
+	for (var k = 0; k < array_length(preselect); k++) {
+		for (var m = 0; m < array_length(level_buttons); m++) {
+			if (level_buttons[m].level == preselect[k]) {
+				array_push(selection, level_buttons[m])
+				array_push(draft_ids, preselect[k])
+				break
+			}
+		}
+	}
 }

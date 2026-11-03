@@ -238,3 +238,14 @@ if global.steam_api = true {
 		scroll_max = (total_rows - visible_rows) * (tile_h + grid_gap)
 	}
 }
+
+// Input shield (enforced in Step_0). The press that opened this browser is
+// still held/latched when the first Step runs, and the cursor is still over the
+// "Play Custom Levels" button, which sits on top of grid tiles 0 and 1. The
+// scan above can also stall the game while nothing is on screen, so players
+// click again. None of those clicks may play or subscribe to a level: clicks
+// are ignored until the mouse button has been released AND this deadline has
+// passed. get_timer() is read live, so the deadline counts from the end of the
+// scan rather than from when the browser was requested.
+input_armed = false
+input_arm_time = get_timer() + 400000 // 0.4 seconds, in microseconds

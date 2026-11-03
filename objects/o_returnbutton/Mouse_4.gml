@@ -1,6 +1,7 @@
 /// @description Click to go back
 if (settings_fps_input_blocked()) exit;
 if instance_exists(o_namelevelLE) { exit }
+if instance_exists(o_workshopchallengecreator) { exit }
 scr_savesettings()
 
 scr_back()

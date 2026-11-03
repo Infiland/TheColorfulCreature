@@ -12,6 +12,7 @@ tcc_steam_ugc_request_item_details(level, 30, method({inst: id}, function(_ok, _
 		if _item.published_file_id != inst.level { continue }
 		with (inst) {
 			mTitle = _item.title
+			mTitle_lc = string_lower(string(mTitle))
 			mTags = _item.tags
 			owner_id = _item.owner_steam_id
 			loaded = 1

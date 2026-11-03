@@ -1,3 +1,4 @@
+if instance_exists(o_workshopchallengecreator) { exit }
 if instance_exists(o_workshopchallengeitembutton) { exit }
 if global.steam_api = true {
 	if !instance_exists(o_showsubscribedchallenges) {

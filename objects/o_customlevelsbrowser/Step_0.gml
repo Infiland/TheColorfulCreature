@@ -66,8 +66,18 @@ var _my = device_mouse_y_to_gui(0)
 hover_index = timing_ui_browser_tile_at(_mx, _my, grid_margin_x, _actual_grid_top,
 	grid_bottom_y, grid_cols, tile_w, tile_h, grid_gap, scroll, _active_count)
 
+// Input shield: the click that opened this browser (and any extra clicks made
+// while Create_0 was stalling the game) must not reach the tile grid. Arm only
+// once the button is up, which also covers a press latched by the timing layer,
+// and the grace period from Create_0 has passed (same pattern as capture_armed
+// and fps_armed). Because arming and the click test read the same input state
+// in the same tick, a press can never arm the shield and fire in one step.
+if (!input_armed && get_timer() >= input_arm_time && !timing_mouse_down(mb_left)) {
+	input_armed = true
+}
+
 // Click handling
-if timing_mouse_pressed(mb_left) && !_context_changed {
+if input_armed && timing_mouse_pressed(mb_left) && !_context_changed {
 	var _click_consumed = false
 	var _panel_x = grid_margin_x - 20
 	var _panel_w = 1024 - 2 * _panel_x

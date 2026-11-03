@@ -1030,7 +1030,6 @@
     {"name":"o_witchhatbutton","order":9,"path":"objects/o_witchhatbutton/o_witchhatbutton.yy",},
     {"name":"o_workshopchallengecreator","order":15,"path":"objects/o_workshopchallengecreator/o_workshopchallengecreator.yy",},
     {"name":"o_workshopchallengecreatorbg","order":17,"path":"objects/o_workshopchallengecreatorbg/o_workshopchallengecreatorbg.yy",},
-    {"name":"o_workshopchallengecreatorbutton","order":18,"path":"objects/o_workshopchallengecreatorbutton/o_workshopchallengecreatorbutton.yy",},
     {"name":"o_workshopchallengeitembutton","order":14,"path":"objects/o_workshopchallengeitembutton/o_workshopchallengeitembutton.yy",},
     {"name":"o_workshopchallengesbutton","order":10,"path":"objects/o_workshopchallengesbutton/o_workshopchallengesbutton.yy",},
     {"name":"o_workshopchallengescreate","order":12,"path":"objects/o_workshopchallengescreate/o_workshopchallengescreate.yy",},

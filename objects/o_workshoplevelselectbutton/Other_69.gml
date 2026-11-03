@@ -3,6 +3,7 @@ var result = async_load[? "result"];
 
 if (map_id == steam_details) && (result == ugc_result_success) {
 	mTitle = async_load[? "title"];
+	mTitle_lc = string_lower(string(mTitle));
 	mTags = async_load[? "tags"];
 	owner_id = async_load[? "steam_id_owner"];
 	loaded = 1

@@ -1,5 +1,8 @@
 depth = -20000
 
+// Drawing and clicks are handled by the creator; no default sprite or mouse mask
+sprite_index = -1
+
 selected = 0
 selected_order = 0
 
@@ -8,10 +11,13 @@ mPath = ""
 
 base_x = x
 base_y = y
-grid_col = 0
-filtered_out = 0
+filtered_out = 1 // the creator shows it once it knows where it goes
+hov = 0
+fit_key = ""
+fit_lines = []
 
 mTitle = "Loading"
+mTitle_lc = "loading"
 mTags = ""
 loaded = 0
 
